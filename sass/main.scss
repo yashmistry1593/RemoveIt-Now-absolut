@@ -45,8 +45,35 @@ a, .btn {
   outline: 0;
   @include box-shadow(none);
 }
-.mt20{
+.mt20 {
   margin-top: 20px;
+}
+.logo img {
+    max-height: 100%;
+    width: auto;
+}
+.menu-options {
+  margin-top: 15px;
+}
+.logo {
+    padding: 10px 0 10px 25px;
+}
+.account-form > form .feild > .login-w {
+    background: #125daa none repeat scroll 0 0;
+    border: medium none;
+
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    -ms-border-radius: 25px;
+    -o-border-radius: 25px;
+    border-radius: 25px;
+
+    color: #ffffff;
+    float: left;
+    font-family: Montserrat;
+    font-size: 12px;
+    margin-top: 20px;
+    padding: 14px 30px;
 }
 //bootstrap forms
 /* Start writing sass here */
