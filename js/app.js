@@ -37,6 +37,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'BranchCreateCtrl'
     })
 
+    .state('timeline', {
+        url: "/timeline",
+        templateUrl: "views/template.html",
+        controller: 'TimelineCtrl'
+    })
+
     ;
     $urlRouterProvider.otherwise("/login");
     $locationProvider.html5Mode(isproduction);

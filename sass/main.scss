@@ -4,10 +4,16 @@
 @import "../bower_components/flexslider/flexslider.css";
 @import "../bower_components/font-awesome/css/font-awesome.min.css";
 @import "../bower_components/fancyBox/source/jquery.fancybox.css";
+@import "icons";
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "template/icons";
 @import "template/main";
 @import "template/responsive";
+$blue: #1fc8ec;
+$orange: #f29c2c;
+$red: #ea5249;
+$green: #35c565;
+$yellow: #f4dc11;
 body {
 }
 img.loading {
@@ -74,6 +80,172 @@ a, .btn {
     font-size: 12px;
     margin-top: 20px;
     padding: 14px 30px;
+}
+.profile-all {
+  margin-top: 0;
+}
+
+.who-post-detail {
+  > h3 {
+    font-size: 16px;
+  }
+   > span {
+    color: #202020;
+    font-size: 12px;
+    a {
+      color: $blue;
+      font-weight: bold;
+    }
+  }
+}
+.who-post-this {
+  position: relative;
+  .house {
+    position: absolute;
+    width: auto;
+    bottom: -11px;
+    left: 36px;
+  }
+  > span {
+   border: 0px solid #ffffff;
+ }
+}
+.vsmall {
+  font-weight: normal;
+  font-family: 'Open Sans';
+  font-size: 10px;
+  color: #777777;
+}
+.admin-details > i {
+    color: #777777;
+    text-transform: capitalize;
+}
+.post-content p {
+    color: #202020;
+}
+.btn-red {
+  @include button-variant(white, $red, $red);
+}
+.btn-green {
+  @include button-variant(white, $green, $green);
+}
+.btn-blue {
+  @include button-variant(white, $blue, $blue);
+}
+.btn-orange {
+  @include button-variant(white, $orange, $orange);
+}
+.btn.btn-round {
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+}
+.inline {
+  display: inline-block;
+}
+.info-dropdown {
+    border: none;
+    padding: 0;
+    overflow: hidden;
+    li {
+      +li {
+          border-top: 1px solid #e5e5e5;
+      }
+      > a {
+          padding: 10px;
+      }
+    }
+}
+.info-holder {
+  background: #ffffff none repeat scroll 0 0;
+  position: relative;
+  width: 100%;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  -o-border-radius: 5px;
+  border-radius: 5px;
+  padding: 10px;
+  height: 87px;
+  .btn {
+      font-size: 12px;
+      min-width: 110px;
+  }
+}
+.greenbg {
+  background-color: $green;
+  color: white;
+  padding: 0px 5px;
+  border-radius: 2px;
+}
+.compny {
+  h3 {
+      margin: 10px 0 5px;
+      font-size: 14px;
+  }
+  p {
+      margin:0;
+      line-height: 100%;
+      margin-bottom: 5px;
+  }
+}
+.info-pic {
+    position: absolute;
+    left: 50%;
+    top: -7px;
+    @include transform(translateX(-50%));
+    > span {
+      display: inline-block;
+      -webkit-border-radius: 100%;
+      -moz-border-radius: 100%;
+      -ms-border-radius: 100%;
+      -o-border-radius: 100%;
+      border-radius: 100%;
+    }
+    .dp {
+      height: 101px;
+    }
+}
+.info-house {
+    position: absolute;
+    bottom: -5px;
+    right: -10px;
+}
+.info-btn {
+
+}
+.padder {
+  padding-top: 5px;
+}
+.first-half {
+    width: 50%;
+    padding-left: 65px;
+    +.first-half {
+      padding-left: 0 !important;
+      padding-right: 65px;
+    }
+}
+.dif {
+  color: #777;
+  font-family: 'Open Sans'
+}
+.padding-border {
+  padding: 20px;
+}
+.folder {
+    text-align: center;
+    img {
+      max-width: 100%;
+    }
+    h6 {
+      margin: 0;
+      margin-top: 10px;
+    }
+}
+.mt20 {
+  margin-top: 20px !important;
 }
 //bootstrap forms
 /* Start writing sass here */
