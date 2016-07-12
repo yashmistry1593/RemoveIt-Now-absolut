@@ -29,6 +29,32 @@
         <label>Message <span>*</span></label>
         <textarea ui-tinymce ng-model="email.message"></textarea>
       </div>
+      <div class="col-md-12 field">
+        <label>Message <span>*</span></label>
+
+        <div class="custom-tabs">
+           <uib-tabset>
+             <uib-tab ng-repeat="file in files">
+               <uib-tab-heading>
+                 {{file.type}} <span ng-if="file.count!=0">({{file.count}})</span>
+               </uib-tab-heading>
+                <div class="file-selector" ng-if="file.files">
+                  <div class="row">
+                    <div class="col-md-3" ng-repeat="f in file.files">
+                      <div class="filebx">
+                        <div class="dl-bx">
+                          <i class="ln-download"></i>
+                        </div>
+                        <i class="ln-document"></i>
+                        <p>{{f.name}}</p>
+                      </div>
+                  </div>
+                  </div>
+                </div>
+             </uib-tab>
+           </uib-tabset>
+        </div>
+      </div>
     </div>
   </div>
 </div>

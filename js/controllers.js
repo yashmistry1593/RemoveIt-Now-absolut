@@ -41,6 +41,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
   $scope.newEmail = function () {
     var modalInstance = $uibModal.open({
+      scope: $scope,
       templateUrl: 'views/modal/modal-email.html',
       size: 'md'
     });
@@ -48,6 +49,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
   $scope.newMessage = function () {
     var modalInstance = $uibModal.open({
+      scope: $scope,
       templateUrl: 'views/modal/modal-message.html',
       size: 'md'
     });
@@ -55,10 +57,59 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
   $scope.viewJIR = function () {
     var modalInstance = $uibModal.open({
+      scope: $scope,
       templateUrl: 'views/modal/modal-files.html',
       size: 'md'
     });
   };
+
+  $scope.files = [{
+    type: "JIR",
+    count: 2,
+    files: [{
+      name: "doc1.docx",
+      selection: true
+    },{
+      name: "doc2.docx",
+      selection: false
+    }]
+  },{
+    type: "ILA",
+    count: 0,
+    files: []
+  },{
+    type: "ILR",
+    count: 0,
+    files: []
+  },{
+    type: "LOR",
+    count: 0,
+    files: []
+  },{
+    type: "Assesments",
+    count: 0,
+    files: []
+  },{
+    type: "FSR",
+    count: 0,
+    files: []
+  },{
+    type: "Invoice",
+    count: 0,
+    files: []
+  },{
+    type: "Documents",
+    count: 0,
+    files: []
+  },{
+    type: "Images",
+    count: 0,
+    files: []
+  },{
+    type: "Total Attachments",
+    count: 2,
+    files: []
+  }];
 
 })
 
