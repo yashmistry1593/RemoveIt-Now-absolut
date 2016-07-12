@@ -1,4 +1,4 @@
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap','ngAnimate', 'ngSanitize', 'angular-flexslider'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap','ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui.tinymce'])
 
 .controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout) {
   //Used to name the .html file
@@ -32,12 +32,34 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   $scope.navigation = NavigationService.getnav();
 })
 
-.controller('TimelineCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('TimelineCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
   //Used to name the .html file
   $scope.template = TemplateService.changecontent("timeline");
   $scope.menutitle = NavigationService.makeactive("Timeline");
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
+
+  $scope.newEmail = function () {
+    var modalInstance = $uibModal.open({
+      templateUrl: 'views/modal/modal-email.html',
+      size: 'md'
+    });
+  };
+
+  $scope.newMessage = function () {
+    var modalInstance = $uibModal.open({
+      templateUrl: 'views/modal/modal-message.html',
+      size: 'md'
+    });
+  };
+
+  $scope.viewJIR = function () {
+    var modalInstance = $uibModal.open({
+      templateUrl: 'views/modal/modal-files.html',
+      size: 'md'
+    });
+  };
+
 })
 
 .controller('headerctrl', function($scope, TemplateService) {

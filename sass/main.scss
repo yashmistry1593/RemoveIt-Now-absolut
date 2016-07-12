@@ -35,6 +35,9 @@ nav li:hover .dropdown-menu {
 a, .btn {
   cursor: pointer;
   @include transition(all ease 300ms);
+  &:focus {
+    outline: none !important;
+  }
 }
 //bootstrap forms
 .input-lg,
@@ -135,12 +138,31 @@ a, .btn {
 .btn-orange {
   @include button-variant(white, $orange, $orange);
 }
+$trans-black: rgba( black, .15 );
+.btn-darker {
+  @include button-variant(white, $trans-black, transparent);
+}
+.btn-clear {
+  @include button-variant(white, transparent, transparent);
+  padding: 0;
+}
 .btn.btn-round {
   -webkit-border-radius: 5px;
   -moz-border-radius: 5px;
   -ms-border-radius: 5px;
   -o-border-radius: 5px;
   border-radius: 5px;
+}
+.btn-nopad {
+    margin: -15px 5px;
+}
+.file-list {
+  .btn-clear {
+    color: #505050;
+  }
+  .btn {
+    padding: 0 10px;
+  }
 }
 .inline {
   display: inline-block;
@@ -179,6 +201,7 @@ a, .btn {
   color: white;
   padding: 0px 5px;
   border-radius: 2px;
+  font-size: 12px;
 }
 .compny {
   h3 {
@@ -189,6 +212,7 @@ a, .btn {
       margin:0;
       line-height: 100%;
       margin-bottom: 5px;
+      font-size: 12px;
   }
 }
 .info-pic {
@@ -247,6 +271,111 @@ a, .btn {
 .mt20 {
   margin-top: 20px !important;
 }
-//bootstrap forms
+.pointer {
+  cursor: pointer;
+}
+.panel-content {
+  padding-top: 26px;
+}
+.mt-18 {
+  margin-top: 18px;
+}
+.emailed {
+    background-color: white;
+    border-radius: 5px;
+    padding: 15px;
+}
+.strong {
+  font-weight: 700;
+}
+.filebx {
+  background-color: #ebf1f2;
+  color: #4b4e4e;
+  text-align: center;
+  padding: 6px;
+  position: relative;
+  i {
+      font-size: 32px;
+  }
+   p {
+    margin: 5px 0 0;
+    line-height: 100%;
+    height: 14px;
+    font-size: 12px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
+.dl-bx {
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    cursor: pointer;
+    text-align: center;
+    i {
+      font-size: 14px;
+      line-height: 23px;
+    }
+}
+.activity-timeline > li {
+  margin-bottom: 30px;
+}
+.side-header,
+.top-bar {
+  z-index: 99 !important;
+}
+.modal-content {
+  overflow: hidden;
+}
+.red-bg {
+  background-color: $red;
+  >* {
+    color: white;
+  }
+}
+.blue-bg {
+  background-color: $blue;
+  >* {
+    color: white;
+  }
+}
+.green-bg {
+  background-color: $green;
+  >* {
+    color: white;
+  }
+}
+.modal-footer {
+    padding: 10px 15px;
+}
+ .no-float {
+   float: none !important;
+   margin: 0;
+ }
+ .mce-container-body button {
+  background: transparent;
+  margin: 0 !important;
+}
+.billing-sec .field {
+  margin-bottom: 15px;
+}
+.billing-sec .field input, .billing-sec .field textarea {
+  border: 1px solid #e5e5e5 !important;
+  &:focus {
+    outline: none !important;
+  }
+}
+.mce-panel {
+  background-color: white !important;
+  border-radius: 5px;
+  border-color: #e5e5e5 !important;
+}
+.mce-btn {
+  background: white !important;
+}
 /* Start writing sass here */
 @import "fancybox-override";
