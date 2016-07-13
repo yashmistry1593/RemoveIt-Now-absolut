@@ -39,12 +39,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 
+  $scope.email = {
+    message:"Change"
+  };
   $scope.emailtos = [
     {name: 'Tushar', email: 'tushar@wohlig.com'},
     {name: 'Chintan', email: 'chintan@wohlig.com'},
     {name: 'Harsh', email: 'harsh@wohlig.com'},
     {name: 'Raj', email: 'raj@wohlig.com'}
   ];
+
+  $scope.tinymceModel = 'Initial content';
+  $scope.tinymceOptions = {
+    plugins: 'link image code',
+    toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+  };
 
   $scope.newEmail = function () {
     var modalInstance = $uibModal.open({
@@ -155,8 +164,5 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       }
     //  $rootScope.$apply();
     };
-
-
 })
-
 ;
