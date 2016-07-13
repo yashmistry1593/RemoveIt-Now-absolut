@@ -32,10 +32,66 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('branch-create', {
-        url: "/branch-create",
-        templateUrl: "views/template.html",
-        controller: 'BranchCreateCtrl'
-    })
+            url: "/branch-create",
+            templateUrl: "views/template.html",
+            controller: 'BranchCreateCtrl'
+        })
+        .state('country-list', {
+            url: "/country-list",
+            templateUrl: "views/template.html",
+            controller: 'CountryCtrl'
+        })
+
+
+    .state('createcountry', {
+            url: "/country-create",
+            templateUrl: "views/template.html",
+            controller: 'CreateCountryCtrl'
+        })
+        .state('editcountry', {
+            url: "/country-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditCountryCtrl'
+        })
+
+        .state('zone-list', {
+            url: "/zone-list",
+            templateUrl: "views/template.html",
+            controller: 'ZoneCtrl'
+        })
+
+
+    .state('createzone', {
+            url: "/zone-create",
+            templateUrl: "views/template.html",
+            controller: 'CreateZoneCtrl'
+        })
+        .state('editzone', {
+            url: "/zone-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditZoneCtrl'
+        })
+
+
+                .state('state-list', {
+                    url: "/state-list",
+                    templateUrl: "views/template.html",
+                    controller: 'StateCtrl'
+                })
+
+
+            .state('createstate', {
+                    url: "/state-create",
+                    templateUrl: "views/template.html",
+                    controller: 'CreateStateCtrl'
+                })
+                .state('editstate', {
+                    url: "/state-edit/:id",
+                    templateUrl: "views/template.html",
+                    controller: 'EditStateCtrl'
+                })
+
+
 
     .state('timeline', {
         url: "/timeline",
@@ -100,11 +156,11 @@ firstapp.directive('menuOptions', function($document) {
         replace: false,
         link: function(scope, element, attr) {
             var $element = $(element);
-            $(element).on("click", function(){
-              $(".side-header.opened-menu").toggleClass('slide-menu');
-              $(".main-content").toggleClass('wide-content');
-              $("footer").toggleClass('wide-footer');
-              $(".menu-options").toggleClass('active');
+            $(element).on("click", function() {
+                $(".side-header.opened-menu").toggleClass('slide-menu');
+                $(".main-content").toggleClass('wide-content');
+                $("footer").toggleClass('wide-footer');
+                $(".menu-options").toggleClass('active');
             });
 
         }
@@ -118,12 +174,12 @@ firstapp.directive('oI', function($document) {
         replace: false,
         link: function(scope, element, attr) {
             var $element = $(element);
-            $element.click(function(){
-              $element.parent().siblings().children("ul").slideUp();
-              $element.parent().siblings().removeClass("active");
-              $element.parent().children("ul").slideToggle();
-              $element.parent().toggleClass("active");
-              return false;
+            $element.click(function() {
+                $element.parent().siblings().children("ul").slideUp();
+                $element.parent().siblings().removeClass("active");
+                $element.parent().children("ul").slideToggle();
+                $element.parent().toggleClass("active");
+                return false;
             });
 
         }
