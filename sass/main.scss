@@ -4,16 +4,22 @@
 @import "../bower_components/flexslider/flexslider.css";
 @import "../bower_components/font-awesome/css/font-awesome.min.css";
 @import "../bower_components/fancyBox/source/jquery.fancybox.css";
+@import "../bower_components/angular-ui-select/dist/select.min.css";
 @import "icons";
-@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
-@import "template/icons";
-@import "template/main";
-@import "template/responsive";
 $blue: #1fc8ec;
 $orange: #f29c2c;
 $red: #ea5249;
 $green: #35c565;
 $yellow: #f4dc11;
+$border-color: #e5e5e5;
+$brand-primary: $blue;
+$brand-warning: $red;
+$brand-success: $green;
+@import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
+@import "template/icons";
+@import "template/main";
+@import "template/responsive";
+
 body {
 }
 img.loading {
@@ -173,7 +179,7 @@ $trans-black: rgba( black, .15 );
     overflow: hidden;
     li {
       +li {
-          border-top: 1px solid #e5e5e5;
+          border-top: 1px solid $border-color;
       }
       > a {
           padding: 10px;
@@ -362,9 +368,16 @@ $trans-black: rgba( black, .15 );
 }
 .billing-sec .field {
   margin-bottom: 15px;
+  border-radius: 5px;
+  input {
+    height: 37px;
+    border-radius: 4px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
 }
 .billing-sec .field input, .billing-sec .field textarea {
-  border: 1px solid #e5e5e5 !important;
+  border: 1px solid $border-color !important;
   &:focus {
     outline: none !important;
   }
@@ -372,10 +385,101 @@ $trans-black: rgba( black, .15 );
 .mce-panel {
   background-color: white !important;
   border-radius: 5px;
-  border-color: #e5e5e5 !important;
+  border-color: $border-color !important;
 }
 .mce-btn {
   background: white !important;
+}
+.nav-tabs {
+    border: 0px;
+    > li.active {
+      > a,
+      > a:hover,
+      > a:focus {
+        color: $red;
+        border: 0;
+        border-bottom: 5px solid $red;
+      }
+    }
+    > li > a {
+        border: 0;
+        border-bottom: 5px solid transparent;
+        border-radius: 0;
+        &:focus, &:hover {
+          background: transparent;
+          color: inherit;
+        }
+    }
+}
+.file-selector {
+    padding: 10px;
+    border: 1px solid $border-color;
+    min-height: 87px;
+}
+.filebx input[type="checkbox"],
+.check-bx input[type="checkbox"] {
+    float: none;
+    border-radius: 0;
+    height: 24px;
+    width: 24px !important;
+    border: 0px !important;
+    padding: 0;
+    @include appearance(none);
+    margin: 0;
+    position: relative;
+    z-index: 9;
+    +i {
+      display: none;
+    }
+    &:checked+i {
+      display: block;
+    }
+}
+.check-bx {
+    display: inline-block;
+    position: relative;
+    background-color: #e8edf2;
+    width: 24px;
+    height: 24px;
+    vertical-align: middle;
+    .aired {
+      top: 5px;
+    }
+}
+.aired {
+    position: absolute;
+    top: 0;
+    right: 4px;
+}
+.scroll-x {
+  max-height: 120px;
+  overflow-x: auto;
+  padding: 0 15px;;
+  margin: 0px -15px;
+    .mter {
+      margin-top: 10px;
+    }
+}
+.ui-select-bootstrap .ui-select-choices-row.active>a {
+  background-color: $blue;
+}
+.billing-sec .ui-select-multiple.ui-select-bootstrap {
+    height: auto;
+    padding: 5px;
+    border-color: #e5e5e5;
+    border-radius: 5px;
+    input {
+      border: none !important;
+    }
+}
+.billing-sec .field .ui-select-multiple.ui-select-bootstrap input {
+    border: none;
+    border-radius: none;
+    float: none;
+    font-size: 12px;
+    height: auto;
+    padding: 0;
+    width: 100%;
 }
 /* Start writing sass here */
 @import "fancybox-override";

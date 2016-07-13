@@ -1,4 +1,4 @@
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap','ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui.tinymce'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap','ui.select','ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui.tinymce'])
 
 .controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout) {
   //Used to name the .html file
@@ -39,11 +39,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 
+  $scope.emailtos = [
+    {name: 'Tushar', email: 'tushar@wohlig.com'},
+    {name: 'Chintan', email: 'chintan@wohlig.com'},
+    {name: 'Harsh', email: 'harsh@wohlig.com'},
+    {name: 'Raj', email: 'raj@wohlig.com'}
+  ];
+
   $scope.newEmail = function () {
     var modalInstance = $uibModal.open({
       scope: $scope,
       templateUrl: 'views/modal/modal-email.html',
-      size: 'md'
+      size: 'lg'
     });
   };
 
@@ -51,7 +58,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     var modalInstance = $uibModal.open({
       scope: $scope,
       templateUrl: 'views/modal/modal-message.html',
-      size: 'md'
+      size: 'lg'
     });
   };
 
@@ -71,7 +78,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
       selection: true
     },{
       name: "doc2.docx",
-      selection: false
+      selection: true
     }]
   },{
     type: "ILA",
@@ -108,7 +115,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   },{
     type: "Total Attachments",
     count: 2,
-    files: []
+    files: [{
+      name: "doc1.docx",
+      selection: true
+    },{
+      name: "doc2.docx",
+      selection: true
+    }]
   }];
 
 })
