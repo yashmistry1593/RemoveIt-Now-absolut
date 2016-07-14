@@ -211,5 +211,106 @@ var navigationservice = angular.module('navigationservice', [])
                     }
             }).success(callback);
         },
+
+
+                getAllDistricts: function(callback) {
+                    // console.log('form data: ', formData);
+                    $http({
+                        url: adminurl + 'district/getAll',
+                        method: 'POST',
+                        withCredentials: true
+                    }).success(callback);
+                },
+                districtSave: function(formData,callback) {
+                    // console.log('form data: ', formData);
+                    $http({
+                        url: adminurl + 'district/saveData',
+                        method: 'POST',
+                        withCredentials: true,
+                        data:formData
+                    }).success(callback);
+                },
+                getOneDistrict: function(id,callback) {
+                    // console.log('form data: ', formData);
+                    $http({
+                        url: adminurl + 'district/getOne',
+                        method: 'POST',
+                        withCredentials: true,
+                        data: {
+                                "_id": id
+                            }
+                    }).success(callback);
+                },
+                districtEditSave: function(id,callback) {
+                    // console.log('form data: ', formData);
+                    $http({
+                        url: adminurl + 'district/saveData',
+                        method: 'POST',
+                        withCredentials: true,
+                        data: id
+                    }).success(callback);
+                },
+                deleteDistrict: function(id,callback) {
+                    // console.log('form data: ', formData);
+                    $http({
+                        url: adminurl + 'district/delete',
+                        method: 'POST',
+                        withCredentials: true,
+                        data: {
+                                "_id": id.id,
+                            }
+                    }).success(callback);
+                },
+
+
+
+                                getAllCurrencies: function(callback) {
+                                    // console.log('form data: ', formData);
+                                    $http({
+                                        url: adminurl + 'currency/getAll',
+                                        method: 'POST',
+                                        withCredentials: true
+                                    }).success(callback);
+                                },
+                                currencySave: function(formData,callback) {
+                                    // console.log('form data: ', formData);
+                                    $http({
+                                        url: adminurl + 'currency/saveData',
+                                        method: 'POST',
+                                        withCredentials: true,
+                                        data:formData
+                                    }).success(callback);
+                                },
+                                getOneCurrency: function(id,callback) {
+                                    // console.log('form data: ', formData);
+                                    $http({
+                                        url: adminurl + 'currency/getOne',
+                                        method: 'POST',
+                                        withCredentials: true,
+                                        data: {
+                                                "_id": id
+                                            }
+                                    }).success(callback);
+                                },
+                                currencyEditSave: function(id,callback) {
+                                    // console.log('form data: ', formData);
+                                    $http({
+                                        url: adminurl + 'currency/saveData',
+                                        method: 'POST',
+                                        withCredentials: true,
+                                        data: id
+                                    }).success(callback);
+                                },
+                                deleteCurrency: function(id,callback) {
+                                    // console.log('form data: ', formData);
+                                    $http({
+                                        url: adminurl + 'currency/delete',
+                                        method: 'POST',
+                                        withCredentials: true,
+                                        data: {
+                                                "_id": id.id,
+                                            }
+                                    }).success(callback);
+                                },
   };
 });

@@ -54,11 +54,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
             controller: 'EditCountryCtrl'
         })
 
-        .state('zone-list', {
-            url: "/zone-list",
-            templateUrl: "views/template.html",
-            controller: 'ZoneCtrl'
-        })
+    .state('zone-list', {
+        url: "/zone-list",
+        templateUrl: "views/template.html",
+        controller: 'ZoneCtrl'
+    })
 
 
     .state('createzone', {
@@ -73,22 +73,63 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         })
 
 
-                .state('state-list', {
-                    url: "/state-list",
-                    templateUrl: "views/template.html",
-                    controller: 'StateCtrl'
-                })
+    .state('state-list', {
+        url: "/state-list",
+        templateUrl: "views/template.html",
+        controller: 'StateCtrl'
+    })
 
 
-            .state('createstate', {
-                    url: "/state-create",
+    .state('createstate', {
+            url: "/state-create",
+            templateUrl: "views/template.html",
+            controller: 'CreateStateCtrl'
+        })
+        .state('editstate', {
+            url: "/state-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditStateCtrl'
+        })
+
+
+
+    .state('district-list', {
+        url: "/district-list",
+        templateUrl: "views/template.html",
+        controller: 'DistrictCtrl'
+    })
+
+
+    .state('createdistrict', {
+            url: "/district-create",
+            templateUrl: "views/template.html",
+            controller: 'CreateDistrictCtrl'
+        })
+        .state('editdistrict', {
+            url: "/district-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditDistrictCtrl'
+        })
+
+
+
+
+            .state('currency-list', {
+                url: "/currency-list",
+                templateUrl: "views/template.html",
+                controller: 'CurrencyCtrl'
+            })
+
+
+            .state('createcurrency', {
+                    url: "/currency-create",
                     templateUrl: "views/template.html",
-                    controller: 'CreateStateCtrl'
+                    controller: 'CreateCurrencyCtrl'
                 })
-                .state('editstate', {
-                    url: "/state-edit/:id",
+                .state('editcurrency', {
+                    url: "/currency-edit/:id",
                     templateUrl: "views/template.html",
-                    controller: 'EditStateCtrl'
+                    controller: 'EditCurrencyCtrl'
                 })
 
 
