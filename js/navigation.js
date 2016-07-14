@@ -101,6 +101,17 @@ var navigationservice = angular.module('navigationservice', [])
             data: id
         }).success(callback);
     },
+    deleteCountry: function(id,callback) {
+        // console.log('form data: ', formData);
+        $http({
+            url: adminurl + 'country/delete',
+            method: 'POST',
+            withCredentials: true,
+            data: {
+                    "_id": id.id,
+                }
+        }).success(callback);
+    },
 
     getAllZones: function(callback) {
         // console.log('form data: ', formData);
@@ -137,6 +148,17 @@ var navigationservice = angular.module('navigationservice', [])
             method: 'POST',
             withCredentials: true,
             data: id
+        }).success(callback);
+    },
+    deleteZone: function(id,callback) {
+        // console.log('form data: ', formData);
+        $http({
+            url: adminurl + 'zone/delete',
+            method: 'POST',
+            withCredentials: true,
+            data: {
+                    "_id": id.id,
+                }
         }).success(callback);
     },
 
@@ -176,6 +198,17 @@ var navigationservice = angular.module('navigationservice', [])
                 method: 'POST',
                 withCredentials: true,
                 data: id
+            }).success(callback);
+        },
+        deleteState: function(id,callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'state/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                        "_id": id.id,
+                    }
             }).success(callback);
         },
   };

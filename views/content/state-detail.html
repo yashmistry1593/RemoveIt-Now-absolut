@@ -35,23 +35,32 @@
                                     <input type="text" name="name" placeholder="State Name" ng-model="formData.name" class="form-control" required>
                                     <div class="error-msg" ng-show="stateform.name.$error.required && stateform.name.$touched">Please Enter State Name.</div>
 
-                                    <label for="">Zone*</label>
+                                    <div class="form-group">
+                                      <label for="disabledSelect">Zone</label>
+                                      <select class="form-control" ng-model="formData.zone" value="{{zone.name}}">
+                                        <option ng-selected="true" value="">Select Zone</option>
+                                        <option ng-repeat="zone in allZones">{{zone.name}}</option>
+                                      </select>
+                                    </div>
+
+                                    <!-- <label for="">Zone*</label>
                                     <input type="text" name="zone" placeholder="Zone" ng-model="formData.zone" class="form-control" required>
-                                    <div class="error-msg" ng-show="stateform.zone.$error.required && stateform.zone.$touched">Please Enter Zone.</div>
+                                    <div class="error-msg" ng-show="stateform.zone.$error.required && stateform.zone.$touched">Please Enter Zone.</div> -->
 
                                 </div>
 
                             </div>
 
                         </div>
+
+                        <div class="text-center mt20">
+                            <button class="btn btn-default" type="submit" ng-click="saveState(formData)" ng-disabled="stateform.$invalid">Save</button>
+                            <button class="btn btn-default" ui-sref="state-list">Cancel</button>
+                        </div>
                 </div>
             </div>
 
 
-            <div class="text-center mt20">
-                <button class="btn btn-default" type="submit" ng-click="saveState(formData)" ng-disabled="stateform.$invalid">Save</button>
-                <button class="btn btn-default" ui-sref="state-list">Cancel</button>
-            </div>
             </form>
         </div>
     </div>

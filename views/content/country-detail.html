@@ -44,14 +44,15 @@
                             </div>
 
                         </div>
+                        <div class="text-center mt20">
+                            <button class="btn btn-default" type="submit" ng-click="saveCountry(formData)" ng-disabled="countryform.$invalid">Save</button>
+                            <button class="btn btn-default" ui-sref="country-list">Cancel</button>
+                        </div>
                 </div>
             </div>
 
 
-            <div class="text-center mt20">
-                <button class="btn btn-default" type="submit" ng-click="saveCountry(formData)" ng-disabled="countryform.$invalid">Save</button>
-                <button class="btn btn-default" ui-sref="country-list">Cancel</button>
-            </div>
+
             </form>
         </div>
     </div>

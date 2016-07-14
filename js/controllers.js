@@ -1,6 +1,6 @@
 // angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui.tinymce'])
 
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap','ui.select','ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui.tinymce'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ui.select', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui.tinymce'])
 
 .controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
@@ -31,12 +31,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Country List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.showAllCountries = function() {
+            NavigationService.getAllCountries(function(data) {
+                $scope.allCountries = data.data;
+                console.log('$scope.allCountries', $scope.allCountries);
 
-        NavigationService.getAllCountries(function(data) {
-            $scope.allCountries = data.data;
-            console.log('$scope.allCountries', $scope.allCountries);
+            });
+        };
+        $scope.showAllCountries();
+        $scope.deleteCountry = function(id) {
 
-        });
+            NavigationService.deleteCountry({
+                id: id
+            }, function(data) {
+                $scope.showAllCountries();
+
+            });
+        }
     })
     .controller('CreateCountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
@@ -50,9 +61,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.formData = {};
         $scope.saveCountry = function(formData) {
-            $state.go('country-list');
+
             NavigationService.countrySave($scope.formData, function(data) {
-                console.log('$scope.allCountriessave', $scope.data);
+                if (data.value == true) {
+                    $state.go('country-list');
+                }
 
             });
         }
@@ -93,18 +106,33 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
 
-    .controller('ZoneCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('ZoneCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("zone-list");
         $scope.menutitle = NavigationService.makeactive("zone List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+$scope.showAllZones=function(){
+  NavigationService.getAllZones(function(data) {
+      $scope.allZones = data.data;
+      console.log('$scope.allZones', $scope.allZones);
+  });
 
-        NavigationService.getAllZones(function(data) {
-            $scope.allZones = data.data;
-            console.log('$scope.allZones', $scope.allZones);
+};
+$scope.showAllZones();
 
-        });
+
+        $scope.deleteZone = function(id) {
+
+            NavigationService.deleteZone({
+                id: id
+            }, function(data) {
+                $scope.showAllZones();
+
+            });
+        }
+
+
     })
     .controller('CreateZoneCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
@@ -117,17 +145,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Create Zone"
         };
         $scope.formData = {};
-        $scope.saveCountry = function(formData) {
+        $scope.saveZone = function(formData) {
 
             NavigationService.zoneSave($scope.formData, function(data) {
-              console.log(data);
-              if(data.value==true){
-                  $state.go('zone-list');
-              }
+                console.log(data);
+                if (data.value == true) {
+                    $state.go('zone-list');
+                }
                 // console.log('$scope.allCountriessave', $scope.data);
 
             });
         }
+
+        NavigationService.getAllCountries(function(data) {
+            $scope.allCountries = data.data;
+            console.log('$scope.allCountries', $scope.allCountries);
+
+        });
 
     })
     .controller('EditZoneCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
@@ -159,6 +193,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //  }
         };
 
+        NavigationService.getAllCountries(function(data) {
+            $scope.allCountries = data.data;
+            console.log('$scope.allCountries', $scope.allCountries);
+
+        });
+
     })
 
 
@@ -166,73 +206,97 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
 
-        .controller('StateCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-            //Used to name the .html file
-            $scope.template = TemplateService.changecontent("state-list");
-            $scope.menutitle = NavigationService.makeactive("state List");
-            TemplateService.title = $scope.menutitle;
-            $scope.navigation = NavigationService.getnav();
+.controller('StateCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("state-list");
+        $scope.menutitle = NavigationService.makeactive("state List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
 
-            NavigationService.getAllStates(function(data) {
-                $scope.allStates = data.data;
-                console.log('$scope.allStates', $scope.allStates);
+$scope.showAllStates=function(){
+  NavigationService.getAllStates(function(data) {
+      $scope.allStates = data.data;
+      console.log('$scope.allStates', $scope.allStates);
 
-            });
-        })
-        .controller('CreateStateCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
-            //Used to name the .html file
-            $scope.template = TemplateService.changecontent("state-detail");
-            $scope.menutitle = NavigationService.makeactive("state-detail");
-            TemplateService.title = $scope.menutitle;
-            $scope.navigation = NavigationService.getnav();
+  });
+};
+$scope.showAllStates();
 
-            $scope.header = {
-                "name": "Create State"
-            };
-            $scope.formData = {};
-            $scope.saveState = function(formData) {
+        $scope.deleteState = function(id) {
 
-                NavigationService.stateSave($scope.formData, function(data) {
-                  console.log(data);
-                  if(data.value==true){
-                      $state.go('state-list');
-                  }
-                    // console.log('$scope.allCountriessave', $scope.data);
-
-                });
-            }
-
-        })
-        .controller('EditStateCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
-            //Used to name the .html file
-            $scope.template = TemplateService.changecontent("state-detail");
-            $scope.menutitle = NavigationService.makeactive("state-detail");
-            TemplateService.title = $scope.menutitle;
-            $scope.navigation = NavigationService.getnav();
-
-            $scope.header = {
-                "name": "Edit State"
-            };
-
-            NavigationService.getOneState($stateParams.id, function(data) {
-                $scope.formData = data.data;
-                // console.log('$scope.oneCountry', $scope.oneCountry);
+            NavigationService.deleteState({
+                id: id
+            }, function(data) {
+                $scope.showAllStates();
 
             });
+        }
 
-            $scope.saveState = function(formValid) {
+    })
+    .controller('CreateStateCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("state-detail");
+        $scope.menutitle = NavigationService.makeactive("state-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
 
-                //  if (formValid.$valid) {
-                //  $scope.formComplete = true;
-                NavigationService.stateEditSave($scope.formData, function(data) {
-                    if (data.value == true) {
-                        $state.go('state-list');
-                    }
-                });
-                //  }
-            };
+        $scope.header = {
+            "name": "Create State"
+        };
+        $scope.formData = {};
+        $scope.saveState = function(formData) {
 
-        })
+            NavigationService.stateSave($scope.formData, function(data) {
+                console.log(data);
+                if (data.value == true) {
+                    $state.go('state-list');
+                }
+                // console.log('$scope.allCountriessave', $scope.data);
+
+            });
+        }
+
+        NavigationService.getAllZones(function(data) {
+            $scope.allZones = data.data;
+            console.log('$scope.allZones', $scope.allZones);
+        });
+
+    })
+    .controller('EditStateCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("state-detail");
+        $scope.menutitle = NavigationService.makeactive("state-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Edit State"
+        };
+
+        NavigationService.getOneState($stateParams.id, function(data) {
+            $scope.formData = data.data;
+            // console.log('$scope.oneCountry', $scope.oneCountry);
+
+        });
+
+        $scope.saveState = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.stateEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('state-list');
+                }
+            });
+            //  }
+        };
+
+        NavigationService.getAllZones(function(data) {
+            $scope.allZones = data.data;
+            console.log('$scope.allZones', $scope.allZones);
+        });
+
+    })
 
 
 
@@ -323,105 +387,112 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     //     files: []
     // }];
 
-  //Used to name the .html file
-  $scope.template = TemplateService.changecontent("timeline");
-  $scope.menutitle = NavigationService.makeactive("Timeline");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("timeline");
+    $scope.menutitle = NavigationService.makeactive("Timeline");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
 
-  $scope.email = {
-    message:"Change"
-  };
-  $scope.emailtos = [
-    {name: 'Tushar', email: 'tushar@wohlig.com'},
-    {name: 'Chintan', email: 'chintan@wohlig.com'},
-    {name: 'Harsh', email: 'harsh@wohlig.com'},
-    {name: 'Raj', email: 'raj@wohlig.com'}
-  ];
+    $scope.email = {
+        message: "Change"
+    };
+    $scope.emailtos = [{
+        name: 'Tushar',
+        email: 'tushar@wohlig.com'
+    }, {
+        name: 'Chintan',
+        email: 'chintan@wohlig.com'
+    }, {
+        name: 'Harsh',
+        email: 'harsh@wohlig.com'
+    }, {
+        name: 'Raj',
+        email: 'raj@wohlig.com'
+    }];
 
-  $scope.tinymceModel = 'Initial content';
-  $scope.tinymceOptions = {
-    plugins: 'link image code',
-    toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
-  };
+    $scope.tinymceModel = 'Initial content';
+    $scope.tinymceOptions = {
+        plugins: 'link image code',
+        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+    };
 
-  $scope.newEmail = function () {
-    var modalInstance = $uibModal.open({
-      scope: $scope,
-      templateUrl: 'views/modal/modal-email.html',
-      size: 'lg'
-    });
-  };
+    $scope.newEmail = function() {
+        var modalInstance = $uibModal.open({
+            scope: $scope,
+            templateUrl: 'views/modal/modal-email.html',
+            size: 'lg'
+        });
+    };
 
-  $scope.newMessage = function () {
-    var modalInstance = $uibModal.open({
-      scope: $scope,
-      templateUrl: 'views/modal/modal-message.html',
-      size: 'lg'
-    });
-  };
+    $scope.newMessage = function() {
+        var modalInstance = $uibModal.open({
+            scope: $scope,
+            templateUrl: 'views/modal/modal-message.html',
+            size: 'lg'
+        });
+    };
 
-  $scope.viewJIR = function () {
-    var modalInstance = $uibModal.open({
-      scope: $scope,
-      templateUrl: 'views/modal/modal-files.html',
-      size: 'md'
-    });
-  };
+    $scope.viewJIR = function() {
+        var modalInstance = $uibModal.open({
+            scope: $scope,
+            templateUrl: 'views/modal/modal-files.html',
+            size: 'md'
+        });
+    };
 
-  $scope.files = [{
-    type: "JIR",
-    count: 2,
-    files: [{
-      name: "doc1.docx",
-      selection: true
-    },{
-      name: "doc2.docx",
-      selection: true
-    }]
-  },{
-    type: "ILA",
-    count: 0,
-    files: []
-  },{
-    type: "ILR",
-    count: 0,
-    files: []
-  },{
-    type: "LOR",
-    count: 0,
-    files: []
-  },{
-    type: "Assesments",
-    count: 0,
-    files: []
-  },{
-    type: "FSR",
-    count: 0,
-    files: []
-  },{
-    type: "Invoice",
-    count: 0,
-    files: []
-  },{
-    type: "Documents",
-    count: 0,
-    files: []
-  },{
-    type: "Images",
-    count: 0,
-    files: []
-  },{
-    type: "Total Attachments",
-    count: 2,
-    files: [{
-      name: "doc1.docx",
-      selection: true
-    },{
-      name: "doc2.docx",
-      selection: true
-    }]
-  }];
+    $scope.files = [{
+        type: "JIR",
+        count: 2,
+        files: [{
+            name: "doc1.docx",
+            selection: true
+        }, {
+            name: "doc2.docx",
+            selection: true
+        }]
+    }, {
+        type: "ILA",
+        count: 0,
+        files: []
+    }, {
+        type: "ILR",
+        count: 0,
+        files: []
+    }, {
+        type: "LOR",
+        count: 0,
+        files: []
+    }, {
+        type: "Assesments",
+        count: 0,
+        files: []
+    }, {
+        type: "FSR",
+        count: 0,
+        files: []
+    }, {
+        type: "Invoice",
+        count: 0,
+        files: []
+    }, {
+        type: "Documents",
+        count: 0,
+        files: []
+    }, {
+        type: "Images",
+        count: 0,
+        files: []
+    }, {
+        type: "Total Attachments",
+        count: 2,
+        files: [{
+            name: "doc1.docx",
+            selection: true
+        }, {
+            name: "doc2.docx",
+            selection: true
+        }]
+    }];
 
 })
 
