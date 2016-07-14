@@ -1,4 +1,6 @@
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui.tinymce'])
+// angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui.tinymce'])
+
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap','ui.select','ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui.tinymce'])
 
 .controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
@@ -244,82 +246,182 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('TimelineCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
     //Used to name the .html file
-    $scope.template = TemplateService.changecontent("timeline");
-    $scope.menutitle = NavigationService.makeactive("Timeline");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
+    // $scope.template = TemplateService.changecontent("timeline");
+    // $scope.menutitle = NavigationService.makeactive("Timeline");
+    // TemplateService.title = $scope.menutitle;
+    // $scope.navigation = NavigationService.getnav();
+    //
+    // $scope.newEmail = function() {
+    //     var modalInstance = $uibModal.open({
+    //         scope: $scope,
+    //         templateUrl: 'views/modal/modal-email.html',
+    //         size: 'md'
+    //     });
+    // };
+    //
+    // $scope.newMessage = function() {
+    //     var modalInstance = $uibModal.open({
+    //         scope: $scope,
+    //         templateUrl: 'views/modal/modal-message.html',
+    //         size: 'md'
+    //     });
+    // };
+    //
+    // $scope.viewJIR = function() {
+    //     var modalInstance = $uibModal.open({
+    //         scope: $scope,
+    //         templateUrl: 'views/modal/modal-files.html',
+    //         size: 'md'
+    //     });
+    // };
+    //
+    // $scope.files = [{
+    //     type: "JIR",
+    //     count: 2,
+    //     files: [{
+    //         name: "doc1.docx",
+    //         selection: true
+    //     }, {
+    //         name: "doc2.docx",
+    //         selection: false
+    //     }]
+    // }, {
+    //     type: "ILA",
+    //     count: 0,
+    //     files: []
+    // }, {
+    //     type: "ILR",
+    //     count: 0,
+    //     files: []
+    // }, {
+    //     type: "LOR",
+    //     count: 0,
+    //     files: []
+    // }, {
+    //     type: "Assesments",
+    //     count: 0,
+    //     files: []
+    // }, {
+    //     type: "FSR",
+    //     count: 0,
+    //     files: []
+    // }, {
+    //     type: "Invoice",
+    //     count: 0,
+    //     files: []
+    // }, {
+    //     type: "Documents",
+    //     count: 0,
+    //     files: []
+    // }, {
+    //     type: "Images",
+    //     count: 0,
+    //     files: []
+    // }, {
+    //     type: "Total Attachments",
+    //     count: 2,
+    //     files: []
+    // }];
 
-    $scope.newEmail = function() {
-        var modalInstance = $uibModal.open({
-            scope: $scope,
-            templateUrl: 'views/modal/modal-email.html',
-            size: 'md'
-        });
-    };
+  //Used to name the .html file
+  $scope.template = TemplateService.changecontent("timeline");
+  $scope.menutitle = NavigationService.makeactive("Timeline");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
 
-    $scope.newMessage = function() {
-        var modalInstance = $uibModal.open({
-            scope: $scope,
-            templateUrl: 'views/modal/modal-message.html',
-            size: 'md'
-        });
-    };
+  $scope.email = {
+    message:"Change"
+  };
+  $scope.emailtos = [
+    {name: 'Tushar', email: 'tushar@wohlig.com'},
+    {name: 'Chintan', email: 'chintan@wohlig.com'},
+    {name: 'Harsh', email: 'harsh@wohlig.com'},
+    {name: 'Raj', email: 'raj@wohlig.com'}
+  ];
 
-    $scope.viewJIR = function() {
-        var modalInstance = $uibModal.open({
-            scope: $scope,
-            templateUrl: 'views/modal/modal-files.html',
-            size: 'md'
-        });
-    };
+  $scope.tinymceModel = 'Initial content';
+  $scope.tinymceOptions = {
+    plugins: 'link image code',
+    toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+  };
 
-    $scope.files = [{
-        type: "JIR",
-        count: 2,
-        files: [{
-            name: "doc1.docx",
-            selection: true
-        }, {
-            name: "doc2.docx",
-            selection: false
-        }]
-    }, {
-        type: "ILA",
-        count: 0,
-        files: []
-    }, {
-        type: "ILR",
-        count: 0,
-        files: []
-    }, {
-        type: "LOR",
-        count: 0,
-        files: []
-    }, {
-        type: "Assesments",
-        count: 0,
-        files: []
-    }, {
-        type: "FSR",
-        count: 0,
-        files: []
-    }, {
-        type: "Invoice",
-        count: 0,
-        files: []
-    }, {
-        type: "Documents",
-        count: 0,
-        files: []
-    }, {
-        type: "Images",
-        count: 0,
-        files: []
-    }, {
-        type: "Total Attachments",
-        count: 2,
-        files: []
-    }];
+  $scope.newEmail = function () {
+    var modalInstance = $uibModal.open({
+      scope: $scope,
+      templateUrl: 'views/modal/modal-email.html',
+      size: 'lg'
+    });
+  };
+
+  $scope.newMessage = function () {
+    var modalInstance = $uibModal.open({
+      scope: $scope,
+      templateUrl: 'views/modal/modal-message.html',
+      size: 'lg'
+    });
+  };
+
+  $scope.viewJIR = function () {
+    var modalInstance = $uibModal.open({
+      scope: $scope,
+      templateUrl: 'views/modal/modal-files.html',
+      size: 'md'
+    });
+  };
+
+  $scope.files = [{
+    type: "JIR",
+    count: 2,
+    files: [{
+      name: "doc1.docx",
+      selection: true
+    },{
+      name: "doc2.docx",
+      selection: true
+    }]
+  },{
+    type: "ILA",
+    count: 0,
+    files: []
+  },{
+    type: "ILR",
+    count: 0,
+    files: []
+  },{
+    type: "LOR",
+    count: 0,
+    files: []
+  },{
+    type: "Assesments",
+    count: 0,
+    files: []
+  },{
+    type: "FSR",
+    count: 0,
+    files: []
+  },{
+    type: "Invoice",
+    count: 0,
+    files: []
+  },{
+    type: "Documents",
+    count: 0,
+    files: []
+  },{
+    type: "Images",
+    count: 0,
+    files: []
+  },{
+    type: "Total Attachments",
+    count: 2,
+    files: [{
+      name: "doc1.docx",
+      selection: true
+    },{
+      name: "doc2.docx",
+      selection: true
+    }]
+  }];
 
 })
 
@@ -349,8 +451,4 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
         //  $rootScope.$apply();
     };
-
-
-})
-
-;
+});
