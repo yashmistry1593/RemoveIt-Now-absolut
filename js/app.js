@@ -115,23 +115,44 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
 
 
 
-            .state('currency-list', {
-                url: "/currency-list",
-                templateUrl: "views/template.html",
-                controller: 'CurrencyCtrl'
-            })
+    .state('currency-list', {
+        url: "/currency-list",
+        templateUrl: "views/template.html",
+        controller: 'CurrencyCtrl'
+    })
 
 
-            .state('createcurrency', {
-                    url: "/currency-create",
-                    templateUrl: "views/template.html",
-                    controller: 'CreateCurrencyCtrl'
-                })
-                .state('editcurrency', {
-                    url: "/currency-edit/:id",
-                    templateUrl: "views/template.html",
-                    controller: 'EditCurrencyCtrl'
-                })
+    .state('createcurrency', {
+            url: "/currency-create",
+            templateUrl: "views/template.html",
+            controller: 'CreateCurrencyCtrl'
+        })
+        .state('editcurrency', {
+            url: "/currency-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditCurrencyCtrl'
+        })
+
+
+
+
+    .state('city-list', {
+        url: "/city-list",
+        templateUrl: "views/template.html",
+        controller: 'CityCtrl'
+    })
+
+
+    .state('createcity', {
+            url: "/city-create",
+            templateUrl: "views/template.html",
+            controller: 'CreateCityCtrl'
+        })
+        .state('editcity', {
+            url: "/city-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditCityCtrl'
+        })
 
 
 
@@ -160,9 +181,9 @@ firstapp.filter('uploadpath', function() {
             other += "&style=" + style;
         }
         if (input) {
-          console.log('input');
+            console.log('input');
             if (input.indexOf('https://') == -1) {
-              console.log('in if');
+                console.log('in if');
                 return imgpath + "?file=" + input + other;
                 console.log(imgpath + "?file=" + input + other);
             } else {

@@ -44,6 +44,36 @@ var navigationservice = angular.module('navigationservice', [])
             classis: "active",
             anchor: "branch-list",
             icon: "link"
+        }, {
+            name: "Country",
+            classis: "active",
+            anchor: "country-list",
+            icon: "link"
+        }, {
+            name: "Zone",
+            classis: "active",
+            anchor: "zone-list",
+            icon: "link"
+        }, {
+            name: "State",
+            classis: "active",
+            anchor: "state-list",
+            icon: "link"
+        }, {
+            name: "District",
+            classis: "active",
+            anchor: "district-list",
+            icon: "link"
+        }, {
+            name: "City",
+            classis: "active",
+            anchor: "city-list",
+            icon: "link"
+        }, {
+            name: "Currency",
+            classis: "active",
+            anchor: "currency-list",
+            icon: "link"
         }]
     }, {
         name: "General",
@@ -315,5 +345,57 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
+
+
+
+
+                getAllCities: function(callback) {
+                    // console.log('form data: ', formData);
+                    $http({
+                        url: adminurl + 'city/getAll',
+                        method: 'POST',
+                        withCredentials: true
+                    }).success(callback);
+                },
+                citySave: function(formData, callback) {
+                    // console.log('form data: ', formData);
+                    $http({
+                        url: adminurl + 'city/saveData',
+                        method: 'POST',
+                        withCredentials: true,
+                        data: formData
+                    }).success(callback);
+                },
+                getOneCity: function(id, callback) {
+                    // console.log('form data: ', formData);
+                    $http({
+                        url: adminurl + 'city/getOne',
+                        method: 'POST',
+                        withCredentials: true,
+                        data: {
+                            "_id": id
+                        }
+                    }).success(callback);
+                },
+                cityEditSave: function(id, callback) {
+                    // console.log('form data: ', formData);
+                    $http({
+                        url: adminurl + 'city/saveData',
+                        method: 'POST',
+                        withCredentials: true,
+                        data: id
+                    }).success(callback);
+                },
+                deleteCity: function(id, callback) {
+                    // console.log('form data: ', formData);
+                    $http({
+                        url: adminurl + 'city/delete',
+                        method: 'POST',
+                        withCredentials: true,
+                        data: {
+                            "_id": id.id,
+                        }
+                    }).success(callback);
+                },
     };
 });
