@@ -39,8 +39,8 @@
                                     <div class="user-img mt25">
                                       <label >Currency Symbol</label>
                                         <!-- <img ng-src="{{userForm.image|uploadpath}}" class="img-responsive margin-auto" ng-if="userForm.image" style="height:200px;"> -->
-                                        <img ng-src="{{userForm.symbol|uploadpath}}" ng-if="userForm.symbol" alt="" class="img-responsive margin-auto">
-                                        <upload-image ng-model="userForm.symbol" no-view></upload-image>
+                                        <img ng-src="{{formData.symbol|uploadpath}}" ng-if="formData.symbol" alt="" class="img-responsive margin-auto" height="50px" width="50px">
+                                        <upload-image ng-model="formData.symbol" no-view></upload-image>
                                     </div>
 
 
@@ -50,8 +50,8 @@
 
                         </div>
                         <div class="text-center mt20">
-                            <button class="btn btn-default" type="submit" ng-click="saveCountry(formData)" ng-disabled="currencyform.$invalid">Save</button>
-                            <button class="btn btn-default" ui-sref="country-list">Cancel</button>
+                            <button class="btn btn-default" type="submit" ng-click="saveCurrency(formData)" ng-disabled="currencyform.$invalid">Save</button>
+                            <button class="btn btn-default" ui-sref="currency-list">Cancel</button>
                         </div>
                 </div>
             </div>

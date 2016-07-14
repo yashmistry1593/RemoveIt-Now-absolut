@@ -1,6 +1,6 @@
 // angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui.tinymce'])
 
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ui.select', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui.tinymce'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ui.select', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'imageupload'])
 
 .controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
@@ -428,8 +428,8 @@ $scope.showAllStates();
                 })
                 .controller('CreateCurrencyCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
                     //Used to name the .html file
-                    $scope.template = TemplateService.changecontent("Currency-detail");
-                    $scope.menutitle = NavigationService.makeactive("Currency-detail");
+                    $scope.template = TemplateService.changecontent("currency-detail");
+                    $scope.menutitle = NavigationService.makeactive("currency-detail");
                     TemplateService.title = $scope.menutitle;
                     $scope.navigation = NavigationService.getnav();
 
@@ -450,7 +450,7 @@ $scope.showAllStates();
                     }
 
                 })
-                .controller('EditallCurrencyCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+                .controller('EditCurrencyCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
                     //Used to name the .html file
                     $scope.template = TemplateService.changecontent("currency-detail");
                     $scope.menutitle = NavigationService.makeactive("currency-detail");

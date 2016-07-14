@@ -56,16 +56,16 @@
                                 <tr ng-repeat="currency in allCurrencies">
                                     <!-- <td>1</td> -->
                                     <td>{{currency.name}}</td>
-                                    <td>  <img ng-src="{{currency.symbol|uploadpath}}" alt="" class="img-responsive margin-auto"></td>
+                                    <td> <img ng-src="{{currency.symbol|uploadpath}}" alt="" class="img-responsive margin-auto" height="50px" width="50px"></td>
                                     <td>
-                                      <div class="pull-right">
-                                          <a class="btn btn-primary" ui-sref="editcurrency({id:currency._id})">Edit</a>
-                                      </div>
+                                        <div class="pull-right">
+                                            <a class="btn btn-primary" ui-sref="editcurrency({id:currency._id})">Edit</a>
+                                        </div>
                                     </td>
                                     <td>
-                                      <div class="pull-right">
-                                          <a class="btn btn-danger" ng-click="deleteCurrency(currency._id)">Delete</a>
-                                      </div>
+                                        <div class="pull-right">
+                                            <a class="btn btn-danger" ng-click="deleteCurrency(currency._id)">Delete</a>
+                                        </div>
                                     </td>
                                 </tr>
                                 <!-- <tr>
