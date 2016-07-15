@@ -7,10 +7,8 @@
 //   adminURL = "http://localhost/demo/index.php";
 // }
 var adminurl = "http://localhost:1337/";
-
-
-// var adminurl = "http://jacknows.wohlig.com/";
 var imgurl = "http://localhost:81/upload/";
+
 var imgpath = imgurl + "readFile";
 var uploadurl = imgurl;
 
@@ -81,7 +79,7 @@ var navigationservice = angular.module('navigationservice', [])
         anchor: "timeline",
         icon: "sitemap",
         subnav: [{
-            name: "Timeline",
+            name: "Music Broadcast Ltd",
             classis: "active",
             anchor: "timeline",
             icon: "sitemap"
