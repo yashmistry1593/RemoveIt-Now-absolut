@@ -76,11 +76,16 @@ var navigationservice = angular.module('navigationservice', [])
             icon: "link"
         }]
     }, {
-        name: "General",
+        name: "Timeline",
         classis: "active",
-        anchor: "general",
-        icon: "sticky-note",
-        subnav: []
+        anchor: "timeline",
+        icon: "sitemap",
+        subnav: [{
+            name: "Timeline",
+            classis: "active",
+            anchor: "timeline",
+            icon: "sitemap"
+        }]
     }];
 
     return {
@@ -349,53 +354,53 @@ var navigationservice = angular.module('navigationservice', [])
 
 
 
-                getAllCities: function(callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'city/getAll',
-                        method: 'POST',
-                        withCredentials: true
-                    }).success(callback);
-                },
-                citySave: function(formData, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'city/saveData',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: formData
-                    }).success(callback);
-                },
-                getOneCity: function(id, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'city/getOne',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: {
-                            "_id": id
-                        }
-                    }).success(callback);
-                },
-                cityEditSave: function(id, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'city/saveData',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: id
-                    }).success(callback);
-                },
-                deleteCity: function(id, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'city/delete',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: {
-                            "_id": id.id,
-                        }
-                    }).success(callback);
-                },
+        getAllCities: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'city/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        citySave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'city/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneCity: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'city/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        cityEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'city/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteCity: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'city/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
     };
 });
