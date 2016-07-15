@@ -7,10 +7,8 @@
 //   adminURL = "http://localhost/demo/index.php";
 // }
 var adminurl = "http://localhost:1337/";
-
-
-// var adminurl = "http://jacknows.wohlig.com/";
 var imgurl = "http://localhost:81/upload/";
+
 var imgpath = imgurl + "readFile";
 var uploadurl = imgurl;
 
@@ -81,11 +79,16 @@ var navigationservice = angular.module('navigationservice', [])
             icon: "link"
         }]
     }, {
-        name: "General",
+        name: "Timeline",
         classis: "active",
-        anchor: "general",
-        icon: "sticky-note",
-        subnav: []
+        anchor: "timeline",
+        icon: "sitemap",
+        subnav: [{
+            name: "Music Broadcast Ltd",
+            classis: "active",
+            anchor: "timeline",
+            icon: "sitemap"
+        }]
     }];
 
     return {
@@ -402,8 +405,6 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
-
-
 
 
 
