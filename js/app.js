@@ -173,6 +173,25 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         })
 
 
+            .state('typeOfOffice-list', {
+                url: "/typeOfOffice-list",
+                templateUrl: "views/template.html",
+                controller: 'TypeOfOfficeCtrl'
+            })
+
+
+            .state('createtypeOfOffice', {
+                    url: "/typeOfOffice-create",
+                    templateUrl: "views/template.html",
+                    controller: 'CreateTypeOfOfficeCtrl'
+                })
+                .state('edittypeOfOffice', {
+                    url: "/typeOfOffice-edit/:id",
+                    templateUrl: "views/template.html",
+                    controller: 'EditTypeOfOfficeCtrl'
+                })
+
+
 
 
     .state('timeline', {

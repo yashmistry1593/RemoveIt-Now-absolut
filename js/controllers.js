@@ -184,6 +184,88 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
 
+    .controller('TypeOfOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+            //Used to name the .html file
+            $scope.template = TemplateService.changecontent("typeOfOffice-list");
+            $scope.menutitle = NavigationService.makeactive("typeOfOffice List");
+            TemplateService.title = $scope.menutitle;
+            $scope.navigation = NavigationService.getnav();
+            $scope.showAllTypeOfOffices = function() {
+                NavigationService.getAllTypeOfOffices(function(data) {
+                    $scope.allTypeOfOffices = data.data;
+                    console.log('$scope.allTypeOfOffices', $scope.allTypeOfOffices);
+
+                });
+            };
+            $scope.showAllTypeOfOffices();
+            $scope.deleteTypeOfOffice = function(id) {
+
+                NavigationService.deleteTypeOfOffice({
+                    id: id
+                }, function(data) {
+                    $scope.showAllTypeOfOffices();
+
+                });
+            }
+        })
+        .controller('CreateTypeOfOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+            //Used to name the .html file
+            $scope.template = TemplateService.changecontent("typeOfOffice-detail");
+            $scope.menutitle = NavigationService.makeactive("typeOfOffice-detail");
+            TemplateService.title = $scope.menutitle;
+            $scope.navigation = NavigationService.getnav();
+
+            $scope.header = {
+                "name": "Create Type Of Office"
+            };
+            $scope.formData = {};
+            $scope.savetypeOfOffice = function(formData) {
+
+                NavigationService.typeOfOfficeSave($scope.formData, function(data) {
+                    if (data.value == true) {
+                        $state.go('typeOfOffice-list');
+                    }
+
+                });
+            }
+
+        })
+        .controller('EditTypeOfOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+            //Used to name the .html file
+            $scope.template = TemplateService.changecontent("typeOfOffice-detail");
+            $scope.menutitle = NavigationService.makeactive("typeOfOffice-detail");
+            TemplateService.title = $scope.menutitle;
+            $scope.navigation = NavigationService.getnav();
+
+            $scope.header = {
+                "name": "Edit Type Of Office"
+            };
+
+            NavigationService.getOnetypeOfOffice($stateParams.id, function(data) {
+                $scope.formData = data.data;
+            });
+
+            $scope.savetypeOfOffice = function(formValid) {
+
+                //  if (formValid.$valid) {
+                //  $scope.formComplete = true;
+                NavigationService.typeOfOfficeEditSave($scope.formData, function(data) {
+                    if (data.value == true) {
+                        $state.go('typeOfOffice-list');
+                    }
+                });
+                //  }
+            };
+
+        })
+
+
+
+
+
+
+
+
 .controller('ZoneCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("zone-list");

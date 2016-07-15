@@ -47,6 +47,11 @@ var navigationservice = angular.module('navigationservice', [])
             classis: "active",
             anchor: "office-list",
             icon: "link"
+        }, {
+            name: "Type Of Office",
+            classis: "active",
+            anchor: "typeOfOffice-list",
+            icon: "link"
         },{
             name: "Country",
             classis: "active",
@@ -456,5 +461,57 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
+
+
+
+
+                getAllTypeOfOffices: function(callback) {
+                    // console.log('form data: ', formData);
+                    $http({
+                        url: adminurl + 'TypeOfOffice/getAll',
+                        method: 'POST',
+                        withCredentials: true
+                    }).success(callback);
+                },
+                typeOfOfficeSave: function(formData, callback) {
+                    // console.log('form data: ', formData);
+                    $http({
+                        url: adminurl + 'TypeOfOffice/saveData',
+                        method: 'POST',
+                        withCredentials: true,
+                        data: formData
+                    }).success(callback);
+                },
+                getOnetypeOfOffice: function(id, callback) {
+                    // console.log('form data: ', formData);
+                    $http({
+                        url: adminurl + 'TypeOfOffice/getOne',
+                        method: 'POST',
+                        withCredentials: true,
+                        data: {
+                            "_id": id
+                        }
+                    }).success(callback);
+                },
+                typeOfOfficeEditSave: function(id, callback) {
+                    // console.log('form data: ', formData);
+                    $http({
+                        url: adminurl + 'TypeOfOffice/saveData',
+                        method: 'POST',
+                        withCredentials: true,
+                        data: id
+                    }).success(callback);
+                },
+                deleteTypeOfOffice: function(id, callback) {
+                    // console.log('form data: ', formData);
+                    $http({
+                        url: adminurl + 'TypeOfOffice/delete',
+                        method: 'POST',
+                        withCredentials: true,
+                        data: {
+                            "_id": id.id,
+                        }
+                    }).success(callback);
+                },
     };
 });
