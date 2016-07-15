@@ -154,6 +154,25 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
             controller: 'EditCityCtrl'
         })
 
+    .state('office-list', {
+        url: "/office-list",
+        templateUrl: "views/template.html",
+        controller: 'OfficeCtrl'
+    })
+
+
+    .state('createoffice', {
+            url: "/office-create",
+            templateUrl: "views/template.html",
+            controller: 'CreateOfficeCtrl'
+        })
+        .state('editoffice', {
+            url: "/office-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditOfficeCtrl'
+        })
+
+
 
 
     .state('timeline', {

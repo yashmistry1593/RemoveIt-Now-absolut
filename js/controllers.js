@@ -104,6 +104,84 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
 
+.controller('OfficeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("office-list");
+        $scope.menutitle = NavigationService.makeactive("office List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.showAllOffices = function() {
+            NavigationService.getAllOffices(function(data) {
+                $scope.allOffices = data.data;
+                console.log('$scope.allOffices', $scope.allOffices);
+
+            });
+        };
+        $scope.showAllOffices();
+        $scope.deleteOffice = function(id) {
+
+            NavigationService.deleteOffice({
+                id: id
+            }, function(data) {
+                $scope.showAllOffices();
+
+            });
+        }
+    })
+    .controller('CreateOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("office-detail");
+        $scope.menutitle = NavigationService.makeactive("office-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Create Office"
+        };
+        $scope.formData = {};
+        $scope.saveOffice = function(formData) {
+
+            NavigationService.officeSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('office-list');
+                }
+
+            });
+        }
+
+    })
+    .controller('EditOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("office-detail");
+        $scope.menutitle = NavigationService.makeactive("office-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Edit Office"
+        };
+
+        NavigationService.getOneOffice($stateParams.id, function(data) {
+            $scope.formData = data.data;
+        });
+
+        $scope.saveOffice = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.officeEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('office-list');
+                }
+            });
+            //  }
+        };
+
+    })
+
+
+
+
 
 
 .controller('ZoneCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -112,14 +190,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("zone List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-$scope.showAllZones=function(){
-  NavigationService.getAllZones(function(data) {
-      $scope.allZones = data.data;
-      console.log('$scope.allZones', $scope.allZones);
-  });
+        $scope.showAllZones = function() {
+            NavigationService.getAllZones(function(data) {
+                $scope.allZones = data.data;
+                console.log('$scope.allZones', $scope.allZones);
+            });
 
-};
-$scope.showAllZones();
+        };
+        $scope.showAllZones();
 
 
         $scope.deleteZone = function(id) {
@@ -213,14 +291,14 @@ $scope.showAllZones();
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
-$scope.showAllStates=function(){
-  NavigationService.getAllStates(function(data) {
-      $scope.allStates = data.data;
-      console.log('$scope.allStates', $scope.allStates);
+        $scope.showAllStates = function() {
+            NavigationService.getAllStates(function(data) {
+                $scope.allStates = data.data;
+                console.log('$scope.allStates', $scope.allStates);
 
-  });
-};
-$scope.showAllStates();
+            });
+        };
+        $scope.showAllStates();
 
         $scope.deleteState = function(id) {
 
@@ -301,283 +379,283 @@ $scope.showAllStates();
 
 
 
-    .controller('DistrictCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-            //Used to name the .html file
-            $scope.template = TemplateService.changecontent("district-list");
-            $scope.menutitle = NavigationService.makeactive("district List");
-            TemplateService.title = $scope.menutitle;
-            $scope.navigation = NavigationService.getnav();
+.controller('DistrictCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("district-list");
+        $scope.menutitle = NavigationService.makeactive("district List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
 
-    $scope.showAllDistricts=function(){
-      NavigationService.getAllDistricts(function(data) {
-          $scope.allDistricts = data.data;
-          console.log('$scope.allDistricts', $scope.allDistricts);
-
-      });
-    };
-    $scope.showAllDistricts();
-
-            $scope.deleteDistrict = function(id) {
-
-                NavigationService.deleteDistrict({
-                    id: id
-                }, function(data) {
-                    $scope.showAllDistricts();
-
-                });
-            }
-
-        })
-        .controller('CreateDistrictCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
-            //Used to name the .html file
-            $scope.template = TemplateService.changecontent("district-detail");
-            $scope.menutitle = NavigationService.makeactive("district-detail");
-            TemplateService.title = $scope.menutitle;
-            $scope.navigation = NavigationService.getnav();
-
-            $scope.header = {
-                "name": "Create District"
-            };
-            $scope.formData = {};
-            $scope.saveDistrict = function(formData) {
-
-                NavigationService.districtSave($scope.formData, function(data) {
-                    console.log(data);
-                    if (data.value == true) {
-                        $state.go('district-list');
-                    }
-                    // console.log('$scope.allCountriessave', $scope.data);
-
-                });
-            }
-
-            NavigationService.getAllStates(function(data) {
-                $scope.allStates = data.data;
-                console.log('$scope.allStates', $scope.allStates);
+        $scope.showAllDistricts = function() {
+            NavigationService.getAllDistricts(function(data) {
+                $scope.allDistricts = data.data;
+                console.log('$scope.allDistricts', $scope.allDistricts);
 
             });
+        };
+        $scope.showAllDistricts();
 
-        })
-        .controller('EditDistrictCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
-            //Used to name the .html file
-            $scope.template = TemplateService.changecontent("district-detail");
-            $scope.menutitle = NavigationService.makeactive("district-detail");
-            TemplateService.title = $scope.menutitle;
-            $scope.navigation = NavigationService.getnav();
+        $scope.deleteDistrict = function(id) {
 
-            $scope.header = {
-                "name": "Edit District"
-            };
-
-            NavigationService.getOneDistrict($stateParams.id, function(data) {
-                $scope.formData = data.data;
-                // console.log('$scope.oneCountry', $scope.oneCountry);
+            NavigationService.deleteDistrict({
+                id: id
+            }, function(data) {
+                $scope.showAllDistricts();
 
             });
+        }
 
-            $scope.saveDistrict = function(formValid) {
+    })
+    .controller('CreateDistrictCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("district-detail");
+        $scope.menutitle = NavigationService.makeactive("district-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
 
-                //  if (formValid.$valid) {
-                //  $scope.formComplete = true;
-                NavigationService.districtEditSave($scope.formData, function(data) {
-                    if (data.value == true) {
-                        $state.go('district-list');
-                    }
-                });
-                //  }
-            };
+        $scope.header = {
+            "name": "Create District"
+        };
+        $scope.formData = {};
+        $scope.saveDistrict = function(formData) {
 
-            NavigationService.getAllStates(function(data) {
-                $scope.allStates = data.data;
-                console.log('$scope.allStates', $scope.allStates);
+            NavigationService.districtSave($scope.formData, function(data) {
+                console.log(data);
+                if (data.value == true) {
+                    $state.go('district-list');
+                }
+                // console.log('$scope.allCountriessave', $scope.data);
 
             });
+        }
 
-        })
+        NavigationService.getAllStates(function(data) {
+            $scope.allStates = data.data;
+            console.log('$scope.allStates', $scope.allStates);
 
+        });
 
+    })
+    .controller('EditDistrictCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("district-detail");
+        $scope.menutitle = NavigationService.makeactive("district-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
 
+        $scope.header = {
+            "name": "Edit District"
+        };
 
+        NavigationService.getOneDistrict($stateParams.id, function(data) {
+            $scope.formData = data.data;
+            // console.log('$scope.oneCountry', $scope.oneCountry);
 
-            .controller('CurrencyCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-                    //Used to name the .html file
-                    $scope.template = TemplateService.changecontent("currency-list");
-                    $scope.menutitle = NavigationService.makeactive("currency List");
-                    TemplateService.title = $scope.menutitle;
-                    $scope.navigation = NavigationService.getnav();
+        });
 
-            $scope.showAllCurrencies=function(){
-              NavigationService.getAllCurrencies(function(data) {
-                  $scope.allCurrencies = data.data;
-                  console.log('$scope.allCurrencies', $scope.allCurrencies);
+        $scope.saveDistrict = function(formValid) {
 
-              });
-            };
-            $scope.showAllCurrencies();
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.districtEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('district-list');
+                }
+            });
+            //  }
+        };
 
-                    $scope.deleteCurrency = function(id) {
+        NavigationService.getAllStates(function(data) {
+            $scope.allStates = data.data;
+            console.log('$scope.allStates', $scope.allStates);
 
-                        NavigationService.deleteCurrency({
-                            id: id
-                        }, function(data) {
-                            $scope.showAllCurrencies();
+        });
 
-                        });
-                    }
-
-                })
-                .controller('CreateCurrencyCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
-                    //Used to name the .html file
-                    $scope.template = TemplateService.changecontent("currency-detail");
-                    $scope.menutitle = NavigationService.makeactive("currency-detail");
-                    TemplateService.title = $scope.menutitle;
-                    $scope.navigation = NavigationService.getnav();
-
-                    $scope.header = {
-                        "name": "Create Currency"
-                    };
-                    $scope.formData = {};
-                    $scope.saveCurrency = function(formData) {
-
-                        NavigationService.currencySave($scope.formData, function(data) {
-                            console.log(data);
-                            if (data.value == true) {
-                                $state.go('currency-list');
-                            }
-                            // console.log('$scope.allCountriessave', $scope.data);
-
-                        });
-                    }
-
-                })
-                .controller('EditCurrencyCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
-                    //Used to name the .html file
-                    $scope.template = TemplateService.changecontent("currency-detail");
-                    $scope.menutitle = NavigationService.makeactive("currency-detail");
-                    TemplateService.title = $scope.menutitle;
-                    $scope.navigation = NavigationService.getnav();
-
-                    $scope.header = {
-                        "name": "Edit Currency"
-                    };
-
-                    NavigationService.getOneCurrency($stateParams.id, function(data) {
-                        $scope.formData = data.data;
-                        // console.log('$scope.oneCountry', $scope.oneCountry);
-
-                    });
-
-                    $scope.saveCurrency = function(formValid) {
-
-                        //  if (formValid.$valid) {
-                        //  $scope.formComplete = true;
-                        NavigationService.currencyEditSave($scope.formData, function(data) {
-                            if (data.value == true) {
-                                $state.go('currency-list');
-                            }
-                        });
-                        //  }
-                    };
-
-                })
+    })
 
 
 
 
 
+.controller('CurrencyCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("currency-list");
+        $scope.menutitle = NavigationService.makeactive("currency List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
 
-                            .controller('CityCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-                                    //Used to name the .html file
-                                    $scope.template = TemplateService.changecontent("city-list");
-                                    $scope.menutitle = NavigationService.makeactive("city List");
-                                    TemplateService.title = $scope.menutitle;
-                                    $scope.navigation = NavigationService.getnav();
+        $scope.showAllCurrencies = function() {
+            NavigationService.getAllCurrencies(function(data) {
+                $scope.allCurrencies = data.data;
+                console.log('$scope.allCurrencies', $scope.allCurrencies);
 
-                            $scope.showAllCities=function(){
-                              NavigationService.getAllCities(function(data) {
-                                  $scope.allCities = data.data;
-                                  console.log('$scope.allCities', $scope.allCities);
+            });
+        };
+        $scope.showAllCurrencies();
 
-                              });
-                            };
-                            $scope.showAllCities();
+        $scope.deleteCurrency = function(id) {
 
-                                    $scope.deleteCity = function(id) {
+            NavigationService.deleteCurrency({
+                id: id
+            }, function(data) {
+                $scope.showAllCurrencies();
 
-                                        NavigationService.deleteCity({
-                                            id: id
-                                        }, function(data) {
-                                            $scope.showAllCities();
+            });
+        }
 
-                                        });
-                                    }
+    })
+    .controller('CreateCurrencyCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("currency-detail");
+        $scope.menutitle = NavigationService.makeactive("currency-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
 
-                                })
-                                .controller('CreateCityCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
-                                    //Used to name the .html file
-                                    $scope.template = TemplateService.changecontent("city-detail");
-                                    $scope.menutitle = NavigationService.makeactive("city-detail");
-                                    TemplateService.title = $scope.menutitle;
-                                    $scope.navigation = NavigationService.getnav();
+        $scope.header = {
+            "name": "Create Currency"
+        };
+        $scope.formData = {};
+        $scope.saveCurrency = function(formData) {
 
-                                    $scope.header = {
-                                        "name": "Create City"
-                                    };
-                                    $scope.formData = {};
-                                    $scope.saveCity = function(formData) {
+            NavigationService.currencySave($scope.formData, function(data) {
+                console.log(data);
+                if (data.value == true) {
+                    $state.go('currency-list');
+                }
+                // console.log('$scope.allCountriessave', $scope.data);
 
-                                        NavigationService.citySave($scope.formData, function(data) {
-                                            console.log(data);
-                                            if (data.value == true) {
-                                                $state.go('city-list');
-                                            }
-                                            // console.log('$scope.allCountriessave', $scope.data);
+            });
+        }
 
-                                        });
-                                    }
+    })
+    .controller('EditCurrencyCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("currency-detail");
+        $scope.menutitle = NavigationService.makeactive("currency-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
 
-                                    NavigationService.getAllDistricts(function(data) {
-                                        $scope.allDistricts = data.data;
-                                        console.log('$scope.allDistricts', $scope.allDistricts);
+        $scope.header = {
+            "name": "Edit Currency"
+        };
 
-                                    });
+        NavigationService.getOneCurrency($stateParams.id, function(data) {
+            $scope.formData = data.data;
+            // console.log('$scope.oneCountry', $scope.oneCountry);
 
-                                })
-                                .controller('EditCityCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
-                                    //Used to name the .html file
-                                    $scope.template = TemplateService.changecontent("city-detail");
-                                    $scope.menutitle = NavigationService.makeactive("city-detail");
-                                    TemplateService.title = $scope.menutitle;
-                                    $scope.navigation = NavigationService.getnav();
+        });
 
-                                    $scope.header = {
-                                        "name": "Edit City"
-                                    };
+        $scope.saveCurrency = function(formValid) {
 
-                                    NavigationService.getOneCity($stateParams.id, function(data) {
-                                        $scope.formData = data.data;
-                                        // console.log('$scope.oneCountry', $scope.oneCountry);
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.currencyEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('currency-list');
+                }
+            });
+            //  }
+        };
 
-                                    });
+    })
 
-                                    $scope.saveCity = function(formValid) {
 
-                                        //  if (formValid.$valid) {
-                                        //  $scope.formComplete = true;
-                                        NavigationService.cityEditSave($scope.formData, function(data) {
-                                            if (data.value == true) {
-                                                $state.go('city-list');
-                                            }
-                                        });
-                                        //  }
-                                    };
-                                    NavigationService.getAllDistricts(function(data) {
-                                        $scope.allDistricts = data.data;
-                                        console.log('$scope.allDistricts', $scope.allDistricts);
 
-                                    });
 
-                                })
+
+
+.controller('CityCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("city-list");
+        $scope.menutitle = NavigationService.makeactive("city List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.showAllCities = function() {
+            NavigationService.getAllCities(function(data) {
+                $scope.allCities = data.data;
+                console.log('$scope.allCities', $scope.allCities);
+
+            });
+        };
+        $scope.showAllCities();
+
+        $scope.deleteCity = function(id) {
+
+            NavigationService.deleteCity({
+                id: id
+            }, function(data) {
+                $scope.showAllCities();
+
+            });
+        }
+
+    })
+    .controller('CreateCityCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("city-detail");
+        $scope.menutitle = NavigationService.makeactive("city-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Create City"
+        };
+        $scope.formData = {};
+        $scope.saveCity = function(formData) {
+
+            NavigationService.citySave($scope.formData, function(data) {
+                console.log(data);
+                if (data.value == true) {
+                    $state.go('city-list');
+                }
+                // console.log('$scope.allCountriessave', $scope.data);
+
+            });
+        }
+
+        NavigationService.getAllDistricts(function(data) {
+            $scope.allDistricts = data.data;
+            console.log('$scope.allDistricts', $scope.allDistricts);
+
+        });
+
+    })
+    .controller('EditCityCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("city-detail");
+        $scope.menutitle = NavigationService.makeactive("city-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Edit City"
+        };
+
+        NavigationService.getOneCity($stateParams.id, function(data) {
+            $scope.formData = data.data;
+            // console.log('$scope.oneCountry', $scope.oneCountry);
+
+        });
+
+        $scope.saveCity = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.cityEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('city-list');
+                }
+            });
+            //  }
+        };
+        NavigationService.getAllDistricts(function(data) {
+            $scope.allDistricts = data.data;
+            console.log('$scope.allDistricts', $scope.allDistricts);
+
+        });
+
+    })
 
 
 

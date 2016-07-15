@@ -1,0 +1,59 @@
+<div class="breadcrumbs">
+    <ul>
+        <li>
+            <a title="Home">Company Setup</a>
+        </li>
+        <li>
+            <a ui-sref="branch-list" title="Branch List">{{header.name}}</a>
+        </li>
+    </ul>
+</div>
+
+<div class="heading-sec">
+    <div class="row">
+        <div class="col-md-4 column">
+            <div class="heading-profile">
+                <h2>{{header.name}}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Top Bar Chart -->
+<div class="panel-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget">
+                <div class="form-elements-sec">
+                    <div class="widget-title">
+                        <h3>Office</h3>
+                    </div>
+                    <form name="officeform" role="form" class="sec ng-pristine ng-valid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">Office Name*</label>
+                                    <input type="text" name="name" placeholder="Office Name" ng-model="formData.name" class="form-control" required>
+                                    <div class="error-msg" ng-show="officeform.name.$error.required && officeform.name.$touched">Please Enter Office Name.</div>
+
+                                    <label for="">Address*</label>
+                                    <input type="text" name="address" placeholder="Address" ng-model="formData.address" class="form-control" required>
+                                    <div class="error-msg" ng-show="officeform.address.$error.required && officeform.address.$touched">Please Enter Address.</div>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="text-center mt20">
+                            <button class="btn btn-default" type="submit" ng-click="saveOffice(formData)" ng-disabled="officeform.$invalid">Save</button>
+                            <button class="btn btn-default" ui-sref="office-list">Cancel</button>
+                        </div>
+                </div>
+            </div>
+
+
+
+            </form>
+        </div>
+    </div>
+</div>

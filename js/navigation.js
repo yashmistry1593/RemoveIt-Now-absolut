@@ -45,6 +45,11 @@ var navigationservice = angular.module('navigationservice', [])
             anchor: "branch-list",
             icon: "link"
         }, {
+            name: "Office",
+            classis: "active",
+            anchor: "office-list",
+            icon: "link"
+        },{
             name: "Country",
             classis: "active",
             anchor: "country-list",
@@ -349,53 +354,106 @@ var navigationservice = angular.module('navigationservice', [])
 
 
 
-                getAllCities: function(callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'city/getAll',
-                        method: 'POST',
-                        withCredentials: true
-                    }).success(callback);
-                },
-                citySave: function(formData, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'city/saveData',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: formData
-                    }).success(callback);
-                },
-                getOneCity: function(id, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'city/getOne',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: {
-                            "_id": id
-                        }
-                    }).success(callback);
-                },
-                cityEditSave: function(id, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'city/saveData',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: id
-                    }).success(callback);
-                },
-                deleteCity: function(id, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'city/delete',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: {
-                            "_id": id.id,
-                        }
-                    }).success(callback);
-                },
+        getAllCities: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'city/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        citySave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'city/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneCity: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'city/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        cityEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'city/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteCity: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'city/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
+
+
+
+
+
+        getAllOffices: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'office/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        officeSave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'office/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneOffice: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'office/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        officeEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'office/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteOffice: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'office/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
     };
 });
