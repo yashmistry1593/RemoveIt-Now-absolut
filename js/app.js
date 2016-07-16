@@ -173,60 +173,60 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         })
 
 
-            .state('typeOfOffice-list', {
-                url: "/typeOfOffice-list",
-                templateUrl: "views/template.html",
-                controller: 'TypeOfOfficeCtrl'
-            })
+    .state('typeOfOffice-list', {
+        url: "/typeOfOffice-list",
+        templateUrl: "views/template.html",
+        controller: 'TypeOfOfficeCtrl'
+    })
 
 
-            .state('createtypeOfOffice', {
-                    url: "/typeOfOffice-create",
-                    templateUrl: "views/template.html",
-                    controller: 'CreateTypeOfOfficeCtrl'
-                })
-                .state('edittypeOfOffice', {
-                    url: "/typeOfOffice-edit/:id",
-                    templateUrl: "views/template.html",
-                    controller: 'EditTypeOfOfficeCtrl'
-                })
+    .state('createtypeOfOffice', {
+            url: "/typeOfOffice-create",
+            templateUrl: "views/template.html",
+            controller: 'CreateTypeOfOfficeCtrl'
+        })
+        .state('edittypeOfOffice', {
+            url: "/typeOfOffice-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditTypeOfOfficeCtrl'
+        })
 
-                .state('department-list', {
-                    url: "/department-list",
-                    templateUrl: "views/template.html",
-                    controller: 'DepartmentCtrl'
-                })
-
-
-                .state('createdepartment', {
-                        url: "/department-create",
-                        templateUrl: "views/template.html",
-                        controller: 'CreateDepartmentCtrl'
-                    })
-                    .state('editdepartment', {
-                        url: "/department-edit/:id",
-                        templateUrl: "views/template.html",
-                        controller: 'EditDepartmentCtrl'
-                    })
+    .state('department-list', {
+        url: "/department-list",
+        templateUrl: "views/template.html",
+        controller: 'DepartmentCtrl'
+    })
 
 
-                                    .state('uniquetype-list', {
-                                        url: "/uniquetype-list",
-                                        templateUrl: "views/template.html",
-                                        controller: 'UniqueTypetCtrl'
-                                    })
+    .state('createdepartment', {
+            url: "/department-create",
+            templateUrl: "views/template.html",
+            controller: 'CreateDepartmentCtrl'
+        })
+        .state('editdepartment', {
+            url: "/department-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditDepartmentCtrl'
+        })
 
 
-                                    .state('createuniquetype', {
-                                            url: "/uniquetype-create",
-                                            templateUrl: "views/template.html",
-                                            controller: 'CreateUniqueTypeCtrl'
-                                        })
-                                        .state('edituniquetype', {
-                                            url: "/uniquetype-edit/:id",
-                                            templateUrl: "views/template.html",
-                                            controller: 'EditUniqueTypeCtrl'
-                                        })
+    .state('uniquetype-list', {
+        url: "/uniquetype-list",
+        templateUrl: "views/template.html",
+        controller: 'UniqueTypetCtrl'
+    })
+
+
+    .state('createuniquetype', {
+            url: "/uniquetype-create",
+            templateUrl: "views/template.html",
+            controller: 'CreateUniqueTypeCtrl'
+        })
+        .state('edituniquetype', {
+            url: "/uniquetype-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditUniqueTypeCtrl'
+        })
 
 
 
@@ -425,6 +425,20 @@ firstapp.directive('oI', function($document) {
                 return false;
             });
 
+        }
+    };
+});
+firstapp.directive('slimscroll', function($document) {
+    return {
+        restrict: 'EA',
+        replace: false,
+        link: function(scope, element, attr) {
+            var $element = $(element);
+            $element.slimScroll({
+                height: '400px',
+                wheelStep: 10,
+                size: '2px'
+            });
         }
     };
 });
