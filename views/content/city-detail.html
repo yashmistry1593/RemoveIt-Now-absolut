@@ -34,40 +34,38 @@
                                     <label for="">City Name*</label>
                                     <input type="text" name="name" placeholder="City Name" ng-model="formData.name" class="form-control" required>
                                     <div class="error-msg" ng-show="cityform.name.$error.required && cityform.name.$touched">Please Enter City Name.</div>
-
-                                    <div class="form-group">
-                                        <label for="disabledSelect">District Name*</label>
-                                        <select class="form-control" ng-model="formData.district" value="{{dist.name}}">
-                                            <option ng-selected="true" value="">Select District</option>
-                                            <option ng-repeat="dist in allDistricts">{{dist.name}}</option>
-                                        </select>
-                                    </div>
-
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledSelect">District Name*</label>
+                                    <select class="form-control" ng-model="formData.district" value="{{dist.name}}">
+                                        <option ng-selected="true" value="">Select District</option>
+                                        <option ng-repeat="dist in allDistricts">{{dist.name}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="">Std Code</label>
                                     <input type="text" name="stdCode" placeholder="Std Codee" ng-model="formData.stdCode" class="form-control" required>
                                     <div class="error-msg" ng-show="cityform.stdCode.$error.required && cityform.stdCode.$touched">Please Enter Std Code.</div>
-
+                                </div>
+                                <div class="form-group">
                                     <label for="">Latitude</label>
                                     <input type="text" name="lat" placeholder="Latitude" ng-model="formData.lat" class="form-control" required>
                                     <div class="error-msg" ng-show="cityform.lat.$error.required && cityform.lat.$touched">Please Enter Latitude.</div>
-
+                                </div>
+                                <div class="form-group">
                                     <label for="">Longitude</label>
                                     <input type="text" name="long" placeholder="Longitude" ng-model="formData.long" class="form-control" required>
                                     <div class="error-msg" ng-show="cityform.long.$error.required && cityform.long.$touched">Please Enter Longitude.</div>
-
-
+                                </div>
+                                <div class="form-group">
                                     <label for="">TimeZone</label>
                                     <input type="text" name="timezone" placeholder="TimeZone" ng-model="formData.timezone" class="form-control" required>
                                     <div class="error-msg" ng-show="cityform.timezone.$error.required && cityform.timezone.$touched">Please Enter TimeZone.</div>
-
                                     <!-- <label for="">State Name*</label>
                                     <input type="text" name="state" placeholder="State Name" ng-model="formData.state" class="form-control" required>
                                     <div class="error-msg" ng-show="cityform.state.$error.required && cityform.state.$touched">Please Enter State Name.</div> -->
-
                                 </div>
-
                             </div>
-
                         </div>
                         <div class="text-center mt20">
                             <button class="btn btn-default" type="submit" ng-click="saveCity(formData)" ng-disabled="cityform.$invalid">Save</button>
@@ -75,9 +73,6 @@
                         </div>
                 </div>
             </div>
-
-
-
             </form>
         </div>
     </div>

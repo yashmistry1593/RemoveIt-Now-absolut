@@ -34,23 +34,23 @@
                                     <label for="">Department Name*</label>
                                     <input type="text" name="name" placeholder="Department Name" ng-model="formData.name" class="form-control" required>
                                     <div class="error-msg" ng-show="departmentForm.name.$error.required && departmentForm.name.$touched">Please Enter Department Name.</div>
-
-                                    <div class="form-group">
-                                        <label for="disabledSelect">Unique Type*</label>
-                                        <select class="form-control" ng-model="formData.unique_type" value="{{utype.name}}">
-                                            <option ng-selected="true" value="">Select Unique Type</option>
-                                            <option ng-repeat="utype in allUniqueTypes">{{utype.name}}</option>
-                                        </select>
-                                    </div>
-
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledSelect">Unique Type*</label>
+                                    <select class="form-control" ng-model="formData.unique_type" value="{{utype.name}}">
+                                        <option ng-selected="true" value="">Select Unique Type</option>
+                                        <option ng-repeat="utype in allUniqueTypes">{{utype.name}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
                                     <label for="">Short Name</label>
                                     <input type="text" name="short_name" placeholder="Short Name" ng-model="formData.short_name" class="form-control" required>
                                     <div class="error-msg" ng-show="departmentForm.short_name.$error.required && departmentForm.short_name.$touched">Please Enter Short Name.</div>
-
+                                </div>
+                                <div class="form-group">
                                     <label for="">Status</label>
                                     <input type="text" name="lat" placeholder="Status" ng-model="formData.status" class="form-control" required>
                                     <div class="error-msg" ng-show="departmentForm.status.$error.required && departmentForm.status.$touched">Please Enter Status.</div>
-
                                     <!-- <label for="">Longitude</label>
                                     <input type="text" name="long" placeholder="Longitude" ng-model="formData.long" class="form-control" required>
                                     <div class="error-msg" ng-show="departmentForm.long.$error.required && departmentForm.long.$touched">Please Enter Longitude.</div>
@@ -63,7 +63,6 @@
                                     <!-- <label for="">State Name*</label>
                                     <input type="text" name="state" placeholder="State Name" ng-model="formData.state" class="form-control" required>
                                     <div class="error-msg" ng-show="departmentForm.state.$error.required && departmentForm.state.$touched">Please Enter State Name.</div> -->
-
                                 </div>
 
                             </div>
