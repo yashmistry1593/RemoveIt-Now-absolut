@@ -21,6 +21,7 @@ var jsArray = [
     './bower_components/angulartics/dist/angulartics.min.js',
     './bower_components/angulartics-google-analytics/dist/angulartics-google-analytics.min.js',
     './bower_components/angular-ui-tinymce/src/tinymce.js',
+    './bower_components/angularjs-imageupload-directive/public/javascripts/imageupload.js',
 
     './js/app.js',
     './js/language.js',
@@ -36,7 +37,7 @@ var replacehostTo = "http://wohlig.co.in/demo2/";
 
 var ftpString = "U2FsdGVkX1+jcFED/CJbcYNiOJ42eBsjlxqmrcKWSIPH9Sao/4535zPQX5Fa7VYGAHSfkKCXbDpiUfJhkRRijaerS1lJ/k+dSfqsfl45ICkzMTJ7fBNVDj/242ur9ZG4HZDhSe1O/J4vEUboWDRBhg==";
 
-var uploadingFolder = "absoluteBack";
+var uploadingFolder = "absolute";
 var password = "";
 
 
