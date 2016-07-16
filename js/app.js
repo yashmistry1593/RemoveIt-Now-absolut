@@ -217,12 +217,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
                                     })
 
 
-                                    .state('createdepartment', {
+                                    .state('createuniquetype', {
                                             url: "/uniquetype-create",
                                             templateUrl: "views/template.html",
                                             controller: 'CreateUniqueTypeCtrl'
                                         })
-                                        .state('editdepartment', {
+                                        .state('edituniquetype', {
                                             url: "/uniquetype-edit/:id",
                                             templateUrl: "views/template.html",
                                             controller: 'EditUniqueTypeCtrl'

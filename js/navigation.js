@@ -82,6 +82,16 @@ var navigationservice = angular.module('navigationservice', [])
             classis: "active",
             anchor: "currency-list",
             icon: "link"
+        }, {
+            name: "Unique Type",
+            classis: "active",
+            anchor: "uniquetype-list",
+            icon: "link"
+        }, {
+            name: "Department",
+            classis: "active",
+            anchor: "department-list",
+            icon: "link"
         }]
     }, {
         name: "Timeline",
@@ -565,5 +575,59 @@ var navigationservice = angular.module('navigationservice', [])
                                         }
                                     }).success(callback);
                                 },
+
+
+
+
+
+
+                                                                getAllUniqueTypes: function(callback) {
+                                                                    // console.log('form data: ', formData);
+                                                                    $http({
+                                                                        url: adminurl + 'UniqueTypes/getAll',
+                                                                        method: 'POST',
+                                                                        withCredentials: true
+                                                                    }).success(callback);
+                                                                },
+                                                                uniquetypeSave: function(formData, callback) {
+                                                                    // console.log('form data: ', formData);
+                                                                    $http({
+                                                                        url: adminurl + 'UniqueTypes/saveData',
+                                                                        method: 'POST',
+                                                                        withCredentials: true,
+                                                                        data: formData
+                                                                    }).success(callback);
+                                                                },
+                                                                getOneUniqueType: function(id, callback) {
+                                                                    // console.log('form data: ', formData);
+                                                                    $http({
+                                                                        url: adminurl + 'UniqueTypes/getOne',
+                                                                        method: 'POST',
+                                                                        withCredentials: true,
+                                                                        data: {
+                                                                            "_id": id
+                                                                        }
+                                                                    }).success(callback);
+                                                                },
+                                                                UniqueTypeEditSave: function(id, callback) {
+                                                                    // console.log('form data: ', formData);
+                                                                    $http({
+                                                                        url: adminurl + 'UniqueTypes/saveData',
+                                                                        method: 'POST',
+                                                                        withCredentials: true,
+                                                                        data: id
+                                                                    }).success(callback);
+                                                                },
+                                                                deleteUniqueType: function(id, callback) {
+                                                                    // console.log('form data: ', formData);
+                                                                    $http({
+                                                                        url: adminurl + 'UniqueTypes/delete',
+                                                                        method: 'POST',
+                                                                        withCredentials: true,
+                                                                        data: {
+                                                                            "_id": id.id,
+                                                                        }
+                                                                    }).success(callback);
+                                                                },
     };
 });

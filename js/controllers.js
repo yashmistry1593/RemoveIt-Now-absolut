@@ -845,84 +845,84 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
 
-    .controller('DepartmentCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('UniqueTypetCtrl', function($scope, TemplateService, NavigationService, $timeout) {
             //Used to name the .html file
-            $scope.template = TemplateService.changecontent("department-list");
-            $scope.menutitle = NavigationService.makeactive("department List");
+            $scope.template = TemplateService.changecontent("uniquetype-list");
+            $scope.menutitle = NavigationService.makeactive("uniquetype List");
             TemplateService.title = $scope.menutitle;
             $scope.navigation = NavigationService.getnav();
 
-            $scope.showAllDepartments = function() {
-                NavigationService.getAllDepartments(function(data) {
-                    $scope.allDepartments = data.data;
+            $scope.showAllUniqueTypes = function() {
+                NavigationService.getAllUniqueTypes(function(data) {
+                    $scope.allUniqueTypes = data.data;
 
                 });
             };
-            $scope.showAllDepartments();
+            $scope.showAllUniqueTypes();
 
-            $scope.deleteDepartment = function(id) {
+            $scope.deleteUniqueType = function(id) {
 
-                NavigationService.deleteDepartment({
+                NavigationService.deleteUniqueType({
                     id: id
                 }, function(data) {
-                    $scope.showAllDepartments();
+                    $scope.showAllUniqueTypes();
 
                 });
             }
 
         })
-        .controller('CreateDepartmentCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        .controller('CreateUniqueTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
             //Used to name the .html file
-            $scope.template = TemplateService.changecontent("department-detail");
-            $scope.menutitle = NavigationService.makeactive("department-detail");
+            $scope.template = TemplateService.changecontent("uniquetype-detail");
+            $scope.menutitle = NavigationService.makeactive("uniquetype-detail");
             TemplateService.title = $scope.menutitle;
             $scope.navigation = NavigationService.getnav();
 
             $scope.header = {
-                "name": "Create Department"
+                "name": "Create Unique Type"
             };
             $scope.formData = {};
-            $scope.saveDepartment = function(formData) {
+            $scope.saveUniqueType = function(formData) {
 
-                NavigationService.departmentSave($scope.formData, function(data) {
+                NavigationService.uniquetypeSave($scope.formData, function(data) {
                     console.log(data);
                     if (data.value == true) {
-                        $state.go('department-list');
+                        $state.go('uniquetype-list');
                     }
                     // console.log('$scope.allCountriessave', $scope.data);
 
                 });
             }
 
-            NavigationService.getAllallUniqueTypes(function(data) {
-                $scope.allUniqueTypes = data.data;
-                console.log('$scope.allUniqueTypes', $scope.allUniqueTypes);
-
-            });
+            // NavigationService.getAllallUniqueTypes(function(data) {
+            //     $scope.allUniqueTypes = data.data;
+            //     console.log('$scope.allUniqueTypes', $scope.allUniqueTypes);
+            //
+            // });
 
         })
-        .controller('EditDepartmentCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        .controller('EditUniqueTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
             //Used to name the .html file
-            $scope.template = TemplateService.changecontent("department-detail");
-            $scope.menutitle = NavigationService.makeactive("department-detail");
+            $scope.template = TemplateService.changecontent("uniquetype-detail");
+            $scope.menutitle = NavigationService.makeactive("uniquetype-detail");
             TemplateService.title = $scope.menutitle;
             $scope.navigation = NavigationService.getnav();
 
             $scope.header = {
-                "name": "Edit Department"
+                "name": "Edit Unique Type"
             };
 
-            NavigationService.getOneDepartment($stateParams.id, function(data) {
+            NavigationService.getOneUniqueType($stateParams.id, function(data) {
                 $scope.formData = data.data;
-                // console.log('$scope.oneCountry', $scope.oneCountry);
+                console.log('$scope.formData', $scope.formData);
 
             });
 
-            $scope.saveDepartment = function(formValid) {
+            $scope.saveUniqueType = function(formValid) {
 
                 //  if (formValid.$valid) {
                 //  $scope.formComplete = true;
-                NavigationService.departmentEditSave($scope.formData, function(data) {
+                NavigationService.UniqueTypeEditSave($scope.formData, function(data) {
                     if (data.value == true) {
                         $state.go('department-list');
                     }
@@ -930,11 +930,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 //  }
             };
 
-            NavigationService.getAllallUniqueTypes(function(data) {
-                $scope.allUniqueTypes = data.data;
-                console.log('$scope.allUniqueTypes', $scope.allUniqueTypes);
-
-            });
+            // NavigationService.getAllallUniqueTypes(function(data) {
+            //     $scope.allUniqueTypes = data.data;
+            //     console.log('$scope.allUniqueTypes', $scope.allUniqueTypes);
+            //
+            // });
 
         })
 
