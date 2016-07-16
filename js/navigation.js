@@ -48,52 +48,52 @@ var navigationservice = angular.module('navigationservice', [])
             name: "Office",
             classis: "active",
             anchor: "office-list",
-            icon: "link"
+            icon: "building"
         }, {
             name: "Type Of Office",
             classis: "active",
             anchor: "typeOfOffice-list",
-            icon: "link"
+            icon: "building"
         },{
             name: "Country",
             classis: "active",
             anchor: "country-list",
-            icon: "link"
+            icon: "globe"
         }, {
             name: "Zone",
             classis: "active",
             anchor: "zone-list",
-            icon: "link"
+            icon: "clock-o"
         }, {
             name: "State",
             classis: "active",
             anchor: "state-list",
-            icon: "link"
+            icon: "globe"
         }, {
             name: "District",
             classis: "active",
             anchor: "district-list",
-            icon: "link"
+            icon: "globe"
         }, {
             name: "City",
             classis: "active",
             anchor: "city-list",
-            icon: "link"
+            icon: "globe"
         }, {
             name: "Currency",
             classis: "active",
             anchor: "currency-list",
-            icon: "link"
+            icon: "usd"
         }, {
             name: "Unique Type",
             classis: "active",
             anchor: "uniquetype-list",
-            icon: "link"
+            icon: "genderless"
         }, {
             name: "Department",
             classis: "active",
             anchor: "department-list",
-            icon: "link"
+            icon: "building"
         }]
     }, {
         name: "Timeline",
