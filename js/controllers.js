@@ -793,7 +793,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         }
 
-        NavigationService.getAllallUniqueTypes(function(data) {
+        NavigationService.getAllUniqueTypes(function(data) {
             $scope.allUniqueTypes = data.data;
             console.log('$scope.allUniqueTypes', $scope.allUniqueTypes);
 
@@ -813,7 +813,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         NavigationService.getOneDepartment($stateParams.id, function(data) {
             $scope.formData = data.data;
-            // console.log('$scope.oneCountry', $scope.oneCountry);
+            console.log('$scope.formData', $scope.formData);
 
         });
 
@@ -828,8 +828,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
             //  }
         };
-
-        NavigationService.getAllallUniqueTypes(function(data) {
+        NavigationService.getAllUniqueTypes(function(data) {
             $scope.allUniqueTypes = data.data;
             console.log('$scope.allUniqueTypes', $scope.allUniqueTypes);
 
@@ -924,7 +923,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 //  $scope.formComplete = true;
                 NavigationService.UniqueTypeEditSave($scope.formData, function(data) {
                     if (data.value == true) {
-                        $state.go('department-list');
+                        $state.go('uniquetype-list');
                     }
                 });
                 //  }
