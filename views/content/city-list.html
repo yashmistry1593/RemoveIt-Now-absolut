@@ -38,39 +38,17 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <!-- <th>#</th> -->
                                     <th>City Name</th>
                                     <th>District Name</th>
                                     <th>Std Code</th>
                                     <th>Latitude</th>
                                     <th>Longitude</th>
-                                    <th>TimeZone</th>
+                                    <th>Time Zone</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <!-- <td><input type="text" class="form-control" placeholder="Enter #"></td> -->
-                                    <td>
-                                        <input type="text" class="form-control" placeholder="Enter City Name">
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" placeholder="Enter District Name">
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" placeholder="Enter Std Code">
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" placeholder="Enter Latitude">
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" placeholder="Enter Longitude">
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" placeholder="Enter TimeZone">
-                                    </td>
-                                </tr>
                                 <tr ng-repeat="city in allCities">
-                                    <!-- <td>1</td> -->
                                     <td>{{city.name}}</td>
                                     <td>{{city.district}}</td>
                                     <td>{{city.stdCode}}</td>
@@ -78,34 +56,10 @@
                                     <td>{{city.long}}</td>
                                     <td>{{city.timezone}}</td>
                                     <td>
-                                      <div class="pull-right">
-                                          <a class="btn btn-primary" ui-sref="editcity({id:city._id})">Edit</a>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="pull-right">
-                                          <a class="btn btn-danger" ng-click="deleteCity(city._id)">Delete</a>
-                                      </div>
+                                      <a class="btn btn-primary" ui-sref="editcity({id:city._id})"><i class="fa fa-pencil"></i></a>
+                                      <a class="btn btn-danger" ng-click="deleteCity(city._id)"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
-                                <!-- <tr>
-                                    <td>1</td>
-                                    <td>Wohlig Technology</td>
-                                    <td>WOH123</td>
-                                    <td>WT</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Facebook Pvt. Ltd.</td>
-                                    <td>FAC123</td>
-                                    <td>FB</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Twitter Pvt. Ltd.</td>
-                                    <td>TWI123</td>
-                                    <td>TW</td>
-                                </tr> -->
                             </tbody>
                         </table>
                     </div>

@@ -32,17 +32,19 @@ var navigationservice = angular.module('navigationservice', [])
         classis: "active",
         anchor: "company",
         icon: "users",
-        subnav: [{
-            name: "Employee",
-            classis: "active",
-            anchor: "employee-list",
-            icon: "user"
-        }, {
-            name: "Branch",
-            classis: "active",
-            anchor: "branch-list",
-            icon: "link"
-        }, {
+        subnav: [
+        //   {
+        //     name: "Employee",
+        //     classis: "active",
+        //     anchor: "employee-list",
+        //     icon: "user"
+        // },{
+        //     name: "Branch",
+        //     classis: "active",
+        //     anchor: "branch-list",
+        //     icon: "link"
+        // },
+        {
             name: "Office",
             classis: "active",
             anchor: "office-list",

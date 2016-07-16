@@ -38,54 +38,20 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <!-- <th>#</th> -->
                                     <th>Country Name</th>
                                     <th>Country Code</th>
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <!-- <td><input type="text" class="form-control" placeholder="Enter #"></td> -->
-                                    <td>
-                                        <input type="text" class="form-control" placeholder="Enter Country Name">
-                                    </td>
-                                    <td>
-                                        <input type="text" class="form-control" placeholder="Enter Country Code">
-                                    </td>
-                                </tr>
                                 <tr ng-repeat="country in allCountries">
-                                    <!-- <td>1</td> -->
                                     <td>{{country.name}}</td>
                                     <td>{{country.countryCode}}</td>
                                     <td>
-                                      <div class="pull-right">
-                                          <a class="btn btn-primary" ui-sref="editcountry({id:country._id})">Edit</a>
-                                      </div>
-                                    </td>
-                                    <td>
-                                      <div class="pull-right">
-                                          <a class="btn btn-danger" ng-click="deleteCountry(country._id)">Delete</a>
-                                      </div>
+                                      <a class="btn btn-primary" ui-sref="editcountry({id:country._id})"><i class="fa fa-pencil"></i></a>
+                                      <a class="btn btn-danger" ng-click="deleteCountry(country._id)"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
-                                <!-- <tr>
-                                    <td>1</td>
-                                    <td>Wohlig Technology</td>
-                                    <td>WOH123</td>
-                                    <td>WT</td>
-                                </tr>
-                                <tr>
-                                    <td>2</td>
-                                    <td>Facebook Pvt. Ltd.</td>
-                                    <td>FAC123</td>
-                                    <td>FB</td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Twitter Pvt. Ltd.</td>
-                                    <td>TWI123</td>
-                                    <td>TW</td>
-                                </tr> -->
                             </tbody>
                         </table>
                     </div>
