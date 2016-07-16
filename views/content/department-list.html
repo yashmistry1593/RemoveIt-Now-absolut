@@ -7,7 +7,7 @@
             <a title="Home">Company Setup</a>
         </li>
         <li>
-            <a ui-sref="branch-list" title="Branch List">Type Of Office List</a>
+            <a ui-sref="branch-list" title="Branch List">Department List</a>
         </li>
     </ul>
 </div>
@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-md-4 column">
             <div class="heading-profile">
-                <h2>Type Of Office List</h2>
+                <h2>Department List</h2>
             </div>
         </div>
     </div>
@@ -30,41 +30,57 @@
 
                     <div class="widget-title">
                         <div class="pull-right">
-                            <a class="btn btn-primary" ui-sref="createtypeOfOffice">Add New</a>
+                            <a class="btn btn-primary" ui-sref="createdepartment">Add New</a>
                         </div>
-                        <h3>List of Type Of Offices</h3>
+                        <h3>List of Departments</h3>
                     </div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
                                     <!-- <th>#</th> -->
-                                    <th>Office Type</th>
-                                    <!-- <th>Address</th> -->
+                                    <th>Department Name</th>
+                                    <th>Unique Type</th>
+                                    <th>Short Name</th>
+                                    <th>Status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <!-- <td><input type="text" class="form-control" placeholder="Enter #"></td> -->
+                                <!-- <tr>
+                                    <td><input type="text" class="form-control" placeholder="Enter #"></td>
                                     <td>
-                                        <input type="text" class="form-control" placeholder="Enter Office Type">
+                                        <input type="text" class="form-control" placeholder="Enter City Name">
                                     </td>
-                                    <!-- <td>
-                                        <input type="text" class="form-control" placeholder="Enter Address">
-                                    </td> -->
-                                </tr>
-                                <tr ng-repeat="office in allTypeOfOffices">
+                                    <td>
+                                        <input type="text" class="form-control" placeholder="Enter District Name">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" placeholder="Enter Std Code">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" placeholder="Enter Latitude">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" placeholder="Enter Longitude">
+                                    </td>
+                                    <td>
+                                        <input type="text" class="form-control" placeholder="Enter TimeZone">
+                                    </td>
+                                </tr> -->
+                                <tr ng-repeat="dept in allDepartments">
                                     <!-- <td>1</td> -->
-                                    <td>{{office.name}}</td>
-                                    <!-- <td>{{office.address}}</td> -->
+                                    <td>{{dept.name}}</td>
+                                    <td>{{dept.unique_type}}</td>
+                                    <td>{{dept.short_name}}</td>
+                                    <td>{{dept.status}}</td>
                                     <td>
                                       <div class="pull-right">
-                                          <a class="btn btn-primary" ui-sref="edittypeOfOffice({id:office._id})">Edit</a>
+                                          <a class="btn btn-primary" ui-sref="editdepartment({id:department._id})">Edit</a>
                                       </div>
                                     </td>
                                     <td>
                                       <div class="pull-right">
-                                          <a class="btn btn-danger" ng-click="deleteTypeOfOffice(office._id)">Delete</a>
+                                          <a class="btn btn-danger" ng-click="deleteDepartment(department._id)">Delete</a>
                                       </div>
                                     </td>
                                 </tr>

@@ -184,80 +184,80 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
 
-    .controller('TypeOfOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-            //Used to name the .html file
-            $scope.template = TemplateService.changecontent("typeOfOffice-list");
-            $scope.menutitle = NavigationService.makeactive("typeOfOffice List");
-            TemplateService.title = $scope.menutitle;
-            $scope.navigation = NavigationService.getnav();
-            $scope.showAllTypeOfOffices = function() {
-                NavigationService.getAllTypeOfOffices(function(data) {
-                    $scope.allTypeOfOffices = data.data;
-                    console.log('$scope.allTypeOfOffices', $scope.allTypeOfOffices);
+.controller('TypeOfOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("typeOfOffice-list");
+        $scope.menutitle = NavigationService.makeactive("typeOfOffice List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.showAllTypeOfOffices = function() {
+            NavigationService.getAllTypeOfOffices(function(data) {
+                $scope.allTypeOfOffices = data.data;
+                console.log('$scope.allTypeOfOffices', $scope.allTypeOfOffices);
 
-                });
-            };
-            $scope.showAllTypeOfOffices();
-            $scope.deleteTypeOfOffice = function(id) {
-
-                NavigationService.deleteTypeOfOffice({
-                    id: id
-                }, function(data) {
-                    $scope.showAllTypeOfOffices();
-
-                });
-            }
-        })
-        .controller('CreateTypeOfOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
-            //Used to name the .html file
-            $scope.template = TemplateService.changecontent("typeOfOffice-detail");
-            $scope.menutitle = NavigationService.makeactive("typeOfOffice-detail");
-            TemplateService.title = $scope.menutitle;
-            $scope.navigation = NavigationService.getnav();
-
-            $scope.header = {
-                "name": "Create Type Of Office"
-            };
-            $scope.formData = {};
-            $scope.savetypeOfOffice = function(formData) {
-
-                NavigationService.typeOfOfficeSave($scope.formData, function(data) {
-                    if (data.value == true) {
-                        $state.go('typeOfOffice-list');
-                    }
-
-                });
-            }
-
-        })
-        .controller('EditTypeOfOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
-            //Used to name the .html file
-            $scope.template = TemplateService.changecontent("typeOfOffice-detail");
-            $scope.menutitle = NavigationService.makeactive("typeOfOffice-detail");
-            TemplateService.title = $scope.menutitle;
-            $scope.navigation = NavigationService.getnav();
-
-            $scope.header = {
-                "name": "Edit Type Of Office"
-            };
-
-            NavigationService.getOnetypeOfOffice($stateParams.id, function(data) {
-                $scope.formData = data.data;
             });
+        };
+        $scope.showAllTypeOfOffices();
+        $scope.deleteTypeOfOffice = function(id) {
 
-            $scope.savetypeOfOffice = function(formValid) {
+            NavigationService.deleteTypeOfOffice({
+                id: id
+            }, function(data) {
+                $scope.showAllTypeOfOffices();
 
-                //  if (formValid.$valid) {
-                //  $scope.formComplete = true;
-                NavigationService.typeOfOfficeEditSave($scope.formData, function(data) {
-                    if (data.value == true) {
-                        $state.go('typeOfOffice-list');
-                    }
-                });
-                //  }
-            };
+            });
+        }
+    })
+    .controller('CreateTypeOfOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("typeOfOffice-detail");
+        $scope.menutitle = NavigationService.makeactive("typeOfOffice-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
 
-        })
+        $scope.header = {
+            "name": "Create Type Of Office"
+        };
+        $scope.formData = {};
+        $scope.savetypeOfOffice = function(formData) {
+
+            NavigationService.typeOfOfficeSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('typeOfOffice-list');
+                }
+
+            });
+        }
+
+    })
+    .controller('EditTypeOfOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("typeOfOffice-detail");
+        $scope.menutitle = NavigationService.makeactive("typeOfOffice-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Edit Type Of Office"
+        };
+
+        NavigationService.getOnetypeOfOffice($stateParams.id, function(data) {
+            $scope.formData = data.data;
+        });
+
+        $scope.savetypeOfOffice = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.typeOfOfficeEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('typeOfOffice-list');
+                }
+            });
+            //  }
+        };
+
+    })
 
 
 
@@ -738,6 +738,205 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
     })
+
+
+
+
+
+
+.controller('DepartmentCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("department-list");
+        $scope.menutitle = NavigationService.makeactive("department List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.showAllDepartments = function() {
+            NavigationService.getAllDepartments(function(data) {
+                $scope.allDepartments = data.data;
+
+            });
+        };
+        $scope.showAllDepartments();
+
+        $scope.deleteDepartment = function(id) {
+
+            NavigationService.deleteDepartment({
+                id: id
+            }, function(data) {
+                $scope.showAllDepartments();
+
+            });
+        }
+
+    })
+    .controller('CreateDepartmentCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("department-detail");
+        $scope.menutitle = NavigationService.makeactive("department-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Create Department"
+        };
+        $scope.formData = {};
+        $scope.saveDepartment = function(formData) {
+
+            NavigationService.departmentSave($scope.formData, function(data) {
+                console.log(data);
+                if (data.value == true) {
+                    $state.go('department-list');
+                }
+                // console.log('$scope.allCountriessave', $scope.data);
+
+            });
+        }
+
+        NavigationService.getAllallUniqueTypes(function(data) {
+            $scope.allUniqueTypes = data.data;
+            console.log('$scope.allUniqueTypes', $scope.allUniqueTypes);
+
+        });
+
+    })
+    .controller('EditDepartmentCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("department-detail");
+        $scope.menutitle = NavigationService.makeactive("department-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Edit Department"
+        };
+
+        NavigationService.getOneDepartment($stateParams.id, function(data) {
+            $scope.formData = data.data;
+            // console.log('$scope.oneCountry', $scope.oneCountry);
+
+        });
+
+        $scope.saveDepartment = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.departmentEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('department-list');
+                }
+            });
+            //  }
+        };
+
+        NavigationService.getAllallUniqueTypes(function(data) {
+            $scope.allUniqueTypes = data.data;
+            console.log('$scope.allUniqueTypes', $scope.allUniqueTypes);
+
+        });
+
+    })
+
+
+
+
+
+
+
+
+
+    .controller('DepartmentCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+            //Used to name the .html file
+            $scope.template = TemplateService.changecontent("department-list");
+            $scope.menutitle = NavigationService.makeactive("department List");
+            TemplateService.title = $scope.menutitle;
+            $scope.navigation = NavigationService.getnav();
+
+            $scope.showAllDepartments = function() {
+                NavigationService.getAllDepartments(function(data) {
+                    $scope.allDepartments = data.data;
+
+                });
+            };
+            $scope.showAllDepartments();
+
+            $scope.deleteDepartment = function(id) {
+
+                NavigationService.deleteDepartment({
+                    id: id
+                }, function(data) {
+                    $scope.showAllDepartments();
+
+                });
+            }
+
+        })
+        .controller('CreateDepartmentCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+            //Used to name the .html file
+            $scope.template = TemplateService.changecontent("department-detail");
+            $scope.menutitle = NavigationService.makeactive("department-detail");
+            TemplateService.title = $scope.menutitle;
+            $scope.navigation = NavigationService.getnav();
+
+            $scope.header = {
+                "name": "Create Department"
+            };
+            $scope.formData = {};
+            $scope.saveDepartment = function(formData) {
+
+                NavigationService.departmentSave($scope.formData, function(data) {
+                    console.log(data);
+                    if (data.value == true) {
+                        $state.go('department-list');
+                    }
+                    // console.log('$scope.allCountriessave', $scope.data);
+
+                });
+            }
+
+            NavigationService.getAllallUniqueTypes(function(data) {
+                $scope.allUniqueTypes = data.data;
+                console.log('$scope.allUniqueTypes', $scope.allUniqueTypes);
+
+            });
+
+        })
+        .controller('EditDepartmentCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+            //Used to name the .html file
+            $scope.template = TemplateService.changecontent("department-detail");
+            $scope.menutitle = NavigationService.makeactive("department-detail");
+            TemplateService.title = $scope.menutitle;
+            $scope.navigation = NavigationService.getnav();
+
+            $scope.header = {
+                "name": "Edit Department"
+            };
+
+            NavigationService.getOneDepartment($stateParams.id, function(data) {
+                $scope.formData = data.data;
+                // console.log('$scope.oneCountry', $scope.oneCountry);
+
+            });
+
+            $scope.saveDepartment = function(formValid) {
+
+                //  if (formValid.$valid) {
+                //  $scope.formComplete = true;
+                NavigationService.departmentEditSave($scope.formData, function(data) {
+                    if (data.value == true) {
+                        $state.go('department-list');
+                    }
+                });
+                //  }
+            };
+
+            NavigationService.getAllallUniqueTypes(function(data) {
+                $scope.allUniqueTypes = data.data;
+                console.log('$scope.allUniqueTypes', $scope.allUniqueTypes);
+
+            });
+
+        })
 
 
 

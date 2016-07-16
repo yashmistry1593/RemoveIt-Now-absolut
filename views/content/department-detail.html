@@ -1,0 +1,84 @@
+<div class="breadcrumbs">
+    <ul>
+        <li>
+            <a title="Home">Company Setup</a>
+        </li>
+        <li>
+            <a ui-sref="branch-list" title="Branch List">{{header.name}}</a>
+        </li>
+    </ul>
+</div>
+
+<div class="heading-sec">
+    <div class="row">
+        <div class="col-md-4 column">
+            <div class="heading-profile">
+                <h2>{{header.name}}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Top Bar Chart -->
+<div class="panel-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget">
+                <div class="form-elements-sec">
+                    <div class="widget-title">
+                        <h3>Department</h3>
+                    </div>
+                    <form name="departmentForm" role="form" class="sec ng-pristine ng-valid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">Department Name*</label>
+                                    <input type="text" name="name" placeholder="Department Name" ng-model="formData.name" class="form-control" required>
+                                    <div class="error-msg" ng-show="departmentForm.name.$error.required && departmentForm.name.$touched">Please Enter Department Name.</div>
+
+                                    <div class="form-group">
+                                        <label for="disabledSelect">Unique Type*</label>
+                                        <select class="form-control" ng-model="formData.unique_type" value="{{utype.name}}">
+                                            <option ng-selected="true" value="">Select Unique Type</option>
+                                            <option ng-repeat="utype in allUniqueTypes">{{utype.name}}</option>
+                                        </select>
+                                    </div>
+
+                                    <label for="">Short Name</label>
+                                    <input type="text" name="short_name" placeholder="Short Name" ng-model="formData.short_name" class="form-control" required>
+                                    <div class="error-msg" ng-show="departmentForm.short_name.$error.required && departmentForm.short_name.$touched">Please Enter Short Name.</div>
+
+                                    <label for="">Status</label>
+                                    <input type="text" name="lat" placeholder="Status" ng-model="formData.status" class="form-control" required>
+                                    <div class="error-msg" ng-show="departmentForm.status.$error.required && departmentForm.status.$touched">Please Enter Status.</div>
+
+                                    <!-- <label for="">Longitude</label>
+                                    <input type="text" name="long" placeholder="Longitude" ng-model="formData.long" class="form-control" required>
+                                    <div class="error-msg" ng-show="departmentForm.long.$error.required && departmentForm.long.$touched">Please Enter Longitude.</div>
+
+
+                                    <label for="">TimeZone</label>
+                                    <input type="text" name="timezone" placeholder="TimeZone" ng-model="formData.timezone" class="form-control" required>
+                                    <div class="error-msg" ng-show="departmentForm.timezone.$error.required && departmentForm.timezone.$touched">Please Enter TimeZone.</div> -->
+
+                                    <!-- <label for="">State Name*</label>
+                                    <input type="text" name="state" placeholder="State Name" ng-model="formData.state" class="form-control" required>
+                                    <div class="error-msg" ng-show="departmentForm.state.$error.required && departmentForm.state.$touched">Please Enter State Name.</div> -->
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                        <div class="text-center mt20">
+                            <button class="btn btn-default" type="submit" ng-click="saveDepartment(formData)" ng-disabled="departmentForm.$invalid">Save</button>
+                            <button class="btn btn-default" ui-sref="department-list">Cancel</button>
+                        </div>
+                </div>
+            </div>
+
+
+
+            </form>
+        </div>
+    </div>
+</div>

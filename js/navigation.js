@@ -513,5 +513,57 @@ var navigationservice = angular.module('navigationservice', [])
                         }
                     }).success(callback);
                 },
+
+
+
+
+                                getAllDepartments: function(callback) {
+                                    // console.log('form data: ', formData);
+                                    $http({
+                                        url: adminurl + 'department/getAll',
+                                        method: 'POST',
+                                        withCredentials: true
+                                    }).success(callback);
+                                },
+                                departmentSave: function(formData, callback) {
+                                    // console.log('form data: ', formData);
+                                    $http({
+                                        url: adminurl + 'department/saveData',
+                                        method: 'POST',
+                                        withCredentials: true,
+                                        data: formData
+                                    }).success(callback);
+                                },
+                                getOneDepartment: function(id, callback) {
+                                    // console.log('form data: ', formData);
+                                    $http({
+                                        url: adminurl + 'department/getOne',
+                                        method: 'POST',
+                                        withCredentials: true,
+                                        data: {
+                                            "_id": id
+                                        }
+                                    }).success(callback);
+                                },
+                                departmentEditSave: function(id, callback) {
+                                    // console.log('form data: ', formData);
+                                    $http({
+                                        url: adminurl + 'department/saveData',
+                                        method: 'POST',
+                                        withCredentials: true,
+                                        data: id
+                                    }).success(callback);
+                                },
+                                deleteDepartment: function(id, callback) {
+                                    // console.log('form data: ', formData);
+                                    $http({
+                                        url: adminurl + 'department/delete',
+                                        method: 'POST',
+                                        withCredentials: true,
+                                        data: {
+                                            "_id": id.id,
+                                        }
+                                    }).success(callback);
+                                },
     };
 });

@@ -191,6 +191,42 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
                     controller: 'EditTypeOfOfficeCtrl'
                 })
 
+                .state('department-list', {
+                    url: "/department-list",
+                    templateUrl: "views/template.html",
+                    controller: 'DepartmentCtrl'
+                })
+
+
+                .state('createdepartment', {
+                        url: "/department-create",
+                        templateUrl: "views/template.html",
+                        controller: 'CreateDepartmentCtrl'
+                    })
+                    .state('editdepartment', {
+                        url: "/department-edit/:id",
+                        templateUrl: "views/template.html",
+                        controller: 'EditDepartmentCtrl'
+                    })
+
+
+                                    .state('uniquetype-list', {
+                                        url: "/uniquetype-list",
+                                        templateUrl: "views/template.html",
+                                        controller: 'UniqueTypetCtrl'
+                                    })
+
+
+                                    .state('createdepartment', {
+                                            url: "/uniquetype-create",
+                                            templateUrl: "views/template.html",
+                                            controller: 'CreateUniqueTypeCtrl'
+                                        })
+                                        .state('editdepartment', {
+                                            url: "/uniquetype-edit/:id",
+                                            templateUrl: "views/template.html",
+                                            controller: 'EditUniqueTypeCtrl'
+                                        })
 
 
 
