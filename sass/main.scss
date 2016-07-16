@@ -481,6 +481,9 @@ $trans-black: rgba( black, .15 );
     padding: 0;
     width: 100%;
 }
+.table .btn {
+    padding: 0 5px;
+}
 /* Start writing sass here */
 @import "fancybox-override";
 @import "other/mobile";
