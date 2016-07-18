@@ -1,0 +1,64 @@
+<!-- <div id="progressBar">
+	<div class="loader"></div>
+</div> -->
+<div class="breadcrumbs">
+    <ul>
+        <li>
+            <a title="Home">Company Setup</a>
+        </li>
+        <li>
+            <a ui-sref="branch-list" title="Branch List">Cause Loss List</a>
+        </li>
+    </ul>
+</div>
+
+<div class="heading-sec">
+    <div class="row">
+        <div class="col-md-4 column">
+            <div class="heading-profile">
+                <h2>Cause Loss List</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Top Bar Chart -->
+<div class="panel-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget">
+                <div class="table-area">
+
+                    <div class="widget-title">
+                        <div class="pull-right">
+                            <a class="btn btn-primary" ui-sref="createcauseloss">Add New</a>
+                        </div>
+                        <h3>List of Cause Loss</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Cause Loss</th>
+                                    <th>Department</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="loss in allCauseLoss">
+                                    <td>{{loss.name}}</td>
+                                    <td>{{loss.department}}</td>
+                                    <td>{{loss.status}}</td>
+                                    <td>
+                                      <a class="btn btn-primary" ui-sref="editcauseloss({id:loss._id})"><i class="fa fa-pencil"></i></a>
+                                      <a class="btn btn-danger" ng-click="deleteCauseLoss(loss._id)"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

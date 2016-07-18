@@ -6,12 +6,12 @@
 // else {
 //   adminURL = "http://localhost/demo/index.php";
 // }
-// var adminurl = "http://192.168.1.108:1337/";
-// var imgurl = "http://192.168.1.108:81/upload/";
+var adminurl = "http://localhost:1337/";
+var imgurl = "http://localhost:81/upload/";
 
 
-var adminurl = "http://104.199.175.10/";
-var imgurl = adminurl + "upload/";
+// var adminurl = "http://104.199.175.10/";
+// var imgurl = adminurl + "upload/";
 
 var imgpath = imgurl + "readFile";
 var uploadurl = imgurl;
@@ -37,68 +37,114 @@ var navigationservice = angular.module('navigationservice', [])
         anchor: "company",
         icon: "users",
         subnav: [
-        //   {
-        //     name: "Employee",
-        //     classis: "active",
-        //     anchor: "employee-list",
-        //     icon: "user"
-        // },{
-        //     name: "Branch",
-        //     classis: "active",
-        //     anchor: "branch-list",
-        //     icon: "link"
-        // },
-        {
-            name: "Office",
-            classis: "active",
-            anchor: "office-list",
-            icon: "building"
-        }, {
-            name: "Type Of Office",
-            classis: "active",
-            anchor: "typeOfOffice-list",
-            icon: "building"
-        },{
-            name: "Country",
-            classis: "active",
-            anchor: "country-list",
-            icon: "globe"
-        }, {
-            name: "Zone",
-            classis: "active",
-            anchor: "zone-list",
-            icon: "clock-o"
-        }, {
-            name: "State",
-            classis: "active",
-            anchor: "state-list",
-            icon: "globe"
-        }, {
-            name: "District",
-            classis: "active",
-            anchor: "district-list",
-            icon: "globe"
-        }, {
-            name: "City",
-            classis: "active",
-            anchor: "city-list",
-            icon: "globe"
-        }, {
-            name: "Currency",
-            classis: "active",
-            anchor: "currency-list",
-            icon: "usd"
-        }, {
-            name: "Unique Type",
-            classis: "active",
-            anchor: "uniquetype-list",
-            icon: "genderless"
-        }, {
-            name: "Department",
-            classis: "active",
-            anchor: "department-list",
-            icon: "building"
-        }]
+            //   {
+            //     name: "Employee",
+            //     classis: "active",
+            //     anchor: "employee-list",
+            //     icon: "user"
+            // },{
+            //     name: "Branch",
+            //     classis: "active",
+            //     anchor: "branch-list",
+            //     icon: "link"
+            // },
+            {
+                name: "Office",
+                classis: "active",
+                anchor: "office-list",
+                icon: "building"
+            }, {
+                name: "Type Of Office",
+                classis: "active",
+                anchor: "typeOfOffice-list",
+                icon: "building"
+            }, {
+                name: "Country",
+                classis: "active",
+                anchor: "country-list",
+                icon: "globe"
+            }, {
+                name: "Zone",
+                classis: "active",
+                anchor: "zone-list",
+                icon: "clock-o"
+            }, {
+                name: "State",
+                classis: "active",
+                anchor: "state-list",
+                icon: "globe"
+            }, {
+                name: "District",
+                classis: "active",
+                anchor: "district-list",
+                icon: "globe"
+            }, {
+                name: "City",
+                classis: "active",
+                anchor: "city-list",
+                icon: "globe"
+            }, {
+                name: "Currency",
+                classis: "active",
+                anchor: "currency-list",
+                icon: "usd"
+            }, {
+                name: "Unique Type",
+                classis: "active",
+                anchor: "uniquetype-list",
+                icon: "genderless"
+            }, {
+                name: "Department",
+                classis: "active",
+                anchor: "department-list",
+                icon: "building"
+            }, {
+                name: "Policy Type",
+                classis: "active",
+                anchor: "policytype-list",
+                icon: "building"
+            }, {
+                name: "Policy",
+                classis: "active",
+                anchor: "policy-list",
+                icon: "building"
+            }, {
+                name: "Policy Doc",
+                classis: "active",
+                anchor: "policydoc-list",
+                icon: "building"
+            }, {
+                name: "Industry",
+                classis: "active",
+                anchor: "industry-list",
+                icon: "building"
+            }, {
+                name: "Category",
+                classis: "active",
+                anchor: "category-list",
+                icon: "building"
+            }, {
+                name: "Function",
+                classis: "active",
+                anchor: "func-list",
+                icon: "building"
+            }, {
+                name: "Nature Loss",
+                classis: "active",
+                anchor: "natureloss-list",
+                icon: "building"
+            }, {
+                name: "Cause Loss",
+                classis: "active",
+                anchor: "causeloss-list",
+                icon: "building"
+            }, {
+                name: "Business Branch",
+                classis: "active",
+                anchor: "businessbranch-list",
+                icon: "building"
+            }
+        ]
     }, {
         name: "Timeline",
         classis: "active",
@@ -481,159 +527,594 @@ var navigationservice = angular.module('navigationservice', [])
 
 
 
-                getAllTypeOfOffices: function(callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'TypeOfOffice/getAll',
-                        method: 'POST',
-                        withCredentials: true
-                    }).success(callback);
-                },
-                typeOfOfficeSave: function(formData, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'TypeOfOffice/saveData',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: formData
-                    }).success(callback);
-                },
-                getOnetypeOfOffice: function(id, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'TypeOfOffice/getOne',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: {
-                            "_id": id
-                        }
-                    }).success(callback);
-                },
-                typeOfOfficeEditSave: function(id, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'TypeOfOffice/saveData',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: id
-                    }).success(callback);
-                },
-                deleteTypeOfOffice: function(id, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'TypeOfOffice/delete',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: {
-                            "_id": id.id,
-                        }
-                    }).success(callback);
-                },
+        getAllTypeOfOffices: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'TypeOfOffice/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        typeOfOfficeSave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'TypeOfOffice/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOnetypeOfOffice: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'TypeOfOffice/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        typeOfOfficeEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'TypeOfOffice/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteTypeOfOffice: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'TypeOfOffice/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
 
 
 
 
-                                getAllDepartments: function(callback) {
-                                    // console.log('form data: ', formData);
-                                    $http({
-                                        url: adminurl + 'department/getAll',
-                                        method: 'POST',
-                                        withCredentials: true
-                                    }).success(callback);
-                                },
-                                departmentSave: function(formData, callback) {
-                                    // console.log('form data: ', formData);
-                                    $http({
-                                        url: adminurl + 'department/saveData',
-                                        method: 'POST',
-                                        withCredentials: true,
-                                        data: formData
-                                    }).success(callback);
-                                },
-                                getOneDepartment: function(id, callback) {
-                                    // console.log('form data: ', formData);
-                                    $http({
-                                        url: adminurl + 'department/getOne',
-                                        method: 'POST',
-                                        withCredentials: true,
-                                        data: {
-                                            "_id": id
-                                        }
-                                    }).success(callback);
-                                },
-                                departmentEditSave: function(id, callback) {
-                                    // console.log('form data: ', formData);
-                                    $http({
-                                        url: adminurl + 'department/saveData',
-                                        method: 'POST',
-                                        withCredentials: true,
-                                        data: id
-                                    }).success(callback);
-                                },
-                                deleteDepartment: function(id, callback) {
-                                    // console.log('form data: ', formData);
-                                    $http({
-                                        url: adminurl + 'department/delete',
-                                        method: 'POST',
-                                        withCredentials: true,
-                                        data: {
-                                            "_id": id.id,
-                                        }
-                                    }).success(callback);
-                                },
+        getAllDepartments: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'department/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        departmentSave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'department/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneDepartment: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'department/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        departmentEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'department/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteDepartment: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'department/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
 
 
 
 
 
 
-                                                                getAllUniqueTypes: function(callback) {
-                                                                    // console.log('form data: ', formData);
-                                                                    $http({
-                                                                        url: adminurl + 'UniqueTypes/getAll',
-                                                                        method: 'POST',
-                                                                        withCredentials: true
-                                                                    }).success(callback);
-                                                                },
-                                                                uniquetypeSave: function(formData, callback) {
-                                                                    // console.log('form data: ', formData);
-                                                                    $http({
-                                                                        url: adminurl + 'UniqueTypes/saveData',
-                                                                        method: 'POST',
-                                                                        withCredentials: true,
-                                                                        data: formData
-                                                                    }).success(callback);
-                                                                },
-                                                                getOneUniqueType: function(id, callback) {
-                                                                    // console.log('form data: ', formData);
-                                                                    $http({
-                                                                        url: adminurl + 'UniqueTypes/getOne',
-                                                                        method: 'POST',
-                                                                        withCredentials: true,
-                                                                        data: {
-                                                                            "_id": id
-                                                                        }
-                                                                    }).success(callback);
-                                                                },
-                                                                UniqueTypeEditSave: function(id, callback) {
-                                                                    // console.log('form data: ', formData);
-                                                                    $http({
-                                                                        url: adminurl + 'UniqueTypes/saveData',
-                                                                        method: 'POST',
-                                                                        withCredentials: true,
-                                                                        data: id
-                                                                    }).success(callback);
-                                                                },
-                                                                deleteUniqueType: function(id, callback) {
-                                                                    // console.log('form data: ', formData);
-                                                                    $http({
-                                                                        url: adminurl + 'UniqueTypes/delete',
-                                                                        method: 'POST',
-                                                                        withCredentials: true,
-                                                                        data: {
-                                                                            "_id": id.id,
-                                                                        }
-                                                                    }).success(callback);
-                                                                },
+        getAllUniqueTypes: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'UniqueTypes/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        uniquetypeSave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'UniqueTypes/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneUniqueType: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'UniqueTypes/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        UniqueTypeEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'UniqueTypes/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteUniqueType: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'UniqueTypes/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
+
+        getAllPolicyTypes: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'policytype/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        policytypeSave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'policytype/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOnePolicyType: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'policytype/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        PolicyTypeEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'policytype/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deletePolicyType: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'policytype/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
+
+        getAllPolicies: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'policy/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        policySave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'policy/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOnePolicy: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'policy/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        PolicyEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'policy/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deletePolicy: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'policy/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
+        getAllPolicyDocs: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'policydoc/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        policydocSave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'policydoc/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOnePolicyDoc: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'policydoc/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        PolicyDocEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'policydoc/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deletePolicyDoc: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'policydoc/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
+        getAllIndustries: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'industry/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        industrySave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'industry/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneIndustry: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'industry/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        IndustryEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'industry/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteIndustry: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'industry/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
+        getAllCategories: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'category/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        categorySave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'category/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneCategory: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'category/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        CategoryEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'category/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteCategory: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'category/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
+        getAllFunc: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'func/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        funcSave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'func/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneFunc: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'func/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        FuncEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'func/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteFunc: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'func/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
+        getAllCauseLoss: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'causeloss/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        causelossSave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'causeloss/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneCauseLoss: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'causeloss/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        CauseLossEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'causeloss/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteCauseLoss: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'causeloss/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
+        getAllNatureLoss: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'natureloss/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        naturelossSave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'natureloss/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneNatureLoss: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'natureloss/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        NatureLossEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'natureloss/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteNatureLoss: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'natureloss/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
+
+        getAllBusinessBranch: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'businessbranch/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        businessbranchSave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'businessbranch/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneBusinessBranch: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'businessbranch/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        BusinessBranchEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'businessbranch/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteBusinessBranch: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'businessbranch/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
     };
 });

@@ -230,6 +230,156 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
 
 
 
+
+    .state('policytype-list', {
+        url: "/policytype-list",
+        templateUrl: "views/template.html",
+        controller: 'PolicyTypeCtrl'
+    })
+
+
+    .state('createpolicytype', {
+            url: "/policytype-create",
+            templateUrl: "views/template.html",
+            controller: 'CreatePolicyTypeCtrl'
+        })
+        .state('editpolicytype', {
+            url: "/policytype-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditPolicyTypeCtrl'
+        })
+
+
+
+
+    .state('policy-list', {
+        url: "/policy-list",
+        templateUrl: "views/template.html",
+        controller: 'PolicyCtrl'
+    })
+
+
+    .state('createpolicy', {
+            url: "/policy-create",
+            templateUrl: "views/template.html",
+            controller: 'CreatePolicyCtrl'
+        })
+        .state('editpolicy', {
+            url: "/policy-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditPolicyCtrl'
+        })
+
+    .state('policydoc-list', {
+            url: "/policydoc-list",
+            templateUrl: "views/template.html",
+            controller: 'PolicyDocCtrl'
+        })
+        .state('createpolicydoc', {
+            url: "/policydoc-create",
+            templateUrl: "views/template.html",
+            controller: 'CreatePolicyDocCtrl'
+        })
+        .state('editpolicydoc', {
+            url: "/policydoc-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditPolicyDocCtrl'
+        })
+
+    .state('industry-list', {
+            url: "/industry-list",
+            templateUrl: "views/template.html",
+            controller: 'IndustryCtrl'
+        })
+        .state('createindustry', {
+            url: "/industry-create",
+            templateUrl: "views/template.html",
+            controller: 'CreateIndustryCtrl'
+        })
+        .state('editindustry', {
+            url: "/industry-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditIndustryCtrl'
+        })
+        .state('category-list', {
+            url: "/category-list",
+            templateUrl: "views/template.html",
+            controller: 'CategoryCtrl'
+        })
+
+
+    .state('createcategory', {
+            url: "/category-create",
+            templateUrl: "views/template.html",
+            controller: 'CreateCategoryCtrl'
+        })
+        .state('editcategory', {
+            url: "/category-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditCategoryCtrl'
+        })
+        .state('func-list', {
+            url: "/func-list",
+            templateUrl: "views/template.html",
+            controller: 'FuncCtrl'
+        })
+        .state('createfunc', {
+            url: "/func-create",
+            templateUrl: "views/template.html",
+            controller: 'CreateFuncCtrl'
+        })
+        .state('editfunc', {
+            url: "/func-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditFuncCtrl'
+        })
+        .state('causeloss-list', {
+            url: "/causeloss-list",
+            templateUrl: "views/template.html",
+            controller: 'CauseLossCtrl'
+        })
+        .state('createcauseloss', {
+            url: "/causeloss-create",
+            templateUrl: "views/template.html",
+            controller: 'CreateCauseLossCtrl'
+        })
+        .state('editcauseloss', {
+            url: "/causeloss-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditCauseLossCtrl'
+        })
+        .state('natureloss-list', {
+            url: "/natureloss-list",
+            templateUrl: "views/template.html",
+            controller: 'NatureLossCtrl'
+        })
+        .state('createnatureloss', {
+            url: "/natureloss-create",
+            templateUrl: "views/template.html",
+            controller: 'CreateNatureLossCtrl'
+        })
+        .state('editnatureloss', {
+            url: "/natureloss-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditNatureLossCtrl'
+        })
+        .state('businessbranch-list', {
+            url: "/businessbranch-list",
+            templateUrl: "views/template.html",
+            controller: 'BusinessBranchCtrl'
+        })
+        .state('createbusinessbranch', {
+            url: "/businessbranch-create",
+            templateUrl: "views/template.html",
+            controller: 'CreateBusinessBranchCtrl'
+        })
+        .state('editbusinessbranch', {
+            url: "/businessbranch-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditBusinessBranchCtrl'
+        })
+
+
     .state('timeline', {
         url: "/timeline",
         templateUrl: "views/template.html",

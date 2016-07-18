@@ -1,0 +1,66 @@
+<!-- <div id="progressBar">
+	<div class="loader"></div>
+</div> -->
+<div class="breadcrumbs">
+    <ul>
+        <li>
+            <a title="Home">Company Setup</a>
+        </li>
+        <li>
+            <a ui-sref="branch-list" title="Branch List">Policy Doc List</a>
+        </li>
+    </ul>
+</div>
+
+<div class="heading-sec">
+    <div class="row">
+        <div class="col-md-4 column">
+            <div class="heading-profile">
+                <h2>Policy Doc List</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Top Bar Chart -->
+<div class="panel-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget">
+                <div class="table-area">
+
+                    <div class="widget-title">
+                        <div class="pull-right">
+                            <a class="btn btn-primary" ui-sref="createpolicydoc">Add New</a>
+                        </div>
+                        <h3>List of Policy Docs</h3>
+                    </div>
+                    <div class="table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Policy Doc Name</th>
+                                    <th>Department</th>
+                                    <th>Policy Type</th>
+                                    <th>Status</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="policydoc in allPolicyDocs">
+                                    <td>{{policydoc.name}}</td>
+                                    <td>{{policydoc.department}}</td>
+                                    <td>{{policydoc.PolicyType}}</td>
+                                    <td>{{policydoc.status}}</td>
+                                    <td>
+                                      <a class="btn btn-primary" ui-sref="editpolicydoc({id:policydoc._id})"><i class="fa fa-pencil"></i></a>
+                                      <a class="btn btn-danger" ng-click="deletePolicyDoc(policydoc._id)"><i class="fa fa-trash"></i></a>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

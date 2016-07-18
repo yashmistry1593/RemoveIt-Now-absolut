@@ -835,107 +835,898 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
     })
-
-
-
-
-
-
-
-
-
     .controller('UniqueTypetCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("uniquetype-list");
+        $scope.menutitle = NavigationService.makeactive("uniquetype List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.showAllUniqueTypes = function() {
+            NavigationService.getAllUniqueTypes(function(data) {
+                $scope.allUniqueTypes = data.data;
+
+            });
+        };
+        $scope.showAllUniqueTypes();
+
+        $scope.deleteUniqueType = function(id) {
+
+            NavigationService.deleteUniqueType({
+                id: id
+            }, function(data) {
+                $scope.showAllUniqueTypes();
+
+            });
+        }
+
+    })
+    .controller('CreateUniqueTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("uniquetype-detail");
+        $scope.menutitle = NavigationService.makeactive("uniquetype-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Create Unique Type"
+        };
+        $scope.formData = {};
+        $scope.saveUniqueType = function(formData) {
+
+            NavigationService.uniquetypeSave($scope.formData, function(data) {
+                console.log(data);
+                if (data.value == true) {
+                    $state.go('uniquetype-list');
+                }
+                // console.log('$scope.allCountriessave', $scope.data);
+
+            });
+        }
+
+        // NavigationService.getAllallUniqueTypes(function(data) {
+        //     $scope.allUniqueTypes = data.data;
+        //     console.log('$scope.allUniqueTypes', $scope.allUniqueTypes);
+        //
+        // });
+
+    })
+    .controller('EditUniqueTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("uniquetype-detail");
+        $scope.menutitle = NavigationService.makeactive("uniquetype-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Edit Unique Type"
+        };
+
+        NavigationService.getOneUniqueType($stateParams.id, function(data) {
+            $scope.formData = data.data;
+            console.log('$scope.formData', $scope.formData);
+
+        });
+
+        $scope.saveUniqueType = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.UniqueTypeEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('uniquetype-list');
+                }
+            });
+            //  }
+        };
+
+        // NavigationService.getAllallUniqueTypes(function(data) {
+        //     $scope.allUniqueTypes = data.data;
+        //     console.log('$scope.allUniqueTypes', $scope.allUniqueTypes);
+        //
+        // });
+
+    })
+
+.controller('PolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("policytype-list");
+        $scope.menutitle = NavigationService.makeactive("policytype List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.showAllPolicyTypes = function() {
+            NavigationService.getAllPolicyTypes(function(data) {
+                $scope.allPolicyTypes = data.data;
+
+            });
+        };
+        $scope.showAllPolicyTypes();
+
+        $scope.deletePolicyType = function(id) {
+
+            NavigationService.deletePolicyType({
+                id: id
+            }, function(data) {
+                $scope.showAllPolicyTypes();
+
+            });
+        }
+
+    })
+    .controller('CreatePolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("policytype-detail");
+        $scope.menutitle = NavigationService.makeactive("policytype-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Create Policy Type"
+        };
+        $scope.formData = {};
+        $scope.savePolicyType = function(formData) {
+
+            NavigationService.policytypeSave($scope.formData, function(data) {
+                console.log(data);
+                if (data.value == true) {
+                    $state.go('policytype-list');
+                }
+                // console.log('$scope.allCountriessave', $scope.data);
+
+            });
+        }
+        NavigationService.getAllDepartments(function(data) {
+            $scope.allDepartments = data.data;
+
+        });
+
+    })
+    .controller('EditPolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("policytype-detail");
+        $scope.menutitle = NavigationService.makeactive("policytype-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Edit Policy Type"
+        };
+
+        NavigationService.getOnePolicyType($stateParams.id, function(data) {
+            $scope.formData = data.data;
+            console.log('$scope.formData', $scope.formData);
+
+        });
+
+        $scope.savePolicyType = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.PolicyTypeEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('policytype-list');
+                }
+            });
+            //  }
+        };
+
+        NavigationService.getAllDepartments(function(data) {
+            $scope.allDepartments = data.data;
+
+        });
+
+    })
+    .controller('PolicyCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("policy-list");
+        $scope.menutitle = NavigationService.makeactive("policy List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.showAllPolicies = function() {
+            NavigationService.getAllPolicies(function(data) {
+                $scope.allPolicies = data.data;
+
+            });
+        };
+        $scope.showAllPolicies();
+
+        $scope.deletePolicy = function(id) {
+
+            NavigationService.deletePolicy({
+                id: id
+            }, function(data) {
+                $scope.showAllPolicies();
+
+            });
+        }
+
+    })
+    .controller('CreatePolicyCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("policy-detail");
+        $scope.menutitle = NavigationService.makeactive("policy-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Create Policy"
+        };
+        $scope.formData = {};
+        $scope.savePolicy = function(formData) {
+
+            NavigationService.policySave($scope.formData, function(data) {
+                console.log(data);
+                if (data.value == true) {
+                    $state.go('policy-list');
+                }
+                // console.log('$scope.allCountriessave', $scope.data);
+
+            });
+        }
+        NavigationService.getAllPolicyTypes(function(data) {
+            $scope.allPolicyTypes = data.data;
+
+        });
+
+    })
+    .controller('EditPolicyCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("policy-detail");
+        $scope.menutitle = NavigationService.makeactive("policy-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Edit Policy"
+        };
+
+        NavigationService.getOnePolicy($stateParams.id, function(data) {
+            $scope.formData = data.data;
+            console.log('$scope.formData', $scope.formData);
+
+        });
+
+        $scope.savePolicy = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.PolicyEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('policy-list');
+                }
+            });
+            //  }
+        };
+
+        NavigationService.getAllPolicyTypes(function(data) {
+            $scope.allPolicyTypes = data.data;
+
+        });
+
+    })
+
+.controller('PolicyDocCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("policydoc-list");
+        $scope.menutitle = NavigationService.makeactive("policydoc List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.showAllPolicyDocs = function() {
+            NavigationService.getAllPolicyDocs(function(data) {
+                $scope.allPolicyDocs = data.data;
+
+            });
+        };
+        $scope.showAllPolicyDocs();
+
+        $scope.deletePolicyDoc = function(id) {
+
+            NavigationService.deletePolicyDoc({
+                id: id
+            }, function(data) {
+                $scope.showAllPolicyDocs();
+
+            });
+        }
+
+    })
+    .controller('CreatePolicyDocCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("policydoc-detail");
+        $scope.menutitle = NavigationService.makeactive("policydoc-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Create Policy Doc"
+        };
+        $scope.formData = {};
+        $scope.savePolicyDoc = function(formData) {
+
+            NavigationService.policydocSave($scope.formData, function(data) {
+                console.log(data);
+                if (data.value == true) {
+                    $state.go('policydoc-list');
+                }
+                // console.log('$scope.allCountriessave', $scope.data);
+
+            });
+        }
+        NavigationService.getAllDepartments(function(data) {
+            $scope.allDepartments = data.data;
+
+        });
+        NavigationService.getAllPolicyTypes(function(data) {
+            $scope.allPolicyTypes = data.data;
+
+        });
+
+    })
+    .controller('EditPolicyDocCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("policydoc-detail");
+        $scope.menutitle = NavigationService.makeactive("policydoc-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Edit Policy Doc"
+        };
+
+        NavigationService.getOnePolicyDoc($stateParams.id, function(data) {
+            $scope.formData = data.data;
+            console.log('$scope.formData', $scope.formData);
+
+        });
+
+        $scope.savePolicyDoc = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.PolicyDocEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('policydoc-list');
+                }
+            });
+            //  }
+        };
+
+        NavigationService.getAllDepartments(function(data) {
+            $scope.allDepartments = data.data;
+
+        });
+        NavigationService.getAllPolicyTypes(function(data) {
+            $scope.allPolicyTypes = data.data;
+
+        });
+
+    })
+
+.controller('IndustryCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("industry-list");
+        $scope.menutitle = NavigationService.makeactive("industry List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.showAllIndustries = function() {
+            NavigationService.getAllIndustries(function(data) {
+                $scope.allIndustries = data.data;
+
+            });
+        };
+        $scope.showAllIndustries();
+
+        $scope.deleteIndustry = function(id) {
+
+            NavigationService.deleteIndustry({
+                id: id
+            }, function(data) {
+                $scope.showAllIndustries();
+
+            });
+        }
+
+    })
+    .controller('CreateIndustryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("industry-detail");
+        $scope.menutitle = NavigationService.makeactive("industry-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Create Industry"
+        };
+        $scope.formData = {};
+        $scope.saveIndustry = function(formData) {
+
+            NavigationService.industrySave($scope.formData, function(data) {
+                console.log(data);
+                if (data.value == true) {
+                    $state.go('industry-list');
+                }
+                // console.log('$scope.allCountriessave', $scope.data);
+
+            });
+        }
+
+    })
+    .controller('EditIndustryCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("industry-detail");
+        $scope.menutitle = NavigationService.makeactive("industry-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Edit Industry"
+        };
+
+        NavigationService.getOneIndustry($stateParams.id, function(data) {
+            $scope.formData = data.data;
+            console.log('$scope.formData', $scope.formData);
+
+        });
+
+        $scope.saveIndustry = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.IndustryEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('industry-list');
+                }
+            });
+            //  }
+        };
+
+    })
+    .controller('CategoryCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("category-list");
+        $scope.menutitle = NavigationService.makeactive("category List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.showAllCategories = function() {
+            NavigationService.getAllCategories(function(data) {
+                $scope.allCategories = data.data;
+
+            });
+        };
+        $scope.showAllCategories();
+
+        $scope.deleteCategory = function(id) {
+
+            NavigationService.deleteCategory({
+                id: id
+            }, function(data) {
+                $scope.showAllCategories();
+
+            });
+        }
+
+    })
+    .controller('CreateCategoryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("category-detail");
+        $scope.menutitle = NavigationService.makeactive("category-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Create Category"
+        };
+        $scope.formData = {};
+        $scope.saveCategory = function(formData) {
+
+            NavigationService.categorySave($scope.formData, function(data) {
+                console.log(data);
+                if (data.value == true) {
+                    $state.go('category-list');
+                }
+                // console.log('$scope.allCountriessave', $scope.data);
+
+            });
+        }
+
+        NavigationService.getAllIndustries(function(data) {
+            $scope.allIndustries = data.data;
+
+        });
+
+    })
+    .controller('EditCategoryCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("category-detail");
+        $scope.menutitle = NavigationService.makeactive("category-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Edit Category"
+        };
+
+        NavigationService.getOneCategory($stateParams.id, function(data) {
+            $scope.formData = data.data;
+            console.log('$scope.formData', $scope.formData);
+
+        });
+
+        $scope.saveCategory = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.CategoryEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('category-list');
+                }
+            });
+            //  }
+        };
+
+        NavigationService.getAllIndustries(function(data) {
+            $scope.allIndustries = data.data;
+
+        });
+
+    })
+
+.controller('FuncCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("func-list");
+        $scope.menutitle = NavigationService.makeactive("func List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.showAllFunc = function() {
+            NavigationService.getAllFunc(function(data) {
+                $scope.allFunc = data.data;
+
+            });
+        };
+        $scope.showAllFunc();
+
+        $scope.deleteFunc = function(id) {
+
+            NavigationService.deleteFunc({
+                id: id
+            }, function(data) {
+                $scope.showAllFunc();
+
+            });
+        }
+
+    })
+    .controller('CreateFuncCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("func-detail");
+        $scope.menutitle = NavigationService.makeactive("func-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Create Function"
+        };
+        $scope.formData = {};
+        $scope.saveFunc = function(formData) {
+
+            NavigationService.funcSave($scope.formData, function(data) {
+                console.log(data);
+                if (data.value == true) {
+                    $state.go('func-list');
+                }
+                // console.log('$scope.allCountriessave', $scope.data);
+
+            });
+        }
+
+    })
+    .controller('EditFuncCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("func-detail");
+        $scope.menutitle = NavigationService.makeactive("func-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Edit Function"
+        };
+
+        NavigationService.getOneFunc($stateParams.id, function(data) {
+            $scope.formData = data.data;
+            console.log('$scope.formData', $scope.formData);
+
+        });
+
+        $scope.saveFunc = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.FuncEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('func-list');
+                }
+            });
+        };
+
+    })
+.controller('CauseLossCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("causeloss-list");
+        $scope.menutitle = NavigationService.makeactive("causeloss List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.showAllCauseLoss = function() {
+            NavigationService.getAllCauseLoss(function(data) {
+                $scope.allCauseLoss = data.data;
+
+            });
+        };
+        $scope.showAllCauseLoss();
+
+        $scope.deleteCauseLoss = function(id) {
+
+            NavigationService.deleteCauseLoss({
+                id: id
+            }, function(data) {
+                $scope.showAllCauseLoss();
+
+            });
+        }
+
+    })
+    .controller('CreateCauseLossCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("causeloss-detail");
+        $scope.menutitle = NavigationService.makeactive("causeloss-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Create Cause Loss"
+        };
+        $scope.formData = {};
+        $scope.saveCauseLoss = function(formData) {
+
+            NavigationService.causelossSave($scope.formData, function(data) {
+                console.log(data);
+                if (data.value == true) {
+                    $state.go('causeloss-list');
+                }
+                // console.log('$scope.allCountriessave', $scope.data);
+
+            });
+        }
+        NavigationService.getAllDepartments(function(data) {
+            $scope.allDepartments = data.data;
+
+        });
+
+    })
+    .controller('EditCauseLossCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("causeloss-detail");
+        $scope.menutitle = NavigationService.makeactive("causeloss-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Edit Cause Loss"
+        };
+
+        NavigationService.getOneCauseLoss($stateParams.id, function(data) {
+            $scope.formData = data.data;
+            console.log('$scope.formData', $scope.formData);
+
+        });
+
+        $scope.saveCauseLoss = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.CauseLossEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('causeloss-list');
+                }
+            });
+        };
+        NavigationService.getAllDepartments(function(data) {
+            $scope.allDepartments = data.data;
+
+        });
+    })
+
+
+
+
+
+    .controller('NatureLossCtrl', function($scope, TemplateService, NavigationService, $timeout) {
             //Used to name the .html file
-            $scope.template = TemplateService.changecontent("uniquetype-list");
-            $scope.menutitle = NavigationService.makeactive("uniquetype List");
+            $scope.template = TemplateService.changecontent("natureloss-list");
+            $scope.menutitle = NavigationService.makeactive("natureloss List");
             TemplateService.title = $scope.menutitle;
             $scope.navigation = NavigationService.getnav();
 
-            $scope.showAllUniqueTypes = function() {
-                NavigationService.getAllUniqueTypes(function(data) {
-                    $scope.allUniqueTypes = data.data;
+            $scope.showAllNatureLoss = function() {
+                NavigationService.getAllNatureLoss(function(data) {
+                    $scope.allNatureLoss = data.data;
 
                 });
             };
-            $scope.showAllUniqueTypes();
+            $scope.showAllNatureLoss();
 
-            $scope.deleteUniqueType = function(id) {
+            $scope.deleteNatureLoss = function(id) {
 
-                NavigationService.deleteUniqueType({
+                NavigationService.deleteNatureLoss({
                     id: id
                 }, function(data) {
-                    $scope.showAllUniqueTypes();
+                    $scope.showAllNatureLoss();
 
                 });
             }
 
         })
-        .controller('CreateUniqueTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        .controller('CreateNatureLossCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
             //Used to name the .html file
-            $scope.template = TemplateService.changecontent("uniquetype-detail");
-            $scope.menutitle = NavigationService.makeactive("uniquetype-detail");
+            $scope.template = TemplateService.changecontent("natureloss-detail");
+            $scope.menutitle = NavigationService.makeactive("natureloss-detail");
             TemplateService.title = $scope.menutitle;
             $scope.navigation = NavigationService.getnav();
 
             $scope.header = {
-                "name": "Create Unique Type"
+                "name": "Create Nature Loss"
             };
             $scope.formData = {};
-            $scope.saveUniqueType = function(formData) {
+            $scope.saveNatureLoss = function(formData) {
 
-                NavigationService.uniquetypeSave($scope.formData, function(data) {
+                NavigationService.naturelossSave($scope.formData, function(data) {
                     console.log(data);
                     if (data.value == true) {
-                        $state.go('uniquetype-list');
+                        $state.go('natureloss-list');
                     }
                     // console.log('$scope.allCountriessave', $scope.data);
 
                 });
             }
+            NavigationService.getAllDepartments(function(data) {
+                $scope.allDepartments = data.data;
 
-            // NavigationService.getAllallUniqueTypes(function(data) {
-            //     $scope.allUniqueTypes = data.data;
-            //     console.log('$scope.allUniqueTypes', $scope.allUniqueTypes);
-            //
-            // });
+            });
+            NavigationService.getAllCauseLoss(function(data) {
+                $scope.allCauseLoss = data.data;
+
+            });
 
         })
-        .controller('EditUniqueTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        .controller('EditNatureLossCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
             //Used to name the .html file
-            $scope.template = TemplateService.changecontent("uniquetype-detail");
-            $scope.menutitle = NavigationService.makeactive("uniquetype-detail");
+            $scope.template = TemplateService.changecontent("natureloss-detail");
+            $scope.menutitle = NavigationService.makeactive("natureloss-detail");
             TemplateService.title = $scope.menutitle;
             $scope.navigation = NavigationService.getnav();
 
             $scope.header = {
-                "name": "Edit Unique Type"
+                "name": "Edit Nature Loss"
             };
 
-            NavigationService.getOneUniqueType($stateParams.id, function(data) {
+            NavigationService.getOneNatureLoss($stateParams.id, function(data) {
                 $scope.formData = data.data;
                 console.log('$scope.formData', $scope.formData);
 
             });
 
-            $scope.saveUniqueType = function(formValid) {
+            $scope.saveNatureLoss = function(formValid) {
 
                 //  if (formValid.$valid) {
                 //  $scope.formComplete = true;
-                NavigationService.UniqueTypeEditSave($scope.formData, function(data) {
+                NavigationService.NatureLossEditSave($scope.formData, function(data) {
                     if (data.value == true) {
-                        $state.go('uniquetype-list');
+                        $state.go('natureloss-list');
                     }
                 });
-                //  }
             };
+            NavigationService.getAllDepartments(function(data) {
+                $scope.allDepartments = data.data;
 
-            // NavigationService.getAllallUniqueTypes(function(data) {
-            //     $scope.allUniqueTypes = data.data;
-            //     console.log('$scope.allUniqueTypes', $scope.allUniqueTypes);
-            //
-            // });
+            });
+            NavigationService.getAllCauseLoss(function(data) {
+                $scope.allCauseLoss = data.data;
 
+            });
         })
+
+
+
+
+
+
+
+
+        .controller('BusinessBranchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+                //Used to name the .html file
+                $scope.template = TemplateService.changecontent("businessbranch-list");
+                $scope.menutitle = NavigationService.makeactive("businessbranch List");
+                TemplateService.title = $scope.menutitle;
+                $scope.navigation = NavigationService.getnav();
+
+                $scope.showAllBusinessBranch = function() {
+                    NavigationService.getAllBusinessBranch(function(data) {
+                        $scope.allBusinessBranch = data.data;
+
+                    });
+                };
+                $scope.showAllBusinessBranch();
+
+                $scope.deleteBusinessBranch = function(id) {
+
+                    NavigationService.deleteBusinessBranch({
+                        id: id
+                    }, function(data) {
+                        $scope.showAllBusinessBranch();
+
+                    });
+                }
+
+            })
+            .controller('CreateBusinessBranchCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+                //Used to name the .html file
+                $scope.template = TemplateService.changecontent("businessbranch-detail");
+                $scope.menutitle = NavigationService.makeactive("businessbranch-detail");
+                TemplateService.title = $scope.menutitle;
+                $scope.navigation = NavigationService.getnav();
+
+                $scope.header = {
+                    "name": "Create Business Branch"
+                };
+                $scope.formData = {};
+                $scope.saveBusinessBranch = function(formData) {
+
+                    NavigationService.businessbranchSave($scope.formData, function(data) {
+                        console.log(data);
+                        if (data.value == true) {
+                            $state.go('businessbranch-list');
+                        }
+                        // console.log('$scope.allCountriessave', $scope.data);
+
+                    });
+                }
+
+            })
+            .controller('EditBusinessBranchCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+                //Used to name the .html file
+                $scope.template = TemplateService.changecontent("businessbranch-detail");
+                $scope.menutitle = NavigationService.makeactive("businessbranch-detail");
+                TemplateService.title = $scope.menutitle;
+                $scope.navigation = NavigationService.getnav();
+
+                $scope.header = {
+                    "name": "Edit Business Branch"
+                };
+
+                NavigationService.getOneBusinessBranch($stateParams.id, function(data) {
+                    $scope.formData = data.data;
+                    console.log('$scope.formData', $scope.formData);
+
+                });
+
+                $scope.saveBusinessBranch = function(formValid) {
+
+                    //  if (formValid.$valid) {
+                    //  $scope.formComplete = true;
+                    NavigationService.BusinessBranchEditSave($scope.formData, function(data) {
+                        if (data.value == true) {
+                            $state.go('businessbranch-list');
+                        }
+                    });
+                };
+            })
+
 
 
 
