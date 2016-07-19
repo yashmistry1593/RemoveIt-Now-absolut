@@ -143,6 +143,21 @@ var navigationservice = angular.module('navigationservice', [])
                 classis: "active",
                 anchor: "businessbranch-list",
                 icon: "building"
+            }, {
+                name: "Menu",
+                classis: "active",
+                anchor: "menu-list",
+                icon: "building"
+            }, {
+                name: "Role",
+                classis: "active",
+                anchor: "role-list",
+                icon: "building"
+            }, {
+                name: "User",
+                classis: "active",
+                anchor: "user-list",
+                icon: "building"
             }
         ]
     }, {
@@ -1116,5 +1131,156 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
+        getAllMenus: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'menu/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        menuSave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'menu/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneMenu: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'menu/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        menuEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'menu/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteMenu: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'menu/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
+        getAllRoles: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'role/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        roleSave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'role/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneRole: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'role/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        roleEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'role/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteRole: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'role/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
+
+
+
+
+
+
+
+                getAllUsers: function(callback) {
+                    // console.log('form data: ', formData);
+                    $http({
+                        url: adminurl + 'user/getAll',
+                        method: 'POST',
+                        withCredentials: true
+                    }).success(callback);
+                },
+                userSave: function(formData, callback) {
+                    // console.log('form data: ', formData);
+                    $http({
+                        url: adminurl + 'user/saveData',
+                        method: 'POST',
+                        withCredentials: true,
+                        data: formData
+                    }).success(callback);
+                },
+                getOneUser: function(id, callback) {
+                    // console.log('form data: ', formData);
+                    $http({
+                        url: adminurl + 'user/getOne',
+                        method: 'POST',
+                        withCredentials: true,
+                        data: {
+                            "_id": id
+                        }
+                    }).success(callback);
+                },
+                userEditSave: function(id, callback) {
+                    // console.log('form data: ', formData);
+                    $http({
+                        url: adminurl + 'user/saveData',
+                        method: 'POST',
+                        withCredentials: true,
+                        data: id
+                    }).success(callback);
+                },
+                deleteUser: function(id, callback) {
+                    // console.log('form data: ', formData);
+                    $http({
+                        url: adminurl + 'user/delete',
+                        method: 'POST',
+                        withCredentials: true,
+                        data: {
+                            "_id": id.id,
+                        }
+                    }).success(callback);
+                },
     };
 });

@@ -378,6 +378,55 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
             templateUrl: "views/template.html",
             controller: 'EditBusinessBranchCtrl'
         })
+        .state('menu-list', {
+            url: "/menu-list",
+            templateUrl: "views/template.html",
+            controller: 'MenuCtrl'
+        })
+        .state('createmenu', {
+            url: "/menu-create",
+            templateUrl: "views/template.html",
+            controller: 'CreateMenuCtrl'
+        })
+        .state('editmenu', {
+            url: "/menu-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditMenuCtrl'
+        })
+        .state('role-list', {
+            url: "/role-list",
+            templateUrl: "views/template.html",
+            controller: 'RoleCtrl'
+        })
+        .state('createrole', {
+            url: "/role-create",
+            templateUrl: "views/template.html",
+            controller: 'CreateRoleCtrl'
+        })
+        .state('editrole', {
+            url: "/role-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditRoleCtrl'
+        })
+
+
+
+        .state('user-list', {
+            url: "/user-list",
+            templateUrl: "views/template.html",
+            controller: 'UserCtrl'
+        })
+        .state('createuser', {
+            url: "/user-create",
+            templateUrl: "views/template.html",
+            controller: 'CreateUserCtrl'
+        })
+        .state('edituser', {
+            url: "/user-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditUserCtrl'
+        })
+
 
 
     .state('timeline', {

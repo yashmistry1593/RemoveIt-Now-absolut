@@ -178,13 +178,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-
-
-
-
-
-
-.controller('TypeOfOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('TypeOfOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("typeOfOffice-list");
         $scope.menutitle = NavigationService.makeactive("typeOfOffice List");
@@ -258,15 +252,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-
-
-
-
-
-
-
-
-.controller('ZoneCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('ZoneCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("zone-list");
         $scope.menutitle = NavigationService.makeactive("zone List");
@@ -360,13 +346,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
     })
-
-
-
-
-
-
-.controller('StateCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('StateCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("state-list");
         $scope.menutitle = NavigationService.makeactive("state List");
@@ -457,11 +437,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
     })
-
-
-
-
-.controller('DistrictCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('DistrictCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("district-list");
         $scope.menutitle = NavigationService.makeactive("district List");
@@ -554,12 +530,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
     })
-
-
-
-
-
-.controller('CurrencyCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('CurrencyCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("currency-list");
         $scope.menutitle = NavigationService.makeactive("currency List");
@@ -640,13 +611,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-
-
-
-
-
-
-.controller('CityCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('CityCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("city-list");
         $scope.menutitle = NavigationService.makeactive("city List");
@@ -738,13 +703,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
     })
-
-
-
-
-
-
-.controller('DepartmentCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('DepartmentCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("department-list");
         $scope.menutitle = NavigationService.makeactive("department List");
@@ -1455,7 +1414,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-.controller('CauseLossCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('CauseLossCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("causeloss-list");
         $scope.menutitle = NavigationService.makeactive("causeloss List");
@@ -1541,191 +1500,511 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         });
     })
-
-
-
-
-
     .controller('NatureLossCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("natureloss-list");
+        $scope.menutitle = NavigationService.makeactive("natureloss List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.showAllNatureLoss = function() {
+            NavigationService.getAllNatureLoss(function(data) {
+                $scope.allNatureLoss = data.data;
+
+            });
+        };
+        $scope.showAllNatureLoss();
+
+        $scope.deleteNatureLoss = function(id) {
+
+            NavigationService.deleteNatureLoss({
+                id: id
+            }, function(data) {
+                $scope.showAllNatureLoss();
+
+            });
+        }
+
+    })
+    .controller('CreateNatureLossCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("natureloss-detail");
+        $scope.menutitle = NavigationService.makeactive("natureloss-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Create Nature Loss"
+        };
+        $scope.formData = {};
+        $scope.saveNatureLoss = function(formData) {
+
+            NavigationService.naturelossSave($scope.formData, function(data) {
+                console.log(data);
+                if (data.value == true) {
+                    $state.go('natureloss-list');
+                }
+                // console.log('$scope.allCountriessave', $scope.data);
+
+            });
+        }
+        NavigationService.getAllDepartments(function(data) {
+            $scope.allDepartments = data.data;
+
+        });
+        NavigationService.getAllCauseLoss(function(data) {
+            $scope.allCauseLoss = data.data;
+
+        });
+
+    })
+    .controller('EditNatureLossCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("natureloss-detail");
+        $scope.menutitle = NavigationService.makeactive("natureloss-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Edit Nature Loss"
+        };
+
+        NavigationService.getOneNatureLoss($stateParams.id, function(data) {
+            $scope.formData = data.data;
+            console.log('$scope.formData', $scope.formData);
+
+        });
+
+        $scope.saveNatureLoss = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.NatureLossEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('natureloss-list');
+                }
+            });
+        };
+        NavigationService.getAllDepartments(function(data) {
+            $scope.allDepartments = data.data;
+
+        });
+        NavigationService.getAllCauseLoss(function(data) {
+            $scope.allCauseLoss = data.data;
+
+        });
+    })
+    .controller('BusinessBranchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("businessbranch-list");
+        $scope.menutitle = NavigationService.makeactive("businessbranch List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.showAllBusinessBranch = function() {
+            NavigationService.getAllBusinessBranch(function(data) {
+                $scope.allBusinessBranch = data.data;
+
+            });
+        };
+        $scope.showAllBusinessBranch();
+
+        $scope.deleteBusinessBranch = function(id) {
+
+            NavigationService.deleteBusinessBranch({
+                id: id
+            }, function(data) {
+                $scope.showAllBusinessBranch();
+
+            });
+        }
+
+    })
+    .controller('CreateBusinessBranchCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("businessbranch-detail");
+        $scope.menutitle = NavigationService.makeactive("businessbranch-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Create Business Branch"
+        };
+        $scope.formData = {};
+        $scope.saveBusinessBranch = function(formData) {
+
+            NavigationService.businessbranchSave($scope.formData, function(data) {
+                console.log(data);
+                if (data.value == true) {
+                    $state.go('businessbranch-list');
+                }
+                // console.log('$scope.allCountriessave', $scope.data);
+
+            });
+        }
+
+    })
+    .controller('EditBusinessBranchCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("businessbranch-detail");
+        $scope.menutitle = NavigationService.makeactive("businessbranch-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Edit Business Branch"
+        };
+
+        NavigationService.getOneBusinessBranch($stateParams.id, function(data) {
+            $scope.formData = data.data;
+            console.log('$scope.formData', $scope.formData);
+
+        });
+
+        $scope.saveBusinessBranch = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.BusinessBranchEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('businessbranch-list');
+                }
+            });
+        };
+    })
+
+
+
+
+
+
+
+
+
+.controller('MenuCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("menu-list");
+        $scope.menutitle = NavigationService.makeactive("menu List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.showAllMenus = function() {
+            NavigationService.getAllMenus(function(data) {
+                $scope.allMenus = data.data;
+                console.log('$scope.allMenus', $scope.allZones);
+            });
+
+        };
+        $scope.showAllMenus();
+
+
+        $scope.deleteMenu = function(id) {
+
+            NavigationService.deleteMenu({
+                id: id
+            }, function(data) {
+                $scope.showAllMenus();
+
+            });
+        }
+
+
+    })
+    .controller('CreateMenuCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("menu-detail");
+        $scope.menutitle = NavigationService.makeactive("menu-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Create Menu"
+        };
+        $scope.formData = {};
+        $scope.saveMenu = function(formData) {
+
+            NavigationService.menuSave($scope.formData, function(data) {
+                console.log(data);
+                if (data.value == true) {
+                    $state.go('menu-list');
+                }
+                // console.log('$scope.allCountriessave', $scope.data);
+
+            });
+        }
+
+        // NavigationService.getAllCountries(function(data) {
+        //     $scope.allCountries = data.data;
+        //     console.log('$scope.allCountries', $scope.allCountries);
+        //
+        // });
+
+    })
+    .controller('EditMenuCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("menu-detail");
+        $scope.menutitle = NavigationService.makeactive("menu-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Edit Menu"
+        };
+
+        NavigationService.getOneMenu($stateParams.id, function(data) {
+            $scope.formData = data.data;
+            // console.log('$scope.oneCountry', $scope.oneCountry);
+
+        });
+
+        $scope.saveMenu = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.menuEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('menu-list');
+                }
+            });
+            //  }
+        };
+
+        // NavigationService.getAllCountries(function(data) {
+        //     $scope.allCountries = data.data;
+        //     console.log('$scope.allCountries', $scope.allCountries);
+        //
+        // });
+
+    })
+
+
+
+
+
+
+
+
+
+.controller('RoleCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("role-list");
+        $scope.menutitle = NavigationService.makeactive("role List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.showAllRoles = function() {
+            NavigationService.getAllRoles(function(data) {
+                $scope.allRoles = data.data;
+                console.log('$scope.allRoles', $scope.allZones);
+            });
+
+        };
+        $scope.showAllRoles();
+
+
+        $scope.deleteRole = function(id) {
+
+            NavigationService.deleteRole({
+                id: id
+            }, function(data) {
+                $scope.showAllRoles();
+
+            });
+        }
+
+
+    })
+    .controller('CreateRoleCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("role-detail");
+        $scope.menutitle = NavigationService.makeactive("role-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Create Role"
+        };
+        $scope.formData = {};
+        $scope.UserType = ['internal', 'external'];
+        $scope.saveRole = function(formData) {
+
+            NavigationService.roleSave($scope.formData, function(data) {
+                console.log(data);
+                if (data.value == true) {
+                    $state.go('role-list');
+                }
+                // console.log('$scope.allCountriessave', $scope.data);
+
+            });
+        }
+
+        NavigationService.getAllMenus(function(data) {
+            $scope.allMenus = data.data;
+            console.log('$scope.allMenus', $scope.allZones);
+        });
+
+    })
+    .controller('EditRoleCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("role-detail");
+        $scope.menutitle = NavigationService.makeactive("role-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Edit Role"
+        };
+        $scope.UserType = ['internal', 'external'];
+        NavigationService.getOneRole($stateParams.id, function(data) {
+            $scope.formData = data.data;
+            // console.log('$scope.oneCountry', $scope.oneCountry);
+
+        });
+
+        $scope.saveRole = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.roleEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('role-list');
+                }
+            });
+            //  }
+        };
+
+        NavigationService.getAllMenus(function(data) {
+            $scope.allMenus = data.data;
+            console.log('$scope.allMenus', $scope.allZones);
+        });
+
+    })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    .controller('UserCtrl', function($scope, TemplateService, NavigationService, $timeout) {
             //Used to name the .html file
-            $scope.template = TemplateService.changecontent("natureloss-list");
-            $scope.menutitle = NavigationService.makeactive("natureloss List");
+            $scope.template = TemplateService.changecontent("user-list");
+            $scope.menutitle = NavigationService.makeactive("user List");
             TemplateService.title = $scope.menutitle;
             $scope.navigation = NavigationService.getnav();
-
-            $scope.showAllNatureLoss = function() {
-                NavigationService.getAllNatureLoss(function(data) {
-                    $scope.allNatureLoss = data.data;
-
+            $scope.showAllUsers = function() {
+                NavigationService.getAllUsers(function(data) {
+                    $scope.allUsers = data.data;
+                    console.log('$scope.allUsers', $scope.allZones);
                 });
+
             };
-            $scope.showAllNatureLoss();
+            $scope.showAllUsers();
 
-            $scope.deleteNatureLoss = function(id) {
 
-                NavigationService.deleteNatureLoss({
+            $scope.deleteUser = function(id) {
+
+                NavigationService.deleteUser({
                     id: id
                 }, function(data) {
-                    $scope.showAllNatureLoss();
+                    $scope.showAllUsers();
 
                 });
             }
 
+
         })
-        .controller('CreateNatureLossCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        .controller('CreateUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
             //Used to name the .html file
-            $scope.template = TemplateService.changecontent("natureloss-detail");
-            $scope.menutitle = NavigationService.makeactive("natureloss-detail");
+            $scope.template = TemplateService.changecontent("user-detail");
+            $scope.menutitle = NavigationService.makeactive("user-detail");
             TemplateService.title = $scope.menutitle;
             $scope.navigation = NavigationService.getnav();
 
             $scope.header = {
-                "name": "Create Nature Loss"
+                "name": "Create User"
             };
+            $scope.UserType = ['internal', 'external'];
+            $scope.Status = ['Active', 'Inactive'];
             $scope.formData = {};
-            $scope.saveNatureLoss = function(formData) {
+            $scope.UserType = ['internal', 'external'];
+            $scope.saveUser = function(formData) {
 
-                NavigationService.naturelossSave($scope.formData, function(data) {
+                NavigationService.userSave($scope.formData, function(data) {
                     console.log(data);
                     if (data.value == true) {
-                        $state.go('natureloss-list');
+                        $state.go('user-list');
                     }
                     // console.log('$scope.allCountriessave', $scope.data);
 
                 });
             }
+
+            NavigationService.getAllMenus(function(data) {
+                $scope.allMenus = data.data;
+                console.log('$scope.allMenus', $scope.allZones);
+            });
+            NavigationService.getAllRoles(function(data) {
+                $scope.allRoles = data.data;
+                console.log('$scope.allRoles', $scope.allZones);
+            });
             NavigationService.getAllDepartments(function(data) {
                 $scope.allDepartments = data.data;
 
             });
-            NavigationService.getAllCauseLoss(function(data) {
-                $scope.allCauseLoss = data.data;
-
-            });
 
         })
-        .controller('EditNatureLossCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        .controller('EditUserCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
             //Used to name the .html file
-            $scope.template = TemplateService.changecontent("natureloss-detail");
-            $scope.menutitle = NavigationService.makeactive("natureloss-detail");
+            $scope.template = TemplateService.changecontent("user-detail");
+            $scope.menutitle = NavigationService.makeactive("user-detail");
             TemplateService.title = $scope.menutitle;
             $scope.navigation = NavigationService.getnav();
 
             $scope.header = {
-                "name": "Edit Nature Loss"
+                "name": "Edit User"
             };
-
-            NavigationService.getOneNatureLoss($stateParams.id, function(data) {
+            $scope.UserType = ['internal', 'external'];
+            $scope.Status = ['Active', 'Inactive'];
+            $scope.UserType = ['internal', 'external'];
+            NavigationService.getOneUser($stateParams.id, function(data) {
                 $scope.formData = data.data;
-                console.log('$scope.formData', $scope.formData);
+                // console.log('$scope.oneCountry', $scope.oneCountry);
 
             });
 
-            $scope.saveNatureLoss = function(formValid) {
+            $scope.saveUser = function(formValid) {
 
                 //  if (formValid.$valid) {
                 //  $scope.formComplete = true;
-                NavigationService.NatureLossEditSave($scope.formData, function(data) {
+                NavigationService.userEditSave($scope.formData, function(data) {
                     if (data.value == true) {
-                        $state.go('natureloss-list');
+                        $state.go('user-list');
                     }
                 });
+                //  }
             };
+
+            NavigationService.getAllMenus(function(data) {
+                $scope.allMenus = data.data;
+                console.log('$scope.allMenus', $scope.allZones);
+            });
+            NavigationService.getAllRoles(function(data) {
+                $scope.allRoles = data.data;
+                console.log('$scope.allRoles', $scope.allZones);
+            });
             NavigationService.getAllDepartments(function(data) {
                 $scope.allDepartments = data.data;
 
             });
-            NavigationService.getAllCauseLoss(function(data) {
-                $scope.allCauseLoss = data.data;
 
-            });
         })
-
-
-
-
-
-
-
-
-        .controller('BusinessBranchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-                //Used to name the .html file
-                $scope.template = TemplateService.changecontent("businessbranch-list");
-                $scope.menutitle = NavigationService.makeactive("businessbranch List");
-                TemplateService.title = $scope.menutitle;
-                $scope.navigation = NavigationService.getnav();
-
-                $scope.showAllBusinessBranch = function() {
-                    NavigationService.getAllBusinessBranch(function(data) {
-                        $scope.allBusinessBranch = data.data;
-
-                    });
-                };
-                $scope.showAllBusinessBranch();
-
-                $scope.deleteBusinessBranch = function(id) {
-
-                    NavigationService.deleteBusinessBranch({
-                        id: id
-                    }, function(data) {
-                        $scope.showAllBusinessBranch();
-
-                    });
-                }
-
-            })
-            .controller('CreateBusinessBranchCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
-                //Used to name the .html file
-                $scope.template = TemplateService.changecontent("businessbranch-detail");
-                $scope.menutitle = NavigationService.makeactive("businessbranch-detail");
-                TemplateService.title = $scope.menutitle;
-                $scope.navigation = NavigationService.getnav();
-
-                $scope.header = {
-                    "name": "Create Business Branch"
-                };
-                $scope.formData = {};
-                $scope.saveBusinessBranch = function(formData) {
-
-                    NavigationService.businessbranchSave($scope.formData, function(data) {
-                        console.log(data);
-                        if (data.value == true) {
-                            $state.go('businessbranch-list');
-                        }
-                        // console.log('$scope.allCountriessave', $scope.data);
-
-                    });
-                }
-
-            })
-            .controller('EditBusinessBranchCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
-                //Used to name the .html file
-                $scope.template = TemplateService.changecontent("businessbranch-detail");
-                $scope.menutitle = NavigationService.makeactive("businessbranch-detail");
-                TemplateService.title = $scope.menutitle;
-                $scope.navigation = NavigationService.getnav();
-
-                $scope.header = {
-                    "name": "Edit Business Branch"
-                };
-
-                NavigationService.getOneBusinessBranch($stateParams.id, function(data) {
-                    $scope.formData = data.data;
-                    console.log('$scope.formData', $scope.formData);
-
-                });
-
-                $scope.saveBusinessBranch = function(formValid) {
-
-                    //  if (formValid.$valid) {
-                    //  $scope.formComplete = true;
-                    NavigationService.BusinessBranchEditSave($scope.formData, function(data) {
-                        if (data.value == true) {
-                            $state.go('businessbranch-list');
-                        }
-                    });
-                };
-            })
 
 
 

@@ -1,0 +1,129 @@
+<div class="breadcrumbs">
+    <ul>
+        <li>
+            <a title="Home">Company Setup</a>
+        </li>
+        <li>
+            <a ui-sref="branch-list" title="Branch List">{{header.name}}</a>
+        </li>
+    </ul>
+</div>
+
+<div class="heading-sec">
+    <div class="row">
+        <div class="col-md-4 column">
+            <div class="heading-profile">
+                <h2>{{header.name}}</h2>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Top Bar Chart -->
+<div class="panel-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget">
+                <div class="form-elements-sec">
+                    <div class="widget-title">
+                        <h3>User</h3>
+                    </div>
+                    <form name="userForm" role="form" class="sec ng-pristine ng-valid">
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-group">
+                                    <label for="">User Name*</label>
+                                    <input type="text" name="name" placeholder="Role Name" ng-model="formData.name" class="form-control" required>
+                                    <div class="error-msg" ng-show="userForm.name.$error.required && userForm.name.$touched">Please Enter User Name.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Email*</label>
+                                    <input type="text" name="email" placeholder="Email" ng-model="formData.email" class="form-control" required>
+                                    <div class="error-msg" ng-show="userForm.email.$error.required && userForm.email.$touched">Please Enter Email.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Password*</label>
+                                    <input type="password" name="password" placeholder="Password" ng-model="formData.password" class="form-control" required>
+                                    <div class="error-msg" ng-show="userForm.password.$error.required && userForm.password.$touched">Please Enter Password.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledSelect">Employee Type*</label>
+                                    <select class="form-control" ng-model="formData.emp_type" value="{{type}}">
+                                        <option ng-selected="true" value="">Select Employee Type</option>
+                                        <option>{{type}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledSelect">Access Type*</label>
+                                    <select class="form-control" ng-model="formData.access" value="{{type}}">
+                                        <option ng-selected="true" value="">Select Access Type</option>
+                                        <option>{{type}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledSelect">Status*</label>
+                                    <select class="form-control" ng-model="formData.status" value="{{s}}">
+                                        <option ng-selected="true" value="">Select Status</option>
+                                        <option ng-repeat="s in Status">{{s}}</option>
+                                    </select>
+                                </div>
+
+
+
+                                <div class="form-group">
+                                    <label for="disabledSelect">User Type*</label>
+                                    <select class="form-control" ng-model="formData.user_type" value="{{type}}">
+                                        <option ng-selected="true" value="">Select User Type</option>
+                                        <option ng-repeat="type in UserType">{{type}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledSelect">Role Name*</label>
+                                    <select class="form-control" ng-model="formData.roleName" value="{{role.name}}">
+                                        <option ng-selected="true" value="">Select Role Name</option>
+                                        <option ng-repeat="role in allRoles">{{role.name}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledSelect">Menu*</label>
+                                    <select class="form-control" ng-model="formData.menu" value="{{menu.main_menu}}">
+                                        <option ng-selected="true" value="">Select Menu</option>
+                                        <option ng-repeat="menu in allMenus">{{menu.main_menu}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Role Description</label>
+                                    <input type="text" name="roleDescription" placeholder="Role Description" ng-model="formData.roleDescription" class="form-control" required>
+                                    <div class="error-msg" ng-show="userForm.roleDescription.$error.required && userForm.roleDescription.$touched">Please Enter Role Description.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Back Days</label>
+                                    <input type="text" name="back_days" placeholder="Back Days" ng-model="formData.back_days" class="form-control" required>
+                                    <div class="error-msg" ng-show="userForm.back_days.$error.required && userForm.back_days.$touched">Please Enter Back Days.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="disabledSelect">Department*</label>
+                                    <select class="form-control" ng-model="formData.department" value="{{dist.name}}">
+                                        <option ng-selected="true" value="">Select Department</option>
+                                        <option ng-repeat="dept in allDepartments">{{dept.name}}</option>
+                                    </select>
+                                </div>
+                                <!-- <div class="form-group">
+                                    <label for="disabledSelect">Branch*</label>
+                                    <select class="form-control" ng-model="formData.branch" value="{{dist.name}}">
+                                        <option ng-selected="true" value="">Select Department</option>
+                                        <option ng-repeat="dept in allDepartments">{{dept.name}}</option>
+                                    </select>
+                                </div> -->
+
+                            </div>
+                        </div>
+                        <div class="text-center mt20">
+                            <button class="btn btn-default" type="submit" ng-click="saveUser(formData)" ng-disabled="userForm.$invalid">Save</button>
+                            <button class="btn btn-default" ui-sref="user-list">Cancel</button>
+                        </div>
+                </div>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>

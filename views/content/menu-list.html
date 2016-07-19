@@ -1,13 +1,13 @@
 <!-- <div id="progressBar">
 	<div class="loader"></div>
-<!-- </divctions --> 
+</div> -->
 <div class="breadcrumbs">
     <ul>
         <li>
             <a title="Home">Company Setup</a>
         </li>
         <li>
-            <a ui-sref="branch-list" title="Branch List">Unique Type List</a>
+            <a ui-sref="branch-list" title="Branch List">Menu List</a>
         </li>
     </ul>
 </div>
@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-md-4 column">
             <div class="heading-profile">
-                <h2>Unique Type List</h2>
+                <h2>Menu List</h2>
             </div>
         </div>
     </div>
@@ -30,24 +30,30 @@
 
                     <div class="widget-title">
                         <div class="pull-right">
-                            <a class="btn btn-primary" ui-sref="createuniquetype">Add New</a>
+                            <a class="btn btn-primary" ui-sref="createmenu">Add New</a>
                         </div>
-                        <h3>List of Unique Type</h3>
+                        <h3>List of Menu</h3>
                     </div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Unique Type</th>
+                                    <th>Main Menu</th>
+                                    <th>Sub Menu</th>
+                                    <th>Right Menu</th>
+                                    <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="uniquetype in allUniqueTypes">
-                                    <td>{{uniquetype.name}}</td>
+                                <tr ng-repeat="menu in allMenus">
+                                    <td>{{menu.main_menu}}</td>
+                                    <td>{{menu.sub_menu}}</td>
+                                    <td>{{menu.right_menu}}</td>
+                                    <td>{{menu.status}}</td>
                                     <td>
-                                      <a class="btn btn-primary" ui-sref="edituniquetype({id:uniquetype._id})"><i class="fa fa-pencil"></i></a>
-                                      <a class="btn btn-danger" ng-click="deleteUniqueType(uniquetype._id)"><i class="fa fa-trash"></i></a>
+                                      <a class="btn btn-primary" ui-sref="editmenu({id:menu._id})"><i class="fa fa-pencil"></i></a>
+                                      <a class="btn btn-danger" ng-click="deleteMenu(menu._id)"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                             </tbody>
