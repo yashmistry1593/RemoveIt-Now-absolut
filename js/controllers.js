@@ -1931,7 +1931,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 "name": "Create User"
             };
             $scope.UserType = ['internal', 'external'];
-            $scope.Status = ['Active', 'Inactive'];
+            $scope.userStatus = ['Active', 'Inactive'];
             $scope.formData = {};
             $scope.UserType = ['internal', 'external'];
             $scope.saveUser = function(formData) {
@@ -1970,12 +1970,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.header = {
                 "name": "Edit User"
             };
+
+            $scope.UserRole = [{
+                user_type: '',
+                roleName: '',
+                menu: '',
+                roleDescription: ''
+            }];
+            console.log('addd',$scope.UserRole);
+
             $scope.UserType = ['internal', 'external'];
-            $scope.Status = ['Active', 'Inactive'];
+            $scope.userStatus = ['Active', 'Inactive'];
             $scope.UserType = ['internal', 'external'];
             NavigationService.getOneUser($stateParams.id, function(data) {
+                $scope.UserRole = data.data.role;
+                console.log('inside',$scope.UserRole);
                 $scope.formData = data.data;
-                // console.log('$scope.oneCountry', $scope.oneCountry);
+                console.log('$scope.formData', $scope.formData);
 
             });
 

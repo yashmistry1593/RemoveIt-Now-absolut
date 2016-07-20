@@ -63,7 +63,7 @@
                                     <label for="disabledSelect">Status*</label>
                                     <select class="form-control" ng-model="formData.status" value="{{s}}">
                                         <option ng-selected="true" value="">Select Status</option>
-                                        <option ng-repeat="s in Status">{{s}}</option>
+                                        <option ng-repeat="s in userStatus">{{s}}</option>
                                     </select>
                                 </div>
 
@@ -71,30 +71,32 @@
 
                                 <div class="form-group">
                                     <label for="disabledSelect">User Type*</label>
-                                    <select class="form-control" ng-model="formData.user_type" value="{{type}}">
+                                    <select class="form-control" ng-model="UserRole[0].user_type" value="{{type}}">
                                         <option ng-selected="true" value="">Select User Type</option>
                                         <option ng-repeat="type in UserType">{{type}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="disabledSelect">Role Name*</label>
-                                    <select class="form-control" ng-model="formData.roleName" value="{{role.name}}">
+                                    <select class="form-control" ng-model="UserRole[0].roleName" value="{{role.name}}">
                                         <option ng-selected="true" value="">Select Role Name</option>
                                         <option ng-repeat="role in allRoles">{{role.name}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="disabledSelect">Menu*</label>
-                                    <select class="form-control" ng-model="formData.menu" value="{{menu.main_menu}}">
+                                    <select class="form-control" ng-model="UserRole[0].menu" value="{{menu.main_menu}}">
                                         <option ng-selected="true" value="">Select Menu</option>
                                         <option ng-repeat="menu in allMenus">{{menu.main_menu}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Role Description</label>
-                                    <input type="text" name="roleDescription" placeholder="Role Description" ng-model="formData.roleDescription" class="form-control" required>
+                                    <input type="text" name="roleDescription" placeholder="Role Description" ng-model="UserRole[0].roleDescription" class="form-control" required>
                                     <div class="error-msg" ng-show="userForm.roleDescription.$error.required && userForm.roleDescription.$touched">Please Enter Role Description.</div>
                                 </div>
+
+
                                 <div class="form-group">
                                     <label for="">Back Days</label>
                                     <input type="text" name="back_days" placeholder="Back Days" ng-model="formData.back_days" class="form-control" required>
