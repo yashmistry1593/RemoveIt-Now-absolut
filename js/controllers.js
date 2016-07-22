@@ -464,6 +464,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
 
     })
+    .controller('EmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("employee-list");
+        $scope.menutitle = NavigationService.makeactive("Employee");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+      })
+      .controller('CreateEmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+          //Used to name the .html file
+          $scope.template = TemplateService.changecontent("employee-detail");
+          $scope.menutitle = NavigationService.makeactive("Create-Employee");
+          TemplateService.title = $scope.menutitle;
+          $scope.navigation = NavigationService.getnav();
+        })
+        .controller('EditEmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+            //Used to name the .html file
+            $scope.template = TemplateService.changecontent("employee-detail");
+            $scope.menutitle = NavigationService.makeactive("Edit-Employee");
+            TemplateService.title = $scope.menutitle;
+            $scope.navigation = NavigationService.getnav();
+          })
     .controller('CreateDistrictCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("district-detail");

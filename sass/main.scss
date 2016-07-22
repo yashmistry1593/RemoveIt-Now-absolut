@@ -484,6 +484,22 @@ $trans-black: rgba( black, .15 );
 .table .btn {
     padding: 0 5px;
 }
+.chkbx{
+  min-height: 15px !important;
+  padding-left: 6px !important;
+}
+.ipbl{
+  display: inline-block;
+}
+.wd20{
+  width: 20%;
+}
+.wd79{
+  width: 79%;
+}
+.bl{
+  display: block;
+}
 /* Start writing sass here */
 @import "fancybox-override";
 @import "other/mobile";

@@ -427,7 +427,21 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
             controller: 'EditUserCtrl'
         })
 
-
+        .state('employee-list', {
+                url: "/employee-list",
+                templateUrl: "views/template.html",
+                controller: 'EmployeeCtrl'
+            })
+            .state('createemployee', {
+                url: "/employee-create",
+                templateUrl: "views/template.html",
+                controller: 'CreateEmployeeCtrl'
+            })
+            .state('editemployee', {
+                url: "/employee-edit/:id",
+                templateUrl: "views/template.html",
+                controller: 'EditEmployeeCtrl'
+            })
 
     .state('timeline', {
         url: "/timeline",

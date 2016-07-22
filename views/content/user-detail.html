@@ -109,13 +109,27 @@
                                         <option ng-repeat="dept in allDepartments">{{dept.name}}</option>
                                     </select>
                                 </div>
-                                <!-- <div class="form-group">
+                                <div class="form-group">
+                                  <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox"> Is Surveyor
+                                    </label>
+                                  </div>
+                                </div>
+                                <div class="form-group">
+                                  <label for="example1">Module right</label>
+                                  <textarea id="example1" class="form-control"> </textarea>
+                                </div>
+
+                                <div class="form-group">
                                     <label for="disabledSelect">Branch*</label>
-                                    <select class="form-control" ng-model="formData.branch" value="{{dist.name}}">
+                                <input type="text" name="branch" ng-model="formData.branch" class="form-control" required>
+                                    <div class="error-msg" ng-show="userForm.branch.$error.required && userForm.branch.$touched">Please Enter Branch.</div>
+                                    <!-- <select class="form-control" ng-model="formData.branch" value="{{dist.name}}">
                                         <option ng-selected="true" value="">Select Department</option>
                                         <option ng-repeat="dept in allDepartments">{{dept.name}}</option>
-                                    </select>
-                                </div> -->
+                                    </select> -->
+                                </div>
 
                             </div>
                         </div>
