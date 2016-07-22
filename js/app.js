@@ -442,7 +442,51 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
                 templateUrl: "views/template.html",
                 controller: 'EditEmployeeCtrl'
             })
-
+            .state('product-list', {
+                    url: "/product-list",
+                    templateUrl: "views/template.html",
+                    controller: 'ProductCtrl'
+                })
+                .state('createproduct', {
+                    url: "/product-detail",
+                    templateUrl: "views/template.html",
+                    controller: 'CreateProductCtrl'
+                })
+                .state('editproduct', {
+                    url: "/product-edit/:id",
+                    templateUrl: "views/template.html",
+                    controller: 'EditProductCtrl'
+                })
+                .state('salvage-list', {
+                        url: "/salvage-list",
+                        templateUrl: "views/template.html",
+                        controller: 'SalvageCtrl'
+                    })
+                    .state('createsalvage', {
+                        url: "/salvage-detail",
+                        templateUrl: "views/template.html",
+                        controller: 'CreateSalvageCtrl'
+                    })
+                    .state('editSalvage', {
+                        url: "/salvage-edit/:id",
+                        templateUrl: "views/template.html",
+                        controller: 'EditSalvageCtrl'
+                    })
+                    .state('createbankmaster', {
+                        url: "/bankmaster-detail",
+                        templateUrl: "views/template.html",
+                        controller: 'CreateBankmasterCtrl'
+                    })
+                    .state('company-list', {
+                            url: "/company-list",
+                            templateUrl: "views/template.html",
+                            controller: 'CompanyCtrl'
+                        })
+                        .state('createcompany', {
+                            url: "/company-detail",
+                            templateUrl: "views/template.html",
+                            controller: 'CreateCompanyCtrl'
+                        })
     .state('timeline', {
         url: "/timeline",
         templateUrl: "views/template.html",

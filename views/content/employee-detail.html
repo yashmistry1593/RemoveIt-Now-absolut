@@ -106,7 +106,45 @@
               </div>
             </div>
           </div>
+          <div class="widget">
+            <div class="form-elements-sec">
+              <div class="row">
+                <div class="col-md-6">
+                  <div class="form-group">
+  <div class="form-group">
+    <div class="widget-title">
+      <h3>Surveyor</h3>
+    </div>
+  <div class="checkbox">
+                        <label>
+                          <input type="checkbox"> Is Surveyor
+                        </label>
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">Valid Upto</label>
+                        <input type="date" placeholder="Valid Upto" id="exampleInputEmail1" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <label for="exampleInputEmail1">License#</label>
+                        <input type="text" placeholder="License" id="exampleInputEmail1" class="form-control">
+                      </div>
+                      <div class="form-group">
+                        <div class="user-img mt25">
+                          <label >Upload Document</label>
+                            <!-- <img ng-src="{{userForm.image|uploadpath}}" class="img-responsive margin-auto" ng-if="userForm.image" style="height:200px;"> -->
+                            <img ng-src="{{formData.symbol|uploadpath}}" ng-if="formData.symbol" alt="" class="img-responsive margin-auto" height="50px" width="50px">
+                            <upload-image ng-model="formData.symbol" no-view></upload-image>
+                        </div>
+                    </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
+
         <div class="col-md-6">
           <div class="widget">
             <div class="form-elements-sec">
@@ -142,54 +180,43 @@
           </div>
           <div class="widget">
             <div class="form-elements-sec">
-              <div class="row">
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <label for="disabledSelect">Status</label>
-                    <select class="form-control">
-                      <option value="select">Select Status</option>
-                      <option value="select">Active</option>
-                      <option value="select">Inactive</option>
-                    </select>
-                  </div>
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> Is a Billable Branch
-                    </label>
-                  </div>
-                  <div class="form-group">
-                    <label for="disabledSelect">Series Format</label>
-                    <select class="form-control">
-                      <option value="select">Select Series Format</option>
-                      <option value="select">1</option>
-                      <option value="select">2</option>
-                    </select>
-                  </div>
-                </div>
-                <div class="col-md-6">
-                  <label for="disabledSelect">TAT</label>
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> STAT
-                    </label>
-                  </div>
-                  <div class="checkbox">
-                    <label>
-                      <input type="checkbox"> ITAT
-                    </label>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> FSR
-                      </label>
-                    </div>
-                    <div class="checkbox">
-                      <label>
-                        <input type="checkbox"> R2NR
-                      </label>
-                    </div>
-                  </div>
-                </div>
+              <div class="widget-title">
+                <h3>Other</h3>
               </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Date of Birth*</label>
+                <input type="date" placeholder="DOB" id="exampleInputEmail1" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Marriage Date</label>
+                <input type="date" placeholder="marriage Date" id="exampleInputEmail1" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Joining Date*</label>
+                <input type="date" placeholder="Join Date" id="exampleInputEmail1" class="form-control">
+              </div>
+              <div class="form-group">
+                <label for="exampleInputEmail1">Leaving Date</label>
+                <input type="date" placeholder="leaving Date" id="exampleInputEmail1" class="form-control">
+              </div>
+              <div class="checkbox">
+                                    <label>
+                                      <input type="checkbox"> Is SBC
+                                    </label><span> (service branch cell)</span>
+                                  </div>
+                                  <div class="checkbox">
+                                                        <label>
+                                                          <input type="checkbox"> Is Field
+                                                        </label><span> (on field employee)</span>
+
+                                                      </div>
+                                                      <div class="form-group">
+                                                        <label for="disabledSelect">Status</label>
+                                                        <select class="form-control wd30">
+                                                          <option value="select">Active</option>
+                                                          <option value="select">Inactive</option>
+                                                        </select>
+                                                      </div>
             </div>
           </div>
         </div>

@@ -480,11 +480,81 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         })
         .controller('EditEmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
             //Used to name the .html file
-            $scope.template = TemplateService.changecontent("employee-detail");
+            $scope.template = TemplateService.changecontent("edit-employee");
             $scope.menutitle = NavigationService.makeactive("Edit-Employee");
             TemplateService.title = $scope.menutitle;
             $scope.navigation = NavigationService.getnav();
           })
+          .controller('ProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+              //Used to name the .html file
+              $scope.template = TemplateService.changecontent("product-list");
+              $scope.menutitle = NavigationService.makeactive("product");
+              TemplateService.title = $scope.menutitle;
+              $scope.navigation = NavigationService.getnav();
+            })
+            .controller('CreateProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+                //Used to name the .html file
+                $scope.template = TemplateService.changecontent("product-detail");
+                $scope.menutitle = NavigationService.makeactive("createproduct");
+                TemplateService.title = $scope.menutitle;
+                $scope.navigation = NavigationService.getnav();
+              })
+              .controller('EditProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+                  //Used to name the .html file
+                  $scope.template = TemplateService.changecontent("edit-product");
+                  $scope.menutitle = NavigationService.makeactive("Edit-Product");
+                  TemplateService.title = $scope.menutitle;
+                  $scope.navigation = NavigationService.getnav();
+                })
+                // .controller('CreateSalvageCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+                //     //Used to name the .html file
+                //     $scope.template = TemplateService.changecontent("salvage-create");
+                //     $scope.menutitle = NavigationService.makeactive("createsalvage");
+                //     TemplateService.title = $scope.menutitle;
+                //     $scope.navigation = NavigationService.getnav();
+                //   })
+                .controller('SalvageCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+                    //Used to name the .html file
+                    $scope.template = TemplateService.changecontent("salvage-list");
+                    $scope.menutitle = NavigationService.makeactive("salvage");
+                    TemplateService.title = $scope.menutitle;
+                    $scope.navigation = NavigationService.getnav();
+                  })
+                  .controller('CreateSalvageCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+                      //Used to name the .html file
+                      $scope.template = TemplateService.changecontent("salvage-detail");
+                      $scope.menutitle = NavigationService.makeactive("createsalvage");
+                      TemplateService.title = $scope.menutitle;
+                      $scope.navigation = NavigationService.getnav();
+                    })
+                    .controller('EditSalvageCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+                        //Used to name the .html file
+                        $scope.template = TemplateService.changecontent("edit-salvage");
+                        $scope.menutitle = NavigationService.makeactive("Edit-Salvage");
+                        TemplateService.title = $scope.menutitle;
+                        $scope.navigation = NavigationService.getnav();
+                      })
+                      .controller('CreateBankmasterCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+                          //Used to name the .html file
+                          $scope.template = TemplateService.changecontent("bankmaster-detail");
+                          $scope.menutitle = NavigationService.makeactive("createbankmaster");
+                          TemplateService.title = $scope.menutitle;
+                          $scope.navigation = NavigationService.getnav();
+                        })
+                        .controller('CompanyCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+                            //Used to name the .html file
+                            $scope.template = TemplateService.changecontent("company-list");
+                            $scope.menutitle = NavigationService.makeactive("company");
+                            TemplateService.title = $scope.menutitle;
+                            $scope.navigation = NavigationService.getnav();
+                          })
+                          .controller('CreateCompanyCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+                              //Used to name the .html file
+                              $scope.template = TemplateService.changecontent("company-detail");
+                              $scope.menutitle = NavigationService.makeactive("createcompany");
+                              TemplateService.title = $scope.menutitle;
+                              $scope.navigation = NavigationService.getnav();
+                            })
     .controller('CreateDistrictCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("district-detail");
