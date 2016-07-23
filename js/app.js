@@ -493,6 +493,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'EditSalvageCtrl'
     })
 
+    .state('bankmaster-list', {
+        url: "/bankmaster-list",
+        templateUrl: "views/template.html",
+        controller: 'BankMasterCtrl'
+    })
+
     .state('createbankmaster', {
         url: "/bankmaster-detail",
         templateUrl: "views/template.html",
@@ -509,6 +515,18 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         url: "/company-detail",
         templateUrl: "views/template.html",
         controller: 'CreateCompanyCtrl'
+    })
+
+    .state('customer-list', {
+        url: "/customer-list",
+        templateUrl: "views/template.html",
+        controller: 'CustomerCtrl'
+    })
+
+    .state('createcustomer', {
+        url: "/customer-detail",
+        templateUrl: "views/template.html",
+        controller: 'CreateCustomerCtrl'
     })
 
     .state('timeline', {

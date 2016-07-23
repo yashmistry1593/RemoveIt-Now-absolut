@@ -4,7 +4,7 @@
             <a title="Home">Company Setup</a>
         </li>
         <li>
-            <a ui-sref="branch-list" title="Branch List">Bank Master List</a>
+            <a ui-sref="bankmaster-list" title="Branch List">Bank Master List</a>
         </li>
     </ul>
 </div>
@@ -19,20 +19,20 @@
     </div>
 </div>
 <!-- Top Bar Chart -->
-<div class="panel-content">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="widget">
-                <div class="form-elements-sec">
-                    <div class="widget-title">
-                        <h3>Bank Master</h3>
-                    </div>
-                    <form role="form" class="sec ng-pristine ng-valid">
+<form role="form" class="sec ng-pristine ng-valid">
+    <div class="panel-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="widget">
+                    <div class="form-elements-sec">
+                        <div class="widget-title">
+                            <h3>Bank Master</h3>
+                        </div>
                         <div class="row">
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Name*</label>
-                                    <input type="text" placeholder="Name" id="exampleInputEmail1" class="form-control">
+                                    <input type="text" placeholder="Name" class="form-control">
                                 </div>
                                 <div class="form-group">
                                     <label for="disabledSelect">Status</label>
@@ -42,22 +42,16 @@
                                     </select>
                                 </div>
 
-
-
-
                             </div>
-                          
+
                         </div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="text-center mt20">
-            <button class="btn btn-default" type="submit">Save</button>
-            <button class="btn btn-default" type="submit">Cancel</button>
-        </div>
-        </form>
-
+    <div class="text-center mt20">
+        <button class="btn btn-default" type="submit">Save</button>
+        <button class="btn btn-default" type="submit">Cancel</button>
     </div>
-</div>
+</form>

@@ -32,15 +32,15 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Code*</label>
-                            <input type="text" placeholder="Code" id="exampleInputEmail1" class="form-control">
+                            <input type="text" placeholder="Code"  class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Name*</label>
-                            <input type="text" placeholder="Name" id="exampleInputEmail1" class="form-control">
+                            <input type="text" placeholder="Name"  class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Short Name*</label>
-                            <input type="text" placeholder="Short Name" id="exampleInputEmail1" class="form-control">
+                            <input type="text" placeholder="Short Name"  class="form-control">
                         </div>
                         <div class="form-group">
                             <div class="user-img mt25">
@@ -49,6 +49,40 @@
                                 <img ng-src="{{formData.symbol|uploadpath}}" ng-if="formData.symbol" alt="" class="img-responsive margin-auto" height="50px" width="50px">
                                 <upload-image ng-model="formData.symbol" no-view></upload-image>
                             </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget">
+                    <div class="form-elements-sec">
+                        <div class="widget-title">
+                            <h3>Other</h3>
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Service Tax#</label>
+                            <input type="text" placeholder="Service Tax"  class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Pan#</label>
+                            <input type="text" placeholder="Pan"  class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Services</label>
+                            <input type="text" placeholder="Services"  class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Cin</label>
+                            <input type="text" placeholder="Cin"  class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="exampleInputEmail1">Website</label>
+                            <input type="text" placeholder="Website"  class="form-control">
+                        </div>
+                        <div class="form-group">
+                            <label for="disabledSelect">Status</label>
+                            <select class="form-control ">
+                                <option value="select">Active</option>
+                                <option value="select">Inactive</option>
+                            </select>
                         </div>
                     </div>
                 </div>
@@ -83,7 +117,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Postal Code</label>
-                            <input type="text" placeholder="Postal Code" id="exampleInputEmail1" class="form-control">
+                            <input type="text" placeholder="Postal Code"  class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Final Address</label>
@@ -91,46 +125,6 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="widget">
-                    <div class="form-elements-sec">
-                        <div class="widget-title">
-                            <h3>Other</h3>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Service Tax#</label>
-                            <input type="text" placeholder="Service Tax" id="exampleInputEmail1" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Pan#</label>
-                            <input type="text" placeholder="Pan" id="exampleInputEmail1" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Services</label>
-                            <input type="text" placeholder="Services" id="exampleInputEmail1" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Cin</label>
-                            <input type="text" placeholder="Cin" id="exampleInputEmail1" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputEmail1">Website</label>
-                            <input type="text" placeholder="Website" id="exampleInputEmail1" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <label for="disabledSelect">Status</label>
-                            <select class="form-control wd30">
-                                <option value="select">Active</option>
-                                <option value="select">Inactive</option>
-                            </select>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6">
                 <div class="widget">
                     <div class="form-elements-sec">
                         <div class="widget-title">
@@ -138,27 +132,27 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Office#</label>
-                            <input type="text" placeholder="Office Number" id="exampleInputEmail1" class="form-control">
+                            <input type="text" placeholder="Office Number"  class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Home#</label>
-                            <input type="text" placeholder="Home Number" id="exampleInputEmail1" class="form-control">
+                            <input type="text" placeholder="Home Number"  class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Mobile#</label>
-                            <input type="text" placeholder="Mobile Number" id="exampleInputEmail1" class="form-control">
+                            <input type="text" placeholder="Mobile Number"  class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Fax#</label>
-                            <input type="text" placeholder="Fax Number" id="exampleInputEmail1" class="form-control">
+                            <input type="text" placeholder="Fax Number"  class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Extension</label>
-                            <input type="email" placeholder="Extension" id="exampleInputEmail1" class="form-control">
+                            <input type="email" placeholder="Extension"  class="form-control">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email Id</label>
-                            <input type="email" placeholder="Email Id" id="exampleInputEmail1" class="form-control">
+                            <input type="email" placeholder="Email Id"  class="form-control">
                         </div>
                     </div>
                 </div>
@@ -175,29 +169,29 @@
                 <thead>
                   <tr>
                     <th>Activity Name</th>
-                    <th>Days</th>
+                    <th style="width: 100px;">Days</th>
                 </tr>
                 </thead>
                 <tbody>
                   <tr>
                     <td>Field Office Activity</td>
-                    <td><input type="text" class="form-control wd30"></td>
+                    <td><input type="text" class="form-control "></td>
                 </tr>
                   <tr>
                     <td>Back Office Activity</td>
-                    <td><input type="text" class="form-control wd30"></td>
+                    <td><input type="text" class="form-control "></td>
                 </tr>
                   <tr>
                     <td>Reimbursement</td>
-                    <td><input type="text" class="form-control wd30"></td>
+                    <td><input type="text" class="form-control "></td>
                 </tr>
                   <tr>
                     <td>Receipt</td>
-                    <td><input type="text" class="form-control wd30"></td>
+                    <td><input type="text" class="form-control "></td>
                 </tr>
                   <tr>
                     <td>Journal Voucher</td>
-                    <td><input type="text" class="form-control wd30"></td>
+                    <td><input type="text" class="form-control "></td>
                 </tr>
                 </tbody>
             </table>
