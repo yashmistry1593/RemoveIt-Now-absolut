@@ -529,6 +529,42 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'CreateCustomerCtrl'
     })
 
+    .state('contactmanagement-list', {
+        url: "/contactmanagement-list",
+        templateUrl: "views/template.html",
+        controller: 'ContactManagementCtrl'
+    })
+
+    .state('createcontactmanagement', {
+        url: "/contactmanagement-detail",
+        templateUrl: "views/template.html",
+        controller: 'CreateContactManagementCtrl'
+    })
+
+    .state('contacttype-list', {
+        url: "/contacttype-list",
+        templateUrl: "views/template.html",
+        controller: 'ContactTypeCtrl'
+    })
+
+    .state('createcontacttype', {
+        url: "/contacttype-detail",
+        templateUrl: "views/template.html",
+        controller: 'CreateContactTypeCtrl'
+    })
+
+    .state('contacttypeoffice-list', {
+        url: "/contacttypeoffice-list",
+        templateUrl: "views/template.html",
+        controller: 'ContactTypeOfficeCtrl'
+    })
+
+    .state('createcontacttypeoffice', {
+        url: "/contacttypeoffice-detail",
+        templateUrl: "views/template.html",
+        controller: 'CreateContactTypeOfficeCtrl'
+    })
+
     .state('timeline', {
         url: "/timeline",
         templateUrl: "views/template.html",

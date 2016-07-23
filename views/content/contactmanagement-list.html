@@ -7,7 +7,7 @@
             <a title="Home">Company Setup</a>
         </li>
         <li>
-            <a ui-sref="company-list" title="Branch List">Company List</a>
+            <a ui-sref="contactmanagement-list" title="List">Contact Management List</a>
         </li>
     </ul>
 </div>
@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-md-4 column">
             <div class="heading-profile">
-                <h2>Company List</h2>
+                <h2>Contact Management List</h2>
             </div>
         </div>
     </div>
@@ -29,32 +29,29 @@
                 <div class="table-area">
 
                     <div class="widget-title">
-                        <div class="pull-right">
-                            <a class="btn btn-primary" ui-sref="createcompany">Add New</a>
-                        </div>
-                        <h3>List of Company</h3>
+                      <div class="pull-right">
+                        <a class="btn btn-primary" ui-sref="createcontactmanagement">Add New</a>
+                      </div>
+                        <h3>List of Contact</h3>
                     </div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
                                     <th>#</th>
-                                    <th>Company Name</th>
                                     <th>Address</th>
                                     <th>City</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
+
                                 <tr>
                                     <td></td>
                                     <td></td>
                                     <td></td>
-                                    <td></td>
-                                    <td>
-                                        <a class="btn btn-blue" ui-sref="editoffice({id:office._id})"><i class="fa fa-pencil"></i></a>
-                                        <a class="btn btn-red" ng-click="deleteOffice(office._id)"><i class="fa fa-trash"></i></a>
-                                    </td>
+                                    <td><a class="btn btn-blue" ui-sref="editoffice({id:office._id})"><i class="fa fa-pencil"></i></a>
+                                    <a class="btn btn-red" ng-click="deleteOffice(office._id)"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                             </tbody>
                         </table>

@@ -178,6 +178,26 @@ var navigationservice = angular.module('navigationservice', [])
                 classis: "active",
                 anchor: "product-list",
                 icon: "building"
+            }, {
+                name: "Salvage",
+                classis: "active",
+                anchor: "salvage-list",
+                icon: "building"
+            }, {
+                name: "Contact Management",
+                classis: "active",
+                anchor: "contactmanagement-list",
+                icon: "building"
+            }, {
+                name: "Contact Type",
+                classis: "active",
+                anchor: "contacttype-list",
+                icon: "building"
+            }, {
+                name: "Contact Types of Office",
+                classis: "active",
+                anchor: "contacttypeoffice-list",
+                icon: "building"
             }
         ]
     }, {

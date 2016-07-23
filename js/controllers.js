@@ -506,13 +506,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
     })
-    // .controller('CreateSalvageCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
-    //     //Used to name the .html file
-    //     $scope.template = TemplateService.changecontent("salvage-create");
-    //     $scope.menutitle = NavigationService.makeactive("createsalvage");
-    //     TemplateService.title = $scope.menutitle;
-    //     $scope.navigation = NavigationService.getnav();
-    //   })
     .controller('SalvageCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("salvage-list");
@@ -544,7 +537,49 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('BankMasterCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("bankmaster-list");
-        $scope.menutitle = NavigationService.makeactive("All Banks");
+        $scope.menutitle = NavigationService.makeactive("Bank List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+    })
+    .controller('CreateContactManagementCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("contactmanagement-detail");
+        $scope.menutitle = NavigationService.makeactive("Contact Management");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+    })
+    .controller('ContactManagementCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("contactmanagement-list");
+        $scope.menutitle = NavigationService.makeactive("Contact Management List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+    })
+    .controller('CreateContactTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("contacttype-detail");
+        $scope.menutitle = NavigationService.makeactive("Contact Type");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+    })
+    .controller('ContactTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("contacttype-list");
+        $scope.menutitle = NavigationService.makeactive("Contact Type List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+    })
+    .controller('CreateContactTypeOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("contacttypeoffice-detail");
+        $scope.menutitle = NavigationService.makeactive("Contact Type of Office Type");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+    })
+    .controller('ContactTypeOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("contacttypeoffice-list");
+        $scope.menutitle = NavigationService.makeactive("Contact Type of Office List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
     })
