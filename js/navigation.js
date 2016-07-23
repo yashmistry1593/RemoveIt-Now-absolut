@@ -173,6 +173,11 @@ var navigationservice = angular.module('navigationservice', [])
                 classis: "active",
                 anchor: "bankmaster-list",
                 icon: "building"
+            }, {
+                name: "Product",
+                classis: "active",
+                anchor: "product-list",
+                icon: "building"
             }
         ]
     }, {
