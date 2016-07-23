@@ -33,27 +33,29 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('branch-create', {
-            url: "/branch-create",
-            templateUrl: "views/template.html",
-            controller: 'BranchCreateCtrl'
-        })
-        .state('country-list', {
-            url: "/country-list",
-            templateUrl: "views/template.html",
-            controller: 'CountryCtrl'
-        })
+        url: "/branch-create",
+        templateUrl: "views/template.html",
+        controller: 'BranchCreateCtrl'
+    })
+
+    .state('country-list', {
+        url: "/country-list",
+        templateUrl: "views/template.html",
+        controller: 'CountryCtrl'
+    })
 
 
     .state('createcountry', {
-            url: "/country-create",
-            templateUrl: "views/template.html",
-            controller: 'CreateCountryCtrl'
-        })
-        .state('editcountry', {
-            url: "/country-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditCountryCtrl'
-        })
+        url: "/country-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateCountryCtrl'
+    })
+
+    .state('editcountry', {
+        url: "/country-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditCountryCtrl'
+    })
 
     .state('zone-list', {
         url: "/zone-list",
@@ -61,18 +63,17 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'ZoneCtrl'
     })
 
-
     .state('createzone', {
-            url: "/zone-create",
-            templateUrl: "views/template.html",
-            controller: 'CreateZoneCtrl'
-        })
-        .state('editzone', {
-            url: "/zone-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditZoneCtrl'
-        })
+        url: "/zone-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateZoneCtrl'
+    })
 
+    .state('editzone', {
+        url: "/zone-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditZoneCtrl'
+    })
 
     .state('state-list', {
         url: "/state-list",
@@ -80,19 +81,17 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'StateCtrl'
     })
 
-
     .state('createstate', {
-            url: "/state-create",
-            templateUrl: "views/template.html",
-            controller: 'CreateStateCtrl'
-        })
-        .state('editstate', {
-            url: "/state-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditStateCtrl'
-        })
+        url: "/state-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateStateCtrl'
+    })
 
-
+    .state('editstate', {
+        url: "/state-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditStateCtrl'
+    })
 
     .state('district-list', {
         url: "/district-list",
@@ -100,20 +99,17 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'DistrictCtrl'
     })
 
-
     .state('createdistrict', {
-            url: "/district-create",
-            templateUrl: "views/template.html",
-            controller: 'CreateDistrictCtrl'
-        })
-        .state('editdistrict', {
-            url: "/district-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditDistrictCtrl'
-        })
+        url: "/district-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateDistrictCtrl'
+    })
 
-
-
+    .state('editdistrict', {
+        url: "/district-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditDistrictCtrl'
+    })
 
     .state('currency-list', {
         url: "/currency-list",
@@ -121,20 +117,17 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'CurrencyCtrl'
     })
 
-
     .state('createcurrency', {
-            url: "/currency-create",
-            templateUrl: "views/template.html",
-            controller: 'CreateCurrencyCtrl'
-        })
-        .state('editcurrency', {
-            url: "/currency-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditCurrencyCtrl'
-        })
+        url: "/currency-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateCurrencyCtrl'
+    })
 
-
-
+    .state('editcurrency', {
+        url: "/currency-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditCurrencyCtrl'
+    })
 
     .state('city-list', {
         url: "/city-list",
@@ -142,17 +135,17 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'CityCtrl'
     })
 
-
     .state('createcity', {
-            url: "/city-create",
-            templateUrl: "views/template.html",
-            controller: 'CreateCityCtrl'
-        })
-        .state('editcity', {
-            url: "/city-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditCityCtrl'
-        })
+        url: "/city-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateCityCtrl'
+    })
+
+    .state('editcity', {
+        url: "/city-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditCityCtrl'
+    })
 
     .state('office-list', {
         url: "/office-list",
@@ -162,16 +155,16 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
 
 
     .state('createoffice', {
-            url: "/office-create",
-            templateUrl: "views/template.html",
-            controller: 'CreateOfficeCtrl'
-        })
-        .state('editoffice', {
-            url: "/office-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditOfficeCtrl'
-        })
+        url: "/office-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateOfficeCtrl'
+    })
 
+    .state('editoffice', {
+        url: "/office-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditOfficeCtrl'
+    })
 
     .state('typeOfOffice-list', {
         url: "/typeOfOffice-list",
@@ -179,17 +172,17 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'TypeOfOfficeCtrl'
     })
 
-
     .state('createtypeOfOffice', {
-            url: "/typeOfOffice-create",
-            templateUrl: "views/template.html",
-            controller: 'CreateTypeOfOfficeCtrl'
-        })
-        .state('edittypeOfOffice', {
-            url: "/typeOfOffice-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditTypeOfOfficeCtrl'
-        })
+        url: "/typeOfOffice-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateTypeOfOfficeCtrl'
+    })
+
+    .state('edittypeOfOffice', {
+        url: "/typeOfOffice-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditTypeOfOfficeCtrl'
+    })
 
     .state('department-list', {
         url: "/department-list",
@@ -199,15 +192,16 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
 
 
     .state('createdepartment', {
-            url: "/department-create",
-            templateUrl: "views/template.html",
-            controller: 'CreateDepartmentCtrl'
-        })
-        .state('editdepartment', {
-            url: "/department-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditDepartmentCtrl'
-        })
+        url: "/department-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateDepartmentCtrl'
+    })
+
+    .state('editdepartment', {
+        url: "/department-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditDepartmentCtrl'
+    })
 
 
     .state('uniquetype-list', {
@@ -218,18 +212,16 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
 
 
     .state('createuniquetype', {
-            url: "/uniquetype-create",
-            templateUrl: "views/template.html",
-            controller: 'CreateUniqueTypeCtrl'
-        })
-        .state('edituniquetype', {
-            url: "/uniquetype-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditUniqueTypeCtrl'
-        })
+        url: "/uniquetype-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateUniqueTypeCtrl'
+    })
 
-
-
+    .state('edituniquetype', {
+        url: "/uniquetype-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditUniqueTypeCtrl'
+    })
 
     .state('policytype-list', {
         url: "/policytype-list",
@@ -237,20 +229,17 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'PolicyTypeCtrl'
     })
 
-
     .state('createpolicytype', {
-            url: "/policytype-create",
-            templateUrl: "views/template.html",
-            controller: 'CreatePolicyTypeCtrl'
-        })
-        .state('editpolicytype', {
-            url: "/policytype-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditPolicyTypeCtrl'
-        })
+        url: "/policytype-create",
+        templateUrl: "views/template.html",
+        controller: 'CreatePolicyTypeCtrl'
+    })
 
-
-
+    .state('editpolicytype', {
+        url: "/policytype-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditPolicyTypeCtrl'
+    })
 
     .state('policy-list', {
         url: "/policy-list",
@@ -258,241 +247,275 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'PolicyCtrl'
     })
 
-
     .state('createpolicy', {
-            url: "/policy-create",
-            templateUrl: "views/template.html",
-            controller: 'CreatePolicyCtrl'
-        })
-        .state('editpolicy', {
-            url: "/policy-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditPolicyCtrl'
-        })
+        url: "/policy-create",
+        templateUrl: "views/template.html",
+        controller: 'CreatePolicyCtrl'
+    })
+
+    .state('editpolicy', {
+        url: "/policy-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditPolicyCtrl'
+    })
 
     .state('policydoc-list', {
-            url: "/policydoc-list",
-            templateUrl: "views/template.html",
-            controller: 'PolicyDocCtrl'
-        })
-        .state('createpolicydoc', {
-            url: "/policydoc-create",
-            templateUrl: "views/template.html",
-            controller: 'CreatePolicyDocCtrl'
-        })
-        .state('editpolicydoc', {
-            url: "/policydoc-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditPolicyDocCtrl'
-        })
+        url: "/policydoc-list",
+        templateUrl: "views/template.html",
+        controller: 'PolicyDocCtrl'
+    })
+
+    .state('createpolicydoc', {
+        url: "/policydoc-create",
+        templateUrl: "views/template.html",
+        controller: 'CreatePolicyDocCtrl'
+    })
+
+    .state('editpolicydoc', {
+        url: "/policydoc-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditPolicyDocCtrl'
+    })
 
     .state('industry-list', {
-            url: "/industry-list",
-            templateUrl: "views/template.html",
-            controller: 'IndustryCtrl'
-        })
-        .state('createindustry', {
-            url: "/industry-create",
-            templateUrl: "views/template.html",
-            controller: 'CreateIndustryCtrl'
-        })
-        .state('editindustry', {
-            url: "/industry-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditIndustryCtrl'
-        })
-        .state('category-list', {
-            url: "/category-list",
-            templateUrl: "views/template.html",
-            controller: 'CategoryCtrl'
-        })
+        url: "/industry-list",
+        templateUrl: "views/template.html",
+        controller: 'IndustryCtrl'
+    })
 
+    .state('createindustry', {
+        url: "/industry-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateIndustryCtrl'
+    })
+
+    .state('editindustry', {
+        url: "/industry-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditIndustryCtrl'
+    })
+
+    .state('category-list', {
+        url: "/category-list",
+        templateUrl: "views/template.html",
+        controller: 'CategoryCtrl'
+    })
 
     .state('createcategory', {
-            url: "/category-create",
-            templateUrl: "views/template.html",
-            controller: 'CreateCategoryCtrl'
-        })
-        .state('editcategory', {
-            url: "/category-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditCategoryCtrl'
-        })
-        .state('func-list', {
-            url: "/func-list",
-            templateUrl: "views/template.html",
-            controller: 'FuncCtrl'
-        })
-        .state('createfunc', {
-            url: "/func-create",
-            templateUrl: "views/template.html",
-            controller: 'CreateFuncCtrl'
-        })
-        .state('editfunc', {
-            url: "/func-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditFuncCtrl'
-        })
-        .state('causeloss-list', {
-            url: "/causeloss-list",
-            templateUrl: "views/template.html",
-            controller: 'CauseLossCtrl'
-        })
-        .state('createcauseloss', {
-            url: "/causeloss-create",
-            templateUrl: "views/template.html",
-            controller: 'CreateCauseLossCtrl'
-        })
-        .state('editcauseloss', {
-            url: "/causeloss-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditCauseLossCtrl'
-        })
-        .state('natureloss-list', {
-            url: "/natureloss-list",
-            templateUrl: "views/template.html",
-            controller: 'NatureLossCtrl'
-        })
-        .state('createnatureloss', {
-            url: "/natureloss-create",
-            templateUrl: "views/template.html",
-            controller: 'CreateNatureLossCtrl'
-        })
-        .state('editnatureloss', {
-            url: "/natureloss-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditNatureLossCtrl'
-        })
-        .state('businessbranch-list', {
-            url: "/businessbranch-list",
-            templateUrl: "views/template.html",
-            controller: 'BusinessBranchCtrl'
-        })
-        .state('createbusinessbranch', {
-            url: "/businessbranch-create",
-            templateUrl: "views/template.html",
-            controller: 'CreateBusinessBranchCtrl'
-        })
-        .state('editbusinessbranch', {
-            url: "/businessbranch-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditBusinessBranchCtrl'
-        })
-        .state('menu-list', {
-            url: "/menu-list",
-            templateUrl: "views/template.html",
-            controller: 'MenuCtrl'
-        })
-        .state('createmenu', {
-            url: "/menu-create",
-            templateUrl: "views/template.html",
-            controller: 'CreateMenuCtrl'
-        })
-        .state('editmenu', {
-            url: "/menu-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditMenuCtrl'
-        })
-        .state('role-list', {
-            url: "/role-list",
-            templateUrl: "views/template.html",
-            controller: 'RoleCtrl'
-        })
-        .state('createrole', {
-            url: "/role-create",
-            templateUrl: "views/template.html",
-            controller: 'CreateRoleCtrl'
-        })
-        .state('editrole', {
-            url: "/role-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditRoleCtrl'
-        })
+        url: "/category-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateCategoryCtrl'
+    })
 
+    .state('editcategory', {
+        url: "/category-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditCategoryCtrl'
+    })
 
+    .state('func-list', {
+        url: "/func-list",
+        templateUrl: "views/template.html",
+        controller: 'FuncCtrl'
+    })
 
-        .state('user-list', {
-            url: "/user-list",
-            templateUrl: "views/template.html",
-            controller: 'UserCtrl'
-        })
-        .state('createuser', {
-            url: "/user-create",
-            templateUrl: "views/template.html",
-            controller: 'CreateUserCtrl'
-        })
-        .state('edituser', {
-            url: "/user-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditUserCtrl'
-        })
+    .state('createfunc', {
+        url: "/func-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateFuncCtrl'
+    })
 
-        .state('employee-list', {
-                url: "/employee-list",
-                templateUrl: "views/template.html",
-                controller: 'EmployeeCtrl'
-            })
-            .state('createemployee', {
-                url: "/employee-create",
-                templateUrl: "views/template.html",
-                controller: 'CreateEmployeeCtrl'
-            })
-            .state('editemployee', {
-                url: "/employee-edit/:id",
-                templateUrl: "views/template.html",
-                controller: 'EditEmployeeCtrl'
-            })
-            .state('product-list', {
-                    url: "/product-list",
-                    templateUrl: "views/template.html",
-                    controller: 'ProductCtrl'
-                })
-                .state('createproduct', {
-                    url: "/product-detail",
-                    templateUrl: "views/template.html",
-                    controller: 'CreateProductCtrl'
-                })
-                .state('editproduct', {
-                    url: "/product-edit/:id",
-                    templateUrl: "views/template.html",
-                    controller: 'EditProductCtrl'
-                })
-                .state('salvage-list', {
-                        url: "/salvage-list",
-                        templateUrl: "views/template.html",
-                        controller: 'SalvageCtrl'
-                    })
-                    .state('createsalvage', {
-                        url: "/salvage-detail",
-                        templateUrl: "views/template.html",
-                        controller: 'CreateSalvageCtrl'
-                    })
-                    .state('editSalvage', {
-                        url: "/salvage-edit/:id",
-                        templateUrl: "views/template.html",
-                        controller: 'EditSalvageCtrl'
-                    })
-                    .state('createbankmaster', {
-                        url: "/bankmaster-detail",
-                        templateUrl: "views/template.html",
-                        controller: 'CreateBankmasterCtrl'
-                    })
-                    .state('company-list', {
-                            url: "/company-list",
-                            templateUrl: "views/template.html",
-                            controller: 'CompanyCtrl'
-                        })
-                        .state('createcompany', {
-                            url: "/company-detail",
-                            templateUrl: "views/template.html",
-                            controller: 'CreateCompanyCtrl'
-                        })
+    .state('editfunc', {
+        url: "/func-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditFuncCtrl'
+    })
+
+    .state('causeloss-list', {
+        url: "/causeloss-list",
+        templateUrl: "views/template.html",
+        controller: 'CauseLossCtrl'
+    })
+
+    .state('createcauseloss', {
+        url: "/causeloss-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateCauseLossCtrl'
+    })
+
+    .state('editcauseloss', {
+        url: "/causeloss-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditCauseLossCtrl'
+    })
+
+    .state('natureloss-list', {
+        url: "/natureloss-list",
+        templateUrl: "views/template.html",
+        controller: 'NatureLossCtrl'
+    })
+
+    .state('createnatureloss', {
+        url: "/natureloss-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateNatureLossCtrl'
+    })
+
+    .state('editnatureloss', {
+        url: "/natureloss-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditNatureLossCtrl'
+    })
+
+    .state('businessbranch-list', {
+        url: "/businessbranch-list",
+        templateUrl: "views/template.html",
+        controller: 'BusinessBranchCtrl'
+    })
+
+    .state('createbusinessbranch', {
+        url: "/businessbranch-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateBusinessBranchCtrl'
+    })
+
+    .state('editbusinessbranch', {
+        url: "/businessbranch-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditBusinessBranchCtrl'
+    })
+
+    .state('menu-list', {
+        url: "/menu-list",
+        templateUrl: "views/template.html",
+        controller: 'MenuCtrl'
+    })
+
+    .state('createmenu', {
+        url: "/menu-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateMenuCtrl'
+    })
+
+    .state('editmenu', {
+        url: "/menu-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditMenuCtrl'
+    })
+
+    .state('role-list', {
+        url: "/role-list",
+        templateUrl: "views/template.html",
+        controller: 'RoleCtrl'
+    })
+
+    .state('createrole', {
+        url: "/role-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateRoleCtrl'
+    })
+
+    .state('editrole', {
+        url: "/role-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditRoleCtrl'
+    })
+
+    .state('user-list', {
+        url: "/user-list",
+        templateUrl: "views/template.html",
+        controller: 'UserCtrl'
+    })
+
+    .state('createuser', {
+        url: "/user-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateUserCtrl'
+    })
+
+    .state('edituser', {
+        url: "/user-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditUserCtrl'
+    })
+
+    .state('employee-list', {
+        url: "/employee-list",
+        templateUrl: "views/template.html",
+        controller: 'EmployeeCtrl'
+    })
+
+    .state('createemployee', {
+        url: "/employee-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateEmployeeCtrl'
+    })
+
+    .state('editemployee', {
+        url: "/employee-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditEmployeeCtrl'
+    })
+
+    .state('product-list', {
+        url: "/product-list",
+        templateUrl: "views/template.html",
+        controller: 'ProductCtrl'
+    })
+
+    .state('createproduct', {
+        url: "/product-detail",
+        templateUrl: "views/template.html",
+        controller: 'CreateProductCtrl'
+    })
+
+    .state('editproduct', {
+        url: "/product-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditProductCtrl'
+    })
+
+    .state('salvage-list', {
+        url: "/salvage-list",
+        templateUrl: "views/template.html",
+        controller: 'SalvageCtrl'
+    })
+
+    .state('createsalvage', {
+        url: "/salvage-detail",
+        templateUrl: "views/template.html",
+        controller: 'CreateSalvageCtrl'
+    })
+
+    .state('editSalvage', {
+        url: "/salvage-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditSalvageCtrl'
+    })
+
+    .state('createbankmaster', {
+        url: "/bankmaster-detail",
+        templateUrl: "views/template.html",
+        controller: 'CreateBankmasterCtrl'
+    })
+
+    .state('company-list', {
+        url: "/company-list",
+        templateUrl: "views/template.html",
+        controller: 'CompanyCtrl'
+    })
+
+    .state('createcompany', {
+        url: "/company-detail",
+        templateUrl: "views/template.html",
+        controller: 'CreateCompanyCtrl'
+    })
+
     .state('timeline', {
         url: "/timeline",
         templateUrl: "views/template.html",
         controller: 'TimelineCtrl'
     })
-
     ;
     $urlRouterProvider.otherwise("/login");
     $locationProvider.html5Mode(isproduction);
@@ -502,13 +525,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
 firstapp.filter('uploadpath', function() {
     return function(input, width, height, style) {
         var other = "";
-        if (width && width != "") {
+        if (width && width !== "") {
             other += "&width=" + width;
         }
-        if (height && height != "") {
+        if (height && height !== "") {
             other += "&height=" + height;
         }
-        if (style && style != "") {
+        if (style && style !== "") {
             other += "&style=" + style;
         }
         if (input) {
