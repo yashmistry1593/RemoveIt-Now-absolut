@@ -516,6 +516,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         templateUrl: "views/template.html",
         controller: 'CreateCompanyCtrl'
     })
+    .state('editcompany', {
+        url: "/company-detail/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditCompanyCtrl'
+    })
 
     .state('customer-list', {
         url: "/customer-list",

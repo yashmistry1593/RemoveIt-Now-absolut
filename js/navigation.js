@@ -1434,5 +1434,53 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
+        getAllCompanies: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'company/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        companySave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'company/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneCompany: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'company/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        companyEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'company/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteCompany: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'company/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
     };
 });

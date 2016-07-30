@@ -20,7 +20,7 @@
 </div>
 <!-- Top Bar Chart -->
 <div class="panel-content">
-    <form role="form" class="sec ng-pristine ng-valid" name="companyForm">
+    <form role="form" class="sec ng-pristine ng-valid" name="companyForm" ng-submit="saveCompany(formData)">
 
         <div class="row">
 
@@ -32,17 +32,17 @@
                         </div>
                         <div class="form-group">
                             <label>Code*</label>
-                            <input type="text" placeholder="Code" name="companyCode"  class="form-control" ng-model="formData.companyCode" required>
+                            <input type="text" placeholder="Code" name="companyCode" class="form-control" ng-model="formData.companyCode" required>
                             <div class="error-msg" ng-show="companyForm.companyCode.$error && companyForm.companyCode.$touched">Please Enter Code</div>
                         </div>
                         <div class="form-group">
                             <label>Name*</label>
-                            <input type="text" placeholder="Name" name="name"  class="form-control" ng-model="formData.name" required>
+                            <input type="text" placeholder="Name" name="name" class="form-control" ng-model="formData.name" required>
                             <div class="error-msg" ng-show="companyForm.name.$error && companyForm.name.$touched">Please Enter Name</div>
                         </div>
                         <div class="form-group">
                             <label>Short Name*</label>
-                            <input type="text" placeholder="Short Name"  class="form-control" name="shortName" ng-model="formData.shortName" required>
+                            <input type="text" placeholder="Short Name" class="form-control" name="shortName" ng-model="formData.shortName" required>
                             <div class="error-msg" ng-show="companyForm.shortName.$error && companyForm.shortName.$touched">Please Enter Short Name</div>
                         </div>
                         <div class="form-group">
@@ -62,27 +62,27 @@
                         </div>
                         <div class="form-group">
                             <label>NEFT</label>
-                            <input type="text" placeholder="NEFT"  class="form-control" ng-model="formData.NEFT">
+                            <input type="text" placeholder="NEFT" class="form-control" ng-model="formData.NEFT">
                         </div>
                         <div class="form-group">
                             <label>Service Tax#</label>
-                            <input type="text" placeholder="Service Tax"  class="form-control" ng-model="formData.serviceTax">
+                            <input type="text" placeholder="Service Tax" class="form-control" ng-model="formData.serviceTax">
                         </div>
                         <div class="form-group">
                             <label>Pan#</label>
-                            <input type="text" placeholder="Pan"  class="form-control" ng-model="formData.pan">
+                            <input type="text" placeholder="Pan" class="form-control" ng-model="formData.pan">
                         </div>
                         <div class="form-group">
                             <label>Services</label>
-                            <input type="text" placeholder="Services"  class="form-control" ng-model="formData.services">
+                            <input type="text" placeholder="Services" class="form-control" ng-model="formData.services">
                         </div>
                         <div class="form-group">
                             <label>Cin</label>
-                            <input type="text" placeholder="Cin"  class="form-control" ng-model="formData.cin">
+                            <input type="text" placeholder="Cin" class="form-control" ng-model="formData.cin">
                         </div>
                         <div class="form-group">
                             <label>Website</label>
-                            <input type="text" placeholder="Website"  class="form-control" ng-model="formData.website">
+                            <input type="text" placeholder="Website" class="form-control" ng-model="formData.website">
                         </div>
                         <div class="form-group">
                             <label for="disabledSelect">Status*</label>
@@ -127,11 +127,11 @@
                         </div>
                         <div class="form-group">
                             <label>Postal Code</label>
-                            <input type="text" placeholder="Postal Code"  class="form-control">
+                            <input type="text" placeholder="Postal Code" class="form-control" ng-model="formData.pincode">
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Final Address</label>
-                            <textarea placeholder="" id="exampleInputPassword1" class="form-control" disabled> </textarea>
+                            <textarea placeholder="" id="exampleInputPassword1" ng-model="formData.finalAddress" class="form-control" disabled> </textarea>
                         </div>
                     </div>
                 </div>
@@ -142,77 +142,87 @@
                         </div>
                         <div class="form-group">
                             <label>Office#</label>
-                            <input type="text" placeholder="Office Number"  class="form-control">
+                            <input type="text" placeholder="Office Number" class="form-control" ng-model="formData.Office">
                         </div>
                         <div class="form-group">
                             <label>Home#</label>
-                            <input type="text" placeholder="Home Number"  class="form-control">
+                            <input type="text" placeholder="Home Number" class="form-control" ng-model="formData.home">
                         </div>
                         <div class="form-group">
                             <label>Mobile#</label>
-                            <input type="text" placeholder="Mobile Number"  class="form-control">
+                            <input type="text" placeholder="Mobile Number" class="form-control" ng-model="formData.mobile">
                         </div>
                         <div class="form-group">
                             <label>Fax#</label>
-                            <input type="text" placeholder="Fax Number"  class="form-control">
+                            <input type="text" placeholder="Fax Number" class="form-control" ng-model="formData.fax">
                         </div>
                         <div class="form-group">
                             <label>Extension</label>
-                            <input type="email" placeholder="Extension"  class="form-control">
+                            <input type="email" placeholder="Extension" class="form-control" ng-model="formData.extension">
                         </div>
                         <div class="form-group">
                             <label>Email Id</label>
-                            <input type="email" placeholder="Email Id"  class="form-control">
+                            <input type="email" placeholder="Email Id" class="form-control" ng-model="formData.email">
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-<div class="row">
-  <div class="col-md-12">
-    <div class="widget">
-        <div class="form-elements-sec">
-            <div class="widget-title">
-                <h3>Bank Date</h3>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="widget">
+                    <div class="form-elements-sec">
+                        <div class="widget-title">
+                            <h3>Bank Date</h3>
+                        </div>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Activity Name</th>
+                                    <th style="width: 100px;">Days</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Field Office Activity</td>
+                                    <td>
+                                        <input type="text" class="form-control ">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Back Office Activity</td>
+                                    <td>
+                                        <input type="text" class="form-control ">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Reimbursement</td>
+                                    <td>
+                                        <input type="text" class="form-control ">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Receipt</td>
+                                    <td>
+                                        <input type="text" class="form-control ">
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>Journal Voucher</td>
+                                    <td>
+                                        <input type="text" class="form-control ">
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-            <table class="table">
-                <thead>
-                  <tr>
-                    <th>Activity Name</th>
-                    <th style="width: 100px;">Days</th>
-                </tr>
-                </thead>
-                <tbody>
-                  <tr>
-                    <td>Field Office Activity</td>
-                    <td><input type="text" class="form-control "></td>
-                </tr>
-                  <tr>
-                    <td>Back Office Activity</td>
-                    <td><input type="text" class="form-control "></td>
-                </tr>
-                  <tr>
-                    <td>Reimbursement</td>
-                    <td><input type="text" class="form-control "></td>
-                </tr>
-                  <tr>
-                    <td>Receipt</td>
-                    <td><input type="text" class="form-control "></td>
-                </tr>
-                  <tr>
-                    <td>Journal Voucher</td>
-                    <td><input type="text" class="form-control "></td>
-                </tr>
-                </tbody>
-            </table>
-  </div>
-</div>
-</div>
-</div>
-
+        </div>
+        <div class="text-center mt20">
+            <button class="btn btn-default" type="submit" ng-disabled="companyForm.$invalid">Save</button>
+            <button class="btn btn-default" type="submit" ui-sref="company-list">Cancel</button>
+        </div>
     </form>
-    <div class="text-center mt20">
-              <button class="btn btn-default" type="submit">Save</button>
-              <button class="btn btn-default" type="submit">Cancel</button>
-          </div>
+
 </div>

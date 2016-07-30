@@ -589,6 +589,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("company");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.showAllCompanies = function() {
+            NavigationService.getAllCompanies(function(data) {
+                $scope.allCompanies = data.data;
+                console.log('$scope.allCompanies', $scope.allCompanies);
+
+            });
+        };
+        $scope.showAllCompanies();
+
+        $scope.deleteCompany = function(id) {
+
+            NavigationService.deleteCompany({
+                id: id
+            }, function(data) {
+                $scope.showAllCompanies();
+
+            });
+        }
 
 
     })
@@ -610,6 +628,64 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.allCities = data.data;
             console.log('$scope.allCities', $scope.allCities);
         });
+
+        $scope.header = {
+            "name": "Create Company"
+        };
+        $scope.formData = {};
+        $scope.saveCompany = function(formData) {
+
+            NavigationService.companySave($scope.formData, function(data) {
+                console.log(data);
+                if (data.value == true) {
+                    $state.go('company-list');
+                }
+                // console.log('$scope.allCountriessave', $scope.data);
+
+            });
+        }
+    })
+    .controller('EditCompanyCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("company-detail");
+        $scope.menutitle = NavigationService.makeactive("editcompany");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        NavigationService.getAllCountries(function(data) {
+            $scope.allCountries = data.data;
+            console.log('$scope.allCountries', $scope.allCountries);
+        });
+        NavigationService.getAllStates(function(data) {
+            $scope.allStates = data.data;
+            console.log('$scope.allStates', $scope.allStates);
+        });
+        NavigationService.getAllCities(function(data) {
+            $scope.allCities = data.data;
+            console.log('$scope.allCities', $scope.allCities);
+        });
+        $scope.header = {
+            "name": "Edit Company"
+        };
+          $scope.formData = {};
+
+        NavigationService.getOneCompany($stateParams.id, function(data) {
+            $scope.formData = data.data;
+            // console.log('$scope.oneCountry', $scope.oneCountry);
+
+        });
+
+        $scope.saveCompany = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.companyEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('company-list');
+                }
+            });
+            //  }
+        };
+
     })
     .controller('CreateDistrictCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
