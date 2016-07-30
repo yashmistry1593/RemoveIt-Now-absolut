@@ -503,6 +503,12 @@ $trans-black: rgba( black, .15 );
 .bl{
   display: block;
 }
+.ui-select{
+  .form-control{
+    width: 100% !important;
+        height: 34px;
+  }
+}
 /* Start writing sass here */
 @import "fancybox-override";
 @import "other/mobile";

@@ -777,6 +777,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("city-detail");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+          var vm = this;
+        vm.availableColors = ['Red','Green','Blue','Yellow','Magenta','Maroon','Umbra','Turquoise'];
+
+  
 
         $scope.header = {
             "name": "Create City"
