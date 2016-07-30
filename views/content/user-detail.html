@@ -30,6 +30,22 @@
                     <form name="userForm" role="form" class="sec ng-pristine ng-valid">
                         <div class="row">
                             <div class="col-md-12">
+
+                                <div class="form-group">
+                                    <label for="">Title*</label>
+                                    <select class="form-control">
+                                        <option>Mr.</option>
+                                        <option>Msc.</option>
+                                        <option>Dr</option>
+
+                                    </select>
+                                    <!-- <div class="error-msg" ng-show="userForm.name.$error.required && userForm.name.$touched">Please Enter User Name.</div> -->
+                                </div>
+                                <div class="form-group">
+                                    <label for="">First Name*</label>
+                                    <input type="text" name="name" placeholder="First Name" ng-model="formData.name" class="form-control" required>
+                                    <div class="error-msg" ng-show="userForm.name.$error.required && userForm.name.$touched">Please Enter First Name.</div>
+                                </div>
                                 <div class="form-group">
                                     <label for="">User Name*</label>
                                     <input type="text" name="name" placeholder="Role Name" ng-model="formData.name" class="form-control" required>
@@ -110,20 +126,20 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                  <div class="checkbox">
-                                    <label>
-                                      <input type="checkbox"> Is Surveyor
-                                    </label>
-                                  </div>
+                                    <div class="checkbox">
+                                        <label>
+                                            <input type="checkbox"> Is Surveyor
+                                        </label>
+                                    </div>
                                 </div>
                                 <div class="form-group">
-                                  <label for="example1">Module right</label>
-                                  <textarea id="example1" class="form-control"> </textarea>
+                                    <label for="example1">Module right</label>
+                                    <textarea id="example1" class="form-control"> </textarea>
                                 </div>
 
                                 <div class="form-group">
                                     <label for="disabledSelect">Branch*</label>
-                                <input type="text" name="branch" ng-model="formData.branch" class="form-control" required>
+                                    <input type="text" name="branch" ng-model="formData.branch" class="form-control" required>
                                     <div class="error-msg" ng-show="userForm.branch.$error.required && userForm.branch.$touched">Please Enter Branch.</div>
                                     <!-- <select class="form-control" ng-model="formData.branch" value="{{dist.name}}">
                                         <option ng-selected="true" value="">Select Department</option>

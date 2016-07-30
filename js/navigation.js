@@ -36,7 +36,7 @@ var navigationservice = angular.module('navigationservice', [])
         name: "Company Setup",
         classis: "active",
         anchor: "company",
-        icon: "users",
+        icon: "building",
         subnav: [{
             name: "Branch",
             classis: "active",
@@ -56,37 +56,37 @@ var navigationservice = angular.module('navigationservice', [])
             name: "Function",
             classis: "active",
             anchor: "func-list",
-            icon: "building"
+            icon: "cogs"
         }, {
             name: "Business Branch",
             classis: "active",
             anchor: "businessbranch-list",
-            icon: "building"
+            icon: "building-o"
         }, {
             name: "Menu",
             classis: "active",
             anchor: "menu-list",
-            icon: "building"
+            icon: "bars"
         }, {
             name: "Role",
             classis: "active",
             anchor: "role-list",
-            icon: "building"
+            icon: "user-plus"
         }, {
             name: "Contact Management",
             classis: "active",
             anchor: "contactmanagement-list",
-            icon: "building"
+            icon: "briefcase"
         }, {
             name: "Contact Type",
             classis: "active",
             anchor: "contacttype-list",
-            icon: "building"
+            icon: "list-ul"
         }, {
             name: "Contact Types of Office",
             classis: "active",
             anchor: "contacttypeoffice-list",
-            icon: "building"
+            icon: "th-list"
         }]
     }, {
         name: "Customers",
@@ -102,23 +102,23 @@ var navigationservice = angular.module('navigationservice', [])
             name: "Company",
             classis: "active",
             anchor: "company-list",
-            icon: "link"
+            icon: "building"
         }, {
             name: "Office",
             classis: "active",
             anchor: "office-list",
-            icon: "link"
+            icon: "building-o"
         }, {
             name: "Customer",
             classis: "active",
             anchor: "customer-list",
-            icon: "link"
+            icon: "user"
         }]
     }, {
         name: "Employee",
         classis: "active",
         anchor: "company",
-        icon: "users",
+        icon: "user",
         subnav: [{
             name: "Employee",
             classis: "active",
@@ -128,54 +128,54 @@ var navigationservice = angular.module('navigationservice', [])
             name: "User",
             classis: "active",
             anchor: "user-list",
-            icon: "link"
+            icon: "users"
         }, {
             name: "Role",
             classis: "active",
             anchor: "role-list",
-            icon: "link"
+            icon: "user-plus"
         }, {
             name: "Function",
             classis: "active",
             anchor: "function-list",
-            icon: "link"
+            icon: "cogs"
         }, {
             name: "Grade",
             classis: "active",
             anchor: "grade-list",
-            icon: "link"
+            icon: "font"
         }]
     }, {
         name: "Companies",
         classis: "active",
         anchor: "company",
-        icon: "users",
+        icon: "briefcase",
         subnav: [{
             name: "Company",
             classis: "active",
             anchor: "company-list",
-            icon: "user"
+            icon: "building"
         }, {
             name: "Office",
             classis: "active",
             anchor: "office-list",
-            icon: "link"
+            icon: "building-o"
         }]
     }, {
         name: "Locations",
         classis: "active",
         anchor: "company",
-        icon: "users",
+        icon: "map",
         subnav: [{
             name: "Country",
             classis: "active",
             anchor: "country-list",
-            icon: "user"
+            icon: "globe"
         }, {
             name: "Zone",
             classis: "active",
             anchor: "zone-list",
-            icon: "link"
+            icon: "location-arrow"
         }, {
             name: "State",
             classis: "active",
