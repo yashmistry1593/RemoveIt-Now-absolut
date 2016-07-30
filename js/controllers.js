@@ -1020,6 +1020,101 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     })
 
+
+    .controller('CustomerSegmentCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("customerSegment-list");
+        $scope.menutitle = NavigationService.makeactive("customerSegment List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.showAllCustomerSegments = function() {
+            NavigationService.getAllCustomerSegments(function(data) {
+                $scope.allCustomerSegments = data.data;
+
+            });
+        };
+        $scope.showAllCustomerSegments();
+
+        $scope.deleteCustomerSegment = function(id) {
+
+            NavigationService.deleteCustomerSegment({
+                id: id
+            }, function(data) {
+                $scope.showAllCustomerSegments();
+
+            });
+        }
+
+    })
+    .controller('CreateCustomerSegmentCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("customersegment-detail");
+        $scope.menutitle = NavigationService.makeactive("customersegment-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Create Customer Segment"
+        };
+        $scope.formData = {};
+        $scope.saveCustomerSegment = function(formData) {
+
+            NavigationService.customersegmentSave($scope.formData, function(data) {
+                console.log(data);
+                if (data.value == true) {
+                    $state.go('customerSegment-list');
+                }
+                // console.log('$scope.allCountriessave', $scope.data);
+
+            });
+        }
+
+        // NavigationService.getAllallUniqueTypes(function(data) {
+        //     $scope.allUniqueTypes = data.data;
+        //     console.log('$scope.allUniqueTypes', $scope.allUniqueTypes);
+        //
+        // });
+
+    })
+    .controller('EditCustomerSegmentCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("customersegment-detail");
+        $scope.menutitle = NavigationService.makeactive("customersegment-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Edit Customer Segment"
+        };
+
+        NavigationService.getOneCustomerSegment($stateParams.id, function(data) {
+            $scope.formData = data.data;
+            console.log('$scope.formData', $scope.formData);
+
+        });
+
+        $scope.saveCustomerSegment = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.CustomerSegmentEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('customerSegment-list');
+                }
+            });
+            //  }
+        };
+
+        // NavigationService.getAllallUniqueTypes(function(data) {
+        //     $scope.allUniqueTypes = data.data;
+        //     console.log('$scope.allUniqueTypes', $scope.allUniqueTypes);
+        //
+        // });
+
+    })
+
+
 .controller('PolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("policytype-list");

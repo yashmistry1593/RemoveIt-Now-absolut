@@ -565,6 +565,25 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'CreateContactTypeOfficeCtrl'
     })
 
+    .state('customerSegment-list', {
+        url: "/customerSegment-list",
+        templateUrl: "views/template.html",
+        controller: 'CustomerSegmentCtrl'
+    })
+
+
+    .state('createcustomersegment', {
+        url: "/customersegment-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateCustomerSegmentCtrl'
+    })
+
+    .state('editcustomersegment', {
+        url: "/customersegment-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditCustomerSegmentCtrl'
+    })
+
     .state('timeline', {
         url: "/timeline",
         templateUrl: "views/template.html",

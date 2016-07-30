@@ -4,7 +4,7 @@
             <a title="Home">Company Setup</a>
         </li>
         <li>
-            <a ui-sref="branch-list" title="Branch List">Company List</a>
+            <a ui-sref="branch-list" title="Branch List">{{header.name}}</a>
         </li>
     </ul>
 </div>
@@ -13,14 +13,14 @@
     <div class="row">
         <div class="col-md-4 column">
             <div class="heading-profile">
-                <h2>Create Company</h2>
+                <h2>{{header.name}}</h2>
             </div>
         </div>
     </div>
 </div>
 <!-- Top Bar Chart -->
 <div class="panel-content">
-    <form role="form" class="sec ng-pristine ng-valid">
+    <form role="form" class="sec ng-pristine ng-valid" name="companyForm">
 
         <div class="row">
 
@@ -32,11 +32,12 @@
                         </div>
                         <div class="form-group">
                             <label>Code*</label>
-                            <input type="text" placeholder="Code"  class="form-control">
+                            <input type="text" placeholder="Code" name="companyCode"  class="form-control" ng-model="formData.companyCode" required>
+                            <div class="error-msg" ng-show="companyForm.companyCode.$error && companyForm.companyCode.$touched">Please Enter Code</div>
                         </div>
                         <div class="form-group">
                             <label>Name*</label>
-                            <input type="text" placeholder="Name"  class="form-control">
+                            <input type="text" placeholder="Name" name="name"  class="form-control" ng-model="formData.name"><div class="error-msg" ng-show="companyForm.name.$error && companyForm.name.$touched">Please Enter Name</div>
                         </div>
                         <div class="form-group">
                             <label>Short Name*</label>

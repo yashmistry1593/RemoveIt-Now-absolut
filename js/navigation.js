@@ -1,6 +1,7 @@
 // var adminURL = "";
 // if(isproduction)
 // {
+
 //   adminURL =  "http://www.wohlig.co.in/demo/index.php";
 // }
 // else {
@@ -36,170 +37,234 @@ var navigationservice = angular.module('navigationservice', [])
         classis: "active",
         anchor: "company",
         icon: "users",
-        subnav: [
-              {
-                name: "Employee",
-                classis: "active",
-                anchor: "employee-list",
-                icon: "user"
-            },{
-                name: "Branch",
-                classis: "active",
-                anchor: "branch-list",
-                icon: "link"
-            },
-            {
-                name: "Office",
-                classis: "active",
-                anchor: "office-list",
-                icon: "building"
-            }, {
-                name: "Type Of Office",
-                classis: "active",
-                anchor: "typeOfOffice-list",
-                icon: "building"
-            }, {
-                name: "Country",
-                classis: "active",
-                anchor: "country-list",
-                icon: "globe"
-            }, {
-                name: "Zone",
-                classis: "active",
-                anchor: "zone-list",
-                icon: "clock-o"
-            }, {
-                name: "State",
-                classis: "active",
-                anchor: "state-list",
-                icon: "globe"
-            }, {
-                name: "District",
-                classis: "active",
-                anchor: "district-list",
-                icon: "globe"
-            }, {
-                name: "City",
-                classis: "active",
-                anchor: "city-list",
-                icon: "globe"
-            }, {
-                name: "Currency",
-                classis: "active",
-                anchor: "currency-list",
-                icon: "usd"
-            }, {
-                name: "Unique Type",
-                classis: "active",
-                anchor: "uniquetype-list",
-                icon: "genderless"
-            }, {
-                name: "Department",
-                classis: "active",
-                anchor: "department-list",
-                icon: "building"
-            }, {
-                name: "Policy Type",
-                classis: "active",
-                anchor: "policytype-list",
-                icon: "building"
-            }, {
-                name: "Policy",
-                classis: "active",
-                anchor: "policy-list",
-                icon: "building"
-            }, {
-                name: "Policy Doc",
-                classis: "active",
-                anchor: "policydoc-list",
-                icon: "building"
-            }, {
-                name: "Industry",
-                classis: "active",
-                anchor: "industry-list",
-                icon: "building"
-            }, {
-                name: "Category",
-                classis: "active",
-                anchor: "category-list",
-                icon: "building"
-            }, {
-                name: "Function",
-                classis: "active",
-                anchor: "func-list",
-                icon: "building"
-            }, {
-                name: "Nature Loss",
-                classis: "active",
-                anchor: "natureloss-list",
-                icon: "building"
-            }, {
-                name: "Cause Loss",
-                classis: "active",
-                anchor: "causeloss-list",
-                icon: "building"
-            }, {
-                name: "Business Branch",
-                classis: "active",
-                anchor: "businessbranch-list",
-                icon: "building"
-            }, {
-                name: "Menu",
-                classis: "active",
-                anchor: "menu-list",
-                icon: "building"
-            }, {
-                name: "Role",
-                classis: "active",
-                anchor: "role-list",
-                icon: "building"
-            }, {
-                name: "User",
-                classis: "active",
-                anchor: "user-list",
-                icon: "building"
-            }, {
-                name: "Customer",
-                classis: "active",
-                anchor: "customer-list",
-                icon: "building"
-            }, {
-                name: "Company",
-                classis: "active",
-                anchor: "company-list",
-                icon: "building"
-            }, {
-                name: "Bank Master",
-                classis: "active",
-                anchor: "bankmaster-list",
-                icon: "building"
-            }, {
-                name: "Product",
-                classis: "active",
-                anchor: "product-list",
-                icon: "building"
-            }, {
-                name: "Salvage",
-                classis: "active",
-                anchor: "salvage-list",
-                icon: "building"
-            }, {
-                name: "Contact Management",
-                classis: "active",
-                anchor: "contactmanagement-list",
-                icon: "building"
-            }, {
-                name: "Contact Type",
-                classis: "active",
-                anchor: "contacttype-list",
-                icon: "building"
-            }, {
-                name: "Contact Types of Office",
-                classis: "active",
-                anchor: "contacttypeoffice-list",
-                icon: "building"
-            }
-        ]
+        subnav: [{
+            name: "Branch",
+            classis: "active",
+            anchor: "branch-list",
+            icon: "link"
+        }, {
+            name: "Type Of Office",
+            classis: "active",
+            anchor: "typeOfOffice-list",
+            icon: "building"
+        },  {
+            name: "Unique Type",
+            classis: "active",
+            anchor: "uniquetype-list",
+            icon: "genderless"
+        },  {
+            name: "Function",
+            classis: "active",
+            anchor: "func-list",
+            icon: "building"
+        }, {
+            name: "Business Branch",
+            classis: "active",
+            anchor: "businessbranch-list",
+            icon: "building"
+        }, {
+            name: "Menu",
+            classis: "active",
+            anchor: "menu-list",
+            icon: "building"
+        }, {
+            name: "Role",
+            classis: "active",
+            anchor: "role-list",
+            icon: "building"
+        }, {
+            name: "Contact Management",
+            classis: "active",
+            anchor: "contactmanagement-list",
+            icon: "building"
+        }, {
+            name: "Contact Type",
+            classis: "active",
+            anchor: "contacttype-list",
+            icon: "building"
+        }, {
+            name: "Contact Types of Office",
+            classis: "active",
+            anchor: "contacttypeoffice-list",
+            icon: "building"
+        }]
+    }, {
+        name: "Customers",
+        classis: "active",
+        anchor: "company",
+        icon: "users",
+        subnav: [{
+            name: "Customer Segment",
+            classis: "active",
+            anchor: "customerSegment-list",
+            icon: "user"
+        }, {
+            name: "Company",
+            classis: "active",
+            anchor: "company-list",
+            icon: "link"
+        }, {
+            name: "Office",
+            classis: "active",
+            anchor: "office-list",
+            icon: "link"
+        }, {
+            name: "Customer",
+            classis: "active",
+            anchor: "customer-list",
+            icon: "link"
+        }]
+    }, {
+        name: "Employee",
+        classis: "active",
+        anchor: "company",
+        icon: "users",
+        subnav: [{
+            name: "Employee",
+            classis: "active",
+            anchor: "employee-list",
+            icon: "user"
+        }, {
+            name: "User",
+            classis: "active",
+            anchor: "user-list",
+            icon: "link"
+        }, {
+            name: "Role",
+            classis: "active",
+            anchor: "role-list",
+            icon: "link"
+        }, {
+            name: "Function",
+            classis: "active",
+            anchor: "function-list",
+            icon: "link"
+        }, {
+            name: "Grade",
+            classis: "active",
+            anchor: "grade-list",
+            icon: "link"
+        }]
+    }, {
+        name: "Companies",
+        classis: "active",
+        anchor: "company",
+        icon: "users",
+        subnav: [{
+            name: "Company",
+            classis: "active",
+            anchor: "company-list",
+            icon: "user"
+        }, {
+            name: "Office",
+            classis: "active",
+            anchor: "office-list",
+            icon: "link"
+        }]
+    }, {
+        name: "Locations",
+        classis: "active",
+        anchor: "company",
+        icon: "users",
+        subnav: [{
+            name: "Country",
+            classis: "active",
+            anchor: "country-list",
+            icon: "user"
+        }, {
+            name: "Zone",
+            classis: "active",
+            anchor: "zone-list",
+            icon: "link"
+        }, {
+            name: "State",
+            classis: "active",
+            anchor: "state-list",
+            icon: "link"
+        }, {
+            name: "District",
+            classis: "active",
+            anchor: "district-list",
+            icon: "link"
+        }, {
+            name: "City",
+            classis: "active",
+            anchor: "city-list",
+            icon: "link"
+        }]
+    }, {
+        name: "Insurance",
+        classis: "active",
+        anchor: "company",
+        icon: "users",
+        subnav: [{
+            name: "Department",
+            classis: "active",
+            anchor: "department-list",
+            icon: "user"
+        }, {
+            name: "Policy Type",
+            classis: "active",
+            anchor: "policytype-list",
+            icon: "link"
+        }, {
+            name: "Policy Document",
+            classis: "active",
+            anchor: "policydoc-list",
+            icon: "link"
+        }, {
+            name: "Cause Loss",
+            classis: "active",
+            anchor: "causeloss-list",
+            icon: "building"
+        }, {
+            name: "Nature Loss",
+            classis: "active",
+            anchor: "natureloss-list",
+            icon: "building"
+        }, {
+            name: "Salvage",
+            classis: "active",
+            anchor: "salvage-list",
+            icon: "building"
+        }]
+    },{
+        name: "Products",
+        classis: "active",
+        anchor: "company",
+        icon: "users",
+        subnav: [{
+            name: "Industry",
+            classis: "active",
+            anchor: "industry-list",
+            icon: "building"
+        }, {
+            name: "Category",
+            classis: "active",
+            anchor: "category-list",
+            icon: "building"
+        },{
+            name: "Product",
+            classis: "active",
+            anchor: "product-list",
+            icon: "building"
+        }]
+    },{
+        name: "Finance",
+        classis: "active",
+        anchor: "company",
+        icon: "users",
+        subnav: [{
+            name: "Currency",
+            classis: "active",
+            anchor: "currency-list",
+            icon: "usd"
+        }, {
+            name: "Banks",
+            classis: "active",
+            anchor: "bankmaster-list",
+            icon: "building"
+        }]
     }, {
         name: "Timeline",
         classis: "active",
@@ -683,11 +748,6 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
 
-
-
-
-
-
         getAllUniqueTypes: function(callback) {
             // console.log('form data: ', formData);
             $http({
@@ -729,6 +789,58 @@ var navigationservice = angular.module('navigationservice', [])
             // console.log('form data: ', formData);
             $http({
                 url: adminurl + 'UniqueTypes/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
+
+
+
+
+        getAllCustomerSegments: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'CustomerSegment/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        customersegmentSave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'CustomerSegment/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneCustomerSegment: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'CustomerSegment/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        CustomerSegmentEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'CustomerSegment/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteCustomerSegment: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'CustomerSegment/delete',
                 method: 'POST',
                 withCredentials: true,
                 data: {
@@ -1274,53 +1386,53 @@ var navigationservice = angular.module('navigationservice', [])
 
 
 
-                getAllUsers: function(callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'user/getAll',
-                        method: 'POST',
-                        withCredentials: true
-                    }).success(callback);
-                },
-                userSave: function(formData, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'user/saveData',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: formData
-                    }).success(callback);
-                },
-                getOneUser: function(id, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'user/getOne',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: {
-                            "_id": id
-                        }
-                    }).success(callback);
-                },
-                userEditSave: function(id, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'user/saveData',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: id
-                    }).success(callback);
-                },
-                deleteUser: function(id, callback) {
-                    // console.log('form data: ', formData);
-                    $http({
-                        url: adminurl + 'user/delete',
-                        method: 'POST',
-                        withCredentials: true,
-                        data: {
-                            "_id": id.id,
-                        }
-                    }).success(callback);
-                },
+        getAllUsers: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'user/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        userSave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'user/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneUser: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'user/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        userEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'user/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteUser: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'user/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
     };
 });
