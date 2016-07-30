@@ -589,6 +589,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("company");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+
         $scope.showAllCompanies = function() {
             NavigationService.getAllCompanies(function(data) {
                 $scope.allCompanies = data.data;
@@ -616,6 +617,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("createcompany");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+          $scope.userStatus = ['Active', 'Inactive'];
         NavigationService.getAllCountries(function(data) {
             $scope.allCountries = data.data;
             console.log('$scope.allCountries', $scope.allCountries);
@@ -651,6 +653,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("editcompany");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+          $scope.userStatus = ['Active', 'Inactive'];
         NavigationService.getAllCountries(function(data) {
             $scope.allCountries = data.data;
             console.log('$scope.allCountries', $scope.allCountries);

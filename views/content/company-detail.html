@@ -106,22 +106,22 @@
                         </div>
                         <div class="form-group">
                             <label for="disabledSelect">Country</label>
-                            <select class="form-control">
-                                <option value="select">Select Country</option>
+                            <select class="form-control" ng-model="formData.country">
+                                <option>Select Country</option>
                                 <option ng-repeat="s in allCountries">{{s.name}}</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="disabledSelect">State/Province</label>
-                            <select class="form-control">
-                                <option value="select">Select State/Province</option>
+                            <select class="form-control" ng-model="formData.state">
+                                <option>Select State/Province</option>
                                 <option ng-repeat="s in allStates">{{s.name}}</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label for="disabledSelect">City</label>
-                            <select class="form-control">
-                                <option value="select">Select City</option>
+                            <select class="form-control" ng-model="formData.city">
+                                <option>Select City</option>
                                 <option ng-repeat="s in allCities">{{s.name}}</option>
                             </select>
                         </div>
@@ -158,7 +158,7 @@
                         </div>
                         <div class="form-group">
                             <label>Extension</label>
-                            <input type="email" placeholder="Extension" class="form-control" ng-model="formData.extension">
+                            <input type="text" placeholder="Extension" class="form-control" ng-model="formData.extension">
                         </div>
                         <div class="form-group">
                             <label>Email Id</label>
