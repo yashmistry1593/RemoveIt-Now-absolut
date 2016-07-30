@@ -32,7 +32,7 @@
                             <div class="col-md-12">
                                 <div class="form-group ui-select">
                                     <label for="">Country Name*</label>
-                                    <ui-select multiple tagging tagging-label="(custom 'new' label)" ng-model="ctrl.multipleDemo.colors"  sortable="true" ng-disabled="ctrl.disabled" style="width: 300px;" title="Choose a color">
+                                    <ui-select multiple tagging tagging-label="(custom 'new' label)" ng-model="ctrl.multipleDemo.colors" sortable="true" ng-disabled="ctrl.disabled" style="width: 300px;" title="Choose a color">
                                         <ui-select-match placeholder="Select Country">{{$item}}</ui-select-match>
                                         <ui-select-choices repeat="color in ctrl.availableColors | filter:$select.search">
                                             {{color}}
@@ -42,7 +42,7 @@
                                 </div>
                                 <div class="form-group ui-select">
                                     <label for="">Zone Name*</label>
-                                    <ui-select multiple tagging tagging-label="(custom 'new' label)" ng-model="ctrl.multipleDemo.colors"  sortable="true" ng-disabled="ctrl.disabled" style="width: 300px;" title="Choose a color">
+                                    <ui-select multiple tagging tagging-label="(custom 'new' label)" ng-model="ctrl.multipleDemo.colors" sortable="true" ng-disabled="ctrl.disabled" style="width: 300px;" title="Choose a color">
                                         <ui-select-match placeholder="Select Zone">{{$item}}</ui-select-match>
                                         <ui-select-choices repeat="color in ctrl.availableColors | filter:$select.search">
                                             {{color}}
@@ -52,7 +52,7 @@
                                 </div>
                                 <div class="form-group ui-select">
                                     <label for="">State Name*</label>
-                                    <ui-select multiple tagging tagging-label="(custom 'new' label)" ng-model="ctrl.multipleDemo.colors"  sortable="true" ng-disabled="ctrl.disabled" style="width: 300px;" title="Choose a color">
+                                    <ui-select multiple tagging tagging-label="(custom 'new' label)" ng-model="ctrl.multipleDemo.colors" sortable="true" ng-disabled="ctrl.disabled" style="width: 300px;" title="Choose a color">
                                         <ui-select-match placeholder="Select State">{{$item}}</ui-select-match>
                                         <ui-select-choices repeat="color in ctrl.availableColors | filter:$select.search">
                                             {{color}}
@@ -62,7 +62,7 @@
                                 </div>
                                 <div class="form-group ui-select">
                                     <label for="">District Name*</label>
-                                    <ui-select multiple tagging tagging-label="(custom 'new' label)" ng-model="ctrl.multipleDemo.colors"  sortable="true" ng-disabled="ctrl.disabled" style="width: 300px;" title="Choose a color">
+                                    <ui-select multiple tagging tagging-label="(custom 'new' label)" ng-model="ctrl.multipleDemo.colors" sortable="true" ng-disabled="ctrl.disabled" style="width: 300px;" title="Choose a color">
                                         <ui-select-match placeholder="Select District">{{$item}}</ui-select-match>
                                         <ui-select-choices repeat="color in ctrl.availableColors | filter:$select.search">
                                             {{color}}
@@ -72,7 +72,7 @@
                                 </div>
                                 <div class="form-group ui-select">
                                     <label for="">City Name*</label>
-                                    <ui-select multiple tagging tagging-label="(custom 'new' label)" ng-model="ctrl.multipleDemo.colors"  sortable="true" ng-disabled="ctrl.disabled" style="width: 300px;" title="Choose a color">
+                                    <ui-select multiple tagging tagging-label="(custom 'new' label)" ng-model="ctrl.multipleDemo.colors" sortable="true" ng-disabled="ctrl.disabled" style="width: 300px;" title="Choose a color">
                                         <ui-select-match placeholder="Select City">{{$item}}</ui-select-match>
                                         <ui-select-choices repeat="color in ctrl.availableColors | filter:$select.search">
                                             {{color}}
@@ -97,6 +97,14 @@
                                     <input type="text" name="stdCode" placeholder="Std Codee" ng-model="formData.stdCode" class="form-control" required>
                                     <div class="error-msg" ng-show="cityform.stdCode.$error.required && cityform.stdCode.$touched">Please Enter Std Code.</div>
                                 </div>
+                                <div class="form-group">
+                                  <div ng-if="formData.lat" map-lazy-load="https://maps.google.com/maps/api/js?key=AIzaSyCn9ypqFNxdXt9Zu2YqLcdD1Xdt2wNul9s">
+                                      <ng-map zoom="11" center="[{{mapCenter.lat}},{{mapCenter.long}}]">
+                                          <marker on-dragend="change()" position="[{{formData.lat}},{{formData.long}}]" title="drag me" draggable="true"></marker>
+                                      </ng-map>
+                                  </div>
+                                </div>
+
                                 <div class="form-group">
                                     <label for="">Latitude</label>
                                     <input type="text" name="lat" placeholder="Latitude" ng-model="formData.lat" class="form-control" required>
