@@ -589,6 +589,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("company");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+
+
     })
     .controller('CreateCompanyCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
@@ -596,6 +598,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("createcompany");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        NavigationService.getAllCountries(function(data) {
+            $scope.allCountries = data.data;
+            console.log('$scope.allCountries', $scope.allCountries);
+        });
+        NavigationService.getAllStates(function(data) {
+            $scope.allStates = data.data;
+            console.log('$scope.allStates', $scope.allStates);
+        });
+        NavigationService.getAllCities(function(data) {
+            $scope.allCities = data.data;
+            console.log('$scope.allCities', $scope.allCities);
+        });
     })
     .controller('CreateDistrictCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
@@ -780,7 +794,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
           var vm = this;
         vm.availableColors = ['Red','Green','Blue','Yellow','Magenta','Maroon','Umbra','Turquoise'];
 
-  
+
 
         $scope.header = {
             "name": "Create City"
