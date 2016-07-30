@@ -196,7 +196,7 @@ var navigationservice = angular.module('navigationservice', [])
         name: "Insurance",
         classis: "active",
         anchor: "company",
-        icon: "users",
+        icon: "file-text-o",
         subnav: [{
             name: "Department",
             classis: "active",
@@ -211,28 +211,28 @@ var navigationservice = angular.module('navigationservice', [])
             name: "Policy Document",
             classis: "active",
             anchor: "policydoc-list",
-            icon: "link"
+            icon: "file-pdf-o"
         }, {
             name: "Cause Loss",
             classis: "active",
             anchor: "causeloss-list",
-            icon: "building"
+            icon: "money"
         }, {
             name: "Nature Loss",
             classis: "active",
             anchor: "natureloss-list",
-            icon: "building"
+            icon: "money"
         }, {
             name: "Salvage",
             classis: "active",
             anchor: "salvage-list",
-            icon: "building"
+            icon: "retweet"
         }]
     },{
         name: "Products",
         classis: "active",
         anchor: "company",
-        icon: "users",
+        icon: "puzzle-piece",
         subnav: [{
             name: "Industry",
             classis: "active",
@@ -242,23 +242,23 @@ var navigationservice = angular.module('navigationservice', [])
             name: "Category",
             classis: "active",
             anchor: "category-list",
-            icon: "building"
+            icon: "clone"
         },{
             name: "Product",
             classis: "active",
             anchor: "product-list",
-            icon: "building"
+            icon: "shopping-bag"
         }]
     },{
         name: "Finance",
         classis: "active",
         anchor: "company",
-        icon: "users",
+        icon: "line-chart",
         subnav: [{
             name: "Currency",
             classis: "active",
             anchor: "currency-list",
-            icon: "usd"
+            icon: "inr"
         }, {
             name: "Banks",
             classis: "active",
@@ -269,12 +269,12 @@ var navigationservice = angular.module('navigationservice', [])
         name: "Timeline",
         classis: "active",
         anchor: "timeline",
-        icon: "sitemap",
+        icon: "calendar",
         subnav: [{
             name: "Music Broadcast Ltd",
             classis: "active",
             anchor: "timeline",
-            icon: "sitemap"
+            icon: "music"
         }]
     }];
 
