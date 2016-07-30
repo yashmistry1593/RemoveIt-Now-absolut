@@ -1,6 +1,6 @@
 // angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui.tinymce'])
 
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ui.select', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'imageupload'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ui.select', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'imageupload', 'ngMap'])
 
 .controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
@@ -785,7 +785,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
 
     })
-    .controller('CreateCityCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('CreateCityCtrl', function($scope, TemplateService, NavigationService, $timeout, $state,$stateParams) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("city-detail");
         $scope.menutitle = NavigationService.makeactive("city-detail");
@@ -808,7 +808,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $state.go('city-list');
                 }
                 // console.log('$scope.allCountriessave', $scope.data);
-
+                $scope.mapCenter = {
+                        lat: parseFloat(data.data.lat),
+                        long: parseFloat(data.data.long)
+                    };
             });
         }
 
@@ -817,6 +820,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log('$scope.allDistricts', $scope.allDistricts);
 
         });
+        $scope.change = function(changeVal) {
+    $scope.formData.lat = changeVal.latLng.lat();
+    $scope.formData.long = changeVal.latLng.lng();
+
+};
 
     })
     .controller('EditCityCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
