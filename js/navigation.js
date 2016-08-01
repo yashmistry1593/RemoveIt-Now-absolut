@@ -47,12 +47,12 @@ var navigationservice = angular.module('navigationservice', [])
             classis: "active",
             anchor: "typeOfOffice-list",
             icon: "building"
-        },  {
+        }, {
             name: "Unique Type",
             classis: "active",
             anchor: "uniquetype-list",
             icon: "genderless"
-        },  {
+        }, {
             name: "Function",
             classis: "active",
             anchor: "func-list",
@@ -102,6 +102,11 @@ var navigationservice = angular.module('navigationservice', [])
             name: "Company",
             classis: "active",
             anchor: "company-list",
+            icon: "building"
+        }, {
+            name: "Customer Company",
+            classis: "active",
+            anchor: "customerCompany-list",
             icon: "building"
         }, {
             name: "Office",
@@ -228,7 +233,7 @@ var navigationservice = angular.module('navigationservice', [])
             anchor: "salvage-list",
             icon: "retweet"
         }]
-    },{
+    }, {
         name: "Products",
         classis: "active",
         anchor: "company",
@@ -243,13 +248,13 @@ var navigationservice = angular.module('navigationservice', [])
             classis: "active",
             anchor: "category-list",
             icon: "clone"
-        },{
+        }, {
             name: "Product",
             classis: "active",
             anchor: "product-list",
             icon: "shopping-bag"
         }]
-    },{
+    }, {
         name: "Finance",
         classis: "active",
         anchor: "company",
@@ -1379,13 +1384,6 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
-
-
-
-
-
-
-
         getAllUsers: function(callback) {
             // console.log('form data: ', formData);
             $http({
@@ -1434,6 +1432,56 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
+        getAllCustomerCompanies: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'customerCompany/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        customerCompanySave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'customerCompany/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneCustomerCompany: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'customerCompany/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        customerCompanyEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'customerCompany/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteCustomerCompany: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'customerCompany/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
+
+
         getAllCompanies: function(callback) {
             // console.log('form data: ', formData);
             $http({
@@ -1442,7 +1490,7 @@ var navigationservice = angular.module('navigationservice', [])
                 withCredentials: true
             }).success(callback);
         },
-        companySave: function(formData, callback) {
+        customerSave: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
                 url: adminurl + 'company/saveData',
@@ -1475,6 +1523,55 @@ var navigationservice = angular.module('navigationservice', [])
             // console.log('form data: ', formData);
             $http({
                 url: adminurl + 'company/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
+
+        getAllCustomers: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'customer/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        customerSave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'customer/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneCustomer: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'customer/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        customerEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'customer/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteCustomer: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'customer/delete',
                 method: 'POST',
                 withCredentials: true,
                 data: {

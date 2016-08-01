@@ -7,7 +7,7 @@
             <a title="Home">Company Setup</a>
         </li>
         <li>
-            <a ui-sref="branch-list" title="Branch List">Customer List</a>
+            <a ui-sref="branch-list" title="Branch List">Customer Company List</a>
         </li>
     </ul>
 </div>
@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-md-4 column">
             <div class="heading-profile">
-                <h2>Customer List</h2>
+                <h2>Customer Company List</h2>
             </div>
         </div>
     </div>
@@ -30,34 +30,28 @@
 
                     <div class="widget-title">
                         <div class="pull-right">
-                            <a class="btn btn-primary" ui-sref="createcustomer">Add New</a>
+                            <a class="btn btn-primary" ui-sref="createcustomercompany">Add New</a>
                         </div>
-                        <h3>List of Customers</h3>
+                        <h3>List of Customer Companies</h3>
                     </div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Segment</th>
-                                    <th>Customer Name</th>
-                                    <th>City</th>
-                                    <th>Phone No.</th>
-                                    <th>Fax No.</th>
-                                    <th>Status</th>
-                                    <th>Actions</th>
+                                    <th>Customer Company</th>
+                                    <th>Name</th>
+                                    <th>Short Name</th>
+
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="cust in allCustomers">
-                                    <td>{{cust.segment}}</td>
+                                <tr ng-repeat="cust in allCustomerCompanies">
+                                    <td>{{cust.customerType}}</td>
+                                    <td>{{cust.name}}</td>
                                     <td>{{cust.shortName}}</td>
-                                    <td>{{cust.city}}</td>
-                                    <td>{{cust.phone1}}</td>
-                                    <td>{{cust.fax1}}</td>
-                                    <td>{{cust.status}}</td>
                                     <td>
-                                      <a class="btn btn-primary" ui-sref="editcustomer({id:cust._id})"><i class="fa fa-pencil"></i></a>
-                                      <a class="btn btn-danger" ng-click="deleteCustomer(cust._id)"><i class="fa fa-trash"></i></a>
+                                          <a class="btn btn-blue" ui-sref="editcustomercompany({id:cust._id})"><i class="fa fa-pencil"></i></a>
+                                          <a class="btn btn-red" ng-click="deleteCustomerCompany(cust._id)"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                             </tbody>

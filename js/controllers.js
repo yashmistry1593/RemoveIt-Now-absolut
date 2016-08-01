@@ -617,7 +617,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("createcompany");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-          $scope.userStatus = ['Active', 'Inactive'];
+        $scope.userStatus = ['Active', 'Inactive'];
         NavigationService.getAllCountries(function(data) {
             $scope.allCountries = data.data;
             console.log('$scope.allCountries', $scope.allCountries);
@@ -653,7 +653,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("editcompany");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-          $scope.userStatus = ['Active', 'Inactive'];
+        $scope.userStatus = ['Active', 'Inactive'];
         NavigationService.getAllCountries(function(data) {
             $scope.allCountries = data.data;
             console.log('$scope.allCountries', $scope.allCountries);
@@ -669,7 +669,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.header = {
             "name": "Edit Company"
         };
-          $scope.formData = {};
+        $scope.formData = {};
 
         NavigationService.getOneCompany($stateParams.id, function(data) {
             $scope.formData = data.data;
@@ -864,14 +864,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
 
     })
-    .controller('CreateCityCtrl', function($scope, TemplateService, NavigationService, $timeout, $state,$stateParams) {
+    .controller('CreateCityCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("city-detail");
         $scope.menutitle = NavigationService.makeactive("city-detail");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-          var vm = this;
-        vm.availableColors = ['Red','Green','Blue','Yellow','Magenta','Maroon','Umbra','Turquoise'];
+        var vm = this;
+        vm.availableColors = ['Red', 'Green', 'Blue', 'Yellow', 'Magenta', 'Maroon', 'Umbra', 'Turquoise'];
 
 
 
@@ -888,9 +888,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
                 // console.log('$scope.allCountriessave', $scope.data);
                 $scope.mapCenter = {
-                        lat: parseFloat(data.data.lat),
-                        long: parseFloat(data.data.long)
-                    };
+                    lat: parseFloat(data.data.lat),
+                    long: parseFloat(data.data.long)
+                };
             });
         }
 
@@ -900,10 +900,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         });
         $scope.change = function(changeVal) {
-    $scope.formData.lat = changeVal.latLng.lat();
-    $scope.formData.long = changeVal.latLng.lng();
+            $scope.formData.lat = changeVal.latLng.lat();
+            $scope.formData.long = changeVal.latLng.lng();
 
-};
+        };
 
     })
     .controller('EditCityCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
@@ -1126,7 +1126,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
 
 
-    .controller('CustomerSegmentCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('CustomerSegmentCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("customerSegment-list");
         $scope.menutitle = NavigationService.makeactive("customerSegment List");
@@ -2490,19 +2490,218 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 })
 
+
+.controller('CustomerCompanyCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("customerCompany-list");
+        $scope.menutitle = NavigationService.makeactive("customerCompany List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.showAllCustomerCompanies = function() {
+            NavigationService.getAllCustomerCompanies(function(data) {
+                $scope.allCustomerCompanies = data.data;
+                console.log('$scope.allCustomerCompanies', $scope.allCustomerCompanies);
+
+            });
+        };
+        $scope.showAllCustomerCompanies();
+        $scope.deleteCustomerCompany = function(id) {
+
+            NavigationService.deleteCustomerCompany({
+                id: id
+            }, function(data) {
+                $scope.showAllCustomerCompanies();
+
+            });
+        }
+    })
+    .controller('CreateCustomerCompanyCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("customerCompany-detail");
+        $scope.menutitle = NavigationService.makeactive("customerCompany-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Create Customer Company"
+        };
+        $scope.formData = {};
+        $scope.saveCustomerCompany = function(formData) {
+
+            NavigationService.customerCompanySave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('customerCompany-list');
+                }
+
+            });
+        }
+
+    })
+    .controller('EditCustomerCompanyCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("customerCompany-detail");
+        $scope.menutitle = NavigationService.makeactive("customerCompany-detail");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Edit Customer Company"
+        };
+
+        NavigationService.getOneCustomerCompany($stateParams.id, function(data) {
+            $scope.formData = data.data;
+        });
+
+        $scope.saveCustomerCompany = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.customerCompanyEditSave($scope.formData, function(data) {
+                if (data.value == true) {
+                    $state.go('customerCompany-list');
+                }
+            });
+            //  }
+        };
+
+    })
+
 .controller('CustomerCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("customer-list");
     $scope.menutitle = NavigationService.makeactive("Customer");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+
+    $scope.showAllCustomers = function() {
+        NavigationService.getAllCustomers(function(data) {
+            $scope.allCustomers = data.data;
+            console.log('$scope.allCustomers', $scope.allCustomers);
+
+        });
+    };
+    $scope.showAllCustomers();
+
+    $scope.deleteCustomer = function(id) {
+
+        NavigationService.deleteCustomer({
+            id: id
+        }, function(data) {
+            $scope.showAllCustomers();
+
+        });
+    }
 })
 
 .controller('CreateCustomerCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
-    //Used to name the .html file
-    $scope.template = TemplateService.changecontent("customer-detail");
-    $scope.menutitle = NavigationService.makeactive("Create Customer");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
-})
-;
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("customer-detail");
+        $scope.menutitle = NavigationService.makeactive("Create Customer");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.header = {
+            "name": "Create Customer"
+        };
+        $scope.formData = {};
+        // $scope.userStatus = ['Active', 'Inactive'];
+        $scope.saveCustomer = function() {
+            console.log($scope.formData);
+            // NavigationService.customerSave($scope.formData, function(data) {
+            //     console.log(data);
+            //     if (data.value == true) {
+            //         $state.go('customer-list');
+            //     }
+            // });
+        }
+        NavigationService.getAllCustomerCompanies(function(data) {
+            $scope.allCustomerCompanies = data.data;
+            console.log('$scope.allCustomerCompanies', $scope.allCustomerCompanies);
+
+        });
+        NavigationService.getAllCustomerSegments(function(data) {
+            $scope.allCustomerSegments = data.data;
+        });
+        NavigationService.getAllTypeOfOffices(function(data) {
+            $scope.allTypeOfOffices = data.data;
+            console.log('$scope.allTypeOfOffices', $scope.allTypeOfOffices);
+        });
+
+        NavigationService.getAllCountries(function(data) {
+            $scope.allCountries = data.data;
+            console.log('$scope.allCountries', $scope.allCountries);
+        });
+        NavigationService.getAllStates(function(data) {
+            $scope.allStates = data.data;
+            console.log('$scope.allStates', $scope.allStates);
+        });
+        NavigationService.getAllCities(function(data) {
+            $scope.allCities = data.data;
+            console.log('$scope.allCities', $scope.allCities);
+        });
+
+
+    })
+    .controller('EditCustomerCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("customer-detail");
+        $scope.menutitle = NavigationService.makeactive("Edit Customer");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.header = {
+            "name": "Edit Customer"
+        };
+        // $scope.userStatus = ['Active', 'Inactive'];
+        NavigationService.getOneCustomer($stateParams.id, function(data) {
+          console.log(data.data.status);
+          if(data.data.status==true){
+            data.data.status='Active';
+          }else{
+            data.data.status='Inactive';
+          }
+            $scope.formData = data.data;
+
+            console.log('$scope.formData', $scope.formData);
+
+        });
+        $scope.saveCustomer = function(formData) {
+
+            NavigationService.customerSave($scope.formData, function(data) {
+              console.log($scope.formData.status);
+              if($scope.formData.status && $scope.formData.status=='Active'){
+                console.log('ifffffffffff');
+                data.data.status=false;
+              }else{
+                  console.log('elseeeeeeeeeeeeee');
+                data.data.status=true;
+              }
+                console.log(data.data.status);
+                if (data.value == true) {
+                    $state.go('customer-list');
+                }
+            });
+        }
+        NavigationService.getAllCustomerCompanies(function(data) {
+            $scope.allCustomerCompanies = data.data;
+            console.log('$scope.allCustomerCompanies', $scope.allCustomerCompanies);
+
+        });
+        NavigationService.getAllCustomerSegments(function(data) {
+            $scope.allCustomerSegments = data.data;
+        });
+        NavigationService.getAllTypeOfOffices(function(data) {
+            $scope.allTypeOfOffices = data.data;
+            console.log('$scope.allTypeOfOffices', $scope.allTypeOfOffices);
+        });
+        NavigationService.getAllCountries(function(data) {
+            $scope.allCountries = data.data;
+            console.log('$scope.allCountries', $scope.allCountries);
+        });
+        NavigationService.getAllStates(function(data) {
+            $scope.allStates = data.data;
+            console.log('$scope.allStates', $scope.allStates);
+        });
+        NavigationService.getAllCities(function(data) {
+            $scope.allCities = data.data;
+            console.log('$scope.allCities', $scope.allCities);
+        });
+    });

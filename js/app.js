@@ -533,6 +533,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         templateUrl: "views/template.html",
         controller: 'CreateCustomerCtrl'
     })
+    .state('editcustomer', {
+        url: "/customer-detail/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditCustomerCtrl'
+    })
 
     .state('contactmanagement-list', {
         url: "/contactmanagement-list",
@@ -587,6 +592,24 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         url: "/customersegment-edit/:id",
         templateUrl: "views/template.html",
         controller: 'EditCustomerSegmentCtrl'
+    })
+    .state('customerCompany-list', {
+        url: "/customerCompany-list",
+        templateUrl: "views/template.html",
+        controller: 'CustomerCompanyCtrl'
+    })
+
+
+    .state('createcustomercompany', {
+        url: "/customercompany-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateCustomerCompanyCtrl'
+    })
+
+    .state('editcustomercompany', {
+        url: "/customercompany-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditCustomerCompanyCtrl'
     })
 
     .state('timeline', {
