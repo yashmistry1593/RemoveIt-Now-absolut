@@ -1,6 +1,5 @@
 var jsArray = [
     './bower_components/jquery/dist/jquery.min.js',
-    './bower_components/ngmap/build/scripts/ng-map.min.js',
     './bower_components/flexslider/jquery.flexslider-min.js',
     './bower_components/bootstrap-sass/assets/javascripts/bootstrap.min.js',
     './bower_components/fancyBox/source/jquery.fancybox.js',
@@ -23,6 +22,7 @@ var jsArray = [
     './bower_components/angulartics-google-analytics/dist/angulartics-google-analytics.min.js',
     './bower_components/angular-ui-tinymce/src/tinymce.js',
     './bower_components/angularjs-imageupload-directive/public/javascripts/imageupload.js',
+    './bower_components/ngmap/build/scripts/ng-map.min.js',
 
     './js/app.js',
     './js/language.js',
