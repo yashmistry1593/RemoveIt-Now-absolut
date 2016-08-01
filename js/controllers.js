@@ -2653,11 +2653,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         // $scope.userStatus = ['Active', 'Inactive'];
         NavigationService.getOneCustomer($stateParams.id, function(data) {
           console.log(data.data.status);
-          if(data.data.status==true){
-            data.data.status='Active';
-          }else{
-            data.data.status='Inactive';
-          }
+          // if(data.data.status==true){
+          //   data.data.status='Active';
+          // }else{
+          //   data.data.status='Inactive';
+          // }
             $scope.formData = data.data;
 
             console.log('$scope.formData', $scope.formData);
@@ -2667,13 +2667,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             NavigationService.customerSave($scope.formData, function(data) {
               console.log($scope.formData.status);
-              if($scope.formData.status && $scope.formData.status=='Active'){
-                console.log('ifffffffffff');
-                data.data.status=false;
-              }else{
-                  console.log('elseeeeeeeeeeeeee');
-                data.data.status=true;
-              }
+              // if($scope.formData.status && $scope.formData.status=='Active'){
+              //   console.log('ifffffffffff');
+              //   data.data.status=false;
+              // }else{
+              //     console.log('elseeeeeeeeeeeeee');
+              //   data.data.status=true;
+              // }
                 console.log(data.data.status);
                 if (data.value == true) {
                     $state.go('customer-list');

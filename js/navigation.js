@@ -11,6 +11,7 @@ var adminurl = "http://localhost:1337/";
 var imgurl = "http://localhost:81/upload/";
 
 
+
 // var adminurl = "http://104.199.175.10/";
 // var imgurl = adminurl + "upload/";
 
@@ -1579,5 +1580,6 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
+
     };
 });
