@@ -23,6 +23,7 @@ var jsArray = [
     './bower_components/angulartics-google-analytics/dist/angulartics-google-analytics.min.js',
     './bower_components/angular-ui-tinymce/src/tinymce.js',
     './bower_components/angularjs-imageupload-directive/public/javascripts/imageupload.js',
+    './bower_components/ngmap/build/scripts/ng-map.min.js',
 
     './js/app.js',
     './js/language.js',

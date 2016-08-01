@@ -52,7 +52,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('CreateCountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("country-detail");
-        $scope.menutitle = NavigationService.makeactive("country-detail");
+        $scope.menutitle = NavigationService.makeactive("Country");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
@@ -74,7 +74,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('EditCountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("country-detail");
-        $scope.menutitle = NavigationService.makeactive("country-detail");
+        $scope.menutitle = NavigationService.makeactive("Country");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
@@ -131,7 +131,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('CreateOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("office-detail");
-        $scope.menutitle = NavigationService.makeactive("office-detail");
+        $scope.menutitle = NavigationService.makeactive("Office");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
@@ -142,18 +142,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.saveOffice = function(formData) {
 
             NavigationService.officeSave($scope.formData, function(data) {
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('office-list');
                 }
 
             });
-        }
+        };
 
     })
     .controller('EditOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("office-detail");
-        $scope.menutitle = NavigationService.makeactive("office-detail");
+        $scope.menutitle = NavigationService.makeactive("Office");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
@@ -181,7 +181,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('TypeOfOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("typeOfOffice-list");
-        $scope.menutitle = NavigationService.makeactive("typeOfOffice List");
+        $scope.menutitle = NavigationService.makeactive("Type Of Office List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.showAllTypeOfOffices = function() {
@@ -205,7 +205,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('CreateTypeOfOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("typeOfOffice-detail");
-        $scope.menutitle = NavigationService.makeactive("typeOfOffice-detail");
+        $scope.menutitle = NavigationService.makeactive("Type Of Office");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
@@ -227,7 +227,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('EditTypeOfOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("typeOfOffice-detail");
-        $scope.menutitle = NavigationService.makeactive("typeOfOffice-detail");
+        $scope.menutitle = NavigationService.makeactive("Type Of Office");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
@@ -255,7 +255,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('ZoneCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("zone-list");
-        $scope.menutitle = NavigationService.makeactive("zone List");
+        $scope.menutitle = NavigationService.makeactive("Zone List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.showAllZones = function() {
@@ -283,7 +283,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('CreateZoneCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("zone-detail");
-        $scope.menutitle = NavigationService.makeactive("zone-detail");
+        $scope.menutitle = NavigationService.makeactive("Zone");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
@@ -313,7 +313,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('EditZoneCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("zone-detail");
-        $scope.menutitle = NavigationService.makeactive("zone-detail");
+        $scope.menutitle = NavigationService.makeactive("Zone");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
