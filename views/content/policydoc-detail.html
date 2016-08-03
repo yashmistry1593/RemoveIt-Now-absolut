@@ -36,13 +36,13 @@
                                     <div class="error-msg" ng-show="ploicyDocForm.name.$error.required && ploicyDocForm.name.$touched">Please Enter Policy Name.</div>
 
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="disabledSelect">Department*</label>
                                     <select class="form-control" ng-model="formData.department" value="{{dist.name}}">
                                         <option ng-selected="true" value="">Select Department</option>
                                         <option ng-repeat="dept in allDepartments">{{dept.name}}</option>
                                     </select>
-                                </div>
+                                </div> -->
 
                                 <div class="form-group">
                                     <label for="disabledSelect">Policy Type*</label>
@@ -53,11 +53,20 @@
                                 </div>
 
                                 <div class="form-group">
+                                    <label for="disabledSelect">Status</label>
+                                    <select class="form-control" ng-model="formData.status" ng-options="str.value as str.name for str in userStatus">
+                                        <!-- <option value="">Select Status </option>
+                                        <option value=true>Active</option>
+                                        <option value=false>Inactive</option> -->
+                                    </select>
+                                </div>
+
+                                <!-- <div class="form-group">
                                     <label for="">Status*</label>
                                     <input type="text" name="Status" placeholder="Status" ng-model="formData.status" class="form-control" required>
                                     <div class="error-msg" ng-show="ploicyDocForm.status.$error.required && ploicyDocForm.status.$touched">Please Enter Status.</div>
 
-                                </div>
+                                </div> -->
 
                             </div>
 

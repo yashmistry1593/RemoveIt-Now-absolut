@@ -41,8 +41,8 @@
                                     <th>Nature Loss</th>
                                     <th>Nature Code</th>
                                     <!-- <th>Nature Loss</th> -->
-                                    <th>Department</th>
-                                    <th>Cause Of Loss</th>
+                                    <!-- <th>Department</th>
+                                    <th>Cause Of Loss</th> -->
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -50,8 +50,8 @@
                                 <tr ng-repeat="loss in allNatureLoss">
                                     <td>{{loss.name}}</td>
                                     <td>{{loss.code}}</td>
-                                    <td>{{loss.department}}</td>
-                                    <td>{{loss.causeLoss}}</td>
+                                    <!-- <td>{{loss.department}}</td>
+                                    <td>{{loss.causeLoss}}</td> -->
                                     <td>{{loss.status}}</td>
                                     <td>
                                       <a class="btn btn-primary" ui-sref="editnatureloss({id:loss._id})"><i class="fa fa-pencil"></i></a>

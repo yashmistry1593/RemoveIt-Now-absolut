@@ -57,11 +57,11 @@
                                     <input type="text" placeholder="Credit Limit" class="form-control" ng-model="formData.creditLimit" required2>
                                 </div>
                                 <div class="form-group">
-                                    <label for="disabledSelect">Status</label>{{formData.status}}
-                                    <select class="form-control" ng-model="formData.status">
-                                        <option value="">Select Status </option>
+                                    <label for="disabledSelect">Status</label>
+                                    <select class="form-control" ng-model="formData.status" ng-options="str.value as str.name for str in userStatus">
+                                        <!-- <option value="">Select Status </option>
                                         <option value=true>Active</option>
-                                        <option value=false>Inactive</option>
+                                        <option value=false>Inactive</option> -->
                                     </select>
                                 </div>
                             </div>

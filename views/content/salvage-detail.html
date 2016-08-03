@@ -34,23 +34,32 @@
                                     <label for="exampleInputEmail1">Salvage*</label>
                                     <input type="text" placeholder="Salvage" id="exampleInputEmail1" class="form-control">
                                 </div>
+
                                 <div class="form-group">
+                                    <label for="disabledSelect">Status</label>
+                                    <select class="form-control" ng-model="formData.status" ng-options="str.value as str.name for str in userStatus">
+                                        <!-- <option value="">Select Status </option>
+                                        <option value=true>Active</option>
+                                        <option value=false>Inactive</option> -->
+                                    </select>
+                                </div>
+                                <!-- <div class="form-group">
                                     <label for="disabledSelect">Status</label>
                                     <select class="form-control wd30">
                                         <option value="select">active</option>
                                         <option value="select">deactive</option>
                                     </select>
-                                </div>
+                                </div> -->
 
 
 
 
                             </div>
                             <div class="col-md-6">
-                              <div class="form-group">
-                                  <label for="exampleInputEmail1">Sequence*</label>
-                                  <input type="text" placeholder="Sequence" id="exampleInputEmail1" class="form-control">
-                              </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Sequence*</label>
+                                    <input type="text" placeholder="Sequence" id="exampleInputEmail1" class="form-control">
+                                </div>
                             </div>
                         </div>
                 </div>

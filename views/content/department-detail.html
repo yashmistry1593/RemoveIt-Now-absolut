@@ -47,11 +47,20 @@
                                     <input type="text" name="short_name" placeholder="Short Name" ng-model="formData.short_name" class="form-control" required>
                                     <div class="error-msg" ng-show="departmentForm.short_name.$error.required && departmentForm.short_name.$touched">Please Enter Short Name.</div>
                                 </div>
+
                                 <div class="form-group">
+                                    <label for="disabledSelect">Status</label>
+                                    <select class="form-control" ng-model="formData.status" ng-options="str.value as str.name for str in userStatus">
+                                        <!-- <option value="">Select Status </option>
+                                        <option value=true>Active</option>
+                                        <option value=false>Inactive</option> -->
+                                    </select>
+                                </div>
+                                <!-- <div class="form-group">
                                     <label for="">Status</label>
                                     <input type="text" name="lat" placeholder="Status" ng-model="formData.status" class="form-control" required>
-                                    <div class="error-msg" ng-show="departmentForm.status.$error.required && departmentForm.status.$touched">Please Enter Status.</div>
-                                    <!-- <label for="">Longitude</label>
+                                    <div class="error-msg" ng-show="departmentForm.status.$error.required && departmentForm.status.$touched">Please Enter Status.</div> -->
+                                <!-- <label for="">Longitude</label>
                                     <input type="text" name="long" placeholder="Longitude" ng-model="formData.long" class="form-control" required>
                                     <div class="error-msg" ng-show="departmentForm.long.$error.required && departmentForm.long.$touched">Please Enter Longitude.</div>
 
@@ -60,10 +69,10 @@
                                     <input type="text" name="timezone" placeholder="TimeZone" ng-model="formData.timezone" class="form-control" required>
                                     <div class="error-msg" ng-show="departmentForm.timezone.$error.required && departmentForm.timezone.$touched">Please Enter TimeZone.</div> -->
 
-                                    <!-- <label for="">State Name*</label>
+                                <!-- <label for="">State Name*</label>
                                     <input type="text" name="state" placeholder="State Name" ng-model="formData.state" class="form-control" required>
                                     <div class="error-msg" ng-show="departmentForm.state.$error.required && departmentForm.state.$touched">Please Enter State Name.</div> -->
-                                </div>
+                                <!-- </div> -->
 
                             </div>
 

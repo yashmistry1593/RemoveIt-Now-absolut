@@ -46,13 +46,21 @@
                                     <div class="error-msg" ng-show="menuForm.right_menu.$error.required && menuForm.right_menu.$touched">Please Enter Right Menu.</div>
                                 </div>
                                 <div class="form-group">
+                                    <label for="disabledSelect">Status</label>
+                                    <select class="form-control" ng-model="formData.status" ng-options="str.value as str.name for str in userStatus">
+                                        <!-- <option value="">Select Status </option>
+                                        <option value=true>Active</option>
+                                        <option value=false>Inactive</option> -->
+                                    </select>
+                                </div>
+                                <!-- <div class="form-group">
                                     <label for="">Status</label>
                                     <input type="text" name="lat" placeholder="Status" ng-model="formData.status" class="form-control" required>
                                     <div class="error-msg" ng-show="menuForm.status.$error.required && menuForm.status.$touched">Please Enter Status.</div>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label for="">Activity</label>
-                                    <input type="text" name="lat" placeholder="Activity" ng-model="formData.status" class="form-control" required>
+                                    <input type="text" name="lat" placeholder="Activity" ng-model="formData.activity" class="form-control" required>
                                     <div class="error-msg" ng-show="menuForm.activity.$error.required && menuForm.status.$touched">Please Enter Activity.</div>
                                 </div>
                             </div>

@@ -53,16 +53,16 @@
                                   <td><input type="text" class="form-control" placeholder="Enter Branch Code"></td>
                                   <td><input type="text" class="form-control" placeholder="Enter Short Name"></td>
                               </tr> -->
-                                <tr>
-                                    <td>1</td>
-                                    <td>Wohlig Technology</td>
-                                    <td>WOH123</td>
-                                    <td>WT</td>
+                                <tr ng-repeat="emp in allEmployees">
+                                    <td></td>
+                                    <td>{{emp.name}}</td>
+                                    <td>{{emp.mobile}}</td>
+                                    <td>{{emp.email}}</td>
                                     <td>lorem ipsum</td>
-                                    <td><a class="btn btn-blue" ui-sref="editoffice({id:office._id})"><i class="fa fa-pencil"></i></a>
-                                    <a class="btn btn-red" ng-click="deleteOffice(office._id)"><i class="fa fa-trash"></i></a></td>
+                                    <td><a class="btn btn-blue" ui-sref="editemployee({id:emp._id})"><i class="fa fa-pencil"></i></a>
+                                    <a class="btn btn-red" ng-click="deleteEmployee(emp._id)"><i class="fa fa-trash"></i></a></td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <td>2</td>
                                     <td>Facebook Pvt. Ltd.</td>
                                     <td>FAC123</td>
@@ -79,7 +79,7 @@
                                     <td>lorem ipsum</td>
                                     <td><a class="btn btn-blue" ui-sref="editoffice({id:office._id})"><i class="fa fa-pencil"></i></a>
                                     <a class="btn btn-red" ng-click="deleteOffice(office._id)"><i class="fa fa-trash"></i></a></td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>

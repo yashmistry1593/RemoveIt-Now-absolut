@@ -1581,5 +1581,56 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
 
+
+
+        getAllEmployees: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'employee/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        employeeSave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'employee/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneEmployee: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'employee/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        employeeEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'employee/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteEmployee: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'employee/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
+
     };
 });

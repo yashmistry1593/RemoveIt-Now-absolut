@@ -50,7 +50,7 @@
                                 </div> -->
 
 
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="disabledSelect">Cause Loss*</label>
                                     <select class="form-control" ng-model="formData.causeLoss" value="{{dist.name}}">
                                         <option ng-selected="true" value="">Select Cause Loss</option>
@@ -63,14 +63,23 @@
                                         <option ng-selected="true" value="">Select Department</option>
                                         <option ng-repeat="dept in allDepartments">{{dept.name}}</option>
                                     </select>
-                                </div>
+                                </div> -->
 
                                 <div class="form-group">
+                                    <label for="disabledSelect">Status</label>
+                                    <select class="form-control" ng-model="formData.status" ng-options="str.value as str.name for str in userStatus">
+                                        <!-- <option value="">Select Status </option>
+                                        <option value=true>Active</option>
+                                        <option value=false>Inactive</option> -->
+                                    </select>
+                                </div>
+
+                                <!-- <div class="form-group">
                                     <label for="">Status*</label>
                                     <input type="text" name="Status" placeholder="Status" ng-model="formData.status" class="form-control" required>
                                     <div class="error-msg" ng-show="NatureLossForm.status.$error.required && NatureLossForm.status.$touched">Please Enter Status.</div>
 
-                                </div>
+                                </div> -->
 
                             </div>
 
