@@ -32,36 +32,36 @@
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="disabledSelect">Company Name*</label>
-                  <select class="form-control">
-                    <option value="select">--select--</option>
-                    <option value="select">Absolute Insurance Surveyor</option>
+                  <select class="form-control" ng-model="formData.company" >
+                    <option value="select" ng-selected="true">--select--</option>
+                    <option value="select"  ng-repeat="name in company">Absolute Insurance Surveyor</option>
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Last Name*</label>
-                  <input type="text" placeholder="Last Name" id="exampleInputEmail1" class="form-control">
+                  <input type="text" placeholder="Last Name" id="exampleInputEmail1" class="form-control" ng-model="formData.lastName">
                 </div>
 
                 <div class="form-group">
                   <label class="bl" for="exampleInputEmail1">Salutation*</label>
-                  <input type="text" placeholder="Salutation" id="exampleInputEmail1" class="form-control ipbl wd20">
-                  <input type="text" placeholder="Salutation" id="exampleInputEmail1" class="form-control ipbl wd79">
+                  <input type="text" placeholder="Salutation" id="exampleInputEmail1" class="form-control ipbl wd20" ng-model="formData.salutation">
+                  <input type="text" placeholder="Name" id="exampleInputEmail1" class="form-control ipbl wd79" ng-model="formData.name">
                 </div>
 
               </div>
               <div class="col-md-6">
                 <div class="form-group">
                   <label for="disabledSelect">Division*</label>
-                  <select class="form-control">
-                    <option value="select">--select--</option>
-                    <option value="select">Account</option>
-                    <option value="select">Administrator</option>
-                    <option value="select">Bank Office</option>
+                  <select class="form-control" ng-model="formData.division">
+                    <option value="select" ng-selected="true">--select--</option>
+                    <option value="select" ng-repeat="data in Division">Account</option>
+                    <!-- <option value="select">Administrator</option>
+                    <option value="select">Bank Office</option> -->
                   </select>
                 </div>
                 <div class="form-group">
                   <label for="exampleInputEmail1">Designation</label>
-                  <input type="text" placeholder="Designation" id="exampleInputEmail1" class="form-control">
+                  <input type="text" placeholder="Designation" id="exampleInputEmail1" class="form-control" ng-model="formData.designation">
                 </div>
               </div>
             </div>
@@ -76,33 +76,33 @@
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Address</label>
-                <textarea placeholder="Address" id="exampleInputPassword1" class="form-control"> </textarea>
+                <textarea placeholder="Address" id="exampleInputPassword1" class="form-control" ng-model="formData.address"> </textarea>
               </div>
               <div class="form-group">
                 <label for="disabledSelect">Country</label>
-                <select class="form-control">
+                <select class="form-control" ng-model="formData.country">
                   <option value="select">Select Country</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="disabledSelect">State/Province</label>
-                <select class="form-control">
+                <select class="form-control" ng-model="formData.state">
                   <option value="select">Select State/Province</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="disabledSelect">City</label>
-                <select class="form-control">
+                <select class="form-control" ng-model="formData.city">
                   <option value="select">Select City</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Postal Code</label>
-                <input type="text" placeholder="Postal Code" id="exampleInputEmail1" class="form-control">
+                <input type="text" placeholder="Postal Code" id="exampleInputEmail1" class="form-control" ng-model="formData.pincode">
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Final Address</label>
-                <textarea placeholder="" id="exampleInputPassword1" class="form-control" disabled> </textarea>
+                <textarea placeholder="" id="exampleInputPassword1" class="form-control" disabled ng-model="formData.finalAddress"> </textarea>
               </div>
             </div>
           </div>
@@ -122,11 +122,11 @@
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail1">Valid Upto</label>
-                        <input type="date" placeholder="Valid Upto" id="exampleInputEmail1" class="form-control">
+                        <input type="date" placeholder="Valid Upto" id="exampleInputEmail1" class="form-control" ng-model="formData. valid_upto">
                       </div>
                       <div class="form-group">
                         <label for="exampleInputEmail1">License#</label>
-                        <input type="text" placeholder="License" id="exampleInputEmail1" class="form-control">
+                        <input type="text" placeholder="License" id="exampleInputEmail1" class="form-control" ng-model="formData.licence">
                       </div>
                       <div class="form-group">
                         <div class="user-img mt25">
@@ -153,27 +153,27 @@
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Office#</label>
-                <input type="text" placeholder="Office Number" id="exampleInputEmail1" class="form-control">
+                <input type="text" placeholder="Office Number" id="exampleInputEmail1" class="form-control" ng-model="formData.OfficeMobile">
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Home#</label>
-                <input type="text" placeholder="Home Number" id="exampleInputEmail1" class="form-control">
+                <input type="text" placeholder="Home Number" id="exampleInputEmail1" class="form-control" ng-model="formData.home">
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Mobile#</label>
-                <input type="text" placeholder="Mobile Number" id="exampleInputEmail1" class="form-control">
+                <input type="text" placeholder="Mobile Number" id="exampleInputEmail1" class="form-control" ng-model="formData.mobile">
               </div>
-              <div class="form-group">
+              <!-- <div class="form-group">
                 <label for="exampleInputEmail1">Fax#</label>
-                <input type="text" placeholder="Fax Number" id="exampleInputEmail1" class="form-control">
-              </div>
+                <input type="text" placeholder="Fax Number" id="exampleInputEmail1" class="form-control" ng-model="formData.">
+              </div> -->
               <div class="form-group">
                 <label for="exampleInputEmail1">Extension</label>
-                <input type="email" placeholder="Email Id" id="exampleInputEmail1" class="form-control">
+                <input type="email" placeholder="Email Id" id="exampleInputEmail1" class="form-control" ng-model="formData.extention">
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Email Id</label>
-                <input type="email" placeholder="Email Id" id="exampleInputEmail1" class="form-control">
+                <input type="email" placeholder="Email Id" id="exampleInputEmail1" class="form-control" ng-model="formData.email">
               </div>
 
             </div>
@@ -185,19 +185,19 @@
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Date of Birth*</label>
-                <input type="date" placeholder="DOB" id="exampleInputEmail1" class="form-control">
+                <input type="date" placeholder="DOB" id="exampleInputEmail1" class="form-control" ng-model="formData.dob">
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Marriage Date</label>
-                <input type="date" placeholder="marriage Date" id="exampleInputEmail1" class="form-control">
+                <input type="date" placeholder="marriage Date" id="exampleInputEmail1" class="form-control" ng-model="formData.marriageDate">
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Joining Date*</label>
-                <input type="date" placeholder="Join Date" id="exampleInputEmail1" class="form-control">
+                <input type="date" placeholder="Join Date" id="exampleInputEmail1" class="form-control" ng-model="formData.joiningDate">
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Leaving Date</label>
-                <input type="date" placeholder="leaving Date" id="exampleInputEmail1" class="form-control">
+                <input type="date" placeholder="leaving Date" id="exampleInputEmail1" class="form-control" ng-model="formData.leavingDate">
               </div>
               <div class="checkbox">
                                     <label>
