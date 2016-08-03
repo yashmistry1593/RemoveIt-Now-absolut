@@ -498,6 +498,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.formData = {};
+        $scope.userStatus = [{
+            "name": "Active",
+            "value": true
+        }, {
+            "name": "Inactive",
+            "value": false
+        }];
         NavigationService.getAllCompanies(function(data) {
             $scope.allCompanies = data.data;
             console.log('$scope.allCompanies', $scope.allCompanies);
@@ -535,12 +542,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
 
     })
-    .controller('EditEmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('EditEmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("edit-employee");
+        $scope.template = TemplateService.changecontent("employee-detail");
         $scope.menutitle = NavigationService.makeactive("Edit-Employee");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.userStatus = [{
+            "name": "Active",
+            "value": true
+        }, {
+            "name": "Inactive",
+            "value": false
+        }];
         NavigationService.getAllCompanies(function(data) {
             $scope.allCompanies = data.data;
             console.log('$scope.allCompanies', $scope.allCompanies);

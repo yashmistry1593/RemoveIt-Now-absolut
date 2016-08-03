@@ -33,8 +33,8 @@
                 <div class="form-group">
                   <label for="disabledSelect">Company Name*</label>
                   <select class="form-control" ng-model="formData.company" >
-                    <option value="select" ng-selected="true">--select--</option>
-                    <option value="select"  ng-repeat="name in allCompanies">{{name.name}}</option>
+                    <option value="" ng-selected="true">--select--</option>
+                    <option ng-repeat="name in allCompanies">{{name.name}}</option>
                   </select>
                 </div>
                 <div class="form-group">
@@ -53,8 +53,8 @@
                 <div class="form-group">
                   <label for="disabledSelect">Division*</label>
                   <select class="form-control" ng-model="formData.division">
-                    <option value="select" ng-selected="true">--select--</option>
-                    <option value="select" ng-repeat="data in allDepartments">{{data.name}}</option>
+                    <option ng-selected="true">--select--</option>
+                    <option ng-repeat="data in allDepartments">{{data.name}}</option>
                     <!-- <option value="select">Administrator</option>
                     <option value="select">Bank Office</option> -->
                   </select>
@@ -76,36 +76,36 @@
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Address</label>
-                <textarea placeholder="Address" id="exampleInputPassword1" class="form-control" ng-model="formData.address"> </textarea>
+                <textarea placeholder="Address" id="exampleInputPassword1" class="form-control" ng-model="formData.address.homeaddress"> </textarea>
               </div>
               <div class="form-group">
                 <label for="disabledSelect">Country</label>
-                <select class="form-control" ng-model="formData.country">
-                  <option value="select">Select Country</option>
+                <select class="form-control" ng-model="formData.address.country">
+                  <option >Select Country</option>
                   <option ng-repeat="data in allCountries">{{data.name}}</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="disabledSelect">State/Province</label>
-                <select class="form-control" ng-model="formData.state">
-                  <option value="select">Select State/Province</option>
+                <select class="form-control" ng-model="formData.address.state">
+                  <option >Select State/Province</option>
                   <option ng-repeat="data in allStates">{{data.name}}</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="disabledSelect">City</label>
-                <select class="form-control" ng-model="formData.city">
-                  <option value="select">Select City</option>
+                <select class="form-control" ng-model="formData.address.city">
+                  <option >Select City</option>
                   <option ng-repeat="data in allCities">{{data.name}}</option>
                 </select>
               </div>
               <div class="form-group">
                 <label for="exampleInputEmail1">Postal Code</label>
-                <input type="text" placeholder="Postal Code" id="exampleInputEmail1" class="form-control" ng-model="formData.pincode">
+                <input type="text" placeholder="Postal Code" id="exampleInputEmail1" class="form-control" ng-model="formData.address.pincode">
               </div>
               <div class="form-group">
                 <label for="exampleInputPassword1">Final Address</label>
-                <textarea placeholder="" id="exampleInputPassword1" class="form-control" disabled ng-model="formData.finalAddress"> </textarea>
+                <textarea placeholder="" id="exampleInputPassword1" class="form-control" disabled ng-model="formData.address.finalAddress"> </textarea>
               </div>
             </div>
           </div>
@@ -114,7 +114,7 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-  <div class="form-group">
+  <!-- <div class="form-group">
     <div class="widget-title">
       <h3>Surveyor</h3>
     </div>
@@ -134,12 +134,13 @@
                       <div class="form-group">
                         <div class="user-img mt25">
                           <label >Upload Document</label>
-                            <!-- <img ng-src="{{userForm.image|uploadpath}}" class="img-responsive margin-auto" ng-if="userForm.image" style="height:200px;"> -->
+                            <img ng-src="{{userForm.image|uploadpath}}" class="img-responsive margin-auto" ng-if="userForm.image" style="height:200px;">
                             <img ng-src="{{formData.symbol|uploadpath}}" ng-if="formData.symbol" alt="" class="img-responsive margin-auto" height="50px" width="50px">
                             <upload-image ng-model="formData.symbol" no-view></upload-image>
                         </div>
                     </div>
-                    </div>
+                    </div> -->
+
                   </div>
                 </div>
 
@@ -214,12 +215,20 @@
 
                                                       </div>
                                                       <div class="form-group">
+                                                          <label for="disabledSelect">Status</label>
+                                                          <select class="form-control" ng-model="formData.status" ng-options="str.value as str.name for str in userStatus">
+                                                              <!-- <option value="">Select Status </option>
+                                                              <option value=true>Active</option>
+                                                              <option value=false>Inactive</option> -->
+                                                          </select>
+                                                      </div>
+                                                      <!-- <div class="form-group">
                                                         <label for="disabledSelect">Status</label>
                                                         <select class="form-control wd30">
                                                           <option value="select">Active</option>
                                                           <option value="select">Inactive</option>
                                                         </select>
-                                                      </div>
+                                                      </div> -->
             </div>
           </div>
         </div>
