@@ -1,246 +1,246 @@
 <div class="breadcrumbs">
-  <ul>
-    <li>
-      <a title="Home">Company Setup</a>
-    </li>
-    <li>
-      <a ui-sref="branch-list" title="Branch List">Employee List</a>
-    </li>
-  </ul>
+    <ul>
+        <li>
+            <a title="Home">Company Setup</a>
+        </li>
+        <li>
+            <a ui-sref="branch-list" title="Branch List">Employee List</a>
+        </li>
+    </ul>
 </div>
 
 <div class="heading-sec">
-  <div class="row">
-    <div class="col-md-4 column">
-      <div class="heading-profile">
-        <h2>Create Employee</h2>
-      </div>
+    <div class="row">
+        <div class="col-md-4 column">
+            <div class="heading-profile">
+                <h2>{{header.name}}</h2>
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 <!-- Top Bar Chart -->
 <div class="panel-content">
-  <div class="row">
-    <div class="col-md-12">
-      <div class="widget">
-        <div class="form-elements-sec">
-          <div class="widget-title">
-            <h3>Employee</h3>
-          </div>
-          <form role="form" class="sec ng-pristine ng-valid" name="employeeForm">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="disabledSelect">Company Name*</label>
-                  <select class="form-control" ng-model="formData.company" >
-                    <option value="" ng-selected="true">--select--</option>
-                    <option ng-repeat="name in allCompanies">{{name.name}}</option>
-                  </select>
-                </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Last Name*</label>
-                  <input type="text" placeholder="Last Name" id="exampleInputEmail1" class="form-control" ng-model="formData.lastName">
-                </div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="widget">
+                <div class="form-elements-sec">
+                    <div class="widget-title">
+                        <h3>Employee</h3>
+                    </div>
+                    <form role="form" class="sec ng-pristine ng-valid" name="employeeForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="disabledSelect">Company Name*</label>
+                                    <select class="form-control" ng-model="formData.company">
+                                        <option value="" ng-selected="true">--select--</option>
+                                        <option ng-repeat="name in allCompanies">{{name.name}}</option>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Last Name*</label>
+                                    <input type="text" placeholder="Last Name" id="exampleInputEmail1" class="form-control" ng-model="formData.lastName">
+                                </div>
 
-                <div class="form-group">
-                  <label class="bl" for="exampleInputEmail1">Salutation*</label>
-                  <input type="text" placeholder="Salutation" id="exampleInputEmail1" class="form-control ipbl wd20" ng-model="formData.salutation">
-                  <input type="text" placeholder="Name" id="exampleInputEmail1" class="form-control ipbl wd79" ng-model="formData.name">
-                </div>
+                                <div class="form-group">
+                                    <label class="bl" for="exampleInputEmail1">Salutation*</label>
+                                    <input type="text" placeholder="Salutation" id="exampleInputEmail1" class="form-control ipbl wd20" ng-model="formData.salutation">
+                                    <input type="text" placeholder="Name" id="exampleInputEmail1" class="form-control ipbl wd79" ng-model="formData.name">
+                                </div>
 
-              </div>
-              <div class="col-md-6">
-                <div class="form-group">
-                  <label for="disabledSelect">Division*</label>
-                  <select class="form-control" ng-model="formData.division">
-                    <option ng-selected="true">--select--</option>
-                    <option ng-repeat="data in allDepartments">{{data.name}}</option>
-                    <!-- <option value="select">Administrator</option>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="disabledSelect">Division*</label>
+                                    <select class="form-control" ng-model="formData.division">
+                                        <option ng-selected="true">--select--</option>
+                                        <option ng-repeat="data in allDepartments">{{data.name}}</option>
+                                        <!-- <option value="select">Administrator</option>
                     <option value="select">Bank Office</option> -->
-                  </select>
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">Designation</label>
+                                    <input type="text" placeholder="Designation" id="exampleInputEmail1" class="form-control" ng-model="formData.designation">
+                                </div>
+                            </div>
+                        </div>
                 </div>
-                <div class="form-group">
-                  <label for="exampleInputEmail1">Designation</label>
-                  <input type="text" placeholder="Designation" id="exampleInputEmail1" class="form-control" ng-model="formData.designation">
-                </div>
-              </div>
             </div>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-md-6">
-          <div class="widget">
-            <div class="form-elements-sec">
-              <div class="widget-title">
-                <h3>Address</h3>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Address</label>
-                <textarea placeholder="Address" id="exampleInputPassword1" class="form-control" ng-model="formData.address.homeaddress"> </textarea>
-              </div>
-              <div class="form-group">
-                <label for="disabledSelect">Country</label>
-                <select class="form-control" ng-model="formData.address.country">
-                  <option >Select Country</option>
-                  <option ng-repeat="data in allCountries">{{data.name}}</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="disabledSelect">State/Province</label>
-                <select class="form-control" ng-model="formData.address.state">
-                  <option >Select State/Province</option>
-                  <option ng-repeat="data in allStates">{{data.name}}</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="disabledSelect">City</label>
-                <select class="form-control" ng-model="formData.address.city">
-                  <option >Select City</option>
-                  <option ng-repeat="data in allCities">{{data.name}}</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Postal Code</label>
-                <input type="text" placeholder="Postal Code" id="exampleInputEmail1" class="form-control" ng-model="formData.address.pincode">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Final Address</label>
-                <textarea placeholder="" id="exampleInputPassword1" class="form-control" disabled ng-model="formData.address.finalAddress"> </textarea>
-              </div>
-            </div>
-          </div>
-          <div class="widget">
-            <div class="form-elements-sec">
-              <div class="row">
+            <div class="row">
                 <div class="col-md-6">
-                  <div class="form-group">
-  <!-- <div class="form-group">
-    <div class="widget-title">
-      <h3>Surveyor</h3>
-    </div>
-  <div class="checkbox">
-                        <label>
-                          <input type="checkbox"> Is Surveyor
-                        </label>
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">Valid Upto</label>
-                        <input type="date" placeholder="Valid Upto" id="exampleInputEmail1" class="form-control" ng-model="formData. valid_upto">
-                      </div>
-                      <div class="form-group">
-                        <label for="exampleInputEmail1">License#</label>
-                        <input type="text" placeholder="License" id="exampleInputEmail1" class="form-control" ng-model="formData.licence">
-                      </div>
-                      <div class="form-group">
-                        <div class="user-img mt25">
-                          <label >Upload Document</label>
-                            <img ng-src="{{userForm.image|uploadpath}}" class="img-responsive margin-auto" ng-if="userForm.image" style="height:200px;">
-                            <img ng-src="{{formData.symbol|uploadpath}}" ng-if="formData.symbol" alt="" class="img-responsive margin-auto" height="50px" width="50px">
-                            <upload-image ng-model="formData.symbol" no-view></upload-image>
+                    <div class="widget">
+                        <div class="form-elements-sec">
+                            <div class="widget-title">
+                                <h3>Address</h3>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Address</label>
+                                <textarea placeholder="Address" id="exampleInputPassword1" class="form-control" ng-model="formData.address.homeaddress"> </textarea>
+                            </div>
+                            <div class="form-group">
+                                <label for="disabledSelect">Country</label>
+                                <select class="form-control" ng-model="formData.address.country">
+                                    <option>Select Country</option>
+                                    <option ng-repeat="data in allCountries">{{data.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="disabledSelect">State/Province</label>
+                                <select class="form-control" ng-model="formData.address.state">
+                                    <option>Select State/Province</option>
+                                    <option ng-repeat="data in allStates">{{data.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="disabledSelect">City</label>
+                                <select class="form-control" ng-model="formData.address.city">
+                                    <option>Select City</option>
+                                    <option ng-repeat="data in allCities">{{data.name}}</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Postal Code</label>
+                                <input type="text" placeholder="Postal Code" id="exampleInputEmail1" class="form-control" ng-model="formData.address.pincode">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">Final Address</label>
+                                <textarea placeholder="" id="exampleInputPassword1" class="form-control" disabled ng-model="formData.address.finalAddress"> </textarea>
+                            </div>
                         </div>
                     </div>
-                    </div> -->
+                    <div class="widget">
+                        <div class="form-elements-sec">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <div class="widget-title">
+                                                <h3>Surveyor</h3>
+                                            </div>
+                                            <div class="checkbox">
+                                                <label>
+                                                    <input type="checkbox" ng-model="formData.surveyor.isSurveyou"> Is Surveyor
+                                                </label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">Valid Upto</label>
+                                                <input type="date" placeholder="Valid Upto" class="form-control" ng-model="formData.surveyor.valid_upto">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleInputEmail1">License#</label>
+                                                <input type="text" placeholder="License" id="exampleInputEmail1" class="form-control" ng-model="formData.surveyor.licence">
+                                            </div>
+                                            <div class="form-group">
+                                                <div class="user-img mt25">
+                                                    <label>Upload Document</label>
+                                                    <img ng-src="{{formData.surveyor.docs|uploadpath}}" class="img-responsive margin-auto" ng-if="formData.surveyor.docs" style="height:200px;">
+                                                    <!-- <img ng-src="{{formData.symbol|uploadpath}}" ng-if="formData.symbol" alt="" class="img-responsive margin-auto" height="50px" width="50px"> -->
+                                                    <upload-image ng-model="formData.surveyor.docs" no-view></upload-image>
+                                                </div>
+                                            </div>
+                                        </div>
 
-                  </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="widget">
-            <div class="form-elements-sec">
-              <div class="widget-title">
-                <h3>Contact</h3>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Office#</label>
-                <input type="text" placeholder="Office Number" id="exampleInputEmail1" class="form-control" ng-model="formData.OfficeMobile">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Home#</label>
-                <input type="text" placeholder="Home Number" id="exampleInputEmail1" class="form-control" ng-model="formData.home">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Mobile#</label>
-                <input type="text" placeholder="Mobile Number" id="exampleInputEmail1" class="form-control" ng-model="formData.mobile">
-              </div>
-              <!-- <div class="form-group">
+                <div class="col-md-6">
+                    <div class="widget">
+                        <div class="form-elements-sec">
+                            <div class="widget-title">
+                                <h3>Contact</h3>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Office#</label>
+                                <input type="text" placeholder="Office Number" id="exampleInputEmail1" class="form-control" ng-model="formData.contact.OfficeMobile">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Home#</label>
+                                <input type="text" placeholder="Home Number" id="exampleInputEmail1" class="form-control" ng-model="formData.contact.home">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Mobile#</label>
+                                <input type="text" placeholder="Mobile Number" id="exampleInputEmail1" class="form-control" ng-model="formData.contact.mobile">
+                            </div>
+                            <!-- <div class="form-group">
                 <label for="exampleInputEmail1">Fax#</label>
                 <input type="text" placeholder="Fax Number" id="exampleInputEmail1" class="form-control" ng-model="formData.">
               </div> -->
-              <div class="form-group">
-                <label for="exampleInputEmail1">Extension</label>
-                <input type="email" placeholder="Email Id" id="exampleInputEmail1" class="form-control" ng-model="formData.extention">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email Id</label>
-                <input type="email" placeholder="Email Id" id="exampleInputEmail1" class="form-control" ng-model="formData.email">
-              </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Extension</label>
+                                <input type="text" placeholder="Extension" id="exampleInputEmail1" class="form-control" ng-model="formData.contact.extention">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Email Id</label>
+                                <input type="email" placeholder="Email Id" id="exampleInputEmail1" class="form-control" ng-model="formData.contact.email">
+                            </div>
 
-            </div>
-          </div>
-          <div class="widget">
-            <div class="form-elements-sec">
-              <div class="widget-title">
-                <h3>Other</h3>
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Date of Birth*</label>
-                <input type="date" placeholder="DOB" id="exampleInputEmail1" class="form-control" ng-model="formData.dob">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Marriage Date</label>
-                <input type="date" placeholder="marriage Date" id="exampleInputEmail1" class="form-control" ng-model="formData.marriageDate">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Joining Date*</label>
-                <input type="date" placeholder="Join Date" id="exampleInputEmail1" class="form-control" ng-model="formData.joiningDate">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Leaving Date</label>
-                <input type="date" placeholder="leaving Date" id="exampleInputEmail1" class="form-control" ng-model="formData.leavingDate">
-              </div>
-              <div class="checkbox">
-                                    <label>
-                                      <input type="checkbox"> Is SBC
-                                    </label><span> (service branch cell)</span>
-                                  </div>
-                                  <div class="checkbox">
-                                                        <label>
-                                                          <input type="checkbox"> Is Field
-                                                        </label><span> (on field employee)</span>
+                        </div>
+                    </div>
+                    <div class="widget">
+                        <div class="form-elements-sec">
+                            <div class="widget-title">
+                                <h3>Other</h3>
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Date of Birth*</label>
+                                <input type="date" placeholder="DOB" id="exampleInputEmail1" class="form-control" ng-model="formData.dob">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Marriage Date</label>
+                                <input type="date" placeholder="marriage Date" id="exampleInputEmail1" class="form-control" ng-model="formData.marriageDate">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Joining Date*</label>
+                                <input type="date" placeholder="Join Date" id="exampleInputEmail1" class="form-control" ng-model="formData.joiningDate">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">Leaving Date</label>
+                                <input type="date" placeholder="leaving Date" id="exampleInputEmail1" class="form-control" ng-model="formData.leavingDate">
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="formData.isSBC"> Is SBC
+                                </label><span> (service branch cell)</span>
+                            </div>
+                            <div class="checkbox">
+                                <label>
+                                    <input type="checkbox" ng-model="formData.isField"> Is Field
+                                </label><span> (on field employee)</span>
 
-                                                      </div>
-                                                      <div class="form-group">
-                                                          <label for="disabledSelect">Status</label>
-                                                          <select class="form-control" ng-model="formData.status" ng-options="str.value as str.name for str in userStatus">
-                                                              <!-- <option value="">Select Status </option>
+                            </div>
+                            <div class="form-group">
+                                <label for="disabledSelect">Status</label>
+                                <select class="form-control" ng-model="formData.status" ng-options="str.value as str.name for str in userStatus">
+                                    <!-- <option value="">Select Status </option>
                                                               <option value=true>Active</option>
                                                               <option value=false>Inactive</option> -->
-                                                          </select>
-                                                      </div>
-                                                      <!-- <div class="form-group">
+                                </select>
+                            </div>
+                            <!-- <div class="form-group">
                                                         <label for="disabledSelect">Status</label>
                                                         <select class="form-control wd30">
                                                           <option value="select">Active</option>
                                                           <option value="select">Inactive</option>
                                                         </select>
                                                       </div> -->
+                        </div>
+                    </div>
+                </div>
+
+
             </div>
-          </div>
+
+            <div class="text-center mt20">
+                <button class="btn btn-default" type="submit" ng-click="saveEmployee(formData)">Save</button>
+                <button class="btn btn-default" type="submit" ui-sref="employee-list">Cancel</button>
+            </div>
+            </form>
         </div>
-
-
-      </div>
-
-      <div class="text-center mt20">
-        <button class="btn btn-default" type="submit" ng-click="saveEmployee(formData)">Save</button>
-        <button class="btn btn-default" type="submit" ui-sref="employee-list">Cancel</button>
-      </div>
-      </form>
     </div>
-  </div>
 </div>

@@ -8,7 +8,7 @@
 //   adminURL = "http://localhost/demo/index.php";
 // }
 var adminurl = "http://localhost:1337/";
-var imgurl = "http://localhost:81/upload/";
+var imgurl = adminurl + "upload/";
 
 
 

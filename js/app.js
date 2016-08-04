@@ -625,6 +625,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
 
 firstapp.filter('uploadpath', function() {
     return function(input, width, height, style) {
+      console.log(input);
         var other = "";
         if (width && width !== "") {
             other += "&width=" + width;
@@ -636,6 +637,7 @@ firstapp.filter('uploadpath', function() {
             other += "&style=" + style;
         }
         if (input) {
+          console.log('in if');
             console.log('input');
             if (input.indexOf('https://') == -1) {
                 console.log('in if');

@@ -138,7 +138,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.header = {
             "name": "Create Office"
         };
-        $scope.formData = {};
+        $scope.formData = {};    NavigationService.getAllTypeOfOffices(function(data) {
+                $scope.allTypeOfOffices = data.data;
+                console.log('$scope.allTypeOfOffices', $scope.allTypeOfOffices);
+
+            });
         $scope.saveOffice = function(formData) {
 
             NavigationService.officeSave($scope.formData, function(data) {
@@ -160,7 +164,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.header = {
             "name": "Edit Office"
         };
+        NavigationService.getAllTypeOfOffices(function(data) {
+            $scope.allTypeOfOffices = data.data;
+            console.log('$scope.allTypeOfOffices', $scope.allTypeOfOffices);
 
+        });
         NavigationService.getOneOffice($stateParams.id, function(data) {
             $scope.formData = data.data;
         });
@@ -498,6 +506,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.formData = {};
+        $scope.header = {
+            "name": "Create Employee"
+        };
         $scope.userStatus = [{
             "name": "Active",
             "value": true
@@ -532,7 +543,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.saveEmployee = function(formData) {
 
             NavigationService.employeeSave($scope.formData, function(data) {
-                console.log(data);
+                // console.log(formData.surveyor.valid_upto);
+                // console.log('$scope.formData',$scope.formData);
+                // console.log(data);
+                // $scope.formData.surveyor.valid_upto = new Date($scope.formData.surveyor.valid_upto);
                 if (data.value == true) {
                     $state.go('employee-list');
                 }
@@ -542,12 +556,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }
 
     })
-    .controller('EditEmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+    .controller('EditEmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("employee-detail");
         $scope.menutitle = NavigationService.makeactive("Edit-Employee");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.header = {
+            "name": "Edit Employee"
+        };
         $scope.userStatus = [{
             "name": "Active",
             "value": true
@@ -581,8 +598,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
         NavigationService.getOneEmployee($stateParams.id, function(data) {
             $scope.formData = data.data;
-            // console.log('$scope.oneCountry', $scope.oneCountry);
-
+            console.log(data.data);
+            console.log($filter('date')($scope.formData.surveyor.valid_upto));
+            if ($scope.formData && $scope.formData.surveyor && $scope.formData.surveyor.valid_upto) {
+                $scope.formData.surveyor.valid_upto = new Date($scope.formData.surveyor.valid_upto);
+            }
+            if($scope.formData && $scope.formData.dob){
+              $scope.formData.dob = new Date($scope.formData.dob);
+            }
+            if($scope.formData && $scope.formData.marriageDate){
+              $scope.formData.marriageDate = new Date($scope.formData.marriageDate);
+            }
+            if($scope.formData && $scope.formData.joiningDate){
+              $scope.formData.joiningDate = new Date($scope.formData.joiningDate);
+            }
+            if($scope.formData && $scope.formData.leavingDate){
+              $scope.formData.leavingDate = new Date($scope.formData.leavingDate);
+            }
         });
 
         $scope.saveEmployee = function(formValid) {

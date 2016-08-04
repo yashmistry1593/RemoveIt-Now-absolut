@@ -42,11 +42,18 @@
 
                                 </div>
                                 <div class="form-group">
+                                    <label for="disabledSelect">Office Type*</label>
+                                    <select class="form-control" ng-model="formData.type" required2>
+                                        <option>--select--</option>
+                                        <option ng-repeat="seg in allTypeOfOffices">{{seg.name}}</option>
+                                    </select>
+                                </div>
+                                <!-- <div class="form-group">
                                     <label for="">Office Type*</label>
                                     <input type="text" name="officetype" placeholder="Office Type" ng-model="formData.officetype" class="form-control" required>
                                     <div class="error-msg" ng-show="officeform.officetype.$error.required && officeform.officetype.$touched">Please Enter Office Type.</div>
 
-                                </div>
+                                </div> -->
                             </div>
 
                         </div>

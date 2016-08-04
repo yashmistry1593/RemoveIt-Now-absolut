@@ -56,8 +56,8 @@
                                 <tr ng-repeat="emp in allEmployees">
                                     <td></td>
                                     <td>{{emp.name}}</td>
-                                    <td>{{emp.mobile}}</td>
-                                    <td>{{emp.email}}</td>
+                                    <td>{{emp.contact.email}}</td>
+                                    <td>{{emp.contact.mobile}}</td>
                                     <td>lorem ipsum</td>
                                     <td><a class="btn btn-blue" ui-sref="editemployee({id:emp._id})"><i class="fa fa-pencil"></i></a>
                                     <a class="btn btn-red" ng-click="deleteEmployee(emp._id)"><i class="fa fa-trash"></i></a></td>

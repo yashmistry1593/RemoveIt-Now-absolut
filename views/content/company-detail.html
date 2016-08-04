@@ -49,8 +49,8 @@
                             <div class="user-img mt25">
                                 <label>Upload Document</label>
                                 <!-- <img ng-src="{{userForm.image|uploadpath}}" class="img-responsive margin-auto" ng-if="userForm.image" style="height:200px;"> -->
-                                <img ng-src="{{formData.symbol|uploadpath}}" ng-if="formData.symbol" alt="" class="img-responsive margin-auto" height="50px" width="50px">
-                                <upload-image ng-model="formData.symbol" no-view></upload-image>
+                                <img ng-src="{{formData.image|uploadpath}}" ng-if="formData.image" alt="" class="img-responsive margin-auto" height="50px" width="50px">
+                                <upload-image ng-model="formData.image" no-view></upload-image>
                             </div>
                         </div>
                     </div>
@@ -150,7 +150,7 @@
                         </div>
                         <div class="form-group">
                             <label>Office#</label>
-                            <input type="text" placeholder="Office Number" class="form-control" ng-model="formData.Office">
+                            <input type="text" placeholder="Office Number" class="form-control" ng-model="formData.officeno">
                         </div>
                         <div class="form-group">
                             <label>Home#</label>
