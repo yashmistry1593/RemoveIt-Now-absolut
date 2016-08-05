@@ -1245,6 +1245,29 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.header = {
             "name": "Create City"
         };
+        NavigationService.getAllCountries(function(data) {
+            $scope.allCountries = data.data;
+            _.each($scope.allCountries,function(n){
+              $scope.allCountriesName=n.name;
+              console.log('$scope.allCountriesName',$scope.allCountriesName);
+            })
+            // console.log('$scope.allCountries', $scope.allCountries);
+
+        });
+        NavigationService.getAllZones(function(data) {
+            $scope.allZones = data.data;
+            console.log('$scope.allZones', $scope.allZones);
+        });
+        NavigationService.getAllStates(function(data) {
+            $scope.allStates = data.data;
+            console.log('$scope.allStates', $scope.allStates);
+
+        });
+        NavigationService.getAllDistricts(function(data) {
+            $scope.allDistricts = data.data;
+            console.log('$scope.allDistricts', $scope.allDistricts);
+
+        });
         $scope.formData = {};
         $scope.saveCity = function(formData) {
 
@@ -1283,6 +1306,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.header = {
             "name": "Edit City"
         };
+        NavigationService.getAllCountries(function(data) {
+            $scope.allCountries = data.data;
+            console.log('$scope.allCountries', $scope.allCountries);
+
+        });
+        NavigationService.getAllZones(function(data) {
+            $scope.allZones = data.data;
+            console.log('$scope.allZones', $scope.allZones);
+        });
+        NavigationService.getAllStates(function(data) {
+            $scope.allStates = data.data;
+            console.log('$scope.allStates', $scope.allStates);
+
+        });
+        NavigationService.getAllDistricts(function(data) {
+            $scope.allDistricts = data.data;
+            console.log('$scope.allDistricts', $scope.allDistricts);
+
+        });
 
         NavigationService.getOneCity($stateParams.id, function(data) {
             $scope.formData = data.data;
