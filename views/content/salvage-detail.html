@@ -32,7 +32,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Salvage*</label>
-                                    <input type="text" placeholder="Salvage" id="exampleInputEmail1" class="form-control">
+                                    <input type="text" placeholder="Salvage" id="exampleInputEmail1" class="form-control" ng-model="formData.salvage">
                                 </div>
 
                                 <div class="form-group">
@@ -58,7 +58,7 @@
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label for="exampleInputEmail1">Sequence*</label>
-                                    <input type="text" placeholder="Sequence" id="exampleInputEmail1" class="form-control">
+                                    <input type="text" placeholder="Sequence" id="exampleInputEmail1" class="form-control" ng-model="formData.seq">
                                 </div>
                             </div>
                         </div>
@@ -68,8 +68,8 @@
     </div>
     <div class="row">
         <div class="text-center mt20">
-            <button class="btn btn-default" type="submit">Save</button>
-            <button class="btn btn-default" type="submit">Cancel</button>
+            <button class="btn btn-default" type="submit" ng-click="saveSalvage(formData)">Save</button>
+            <button class="btn btn-default" type="submit" ui-sref="salvage-list">Cancel</button>
         </div>
         </form>
 

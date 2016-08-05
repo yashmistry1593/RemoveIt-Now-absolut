@@ -47,13 +47,13 @@
                             </thead>
                             <tbody>
 
-                                <tr>
+                                <tr ng-repeat="sal in allSalvage">
                                     <td></td>
-                                    <td></td>
-                                    <td></td>
+                                    <td>{{sal.salvage}}</td>
+                                    <td>{{sal.seq}}</td>
 
-                                    <td><a class="btn btn-blue" ui-sref="editoffice({id:office._id})"><i class="fa fa-pencil"></i></a>
-                                    <a class="btn btn-red" ng-click="deleteOffice(office._id)"><i class="fa fa-trash"></i></a></td>
+                                    <td><a class="btn btn-blue" ui-sref="editSalvage({id:sal._id})"><i class="fa fa-pencil"></i></a>
+                                    <a class="btn btn-red" ng-click="deleteSalvage(sal._id)"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                             </tbody>
                         </table>

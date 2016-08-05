@@ -52,7 +52,7 @@
                                   <td><input type="text" class="form-control" placeholder="Enter Branch Code"></td>
                                   <td><input type="text" class="form-control" placeholder="Enter Short Name"></td>
                               </tr> -->
-                                <tr>
+                                <!-- <tr>
                                     <td>1</td>
                                     <td>Wohlig Technology</td>
                                     <td>WOH123</td>
@@ -67,14 +67,14 @@
                                     <td>FB</td>
                                     <td><a class="btn btn-blue" ui-sref="editoffice({id:office._id})"><i class="fa fa-pencil"></i></a>
                                     <a class="btn btn-red" ng-click="deleteOffice(office._id)"><i class="fa fa-trash"></i></a></td>
-                                </tr>
-                                <tr>
-                                    <td>3</td>
-                                    <td>Twitter Pvt. Ltd.</td>
-                                    <td>TWI123</td>
-                                    <td>TW</td>
-                                    <td><a class="btn btn-blue" ui-sref="editoffice({id:office._id})"><i class="fa fa-pencil"></i></a>
-                                    <a class="btn btn-red" ng-click="deleteOffice(office._id)"><i class="fa fa-trash"></i></a></td>
+                                </tr> -->
+                                <tr ng-repeat="data in allProduct">
+                                    <td></td>
+                                    <td>{{data.industry}}</td>
+                                    <td>{{data.category}}</td>
+                                    <td>{{data.name}}</td>
+                                    <td><a class="btn btn-blue" ui-sref="editproduct({id:data._id})"><i class="fa fa-pencil"></i></a>
+                                    <a class="btn btn-red" ng-click="deleteProduct(data._id)"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                             </tbody>
                         </table>

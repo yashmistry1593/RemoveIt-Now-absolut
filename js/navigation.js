@@ -126,31 +126,33 @@ var navigationservice = angular.module('navigationservice', [])
         anchor: "company",
         icon: "user",
         subnav: [{
-            name: "Employee",
-            classis: "active",
-            anchor: "employee-list",
-            icon: "user"
-        }, {
-            name: "User",
-            classis: "active",
-            anchor: "user-list",
-            icon: "users"
-        }, {
-            name: "Role",
-            classis: "active",
-            anchor: "role-list",
-            icon: "user-plus"
-        }, {
-            name: "Function",
-            classis: "active",
-            anchor: "function-list",
-            icon: "cogs"
-        }, {
-            name: "Grade",
-            classis: "active",
-            anchor: "grade-list",
-            icon: "font"
-        }]
+                name: "Employee",
+                classis: "active",
+                anchor: "employee-list",
+                icon: "user"
+            }, {
+                name: "User",
+                classis: "active",
+                anchor: "user-list",
+                icon: "users"
+            }, {
+                name: "Role",
+                classis: "active",
+                anchor: "role-list",
+                icon: "user-plus"
+            }, {
+                name: "Function",
+                classis: "active",
+                anchor: "func-list",
+                icon: "cogs"
+            }
+            // , {
+            //     name: "Grade",
+            //     classis: "active",
+            //     anchor: "grade-list",
+            //     icon: "font"
+            // }
+        ]
     }, {
         name: "Companies",
         classis: "active",
@@ -1580,9 +1582,6 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
-
-
-
         getAllEmployees: function(callback) {
             // console.log('form data: ', formData);
             $http({
@@ -1624,6 +1623,153 @@ var navigationservice = angular.module('navigationservice', [])
             // console.log('form data: ', formData);
             $http({
                 url: adminurl + 'employee/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
+        getAllSalvage: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'salvage/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        salvageSave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'salvage/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneSalvage: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'salvage/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        salvageEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'salvage/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteSalvage: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'salvage/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
+        getAllProduct: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'product/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        productSave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'product/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneProduct: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'product/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        productEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'product/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteProduct: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'product/delete',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id.id,
+                }
+            }).success(callback);
+        },
+
+
+
+        getAllBank: function(callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'bank/getAll',
+                method: 'POST',
+                withCredentials: true
+            }).success(callback);
+        },
+        bankSave: function(formData, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'bank/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: formData
+            }).success(callback);
+        },
+        getOneBank: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'bank/getOne',
+                method: 'POST',
+                withCredentials: true,
+                data: {
+                    "_id": id
+                }
+            }).success(callback);
+        },
+        bankEditSave: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'bank/saveData',
+                method: 'POST',
+                withCredentials: true,
+                data: id
+            }).success(callback);
+        },
+        deleteBank: function(id, callback) {
+            // console.log('form data: ', formData);
+            $http({
+                url: adminurl + 'bank/delete',
                 method: 'POST',
                 withCredentials: true,
                 data: {

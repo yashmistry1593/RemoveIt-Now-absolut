@@ -504,6 +504,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         templateUrl: "views/template.html",
         controller: 'CreateBankmasterCtrl'
     })
+    .state('editbankmaster', {
+        url: "/bankmaster-detail/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditBankmasterCtrl'
+    })
 
     .state('company-list', {
         url: "/company-list",

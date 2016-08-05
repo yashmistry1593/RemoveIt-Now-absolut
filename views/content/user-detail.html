@@ -33,7 +33,7 @@
 
                                 <div class="form-group">
                                     <label for="">Title*</label>
-                                    <select class="form-control">
+                                    <select class="form-control" ng-model="formData.title">
                                         <option>Mr.</option>
                                         <option>Msc.</option>
                                         <option>Dr</option>
@@ -41,11 +41,11 @@
                                     </select>
                                     <!-- <div class="error-msg" ng-show="userForm.name.$error.required && userForm.name.$touched">Please Enter User Name.</div> -->
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="">First Name*</label>
                                     <input type="text" name="name" placeholder="First Name" ng-model="formData.name" class="form-control" required>
                                     <div class="error-msg" ng-show="userForm.name.$error.required && userForm.name.$touched">Please Enter First Name.</div>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label for="">User Name*</label>
                                     <input type="text" name="name" placeholder="Role Name" ng-model="formData.name" class="form-control" required>
@@ -61,20 +61,20 @@
                                     <input type="password" name="password" placeholder="Password" ng-model="formData.password" class="form-control" required>
                                     <div class="error-msg" ng-show="userForm.password.$error.required && userForm.password.$touched">Please Enter Password.</div>
                                 </div>
-                                <div class="form-group">
+                                <!-- <div class="form-group">
                                     <label for="disabledSelect">Employee Type*</label>
                                     <select class="form-control" ng-model="formData.emp_type" value="{{type}}">
                                         <option ng-selected="true" value="">Select Employee Type</option>
                                         <option>{{type}}</option>
                                     </select>
-                                </div>
-                                <div class="form-group">
+                                </div> -->
+                                <!-- <div class="form-group">
                                     <label for="disabledSelect">Access Type*</label>
                                     <select class="form-control" ng-model="formData.access" value="{{type}}">
                                         <option ng-selected="true" value="">Select Access Type</option>
                                         <option>{{type}}</option>
                                     </select>
-                                </div>
+                                </div> -->
                                 <div class="form-group">
                                     <label for="disabledSelect">Status</label>
                                     <select class="form-control" ng-model="formData.status" ng-options="str.value as str.name for str in userStatus">
@@ -95,36 +95,36 @@
 
                                 <div class="form-group">
                                     <label for="disabledSelect">User Type*</label>
-                                    <select class="form-control" ng-model="UserRole[0].user_type" value="{{type}}">
+                                    <select class="form-control" ng-model="formData.userType" value="{{type}}">
                                         <option ng-selected="true" value="">Select User Type</option>
                                         <option ng-repeat="type in UserType">{{type}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="disabledSelect">Role Name*</label>
-                                    <select class="form-control" ng-model="UserRole[0].roleName" value="{{role.name}}">
+                                    <select class="form-control" ng-model="formData.roleName" value="{{role.name}}">
                                         <option ng-selected="true" value="">Select Role Name</option>
                                         <option ng-repeat="role in allRoles">{{role.name}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="disabledSelect">Menu*</label>
-                                    <select class="form-control" ng-model="UserRole[0].menu" value="{{menu.main_menu}}">
+                                    <select class="form-control" ng-model="formData.menu" value="">
                                         <option ng-selected="true" value="">Select Menu</option>
                                         <option ng-repeat="menu in allMenus">{{menu.main_menu}}</option>
                                     </select>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Role Description</label>
-                                    <input type="text" name="roleDescription" placeholder="Role Description" ng-model="UserRole[0].roleDescription" class="form-control" required>
-                                    <div class="error-msg" ng-show="userForm.roleDescription.$error.required && userForm.roleDescription.$touched">Please Enter Role Description.</div>
+                                    <input type="text" name="description" placeholder="Role Description" ng-model="formData.description" class="form-control" required>
+                                    <div class="error-msg" ng-show="userForm.description.$error.required && userForm.description.$touched">Please Enter Role Description.</div>
                                 </div>
 
 
                                 <div class="form-group">
                                     <label for="">Back Days</label>
-                                    <input type="text" name="back_days" placeholder="Back Days" ng-model="formData.back_days" class="form-control" required>
-                                    <div class="error-msg" ng-show="userForm.back_days.$error.required && userForm.back_days.$touched">Please Enter Back Days.</div>
+                                    <input type="text" name="backDays" placeholder="Back Days" ng-model="formData.backDays" class="form-control" required>
+                                    <div class="error-msg" ng-show="userForm.backDays.$error.required && userForm.backDays.$touched">Please Enter Back Days.</div>
                                 </div>
                                 <div class="form-group">
                                     <label for="disabledSelect">Department*</label>
@@ -136,13 +136,13 @@
                                 <div class="form-group">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox"> Is Surveyor
+                                            <input type="checkbox" ng-model="formData.isServeyor"> Is Surveyor
                                         </label>
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="example1">Module right</label>
-                                    <textarea id="example1" class="form-control"> </textarea>
+                                    <textarea id="example1" class="form-control" ng-model="formData.moduleRight"> </textarea>
                                 </div>
 
                                 <div class="form-group">
