@@ -7,7 +7,8 @@
 // else {
 //   adminURL = "http://localhost/demo/index.php";
 // }
-var adminurl = "http://localhost:1337/";
+// var adminurl = "http://localhost:1337/";
+var adminurl = "http://104.199.175.10/";
 var imgurl = adminurl + "upload/";
 
 
