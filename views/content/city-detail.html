@@ -33,9 +33,9 @@
                                 <div class="form-group ui-select">
                                     <label for="">Country Name*</label>
                                     <ui-select multiple tagging tagging-label="(custom 'new' label)" ng-model="formData.country" sortable="true" ng-disabled="ctrl.disabled" style="width: 300px;" title="Choose a country">
-                                        <ui-select-match placeholder="Select Country">{{$item}}</ui-select-match>
+                                        <ui-select-match placeholder="Select Country">{{$item.name}}</ui-select-match>
                                         <ui-select-choices repeat="country in allCountries | filter:$select.search">
-                                            {{country}}
+                                            {{country.name}}
                                         </ui-select-choices>
                                     </ui-select>
                                     <div class="error-msg" ng-show="cityform.name.$error.required && cityform.name.$touched">Please Enter Country Name.</div>

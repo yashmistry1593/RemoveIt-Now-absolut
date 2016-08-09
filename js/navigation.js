@@ -50,20 +50,10 @@ var navigationservice = angular.module('navigationservice', [])
             anchor: "typeOfOffice-list",
             icon: "building"
         }, {
-            name: "Unique Type",
-            classis: "active",
-            anchor: "uniquetype-list",
-            icon: "genderless"
-        }, {
             name: "Function",
             classis: "active",
             anchor: "func-list",
             icon: "cogs"
-        }, {
-            name: "Business Branch",
-            classis: "active",
-            anchor: "businessbranch-list",
-            icon: "building-o"
         }, {
             name: "Menu",
             classis: "active",
