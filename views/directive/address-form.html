@@ -1,0 +1,30 @@
+<div class="form-group">
+    <label>Country</label>
+    <multiple-select list="list"></multiple-select>
+</div>
+<div class="form-group">
+    <label>State/Province</label>
+    <select class="form-control" ng-model="formData.state">
+        <option>Select State/Province</option>
+        <option ng-repeat="s in allStates">{{s.name}}</option>
+    </select>
+</div>
+<div class="form-group">
+    <label>City</label>
+    <select class="form-control" ng-model="formData.city">
+        <option>Select City</option>
+        <option ng-repeat="s in allCities">{{s.name}}</option>
+    </select>
+</div>
+<div class="form-group">
+    <label>Postal Code</label>
+    <input type="text" placeholder="Postal Code" class="form-control" ng-model="formData.pincode">
+</div>
+<div class="form-group">
+    <label>Address</label>
+    <textarea placeholder="Address" class="form-control" name="address" ng-model="formData.address"></textarea>
+</div>
+<div class="form-group">
+    <label>Final Address</label>
+    <textarea ng-model="formData.finalAddress" class="form-control" readonly></textarea>
+</div>

@@ -23,12 +23,26 @@ var uploadurl = imgurl;
 var navigationservice = angular.module('navigationservice', [])
 
 .factory('NavigationService', function($http) {
-    var navigation = [{
+    var navigation = [
+      {
+        name: "Dashboard",
+        classis: "active",
+        anchor: "dashboard",
+        icon: "dashboard",
+        subnav: [{
+            name: "Dashboard",
+            classis: "active",
+            anchor: "dashboard",
+            icon: "dashboard"
+        }]
+    },
+    {
         name: "Company Setup",
         classis: "active",
         anchor: "company",
         icon: "building",
-        subnav: [{
+        subnav: [
+          {
             name: "Company",
             classis: "active",
             anchor: "company-list",
@@ -74,7 +88,85 @@ var navigationservice = angular.module('navigationservice', [])
             anchor: "contacttypeoffice-list",
             icon: "th-list"
         }]
-    }, {
+    },
+    {
+        name: "Customers",
+        classis: "active",
+        anchor: "company",
+        icon: "users",
+        subnav: [{
+            name: "Customer Segment",
+            classis: "active",
+            anchor: "customerSegment-list",
+            icon: "user"
+        }, {
+            name: "Customer Company",
+            classis: "active",
+            anchor: "customerCompany-list",
+            icon: "building"
+        }, {
+            name: "Office",
+            classis: "active",
+            anchor: "office-list",
+            icon: "building-o"
+        }, {
+            name: "Customer",
+            classis: "active",
+            anchor: "customer-list",
+            icon: "user"
+        }]
+    },
+    {
+        name: "Employee",
+        classis: "active",
+        anchor: "company",
+        icon: "user",
+        subnav: [{
+                name: "Employee",
+                classis: "active",
+                anchor: "employee-list",
+                icon: "user"
+            }, {
+                name: "User",
+                classis: "active",
+                anchor: "user-list",
+                icon: "users"
+            }, {
+                name: "Role",
+                classis: "active",
+                anchor: "role-list",
+                icon: "user-plus"
+            }, {
+                name: "Function",
+                classis: "active",
+                anchor: "func-list",
+                icon: "cogs"
+            }, {
+                name: "Grade",
+                classis: "active",
+                anchor: "grade-list",
+                icon: "font"
+            }
+        ]
+    },
+    {
+        name: "Companies",
+        classis: "active",
+        anchor: "company",
+        icon: "briefcase",
+        subnav: [{
+            name: "Company",
+            classis: "active",
+            anchor: "company-list",
+            icon: "building"
+        }, {
+            name: "Office",
+            classis: "active",
+            anchor: "office-list",
+            icon: "building-o"
+        }]
+    },
+    {
         name: "Locations",
         classis: "active",
         anchor: "company",
@@ -105,7 +197,45 @@ var navigationservice = angular.module('navigationservice', [])
             anchor: "city-list",
             icon: "link"
         }]
-    }, {
+    },
+    {
+        name: "Insurance",
+        classis: "active",
+        anchor: "company",
+        icon: "file-text-o",
+        subnav: [{
+            name: "Department",
+            classis: "active",
+            anchor: "department-list",
+            icon: "user"
+        }, {
+            name: "Policy Type",
+            classis: "active",
+            anchor: "policytype-list",
+            icon: "link"
+        }, {
+            name: "Policy Document",
+            classis: "active",
+            anchor: "policydoc-list",
+            icon: "file-pdf-o"
+        }, {
+            name: "Cause Loss",
+            classis: "active",
+            anchor: "causeloss-list",
+            icon: "money"
+        }, {
+            name: "Nature Loss",
+            classis: "active",
+            anchor: "natureloss-list",
+            icon: "money"
+        }, {
+            name: "Salvage",
+            classis: "active",
+            anchor: "salvage-list",
+            icon: "retweet"
+        }]
+    },
+    {
         name: "Products",
         classis: "active",
         anchor: "company",
@@ -126,7 +256,8 @@ var navigationservice = angular.module('navigationservice', [])
             anchor: "product-list",
             icon: "shopping-bag"
         }]
-    }, {
+    },
+    {
         name: "Finance",
         classis: "active",
         anchor: "company",
@@ -142,7 +273,8 @@ var navigationservice = angular.module('navigationservice', [])
             anchor: "bankmaster-list",
             icon: "building"
         }]
-    }, {
+    },
+     {
         name: "Timeline",
         classis: "active",
         anchor: "timeline",

@@ -1,0 +1,6 @@
+<div class="relative">
+  <input type="text" class="form-control" ng-model="modelData" ng-focus="showList();" required>
+  <ul class="ng-list" ng-show="listview">
+  <li ng-repeat="l in list" ng-click="sendData(l.name);">{{l.name}}</li>
+</ul>
+</div>

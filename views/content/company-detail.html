@@ -24,6 +24,47 @@
 
         <div class="row">
 
+          <div class="col-md-6">
+              <div class="widget">
+                  <div class="form-elements-sec">
+                      <div class="widget-title">
+                          <h3>Address</h3>
+                      </div>
+                      <address-form></address-form>
+                  </div>
+              </div>
+              <div class="widget">
+                  <div class="form-elements-sec">
+                      <div class="widget-title">
+                          <h3>Contact</h3>
+                      </div>
+                      <div class="form-group">
+                          <label>Office#</label>
+                          <input type="text" placeholder="Office Number" class="form-control" ng-model="formData.officeno">
+                      </div>
+                      <div class="form-group">
+                          <label>Home#</label>
+                          <input type="text" placeholder="Home Number" class="form-control" ng-model="formData.home">
+                      </div>
+                      <div class="form-group">
+                          <label>Mobile#</label>
+                          <input type="text" placeholder="Mobile Number" class="form-control" ng-model="formData.mobile">
+                      </div>
+                      <div class="form-group">
+                          <label>Fax#</label>
+                          <input type="text" placeholder="Fax Number" class="form-control" ng-model="formData.fax">
+                      </div>
+                      <div class="form-group">
+                          <label>Extension</label>
+                          <input type="text" placeholder="Extension" class="form-control" ng-model="formData.extension">
+                      </div>
+                      <div class="form-group">
+                          <label>Email Id</label>
+                          <input type="email" placeholder="Email Id" class="form-control" ng-model="formData.email">
+                      </div>
+                  </div>
+              </div>
+          </div>
             <div class="col-md-6">
                 <div class="widget">
                     <div class="form-elements-sec">
@@ -102,79 +143,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-6">
-                <div class="widget">
-                    <div class="form-elements-sec">
-                        <div class="widget-title">
-                            <h3>Address</h3>
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Address</label>
-                            <textarea placeholder="Address" id="exampleInputPassword1" class="form-control" name="address" ng-model="formData.address"> </textarea>
-                        </div>
-                        <div class="form-group">
-                            <label for="disabledSelect">Country</label>
-                            <select class="form-control" ng-model="formData.country">
-                                <option>Select Country</option>
-                                <option ng-repeat="s in allCountries">{{s.name}}</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="disabledSelect">State/Province</label>
-                            <select class="form-control" ng-model="formData.state">
-                                <option>Select State/Province</option>
-                                <option ng-repeat="s in allStates">{{s.name}}</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label for="disabledSelect">City</label>
-                            <select class="form-control" ng-model="formData.city">
-                                <option>Select City</option>
-                                <option ng-repeat="s in allCities">{{s.name}}</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Postal Code</label>
-                            <input type="text" placeholder="Postal Code" class="form-control" ng-model="formData.pincode">
-                        </div>
-                        <div class="form-group">
-                            <label for="exampleInputPassword1">Final Address</label>
-                            <textarea placeholder="" id="exampleInputPassword1" ng-model="formData.finalAddress" class="form-control" disabled> </textarea>
-                        </div>
-                    </div>
-                </div>
-                <div class="widget">
-                    <div class="form-elements-sec">
-                        <div class="widget-title">
-                            <h3>Contact</h3>
-                        </div>
-                        <div class="form-group">
-                            <label>Office#</label>
-                            <input type="text" placeholder="Office Number" class="form-control" ng-model="formData.officeno">
-                        </div>
-                        <div class="form-group">
-                            <label>Home#</label>
-                            <input type="text" placeholder="Home Number" class="form-control" ng-model="formData.home">
-                        </div>
-                        <div class="form-group">
-                            <label>Mobile#</label>
-                            <input type="text" placeholder="Mobile Number" class="form-control" ng-model="formData.mobile">
-                        </div>
-                        <div class="form-group">
-                            <label>Fax#</label>
-                            <input type="text" placeholder="Fax Number" class="form-control" ng-model="formData.fax">
-                        </div>
-                        <div class="form-group">
-                            <label>Extension</label>
-                            <input type="text" placeholder="Extension" class="form-control" ng-model="formData.extension">
-                        </div>
-                        <div class="form-group">
-                            <label>Email Id</label>
-                            <input type="email" placeholder="Email Id" class="form-control" ng-model="formData.email">
-                        </div>
-                    </div>
-                </div>
-            </div>
+
         </div>
         <div class="row">
             <div class="col-md-12">

@@ -831,6 +831,34 @@ firstapp.directive('slimscroll', function($document) {
     };
 });
 
+firstapp.directive('addressForm', function($document) {
+    return {
+        templateUrl: 'views/directive/address-form.html',
+        scope: {},
+        restrict: 'EA',
+        replace: false,
+        link: function(scope, element, attr) {
+            var $element = $(element);
+        }
+    };
+});
+
+firstapp.directive('multipleSelect', function($document) {
+    return {
+        templateUrl: 'views/directive/multiple-select.html',
+        scope: {
+          // model: '=ngModel',
+          list: "=list"
+        },
+        restrict: 'EA',
+        replace: false,
+        controller: 'MultipleSelectCtrl',
+        link: function(scope, element, attr) {
+            var $element = $(element);
+
+        }
+    };
+});
 
 firstapp.config(function($translateProvider) {
     $translateProvider.translations('en', LanguageEnglish);

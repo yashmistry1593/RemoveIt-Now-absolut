@@ -51,6 +51,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('CreateCountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
+        $scope.list = [{name: "India"},{name: "England"},{name: "USA"}];
         $scope.template = TemplateService.changecontent("country-detail");
         $scope.menutitle = NavigationService.makeactive("Country");
         TemplateService.title = $scope.menutitle;
@@ -73,6 +74,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('EditCountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         //Used to name the .html file
+        $scope.list = [{name: "India"},{name: "England"},{name: "USA"}];
         $scope.template = TemplateService.changecontent("country-detail");
         $scope.menutitle = NavigationService.makeactive("Country");
         TemplateService.title = $scope.menutitle;
@@ -941,7 +943,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('CompanyCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("company-list");
-        $scope.menutitle = NavigationService.makeactive("company");
+        $scope.menutitle = NavigationService.makeactive("List of Companies");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
@@ -962,14 +964,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.showAllCompanies();
 
             });
-        }
-
-
+        };
     })
     .controller('CreateCompanyCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("company-detail");
-        $scope.menutitle = NavigationService.makeactive("createcompany");
+        $scope.menutitle = NavigationService.makeactive("Create Company");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.userStatus = [{
@@ -1000,13 +1000,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             NavigationService.companySave($scope.formData, function(data) {
                 console.log(data);
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('company-list');
                 }
                 // console.log('$scope.allCountriessave', $scope.data);
 
             });
-        }
+        };
     })
     .controller('EditCompanyCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
         //Used to name the .html file
@@ -3234,4 +3234,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.allCities = data.data;
             console.log('$scope.allCities', $scope.allCities);
         });
-    });
+    })
+    .controller('MultipleSelectCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+      $scope.modelData = "";
+      $scope.listview = false;
+
+      $scope.showList = function() {
+        $scope.listview = true;
+      }
+
+      $scope.sendData = function(val) {
+        $scope.modelData = val;
+        $scope.listview = false;
+      }
+    })
+    ;
