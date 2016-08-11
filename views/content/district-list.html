@@ -38,18 +38,22 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>District Name</th>
                                     <th>State Name</th>
+                                    <th>District Name</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="dist in allDistricts">
-                                    <td>{{dist.name}}</td>
                                     <td>{{dist.state}}</td>
+                                    <td>{{dist.name}}</td>
                                     <td>
-                                      <a class="btn btn-primary" ui-sref="editdistrict({id:dist._id})"><i class="fa fa-pencil"></i></a>
-                                      <a class="btn btn-danger" ng-click="deleteDistrict(dist._id)"><i class="fa fa-trash"></i></a>
+                                        <a class="btn btn-primary" ui-sref="editdistrict({id:dist._id})">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a class="btn btn-danger" ng-click="deleteDistrict(dist._id)">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             </tbody>

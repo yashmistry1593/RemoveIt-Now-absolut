@@ -36,12 +36,15 @@
                                     <div class="error-msg" ng-show="countryform.name.$error.required && countryform.name.$touched">Please Enter Country Name.</div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Country Code*</label>
-                                    <input type="text" name="countryCode" placeholder="Country Code" ng-model="formData.countryCode" class="form-control" required>
+                                    <label>Country Code*</label>
+                                    <input type="text" name="countryCode" ng-model="formData.countryCode" class="form-control" required>
                                     <div class="error-msg" ng-show="countryform.countryCode.$error.required && countryform.countryCode.$touched">Please Enter Country Code.</div>
-
                                 </div>
-
+                                <div class="form-group">
+                                    <label>Telephonic Code*</label>
+                                    <input type="tel" name="countryCode" ng-model="formData.teleCode" class="form-control" required>
+                                    <div class="error-msg" ng-show="countryform.teleCode.$error.required && countryform.teleCode.$touched">Please Enter Telephonic Code.</div>
+                                </div>
                             </div>
 
                         </div>
@@ -49,12 +52,9 @@
                             <button class="btn btn-default" type="submit" ng-click="saveCountry(formData)" ng-disabled="countryform.$invalid">Save</button>
                             <button class="btn btn-default" ui-sref="country-list">Cancel</button>
                         </div>
+                    </form>
                 </div>
             </div>
-
-
-
-            </form>
         </div>
     </div>
 </div>

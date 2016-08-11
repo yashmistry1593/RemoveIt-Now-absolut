@@ -31,37 +31,24 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="">District Name*</label>
-                                    <input type="text" name="name" placeholder="District Name" ng-model="formData.name" class="form-control" required>
-                                    <div class="error-msg" ng-show="districtform.name.$error.required && districtform.name.$touched">Please Enter District Name.</div>
+                                    <label for="disabledSelect">State Name*</label>
+                                    <multiple-select list="list"></multiple-select>
+                                    <div class="error-msg" ng-show="districtform.state.$error.required && districtform.state.$touched">Please Enter District Name.</div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="disabledSelect">State Name*</label>
-                                    <select class="form-control" ng-model="formData.state" value="{{state.name}}">
-                                        <option ng-selected="true" value="">Select State</option>
-                                        <option ng-repeat="state in allStates">{{state.name}}</option>
-                                    </select>
+                                    <label for="">District Name*</label>
+                                    <multiple-select list="list"></multiple-select>
+                                    <div class="error-msg" ng-show="districtform.name.$error.required && districtform.name.$touched">Please Enter District Name.</div>
                                 </div>
-
-                                <!-- <label for="">State Name*</label>
-                                    <input type="text" name="state" placeholder="State Name" ng-model="formData.state" class="form-control" required>
-                                    <div class="error-msg" ng-show="districtform.state.$error.required && districtform.state.$touched">Please Enter State Name.</div> -->
-
                             </div>
-
                         </div>
-
-                </div>
-                <div class="text-center mt20">
-                    <button class="btn btn-default" type="submit" ng-click="saveDistrict(formData)" ng-disabled="districtform.$invalid">Save</button>
-                    <button class="btn btn-default" ui-sref="state-list">Cancel</button>
+                        <div class="text-center mt20">
+                            <button class="btn btn-default" type="submit" ng-click="saveDistrict(formData)" ng-disabled="districtform.$invalid">Save</button>
+                            <button class="btn btn-default" ui-sref="state-list">Cancel</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
-
-
-
-        </form>
     </div>
-</div>
 </div>

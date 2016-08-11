@@ -38,13 +38,15 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>State Name</th>
-                                    <th>Zone Name</th>
+                                    <th>Country</th>
+                                    <th>State</th>
+                                    <th>Zone</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="state in allStates">
+                                    <td>{{state.country}}</td>
                                     <td>{{state.name}}</td>
                                     <td>{{state.zone}}</td>
                                     <td>

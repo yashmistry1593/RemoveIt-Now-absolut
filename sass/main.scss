@@ -537,6 +537,9 @@ $trans-black: rgba( black, .15 );
         }
     }
 }
+.form-group img {
+    opacity: 1 !important;
+}
 /* Start writing sass here */
 @import "fancybox-override";
 @import "other/mobile";

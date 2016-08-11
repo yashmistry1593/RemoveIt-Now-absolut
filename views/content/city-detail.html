@@ -32,96 +32,55 @@
                             <div class="col-md-12">
                                 <div class="form-group ui-select">
                                     <label for="">Country Name*</label>
-                                    <ui-select multiple tagging tagging-label="(custom 'new' label)" ng-model="formData.country" sortable="true" ng-disabled="ctrl.disabled" style="width: 300px;" title="Choose a country">
-                                        <ui-select-match placeholder="Select Country">{{$item.name}}</ui-select-match>
-                                        <ui-select-choices repeat="country in allCountries | filter:$select.search">
-                                            {{country.name}}
-                                        </ui-select-choices>
-                                    </ui-select>
+                                    <multiple-select list=""></multiple-select>
                                     <div class="error-msg" ng-show="cityform.name.$error.required && cityform.name.$touched">Please Enter Country Name.</div>
                                 </div>
                                 <div class="form-group ui-select">
                                     <label for="">Zone Name*</label>
-                                    <ui-select multiple tagging tagging-label="(custom 'new' label)" ng-model="formData.zone" sortable="true" ng-disabled="ctrl.disabled" style="width: 300px;" title="Choose a color">
-                                        <ui-select-match placeholder="Select Zone">{{$item.name}}</ui-select-match>
-                                        <ui-select-choices repeat="zone in allZones | filter:$select.search">
-                                            {{zone.name}}
-                                        </ui-select-choices>
-                                    </ui-select>
+                                    <multiple-select list=""></multiple-select>
                                     <div class="error-msg" ng-show="cityform.name.$error.required && cityform.name.$touched">Please Enter Zone Name.</div>
                                 </div>
                                 <div class="form-group ui-select">
                                     <label for="">State Name*</label>
-                                    <ui-select multiple tagging tagging-label="(custom 'new' label)" ng-model="formData.state" sortable="true" ng-disabled="ctrl.disabled" style="width: 300px;" title="Choose a color">
-                                        <ui-select-match placeholder="Select State">{{$item.name}}</ui-select-match>
-                                        <ui-select-choices repeat="state in allStates | filter:$select.search">
-                                            {{state.name}}
-                                        </ui-select-choices>
-                                    </ui-select>
+                                    <multiple-select list=""></multiple-select>
                                     <div class="error-msg" ng-show="cityform.name.$error.required && cityform.name.$touched">Please Enter State Name.</div>
                                 </div>
                                 <div class="form-group ui-select">
                                     <label for="">District Name*</label>
-                                    <ui-select multiple tagging tagging-label="(custom 'new' label)" ng-model="formData.district" sortable="true" ng-disabled="ctrl.disabled" style="width: 300px;" title="Choose a color">
-                                        <ui-select-match placeholder="Select District">{{$item.name}}</ui-select-match>
-                                        <ui-select-choices repeat="dist in allDistricts | filter:$select.search">
-                                            {{dist.name}}
-                                        </ui-select-choices>
-                                    </ui-select>
+                                    <multiple-select list=""></multiple-select>
                                     <div class="error-msg" ng-show="cityform.name.$error.required && cityform.name.$touched">Please Enter District Name.</div>
                                 </div>
                                 <div class="form-group ui-select">
                                     <label for="">City Name*</label>
-                                    <ui-select multiple tagging tagging-label="(custom 'new' label)" ng-model="formData.city" sortable="true" ng-disabled="ctrl.disabled" style="width: 300px;" title="Choose a color">
-                                        <ui-select-match placeholder="Select City">{{$item}}</ui-select-match>
-                                        <ui-select-choices repeat="color in ctrl.availableColors | filter:$select.search">
-                                            {{color}}
-                                        </ui-select-choices>
-                                    </ui-select>
-                                    <div class="error-msg" ng-show="cityform.name.$error.required && cityform.name.$touched">Please Enter City Name.</div>
-                                </div>
-                                <!-- <div class="form-group">
-                                    <label for="">City Name*</label>
-                                    <input type="text" name="name" placeholder="City Name" ng-model="formData.name" class="form-control" required>
+                                    <multiple-select list=""></multiple-select>
                                     <div class="error-msg" ng-show="cityform.name.$error.required && cityform.name.$touched">Please Enter City Name.</div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="disabledSelect">District Name*</label>
-                                    <select class="form-control" ng-model="formData.district" value="{{dist.name}}">
-                                        <option ng-selected="true" value="">Select District</option>
-                                        <option ng-repeat="dist in allDistricts">{{dist.name}}</option>
-                                    </select>
-                                </div> -->
-                                <div class="form-group">
-                                    <label for="">Std Code</label>
-                                    <input type="text" name="stdCode" placeholder="Std Codee" ng-model="formData.stdCode" class="form-control" required>
+                                    <label for="">Std Code*</label>
+                                    <input type="text" name="stdCode" ng-model="formData.stdCode" class="form-control" required>
                                     <div class="error-msg" ng-show="cityform.stdCode.$error.required && cityform.stdCode.$touched">Please Enter Std Code.</div>
                                 </div>
                                 <div class="form-group">
-                                    <div ng-if="formData.lat" map-lazy-load="https://maps.google.com/maps/api/js?key=AIzaSyCn9ypqFNxdXt9Zu2YqLcdD1Xdt2wNul9s">
+                                    <label for="">Latitude</label>
+                                    <input type="text" name="lat" ng-model="formData.lat" class="form-control">
+                                    <div class="error-msg" ng-show="cityform.lat.$error.required && cityform.lat.$touched">Please Enter Latitude.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Longitude</label>
+                                    <input type="text" name="long" ng-model="formData.long" class="form-control">
+                                    <div class="error-msg" ng-show="cityform.long.$error.required && cityform.long.$touched">Please Enter Longitude.</div>
+                                </div>
+                                <div class="form-group">
+                                    <div ng-if="formData.lat && formData.long" map-lazy-load="https://maps.google.com/maps/api/js?key=AIzaSyCn9ypqFNxdXt9Zu2YqLcdD1Xdt2wNul9s">
                                         <ng-map zoom="11" center="[{{mapCenter.lat}},{{mapCenter.long}}]">
                                             <marker on-dragend="change()" position="[{{formData.lat}},{{formData.long}}]" title="drag me" draggable="true"></marker>
                                         </ng-map>
                                     </div>
                                 </div>
-
                                 <div class="form-group">
-                                    <label for="">Latitude</label>
-                                    <input type="text" name="lat" placeholder="Latitude" ng-model="formData.lat" class="form-control" required>
-                                    <div class="error-msg" ng-show="cityform.lat.$error.required && cityform.lat.$touched">Please Enter Latitude.</div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Longitude</label>
-                                    <input type="text" name="long" placeholder="Longitude" ng-model="formData.long" class="form-control" required>
-                                    <div class="error-msg" ng-show="cityform.long.$error.required && cityform.long.$touched">Please Enter Longitude.</div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">TimeZone</label>
-                                    <input type="text" name="timezone" placeholder="TimeZone" ng-model="formData.timezone" class="form-control" required>
+                                    <label for="">Timezone</label>
+                                    <multiple-select list=""></multiple-select>
                                     <div class="error-msg" ng-show="cityform.timezone.$error.required && cityform.timezone.$touched">Please Enter TimeZone.</div>
-                                    <!-- <label for="">State Name*</label>
-                                    <input type="text" name="state" placeholder="State Name" ng-model="formData.state" class="form-control" required>
-                                    <div class="error-msg" ng-show="cityform.state.$error.required && cityform.state.$touched">Please Enter State Name.</div> -->
                                 </div>
                             </div>
                         </div>
@@ -129,8 +88,8 @@
                             <button class="btn btn-default" type="submit" ng-click="saveCity(formData)" ng-disabled="cityform.$invalid">Save</button>
                             <button class="btn btn-default" ui-sref="city-list">Cancel</button>
                         </div>
+                    </div>
                 </div>
-            </div>
             </form>
         </div>
     </div>

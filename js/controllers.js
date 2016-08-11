@@ -1207,7 +1207,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('CityCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("city-list");
-        $scope.menutitle = NavigationService.makeactive("city List");
+        $scope.menutitle = NavigationService.makeactive("City Lists");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
@@ -1234,7 +1234,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('CreateCityCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("city-detail");
-        $scope.menutitle = NavigationService.makeactive("city-detail");
+        $scope.menutitle = NavigationService.makeactive("Create City");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         var vm = this;
@@ -1299,7 +1299,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('EditCityCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("city-detail");
-        $scope.menutitle = NavigationService.makeactive("city-detail");
+        $scope.menutitle = NavigationService.makeactive("Edit City");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 

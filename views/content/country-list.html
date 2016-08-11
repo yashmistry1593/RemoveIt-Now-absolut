@@ -40,6 +40,7 @@
                                 <tr>
                                     <th>Country Name</th>
                                     <th>Country Code</th>
+                                    <th>Telephonic Code</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
@@ -47,6 +48,7 @@
                                 <tr ng-repeat="country in allCountries">
                                     <td>{{country.name}}</td>
                                     <td>{{country.countryCode}}</td>
+                                    <td>{{country.teleCode}}</td>
                                     <td>
                                       <a class="btn btn-primary" ui-sref="editcountry({id:country._id})"><i class="fa fa-pencil"></i></a>
                                       <a class="btn btn-danger" ng-click="deleteCountry(country._id)"><i class="fa fa-trash"></i></a>
