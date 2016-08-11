@@ -3281,7 +3281,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         $scope.sendData = function(val) {
-            $scope.modelData = val;
+            $scope.search.modelData = val;
             $scope.listview = false;
 
         }
