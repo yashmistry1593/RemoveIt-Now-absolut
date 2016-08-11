@@ -51,7 +51,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('CreateCountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
-        $scope.list = [{name: "India"},{name: "England"},{name: "USA"}];
+
         $scope.template = TemplateService.changecontent("country-detail");
         $scope.menutitle = NavigationService.makeactive("Country");
         TemplateService.title = $scope.menutitle;
@@ -74,7 +74,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('EditCountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         //Used to name the .html file
-        $scope.list = [{name: "India"},{name: "England"},{name: "USA"}];
+
         $scope.template = TemplateService.changecontent("country-detail");
         $scope.menutitle = NavigationService.makeactive("Country");
         TemplateService.title = $scope.menutitle;
@@ -1247,11 +1247,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         NavigationService.getAllCountries(function(data) {
             $scope.allCountries = data.data;
-            _.each($scope.allCountries,function(n){
-              $scope.allCountriesName=n.name;
-              console.log('$scope.allCountriesName',$scope.allCountriesName);
-            })
-            // console.log('$scope.allCountries', $scope.allCountries);
+            _.each($scope.allCountries, function(n) {
+                    $scope.allCountriesName = n.name;
+                    console.log('$scope.allCountriesName', $scope.allCountriesName);
+                })
+                // console.log('$scope.allCountries', $scope.allCountries);
 
         });
         NavigationService.getAllZones(function(data) {
@@ -3235,17 +3235,54 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log('$scope.allCities', $scope.allCities);
         });
     })
-    .controller('MultipleSelectCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
-      $scope.modelData = "";
-      $scope.listview = false;
-
-      $scope.showList = function() {
-        $scope.listview = true;
-      }
-
-      $scope.sendData = function(val) {
-        $scope.modelData = val;
+    .controller('MultipleSelectCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter) {
+        $scope.search = {
+            modelData: ""
+        };
         $scope.listview = false;
-      }
-    })
-    ;
+        $scope.showCreate = false;
+        $scope.listFresh = [{
+            name: "India"
+        }, {
+            name: "England"
+        }, {
+            name: "USA"
+        }];
+
+        $scope.showList = function() {
+            $scope.listview = true;
+        }
+
+        $scope.searchNew = function(filter) {
+            console.log(filter);
+            if (!filter || filter == "") {
+                $scope.showCreate = false;
+                $scope.list = $scope.listFresh;
+            } else {
+                $scope.showCreate = true;
+                $scope.list = $filter("filter")($scope.listFresh, filter);
+                var newFilter = _.upperCase(filter);
+                _.each($scope.list, function(n) {
+                    var newN = _.upperCase(n.name);
+                    if (newFilter == newN) {
+                        $scope.showCreate = false;
+                    }
+                });
+            }
+
+
+        };
+        $scope.searchNew();
+
+        $scope.createNew = function(create) {
+            var newCreate = $filter("capitalize")(create);
+            console.log("Create New " + newCreate);
+            $scope.listview = false;
+        };
+
+        $scope.sendData = function(val) {
+            $scope.modelData = val;
+            $scope.listview = false;
+
+        }
+    });
