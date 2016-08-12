@@ -8,7 +8,7 @@
 //   adminURL = "http://localhost/demo/index.php";
 // }
 // var adminurl = "http://localhost:1337/";
-var adminurl = "http://104.199.175.10/";
+var adminurl = "http://192.168.1.102:1337/";
 var imgurl = adminurl + "upload/";
 
 
@@ -144,42 +144,22 @@ var navigationservice = angular.module('navigationservice', [])
             }
             return menuname;
         },
-        getAllCountries: function(callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'country/getAll',
-                method: 'POST',
-                withCredentials: true
-            }).success(callback);
+        searchCountry: function(callback) {
+            $http.post(adminurl + 'country/search', {}).success(callback);
         },
         countrySave: function(formData, callback) {
             // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'country/saveData',
-                method: 'POST',
-                withCredentials: true,
-                data: formData
-            }).success(callback);
+            $http.post(adminurl + 'country/save', formData).success(callback);
         },
         getOneCountry: function(id, callback) {
             // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'country/getOne',
-                method: 'POST',
-                withCredentials: true,
-                data: {
-                    "_id": id
-                }
+            $http.post(adminurl + 'country/getOne', {
+                _id: id
             }).success(callback);
         },
-        countryEditSave: function(id, callback) {
+        countryEditSave: function(formData, callback) {
             // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'country/saveData',
-                method: 'POST',
-                withCredentials: true,
-                data: id
-            }).success(callback);
+            $http.post(adminurl + 'country/save', formData).success(callback);
         },
         deleteCountry: function(id, callback) {
             // console.log('form data: ', formData);

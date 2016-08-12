@@ -32,10 +32,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.showAllCountries = function() {
-            NavigationService.getAllCountries(function(data) {
-                $scope.allCountries = data.data;
-                console.log('$scope.allCountries', $scope.allCountries);
-
+            NavigationService.searchCountry(function(data) {
+                $scope.countries = data.data.results;
             });
         };
         $scope.showAllCountries();
@@ -47,7 +45,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.showAllCountries();
 
             });
-        }
+        };
     })
     .controller('CreateCountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
@@ -62,14 +60,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.formData = {};
         $scope.saveCountry = function(formData) {
-
+            console.log($scope.formData);
             NavigationService.countrySave($scope.formData, function(data) {
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('country-list');
                 }
-
             });
-        }
+        };
 
     })
     .controller('EditCountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
