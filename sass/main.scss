@@ -20,7 +20,9 @@ $brand-success: $green;
 @import "template/icons";
 @import "template/main";
 @import "template/responsive";
-
+input, button {
+  outline: none !important;
+}
 body {
 }
 img.loading {
@@ -539,6 +541,18 @@ $trans-black: rgba( black, .15 );
 }
 .form-group img {
     opacity: 1 !important;
+}
+form.mr-form {
+  margin-top: 0;
+  margin-left: 0;
+  margin-right: 10px;
+}
+form.search-form {
+  border-radius: 0;
+  height: 34px;
+  > input {
+    padding: 7px 26px 8px 10px;
+  }
 }
 /* Start writing sass here */
 @import "fancybox-override";
