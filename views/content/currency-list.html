@@ -52,7 +52,7 @@
                             <tbody>
                                 <tr ng-repeat="currency in allCurrencies">
                                     <td>{{currency.name}}</td>
-                                    <td> <img ng-src="{{currency.symbol|uploadpath}}" alt="" class="img-responsive margin-auto" height="50px" width="50px"></td>
+                                    <td>{{currency.symbol}}</td>
                                     <td>
                                       <a class="btn btn-primary" ui-sref="editcurrency({id:currency._id})"><i class="fa fa-pencil"></i></a>
                                       <a class="btn btn-danger" ng-click="deleteCurrency(currency._id)"><i class="fa fa-trash"></i></a>

@@ -6,6 +6,7 @@
 @import "../bower_components/font-awesome/css/font-awesome.min.css";
 @import "../bower_components/fancyBox/source/jquery.fancybox.css";
 @import "../bower_components/angular-ui-select/dist/select.min.css";
+@import "../bower_components/angular-bootstrap-toggle-switch/style/default/angular-toggle-switch.css";
 @import "icons";
 $blue: #1fc8ec;
 $orange: #f29c2c;
@@ -20,7 +21,7 @@ $brand-success: $green;
 @import "template/icons";
 @import "template/main";
 @import "template/responsive";
-input, button {
+input, button, div {
   outline: none !important;
 }
 body {
@@ -552,6 +553,39 @@ form.search-form {
   height: 34px;
   > input {
     padding: 7px 26px 8px 10px;
+  }
+}
+.heading-profile > h2 {
+  width: auto;
+}
+.ats-switch {
+  border-color: #d4d4d4;
+}
+.ats-switch .switch-right {
+  color: #7d7d7d;
+}
+.btn-upload {
+  position: relative;
+  input[type="file"] {
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+}
+.form-group {
+  position: relative;
+  .error-msg {
+    position: absolute;
+    right: 0;
+    background-color: $red;
+    color: white;
+    padding: 5px 10px;
+    font-size: 10px;
+    bottom: -23px;
+    text-transform: uppercase;
   }
 }
 /* Start writing sass here */

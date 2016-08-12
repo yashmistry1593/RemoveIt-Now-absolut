@@ -8,65 +8,88 @@
         </li>
     </ul>
 </div>
-
-<div class="heading-sec">
-    <div class="row">
-        <div class="col-md-4 column">
-            <div class="heading-profile">
-                <h2>{{header.name}}</h2>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Top Bar Chart -->
-<div class="panel-content">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="widget">
-                <div class="form-elements-sec">
-                    <div class="widget-title">
-                        <h3>Office</h3>
-                    </div>
-                    <form name="officeform" role="form" class="sec ng-pristine ng-valid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="">Office Name*</label>
-                                    <input type="text" name="name" placeholder="Office Name" ng-model="formData.name" class="form-control" required>
-                                    <div class="error-msg" ng-show="officeform.name.$error.required && officeform.name.$touched">Please Enter Office Name.</div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="">Address*</label>
-                                    <input type="text" name="address" placeholder="Address" ng-model="formData.address" class="form-control" required>
-                                    <div class="error-msg" ng-show="officeform.address.$error.required && officeform.address.$touched">Please Enter Address.</div>
-
-                                </div>
-                                <div class="form-group">
-                                    <label for="disabledSelect">Office Type*</label>
-                                    <select class="form-control" ng-model="formData.type" required2>
-                                        <option>--select--</option>
-                                        <option ng-repeat="seg in allTypeOfOffices">{{seg.name}}</option>
-                                    </select>
-                                </div>
-                                <!-- <div class="form-group">
-                                    <label for="">Office Type*</label>
-                                    <input type="text" name="officetype" placeholder="Office Type" ng-model="formData.officetype" class="form-control" required>
-                                    <div class="error-msg" ng-show="officeform.officetype.$error.required && officeform.officetype.$touched">Please Enter Office Type.</div>
-
-                                </div> -->
-                            </div>
-
-                        </div>
-                        <div class="text-center mt20">
-                            <button class="btn btn-default" type="submit" ng-click="saveOffice(formData)" ng-disabled="officeform.$invalid">Save</button>
-                            <button class="btn btn-default" ui-sref="office-list">Cancel</button>
-                        </div>
+<form name="officeform" role="form" class="sec ng-pristine ng-valid">
+    <div class="heading-sec">
+        <div class="row">
+            <div class="col-md-12 column">
+                <div class="heading-profile">
+                    <toggle-switch ng-model="formData.status" class="switch-mini switch-info pull-right"></toggle-switch>
+                    <h2>{{header.name}}</h2>
                 </div>
             </div>
-
-
-
-            </form>
         </div>
     </div>
-</div>
+    <!-- Top Bar Chart -->
+    <div class="panel-content">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="widget">
+                    <div class="form-elements-sec">
+                        <div class="widget-title">
+                            <h3>Office</h3>
+                        </div>
+                        <div class="sec">
+                            <div class="form-group">
+                                <label>Company Name*</label>
+                                <multiple-select list=""></multiple-select>
+                                <div class="error-msg" ng-show="officeform.company.$error.required && officeform.company.$touched">Please Enter Company Name.</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Type of Office*</label>
+                                <multiple-select></multiple-select>
+                                <div class="error-msg" ng-show="officeform.typeOfOffice.$error.required && officeform.typeOfOffice.$touched">Please Enter Type of Office.</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Office Name*</label>
+                                <multiple-select list=""></multiple-select>
+                                <div class="error-msg" ng-show="officeform.office.$error.required && officeform.office.$touched">Please Enter Office Name.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="widget">
+                    <div class="form-elements-sec">
+                        <div class="widget-title">
+                            <h3>Contact</h3>
+                        </div>
+                        <div class="sec">
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="tel" class="form-control">
+                                <div class="error-msg" ng-show="officeform.phone.$error.required && officeform.phone.$touched">Please Enter Company Name.</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Fax</label>
+                                <input type="tel" class="form-control">
+                                <div class="error-msg" ng-show="officeform.fax.$error.required && officeform.fax.$touched">Please Enter Company Name.</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-control">
+                                <div class="error-msg" ng-show="officeform.email.$error.required && officeform.email.$touched">Please Enter Company Name.</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="widget">
+                    <div class="form-elements-sec">
+                        <div class="widget-title">
+                            <h3>Address</h3>
+                        </div>
+                        <div class="sec">
+                          <address-form></address-form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clearfix"></div>
+    <div class="text-center mt20">
+        <button class="btn btn-default" type="submit" ng-click="saveOffice(formData)" ng-disabled="officeform.$invalid">Save</button>
+        <button class="btn btn-default" ui-sref="office-list">Cancel</button>
+    </div>
+</form>

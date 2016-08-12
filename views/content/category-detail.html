@@ -8,70 +8,48 @@
         </li>
     </ul>
 </div>
-
-<div class="heading-sec">
-    <div class="row">
-        <div class="col-md-4 column">
-            <div class="heading-profile">
-                <h2>{{header.name}}</h2>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Top Bar Chart -->
-<div class="panel-content">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="widget">
-                <div class="form-elements-sec">
-                    <div class="widget-title">
-                        <h3>Category</h3>
-                    </div>
-                    <form name="industryForm" role="form" class="sec ng-pristine ng-valid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="">Category Name*</label>
-                                    <input type="text" name="name" placeholder="Category Name" ng-model="formData.name" class="form-control" required>
-                                    <div class="error-msg" ng-show="industryForm.name.$error.required && industryForm.name.$touched">Please Enter Category Name.</div>
-
-                                </div>
-                                <div class="form-group">
-                                    <label for="disabledSelect">Industry*</label>
-                                    <select class="form-control" ng-model="formData.industry" value="{{dist.name}}">
-                                        <option ng-selected="true" value="">Select Industry</option>
-                                        <option ng-repeat="ind in allIndustries">{{ind.name}}</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
-                                    <label for="disabledSelect">Status</label>
-                                    <select class="form-control" ng-model="formData.status" ng-options="str.value as str.name for str in userStatus">
-                                        <!-- <option value="">Select Status </option>
-                                        <option value=true>Active</option>
-                                        <option value=false>Inactive</option> -->
-                                    </select>
-                                </div>
-
-                                <!-- <div class="form-group">
-                                    <label for="">Status*</label>
-                                    <input type="text" name="Status" placeholder="Status" ng-model="formData.status" class="form-control" required>
-                                    <div class="error-msg" ng-show="industryForm.status.$error.required && industryForm.status.$touched">Please Enter Status.</div>
-
-                                </div> -->
-
-                            </div>
-
-                        </div>
-                        <div class="text-center mt20">
-                            <button class="btn btn-default" type="submit" ng-click="saveCategory(formData)" ng-disabled="industryForm.$invalid">Save</button>
-                            <button class="btn btn-default" ui-sref="category-list">Cancel</button>
-                        </div>
+<form name="industryForm" role="form">
+    <div class="heading-sec">
+        <div class="row">
+            <div class="col-md-12 column">
+                <div class="heading-profile">
+                  <toggle-switch ng-model="formData.status" class="switch-mini switch-info pull-right"></toggle-switch>
+                    <h2>{{header.name}}</h2>
                 </div>
             </div>
-
-
-
-            </form>
         </div>
     </div>
-</div>
+    <!-- Top Bar Chart -->
+    <div class="panel-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="widget">
+                    <div class="form-elements-sec">
+                        <div class="widget-title">
+                            <h3>Category</h3>
+                        </div>
+                        <div class="sec">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Industry*</label>
+                                        <multiple-select></multiple-select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Category Name*</label>
+                                        <input type="text" name="name" ng-model="formData.name" class="form-control" required>
+                                        <div class="error-msg" ng-show="industryForm.name.$error.required && industryForm.name.$touched">Please Enter Category Name.</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="text-center mt20">
+                                <button class="btn btn-default" type="submit" ng-click="saveCategory(formData)" ng-disabled="industryForm.$invalid">Save</button>
+                                <button class="btn btn-default" ui-sref="category-list">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -34,45 +34,20 @@ var navigationservice = angular.module('navigationservice', [])
             anchor: "company-list",
             icon: "building"
         }, {
-            name: "Branch",
-            classis: "active",
-            anchor: "branch-list",
-            icon: "link"
-        }, {
             name: "Type Of Office",
             classis: "active",
             anchor: "typeOfOffice-list",
             icon: "building"
         }, {
-            name: "Function",
+            name: "Office",
             classis: "active",
-            anchor: "func-list",
-            icon: "cogs"
+            anchor: "office-list",
+            icon: "link"
         }, {
-            name: "Menu",
+            name: "Branch",
             classis: "active",
-            anchor: "menu-list",
-            icon: "bars"
-        }, {
-            name: "Role",
-            classis: "active",
-            anchor: "role-list",
-            icon: "user-plus"
-        }, {
-            name: "Contact Management",
-            classis: "active",
-            anchor: "contactmanagement-list",
-            icon: "briefcase"
-        }, {
-            name: "Contact Type",
-            classis: "active",
-            anchor: "contacttype-list",
-            icon: "list-ul"
-        }, {
-            name: "Contact Types of Office",
-            classis: "active",
-            anchor: "contacttypeoffice-list",
-            icon: "th-list"
+            anchor: "branch-list",
+            icon: "link"
         }]
     }, {
         name: "Locations",

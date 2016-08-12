@@ -9,197 +9,174 @@
     </ul>
 </div>
 
-<div class="heading-sec">
-    <div class="row">
-        <div class="col-md-4 column">
-            <div class="heading-profile">
-                <h2>{{header.name}}</h2>
+<form role="form" class="sec" name="companyForm" ng-submit="saveCompany(formData)">
+    <div class="heading-sec">
+        <div class="row">
+            <div class="col-md-12 column">
+                <div class="heading-profile">
+                    <toggle-switch ng-model="formData.status" class="switch-mini switch-info pull-right"></toggle-switch>
+                    <h2>{{header.name}}</h2>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Top Bar Chart -->
-<div class="panel-content">
-    <form role="form" class="sec ng-pristine ng-valid" name="companyForm" ng-submit="saveCompany(formData)">
+    <!-- Top Bar Chart -->
+    <div class="panel-content">
+        <div class="sec">
 
-        <div class="row">
+            <div class="row">
 
-          <div class="col-md-6">
-              <div class="widget">
-                  <div class="form-elements-sec">
-                      <div class="widget-title">
-                          <h3>Address</h3>
-                      </div>
-                      <address-form></address-form>
-                  </div>
-              </div>
-              <div class="widget">
-                  <div class="form-elements-sec">
-                      <div class="widget-title">
-                          <h3>Contact</h3>
-                      </div>
-                      <div class="form-group">
-                          <label>Office#</label>
-                          <input type="text" placeholder="Office Number" class="form-control" ng-model="formData.officeno">
-                      </div>
-                      <div class="form-group">
-                          <label>Home#</label>
-                          <input type="text" placeholder="Home Number" class="form-control" ng-model="formData.home">
-                      </div>
-                      <div class="form-group">
-                          <label>Mobile#</label>
-                          <input type="text" placeholder="Mobile Number" class="form-control" ng-model="formData.mobile">
-                      </div>
-                      <div class="form-group">
-                          <label>Fax#</label>
-                          <input type="text" placeholder="Fax Number" class="form-control" ng-model="formData.fax">
-                      </div>
-                      <div class="form-group">
-                          <label>Extension</label>
-                          <input type="text" placeholder="Extension" class="form-control" ng-model="formData.extension">
-                      </div>
-                      <div class="form-group">
-                          <label>Email Id</label>
-                          <input type="email" placeholder="Email Id" class="form-control" ng-model="formData.email">
-                      </div>
-                  </div>
-              </div>
-          </div>
-            <div class="col-md-6">
-                <div class="widget">
-                    <div class="form-elements-sec">
-                        <div class="widget-title">
-                            <h3>General</h3>
+                <div class="col-md-6">
+                    <div class="widget">
+                        <div class="form-elements-sec">
+                            <div class="widget-title">
+                                <h3>Address</h3>
+                            </div>
+                            <address-form></address-form>
                         </div>
-                        <div class="form-group">
-                            <label>Code*</label>
-                            <input type="text" placeholder="Code" name="companyCode" class="form-control" ng-model="formData.companyCode" required>
-                            <div class="error-msg" ng-show="companyForm.companyCode.$error && companyForm.companyCode.$touched">Please Enter Code</div>
-                        </div>
-                        <div class="form-group">
-                            <label>Name*</label>
-                            <input type="text" placeholder="Name" name="name" class="form-control" ng-model="formData.name" required>
-                            <div class="error-msg" ng-show="companyForm.name.$error && companyForm.name.$touched">Please Enter Name</div>
-                        </div>
-                        <div class="form-group">
-                            <label>Short Name*</label>
-                            <input type="text" placeholder="Short Name" class="form-control" name="shortName" ng-model="formData.shortName" required>
-                            <div class="error-msg" ng-show="companyForm.shortName.$error && companyForm.shortName.$touched">Please Enter Short Name</div>
-                        </div>
-                        <div class="form-group">
-                            <div class="user-img mt25">
-                                <label>Upload Document</label>
-                                <!-- <img ng-src="{{userForm.image|uploadpath}}" class="img-responsive margin-auto" ng-if="userForm.image" style="height:200px;"> -->
-                                <img ng-src="{{formData.image|uploadpath}}" ng-if="formData.image" alt="" class="img-responsive margin-auto" height="50px" width="50px">
-                                <upload-image ng-model="formData.image" no-view></upload-image>
+                    </div>
+                    <div class="widget">
+                        <div class="form-elements-sec">
+                            <div class="widget-title">
+                                <h3>Contact</h3>
+                            </div>
+                            <div class="form-group">
+                                <label>Phone</label>
+                                <input type="text" class="form-control" ng-model="formData.phone">
+                            </div>
+                            <div class="form-group">
+                                <label>Fax</label>
+                                <input type="text" class="form-control" ng-model="formData.fax">
+                            </div>
+                            <div class="form-group">
+                                <label>Email</label>
+                                <input type="email" class="form-control" ng-model="formData.email">
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="widget">
-                    <div class="form-elements-sec">
-                        <div class="widget-title">
-                            <h3>Other</h3>
+                <div class="col-md-6">
+                    <div class="widget">
+                        <div class="form-elements-sec">
+                            <div class="widget-title">
+                                <h3>General</h3>
+                            </div>
+                            <div class="form-group">
+                                <label>Autogenrated Comapny Code</label>
+                                <input type="text" name="companyCode" class="form-control" ng-model="formData.companyCode" readonly>
+                            </div>
+                            <div class="form-group">
+                                <label>Name*</label>
+                                <input type="text" name="name" class="form-control" ng-model="formData.name" required>
+                                <div class="error-msg" ng-show="companyForm.name.$error && companyForm.name.$touched">Please Enter Name</div>
+                            </div>
+                            <div class="form-group">
+                                <label>Short Name*</label>
+                                <input type="text" class="form-control" name="shortName" ng-model="formData.shortName" required>
+                                <div class="error-msg" ng-show="companyForm.shortName.$error && companyForm.shortName.$touched">Please Enter Short Name</div>
+                            </div>
+                            <div class="form-group">
+                                <div class="user-img mt25">
+                                    <label>Upload Logo</label>
+                                    <upload-image ng-model="companyForm.logo" no-view></upload-image>
+                                </div>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>NEFT</label>
-                            <input type="text" placeholder="NEFT" class="form-control" ng-model="formData.NEFT">
+                    </div>
+                    <div class="widget">
+                        <div class="form-elements-sec">
+                            <div class="widget-title">
+                                <h3>Other</h3>
+                            </div>
+                            <div class="form-group">
+                                <label>NEFT</label>
+                                <input type="text" class="form-control" ng-model="formData.NEFT">
+                            </div>
+                            <div class="form-group">
+                                <label>Service Tax Number</label>
+                                <input type="text" class="form-control" ng-model="formData.serviceTax">
+                            </div>
+                            <div class="form-group">
+                                <label>PAN</label>
+                                <input type="text" class="form-control" ng-model="formData.pan">
+                            </div>
+                            <div class="form-group">
+                                <label>CIN</label>
+                                <input type="text" class="form-control" ng-model="formData.cin">
+                            </div>
+                            <div class="form-group">
+                                <label>TAN</label>
+                                <input type="text" class="form-control" ng-model="formData.tan">
+                            </div>
+                            <div class="form-group">
+                                <label>Services</label>
+                                <input type="text" class="form-control" ng-model="formData.services">
+                            </div>
+                            <div class="form-group">
+                                <label>Website</label>
+                                <input type="text" class="form-control" ng-model="formData.website">
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label>Service Tax#</label>
-                            <input type="text" placeholder="Service Tax" class="form-control" ng-model="formData.serviceTax">
+                    </div>
+                </div>
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="widget">
+                        <div class="form-elements-sec">
+                            <div class="widget-title">
+                                <h3>Bank Date</h3>
+                            </div>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>Activity Name</th>
+                                        <th style="width: 100px;">Days</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Field Office Activity</td>
+                                        <td>
+                                            <input type="text" class="form-control ">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Back Office Activity</td>
+                                        <td>
+                                            <input type="text" class="form-control ">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Reimbursement</td>
+                                        <td>
+                                            <input type="text" class="form-control ">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Receipt</td>
+                                        <td>
+                                            <input type="text" class="form-control ">
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>Journal Voucher</td>
+                                        <td>
+                                            <input type="text" class="form-control ">
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="form-group">
-                            <label>Pan#</label>
-                            <input type="text" placeholder="Pan" class="form-control" ng-model="formData.pan">
-                        </div>
-                        <div class="form-group">
-                            <label>Services</label>
-                            <input type="text" placeholder="Services" class="form-control" ng-model="formData.services">
-                        </div>
-                        <div class="form-group">
-                            <label>Cin</label>
-                            <input type="text" placeholder="Cin" class="form-control" ng-model="formData.cin">
-                        </div>
-                        <div class="form-group">
-                            <label>Website</label>
-                            <input type="text" placeholder="Website" class="form-control" ng-model="formData.website">
-                        </div>
-                        <div class="form-group">
-                            <label for="disabledSelect">Status</label>
-                            <select class="form-control" ng-model="formData.status" ng-options="str.value as str.name for str in userStatus">
-                                <!-- <option value="">Select Status </option>
-                                <option value=true>Active</option>
-                                <option value=false>Inactive</option> -->
-                            </select>
-                        </div>
-                        <!-- <div class="form-group">
-                            <label for="disabledSelect">Status*</label>
-                            <select class="form-control" ng-model="formData.status" value="{{s}}">
-                                <option ng-selected="true" value="">Select Status</option>
-                                <option ng-repeat="s in userStatus">{{s}}</option>
-                            </select>
-                        </div> -->
                     </div>
                 </div>
             </div>
-
-        </div>
-        <div class="row">
-            <div class="col-md-12">
-                <div class="widget">
-                    <div class="form-elements-sec">
-                        <div class="widget-title">
-                            <h3>Bank Date</h3>
-                        </div>
-                        <table class="table">
-                            <thead>
-                                <tr>
-                                    <th>Activity Name</th>
-                                    <th style="width: 100px;">Days</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>Field Office Activity</td>
-                                    <td>
-                                        <input type="text" class="form-control ">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Back Office Activity</td>
-                                    <td>
-                                        <input type="text" class="form-control ">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Reimbursement</td>
-                                    <td>
-                                        <input type="text" class="form-control ">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Receipt</td>
-                                    <td>
-                                        <input type="text" class="form-control ">
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>Journal Voucher</td>
-                                    <td>
-                                        <input type="text" class="form-control ">
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
+            <div class="text-center mt20">
+                <button class="btn btn-default" type="submit" ng-disabled="companyForm.$invalid">Save</button>
+                <button class="btn btn-default" type="submit" ui-sref="company-list">Cancel</button>
             </div>
         </div>
-        <div class="text-center mt20">
-            <button class="btn btn-default" type="submit" ng-disabled="companyForm.$invalid">Save</button>
-            <button class="btn btn-default" type="submit" ui-sref="company-list">Cancel</button>
-        </div>
-    </form>
 
-</div>
+    </div>
+</form>

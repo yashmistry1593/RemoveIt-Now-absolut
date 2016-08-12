@@ -1,30 +1,57 @@
 <div class="form-group">
     <label>Country</label>
     <multiple-select list="list"></multiple-select>
+    <div class="error-msg" ng-show="demoForm.country.$error.required && demoForm.country.$touched">Please Enter Country.</div>
 </div>
 <div class="form-group">
-    <label>State/Province</label>
-    <select class="form-control" ng-model="formData.state">
-        <option>Select State/Province</option>
-        <option ng-repeat="s in allStates">{{s.name}}</option>
-    </select>
+    <label>Zone</label>
+    <multiple-select list="list"></multiple-select>
+    <div class="error-msg" ng-show="demoForm.zone.$error.required && demoForm.zone.$touched">Please Enter Zone.</div>
+</div>
+<div class="form-group">
+    <label>State</label>
+    <multiple-select list="list"></multiple-select>
+    <div class="error-msg" ng-show="demoForm.state.$error.required && demoForm.state.$touched">Please Enter State.</div>
+</div>
+<div class="form-group">
+    <label>District</label>
+    <multiple-select list="list"></multiple-select>
+    <div class="error-msg" ng-show="demoForm.district.$error.required && demoForm.district.$touched">Please Enter District.</div>
 </div>
 <div class="form-group">
     <label>City</label>
-    <select class="form-control" ng-model="formData.city">
-        <option>Select City</option>
-        <option ng-repeat="s in allCities">{{s.name}}</option>
-    </select>
-</div>
-<div class="form-group">
-    <label>Postal Code</label>
-    <input type="text" placeholder="Postal Code" class="form-control" ng-model="formData.pincode">
+    <multiple-select list="list"></multiple-select>
+    <div class="error-msg" ng-show="demoForm.city.$error.required && demoForm.city.$touched">Please Enter city.</div>
 </div>
 <div class="form-group">
     <label>Address</label>
-    <textarea placeholder="Address" class="form-control" name="address" ng-model="formData.address"></textarea>
+    <textarea class="form-control"></textarea>
+    <div class="error-msg" ng-show="demoForm.address.$error.required && demoForm.address.$touched">Please Enter address.</div>
+</div>
+<div class="form-group">
+    <label>Postal Code</label>
+    <input type="text" class="form-control">
+    <div class="error-msg" ng-show="demoForm.lat.$error.required && demoForm.lat.$touched">Please Enter Latitude.</div>
+</div>
+<div class="form-group">
+    <label for="">Latitude</label>
+    <input type="text" name="lat" ng-model="demoForm.lat" class="form-control">
+    <div class="error-msg" ng-show="demoForm.lat.$error.required && demoForm.lat.$touched">Please Enter Latitude.</div>
+</div>
+<div class="form-group">
+    <label for="">Longitude</label>
+    <input type="text" name="long" ng-model="demoForm.long" class="form-control">
+    <div class="error-msg" ng-show="demoForm.long.$error.required && demoForm.long.$touched">Please Enter Longitude.</div>
+</div>
+<div class="form-group">
+    <div ng-if="demoForm.lat && demoForm.long" map-lazy-load="https://maps.google.com/maps/api/js?key=AIzaSyCn9ypqFNxdXt9Zu2YqLcdD1Xdt2wNul9s">
+        <ng-map zoom="11" center="[{{mapCenter.lat}},{{mapCenter.long}}]">
+            <marker on-dragend="change()" position="[{{demoForm.lat}},{{demoForm.long}}]" title="drag me" draggable="true"></marker>
+        </ng-map>
+    </div>
 </div>
 <div class="form-group">
     <label>Final Address</label>
-    <textarea ng-model="formData.finalAddress" class="form-control" readonly></textarea>
+    <textarea class="form-control" disabled></textarea>
+    <div class="error-msg" ng-show="demoForm.finalAddress.$error.required && demoForm.finalAddress.$touched">Please Enter Longitude.</div>
 </div>
