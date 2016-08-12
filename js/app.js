@@ -7,7 +7,8 @@ var firstapp = angular.module('firstapp', [
     'pascalprecht.translate',
     'angulartics',
     'angulartics.google.analytics',
-    'imageupload'
+    'imageupload',
+  
 ]);
 
 firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
@@ -39,15 +40,15 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('country-list', {
-        url: "/country-list",
-        templateUrl: "views/template.html",
-        controller: 'CountryCtrl'
-    })
-    .state('country-listPage', {
-        url: "/country-list/:page",
-        templateUrl: "views/template.html",
-        controller: 'CountryCtrl'
-    })
+            url: "/country-list",
+            templateUrl: "views/template.html",
+            controller: 'CountryCtrl'
+        })
+        .state('country-listPage', {
+            url: "/country-list/:page",
+            templateUrl: "views/template.html",
+            controller: 'CountryCtrl'
+        })
 
 
     .state('createcountry', {
@@ -505,15 +506,15 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('createbankmaster', {
-        url: "/bankmaster-detail",
-        templateUrl: "views/template.html",
-        controller: 'CreateBankmasterCtrl'
-    })
-    .state('editbankmaster', {
-        url: "/bankmaster-detail/:id",
-        templateUrl: "views/template.html",
-        controller: 'EditBankmasterCtrl'
-    })
+            url: "/bankmaster-detail",
+            templateUrl: "views/template.html",
+            controller: 'CreateBankmasterCtrl'
+        })
+        .state('editbankmaster', {
+            url: "/bankmaster-detail/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditBankmasterCtrl'
+        })
 
     .state('company-list', {
         url: "/company-list",
@@ -522,15 +523,15 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('createcompany', {
-        url: "/company-detail",
-        templateUrl: "views/template.html",
-        controller: 'CreateCompanyCtrl'
-    })
-    .state('editcompany', {
-        url: "/company-detail/:id",
-        templateUrl: "views/template.html",
-        controller: 'EditCompanyCtrl'
-    })
+            url: "/company-detail",
+            templateUrl: "views/template.html",
+            controller: 'CreateCompanyCtrl'
+        })
+        .state('editcompany', {
+            url: "/company-detail/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditCompanyCtrl'
+        })
 
     .state('customer-list', {
         url: "/customer-list",
@@ -539,15 +540,15 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('createcustomer', {
-        url: "/customer-detail",
-        templateUrl: "views/template.html",
-        controller: 'CreateCustomerCtrl'
-    })
-    .state('editcustomer', {
-        url: "/customer-detail/:id",
-        templateUrl: "views/template.html",
-        controller: 'EditCustomerCtrl'
-    })
+            url: "/customer-detail",
+            templateUrl: "views/template.html",
+            controller: 'CreateCustomerCtrl'
+        })
+        .state('editcustomer', {
+            url: "/customer-detail/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditCustomerCtrl'
+        })
 
     .state('contactmanagement-list', {
         url: "/contactmanagement-list",
@@ -599,15 +600,15 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('editcustomersegment', {
-        url: "/customersegment-edit/:id",
-        templateUrl: "views/template.html",
-        controller: 'EditCustomerSegmentCtrl'
-    })
-    .state('customerCompany-list', {
-        url: "/customerCompany-list",
-        templateUrl: "views/template.html",
-        controller: 'CustomerCompanyCtrl'
-    })
+            url: "/customersegment-edit/:id",
+            templateUrl: "views/template.html",
+            controller: 'EditCustomerSegmentCtrl'
+        })
+        .state('customerCompany-list', {
+            url: "/customerCompany-list",
+            templateUrl: "views/template.html",
+            controller: 'CustomerCompanyCtrl'
+        })
 
 
     .state('createcustomercompany', {
@@ -626,8 +627,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         url: "/timeline",
         templateUrl: "views/template.html",
         controller: 'TimelineCtrl'
-    })
-    ;
+    });
     $urlRouterProvider.otherwise("/login");
     $locationProvider.html5Mode(isproduction);
 });
@@ -635,7 +635,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
 
 firstapp.filter('uploadpath', function() {
     return function(input, width, height, style) {
-      console.log(input);
+        console.log(input);
         var other = "";
         if (width && width !== "") {
             other += "&width=" + width;
@@ -647,7 +647,7 @@ firstapp.filter('uploadpath', function() {
             other += "&style=" + style;
         }
         if (input) {
-          console.log('in if');
+            console.log('in if');
             console.log('input');
             if (input.indexOf('https://') == -1) {
                 console.log('in if');
@@ -852,8 +852,8 @@ firstapp.directive('multipleSelect', function($document) {
     return {
         templateUrl: 'views/directive/multiple-select.html',
         scope: {
-          // model: '=ngModel',
-          list: "=list"
+            // model: '=ngModel',
+            list: "=list"
         },
         restrict: 'EA',
         replace: false,
@@ -866,10 +866,12 @@ firstapp.directive('multipleSelect', function($document) {
 });
 firstapp.filter('capitalize', function() {
     return function(input, all) {
-      var reg = (all) ? /([^\W_]+[^\s-]*) */g : /([^\W_]+[^\s-]*)/;
-      return (!!input) ? input.replace(reg, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();}) : '';
+        var reg = (all) ? /([^\W_]+[^\s-]*) */g : /([^\W_]+[^\s-]*)/;
+        return (!!input) ? input.replace(reg, function(txt) {
+            return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
+        }) : '';
     };
-  });
+});
 
 firstapp.config(function($translateProvider) {
     $translateProvider.translations('en', LanguageEnglish);
