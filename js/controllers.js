@@ -1,5 +1,5 @@
 // angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui.tinymce'])
-
+var globalfunction = {};
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ui.select', 'ngAnimate', 'toastr', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'imageupload', 'ngMap', 'toggle-switch'])
 
 .controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout) {
@@ -3006,11 +3006,26 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 })
 
-.controller('headerctrl', function($scope, TemplateService) {
+.controller('headerctrl', function($scope, TemplateService, $uibModal) {
     $scope.template = TemplateService;
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
         $(window).scrollTop(0);
     });
+    $scope.callback = "";
+    globalfunction.confDel = function(callback) {
+        modalInstance = $uibModal.open({
+            animation: $scope.animationsEnabled,
+            templateUrl: 'views/modal/conf-delete.html',
+            size: 'sm'
+        });
+
+        modalInstance.result.then(function(selectedItem) {
+            $scope.selected = selectedItem;
+        }, function() {
+
+        });
+        $scope.callback = callback;
+    };
 })
 
 .controller('languageCtrl', function($scope, TemplateService, $translate, $rootScope) {
