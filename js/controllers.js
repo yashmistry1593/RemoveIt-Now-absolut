@@ -25,7 +25,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
     })
-    .controller('CountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+    .controller('CountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams,toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("country-list");
         $scope.menutitle = NavigationService.makeactive("Country List");
@@ -67,10 +67,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.showAllCountries();
         $scope.deleteCountry = function(id) {
+            globalfunction.confDel(function(value) {
+                console.log(value);
+                if (value) {
+                    NavigationService.deleteCountry(id, function(data) {
+                        if (data.value) {
+                            $scope.showAllCountries();
+                            toastr.success("Country deleted", "Country deleted successfully.");
+                        } else {
+                            toastr.error("Country deleting error", "There was an error while deleting country");
+                        }
 
-            NavigationService.deleteCountry(id, function(data) {
-                $scope.showAllCountries();
 
+                    });
+                }
             });
         };
     })
@@ -3011,20 +3021,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
         $(window).scrollTop(0);
     });
-    $scope.callback = "";
     globalfunction.confDel = function(callback) {
-        modalInstance = $uibModal.open({
+
+        var modalInstance = $uibModal.open({
             animation: $scope.animationsEnabled,
             templateUrl: 'views/modal/conf-delete.html',
-            size: 'sm'
+            size: 'sm',
+            scope: $scope
         });
-
-        modalInstance.result.then(function(selectedItem) {
-            $scope.selected = selectedItem;
-        }, function() {
-
-        });
-        $scope.callback = callback;
+        $scope.close = function(value) {
+            callback(value);
+            modalInstance.close("cancel");
+        };
     };
 })
 
