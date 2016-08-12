@@ -43,6 +43,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         templateUrl: "views/template.html",
         controller: 'CountryCtrl'
     })
+    .state('country-listPage', {
+        url: "/country-list/:page",
+        templateUrl: "views/template.html",
+        controller: 'CountryCtrl'
+    })
 
 
     .state('createcountry', {

@@ -30,12 +30,12 @@
 
                     <div class="widget-title">
                         <div class="pull-right">
-                        <form class="search-form mr-form">
-                            <input type="text" placeholder="Search Here..."/>
-                            <button type="submit">
-                                <i class="fa fa-search"></i>
-                            </button>
-                        </form>
+                            <form class="search-form mr-form">
+                                <input type="text" placeholder="Search Here..."/>
+                                <button type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </form>
                             <a class="btn btn-primary" ui-sref="createcountry">Add New</a>
                         </div>
                         <h3>List of Countries</h3>
@@ -56,13 +56,19 @@
                                     <td>{{country.countryCode}}</td>
                                     <td>{{country.ISDCodes}}</td>
                                     <td>
-                                      <a class="btn btn-primary" ui-sref="editcountry({id:country._id})"><i class="fa fa-pencil"></i></a>
-                                      <a class="btn btn-danger" ng-click="deleteCountry(country._id)"><i class="fa fa-trash"></i></a>
+                                        <a class="btn btn-primary" ui-sref="editcountry({id:country._id})">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a class="btn btn-danger" ng-click="deleteCountry(country._id)">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+
+                    <ul ng-if="totalItems" ng-change="changePage(currentPage);" uib-pagination total-items="totalItems" items-per-page="template.maxRow" ng-model="currentPage" max-size="template.pageMax" class="pagination-sm" boundary-links="true" force-ellipses="true"></ul>
                 </div>
             </div>
         </div>

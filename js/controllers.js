@@ -25,15 +25,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
     })
-    .controller('CountryCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('CountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("country-list");
         $scope.menutitle = NavigationService.makeactive("Country List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.currentPage = $stateParams.page;
         $scope.showAllCountries = function() {
-            NavigationService.searchCountry(function(data) {
+            NavigationService.searchCountry({
+                page: $scope.currentPage
+            }, function(data) {
                 $scope.countries = data.data.results;
+                $scope.totalItems = data.data.total;
+            });
+        };
+
+        $scope.changePage = function(page) {
+            $state.go("country-listPage", {
+                page: page
             });
         };
         $scope.showAllCountries();
