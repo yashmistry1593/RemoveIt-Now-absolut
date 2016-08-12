@@ -8,7 +8,7 @@ var firstapp = angular.module('firstapp', [
     'angulartics',
     'angulartics.google.analytics',
     'imageupload',
-  
+
 ]);
 
 firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $locationProvider) {
@@ -46,6 +46,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         })
         .state('country-listPage', {
             url: "/country-list/:page",
+            templateUrl: "views/template.html",
+            controller: 'CountryCtrl'
+        })
+        .state('country-listPageKey', {
+            url: "/country-list/:page/:keyword",
             templateUrl: "views/template.html",
             controller: 'CountryCtrl'
         })

@@ -1,6 +1,6 @@
 // angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui.tinymce'])
 
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ui.select', 'ngAnimate', 'toaster', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'imageupload', 'ngMap', 'toggle-switch'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ui.select', 'ngAnimate', 'toastr', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'imageupload', 'ngMap', 'toggle-switch'])
 
 .controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
@@ -32,18 +32,37 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.currentPage = $stateParams.page;
-        $scope.showAllCountries = function() {
+        var i = 0;
+        $scope.search = {
+            keyword: ""
+        };
+        if ($stateParams.keyword) {
+            $scope.search.keyword = $stateParams.keyword;
+        }
+        $scope.showAllCountries = function(keywordChange) {
+            $scope.totalItems = undefined;
+            if (keywordChange) {
+                $scope.currentPage = 1;
+            }
             NavigationService.searchCountry({
-                page: $scope.currentPage
-            }, function(data) {
-                $scope.countries = data.data.results;
-                $scope.totalItems = data.data.total;
+                page: $scope.currentPage,
+                keyword: $scope.search.keyword
+            }, ++i, function(data, ini) {
+                if (ini == i) {
+                    $scope.countries = data.data.results;
+                    $scope.totalItems = data.data.total;
+                }
             });
         };
 
         $scope.changePage = function(page) {
-            $state.go("country-listPage", {
-                page: page
+            var goTo = "country-listPage";
+            if ($scope.search.keyword) {
+                goTo = "country-listPageKey";
+            }
+            $state.go(goTo, {
+                page: page,
+                keyword: $scope.search.keyword
             });
         };
         $scope.showAllCountries();
@@ -55,7 +74,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
     })
-    .controller('CreateCountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('CreateCountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("country-detail");
@@ -72,6 +91,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.countrySave($scope.formData, function(data) {
                 if (data.value === true) {
                     $state.go('country-list');
+                    toastr.success("Country Created", "Country " + formData.name + " created successfully.");
+                } else {
+                    toastr.error("Country creation error", "Country creation failed.");
                 }
             });
         };
@@ -1147,7 +1169,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.deleteCurrency = function(id) {
 
             NavigationService.deleteCurrency(id, function(data) {
-              console.log(id);
+                console.log(id);
                 $scope.showAllCurrencies();
 
             });

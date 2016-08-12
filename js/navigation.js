@@ -144,8 +144,10 @@ var navigationservice = angular.module('navigationservice', [])
             }
             return menuname;
         },
-        searchCountry: function(formData, callback) {
-            $http.post(adminurl + 'country/search', formData).success(callback);
+        searchCountry: function(formData, i, callback) {
+            $http.post(adminurl + 'country/search', formData).success(function(data) {
+                callback(data, i);
+            });
         },
         countrySave: function(formData, callback) {
             $http.post(adminurl + 'country/save', formData).success(callback);
@@ -181,28 +183,28 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         deleteZone: function(id, callback) {
-            $http.POST(adminurl + 'zone/delete',{
-                    "_id": id,
-                }).success(callback);
+            $http.POST(adminurl + 'zone/delete', {
+                "_id": id,
+            }).success(callback);
         },
 
 
         getAllStates: function(callback) {
-            $http.POST(adminurl + 'state/getAll',{}).success(callback);
+            $http.POST(adminurl + 'state/getAll', {}).success(callback);
         },
         stateSave: function(formData, callback) {
             $http.POST(adminurl + 'state/saveData', formData).success(callback);
         },
         getOneState: function(id, callback) {
-            $http.POST(adminurl + 'state/getOne',{
+            $http.POST(adminurl + 'state/getOne', {
                 "_id": id
             }).success(callback);
         },
         stateEditSave: function(formData, callback) {
-            $http.POST(adminurl + 'state/saveData',formData).success(callback);
+            $http.POST(adminurl + 'state/saveData', formData).success(callback);
         },
         deleteState: function(id, callback) {
-            $http.POST(adminurl + 'state/delete',{
+            $http.POST(adminurl + 'state/delete', {
                 "_id": id,
             }).success(callback);
         },
