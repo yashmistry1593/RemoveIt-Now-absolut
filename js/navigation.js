@@ -144,70 +144,41 @@ var navigationservice = angular.module('navigationservice', [])
             }
             return menuname;
         },
-        searchCountry: function(callback) {
-            $http.post(adminurl + 'country/search', {}).success(callback);
+        searchCountry: function(formData, callback) {
+            $http.post(adminurl + 'country/search', formData).success(callback);
         },
         countrySave: function(formData, callback) {
-            // console.log('form data: ', formData);
             $http.post(adminurl + 'country/save', formData).success(callback);
         },
         getOneCountry: function(id, callback) {
-            // console.log('form data: ', formData);
             $http.post(adminurl + 'country/getOne', {
                 _id: id
             }).success(callback);
         },
         countryEditSave: function(formData, callback) {
-            // console.log('form data: ', formData);
             $http.post(adminurl + 'country/save', formData).success(callback);
         },
         deleteCountry: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'country/delete',
-                method: 'POST',
-                withCredentials: true,
-                data: {
-                    "_id": id.id,
-                }
+            $http.post(adminurl + 'country/delete',{
+              _id: id
             }).success(callback);
-        },
+
 
         getAllZones: function(callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'zone/getAll',
-                method: 'POST',
-                withCredentials: true
-            }).success(callback);
+            $http.POST(adminurl + 'zone/getAll', {}).success(callback);
         },
         zoneSave: function(formData, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'zone/saveData',
-                method: 'POST',
-                withCredentials: true,
-                data: formData
-            }).success(callback);
+            $http.POST(adminurl + 'zone/saveData', formData).success(callback);
         },
         getOneZone: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'zone/getOne',
-                method: 'POST',
-                withCredentials: true,
-                data: {
+            $http.POST(adminurl + 'zone/getOne', {
                     "_id": id
-                }
-            }).success(callback);
+                }).success(callback);
         },
         zoneEditSave: function(id, callback) {
             // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'zone/saveData',
-                method: 'POST',
-                withCredentials: true,
-                data: id
+            $http(adminurl + 'zone/saveData', {
+              _id: id
             }).success(callback);
         },
         deleteZone: function(id, callback) {
