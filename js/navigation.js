@@ -176,76 +176,37 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         zoneEditSave: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http(adminurl + 'zone/saveData', {
+            $http.POST(adminurl + 'zone/saveData', {
                 _id: id
             }).success(callback);
         },
         deleteZone: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'zone/delete',
-                method: 'POST',
-                withCredentials: true,
-                data: {
-                    "_id": id.id,
-                }
-            }).success(callback);
+            $http.POST(adminurl + 'zone/delete',{
+                    "_id": id,
+                }).success(callback);
         },
 
 
         getAllStates: function(callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'state/getAll',
-                method: 'POST',
-                withCredentials: true
-            }).success(callback);
+            $http.POST(adminurl + 'state/getAll',{}).success(callback);
         },
         stateSave: function(formData, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'state/saveData',
-                method: 'POST',
-                withCredentials: true,
-                data: formData
-            }).success(callback);
+            $http.POST(adminurl + 'state/saveData', formData).success(callback);
         },
         getOneState: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'state/getOne',
-                method: 'POST',
-                withCredentials: true,
-                data: {
-                    "_id": id
-                }
+            $http.POST(adminurl + 'state/getOne',{
+                "_id": id
             }).success(callback);
         },
-        stateEditSave: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'state/saveData',
-                method: 'POST',
-                withCredentials: true,
-                data: id
-            }).success(callback);
+        stateEditSave: function(formData, callback) {
+            $http.POST(adminurl + 'state/saveData',formData).success(callback);
         },
         deleteState: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'state/delete',
-                method: 'POST',
-                withCredentials: true,
-                data: {
-                    "_id": id.id,
-                }
+            $http.POST(adminurl + 'state/delete',{
+                "_id": id,
             }).success(callback);
         },
-
-
         getAllDistricts: function(callback) {
-            // console.log('form data: ', formData);
             $http({
                 url: adminurl + 'district/getAll',
                 method: 'POST',
@@ -253,7 +214,6 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         districtSave: function(formData, callback) {
-            // console.log('form data: ', formData);
             $http({
                 url: adminurl + 'district/saveData',
                 method: 'POST',

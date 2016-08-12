@@ -49,9 +49,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.showAllCountries();
         $scope.deleteCountry = function(id) {
 
-            NavigationService.deleteCountry({
-                id: id
-            }, function(data) {
+            NavigationService.deleteCountry(id, function(data) {
                 $scope.showAllCountries();
 
             });
@@ -1148,9 +1146,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.deleteCurrency = function(id) {
 
-            NavigationService.deleteCurrency({
-                id: id
-            }, function(data) {
+            NavigationService.deleteCurrency(id, function(data) {
+              console.log(id);
                 $scope.showAllCurrencies();
 
             });
