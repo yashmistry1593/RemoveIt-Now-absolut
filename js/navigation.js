@@ -159,11 +159,11 @@ var navigationservice = angular.module('navigationservice', [])
             $http.post(adminurl + 'country/save', formData).success(callback);
         },
         deleteCountry: function(id, callback) {
-            $http.post(adminurl + 'country/delete',{
-              _id: id
+            $http.post(adminurl + 'country/delete', {
+                _id: id
             }).success(callback);
 
-
+        },
         getAllZones: function(callback) {
             $http.POST(adminurl + 'zone/getAll', {}).success(callback);
         },
@@ -172,13 +172,13 @@ var navigationservice = angular.module('navigationservice', [])
         },
         getOneZone: function(id, callback) {
             $http.POST(adminurl + 'zone/getOne', {
-                    "_id": id
-                }).success(callback);
+                "_id": id
+            }).success(callback);
         },
         zoneEditSave: function(id, callback) {
             // console.log('form data: ', formData);
             $http(adminurl + 'zone/saveData', {
-              _id: id
+                _id: id
             }).success(callback);
         },
         deleteZone: function(id, callback) {
