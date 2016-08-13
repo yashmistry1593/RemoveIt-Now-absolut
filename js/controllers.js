@@ -1444,14 +1444,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         } else {
                             toastr.error("There was an error while deleting City", "City deleting error");
                         }
-
-
                     });
                 }
             });
         };
-
-
     })
     .controller('CreateCityCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
         //Used to name the .html file
@@ -2164,30 +2160,68 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     })
 
-.controller('IndustryCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('IndustryCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("industry-list");
         $scope.menutitle = NavigationService.makeactive("industry List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.currentPage = $stateParams.page;
+        var i = 0;
+        $scope.search = {
+            keyword: ""
+        };
+        if ($stateParams.keyword) {
+            $scope.search.keyword = $stateParams.keyword;
+        }
+        $scope.showAllCountries = function(keywordChange) {
+            $scope.totalItems = undefined;
+            if (keywordChange) {
+                $scope.currentPage = 1;
+            }
+            NavigationService.searchIndustry({
+                page: $scope.currentPage,
+                keyword: $scope.search.keyword
+            }, ++i, function(data, ini) {
+                console.log(data.data);
 
-        $scope.showAllIndustries = function() {
-            NavigationService.getAllIndustries(function(data) {
-                $scope.allIndustries = data.data;
-
+                if (ini == i) {
+                    console.log(data.data);
+                    $scope.allIndustries = data.data.results;
+                    $scope.totalItems = data.data.total;
+                }
             });
         };
-        $scope.showAllIndustries();
 
-        $scope.deleteIndustry = function(id) {
-
-            NavigationService.deleteIndustry({
-                id: id
-            }, function(data) {
-                $scope.showAllIndustries();
-
+        $scope.changePage = function(page) {
+            var goTo = "industry-list";
+            if ($scope.search.keyword) {
+                goTo = "industry-list";
+            }
+            $state.go(goTo, {
+                page: page,
+                keyword: $scope.search.keyword
             });
-        }
+        };
+        $scope.showAllCountries();
+
+        $scope.deleteDistrict = function(id) {
+            globalfunction.confDel(function(value) {
+                console.log(value);
+                if (value) {
+                    NavigationService.deleteState(id, function(data) {
+                        if (data.value) {
+                            $scope.showAllCountries();
+                            toastr.success("District deleted successfully.", "District deleted");
+                        } else {
+                            toastr.error("There was an error while deleting District", "District deleting error");
+                        }
+
+
+                    });
+                }
+            });
+        };
 
     })
     .controller('CreateIndustryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {

@@ -149,6 +149,11 @@ var navigationservice = angular.module('navigationservice', [])
                 callback(data, i);
             });
         },
+        searchIndustry: function(formData, i, callback) {
+            $http.post(adminurl + 'industry/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
         allSearch: function(api, formData, callback) {
             $http.post(adminurl + api, formData).success(function(data) {
                 callback(data);
@@ -787,13 +792,7 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         industrySave: function(formData, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'industry/saveData',
-                method: 'POST',
-                withCredentials: true,
-                data: formData
-            }).success(callback);
+            $http.post(adminurl + 'industry/save',formData).success(callback);
         },
         getOneIndustry: function(id, callback) {
             // console.log('form data: ', formData);
@@ -816,15 +815,7 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         deleteIndustry: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'industry/delete',
-                method: 'POST',
-                withCredentials: true,
-                data: {
-                    "_id": id.id,
-                }
-            }).success(callback);
+            $http.post(adminurl + 'industry/delete',{_id:id}).success(callback);
         },
         getAllCategories: function(callback) {
             // console.log('form data: ', formData);

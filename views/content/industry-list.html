@@ -31,7 +31,7 @@
                     <div class="widget-title">
                         <div class="pull-right">
                           <form class="search-form mr-form">
-                              <input type="text" placeholder="Search Here..."/>
+                            <input type="text" ng-change="showAllCountries(true)" placeholder="Search Here..." ng-model="search.keyword"/>
                               <button type="submit">
                                   <i class="fa fa-search"></i>
                               </button>
@@ -53,7 +53,7 @@
                                 <tr ng-repeat="ind in allIndustries">
                                     <td>{{ind.name}}</td>
                                     <!-- <td>{{ind.department}}</td> -->
-                                    <td>{{ind.status}}</td>
+                                    <td>{{false}}</td>
                                     <td>
                                       <a class="btn btn-primary" ui-sref="editindustry({id:ind._id})"><i class="fa fa-pencil"></i></a>
                                       <a class="btn btn-danger" ng-click="deleteIndustry(ind._id)"><i class="fa fa-trash"></i></a>
@@ -62,6 +62,13 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="tableData" ng-show="totalItems == 0">
+                        <h5>No data found</h5>
+                    </div>
+                    <div class="tableData" ng-show="totalItems == undefined">
+                        <h5>Loading Data</h5>
+                    </div>
+                    <ul ng-if="totalItems" ng-change="changePage(currentPage);" uib-pagination total-items="totalItems" items-per-page="template.maxRow" ng-model="currentPage" max-size="template.pageMax" class="pagination-sm" boundary-links="true" force-ellipses="true"></ul>
                 </div>
             </div>
         </div>
