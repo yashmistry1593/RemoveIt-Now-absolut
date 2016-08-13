@@ -19,13 +19,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 })
 
 .controller('BranchListCtrl', function($scope, TemplateService, NavigationService, $timeout) {
-        //Used to name the .html file
-        $scope.template = TemplateService.changecontent("branch-list");
-        $scope.menutitle = NavigationService.makeactive("Branch List");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-    })
-    .controller('CountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("branch-list");
+    $scope.menutitle = NavigationService.makeactive("Branch List");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+})
+
+.controller('CountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("country-list");
         $scope.menutitle = NavigationService.makeactive("Country List");
@@ -109,7 +110,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('EditCountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state,toastr) {
+    .controller('EditCountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("country-detail");
