@@ -40,20 +40,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('country-list', {
-            url: "/country-list",
-            templateUrl: "views/template.html",
-            controller: 'CountryCtrl'
-        })
-        .state('country-listPage', {
-            url: "/country-list/:page",
-            templateUrl: "views/template.html",
-            controller: 'CountryCtrl'
-        })
-        .state('country-listPageKey', {
-            url: "/country-list/:page/:keyword",
-            templateUrl: "views/template.html",
-            controller: 'CountryCtrl'
-        })
+        url: "/country-list/{page:.*}/{keyword:.*}",
+        templateUrl: "views/template.html",
+        controller: 'CountryCtrl'
+    })
+
 
 
     .state('createcountry', {

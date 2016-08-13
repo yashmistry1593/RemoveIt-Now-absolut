@@ -56,9 +56,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         $scope.changePage = function(page) {
-            var goTo = "country-listPage";
+            var goTo = "country-list";
             if ($scope.search.keyword) {
-                goTo = "country-listPageKey";
+                goTo = "country-list";
             }
             $state.go(goTo, {
                 page: page,
@@ -109,7 +109,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('EditCountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+    .controller('EditCountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state,toastr) {
         //Used to name the .html file
 
         $scope.template = TemplateService.changecontent("country-detail");
@@ -134,7 +134,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.countryEditSave($scope.formData, function(data) {
                 if (data.value === true) {
                     $state.go('country-list');
-                    toastr.success("Country " + formData.name + " edited successfully.", "Country Edited");
+                    console.log("Check this one");
+                    toastr.success("Country " + $scope.formData.name + " edited successfully.", "Country Edited");
                 } else {
                     toastr.error("Country edition failed.", "Country editing error");
                 }

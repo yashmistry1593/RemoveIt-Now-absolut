@@ -167,44 +167,44 @@ var navigationservice = angular.module('navigationservice', [])
 
         },
         getAllZones: function(callback) {
-            $http.POST(adminurl + 'zone/getAll', {}).success(callback);
+            $http.post(adminurl + 'zone/getAll', {}).success(callback);
         },
         zoneSave: function(formData, callback) {
-            $http.POST(adminurl + 'zone/saveData', formData).success(callback);
+            $http.post(adminurl + 'zone/saveData', formData).success(callback);
         },
         getOneZone: function(id, callback) {
-            $http.POST(adminurl + 'zone/getOne', {
+            $http.post(adminurl + 'zone/getOne', {
                 "_id": id
             }).success(callback);
         },
         zoneEditSave: function(id, callback) {
-            $http.POST(adminurl + 'zone/saveData', {
+            $http.post(adminurl + 'zone/saveData', {
                 _id: id
             }).success(callback);
         },
         deleteZone: function(id, callback) {
-            $http.POST(adminurl + 'zone/delete', {
+            $http.post(adminurl + 'zone/delete', {
                 "_id": id,
             }).success(callback);
         },
 
 
         getAllStates: function(callback) {
-            $http.POST(adminurl + 'state/getAll', {}).success(callback);
+            $http.post(adminurl + 'state/getAll', {}).success(callback);
         },
         stateSave: function(formData, callback) {
-            $http.POST(adminurl + 'state/saveData', formData).success(callback);
+            $http.post(adminurl + 'state/saveData', formData).success(callback);
         },
         getOneState: function(id, callback) {
-            $http.POST(adminurl + 'state/getOne', {
+            $http.post(adminurl + 'state/getOne', {
                 "_id": id
             }).success(callback);
         },
         stateEditSave: function(formData, callback) {
-            $http.POST(adminurl + 'state/saveData', formData).success(callback);
+            $http.post(adminurl + 'state/saveData', formData).success(callback);
         },
         deleteState: function(id, callback) {
-            $http.POST(adminurl + 'state/delete', {
+            $http.post(adminurl + 'state/delete', {
                 "_id": id,
             }).success(callback);
         },
