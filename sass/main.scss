@@ -591,6 +591,10 @@ form.search-form {
     text-transform: uppercase;
   }
 }
+.tableTotal {
+    font-size: 12px;
+    padding: 2px;
+}
 /* Start writing sass here */
 @import "fancybox-override";
 @import "other/mobile";
