@@ -52,8 +52,9 @@
                             <tbody>
                                 <tr ng-repeat="ind in allIndustries">
                                     <td>{{ind.name}}</td>
-                                    <!-- <td>{{ind.department}}</td> -->
-                                    <td>{{false}}</td>
+                                    <td>
+                                      <toggle-switch ng-model="ind.status" class="switch-mini switch-info pull-right"></toggle-switch>
+                                    </td>
                                     <td>
                                       <a class="btn btn-primary" ui-sref="editindustry({id:ind._id})"><i class="fa fa-pencil"></i></a>
                                       <a class="btn btn-danger" ng-click="deleteIndustry(ind._id)"><i class="fa fa-trash"></i></a>
