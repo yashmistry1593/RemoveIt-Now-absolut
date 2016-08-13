@@ -6,7 +6,6 @@
 @import "../bower_components/font-awesome/css/font-awesome.min.css";
 @import "../bower_components/fancyBox/source/jquery.fancybox.css";
 @import "../bower_components/angular-ui-select/dist/select.min.css";
-@import "../bower_components/angular-bootstrap-toggle-switch/style/default/angular-toggle-switch.css";
 @import "../bower_components/angular-toastr/dist/angular-toastr.css";
 @import "icons";
 $blue: #1fc8ec;
@@ -16,12 +15,15 @@ $green: #35c565;
 $yellow: #f4dc11;
 $border-color: #e5e5e5;
 $brand-primary: $blue;
-$brand-warning: $red;
+$brand-info: $yellow;
+$brand-warning: $orange;
+$brand-danger: $red;
 $brand-success: $green;
 @import "../bower_components/bootstrap-sass/assets/stylesheets/bootstrap";
 @import "template/icons";
 @import "template/main";
 @import "template/responsive";
+@import "custom-switch";
 input, button, div {
   outline: none !important;
 }
