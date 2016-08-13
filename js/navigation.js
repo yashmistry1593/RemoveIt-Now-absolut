@@ -164,6 +164,16 @@ var navigationservice = angular.module('navigationservice', [])
                 callback(data, i);
             });
         },
+        searchBank: function(formData, i, callback) {
+            $http.post(adminurl + 'bank/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
+        searchCurrency: function(formData, i, callback) {
+            $http.post(adminurl + 'currencies/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
         allSearch: function(api, formData, callback) {
             $http.post(adminurl + api, formData).success(function(data) {
                 callback(data);
@@ -308,13 +318,7 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         currencySave: function(formData, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'currencies/saveData',
-                method: 'POST',
-                withCredentials: true,
-                data: formData
-            }).success(callback);
+            $http.post(adminurl + 'currencies/save',formData).success(callback);
         },
         getOneCurrency: function(id, callback) {
             // console.log('form data: ', formData);
@@ -337,15 +341,9 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         deleteCurrency: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'currencies/delete',
-                method: 'POST',
-                withCredentials: true,
-                data: {
-                    "_id": id.id,
-                }
-            }).success(callback);
+            $http.post(adminurl + 'currencies/delete',{
+                    "_id": id,
+                }).success(callback);
         },
 
 
@@ -1491,56 +1489,18 @@ var navigationservice = angular.module('navigationservice', [])
                     "_id": id,
                 }).success(callback);
         },
-
-
-
-        getAllBank: function(callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'bank/getAll',
-                method: 'POST',
-                withCredentials: true
-            }).success(callback);
+        getOneBank: function(id, callback) {
+            $http.post(adminurl + 'bank/getOne',{
+                    "_id": id
+                }).success(callback);
         },
         bankSave: function(formData, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'bank/saveData',
-                method: 'POST',
-                withCredentials: true,
-                data: formData
-            }).success(callback);
-        },
-        getOneBank: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'bank/getOne',
-                method: 'POST',
-                withCredentials: true,
-                data: {
-                    "_id": id
-                }
-            }).success(callback);
-        },
-        bankEditSave: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'bank/saveData',
-                method: 'POST',
-                withCredentials: true,
-                data: id
-            }).success(callback);
+            $http.post(adminurl + 'bank/save', formData).success(callback);
         },
         deleteBank: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'bank/delete',
-                method: 'POST',
-                withCredentials: true,
-                data: {
+            $http.post(adminurl + 'bank/delete',{
                     "_id": id.id,
-                }
-            }).success(callback);
+                }).success(callback);
         },
 
     };

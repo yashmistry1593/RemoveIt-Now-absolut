@@ -366,11 +366,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
             });
         };
-
-
-
-
-
     })
     .controller('CreateZoneCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
@@ -1006,33 +1001,70 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
     })
-    .controller('BankMasterCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('BankMasterCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("bankmaster-list");
         $scope.menutitle = NavigationService.makeactive("Bank List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.currentPage = $stateParams.page;
+        var i = 0;
+        $scope.search = {
+            keyword: ""
+        };
+        if ($stateParams.keyword) {
+            $scope.search.keyword = $stateParams.keyword;
+        }
+        $scope.showAllCountries = function(keywordChange) {
+            $scope.totalItems = undefined;
+            if (keywordChange) {
+                $scope.currentPage = 1;
+            }
+            NavigationService.searchBank({
+                page: $scope.currentPage,
+                keyword: $scope.search.keyword
+            }, ++i, function(data, ini) {
+                console.log(data.data);
 
-        $scope.showAllBank = function() {
-            NavigationService.getAllBank(function(data) {
-                $scope.allBank = data.data;
-                console.log('$scope.allBank', $scope.allBank);
-
+                if (ini == i) {
+                    console.log(data.data);
+                    $scope.allBank = data.data.results;
+                    $scope.totalItems = data.data.total;
+                    $scope.maxRow = data.data.options.count;
+                }
             });
         };
-        $scope.showAllBank();
+
+        $scope.changePage = function(page) {
+            var goTo = "bankmaster-list";
+            if ($scope.search.keyword) {
+                goTo = "bankmaster-list";
+            }
+            $state.go(goTo, {
+                page: page,
+                keyword: $scope.search.keyword
+            });
+        };
+        $scope.showAllCountries();
 
         $scope.deleteBank = function(id) {
+            globalfunction.confDel(function(value) {
+                if (value) {
+                    NavigationService.deleteBank(id, function(data) {
+                        if (data.value) {
+                            $scope.showAllCountries();
+                            toastr.success("Bank deleted successfully.", "Bank deleted");
+                        } else {
+                            toastr.error("There was an error while deleting Bank", "Bank deleting error");
+                        }
 
-            NavigationService.deleteBank({
-                id: id
-            }, function(data) {
-                $scope.showAllBank();
 
+                    });
+                }
             });
-        }
+        };
     })
-    .controller('CreateBankmasterCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('CreateBankmasterCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("bankmaster-detail");
         $scope.menutitle = NavigationService.makeactive("Create Bank");
@@ -1052,14 +1084,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.saveBank = function(formData) {
 
             NavigationService.bankSave($scope.formData, function(data) {
-                if (data.value == true) {
-                    $state.go('bankmaster-list');
-                }
-
-            });
-        }
+              if (data.value === true) {
+                  $state.go('bankmaster-list');
+                  toastr.success("Bank " + $scope.formData.name + " created successfully.", "Bank Created");
+              } else {
+                  toastr.error("Bank creation failed.", "Bank creation error");
+              }
+                        });
+        };
     })
-    .controller('EditBankmasterCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+    .controller('EditBankmasterCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("bankmaster-detail");
         $scope.menutitle = NavigationService.makeactive("Edit Bank");
@@ -1082,10 +1116,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
         $scope.saveBank = function(formValid) {
-            NavigationService.bankEditSave($scope.formData, function(data) {
-                if (data.value == true) {
-                    $state.go('bankmaster-list');
-                }
+            NavigationService.bankSave($scope.formData, function(data) {
+              if (data.value === true) {
+                  $state.go('bankmaster-list');
+                  toastr.success("Bank " + $scope.formData.name + " created successfully.", "Bank Created");
+              } else {
+                  toastr.error("Bank creation failed.", "Bank creation error");
+              }
             });
         };
     })
@@ -1350,33 +1387,72 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
     })
-    .controller('CurrencyCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('CurrencyCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("currency-list");
         $scope.menutitle = NavigationService.makeactive("currency List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.currentPage = $stateParams.page;
+        var i = 0;
+        $scope.search = {
+            keyword: ""
+        };
+        if ($stateParams.keyword) {
+            $scope.search.keyword = $stateParams.keyword;
+        }
+        $scope.showAllCountries = function(keywordChange) {
+            $scope.totalItems = undefined;
+            if (keywordChange) {
+                $scope.currentPage = 1;
+            }
+            NavigationService.searchCurrency({
+                page: $scope.currentPage,
+                keyword: $scope.search.keyword
+            }, ++i, function(data, ini) {
+                console.log(data.data);
 
-        $scope.showAllCurrencies = function() {
-            NavigationService.getAllCurrencies(function(data) {
-                $scope.allCurrencies = data.data;
-                console.log('$scope.allCurrencies', $scope.allCurrencies);
+                if (ini == i) {
+                    console.log(data.data);
+                    $scope.allCurrencies = data.data.results;
+                    $scope.totalItems = data.data.total;
+                    $scope.maxRow = data.data.options.count;
 
+                }
             });
         };
-        $scope.showAllCurrencies();
+
+        $scope.changePage = function(page) {
+            var goTo = "zone-list";
+            if ($scope.search.keyword) {
+                goTo = "zone-list";
+            }
+            $state.go(goTo, {
+                page: page,
+                keyword: $scope.search.keyword
+            });
+        };
+        $scope.showAllCountries();
 
         $scope.deleteCurrency = function(id) {
+            globalfunction.confDel(function(value) {
+                console.log(value);
+                if (value) {
+                    NavigationService.deleteCurrency(id, function(data) {
+                        if (data.value) {
+                            $scope.showAllCountries();
+                            toastr.success("Currency deleted successfully.", "Currency deleted");
+                        } else {
+                            toastr.error("There was an error while deleting Currency", "Currency deleting error");
+                        }
 
-            NavigationService.deleteCurrency(id, function(data) {
-                console.log(id);
-                $scope.showAllCurrencies();
 
+                    });
+                }
             });
-        }
-
+        };
     })
-    .controller('CreateCurrencyCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('CreateCurrencyCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("currency-detail");
         $scope.menutitle = NavigationService.makeactive("currency-detail");
@@ -1390,17 +1466,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.saveCurrency = function(formData) {
 
             NavigationService.currencySave($scope.formData, function(data) {
-                console.log(data);
-                if (data.value == true) {
-                    $state.go('currency-list');
-                }
-                // console.log('$scope.allCountriessave', $scope.data);
-
+              if (data.value === true) {
+                  $state.go('currency-list');
+                  toastr.success("Currency " + $scope.formData.name + " created successfully.", "Currency Created");
+              } else {
+                  toastr.error("Currency creation failed.", "Currency creation error");
+              }
             });
-        }
+        };
 
     })
-    .controller('EditCurrencyCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+    .controller('EditCurrencyCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("currency-detail");
         $scope.menutitle = NavigationService.makeactive("currency-detail");
@@ -1413,20 +1489,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         NavigationService.getOneCurrency($stateParams.id, function(data) {
             $scope.formData = data.data;
-            // console.log('$scope.oneCountry', $scope.oneCountry);
-
         });
 
         $scope.saveCurrency = function(formValid) {
 
-            //  if (formValid.$valid) {
-            //  $scope.formComplete = true;
-            NavigationService.currencyEditSave($scope.formData, function(data) {
-                if (data.value == true) {
-                    $state.go('currency-list');
-                }
+            NavigationService.currencySave($scope.formData, function(data) {
+              if (data.value === true) {
+                  $state.go('currency-list');
+                  toastr.success("Currency " + $scope.formData.name + " created successfully.", "Currency Created");
+              } else {
+                  toastr.error("Currency creation failed.", "Currency creation error");
+              }
             });
-            //  }
         };
 
     })
