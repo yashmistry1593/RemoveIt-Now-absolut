@@ -149,8 +149,16 @@ var navigationservice = angular.module('navigationservice', [])
                 callback(data, i);
             });
         },
+        allSearch: function(api, formData, callback) {
+            $http.post(adminurl + api, formData).success(function(data) {
+                callback(data);
+            });
+        },
         countrySave: function(formData, callback) {
             $http.post(adminurl + 'country/save', formData).success(callback);
+        },
+        getAllCountries: function(callback) {
+            $http.post(adminurl + 'country/getAll',{}).success(callback);
         },
         getOneCountry: function(id, callback) {
             $http.post(adminurl + 'country/getOne', {
@@ -166,11 +174,15 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
 
         },
-        getAllZones: function(callback) {
-            $http.post(adminurl + 'zone/getAll', {}).success(callback);
+        searchZone: function(formData, i, callback) {
+            $http.post(adminurl + 'zone/search', formData).success(function(data){
+              callback(data, i);
+            });
         },
         zoneSave: function(formData, callback) {
-            $http.post(adminurl + 'zone/saveData', formData).success(callback);
+            $http.post(adminurl + 'zone/saveData', formData).success(function(data){
+              callback(data, i);
+            });
         },
         getOneZone: function(id, callback) {
             $http.post(adminurl + 'zone/getOne', {

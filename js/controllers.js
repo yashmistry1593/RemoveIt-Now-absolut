@@ -129,9 +129,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
         $scope.saveCountry = function(formValid) {
-
-            //  if (formValid.$valid) {
-            //  $scope.formComplete = true;
             NavigationService.countryEditSave($scope.formData, function(data) {
                 if (data.value === true) {
                     $state.go('country-list');
@@ -141,7 +138,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     toastr.error("Country edition failed.", "Country editing error");
                 }
             });
-            //  }
         };
 
     })
@@ -305,31 +301,71 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('ZoneCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('ZoneCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, toastr, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("zone-list");
         $scope.menutitle = NavigationService.makeactive("Zone List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-        $scope.showAllZones = function() {
-            NavigationService.getAllZones(function(data) {
-                $scope.allZones = data.data;
-                console.log('$scope.allZones', $scope.allZones);
-            });
-
+        $scope.currentPage = $stateParams.page;
+        var i = 0;
+        $scope.search = {
+            keyword: ""
         };
-        $scope.showAllZones();
+        if ($stateParams.keyword) {
+            $scope.search.keyword = $stateParams.keyword;
+        }
+        $scope.showAllCountries = function(keywordChange) {
+            $scope.totalItems = undefined;
+            if (keywordChange) {
+                $scope.currentPage = 1;
+            }
+            NavigationService.searchZone({
+                page: $scope.currentPage,
+                keyword: $scope.search.keyword
+            }, ++i, function(data, ini) {
+                console.log(data.data);
 
+                if (ini == i) {
+                    console.log(data.data);
+                    $scope.countries = data.data.results;
+                    $scope.totalItems = data.data.total;
+                }
+            });
+        };
+
+        $scope.changePage = function(page) {
+            var goTo = "country-list";
+            if ($scope.search.keyword) {
+                goTo = "country-list";
+            }
+            $state.go(goTo, {
+                page: page,
+                keyword: $scope.search.keyword
+            });
+        };
+        $scope.showAllCountries();
 
         $scope.deleteZone = function(id) {
+            globalfunction.confDel(function(value) {
+                console.log(value);
+                if (value) {
+                    NavigationService.deleteZone(id, function(data) {
+                        if (data.value) {
+                            $scope.showAllCountries();
+                            toastr.success("Country deleted successfully.", "Country deleted");
+                        } else {
+                            toastr.error("There was an error while deleting country", "Country deleting error");
+                        }
 
-            NavigationService.deleteZone({
-                id: id
-            }, function(data) {
-                $scope.showAllZones();
 
+                    });
+                }
             });
-        }
+        };
+
+
+
 
 
     })
@@ -346,16 +382,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.formData = {};
         $scope.saveZone = function(formData) {
 
-            NavigationService.zoneSave($scope.formData, function(data) {
-                console.log(data);
-                if (data.value == true) {
-                    $state.go('zone-list');
-                }
-                // console.log('$scope.allCountriessave', $scope.data);
-
-            });
-        }
-
+                NavigationService.zoneSave($scope.formData, function(data) {
+                    if (data.value === true) {
+                        $state.go('zone-list');
+                        toastr.success("Zone " + formData.name + " created successfully.", "Zone Created");
+                    } else {
+                        toastr.error("Zone creation failed.", "Zone creation error");
+                    }
+                });
+            }
+            //jagruti
         NavigationService.getAllCountries(function(data) {
             $scope.allCountries = data.data;
             console.log('$scope.allCountries', $scope.allCountries);
@@ -376,20 +412,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         NavigationService.getOneZone($stateParams.id, function(data) {
             $scope.formData = data.data;
-            // console.log('$scope.oneCountry', $scope.oneCountry);
-
         });
 
         $scope.saveZone = function(formValid) {
-
-            //  if (formValid.$valid) {
-            //  $scope.formComplete = true;
             NavigationService.zoneEditSave($scope.formData, function(data) {
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('zone-list');
+                    toastr.success("Zone " + $scope.formData.name + " edited successfully.", "Zone Edited");
+                } else {
+                    toastr.error("Zone edition failed.", "Zone editing error");
                 }
             });
-            //  }
         };
 
         NavigationService.getAllCountries(function(data) {
@@ -3295,14 +3328,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.listview = false;
         $scope.showCreate = false;
-        $scope.listFresh = [{
-            name: "India"
-        }, {
-            name: "England"
-        }, {
-            name: "USA"
-        }];
-
+        $scope.listFresh = globalfunction.listFresh;
+        // globalfunction.listFresh = [{
+        //     name: "India"
+        // }, {
+        //     name: "England"
+        // }, {
+        //     name: "USA"
+        // }];
+        $scope.typeselect = "";
         $scope.showList = function() {
             $scope.listview = true;
         }
@@ -3314,17 +3348,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.list = $scope.listFresh;
             } else {
                 $scope.showCreate = true;
-                $scope.list = $filter("filter")($scope.listFresh, filter);
-                var newFilter = _.upperCase(filter);
-                _.each($scope.list, function(n) {
-                    var newN = _.upperCase(n.name);
-                    if (newFilter == newN) {
-                        $scope.showCreate = false;
-                    }
-                });
+
+                // console.log($scope.typeselect);
+
+                NavigationService.allSearch("country/search", {
+                        "page": 1,
+                        "keyword": "aus"
+                    }, function(data) {
+                        $scope.list = data.data.results;
+                        console.log($scope.list);
+                    })
+                    // $scope.list = $filter("filter")($scope.listFresh, filter);
+                // var newFilter = _.upperCase(filter);
+                // _.each($scope.list, function(n) {
+                //     var newN = _.upperCase(n.name);
+                //     if (newFilter == newN) {
+                //         $scope.showCreate = false;
+                //     }
+                // });
             }
-
-
         };
         $scope.searchNew();
 

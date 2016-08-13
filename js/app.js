@@ -849,13 +849,17 @@ firstapp.directive('multipleSelect', function($document) {
         templateUrl: 'views/directive/multiple-select.html',
         scope: {
             // model: '=ngModel',
-            list: "=list"
+            list: "=list",
         },
         restrict: 'EA',
         replace: false,
         controller: 'MultipleSelectCtrl',
-        link: function(scope, element, attr) {
+        link: function(scope, element, attr, NavigationService) {
             var $element = $(element);
+            console.log(attr.typeselect);
+            scope.typeselect = attr.typeselect;
+            console.log(scope.list);
+            // $scope.searchNew()
 
         }
     };
