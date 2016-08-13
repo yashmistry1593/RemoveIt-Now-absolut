@@ -52,6 +52,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 if (ini == i) {
                     $scope.countries = data.data.results;
                     $scope.totalItems = data.data.total;
+                    $scope.maxRow = data.data.options.count;
                 }
             });
         };
