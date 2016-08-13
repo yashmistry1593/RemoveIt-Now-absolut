@@ -179,6 +179,21 @@ var navigationservice = angular.module('navigationservice', [])
               callback(data, i);
             });
         },
+        searchState: function(formData, i, callback) {
+            $http.post(adminurl + 'state/search', formData).success(function(data){
+              callback(data, i);
+            });
+        },
+        searchDistrict: function(formData, i, callback) {
+            $http.post(adminurl + 'district/search', formData).success(function(data){
+              callback(data, i);
+            });
+        },
+        searchCity: function(formData, i, callback) {
+            $http.post(adminurl + 'city/search', formData).success(function(data){
+              callback(data, i);
+            });
+        },
         zoneSave: function(formData, callback) {
             $http.post(adminurl + 'zone/saveData', formData).success(function(data){
               callback(data, i);
@@ -359,15 +374,7 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         deleteCity: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'city/delete',
-                method: 'POST',
-                withCredentials: true,
-                data: {
-                    "_id": id.id,
-                }
-            }).success(callback);
+            $http.post(adminurl + 'city/delete',{_id:id}).success(callback);
         },
 
 

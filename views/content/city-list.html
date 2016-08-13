@@ -31,7 +31,7 @@
                     <div class="widget-title">
                         <div class="pull-right">
                           <form class="search-form mr-form">
-                              <input type="text" placeholder="Search Here..."/>
+                            <input type="text" ng-change="showAllCountries(true)" placeholder="Search Here..." ng-model="search.keyword"/>
                               <button type="submit">
                                   <i class="fa fa-search"></i>
                               </button>
@@ -44,23 +44,21 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>City Name</th>
-                                    <th>District Name</th>
-                                    <th>Std Code</th>
-                                    <th>Latitude</th>
-                                    <th>Longitude</th>
-                                    <th>Time Zone</th>
+                                    <th>City</th>
+                                    <th>District</th>
+                                    <th>State</th>
+                                    <th>Zone</th>
+                                    <th>Country</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="city in allCities">
                                     <td>{{city.name}}</td>
-                                    <td>{{city.district}}</td>
-                                    <td>{{city.stdCode}}</td>
-                                    <td>{{city.lat}}</td>
-                                    <td>{{city.long}}</td>
-                                    <td>{{city.timezone}}</td>
+                                    <td>{{city.district.name}}</td>
+                                    <td>{{city.district.state.name}}</td>
+                                    <td>{{city.district.state.zone.name}}</td>
+                                    <td>{{city.district.state.zone.country.name}}</td>
                                     <td>
                                       <a class="btn btn-primary" ui-sref="editcity({id:city._id})"><i class="fa fa-pencil"></i></a>
                                       <a class="btn btn-danger" ng-click="deleteCity(city._id)"><i class="fa fa-trash"></i></a>
@@ -69,6 +67,13 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="tableData" ng-show="totalItems == 0">
+                        <h5>No data found</h5>
+                    </div>
+                    <div class="tableData" ng-show="totalItems == undefined">
+                        <h5>Loading Data</h5>
+                    </div>
+                    <ul ng-if="totalItems" ng-change="changePage(currentPage);" uib-pagination total-items="totalItems" items-per-page="template.maxRow" ng-model="currentPage" max-size="template.pageMax" class="pagination-sm" boundary-links="true" force-ellipses="true"></ul>
                 </div>
             </div>
         </div>

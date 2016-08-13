@@ -31,7 +31,7 @@
                     <div class="widget-title">
                         <div class="pull-right">
                           <form class="search-form mr-form">
-                              <input type="text" placeholder="Search Here..."/>
+                            <input type="text" ng-change="showAllCountries(true)" placeholder="Search Here..." ng-model="search.keyword"/>
                               <button type="submit">
                                   <i class="fa fa-search"></i>
                               </button>
@@ -44,17 +44,18 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Country</th>
+
                                     <th>State</th>
                                     <th>Zone</th>
+                                    <th>Country</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="state in allStates">
-                                    <td>{{state.country}}</td>
                                     <td>{{state.name}}</td>
-                                    <td>{{state.zone}}</td>
+                                    <td>{{state.zone.name}}</td>
+                                    <td>{{state.zone.country.name}}</td>
                                     <td>
                                       <a class="btn btn-primary" ui-sref="editstate({id:state._id})"><i class="fa fa-pencil"></i></a>
                                       <a class="btn btn-danger" ng-click="deleteState(state._id)"><i class="fa fa-trash"></i></a>
@@ -63,6 +64,13 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="tableData" ng-show="totalItems == 0">
+                        <h5>No data found</h5>
+                    </div>
+                    <div class="tableData" ng-show="totalItems == undefined">
+                        <h5>Loading Data</h5>
+                    </div>
+                    <ul ng-if="totalItems" ng-change="changePage(currentPage);" uib-pagination total-items="totalItems" items-per-page="template.maxRow" ng-model="currentPage" max-size="template.pageMax" class="pagination-sm" boundary-links="true" force-ellipses="true"></ul>
                 </div>
             </div>
         </div>

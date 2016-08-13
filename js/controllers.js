@@ -293,7 +293,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //  if (formValid.$valid) {
             //  $scope.formComplete = true;
             NavigationService.typeOfOfficeEditSave($scope.formData, function(data) {
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('typeOfOffice-list');
                 }
             });
@@ -335,9 +335,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         $scope.changePage = function(page) {
-            var goTo = "country-list";
+            var goTo = "zone-list";
             if ($scope.search.keyword) {
-                goTo = "country-list";
+                goTo = "zone-list";
             }
             $state.go(goTo, {
                 page: page,
@@ -432,31 +432,68 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
     })
-    .controller('StateCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('StateCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, toastr, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("state-list");
         $scope.menutitle = NavigationService.makeactive("state List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.currentPage = $stateParams.page;
+        var i = 0;
+        $scope.search = {
+            keyword: ""
+        };
+        if ($stateParams.keyword) {
+            $scope.search.keyword = $stateParams.keyword;
+        }
+        $scope.showAllCountries = function(keywordChange) {
+            $scope.totalItems = undefined;
+            if (keywordChange) {
+                $scope.currentPage = 1;
+            }
+            NavigationService.searchState({
+                page: $scope.currentPage,
+                keyword: $scope.search.keyword
+            }, ++i, function(data, ini) {
+                console.log(data.data);
 
-        $scope.showAllStates = function() {
-            NavigationService.getAllStates(function(data) {
-                $scope.allStates = data.data;
-                console.log('$scope.allStates', $scope.allStates);
-
+                if (ini == i) {
+                    console.log(data.data);
+                    $scope.allStates = data.data.results;
+                    $scope.totalItems = data.data.total;
+                }
             });
         };
-        $scope.showAllStates();
+
+        $scope.changePage = function(page) {
+            var goTo = "state-list";
+            if ($scope.search.keyword) {
+                goTo = "state-list";
+            }
+            $state.go(goTo, {
+                page: page,
+                keyword: $scope.search.keyword
+            });
+        };
+        $scope.showAllCountries();
 
         $scope.deleteState = function(id) {
+            globalfunction.confDel(function(value) {
+                console.log(value);
+                if (value) {
+                    NavigationService.deleteState(id, function(data) {
+                        if (data.value) {
+                            $scope.showAllCountries();
+                            toastr.success("State deleted successfully.", "State deleted");
+                        } else {
+                            toastr.error("There was an error while deleting State", "State deleting error");
+                        }
 
-            NavigationService.deleteState({
-                id: id
-            }, function(data) {
-                $scope.showAllStates();
 
+                    });
+                }
             });
-        }
+        };
 
     })
     .controller('CreateStateCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -523,31 +560,70 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
     })
-    .controller('DistrictCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('DistrictCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, toastr, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("district-list");
         $scope.menutitle = NavigationService.makeactive("district List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
-        $scope.showAllDistricts = function() {
-            NavigationService.getAllDistricts(function(data) {
-                $scope.allDistricts = data.data;
-                console.log('$scope.allDistricts', $scope.allDistricts);
+        $scope.currentPage = $stateParams.page;
+        var i = 0;
+        $scope.search = {
+            keyword: ""
+        };
+        if ($stateParams.keyword) {
+            $scope.search.keyword = $stateParams.keyword;
+        }
+        $scope.showAllCountries = function(keywordChange) {
+            $scope.totalItems = undefined;
+            if (keywordChange) {
+                $scope.currentPage = 1;
+            }
+            NavigationService.searchDistrict({
+                page: $scope.currentPage,
+                keyword: $scope.search.keyword
+            }, ++i, function(data, ini) {
+                console.log(data.data);
 
+                if (ini == i) {
+                    console.log(data.data);
+                    $scope.allDistricts = data.data.results;
+                    $scope.totalItems = data.data.total;
+                }
             });
         };
-        $scope.showAllDistricts();
+
+        $scope.changePage = function(page) {
+            var goTo = "district-list";
+            if ($scope.search.keyword) {
+                goTo = "district-list";
+            }
+            $state.go(goTo, {
+                page: page,
+                keyword: $scope.search.keyword
+            });
+        };
+        $scope.showAllCountries();
 
         $scope.deleteDistrict = function(id) {
+            globalfunction.confDel(function(value) {
+                console.log(value);
+                if (value) {
+                    NavigationService.deleteState(id, function(data) {
+                        if (data.value) {
+                            $scope.showAllCountries();
+                            toastr.success("District deleted successfully.", "District deleted");
+                        } else {
+                            toastr.error("There was an error while deleting District", "District deleting error");
+                        }
 
-            NavigationService.deleteDistrict({
-                id: id
-            }, function(data) {
-                $scope.showAllDistricts();
 
+                    });
+                }
             });
-        }
+        };
+
 
     })
     .controller('EmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -574,7 +650,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.showAllEmployees();
 
             });
-        }
+        };
 
     })
     .controller('CreateEmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -1124,7 +1200,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //  if (formValid.$valid) {
             //  $scope.formComplete = true;
             NavigationService.companyEditSave($scope.formData, function(data) {
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('company-list');
                 }
             });
@@ -1132,34 +1208,68 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('CreateDistrictCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('CreateDistrictCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("district-detail");
         $scope.menutitle = NavigationService.makeactive("district-detail");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-
-        $scope.header = {
-            "name": "Create District"
+        $scope.currentPage = $stateParams.page;
+        var i = 0;
+        $scope.search = {
+            keyword: ""
         };
-        $scope.formData = {};
-        $scope.saveDistrict = function(formData) {
-
-            NavigationService.districtSave($scope.formData, function(data) {
-                console.log(data);
-                if (data.value == true) {
-                    $state.go('district-list');
-                }
-                // console.log('$scope.allCountriessave', $scope.data);
-
-            });
+        if ($stateParams.keyword) {
+            $scope.search.keyword = $stateParams.keyword;
         }
+        $scope.showAllCountries = function(keywordChange) {
+            $scope.totalItems = undefined;
+            if (keywordChange) {
+                $scope.currentPage = 1;
+            }
+            NavigationService.searchDistrict({
+                page: $scope.currentPage,
+                keyword: $scope.search.keyword
+            }, ++i, function(data, ini) {
+                console.log(data.data);
 
-        NavigationService.getAllStates(function(data) {
-            $scope.allStates = data.data;
-            console.log('$scope.allStates', $scope.allStates);
+                if (ini == i) {
+                    console.log(data.data);
+                    $scope.allDistricts = data.data.results;
+                    $scope.totalItems = data.data.total;
+                }
+            });
+        };
 
-        });
+        $scope.changePage = function(page) {
+            var goTo = "district-list";
+            if ($scope.search.keyword) {
+                goTo = "district-list";
+            }
+            $state.go(goTo, {
+                page: page,
+                keyword: $scope.search.keyword
+            });
+        };
+        $scope.showAllCountries();
+
+        $scope.deleteState = function(id) {
+            globalfunction.confDel(function(value) {
+                console.log(value);
+                if (value) {
+                    NavigationService.deleteState(id, function(data) {
+                        if (data.value) {
+                            $scope.showAllCountries();
+                            toastr.success("District deleted successfully.", "District deleted");
+                        } else {
+                            toastr.error("There was an error while deleting District", "District deleting error");
+                        }
+
+
+                    });
+                }
+            });
+        };
 
     })
     .controller('EditDistrictCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
@@ -1278,31 +1388,69 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('CityCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('CityCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("city-list");
         $scope.menutitle = NavigationService.makeactive("City Lists");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.currentPage = $stateParams.page;
+        var i = 0;
+        $scope.search = {
+            keyword: ""
+        };
+        if ($stateParams.keyword) {
+            $scope.search.keyword = $stateParams.keyword;
+        }
+        $scope.showAllCountries = function(keywordChange) {
+            $scope.totalItems = undefined;
+            if (keywordChange) {
+                $scope.currentPage = 1;
+            }
+            NavigationService.searchCity({
+                page: $scope.currentPage,
+                keyword: $scope.search.keyword
+            }, ++i, function(data, ini) {
+                console.log(data.data);
 
-        $scope.showAllCities = function() {
-            NavigationService.getAllCities(function(data) {
-                $scope.allCities = data.data;
-                console.log('$scope.allCities', $scope.allCities);
-
+                if (ini == i) {
+                    console.log(data.data);
+                    $scope.allCities = data.data.results;
+                    $scope.totalItems = data.data.total;
+                }
             });
         };
-        $scope.showAllCities();
+
+        $scope.changePage = function(page) {
+            var goTo = "city-list";
+            if ($scope.search.keyword) {
+                goTo = "city-list";
+            }
+            $state.go(goTo, {
+                page: page,
+                keyword: $scope.search.keyword
+            });
+        };
+        $scope.showAllCountries();
 
         $scope.deleteCity = function(id) {
+            globalfunction.confDel(function(value) {
+                console.log(value);
+                if (value) {
+                    NavigationService.deleteCity(id, function(data) {
+                        if (data.value) {
+                            $scope.showAllCountries();
+                            toastr.success("City deleted successfully.", "City deleted");
+                        } else {
+                            toastr.error("There was an error while deleting City", "City deleting error");
+                        }
 
-            NavigationService.deleteCity({
-                id: id
-            }, function(data) {
-                $scope.showAllCities();
 
+                    });
+                }
             });
-        }
+        };
+
 
     })
     .controller('CreateCityCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
