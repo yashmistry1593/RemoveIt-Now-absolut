@@ -3817,10 +3817,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
 
 .controller('MultipleSelectCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter) {
-
-    console.log("API", $scope.api);
-    console.log($scope.filter);
-
     var i = 0;
     $scope.getValues = function() {
         var dataSend = {
@@ -3847,13 +3843,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         });
     };
-
-
-
     $scope.search = {
         modelData: $scope.model
     };
-
     $scope.getValues();
     $scope.listview = false;
     $scope.showCreate = false;
@@ -3861,29 +3853,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.showList = function() {
         $scope.listview = true;
     };
-
     $scope.closeList = function() {
         $scope.listview = false;
     };
-
     $scope.searchNew = function(filter) {
         console.log($scope.filter);
         $scope.model = "";
         $scope.getValues($scope.list);
     };
-
     $scope.searchNew();
-
     $scope.createNew = function(create) {
         var newCreate = $filter("capitalize")(create);
         console.log("Create New " + newCreate);
         $scope.listview = false;
     };
-
     $scope.sendData = function(val, name) {
         $scope.search.modelData = name;
         $scope.model = val;
         $scope.listview = false;
     }
-
 });

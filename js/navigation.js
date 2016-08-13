@@ -193,7 +193,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http.post(adminurl + 'country/save', formData).success(callback);
         },
         getAllCountries: function(callback) {
-            $http.post(adminurl + 'country/getAll',{}).success(callback);
+            $http.post(adminurl + 'country/getAll', {}).success(callback);
         },
         getOneCountry: function(id, callback) {
             $http.post(adminurl + 'country/getOne', {
@@ -216,28 +216,28 @@ var navigationservice = angular.module('navigationservice', [])
 
         },
         searchZone: function(formData, i, callback) {
-            $http.post(adminurl + 'zone/search', formData).success(function(data){
-              callback(data, i);
+            $http.post(adminurl + 'zone/search', formData).success(function(data) {
+                callback(data, i);
             });
         },
         searchState: function(formData, i, callback) {
-            $http.post(adminurl + 'state/search', formData).success(function(data){
-              callback(data, i);
+            $http.post(adminurl + 'state/search', formData).success(function(data) {
+                callback(data, i);
             });
         },
         searchDistrict: function(formData, i, callback) {
-            $http.post(adminurl + 'district/search', formData).success(function(data){
-              callback(data, i);
+            $http.post(adminurl + 'district/search', formData).success(function(data) {
+                callback(data, i);
             });
         },
         searchCity: function(formData, i, callback) {
-            $http.post(adminurl + 'city/search', formData).success(function(data){
-              callback(data, i);
+            $http.post(adminurl + 'city/search', formData).success(function(data) {
+                callback(data, i);
             });
         },
         zoneSave: function(formData, callback) {
-            $http.post(adminurl + 'zone/saveData', formData).success(function(data){
-              callback(data, i);
+            $http.post(adminurl + 'zone/saveData', formData).success(function(data) {
+                callback(data, i);
             });
         },
         getOneZone: function(id, callback) {
@@ -334,7 +334,7 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         currencySave: function(formData, callback) {
-            $http.post(adminurl + 'currencies/save',formData).success(callback);
+            $http.post(adminurl + 'currencies/save', formData).success(callback);
         },
         getOneCurrency: function(id, callback) {
             // console.log('form data: ', formData);
@@ -357,9 +357,9 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         deleteCurrency: function(id, callback) {
-            $http.post(adminurl + 'currencies/delete',{
-                    "_id": id,
-                }).success(callback);
+            $http.post(adminurl + 'currencies/delete', {
+                "_id": id,
+            }).success(callback);
         },
 
 
@@ -403,7 +403,9 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         deleteCity: function(id, callback) {
-            $http.post(adminurl + 'city/delete',{_id:id}).success(callback);
+            $http.post(adminurl + 'city/delete', {
+                _id: id
+            }).success(callback);
         },
 
 
@@ -417,7 +419,7 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         typeofofficeSave: function(formData, callback) {
-            $http.post(adminurl + 'typeOfOffice/save',formData).success(callback);
+            $http.post(adminurl + 'typeOfOffice/save', formData).success(callback);
         },
         getOneOffice: function(id, callback) {
             // console.log('form data: ', formData);
@@ -440,9 +442,9 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         deleteTypeOfOffice: function(id, callback) {
-            $http.post(adminurl + 'typeOfOffice/delete',{
-                    "_id": id,
-                }).success(callback);
+            $http.post(adminurl + 'typeOfOffice/delete', {
+                "_id": id,
+            }).success(callback);
         },
         getAllTypeOfOffices: function(callback) {
             // console.log('form data: ', formData);
@@ -784,7 +786,7 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         industrySave: function(formData, callback) {
-            $http.post(adminurl + 'industry/save',formData).success(callback);
+            $http.post(adminurl + 'industry/save', formData).success(callback);
         },
         getOneIndustry: function(id, callback) {
             // console.log('form data: ', formData);
@@ -807,7 +809,9 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         deleteIndustry: function(id, callback) {
-            $http.post(adminurl + 'industry/delete',{_id:id}).success(callback);
+            $http.post(adminurl + 'industry/delete', {
+                _id: id
+            }).success(callback);
         },
         getAllCategories: function(callback) {
             // console.log('form data: ', formData);
@@ -818,7 +822,7 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         categorySave: function(formData, callback) {
-            $http.post(adminurl + 'category/save',formData).success(callback);
+            $http.post(adminurl + 'category/save', formData).success(callback);
         },
         getOneCategory: function(id, callback) {
             // console.log('form data: ', formData);
@@ -842,8 +846,8 @@ var navigationservice = angular.module('navigationservice', [])
         },
         deleteCategory: function(id, callback) {
             $http(adminurl + 'category/delete', {
-                    "_id": id,
-                }).success(callback);
+                "_id": id,
+            }).success(callback);
         },
         getAllFunc: function(callback) {
             // console.log('form data: ', formData);
@@ -1289,15 +1293,7 @@ var navigationservice = angular.module('navigationservice', [])
                 withCredentials: true
             }).success(callback);
         },
-        customerSave: function(formData, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'customer/saveData',
-                method: 'POST',
-                withCredentials: true,
-                data: formData
-            }).success(callback);
-        },
+      
         getOneCustomer: function(id, callback) {
             // console.log('form data: ', formData);
             $http({
@@ -1463,23 +1459,32 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         deleteProduct: function(id, callback) {
-            $http(adminurl + 'product/delete',{
-                    "_id": id,
-                }).success(callback);
+            $http(adminurl + 'product/delete', {
+                "_id": id,
+            }).success(callback);
         },
         getOneBank: function(id, callback) {
-            $http.post(adminurl + 'bank/getOne',{
-                    "_id": id
-                }).success(callback);
+            $http.post(adminurl + 'bank/getOne', {
+                "_id": id
+            }).success(callback);
         },
         bankSave: function(formData, callback) {
             $http.post(adminurl + 'bank/save', formData).success(callback);
         },
         deleteBank: function(id, callback) {
-            $http.post(adminurl + 'bank/delete',{
-                    "_id": id,
-                }).success(callback);
+            $http.post(adminurl + 'bank/delete', {
+                "_id": id,
+            }).success(callback);
         },
+        getLatLng: function(address,i,callback) {
+            $http({
+                url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyC62zlixVsjaq4zDaL4cefNCubjCgxkte4",
+                method: 'GET',
+                withCredentials: false,
+            }).success(function(data) {
+                callback(data,i);
+            });
+        }
 
     };
 });

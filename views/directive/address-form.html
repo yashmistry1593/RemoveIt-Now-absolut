@@ -25,28 +25,28 @@
 </div>
 <div class="form-group">
     <label>Address</label>
-    <textarea class="form-control" ng-change="getLatLong(demoForm.address);" ng-model="demoForm.address"></textarea>
+    <textarea class="form-control"  ng-model="demoForm.address"></textarea>
     <div class="error-msg" ng-show="demoForm.address.$error.required && demoForm.address.$touched">Please Enter address.</div>
 </div>
 <div class="form-group">
     <label>Postal Code</label>
-    <input type="text" class="form-control">
+    <input type="text" class="form-control"  ng-model="demoForm.pincode" ng-change="getLatLng(demoForm.pincode);">
     <div class="error-msg" ng-show="demoForm.lat.$error.required && demoForm.lat.$touched">Please Enter Latitude.</div>
 </div>
 <div class="form-group">
     <label for="">Latitude</label>
-    <input type="text" name="lat" ng-model="demoForm.lat" class="form-control">
+    <input type="text" name="lat" ng-model="demoForm.lat" class="form-control" readonly="">
     <div class="error-msg" ng-show="demoForm.lat.$error.required && demoForm.lat.$touched">Please Enter Latitude.</div>
 </div>
 <div class="form-group">
     <label for="">Longitude</label>
-    <input type="text" name="long" ng-model="demoForm.long" class="form-control">
+    <input type="text" name="long" ng-model="demoForm.lng" class="form-control" readonly="">
     <div class="error-msg" ng-show="demoForm.long.$error.required && demoForm.long.$touched">Please Enter Longitude.</div>
 </div>
 <div class="form-group">
-    <div ng-if="demoForm.lat && demoForm.long" map-lazy-load="https://maps.google.com/maps/api/js?key=AIzaSyCn9ypqFNxdXt9Zu2YqLcdD1Xdt2wNul9s">
-        <ng-map zoom="15" center="[{{demoForm.lat}},{{demoForm.long}}]">
-            <marker on-dragend="change();"  position="[{{demoForm.lat}},{{demoForm.long}}]" draggable="true" ></marker>
+    <div ng-if="demoForm.lat && demoForm.lng" map-lazy-load="https://maps.google.com/maps/api/js?key=AIzaSyCn9ypqFNxdXt9Zu2YqLcdD1Xdt2wNul9s">
+        <ng-map scrollwheel=false zoom="17" center="[{{demoForm.lat}},{{demoForm.lng}}]">
+            <marker on-dragend="change();"  position="[{{demoForm.lat}},{{demoForm.lng}}]" draggable="true" ></marker>
         </ng-map>
     </div>
 </div>

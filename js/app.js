@@ -839,29 +839,29 @@ firstapp.directive('addressForm', function($document) {
         scope: {},
         restrict: 'EA',
         replace: false,
-        controller: function($scope, NgMap, $http) {
+        controller: function($scope, NgMap,NavigationService) {
             $scope.demoForm = {};
-            $scope.demoForm.lat = 19.0760;
-            $scope.demoForm.long = 72.8777;
             $scope.map = {};
             $scope.change = function() {
                 NgMap.getMap().then(function(map) {
                     console.log(map.markers[0].position.lat());
                     console.log(map.markers[0].position.lng());
-                    $scope.demoForm = {
+                    var latLng = {
                         lat: map.markers[0].position.lat(),
-                        long: map.markers[0].position.lng()
+                        lng: map.markers[0].position.lng()
                     };
+                    _.assign($scope.demoForm, latLng);
                 });
-
             };
-            $scope.getLatLong = function(address) {
-                $http({
-                    url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyAc75yahObocBDF_deZ7T6_rUkS8LS4t00",
-                    method: 'GET',
-                    withCredentials: false,
-                }).success(function(data) {
-                    console.log(data);
+            var LatLongi = 0;
+            $scope.getLatLng = function(address) {
+
+                NavigationService.getLatLng(address, ++LatLongi, function(data, i) {
+                  console.log(i);
+                  console.log(LatLongi);
+                    if (i == LatLongi) {
+                        $scope.demoForm = _.assign($scope.demoForm, data.results[0].geometry.location);
+                    }
                 });
                 // $http.get("http://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCn9ypqFNxdXt9Zu2YqLcdD1Xdt2wNul9s&address="+address);
             };
