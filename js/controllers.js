@@ -3819,29 +3819,30 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 .controller('MultipleSelectCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter) {
 
     console.log("API", $scope.api);
-
+    console.log($scope.filter);
 
     var i = 0;
     $scope.getValues = function() {
-        NavigationService[$scope.api]({
-            filter: {},
+        var dataSend = {
             keyword: $scope.search.modelData,
             page: 1
-        }, ++i, function(data) {
+        };
+        if ($scope.filter) {
+            dataSend.filter = JSON.parse($scope.filter);
+        }
+        NavigationService[$scope.api](dataSend, ++i, function(data) {
             $scope.list = data.data.results;
-            if($scope.search.modelData)
-            {
-              $scope.showCreate = true;
-              _.each($scope.list,function(n) {
-                if(_.lowerCase(n.name) == _.lowerCase($scope.search.modelData)) {
-                  $scope.showCreate = false;
-                  console.log("this should not show");
-                  return 0;
-                }
-              });
-            }
-            else {
-              $scope.showCreate = false;
+            if ($scope.search.modelData) {
+                $scope.showCreate = true;
+                _.each($scope.list, function(n) {
+                    if (_.lowerCase(n.name) == _.lowerCase($scope.search.modelData)) {
+                        $scope.showCreate = false;
+                        console.log("this should not show");
+                        return 0;
+                    }
+                });
+            } else {
+                $scope.showCreate = false;
             }
 
         });
@@ -3866,7 +3867,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
     $scope.searchNew = function(filter) {
-        console.log(filter);
+        console.log($scope.filter);
         $scope.model = "";
         $scope.getValues($scope.list);
     };

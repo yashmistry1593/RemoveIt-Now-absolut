@@ -891,7 +891,8 @@ firstapp.directive('multipleSelect', function($document) {
             model: '=ngModel',
             api: "@api",
             name: "@name",
-            required: "@required"
+            required: "@required",
+            filter: "@filter"
         },
         restrict: 'EA',
         replace: false,
