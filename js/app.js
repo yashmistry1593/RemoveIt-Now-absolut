@@ -889,14 +889,21 @@ firstapp.directive('multipleSelect', function($document) {
         templateUrl: 'views/directive/multiple-select.html',
         scope: {
             model: '=ngModel',
-            list: "=list",
             api: "@api",
+            name: "@name",
+            required: "@required"
         },
         restrict: 'EA',
         replace: false,
         controller: 'MultipleSelectCtrl',
         link: function(scope, element, attr, NavigationService) {
             var $element = $(element);
+            console.log(scope.required);
+            scope.isRequired = true;
+            if (scope.required === undefined) {
+                scope.isRequired = false;
+            }
+
             console.log(attr.typeselect);
             scope.typeselect = attr.typeselect;
             console.log(scope.list);

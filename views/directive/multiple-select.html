@@ -1,5 +1,8 @@
 <div class="relative">
-    <input type="text" class="form-control" ng-model="search.modelData" ng-focus="showList();" ng-change="searchNew(search.modelData)" required>
+    <button type="button" class="multipleClose" ng-show="listview" ng-click="closeList()">CLOSE</button>
+    <input type="text" class="hidden" name="{{name}}" ng-if="isRequired" ng-model="model" required>
+    <input type="text" class="hidden" name="{{name}}" ng-if="!isRequired" ng-model="model">
+    <input type="text" ng-if="isRequired" required class="form-control" ng-model="search.modelData" ng-focus="showList();" ng-change="searchNew(search.modelData)">
     <ul class="ng-list" ng-show="listview">
         <li ng-repeat="l in list" ng-click="sendData(l._id,l.name);" ng-if="list.length>0">{{l.name}}</li>
         <li class="lightColor" ng-if="showCreate && search.modelData != ''" ng-click="createNew(search.modelData);">Click to create new "{{search.modelData|capitalize}}"</li>

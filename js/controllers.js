@@ -261,11 +261,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
 
-        $scope.changeStatus = function(ind){
-          NavigationService.bankSave(ind, function(data) {
-            if (data.value === true) {
-            }
-          });
+        $scope.changeStatus = function(ind) {
+            NavigationService.bankSave(ind, function(data) {
+                if (data.value === true) {}
+            });
         };
     })
     .controller('CreateOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -399,12 +398,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.savetypeOfOffice = function(formData) {
 
             NavigationService.typeofofficeSave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('typeOfOffice-list');
-                  toastr.success("Type Of Office " + $scope.formData.name + " created successfully.", "Type Of Office Created");
-              } else {
-                  toastr.error("Type Of Office creation failed.", "Type Of Office creation error");
-              }
+                if (data.value === true) {
+                    $state.go('typeOfOffice-list');
+                    toastr.success("Type Of Office " + $scope.formData.name + " created successfully.", "Type Of Office Created");
+                } else {
+                    toastr.error("Type Of Office creation failed.", "Type Of Office creation error");
+                }
             });
         };
 
@@ -429,12 +428,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //  if (formValid.$valid) {
             //  $scope.formComplete = true;
             NavigationService.typeofofficeSave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('typeOfOffice-list');
-                  toastr.success("Type Of Office " + $scope.formData.name + " created successfully.", "Type Of Office Created");
-              } else {
-                  toastr.error("Type Of Office creation failed.", "Type Of Office creation error");
-              }
+                if (data.value === true) {
+                    $state.go('typeOfOffice-list');
+                    toastr.success("Type Of Office " + $scope.formData.name + " created successfully.", "Type Of Office Created");
+                } else {
+                    toastr.error("Type Of Office creation failed.", "Type Of Office creation error");
+                }
             });
             //  }
         };
@@ -3830,8 +3829,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             page: 1
         }, ++i, function(data) {
             $scope.list = data.data.results;
+            if($scope.search.modelData)
+            {
+              $scope.showCreate = true;
+              _.each($scope.list,function(n) {
+                if(_.lowerCase(n.name) == _.lowerCase($scope.search.modelData)) {
+                  $scope.showCreate = false;
+                  console.log("this should not show");
+                  return 0;
+                }
+              });
+            }
+            else {
+              $scope.showCreate = false;
+            }
+
         });
     };
+
 
 
     $scope.search = {
@@ -3844,18 +3859,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.typeselect = "";
     $scope.showList = function() {
         $scope.listview = true;
-    }
+    };
+
+    $scope.closeList = function() {
+        $scope.listview = false;
+    };
 
     $scope.searchNew = function(filter) {
         console.log(filter);
-        if (!filter || filter == "") {
-            $scope.showCreate = false;
-            $scope.list = $scope.listFresh;
-        } else {
-            $scope.showCreate = true;
-            // console.log($scope.typeselect);
-            $scope.getValues($scope.list);
-        }
+        $scope.model = "";
+        $scope.getValues($scope.list);
     };
 
     $scope.searchNew();

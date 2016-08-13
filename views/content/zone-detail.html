@@ -32,14 +32,13 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Country*</label>
-                                    {{formData.country}}
-                                    <multiple-select list="list" ng-model="formData.country" api="searchCountry" ></multiple-select>
-                                    <div class="error-msg" ng-show="zoneform.name.$error.required && zoneform.name.$touched">Please Enter Zone Name.</div>
+                                    <multiple-select name="country" required ng-model="formData.country" api="searchCountry"></multiple-select>
+                                    <div class="error-msg" ng-show="zoneform.country.$error.required">Please Enter Zone Name.</div>
                                 </div>
                                 <div class="form-group">
                                     <label>Zone Name*</label>
-                                    <!-- <multiple-select list="list"></multiple-select> -->
-                                    <div class="error-msg" ng-show="zoneform.name.$error.required && zoneform.name.$touched">Please Enter Zone Name.</div>
+                                    <input type="tel" name="name" ng-model="formData.name" class="form-control" required>
+                                    <div class="error-msg" ng-show="zoneform.name.$error.required && zoneform.name.$touched">Please Enter ISDCodes.</div>
                                 </div>
                                 <div class="text-center mt20">
                                     <button class="btn btn-default" type="submit" ng-click="saveZone(formData)" ng-disabled="zoneform.$invalid">Save</button>
