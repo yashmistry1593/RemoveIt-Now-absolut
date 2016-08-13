@@ -2485,6 +2485,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
             });
         };
+        $scope.changeStatus = function(ind){
+          NavigationService.categorySave(ind, function(data) {
+            if (data.value === true) {
+            }
+          });
+        };
     })
     .controller('CreateCategoryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file

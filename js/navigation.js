@@ -834,13 +834,7 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         categorySave: function(formData, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'category/saveData',
-                method: 'POST',
-                withCredentials: true,
-                data: formData
-            }).success(callback);
+            $http.post(adminurl + 'category/save',formData).success(callback);
         },
         getOneCategory: function(id, callback) {
             // console.log('form data: ', formData);

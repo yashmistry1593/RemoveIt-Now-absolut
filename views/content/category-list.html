@@ -61,7 +61,7 @@
                                     <td>{{cat.name}}</td>
                                     <td>{{cat.industry.name}}</td>
                                     <td>
-                                                         <toggle-switch ng-model="cat.status" class="switch-mini switch-success"></toggle-switch>
+                                                         <toggle-switch ng-model="cat.status" class="switch-mini switch-success" ng-change = "changeStatus(cat)"></toggle-switch>
 </td>
                                     <td>
                                       <a class="btn btn-primary" ui-sref="editcategory({id:cat._id})"><i class="fa fa-pencil"></i></a>
