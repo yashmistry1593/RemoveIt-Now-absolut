@@ -260,15 +260,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
             });
         };
-<<<<<<< HEAD
+
         $scope.changeStatus = function(ind){
           NavigationService.bankSave(ind, function(data) {
             if (data.value === true) {
             }
           });
         };
-=======
->>>>>>> origin/master
     })
     .controller('CreateOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
