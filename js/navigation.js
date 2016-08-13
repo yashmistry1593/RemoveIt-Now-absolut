@@ -149,6 +149,11 @@ var navigationservice = angular.module('navigationservice', [])
                 callback(data, i);
             });
         },
+        searchProduct: function(formData, i, callback) {
+            $http.post(adminurl + 'Product/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
         searchCategory: function(formData, i, callback) {
             $http.post(adminurl + 'category/search', formData).success(function(data) {
                 callback(data, i);
@@ -1482,15 +1487,9 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         deleteProduct: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'product/delete',
-                method: 'POST',
-                withCredentials: true,
-                data: {
-                    "_id": id.id,
-                }
-            }).success(callback);
+            $http(adminurl + 'product/delete',{
+                    "_id": id,
+                }).success(callback);
         },
 
 

@@ -38,12 +38,15 @@
                           </form>
                             <a class="btn btn-primary" ui-sref="createindustry">Add New</a>
                         </div>
-                        <h3>List of Industries</h3>
+                        <h3>List of Industries<span class="tableTotal">(Total : {{totalItems}}) </span></h3>
                     </div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
+                                  <th>
+                                    #
+                                  </th>
                                     <th>Industry Name</th>
                                     <th>Status</th>
                                     <th>Actions</th>
@@ -51,6 +54,9 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="ind in allIndustries">
+                                  <td>
+                                    {{($index + 1)+((currentPage-1)*maxRow)}}
+                                  </td>
                                     <td>{{ind.name}}</td>
                                     <td>
                                       <toggle-switch ng-model="ind.status" class="switch-mini switch-success" ng-change = "changeStatus(ind)"></toggle-switch>

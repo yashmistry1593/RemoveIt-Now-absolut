@@ -40,12 +40,15 @@
                           </form>
                             <a class="btn btn-primary" ui-sref="createzone">Add New</a>
                         </div>
-                        <h3>List of Zones</h3>
+                        <h3>List of Zones <span class="tableTotal">(Total : {{totalItems}}) </span></h3>
                     </div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
+                                  <th>
+                                    #
+                                  </th>
                                     <th>Zone Name</th>
                                     <th>Country Name</th>
                                     <th>Actions</th>
@@ -53,6 +56,7 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="zone in countries">
+                                  <td>{{($index + 1)+((currentPage-1)*maxRow)}}</td>
                                     <td>{{zone.name}}</td>
                                     <td>{{zone.country.name}}</td>
                                     <td>

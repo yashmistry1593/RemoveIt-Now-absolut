@@ -790,31 +790,64 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //  }
         };
     })
-    .controller('ProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+
+    .controller('ProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("product-list");
         $scope.menutitle = NavigationService.makeactive("product");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-
-        $scope.showAllProduct = function() {
-            NavigationService.getAllProduct(function(data) {
-                $scope.allProduct = data.data;
-                console.log('$scope.allProduct', $scope.allProduct);
-
+        $scope.currentPage = $stateParams.page;
+        var i = 0;
+        $scope.search = {
+            keyword: ""
+        };
+        if ($stateParams.keyword) {
+            $scope.search.keyword = $stateParams.keyword;
+        }
+        $scope.showAllCountries = function(keywordChange) {
+            $scope.totalItems = undefined;
+            if (keywordChange) {
+                $scope.currentPage = 1;
+            }
+            NavigationService.searchProduct({
+                page: $scope.currentPage,
+                keyword: $scope.search.keyword
+            }, ++i, function(data, ini) {
+                if (ini == i) {
+                    $scope.allProduct = data.data.results;
+                    $scope.totalItems = data.data.total;
+                    $scope.maxRow = data.data.options.count;
+                }
             });
         };
-        $scope.showAllProduct();
 
-        $scope.deleteProduct = function(id) {
-
-            NavigationService.deleteProduct({
-                id: id
-            }, function(data) {
-                $scope.showAllProduct();
-
+        $scope.changePage = function(page) {
+            var goTo = "product-list";
+            if ($scope.search.keyword) {
+                goTo = "product-list";
+            }
+            $state.go(goTo, {
+                page: page,
+                keyword: $scope.search.keyword
             });
-        }
+        };
+        $scope.showAllCountries();
+        $scope.deleteProduct = function(id) {
+            globalfunction.confDel(function(value) {
+                console.log(value);
+                if (value) {
+                    NavigationService.deleteProduct(id, function(data) {
+                        if (data.value) {
+                            $scope.showAllCountries();
+                            toastr.success("Product deleted successfully.", "Product deleted");
+                        } else {
+                            toastr.error("There was an error while deleting Product", "Product deleting error");
+                        }
+                    });
+                }
+            });
+        };
     })
     .controller('CreateProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
@@ -846,7 +879,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 // console.log('$scope.formData',$scope.formData);
                 // console.log(data);
                 // $scope.formData.surveyor.valid_upto = new Date($scope.formData.surveyor.valid_upto);
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('product-list');
                 }
                 // console.log('$scope.allCountriessave', $scope.data);

@@ -38,12 +38,15 @@
                           </form>
                             <a class="btn btn-primary" ui-sref="createcity">Add New</a>
                         </div>
-                        <h3>List of Cities</h3>
+                        <h3>List of Cities <span class="tableTotal">(Total : {{totalItems}}) </span></h3>
                     </div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
+                                  <th>
+                                    #
+                                  </th>
                                     <th>City</th>
                                     <th>District</th>
                                     <th>State</th>
@@ -54,6 +57,9 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="city in allCities">
+                                  <td>
+                                    {{($index + 1)+((currentPage-1)*maxRow)}}
+                                  </td>
                                     <td>{{city.name}}</td>
                                     <td>{{city.district.name}}</td>
                                     <td>{{city.district.state.name}}</td>

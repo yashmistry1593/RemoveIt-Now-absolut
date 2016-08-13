@@ -38,12 +38,15 @@
                           </form>
                             <a class="btn btn-primary" ui-sref="createcategory">Add New</a>
                         </div>
-                        <h3>List of Categories</h3>
+                        <h3>List of Categories <span class="tableTotal">(Total : {{totalItems}}) </span></h3>
                     </div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
+                                  <th>
+                                    #
+                                  </th>
                                     <th>Category Name</th>
                                     <th>Industry Name</th>
                                     <th>Status</th>
@@ -52,6 +55,9 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="cat in allCategories">
+                                  <td>
+                                    {{($index + 1)+((currentPage-1)*maxRow)}}
+                                  </td>
                                     <td>{{cat.name}}</td>
                                     <td>{{cat.industry.name}}</td>
                                     <td>

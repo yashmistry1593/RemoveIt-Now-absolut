@@ -38,12 +38,15 @@
                           </form>
                             <a class="btn btn-primary" ui-sref="createdistrict">Add New</a>
                         </div>
-                        <h3>List of Districts</h3>
+                        <h3>List of Districts <span class="tableTotal">(Total : {{totalItems}}) </span></h3>
                     </div>
                     <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
+                                  <th>
+                                    #
+                                  </th>
                                     <th>District</th>
                                     <th>State</th>
                                     <th>Zone</th>
@@ -53,6 +56,9 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="dist in allDistricts">
+                                  <td>
+                                    {{($index + 1)+((currentPage-1)*maxRow)}}
+                                  </td>
                                     <td>{{dist.name}}</td>
                                     <td>{{dist.state.name}}</td>
                                     <td>{{dist.state.zone.name}}</td>
