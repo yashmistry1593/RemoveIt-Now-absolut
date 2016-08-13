@@ -940,6 +940,9 @@ firstapp.directive('addressForm', function($document) {
         replace: false,
         link: function(scope, element, attr) {
             var $element = $(element);
+            scope.demoForm = {};
+            scope.demoForm.lat = 19.0760;
+            scope.demoForm.long = 72.8777;
         }
     };
 });
@@ -960,6 +963,9 @@ firstapp.directive('multipleSelect', function($document) {
             scope.typeselect = attr.typeselect;
             console.log(scope.list);
             // $scope.searchNew()
+            scope.change = function(data) {
+              console.log(data);
+            };
 
         }
     };
