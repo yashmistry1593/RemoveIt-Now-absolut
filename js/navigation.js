@@ -154,6 +154,16 @@ var navigationservice = angular.module('navigationservice', [])
                 callback(data, i);
             });
         },
+        searchBranch: function(formData, i, callback) {
+            $http.post(adminurl + 'branch/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
+        searchTypeOfOffice: function(formData, i, callback) {
+            $http.post(adminurl + 'typeOfOffice/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
         searchCategory: function(formData, i, callback) {
             $http.post(adminurl + 'category/search', formData).success(function(data) {
                 callback(data, i);
@@ -195,6 +205,12 @@ var navigationservice = angular.module('navigationservice', [])
         },
         deleteCountry: function(id, callback) {
             $http.post(adminurl + 'country/delete', {
+                _id: id
+            }).success(callback);
+
+        },
+        deleteBranch: function(id, callback) {
+            $http.post(adminurl + 'branch/delete', {
                 _id: id
             }).success(callback);
 
@@ -400,14 +416,8 @@ var navigationservice = angular.module('navigationservice', [])
                 withCredentials: true
             }).success(callback);
         },
-        officeSave: function(formData, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'office/saveData',
-                method: 'POST',
-                withCredentials: true,
-                data: formData
-            }).success(callback);
+        typeofofficeSave: function(formData, callback) {
+            $http.post(adminurl + 'typeOfOffice/save',formData).success(callback);
         },
         getOneOffice: function(id, callback) {
             // console.log('form data: ', formData);
@@ -429,21 +439,11 @@ var navigationservice = angular.module('navigationservice', [])
                 data: id
             }).success(callback);
         },
-        deleteOffice: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'office/delete',
-                method: 'POST',
-                withCredentials: true,
-                data: {
-                    "_id": id.id,
-                }
-            }).success(callback);
+        deleteTypeOfOffice: function(id, callback) {
+            $http.post(adminurl + 'typeOfOffice/delete',{
+                    "_id": id,
+                }).success(callback);
         },
-
-
-
-
         getAllTypeOfOffices: function(callback) {
             // console.log('form data: ', formData);
             $http({
@@ -453,7 +453,6 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         typeOfOfficeSave: function(formData, callback) {
-            // console.log('form data: ', formData);
             $http({
                 url: adminurl + 'TypeOfOffice/saveData',
                 method: 'POST',
@@ -481,21 +480,6 @@ var navigationservice = angular.module('navigationservice', [])
                 data: id
             }).success(callback);
         },
-        deleteTypeOfOffice: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'TypeOfOffice/delete',
-                method: 'POST',
-                withCredentials: true,
-                data: {
-                    "_id": id.id,
-                }
-            }).success(callback);
-        },
-
-
-
-
         getAllDepartments: function(callback) {
             // console.log('form data: ', formData);
             $http({
