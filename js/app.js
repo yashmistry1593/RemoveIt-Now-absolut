@@ -8,6 +8,7 @@ var firstapp = angular.module('firstapp', [
     'angulartics',
     'angulartics.google.analytics',
     'imageupload',
+    "ngMap"
 
 ]);
 
@@ -30,10 +31,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('branch-list', {
         url: "/branch-list",
         templateUrl: "views/template.html",
-        controller: 'BranchListCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'BranchListCtrl'
     })
 
     .state('branch-create', {
@@ -45,10 +43,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('country-list', {
         url: "/country-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'CountryCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'CountryCtrl'
     })
 
 
@@ -66,12 +61,9 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('zone-list', {
-        url: "/zone-list/{page:.*}/{keyword:.*}",
+        url: "/zone-list",
         templateUrl: "views/template.html",
-        controller: 'ZoneCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'ZoneCtrl'
     })
 
     .state('createzone', {
@@ -89,10 +81,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('state-list', {
         url: "/state-list",
         templateUrl: "views/template.html",
-        controller: 'StateCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'StateCtrl'
     })
 
     .state('createstate', {
@@ -110,10 +99,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('district-list', {
         url: "/district-list",
         templateUrl: "views/template.html",
-        controller: 'DistrictCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'DistrictCtrl'
     })
 
     .state('createdistrict', {
@@ -131,10 +117,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('currency-list', {
         url: "/currency-list",
         templateUrl: "views/template.html",
-        controller: 'CurrencyCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'CurrencyCtrl'
     })
 
     .state('createcurrency', {
@@ -152,10 +135,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('city-list', {
         url: "/city-list",
         templateUrl: "views/template.html",
-        controller: 'CityCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'CityCtrl'
     })
 
     .state('createcity', {
@@ -173,10 +153,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('office-list', {
         url: "/office-list",
         templateUrl: "views/template.html",
-        controller: 'OfficeCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'OfficeCtrl'
     })
 
 
@@ -195,10 +172,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('typeOfOffice-list', {
         url: "/typeOfOffice-list",
         templateUrl: "views/template.html",
-        controller: 'TypeOfOfficeCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'TypeOfOfficeCtrl'
     })
 
     .state('createtypeOfOffice', {
@@ -236,10 +210,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('uniquetype-list', {
         url: "/uniquetype-list",
         templateUrl: "views/template.html",
-        controller: 'UniqueTypetCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'UniqueTypetCtrl'
     })
 
 
@@ -258,10 +229,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('policytype-list', {
         url: "/policytype-list",
         templateUrl: "views/template.html",
-        controller: 'PolicyTypeCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'PolicyTypeCtrl'
     })
 
     .state('createpolicytype', {
@@ -279,10 +247,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('policy-list', {
         url: "/policy-list",
         templateUrl: "views/template.html",
-        controller: 'PolicyCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'PolicyCtrl'
     })
 
     .state('createpolicy', {
@@ -300,10 +265,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('policydoc-list', {
         url: "/policydoc-list",
         templateUrl: "views/template.html",
-        controller: 'PolicyDocCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'PolicyDocCtrl'
     })
 
     .state('createpolicydoc', {
@@ -321,10 +283,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('industry-list', {
         url: "/industry-list",
         templateUrl: "views/template.html",
-        controller: 'IndustryCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'IndustryCtrl'
     })
 
     .state('createindustry', {
@@ -342,10 +301,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('category-list', {
         url: "/category-list",
         templateUrl: "views/template.html",
-        controller: 'CategoryCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'CategoryCtrl'
     })
 
     .state('createcategory', {
@@ -363,10 +319,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('func-list', {
         url: "/func-list",
         templateUrl: "views/template.html",
-        controller: 'FuncCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'FuncCtrl'
     })
 
     .state('createfunc', {
@@ -384,10 +337,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('causeloss-list', {
         url: "/causeloss-list",
         templateUrl: "views/template.html",
-        controller: 'CauseLossCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'CauseLossCtrl'
     })
 
     .state('createcauseloss', {
@@ -405,10 +355,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('natureloss-list', {
         url: "/natureloss-list",
         templateUrl: "views/template.html",
-        controller: 'NatureLossCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'NatureLossCtrl'
     })
 
     .state('createnatureloss', {
@@ -426,10 +373,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('businessbranch-list', {
         url: "/businessbranch-list",
         templateUrl: "views/template.html",
-        controller: 'BusinessBranchCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'BusinessBranchCtrl'
     })
 
     .state('createbusinessbranch', {
@@ -447,10 +391,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('menu-list', {
         url: "/menu-list",
         templateUrl: "views/template.html",
-        controller: 'MenuCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'MenuCtrl'
     })
 
     .state('createmenu', {
@@ -468,10 +409,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('role-list', {
         url: "/role-list",
         templateUrl: "views/template.html",
-        controller: 'RoleCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'RoleCtrl'
     })
 
     .state('createrole', {
@@ -489,10 +427,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('user-list', {
         url: "/user-list",
         templateUrl: "views/template.html",
-        controller: 'UserCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'UserCtrl'
     })
 
     .state('createuser', {
@@ -510,10 +445,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('employee-list', {
         url: "/employee-list",
         templateUrl: "views/template.html",
-        controller: 'EmployeeCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'EmployeeCtrl'
     })
 
     .state('createemployee', {
@@ -531,10 +463,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('product-list', {
         url: "/product-list",
         templateUrl: "views/template.html",
-        controller: 'ProductCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'ProductCtrl'
     })
 
     .state('createproduct', {
@@ -552,10 +481,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('salvage-list', {
         url: "/salvage-list",
         templateUrl: "views/template.html",
-        controller: 'SalvageCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'SalvageCtrl'
     })
 
     .state('createsalvage', {
@@ -573,10 +499,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('bankmaster-list', {
         url: "/bankmaster-list",
         templateUrl: "views/template.html",
-        controller: 'BankMasterCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'BankMasterCtrl'
     })
 
     .state('createbankmaster', {
@@ -593,11 +516,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('company-list', {
         url: "/company-list",
         templateUrl: "views/template.html",
-        controller: 'CompanyCtrl',
-        params: {
-          page:"1"
-        }
-
+        controller: 'CompanyCtrl'
     })
 
     .state('createcompany', {
@@ -614,10 +533,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('customer-list', {
         url: "/customer-list",
         templateUrl: "views/template.html",
-        controller: 'CustomerCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'CustomerCtrl'
     })
 
     .state('createcustomer', {
@@ -634,10 +550,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('contactmanagement-list', {
         url: "/contactmanagement-list",
         templateUrl: "views/template.html",
-        controller: 'ContactManagementCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'ContactManagementCtrl'
     })
 
     .state('createcontactmanagement', {
@@ -649,10 +562,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('contacttype-list', {
         url: "/contacttype-list",
         templateUrl: "views/template.html",
-        controller: 'ContactTypeCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'ContactTypeCtrl'
     })
 
     .state('createcontacttype', {
@@ -664,10 +574,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('contacttypeoffice-list', {
         url: "/contacttypeoffice-list",
         templateUrl: "views/template.html",
-        controller: 'ContactTypeOfficeCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'ContactTypeOfficeCtrl'
     })
 
     .state('createcontacttypeoffice', {
@@ -679,10 +586,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('customerSegment-list', {
         url: "/customerSegment-list",
         templateUrl: "views/template.html",
-        controller: 'CustomerSegmentCtrl',
-        params: {
-          page:"1"
-        }
+        controller: 'CustomerSegmentCtrl'
     })
 
 
@@ -700,10 +604,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         .state('customerCompany-list', {
             url: "/customerCompany-list",
             templateUrl: "views/template.html",
-            controller: 'CustomerCompanyCtrl',
-            params: {
-              page:"1"
-            }
+            controller: 'CustomerCompanyCtrl'
         })
 
 
@@ -938,12 +839,48 @@ firstapp.directive('addressForm', function($document) {
         scope: {},
         restrict: 'EA',
         replace: false,
-        link: function(scope, element, attr) {
-            var $element = $(element);
-            scope.demoForm = {};
-            scope.demoForm.lat = 19.0760;
-            scope.demoForm.long = 72.8777;
-        }
+        controller: function($scope, NgMap,$http) {
+            $scope.demoForm = {};
+            $scope.demoForm.lat = 19.0760;
+            $scope.demoForm.long = 72.8777;
+            $scope.map = {};
+            $scope.change = function() {
+                NgMap.getMap().then(function(map) {
+                    console.log(map.markers[0].position.lat());
+                    console.log(map.markers[0].position.lng());
+                    $scope.demoForm = {
+                        lat: map.markers[0].position.lat(),
+                        long: map.markers[0].position.lng()
+                    };
+                });
+
+            };
+            $scope.getLatLong= function(address) {
+              $http({
+                  url:"https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyAc75yahObocBDF_deZ7T6_rUkS8LS4t00",
+                  method: 'GET',
+                  withCredentials: false,
+              }).success(function(data) {
+                console.log(data);
+              });
+              // $http.get("http://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCn9ypqFNxdXt9Zu2YqLcdD1Xdt2wNul9s&address="+address);
+            };
+
+        },
+        // link: function($scope, element, attr, NgMap) {
+        //     var $element = $(element);
+        //     $scope.demoForm = {};
+        //     $scope.demoForm.lat = 19.0760;
+        //     $scope.demoForm.long = 72.8777;
+        //     $scope.map = {};
+        //     $scope.change = function() {
+        //       NgMap.getMap().then(function(map) {
+        //         console.log(map);
+        //       });
+        //
+        //     };
+        //
+        // }
     };
 });
 
@@ -964,8 +901,9 @@ firstapp.directive('multipleSelect', function($document) {
             console.log(scope.list);
             // $scope.searchNew()
             scope.change = function(data) {
-              console.log(data);
+                console.log(data);
             };
+
 
         }
     };
