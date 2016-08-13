@@ -149,6 +149,11 @@ var navigationservice = angular.module('navigationservice', [])
                 callback(data, i);
             });
         },
+        searchCategory: function(formData, i, callback) {
+            $http.post(adminurl + 'category/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
         searchIndustry: function(formData, i, callback) {
             $http.post(adminurl + 'industry/search', formData).success(function(data) {
                 callback(data, i);
@@ -808,7 +813,7 @@ var navigationservice = angular.module('navigationservice', [])
         IndustryEditSave: function(id, callback) {
             // console.log('form data: ', formData);
             $http({
-                url: adminurl + 'industry/saveData',
+                url: adminurl + 'industry/save',
                 method: 'POST',
                 withCredentials: true,
                 data: id
@@ -855,15 +860,9 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         deleteCategory: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'category/delete',
-                method: 'POST',
-                withCredentials: true,
-                data: {
-                    "_id": id.id,
-                }
-            }).success(callback);
+            $http(adminurl + 'category/delete', {
+                    "_id": id,
+                }).success(callback);
         },
         getAllFunc: function(callback) {
             // console.log('form data: ', formData);

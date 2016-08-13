@@ -331,6 +331,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     console.log(data.data);
                     $scope.countries = data.data.results;
                     $scope.totalItems = data.data.total;
+                    $scope.maxRow = data.data.options.count;
+
                 }
             });
         };
@@ -462,6 +464,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     console.log(data.data);
                     $scope.allStates = data.data.results;
                     $scope.totalItems = data.data.total;
+                    $scope.maxRow = data.data.options.count;
+
                 }
             });
         };
@@ -591,6 +595,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     console.log(data.data);
                     $scope.allDistricts = data.data.results;
                     $scope.totalItems = data.data.total;
+                    $scope.maxRow = data.data.options.count;
+
                 }
             });
         };
@@ -1238,6 +1244,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     console.log(data.data);
                     $scope.allDistricts = data.data.results;
                     $scope.totalItems = data.data.total;
+                    $scope.maxRow = data.data.options.count;
+
                 }
             });
         };
@@ -1418,6 +1426,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     console.log(data.data);
                     $scope.allCities = data.data.results;
                     $scope.totalItems = data.data.total;
+                    $scope.maxRow = data.data.options.count;
+
                 }
             });
         };
@@ -2190,6 +2200,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     console.log(data.data);
                     $scope.allIndustries = data.data.results;
                     $scope.totalItems = data.data.total;
+                    $scope.maxRow = data.data.options.count;
+
                 }
             });
         };
@@ -2223,9 +2235,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
             });
         };
+        $scope.changeStatus = function(ind){
+          NavigationService.industrySave(ind, function(data) {
+            if (data.value === true) {
+                $state.go('industry-list');
+            }
+          });
+        }
 
     })
-    .controller('CreateIndustryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('CreateIndustryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("industry-detail");
         $scope.menutitle = NavigationService.makeactive("industry-detail");
@@ -2245,17 +2264,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.saveIndustry = function(formData) {
 
             NavigationService.industrySave($scope.formData, function(data) {
-                console.log(data);
-                if (data.value == true) {
-                    $state.go('industry-list');
-                }
-                // console.log('$scope.allCountriessave', $scope.data);
 
+                if (data.value === true) {
+                    $state.go('industry-list');
+                    toastr.success("Industry " + $scope.formData.name + " created successfully.", "Industry Created");
+                } else {
+                    toastr.error("Industry creation failed.", "Industry creation error");
+                }
             });
         }
 
     })
-    .controller('EditIndustryCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+    .controller('EditIndustryCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("industry-detail");
         $scope.menutitle = NavigationService.makeactive("industry-detail");
@@ -2274,48 +2294,84 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         NavigationService.getOneIndustry($stateParams.id, function(data) {
             $scope.formData = data.data;
-            console.log('$scope.formData', $scope.formData);
-
         });
 
         $scope.saveIndustry = function(formValid) {
 
-            //  if (formValid.$valid) {
-            //  $scope.formComplete = true;
-            NavigationService.IndustryEditSave($scope.formData, function(data) {
-                if (data.value == true) {
-                    $state.go('industry-list');
-                }
+            NavigationService.industrySave($scope.formData, function(data) {
+              if (data.value === true) {
+                  $state.go('industry-list');
+                  toastr.success("Industry " + $scope.formData.name + " created successfully.", "Industry Created");
+              } else {
+                  toastr.error("Industry creation failed.", "Industry creation error");
+              }
             });
-            //  }
         };
 
     })
-    .controller('CategoryCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+    .controller('CategoryCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("category-list");
         $scope.menutitle = NavigationService.makeactive("category List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.currentPage = $stateParams.page;
+        var i = 0;
+        $scope.search = {
+            keyword: ""
+        };
+        if ($stateParams.keyword) {
+            $scope.search.keyword = $stateParams.keyword;
+        }
+        $scope.showAllCountries = function(keywordChange) {
+            $scope.totalItems = undefined;
+            if (keywordChange) {
+                $scope.currentPage = 1;
+            }
+            NavigationService.searchCategory({
+                page: $scope.currentPage,
+                keyword: $scope.search.keyword
+            }, ++i, function(data, ini) {
+                console.log(data.data);
 
-        $scope.showAllCategories = function() {
-            NavigationService.getAllCategories(function(data) {
-                $scope.allCategories = data.data;
+                if (ini == i) {
+                    console.log(data.data);
+                    $scope.allCategories = data.data.results;
+                    $scope.totalItems = data.data.total;
+                    $scope.maxRow = data.data.options.count;
 
+                }
             });
         };
-        $scope.showAllCategories();
+
+        $scope.changePage = function(page) {
+            var goTo = "category-list";
+            if ($scope.search.keyword) {
+                goTo = "category-list";
+            }
+            $state.go(goTo, {
+                page: page,
+                keyword: $scope.search.keyword
+            });
+        };
+        $scope.showAllCountries();
 
         $scope.deleteCategory = function(id) {
+            globalfunction.confDel(function(value) {
+                if (value) {
+                    NavigationService.deleteCategory(id, function(data) {
+                        if (data.value) {
+                            $scope.showAllCountries();
+                            toastr.success("Category deleted successfully.", "Category deleted");
+                        } else {
+                            toastr.error("There was an error while deleting Category", "Category deleting error");
+                        }
 
-            NavigationService.deleteCategory({
-                id: id
-            }, function(data) {
-                $scope.showAllCategories();
 
+                    });
+                }
             });
-        }
-
+        };
     })
     .controller('CreateCategoryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file

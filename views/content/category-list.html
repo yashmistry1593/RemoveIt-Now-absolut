@@ -31,7 +31,7 @@
                     <div class="widget-title">
                         <div class="pull-right">
                           <form class="search-form mr-form">
-                              <input type="text" placeholder="Search Here..."/>
+                            <input type="text" ng-change="showAllCountries(true)" placeholder="Search Here..." ng-model="search.keyword"/>
                               <button type="submit">
                                   <i class="fa fa-search"></i>
                               </button>
@@ -53,8 +53,10 @@
                             <tbody>
                                 <tr ng-repeat="cat in allCategories">
                                     <td>{{cat.name}}</td>
-                                    <td>{{cat.industry}}</td>
-                                    <td>{{cat.status}}</td>
+                                    <td>{{cat.industry.name}}</td>
+                                    <td>
+                                                         <toggle-switch ng-model="cat.status" class="switch-mini switch-success"></toggle-switch>
+</td>
                                     <td>
                                       <a class="btn btn-primary" ui-sref="editcategory({id:cat._id})"><i class="fa fa-pencil"></i></a>
                                       <a class="btn btn-danger" ng-click="deleteCategory(cat._id)"><i class="fa fa-trash"></i></a>
@@ -63,6 +65,14 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="tableData" ng-show="totalItems == 0">
+                        <h5>No data found</h5>
+                    </div>
+                    <div class="tableData" ng-show="totalItems == undefined">
+                        <h5>Loading Data</h5>
+                    </div>
+
+                    <ul ng-if="totalItems" ng-change="changePage(currentPage);" uib-pagination total-items="totalItems" items-per-page="maxRow" ng-model="currentPage" max-size="template.pageMax" class="pagination-sm" boundary-links="true" force-ellipses="true"></ul>
                 </div>
             </div>
         </div>
