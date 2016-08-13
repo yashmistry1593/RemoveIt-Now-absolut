@@ -32,12 +32,13 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Country*</label>
-                                    <multiple-select list="list"></multiple-select>
+                                    {{formData.country}}
+                                    <multiple-select list="list" ng-model="formData.country" api="searchCountry" ></multiple-select>
                                     <div class="error-msg" ng-show="zoneform.name.$error.required && zoneform.name.$touched">Please Enter Zone Name.</div>
                                 </div>
                                 <div class="form-group">
                                     <label>Zone Name*</label>
-                                    <multiple-select list="list"></multiple-select>
+                                    <!-- <multiple-select list="list"></multiple-select> -->
                                     <div class="error-msg" ng-show="zoneform.name.$error.required && zoneform.name.$touched">Please Enter Zone Name.</div>
                                 </div>
                                 <div class="text-center mt20">
@@ -46,12 +47,11 @@
                                 </div>
                             </div>
                         </div>
-                      </form>
+                    </form>
 
-
-                    </div>
                 </div>
             </div>
+        </div>
 
     </div>
 </div>

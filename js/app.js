@@ -839,7 +839,7 @@ firstapp.directive('addressForm', function($document) {
         scope: {},
         restrict: 'EA',
         replace: false,
-        controller: function($scope, NgMap,$http) {
+        controller: function($scope, NgMap, $http) {
             $scope.demoForm = {};
             $scope.demoForm.lat = 19.0760;
             $scope.demoForm.long = 72.8777;
@@ -855,15 +855,15 @@ firstapp.directive('addressForm', function($document) {
                 });
 
             };
-            $scope.getLatLong= function(address) {
-              $http({
-                  url:"https://maps.googleapis.com/maps/api/geocode/json?address="+address+"&key=AIzaSyAc75yahObocBDF_deZ7T6_rUkS8LS4t00",
-                  method: 'GET',
-                  withCredentials: false,
-              }).success(function(data) {
-                console.log(data);
-              });
-              // $http.get("http://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCn9ypqFNxdXt9Zu2YqLcdD1Xdt2wNul9s&address="+address);
+            $scope.getLatLong = function(address) {
+                $http({
+                    url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyAc75yahObocBDF_deZ7T6_rUkS8LS4t00",
+                    method: 'GET',
+                    withCredentials: false,
+                }).success(function(data) {
+                    console.log(data);
+                });
+                // $http.get("http://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCn9ypqFNxdXt9Zu2YqLcdD1Xdt2wNul9s&address="+address);
             };
 
         },
@@ -888,8 +888,9 @@ firstapp.directive('multipleSelect', function($document) {
     return {
         templateUrl: 'views/directive/multiple-select.html',
         scope: {
-            // model: '=ngModel',
+            model: '=ngModel',
             list: "=list",
+            api: "@api",
         },
         restrict: 'EA',
         replace: false,

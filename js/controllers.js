@@ -924,7 +924,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
     })
 
-    .controller('ProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $state, toastr) {
+.controller('ProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("product-list");
         $scope.menutitle = NavigationService.makeactive("product");
@@ -1201,11 +1201,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
             });
         };
-        $scope.changeStatus = function(ind){
-          NavigationService.bankSave(ind, function(data) {
-            if (data.value === true) {
-            }
-          });
+        $scope.changeStatus = function(ind) {
+            NavigationService.bankSave(ind, function(data) {
+                if (data.value === true) {}
+            });
         };
     })
     .controller('CreateBankmasterCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
@@ -1228,13 +1227,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.saveBank = function(formData) {
 
             NavigationService.bankSave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('bankmaster-list');
-                  toastr.success("Bank " + $scope.formData.name + " created successfully.", "Bank Created");
-              } else {
-                  toastr.error("Bank creation failed.", "Bank creation error");
-              }
-                        });
+                if (data.value === true) {
+                    $state.go('bankmaster-list');
+                    toastr.success("Bank " + $scope.formData.name + " created successfully.", "Bank Created");
+                } else {
+                    toastr.error("Bank creation failed.", "Bank creation error");
+                }
+            });
         };
     })
     .controller('EditBankmasterCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
@@ -1261,12 +1260,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.saveBank = function(formValid) {
             NavigationService.bankSave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('bankmaster-list');
-                  toastr.success("Bank " + $scope.formData.name + " created successfully.", "Bank Created");
-              } else {
-                  toastr.error("Bank creation failed.", "Bank creation error");
-              }
+                if (data.value === true) {
+                    $state.go('bankmaster-list');
+                    toastr.success("Bank " + $scope.formData.name + " created successfully.", "Bank Created");
+                } else {
+                    toastr.error("Bank creation failed.", "Bank creation error");
+                }
             });
         };
     })
@@ -1610,12 +1609,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.saveCurrency = function(formData) {
 
             NavigationService.currencySave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('currency-list');
-                  toastr.success("Currency " + $scope.formData.name + " created successfully.", "Currency Created");
-              } else {
-                  toastr.error("Currency creation failed.", "Currency creation error");
-              }
+                if (data.value === true) {
+                    $state.go('currency-list');
+                    toastr.success("Currency " + $scope.formData.name + " created successfully.", "Currency Created");
+                } else {
+                    toastr.error("Currency creation failed.", "Currency creation error");
+                }
             });
         };
 
@@ -1638,12 +1637,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.saveCurrency = function(formValid) {
 
             NavigationService.currencySave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('currency-list');
-                  toastr.success("Currency " + $scope.formData.name + " created successfully.", "Currency Created");
-              } else {
-                  toastr.error("Currency creation failed.", "Currency creation error");
-              }
+                if (data.value === true) {
+                    $state.go('currency-list');
+                    toastr.success("Currency " + $scope.formData.name + " created successfully.", "Currency Created");
+                } else {
+                    toastr.error("Currency creation failed.", "Currency creation error");
+                }
             });
         };
 
@@ -2486,12 +2485,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
             });
         };
-        $scope.changeStatus = function(ind){
-          NavigationService.industrySave(ind, function(data) {
-            if (data.value === true) {
-                $state.go('industry-list');
-            }
-          });
+        $scope.changeStatus = function(ind) {
+            NavigationService.industrySave(ind, function(data) {
+                if (data.value === true) {
+                    $state.go('industry-list');
+                }
+            });
         };
 
     })
@@ -2550,12 +2549,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.saveIndustry = function(formValid) {
 
             NavigationService.industrySave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('industry-list');
-                  toastr.success("Industry " + $scope.formData.name + " created successfully.", "Industry Created");
-              } else {
-                  toastr.error("Industry creation failed.", "Industry creation error");
-              }
+                if (data.value === true) {
+                    $state.go('industry-list');
+                    toastr.success("Industry " + $scope.formData.name + " created successfully.", "Industry Created");
+                } else {
+                    toastr.error("Industry creation failed.", "Industry creation error");
+                }
             });
         };
 
@@ -2623,11 +2622,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
             });
         };
-        $scope.changeStatus = function(ind){
-          NavigationService.categorySave(ind, function(data) {
-            if (data.value === true) {
-            }
-          });
+        $scope.changeStatus = function(ind) {
+            NavigationService.categorySave(ind, function(data) {
+                if (data.value === true) {}
+            });
         };
     })
     .controller('CreateCategoryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -3818,63 +3816,60 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             console.log('$scope.allCities', $scope.allCities);
         });
     })
-    .controller('MultipleSelectCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter) {
-        $scope.search = {
-            modelData: ""
-        };
+
+.controller('MultipleSelectCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter) {
+
+    console.log("API", $scope.api);
+
+
+    var i = 0;
+    $scope.getValues = function() {
+        NavigationService[$scope.api]({
+            filter: {},
+            keyword: $scope.search.modelData,
+            page: 1
+        }, ++i, function(data) {
+            $scope.list = data.data.results;
+        });
+    };
+
+
+    $scope.search = {
+        modelData: $scope.model
+    };
+
+    $scope.getValues();
+    $scope.listview = false;
+    $scope.showCreate = false;
+    $scope.typeselect = "";
+    $scope.showList = function() {
+        $scope.listview = true;
+    }
+
+    $scope.searchNew = function(filter) {
+        console.log(filter);
+        if (!filter || filter == "") {
+            $scope.showCreate = false;
+            $scope.list = $scope.listFresh;
+        } else {
+            $scope.showCreate = true;
+            // console.log($scope.typeselect);
+            $scope.getValues($scope.list);
+        }
+    };
+
+    $scope.searchNew();
+
+    $scope.createNew = function(create) {
+        var newCreate = $filter("capitalize")(create);
+        console.log("Create New " + newCreate);
         $scope.listview = false;
-        $scope.showCreate = false;
-        $scope.listFresh = globalfunction.listFresh;
-        // globalfunction.listFresh = [{
-        //     name: "India"
-        // }, {
-        //     name: "England"
-        // }, {
-        //     name: "USA"
-        // }];
-        $scope.typeselect = "";
-        $scope.showList = function() {
-            $scope.listview = true;
-        }
+    };
 
-        $scope.searchNew = function(filter) {
-            console.log(filter);
-            if (!filter || filter == "") {
-                $scope.showCreate = false;
-                $scope.list = $scope.listFresh;
-            } else {
-                $scope.showCreate = true;
+    $scope.sendData = function(val, name) {
+        $scope.search.modelData = name;
+        $scope.model = val;
+        $scope.listview = false;
+    }
 
-                // console.log($scope.typeselect);
-
-                NavigationService.allSearch("country/search", {
-                        "page": 1,
-                        "keyword": "aus"
-                    }, function(data) {
-                        $scope.list = data.data.results;
-                        console.log($scope.list);
-                    })
-                    // $scope.list = $filter("filter")($scope.listFresh, filter);
-                // var newFilter = _.upperCase(filter);
-                // _.each($scope.list, function(n) {
-                //     var newN = _.upperCase(n.name);
-                //     if (newFilter == newN) {
-                //         $scope.showCreate = false;
-                //     }
-                // });
-            }
-        };
-        $scope.searchNew();
-
-        $scope.createNew = function(create) {
-            var newCreate = $filter("capitalize")(create);
-            console.log("Create New " + newCreate);
-            $scope.listview = false;
-        };
-
-        $scope.sendData = function(val) {
-            $scope.search.modelData = val;
-            $scope.listview = false;
-
-        }
-    });
+});
