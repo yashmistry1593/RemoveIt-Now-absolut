@@ -167,7 +167,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.showAllOffices();
 
             });
-        }
+        };
     })
     .controller('CreateOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
