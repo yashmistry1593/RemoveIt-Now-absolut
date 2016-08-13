@@ -25,7 +25,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
     })
-    .controller('CountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams,toastr) {
+    .controller('CountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("country-list");
         $scope.menutitle = NavigationService.makeactive("Country List");
@@ -73,9 +73,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     NavigationService.deleteCountry(id, function(data) {
                         if (data.value) {
                             $scope.showAllCountries();
-                            toastr.success("Country deleted", "Country deleted successfully.");
+                            toastr.success("Country deleted successfully.", "Country deleted");
                         } else {
-                            toastr.error("Country deleting error", "There was an error while deleting country");
+                            toastr.error("There was an error while deleting country", "Country deleting error");
                         }
 
 
@@ -101,9 +101,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.countrySave($scope.formData, function(data) {
                 if (data.value === true) {
                     $state.go('country-list');
-                    toastr.success("Country Created", "Country " + formData.name + " created successfully.");
+                    toastr.success("Country " + formData.name + " created successfully.", "Country Created");
                 } else {
-                    toastr.error("Country creation error", "Country creation failed.");
+                    toastr.error("Country creation failed.", "Country creation error");
                 }
             });
         };
@@ -132,8 +132,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //  if (formValid.$valid) {
             //  $scope.formComplete = true;
             NavigationService.countryEditSave($scope.formData, function(data) {
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('country-list');
+                    toastr.success("Country " + formData.name + " edited successfully.", "Country Edited");
+                } else {
+                    toastr.error("Country edition failed.", "Country editing error");
                 }
             });
             //  }
