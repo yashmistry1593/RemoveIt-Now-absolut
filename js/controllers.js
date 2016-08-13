@@ -2205,16 +2205,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.showAllCountries();
 
-        $scope.deleteDistrict = function(id) {
+        $scope.deleteIndustry = function(id) {
             globalfunction.confDel(function(value) {
                 console.log(value);
                 if (value) {
-                    NavigationService.deleteState(id, function(data) {
+                    NavigationService.deleteIndustry(id, function(data) {
                         if (data.value) {
                             $scope.showAllCountries();
-                            toastr.success("District deleted successfully.", "District deleted");
+                            toastr.success("Industry deleted successfully.", "Industry deleted");
                         } else {
-                            toastr.error("There was an error while deleting District", "District deleting error");
+                            toastr.error("There was an error while deleting Industry", "Industry deleting error");
                         }
 
 
