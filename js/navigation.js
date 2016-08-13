@@ -1499,7 +1499,7 @@ var navigationservice = angular.module('navigationservice', [])
         },
         deleteBank: function(id, callback) {
             $http.post(adminurl + 'bank/delete',{
-                    "_id": id.id,
+                    "_id": id,
                 }).success(callback);
         },
 

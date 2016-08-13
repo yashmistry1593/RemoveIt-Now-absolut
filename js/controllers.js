@@ -1063,6 +1063,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
             });
         };
+        $scope.changeStatus = function(ind){
+          NavigationService.bankSave(ind, function(data) {
+            if (data.value === true) {
+            }
+          });
+        };
     })
     .controller('CreateBankmasterCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
         //Used to name the .html file
@@ -2348,7 +2354,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $state.go('industry-list');
             }
           });
-        }
+        };
 
     })
     .controller('CreateIndustryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
