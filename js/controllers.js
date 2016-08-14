@@ -3742,8 +3742,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             name: newCreate
         };
         if ($scope.filter) {
-            data = _.assign(data, filter);
+            data = _.assign(data, JSON.parse($scope.filter));
         }
+        console.log(data);
         NavigationService[$scope.create](data,function(data) {
           if(data.value) {
             toastr.success($scope.name + " Created Successfully","Creation Success");
