@@ -3817,7 +3817,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
     };
 
-    $scope.$watch('model', function(oldVal, newVal) {
+    $scope.$watch('model', function(newVal, oldVal) {
         if (newVal && oldVal === undefined) {
             $scope.getValues({
                 _id: $scope.model
