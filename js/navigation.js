@@ -429,13 +429,8 @@ var navigationservice = angular.module('navigationservice', [])
                 withCredentials: true
             }).success(callback);
         },
-        typeOfOfficeSave: function(formData, callback) {
-            $http({
-                url: adminurl + 'TypeOfOffice/saveData',
-                method: 'POST',
-                withCredentials: true,
-                data: formData
-            }).success(callback);
+        officeSave: function(formData, callback) {
+            $http.post(adminurl + 'office/save',formData).success(callback);
         },
         getOnetypeOfOffice: function(id, callback) {
             // console.log('form data: ', formData);

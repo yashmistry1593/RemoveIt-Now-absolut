@@ -286,10 +286,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.saveOffice = function(formData) {
 
             NavigationService.officeSave($scope.formData, function(data) {
-                if (data.value === true) {
-                    $state.go('office-list');
-                }
-
+              if (data.value === true) {
+                  $state.go('office-list');
+                  toastr.success("Office " + formData.name + " created successfully.", "Office Created");
+              } else {
+                  toastr.error("Office creation failed.", "Office creation error");
+              }
             });
         };
 
@@ -1378,16 +1380,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.formData = {};
 
         NavigationService.getOneCompany($stateParams.id, function(data) {
-
             $scope.formData = data.data;
+            // $scope.formData.country = data.data.
             console.log($scope.formData);
         });
-
         $scope.saveCompany = function(formValid) {
             NavigationService.companySave($scope.formData, function(data) {
-                if (data.value === true) {
-                    $state.go('company-list');
-                }
+              if (data.value === true) {
+                  $state.go('company-list');
+                  toastr.success("Company " + $scope.formData.name + " edited successfully.", "Company Edited");
+              } else {
+                  toastr.error("Company edition failed.", "Company editing error");
+              }
             });
         };
 
