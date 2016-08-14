@@ -766,7 +766,6 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
 
 firstapp.filter('uploadpath', function() {
     return function(input, width, height, style) {
-        console.log(input);
         var other = "";
         if (width && width !== "") {
             other += "&width=" + width;
@@ -778,12 +777,8 @@ firstapp.filter('uploadpath', function() {
             other += "&style=" + style;
         }
         if (input) {
-            console.log('in if');
-            console.log('input');
             if (input.indexOf('https://') == -1) {
-                console.log('in if');
                 return imgpath + "?file=" + input + other;
-                console.log(imgpath + "?file=" + input + other);
             } else {
                 return input;
             }
@@ -847,7 +842,6 @@ firstapp.directive('uploadImage', function($http, $filter) {
                     },
                     transformRequest: angular.identity
                 }).success(function(data) {
-                    console.log("success");
                     if ($scope.callback) {
                         $scope.callback(data);
                     } else {
@@ -971,7 +965,8 @@ firstapp.directive('addressForm', function($document) {
     return {
         templateUrl: 'views/directive/address-form.html',
         scope: {
-          formData:"=ngModel"
+          formData:"=ngModel",
+          demoForm:"=ngValid"
         },
         restrict: 'EA',
         replace: false,
@@ -980,8 +975,6 @@ firstapp.directive('addressForm', function($document) {
             $scope.map = {};
             $scope.change = function() {
                 NgMap.getMap().then(function(map) {
-                    console.log(map.markers[0].position.lat());
-                    console.log(map.markers[0].position.lng());
                     var latLng = {
                         lat: map.markers[0].position.lat(),
                         lng: map.markers[0].position.lng()
@@ -993,8 +986,7 @@ firstapp.directive('addressForm', function($document) {
             $scope.getLatLng = function(address) {
 
                 NavigationService.getLatLng(address, ++LatLongi, function(data, i) {
-                    console.log(i);
-                    console.log(LatLongi);
+
                     if (i == LatLongi) {
                         $scope.formData = _.assign($scope.formData, data.results[0].geometry.location);
                     }
@@ -1042,11 +1034,6 @@ firstapp.directive('multipleSelect', function($document) {
             }
             scope.typeselect = attr.typeselect;
             // $scope.searchNew()
-            scope.change = function(data) {
-                console.log(data);
-            };
-
-
         }
     };
 });
