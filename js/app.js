@@ -29,7 +29,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('branch-list', {
-        url: "/branch-list",
+        url: "/branch-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
         controller: 'BranchListCtrl'
     })
@@ -43,7 +43,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('country-list', {
         url: "/country-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'CountryCtrl'
+        controller: 'CountryCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
 
@@ -61,9 +65,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('zone-list', {
-        url: "/zone-list",
+        url: "/zone-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'ZoneCtrl'
+        controller: 'ZoneCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createzone', {
@@ -79,9 +87,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('state-list', {
-        url: "/state-list",
+        url: "/state-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'StateCtrl'
+        controller: 'StateCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createstate', {
@@ -97,9 +109,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('district-list', {
-        url: "/district-list",
+        url: "/district-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'DistrictCtrl'
+        controller: 'DistrictCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createdistrict', {
@@ -115,9 +131,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('currency-list', {
-        url: "/currency-list",
+        url: "/currency-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'CurrencyCtrl'
+        controller: 'CurrencyCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createcurrency', {
@@ -133,9 +153,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('city-list', {
-        url: "/city-list",
+        url: "/city-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'CityCtrl'
+        controller: 'CityCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createcity', {
@@ -151,9 +175,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('office-list', {
-        url: "/office-list",
+        url: "/office-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'OfficeCtrl'
+        controller: 'OfficeCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
 
@@ -170,9 +198,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('typeOfOffice-list', {
-        url: "/typeOfOffice-list",
+        url: "/typeOfOffice-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'TypeOfOfficeCtrl'
+        controller: 'TypeOfOfficeCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createtypeOfOffice', {
@@ -188,9 +220,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('department-list', {
-        url: "/department-list",
+        url: "/department-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'DepartmentCtrl'
+        controller: 'DepartmentCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
 
@@ -208,9 +244,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
 
 
     .state('uniquetype-list', {
-        url: "/uniquetype-list",
+        url: "/uniquetype-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'UniqueTypetCtrl'
+        controller: 'UniqueTypetCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
 
@@ -227,9 +267,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('policytype-list', {
-        url: "/policytype-list",
+        url: "/policytype-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'PolicyTypeCtrl'
+        controller: 'PolicyTypeCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createpolicytype', {
@@ -245,9 +289,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('policy-list', {
-        url: "/policy-list",
+        url: "/policy-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'PolicyCtrl'
+        controller: 'PolicyCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createpolicy', {
@@ -263,9 +311,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('policydoc-list', {
-        url: "/policydoc-list",
+        url: "/policydoc-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'PolicyDocCtrl'
+        controller: 'PolicyDocCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createpolicydoc', {
@@ -281,9 +333,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('industry-list', {
-        url: "/industry-list",
+        url: "/industry-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'IndustryCtrl'
+        controller: 'IndustryCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createindustry', {
@@ -299,9 +355,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('category-list', {
-        url: "/category-list",
+        url: "/category-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'CategoryCtrl'
+        controller: 'CategoryCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createcategory', {
@@ -317,9 +377,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('func-list', {
-        url: "/func-list",
+        url: "/func-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'FuncCtrl'
+        controller: 'FuncCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createfunc', {
@@ -335,9 +399,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('causeloss-list', {
-        url: "/causeloss-list",
+        url: "/causeloss-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'CauseLossCtrl'
+        controller: 'CauseLossCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createcauseloss', {
@@ -353,9 +421,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('natureloss-list', {
-        url: "/natureloss-list",
+        url: "/natureloss-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'NatureLossCtrl'
+        controller: 'NatureLossCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createnatureloss', {
@@ -371,9 +443,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('businessbranch-list', {
-        url: "/businessbranch-list",
+        url: "/businessbranch-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'BusinessBranchCtrl'
+        controller: 'BusinessBranchCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createbusinessbranch', {
@@ -389,9 +465,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('menu-list', {
-        url: "/menu-list",
+        url: "/menu-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'MenuCtrl'
+        controller: 'MenuCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createmenu', {
@@ -407,9 +487,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('role-list', {
-        url: "/role-list",
+        url: "/role-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'RoleCtrl'
+        controller: 'RoleCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createrole', {
@@ -425,9 +509,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('user-list', {
-        url: "/user-list",
+        url: "/user-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'UserCtrl'
+        controller: 'UserCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createuser', {
@@ -443,9 +531,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('employee-list', {
-        url: "/employee-list",
+        url: "/employee-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'EmployeeCtrl'
+        controller: 'EmployeeCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createemployee', {
@@ -461,9 +553,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('product-list', {
-        url: "/product-list",
+        url: "/product-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'ProductCtrl'
+        controller: 'ProductCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createproduct', {
@@ -479,9 +575,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('salvage-list', {
-        url: "/salvage-list",
+        url: "/salvage-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'SalvageCtrl'
+        controller: 'SalvageCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createsalvage', {
@@ -497,9 +597,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('bankmaster-list', {
-        url: "/bankmaster-list",
+        url: "/bankmaster-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'BankMasterCtrl'
+        controller: 'BankMasterCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createbankmaster', {
@@ -514,26 +618,35 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         })
 
     .state('company-list', {
-        url: "/company-list",
+        url: "/company-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'CompanyCtrl'
+        controller: 'CompanyCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createcompany', {
-            url: "/company-detail",
-            templateUrl: "views/template.html",
-            controller: 'CreateCompanyCtrl'
-        })
-        .state('editcompany', {
-            url: "/company-detail/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditCompanyCtrl'
-        })
+        url: "/company-detail",
+        templateUrl: "views/template.html",
+        controller: 'CreateCompanyCtrl'
+    })
+
+    .state('editcompany', {
+        url: "/company-detail/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditCompanyCtrl'
+    })
 
     .state('customer-list', {
-        url: "/customer-list",
+        url: "/customer-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'CustomerCtrl'
+        controller: 'CustomerCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createcustomer', {
@@ -548,9 +661,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         })
 
     .state('contactmanagement-list', {
-        url: "/contactmanagement-list",
+        url: "/contactmanagement-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'ContactManagementCtrl'
+        controller: 'ContactManagementCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createcontactmanagement', {
@@ -560,9 +677,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('contacttype-list', {
-        url: "/contacttype-list",
+        url: "/contacttype-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'ContactTypeCtrl'
+        controller: 'ContactTypeCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createcontacttype', {
@@ -572,9 +693,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('contacttypeoffice-list', {
-        url: "/contacttypeoffice-list",
+        url: "/contacttypeoffice-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'ContactTypeOfficeCtrl'
+        controller: 'ContactTypeOfficeCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('createcontacttypeoffice', {
@@ -584,9 +709,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('customerSegment-list', {
-        url: "/customerSegment-list",
+        url: "/customerSegment-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'CustomerSegmentCtrl'
+        controller: 'CustomerSegmentCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
 
@@ -597,15 +726,20 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('editcustomersegment', {
-            url: "/customersegment-edit/:id",
-            templateUrl: "views/template.html",
-            controller: 'EditCustomerSegmentCtrl'
-        })
-        .state('customerCompany-list', {
-            url: "/customerCompany-list",
-            templateUrl: "views/template.html",
-            controller: 'CustomerCompanyCtrl'
-        })
+        url: "/customersegment-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditCustomerSegmentCtrl'
+    })
+
+    .state('customerCompany-list', {
+        url: "/customerCompany-list/{page:.*}/{keyword:.*}",
+        templateUrl: "views/template.html",
+        controller: 'CustomerCompanyCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
+    })
 
 
     .state('createcustomercompany', {
@@ -839,7 +973,7 @@ firstapp.directive('addressForm', function($document) {
         scope: {},
         restrict: 'EA',
         replace: false,
-        controller: function($scope, NgMap,NavigationService) {
+        controller: function($scope, NgMap, NavigationService) {
             $scope.formData = {};
             $scope.map = {};
             $scope.change = function() {
@@ -857,8 +991,8 @@ firstapp.directive('addressForm', function($document) {
             $scope.getLatLng = function(address) {
 
                 NavigationService.getLatLng(address, ++LatLongi, function(data, i) {
-                  console.log(i);
-                  console.log(LatLongi);
+                    console.log(i);
+                    console.log(LatLongi);
                     if (i == LatLongi) {
                         $scope.formData = _.assign($scope.formData, data.results[0].geometry.location);
                     }
@@ -893,7 +1027,7 @@ firstapp.directive('multipleSelect', function($document) {
             name: "@name",
             required: "@required",
             filter: "@filter",
-            ngName:"=ngName"
+            ngName: "=ngName"
         },
         restrict: 'EA',
         replace: false,
