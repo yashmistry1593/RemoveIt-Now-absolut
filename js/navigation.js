@@ -236,9 +236,8 @@ var navigationservice = angular.module('navigationservice', [])
             });
         },
         zoneSave: function(formData, callback) {
-            $http.post(adminurl + 'zone/saveData', formData).success(function(data) {
-                callback(data, i);
-            });
+          console.log(formData);
+            $http.post(adminurl + 'zone/save', formData).success(callback);
         },
         getOneZone: function(id, callback) {
             $http.post(adminurl + 'zone/getOne', {

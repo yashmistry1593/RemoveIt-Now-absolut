@@ -504,7 +504,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
     })
-    .controller('CreateZoneCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('CreateZoneCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("zone-detail");
         $scope.menutitle = NavigationService.makeactive("Zone");
@@ -514,12 +514,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.header = {
             "name": "Create Zone"
         };
-        $scope.formData = {
-            country: "57ae9cc084f7438002bf8110"
-        };
         $scope.saveZone = function(formData) {
-
-            NavigationService.zoneSave($scope.formData, function(data) {
+            NavigationService.zoneSave(formData, function(data) {
                 if (data.value === true) {
                     $state.go('zone-list');
                     toastr.success("Zone " + formData.name + " created successfully.", "Zone Created");
@@ -528,13 +524,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
             });
         };
-        //jagruti
-        NavigationService.getAllCountries(function(data) {
-            $scope.allCountries = data.data;
-            console.log('$scope.allCountries', $scope.allCountries);
-
-        });
-
     })
     .controller('EditZoneCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         //Used to name the .html file
@@ -549,6 +538,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         NavigationService.getOneZone($stateParams.id, function(data) {
             $scope.formData = data.data;
+            $scope.formData.country = data.data.country._id;
         });
 
         $scope.saveZone = function(formValid) {
@@ -561,13 +551,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
             });
         };
-
-        NavigationService.getAllCountries(function(data) {
-            $scope.allCountries = data.data;
-            console.log('$scope.allCountries', $scope.allCountries);
-
-        });
-
     })
     .controller('StateCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, toastr, $state) {
         //Used to name the .html file
