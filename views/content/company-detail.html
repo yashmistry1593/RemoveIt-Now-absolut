@@ -9,7 +9,7 @@
     </ul>
 </div>
 
-<form role="form" class="sec" name="companyForm" ng-submit="saveCompany(formData)">
+<form name="companyForm" ng-submit="saveCompany(formData)">
     <div class="heading-sec">
         <div class="row">
             <div class="col-md-12 column">
@@ -51,7 +51,7 @@
                             </div>
                             <div class="form-group">
                                 <label>NEFT Code</label>
-                                <input type="text" class="form-control" ng-model="formData.NEFTCode">
+                                <input type="text" class="form-control" ng-model="formData.neftcode">
                             </div>
                             <div class="form-group">
                                 <label>Bank Name</label>
@@ -76,9 +76,9 @@
                                 <input type="text" name="companyCode" class="form-control" ng-model="formData.companyCode" readonly>
                             </div>
                             <div class="form-group">
-                                <label>Name*</label>
+                                <label>Company Name*</label>
                                 <input type="text" name="name" class="form-control" ng-model="formData.name" required>
-                                <div class="error-msg" ng-show="companyForm.name.$error && companyForm.name.$touched">Please Enter Name</div>
+                                <div class="error-msg" ng-show="companyForm.name.$error && companyForm.name.$touched">Please Enter Company Name</div>
                             </div>
                             <div class="form-group">
                                 <label>Short Name*</label>
@@ -106,12 +106,12 @@
                                 </div>
                                 <div class="form-group">
                                     <label>Fax*</label>
-                                    <input type="tel" name="fax" class="form-control" ng-model="formData.phone" required>
+                                    <input type="tel" name="fax" class="form-control" ng-model="formData.fax" required>
                                     <div class="error-msg" ng-show="companyForm.fax.$error.required && companyForm.fax.$touched">Please Enter Fax</div>
                                 </div>
                                 <div class="form-group">
                                     <label>Email*</label>
-                                    <input type="email" name="email" class="form-control" ng-model="formData.phone" required>
+                                    <input type="email" name="email" class="form-control" ng-model="formData.email" required>
                                     <div class="error-msg" ng-show="companyForm.email.$error.required && companyForm.email.$touched">Please Enter Email Id</div>
                                 </div>
                             </div>

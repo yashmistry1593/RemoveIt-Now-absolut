@@ -530,7 +530,8 @@ $trans-black: rgba( black, .15 );
     border: 1px solid #ccc;
     z-index: 9;
     max-height: 200px;
-    overflow-x: scroll;
+    overflow-x: hidden;
+    overflow-y: auto;
     > li {
         padding: 10px;
         cursor: pointer;
