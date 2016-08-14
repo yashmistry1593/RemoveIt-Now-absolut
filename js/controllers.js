@@ -3818,9 +3818,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
     $scope.$watch('model', function() {
-      $scope.getValues({
-          _id: $scope.model
-      }, true);
+      if($scope.model)
+      {
+        $scope.getValues({
+            _id: $scope.model
+        }, true);
+      }
+      else {
+        $scope.sendData("", "");
+      }
+
     });
 
 
