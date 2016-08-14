@@ -33,17 +33,17 @@
                                 <div class="form-group">
                                     <label>Country*</label>
                                     <multiple-select  name="country" required ng-model="formData.country" ng-name = "name.country" api="searchCountry"></multiple-select>
-                                    <div class="error-msg" ng-show="zoneform.country.$error.required && zoneform.country.$touched">Please Enter Country.</div>
+                                    <div class="error-msg" ng-show="stateform.country.$error.required">Please Enter Country</div>
                                 </div>
                                 <div class="form-group">
                                     <label for="disabledSelect">Zone*</label>
                                     <multiple-select  name="zone" required ng-model="formData.zone" filter='{"country":"{{formData.country}}"}' ng-name = "name.zone" api="searchZone"></multiple-select>
-                                    <div class="error-msg" ng-show="stateform.zone.$error.required && stateform.zone.$touched">Please Enter Zone.</div>
+                                    <div class="error-msg" ng-show="stateform.zone.$error.required">Please Enter Zone</div>
                                 </div>
                                 <div class="form-group">
                                     <label for="">State Name*</label>
                                     <input type="text" name="name" ng-model="formData.name" class="form-control" required>
-                                    <div class="error-msg" ng-show="stateform.name.$error.required && stateform.name.$touched">Please Enter State.</div>
+                                    <div class="error-msg" ng-show="stateform.name.$error.required && stateform.name.$touched">Please Enter State</div>
                                 </div>
 
                                 <div class="text-center mt20">
