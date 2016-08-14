@@ -813,7 +813,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 // console.log('$scope.formData',$scope.formData);
                 // console.log(data);
                 // $scope.formData.surveyor.valid_upto = new Date($scope.formData.surveyor.valid_upto);
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('employee-list');
                 }
                 // console.log('$scope.allCountriessave', $scope.data);
@@ -3647,7 +3647,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
     })
 
-.controller('MultipleSelectCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter) {
+.controller('MultipleSelectCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter,toastr) {
     var i = 0;
     $scope.getValues = function(filter, insertFirst) {
         var dataSend = {
@@ -3738,6 +3738,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
     $scope.createNew = function(create) {
         var newCreate = $filter("capitalize")(create);
+        var data = {
+            name: newCreate
+        };
+        if ($scope.filter) {
+            data = _.assign(data, filter);
+        }
+        NavigationService[$scope.create](data,function(data) {
+          if(data.value) {
+            toastr.success($scope.name + " Created Successfully","Creation Success");
+            $scope.model  = data.data._id;
+            $scope.ngName = data.data.name;
+          } else {
+            toastr.error("Error while creating "+$scope.name,"Error");
+          }
+        });
         $scope.listview = false;
     };
     $scope.sendData = function(val, name) {

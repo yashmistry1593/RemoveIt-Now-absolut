@@ -971,7 +971,7 @@ firstapp.directive('addressForm', function($document) {
         restrict: 'EA',
         replace: false,
         controller: function($scope, NgMap, NavigationService) {
-            $scope.formData = {};
+
             $scope.map = {};
             $scope.change = function() {
                 NgMap.getMap().then(function(map) {
@@ -1021,7 +1021,9 @@ firstapp.directive('multipleSelect', function($document) {
             name: "@name",
             required: "@required",
             filter: "@filter",
-            ngName: "=ngName"
+            ngName: "=ngName",
+            create: "@ngCreate",
+
         },
         restrict: 'EA',
         replace: false,
