@@ -149,6 +149,11 @@ var navigationservice = angular.module('navigationservice', [])
                 callback(data, i);
             });
         },
+        searchOffice: function(formData, i, callback) {
+            $http.post(adminurl + 'office/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
         searchProduct: function(formData, i, callback) {
             $http.post(adminurl + 'Product/search', formData).success(function(data) {
                 callback(data, i);
@@ -197,11 +202,19 @@ var navigationservice = angular.module('navigationservice', [])
         countrySave: function(formData, callback) {
             $http.post(adminurl + 'country/save', formData).success(callback);
         },
+        branchSave: function(formData, callback) {
+            $http.post(adminurl + 'branch/save', formData).success(callback);
+        },
         getAllCountries: function(callback) {
             $http.post(adminurl + 'country/getAll', {}).success(callback);
         },
         getOneCountry: function(id, callback) {
             $http.post(adminurl + 'country/getOne', {
+                _id: id
+            }).success(callback);
+        },
+        getOneBranch: function(id, callback) {
+            $http.post(adminurl + 'branch/getOne', {
                 _id: id
             }).success(callback);
         },
@@ -216,6 +229,12 @@ var navigationservice = angular.module('navigationservice', [])
         },
         deleteBranch: function(id, callback) {
             $http.post(adminurl + 'branch/delete', {
+                _id: id
+            }).success(callback);
+
+        },
+        deleteOffice: function(id, callback) {
+            $http.post(adminurl + 'office/delete', {
                 _id: id
             }).success(callback);
 

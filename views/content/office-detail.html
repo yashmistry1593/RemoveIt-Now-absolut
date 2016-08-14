@@ -8,7 +8,7 @@
         </li>
     </ul>
 </div>
-<form name="officeform" ng-submit="">
+<form name="officeform" ng-submit="saveOffice(formData)">
     <div class="heading-sec">
         <div class="row">
             <div class="col-md-12 column">
@@ -31,13 +31,13 @@
                         <div class="sec">
                             <div class="form-group">
                                 <label>Company Name*</label>
-                                <multiple-select name="companyName" required ng-model="formData.country" ng-name="name.companyName" api="searchCompany"></multiple-select>
+                                <multiple-select name="companyName" required ng-model="formData.company" ng-name="name.company" api="searchCompany"></multiple-select>
 
                                 <div class="error-msg" ng-show="officeform.companyName.$invalid.required">Please Enter Company Name</div>
                             </div>
                             <div class="form-group">
                                 <label>Type of Office*</label>
-                                <multiple-select  name="officeType" required ng-model="formData.typeOfOffice" ng-name = "name.officeType" api="searchTypeOfOffice" ng-create="typeofofficeSave"></multiple-select>
+                                <multiple-select  name="officeType" required ng-model="formData.typeOfOffice" ng-name = "name.typeOfOffice" api="searchTypeOfOffice" ng-create="typeofofficeSave"></multiple-select>
                                 <div class="error-msg" ng-show="officeform.officeType.$invalid.required">Please Enter Type of Office</div>
                             </div>
                             <div class="form-group">
@@ -90,7 +90,7 @@
     </div>
     <div class="clearfix"></div>
     <div class="text-center mt20">
-        <button class="btn btn-default" type="submit" ng-click="saveOffice(formData)" ng-disabled="officeform.$invalid">Save</button>
+        <button class="btn btn-default" type="submit" ng-disabled="officeform.$invalid">Save</button>
         <button class="btn btn-default" ui-sref="office-list">Cancel</button>
     </div>
 </form>

@@ -217,7 +217,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             if (keywordChange) {
                 $scope.currentPage = 1;
             }
-            NavigationService.searchBank({
+            NavigationService.searchOffice({
                 page: $scope.currentPage,
                 keyword: $scope.search.keyword
             }, ++i, function(data, ini) {
@@ -225,7 +225,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
                 if (ini == i) {
                     console.log(data.data);
-                    $scope.allBank = data.data.results;
+                    $scope.allOffices = data.data.results;
                     $scope.totalItems = data.data.total;
                     $scope.maxRow = data.data.options.count;
                 }
@@ -244,15 +244,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.showAllCountries();
 
-        $scope.deleteBank = function(id) {
+        $scope.deleteOffice = function(id) {
             globalfunction.confDel(function(value) {
                 if (value) {
-                    NavigationService.deleteBank(id, function(data) {
+                    NavigationService.deleteOffice(id, function(data) {
                         if (data.value) {
                             $scope.showAllCountries();
-                            toastr.success("Bank deleted successfully.", "Bank deleted");
+                            toastr.success("Office deleted successfully.", "Office deleted");
                         } else {
-                            toastr.error("There was an error while deleting Bank", "Bank deleting error");
+                            toastr.error("There was an error while deleting Office", "Office deleting error");
                         }
 
 
@@ -262,12 +262,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         $scope.changeStatus = function(ind) {
-            NavigationService.bankSave(ind, function(data) {
+            NavigationService.officeSave(ind, function(data) {
                 if (data.value === true) {}
             });
         };
     })
-    .controller('CreateOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('CreateOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("office-detail");
         $scope.menutitle = NavigationService.makeactive("Office");
@@ -291,7 +291,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('EditOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+    .controller('EditOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("office-detail");
         $scope.menutitle = NavigationService.makeactive("Office");
@@ -301,25 +301,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.header = {
             "name": "Edit Office"
         };
-        NavigationService.getAllTypeOfOffices(function(data) {
-            $scope.allTypeOfOffices = data.data;
-            console.log('$scope.allTypeOfOffices', $scope.allTypeOfOffices);
-
-        });
         NavigationService.getOneOffice($stateParams.id, function(data) {
             $scope.formData = data.data;
         });
 
         $scope.saveOffice = function(formValid) {
-
-            //  if (formValid.$valid) {
-            //  $scope.formComplete = true;
-            NavigationService.officeEditSave($scope.formData, function(data) {
-                if (data.value == true) {
-                    $state.go('office-list');
-                }
+            NavigationService.officeSave($scope.formData, function(data) {
+              if (data.value === true) {
+                  $state.go('office-list');
+                  toastr.success("Office " + $scope.formData.name + " edited successfully.", "Office Edited");
+              } else {
+                  toastr.error("Office edition failed.", "Office editing error");
+              }
             });
-            //  }
         };
 
     })
@@ -3259,12 +3253,55 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     })
 
-.controller('BranchCreateCtrl', function($scope, TemplateService, NavigationService, $timeout) {
+.controller('BranchCreateCtrl', function($scope, TemplateService, NavigationService, $timeout, toastr, $state) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("branch-create");
     $scope.menutitle = NavigationService.makeactive("Create Branch");
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
+    $scope.formData = {};
+    $scope.header = {
+        "name": "Create Branch Master"
+    };
+    $scope.submit = function(formData) {
+        NavigationService.branchSave($scope.formData, function(data) {
+            if (data.value === true) {
+                $state.go('branch-list');
+                toastr.success("Branch " + $scope.formData.name + " created successfully.", "Branch Created");
+            } else {
+                toastr.error("Branch creation failed.", "Branch creation error");
+            }
+        });
+    };
+})
+.controller('BranchEditCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("branch-create");
+    $scope.menutitle = NavigationService.makeactive("Edit Branch");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.header = {
+        "name": "Edit Branch"
+    };
+    NavigationService.getOneBranch($stateParams.id, function(data) {
+        $scope.formData = data.data;
+        // $scope.formData.country = data.data.district.state.zone.country._id;
+        // $scope.formData.zone = data.data.district.state.zone._id;
+        // $scope.formData.state = data.data.district.state._id;
+        // $scope.formData.district = data.data.district._id;
+    });
+
+    $scope.submit = function(formValid) {
+        NavigationService.branchSave($scope.formData, function(data) {
+            if (data.value === true) {
+                $state.go('branch-list');
+                toastr.success("Branch " + $scope.formData.name + " edited successfully.", "Branch Edited");
+            } else {
+                toastr.error("Branch edition failed.", "Branch editing error");
+            }
+        });
+    };
 })
 
 .controller('TimelineCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {

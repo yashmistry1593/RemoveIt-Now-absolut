@@ -57,7 +57,7 @@
                                     <td>{{branch.name}}</td>
                                     <td>{{branch.code}}</td>
                                     <td>{{branch.shortName}}</td>
-                                    <td><a class="btn btn-blue" ui-sref="branch-create"><i class="fa fa-pencil"></i></a>
+                                    <td><a class="btn btn-blue" ui-sref="branch-edit({id:branch._id})"><i class="fa fa-pencil"></i></a>
                                     <a class="btn btn-red" ng-click="deleteBranch(branch._id)"><i class="fa fa-trash"></i></a></td>
                                 </tr>
                             </tbody>

@@ -40,6 +40,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'BranchCreateCtrl'
     })
 
+    .state('branch-edit', {
+        url: "/branch-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'BranchEditCtrl'
+    })
+
     .state('country-list', {
         url: "/country-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",

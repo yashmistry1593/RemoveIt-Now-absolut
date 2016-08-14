@@ -31,8 +31,8 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Company Name*</label>
-                                        <multiple-select  name="companyName" required ng-model="formData.companyName" ng-name="name.companyName" api="searchCompanyName"></multiple-select>
-                                        <div class="error-msg" ng-show="branchForm.companyName.$invalid.required">Please Enter Company Name</div>
+                                        <multiple-select  name="company" required ng-model="formData.company" ng-name="name.company" api="searchCompany"></multiple-select>
+                                        <div class="error-msg" ng-show="branchForm.company.$invalid.required">Please Enter Company Name</div>
                                     </div>
                                     <div class="form-group">
                                         <label>Branch Name*</label>
@@ -80,31 +80,31 @@
                                     <label>TAT</label>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" name="stat" ng-model="formData.stat">
+                                            <input type="checkbox" name="stat" ng-model="formData.STAT">
                                             STAT
                                         </label>
                                     </div>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" name="itat" ng-model="formData.itat">
+                                            <input type="checkbox" name="itat" ng-model="formData.ITAT">
                                             ITAT
                                         </label>
                                     </div>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" name="ltat" ng-model="formData.ltat">
+                                            <input type="checkbox" name="ltat" ng-model="formData.LTAT">
                                             LTAT
                                         </label>
                                     </div>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" name="fsr" ng-model="formData.fsr">
+                                            <input type="checkbox" name="fsr" ng-model="formData.FSR">
                                             FSR
                                         </label>
                                     </div>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" name="r2nr" ng-model="formData.r2nr">
+                                            <input type="checkbox" name="r2nr" ng-model="formData.R2NR">
                                             R2NR
                                         </label>
                                     </div>
