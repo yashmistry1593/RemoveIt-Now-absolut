@@ -34,14 +34,14 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Bank Name*</label>
-                                        <input type="text" name="name" class="form-control" ng-model="formData.name">
+                                        <input type="text" name="name" class="form-control" ng-model="formData.name" required>
                                         <div class="error-msg" ng-show="bankForm.name.$error && bankForm.name.$touched">Please Enter Bank Name</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center mt20">
-                                <button class="btn btn-default" type="submit" ng-click="saveBank(formData)">Save</button>
-                                <button class="btn btn-default" type="submit" ui-sref="bankmaster-list">Cancel</button>
+                                <button class="btn btn-default" type="submit" ng-click="saveBank(formData)" ng-disabled="bankForm.$invalid">Save</button>
+                                <button class="btn btn-default" ui-sref="bankmaster-list">Cancel</button>
                             </div>
                         </div>
                     </div>
