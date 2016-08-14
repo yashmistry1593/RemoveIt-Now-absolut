@@ -303,6 +303,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         NavigationService.getOneOffice($stateParams.id, function(data) {
             $scope.formData = data.data;
+            $scope.formData.country = data.data.city.district.state.zone.country._id;
+            $scope.formData.zone = data.data.city.district.state.zone._id;
+            $scope.formData.state = data.data.city.district.state._id;
+            $scope.formData.district = data.data.city.district._id;
+            $scope.formData.city = data.data.city._id;
         });
 
         $scope.saveOffice = function(formValid) {
