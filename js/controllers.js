@@ -3721,10 +3721,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     if ($scope.list[0] && $scope.list[0]._id) {
                         $scope.sendData($scope.list[0]._id, $scope.list[0].name);
                     } else {
+                      console.log("Making this happen");
                         $scope.sendData("", "");
                     }
                 }
             } else {
+              console.log("Making this happen2");
                 $scope.sendData("", "");
             }
 
