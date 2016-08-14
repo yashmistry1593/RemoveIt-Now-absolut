@@ -1232,15 +1232,9 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         getOneCompany: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'company/getOne',
-                method: 'POST',
-                withCredentials: true,
-                data: {
+            $http.post(adminurl + 'company/getOne',{
                     "_id": id
-                }
-            }).success(callback);
+                }).success(callback);
         },
         companyEditSave: function(id, callback) {
             // console.log('form data: ', formData);

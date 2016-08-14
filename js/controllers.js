@@ -1316,9 +1316,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     NavigationService.deleteCompany(id, function(data) {
                         if (data.value) {
                             $scope.showAllCountries();
-                            toastr.success("State deleted successfully.", "State deleted");
+                            toastr.success("Company deleted successfully.", "Company deleted");
                         } else {
-                            toastr.error("There was an error while deleting State", "State deleting error");
+                            toastr.error("There was an error while deleting Company", "Company deleting error");
                         }
 
 
@@ -1358,7 +1358,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
     })
-    .controller('EditCompanyCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+    .controller('EditCompanyCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("company-detail");
         $scope.menutitle = NavigationService.makeactive("editcompany");
@@ -1378,21 +1378,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.formData = {};
 
         NavigationService.getOneCompany($stateParams.id, function(data) {
-            $scope.formData = data.data;
-            // console.log('$scope.oneCountry', $scope.oneCountry);
 
+            $scope.formData = data.data;
+            console.log($scope.formData);
         });
 
         $scope.saveCompany = function(formValid) {
-
-            //  if (formValid.$valid) {
-            //  $scope.formComplete = true;
-            NavigationService.companyEditSave($scope.formData, function(data) {
+            NavigationService.companySave($scope.formData, function(data) {
                 if (data.value === true) {
                     $state.go('company-list');
                 }
             });
-            //  }
         };
 
     })
