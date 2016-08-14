@@ -840,7 +840,7 @@ firstapp.directive('addressForm', function($document) {
         restrict: 'EA',
         replace: false,
         controller: function($scope, NgMap,NavigationService) {
-            $scope.demoForm = {};
+            $scope.formData = {};
             $scope.map = {};
             $scope.change = function() {
                 NgMap.getMap().then(function(map) {
@@ -850,7 +850,7 @@ firstapp.directive('addressForm', function($document) {
                         lat: map.markers[0].position.lat(),
                         lng: map.markers[0].position.lng()
                     };
-                    _.assign($scope.demoForm, latLng);
+                    _.assign($scope.formData, latLng);
                 });
             };
             var LatLongi = 0;
@@ -860,7 +860,7 @@ firstapp.directive('addressForm', function($document) {
                   console.log(i);
                   console.log(LatLongi);
                     if (i == LatLongi) {
-                        $scope.demoForm = _.assign($scope.demoForm, data.results[0].geometry.location);
+                        $scope.formData = _.assign($scope.formData, data.results[0].geometry.location);
                     }
                 });
                 // $http.get("http://maps.googleapis.com/maps/api/geocode/json?key=AIzaSyCn9ypqFNxdXt9Zu2YqLcdD1Xdt2wNul9s&address="+address);

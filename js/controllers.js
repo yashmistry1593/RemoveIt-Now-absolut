@@ -1351,18 +1351,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Inactive",
             "value": false
         }];
-        NavigationService.getAllCountries(function(data) {
-            $scope.allCountries = data.data;
-            console.log('$scope.allCountries', $scope.allCountries);
-        });
-        NavigationService.getAllStates(function(data) {
-            $scope.allStates = data.data;
-            console.log('$scope.allStates', $scope.allStates);
-        });
-        NavigationService.getAllCities(function(data) {
-            $scope.allCities = data.data;
-            console.log('$scope.allCities', $scope.allCities);
-        });
+
 
         $scope.header = {
             "name": "Create Company"
@@ -1393,18 +1382,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Inactive",
             "value": false
         }];
-        NavigationService.getAllCountries(function(data) {
-            $scope.allCountries = data.data;
-            console.log('$scope.allCountries', $scope.allCountries);
-        });
-        NavigationService.getAllStates(function(data) {
-            $scope.allStates = data.data;
-            console.log('$scope.allStates', $scope.allStates);
-        });
-        NavigationService.getAllCities(function(data) {
-            $scope.allCities = data.data;
-            console.log('$scope.allCities', $scope.allCities);
-        });
+
         $scope.header = {
             "name": "Edit Company"
         };
@@ -3826,7 +3804,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             filter: filter,
             page: 1
         };
-
+        console.log($scope.api);
         NavigationService[$scope.api](dataSend, ++i, function(data) {
             $scope.list = data.data.results;
 
@@ -3873,12 +3851,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.typeselect = "";
     $scope.showList = function() {
         $scope.listview = true;
+        $scope.searchNew(true);
     };
     $scope.closeList = function() {
         $scope.listview = false;
     };
-    $scope.searchNew = function(filter) {
-        $scope.model = "";
+    $scope.searchNew = function(dontFlush) {
+        if (!dontFlush) {
+            $scope.model = "";
+        }
         var filter = {};
         if ($scope.filter) {
             filter = JSON.parse($scope.filter);
