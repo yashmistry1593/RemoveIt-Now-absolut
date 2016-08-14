@@ -33,12 +33,13 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Industry*</label>
-                                        <multiple-select></multiple-select>
+                                        <multiple-select  name="industry" required ng-model="formData.industry" filter='{"industry":"{{formData.industry}}"}' ng-name = "name.industry" api="searchIndustry"></multiple-select>
+                                        <div class="error-msg" ng-show="industryForm.industry.$error.required">Please Enter Industry</div>
                                     </div>
                                     <div class="form-group">
                                         <label>Category Name*</label>
                                         <input type="text" name="name" ng-model="formData.name" class="form-control" required>
-                                        <div class="error-msg" ng-show="industryForm.name.$error.required && industryForm.name.$touched">Please Enter Category Name.</div>
+                                        <div class="error-msg" ng-show="industryForm.name.$error.required && industryForm.name.$touched">Please Enter Category Name</div>
                                     </div>
                                 </div>
                             </div>

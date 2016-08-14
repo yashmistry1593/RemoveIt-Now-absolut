@@ -27,30 +27,30 @@
                     <div class="widget-title">
                         <h3>Product</h3>
                     </div>
-                    <form role="form" class="sec ng-pristine ng-valid">
+                    <form name="industryForm" class="sec ng-pristine ng-valid">
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="form-group">
                                     <label>Industry*</label>
-                                    <multiple-select></multiple-select>
+                                    <multiple-select  name="industry" required ng-model="formData.industry" filter='{"industry":"{{formData.industry}}"}' ng-name = "name.industry" api="searchIndustry"></multiple-select>
+                                    <div class="error-msg" ng-show="industryForm.industry.$error.required">Please Enter Industry</div>
+                                </div>
+                                <div class="form-group">
+                                    <label>Category*</label>
+                                    <multiple-select  name="category" required ng-model="formData.category" filter='{"category":"{{formData.category}}"}' ng-name = "name.category" api="searchCategory"></multiple-select>
+                                    <div class="error-msg" ng-show="industryForm.industry.$error.required">Please Enter Category</div>
                                 </div>
                                 <div class="form-group">
                                     <label>Product Name*</label>
-                                    <input type="text" class="form-control" ng-model="formData.name">
-                                </div>
-
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <label>Category*</label>
-                                    <multiple-select></multiple-select>
+                                    <input type="text" name="name" class="form-control" ng-model="formData.name" required>
+                                    <div class="error-msg" ng-show="industryForm.name.$error.required && industryForm.name.$touched">Please Enter Product Name</div>
                                 </div>
 
                             </div>
                         </div>
                         <div class="text-center mt20">
                             <button class="btn btn-default" type="submit" ng-click="saveProduct(formData)">Save</button>
-                            <button class="btn btn-default" type="submit" ui-sref="product-list">Cancel</button>
+                            <button class="btn btn-default" ui-sref="product-list">Cancel</button>
                         </div>
                     </div>
                 </div>
