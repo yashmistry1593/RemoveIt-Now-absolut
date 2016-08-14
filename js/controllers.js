@@ -3817,17 +3817,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
     };
 
-    $scope.$watch('model', function() {
-      if($scope.model)
-      {
-        $scope.getValues({
-            _id: $scope.model
-        }, true);
-      }
-      else {
-        $scope.sendData("", "");
-      }
-
+    $scope.$watch('model', function(oldVal, newVal) {
+        if (newVal && oldVal === undefined) {
+            $scope.getValues({
+                _id: $scope.model
+            }, true);
+        }
+        console.log("watch", newVal, oldVal);
     });
 
 
