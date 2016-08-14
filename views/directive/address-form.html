@@ -19,7 +19,7 @@
     <div class="error-msg" ng-show="demoForm.district.$invalid && demoForm.district.$touched">Please Enter district</div>
 </div>
 <div class="form-group">
-    <label>City*</label>{{formData.city}}
+    <label>City*</label>
     <multiple-select  name="city" required ng-model="formData.city" filter='{"district":"{{formData.district}}"}' ng-name = "name.city" api="searchCity"></multiple-select>
     <div class="error-msg" ng-show="demoForm.city.$invalid && demoForm.city.$touched">Please Enter city</div>
 </div>
