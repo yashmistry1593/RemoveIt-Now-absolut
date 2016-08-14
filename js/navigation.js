@@ -8,7 +8,7 @@
 //   adminURL = "http://localhost/demo/index.php";
 // }
 // var adminurl = "http://localhost:1337/";
-var adminurl = "http://192.168.1.102:1337/";
+var adminurl = "http://192.168.1.101:1337/";
 var imgurl = adminurl + "upload/";
 
 
@@ -1293,7 +1293,7 @@ var navigationservice = angular.module('navigationservice', [])
                 withCredentials: true
             }).success(callback);
         },
-      
+
         getOneCustomer: function(id, callback) {
             // console.log('form data: ', formData);
             $http({

@@ -514,19 +514,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.header = {
             "name": "Create Zone"
         };
-        $scope.formData = {};
+        $scope.formData = {
+            country: "57ae9cc084f7438002bf8110"
+        };
         $scope.saveZone = function(formData) {
 
-                NavigationService.zoneSave($scope.formData, function(data) {
-                    if (data.value === true) {
-                        $state.go('zone-list');
-                        toastr.success("Zone " + formData.name + " created successfully.", "Zone Created");
-                    } else {
-                        toastr.error("Zone creation failed.", "Zone creation error");
-                    }
-                });
-            }
-            //jagruti
+            NavigationService.zoneSave($scope.formData, function(data) {
+                if (data.value === true) {
+                    $state.go('zone-list');
+                    toastr.success("Zone " + formData.name + " created successfully.", "Zone Created");
+                } else {
+                    toastr.error("Zone creation failed.", "Zone creation error");
+                }
+            });
+        };
+        //jagruti
         NavigationService.getAllCountries(function(data) {
             $scope.allCountries = data.data;
             console.log('$scope.allCountries', $scope.allCountries);
@@ -3818,16 +3820,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('MultipleSelectCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter) {
     var i = 0;
-    $scope.getValues = function() {
+    $scope.getValues = function(filter, insertFirst) {
         var dataSend = {
             keyword: $scope.search.modelData,
+            filter: filter,
             page: 1
         };
-        if ($scope.filter) {
-            dataSend.filter = JSON.parse($scope.filter);
-        }
+
         NavigationService[$scope.api](dataSend, ++i, function(data) {
             $scope.list = data.data.results;
+
             if ($scope.search.modelData) {
                 $scope.showCreate = true;
                 _.each($scope.list, function(n) {
@@ -3840,13 +3842,32 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             } else {
                 $scope.showCreate = false;
             }
+            if (insertFirst) {
+                if ($scope.list[0] && $scope.list[0]._id) {
+                    $scope.sendData($scope.list[0]._id, $scope.list[0].name);
+                }
+
+            }
 
         });
     };
+
+
     $scope.search = {
-        modelData: $scope.model
+        modelData: ""
     };
-    $scope.getValues();
+    if ($scope.model) {
+        $scope.getValues({
+            _id: $scope.model
+        }, true);
+    } else {
+        $scope.getValues();
+    }
+
+
+
+
+
     $scope.listview = false;
     $scope.showCreate = false;
     $scope.typeselect = "";
@@ -3857,18 +3878,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.listview = false;
     };
     $scope.searchNew = function(filter) {
-        console.log($scope.filter);
         $scope.model = "";
-        $scope.getValues($scope.list);
+        var filter = {};
+        if ($scope.filter) {
+            filter = JSON.parse($scope.filter);
+        }
+        $scope.getValues(filter);
     };
-    $scope.searchNew();
     $scope.createNew = function(create) {
         var newCreate = $filter("capitalize")(create);
-        console.log("Create New " + newCreate);
         $scope.listview = false;
     };
     $scope.sendData = function(val, name) {
         $scope.search.modelData = name;
+        $scope.ngName = name;
         $scope.model = val;
         $scope.listview = false;
     }

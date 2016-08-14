@@ -892,22 +892,19 @@ firstapp.directive('multipleSelect', function($document) {
             api: "@api",
             name: "@name",
             required: "@required",
-            filter: "@filter"
+            filter: "@filter",
+            ngName:"=ngName"
         },
         restrict: 'EA',
         replace: false,
         controller: 'MultipleSelectCtrl',
         link: function(scope, element, attr, NavigationService) {
             var $element = $(element);
-            console.log(scope.required);
             scope.isRequired = true;
             if (scope.required === undefined) {
                 scope.isRequired = false;
             }
-
-            console.log(attr.typeselect);
             scope.typeselect = attr.typeselect;
-            console.log(scope.list);
             // $scope.searchNew()
             scope.change = function(data) {
                 console.log(data);
