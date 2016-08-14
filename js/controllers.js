@@ -1310,10 +1310,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.showAllCountries();
 
-        $scope.deleteCountry = function(id) {
+        $scope.deleteCompany = function(id) {
             globalfunction.confDel(function(value) {
                 if (value) {
-                    NavigationService.deleteCountry(id, function(data) {
+                    NavigationService.deleteCompany(id, function(data) {
                         if (data.value) {
                             $scope.showAllCountries();
                             toastr.success("State deleted successfully.", "State deleted");
@@ -1348,7 +1348,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.formData = {};
         $scope.saveCompany = function(formData) {
-            console.log(formData);
             NavigationService.companySave(formData, function(data) {
                 if (data.value === true) {
                     $state.go('company-list');

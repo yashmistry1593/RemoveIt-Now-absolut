@@ -1252,15 +1252,9 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         deleteCompany: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'company/delete',
-                method: 'POST',
-                withCredentials: true,
-                data: {
-                    "_id": id.id,
-                }
-            }).success(callback);
+            $http.post(adminurl + 'company/delete',{
+                    "_id": id,
+                }).success(callback);
         },
 
         getAllCustomers: function(callback) {

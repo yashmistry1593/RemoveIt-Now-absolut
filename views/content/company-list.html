@@ -27,11 +27,10 @@
         <div class="col-md-12">
             <div class="widget">
                 <div class="table-area">
-
                     <div class="widget-title">
                         <div class="pull-right">
                           <form class="search-form mr-form">
-                              <input type="text" placeholder="Search Here..."/>
+                            <input type="text" ng-change="showAllCountries(true)" placeholder="Search Here..." ng-model="search.keyword"/>
                               <button type="submit">
                                   <i class="fa fa-search"></i>
                               </button>
@@ -56,9 +55,7 @@
                                   <td>{{($index + 1)+((currentPage-1)*maxRow)}}</td>
                                     <td>{{company.name}}</td>
                                     <td>{{company.code}}</td>
-                                    <td>{{company.address}}</td>
-                                    <td>{{company.city}}, {{company.state}}</td>
-
+                                    <td>{{company.city.name}}</td>
                                     <td>
                                         <a class="btn btn-blue" ui-sref="editcompany({id:company._id})"><i class="fa fa-pencil"></i></a>
                                         <a class="btn btn-red" ng-click="deleteCompany(company._id)"><i class="fa fa-trash"></i></a>
