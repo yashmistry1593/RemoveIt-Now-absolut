@@ -278,11 +278,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Create Office"
         };
         $scope.formData = {};
-        NavigationService.getAllTypeOfOffices(function(data) {
-            $scope.allTypeOfOffices = data.data;
-            console.log('$scope.allTypeOfOffices', $scope.allTypeOfOffices);
-
-        });
         $scope.saveOffice = function(formData) {
 
             NavigationService.officeSave($scope.formData, function(data) {
