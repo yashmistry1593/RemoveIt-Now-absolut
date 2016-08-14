@@ -3824,7 +3824,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 if ($scope.list[0] && $scope.list[0]._id) {
                     $scope.sendData($scope.list[0]._id, $scope.list[0].name);
                 }
-
+                else {
+                  $scope.sendData("","");
+                }
             }
 
         });
