@@ -283,23 +283,12 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         districtSave: function(formData, callback) {
-            $http({
-                url: adminurl + 'district/saveData',
-                method: 'POST',
-                withCredentials: true,
-                data: formData
-            }).success(callback);
+            $http.post(adminurl + 'district/save',formData).success(callback);
         },
         getOneDistrict: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'district/getOne',
-                method: 'POST',
-                withCredentials: true,
-                data: {
+            $http.post(adminurl + 'district/getOne',{
                     "_id": id
-                }
-            }).success(callback);
+                }).success(callback);
         },
         districtEditSave: function(id, callback) {
             // console.log('form data: ', formData);
@@ -311,19 +300,10 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         deleteDistrict: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'district/delete',
-                method: 'POST',
-                withCredentials: true,
-                data: {
-                    "_id": id.id,
-                }
-            }).success(callback);
+            $http.post(adminurl + 'district/delete',{
+                    "_id": id,
+                }).success(callback);
         },
-
-
-
         getAllCurrencies: function(callback) {
             // console.log('form data: ', formData);
             $http({
@@ -373,13 +353,7 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         citySave: function(formData, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'city/saveData',
-                method: 'POST',
-                withCredentials: true,
-                data: formData
-            }).success(callback);
+            $http.post(adminurl + 'city/saveData',formData).success(callback);
         },
         getOneCity: function(id, callback) {
             // console.log('form data: ', formData);

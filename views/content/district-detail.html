@@ -31,13 +31,23 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                    <label for="disabledSelect">State Name*</label>
-                                    <multiple-select list="list"></multiple-select>
+                                    <label for="disabledSelect">Country*</label>
+                                    <multiple-select  name="country" required ng-model="formData.country" ng-name = "name.country" api="searchCountry"></multiple-select>
+                                    <div class="error-msg" ng-show="districtform.country.$error.required && districtform.country.$touched">Please Enter District Name.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Zone*</label>
+                                    <multiple-select  name="zone" required ng-model="formData.zone" filter='{"country":"{{formData.country}}"}' ng-name = "name.zone" api="searchZone"></multiple-select>
+                                    <div class="error-msg" ng-show="districtform.zone.$error.required && districtform.zone.$touched">Please Enter District Name.</div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">State*</label>
+                                    <multiple-select  name="state" required ng-model="formData.state" filter='{"zone":"{{formData.zone}}"}' ng-name = "name.state" api="searchState"></multiple-select>
                                     <div class="error-msg" ng-show="districtform.state.$error.required && districtform.state.$touched">Please Enter District Name.</div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">District Name*</label>
-                                    <multiple-select list="list"></multiple-select>
+                                    <label for="">District*</label>
+                                    <input type="text" name="name" ng-model="formData.name" class="form-control" required>
                                     <div class="error-msg" ng-show="districtform.name.$error.required && districtform.name.$touched">Please Enter District Name.</div>
                                 </div>
                             </div>

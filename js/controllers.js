@@ -601,7 +601,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.deleteState = function(id) {
             globalfunction.confDel(function(value) {
-                console.log(value);
                 if (value) {
                     NavigationService.deleteState(id, function(data) {
                         if (data.value) {
@@ -618,6 +617,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
+
     .controller('CreateStateCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("state-detail");
@@ -642,7 +642,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('EditStateCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+    .controller('EditStateCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("state-detail");
         $scope.menutitle = NavigationService.makeactive("state-detail");
@@ -655,20 +655,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         NavigationService.getOneState($stateParams.id, function(data) {
             $scope.formData = data.data;
-            // console.log('$scope.oneCountry', $scope.oneCountry);
-
+            $scope.formData.country = data.data.zone.country._id;
+            $scope.formData.zone = data.data.zone._id;
         });
 
         $scope.saveState = function(formValid) {
-
-            //  if (formValid.$valid) {
-            //  $scope.formComplete = true;
-            NavigationService.stateEditSave($scope.formData, function(data) {
-                if (data.value == true) {
-                    $state.go('state-list');
-                }
+            NavigationService.stateSave($scope.formData, function(data) {
+              if (data.value === true) {
+                  $state.go('state-list');
+                  toastr.success("State " + $scope.formData.name + " edited successfully.", "State Edited");
+              } else {
+                  toastr.error("State edition failed.", "State editing error");
+              }
             });
-            //  }
         };
     })
     .controller('DistrictCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, toastr, $state) {
@@ -723,7 +722,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             globalfunction.confDel(function(value) {
                 console.log(value);
                 if (value) {
-                    NavigationService.deleteState(id, function(data) {
+                    NavigationService.deleteDistrict(id, function(data) {
                         if (data.value) {
                             $scope.showAllCountries();
                             toastr.success("District deleted successfully.", "District deleted");
@@ -1385,67 +1384,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("district-detail");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-        $scope.currentPage = $stateParams.page;
-        var i = 0;
-        $scope.search = {
-            keyword: ""
-        };
-        if ($stateParams.keyword) {
-            $scope.search.keyword = $stateParams.keyword;
-        }
-        $scope.showAllCountries = function(keywordChange) {
-            $scope.totalItems = undefined;
-            if (keywordChange) {
-                $scope.currentPage = 1;
-            }
-            NavigationService.searchDistrict({
-                page: $scope.currentPage,
-                keyword: $scope.search.keyword
-            }, ++i, function(data, ini) {
-                console.log(data.data);
-
-                if (ini == i) {
-                    console.log(data.data);
-                    $scope.allDistricts = data.data.results;
-                    $scope.totalItems = data.data.total;
-                    $scope.maxRow = data.data.options.count;
-
-                }
+        $scope.formData = {};
+        $scope.saveDistrict = function(formData) {
+            NavigationService.districtSave($scope.formData, function(data) {
+              if (data.value === true) {
+                  $state.go('district-list');
+                  toastr.success("District " + formData.name + " created successfully.", "District Created");
+              } else {
+                  toastr.error("District creation failed.", "District creation error");
+              }
             });
         };
-
-        $scope.changePage = function(page) {
-            var goTo = "district-list";
-            if ($scope.search.keyword) {
-                goTo = "district-list";
-            }
-            $state.go(goTo, {
-                page: page,
-                keyword: $scope.search.keyword
-            });
-        };
-        $scope.showAllCountries();
-
-        $scope.deleteState = function(id) {
-            globalfunction.confDel(function(value) {
-                console.log(value);
-                if (value) {
-                    NavigationService.deleteState(id, function(data) {
-                        if (data.value) {
-                            $scope.showAllCountries();
-                            toastr.success("District deleted successfully.", "District deleted");
-                        } else {
-                            toastr.error("There was an error while deleting District", "District deleting error");
-                        }
-
-
-                    });
-                }
-            });
-        };
-
     })
-    .controller('EditDistrictCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+    .controller('EditDistrictCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("district-detail");
         $scope.menutitle = NavigationService.makeactive("district-detail");
@@ -1458,28 +1409,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         NavigationService.getOneDistrict($stateParams.id, function(data) {
             $scope.formData = data.data;
-            // console.log('$scope.oneCountry', $scope.oneCountry);
+            $scope.formData.country = data.data.state.zone.country._id;
+            $scope.formData.zone = data.data.state.zone._id;
+            $scope.formData.state = data.data.state._id;
+
 
         });
 
         $scope.saveDistrict = function(formValid) {
-
-            //  if (formValid.$valid) {
-            //  $scope.formComplete = true;
-            NavigationService.districtEditSave($scope.formData, function(data) {
-                if (data.value == true) {
-                    $state.go('district-list');
-                }
+            NavigationService.districtSave($scope.formData, function(data) {
+              if (data.value === true) {
+                  $state.go('district-list');
+                  toastr.success("District " + $scope.formData.name + " edited successfully.", "District Edited");
+              } else {
+                  toastr.error("District edition failed.", "District editing error");
+              }
             });
-            //  }
         };
-
-        NavigationService.getAllStates(function(data) {
-            $scope.allStates = data.data;
-            console.log('$scope.allStates', $scope.allStates);
-
-        });
-
     })
     .controller('CurrencyCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
         //Used to name the .html file
@@ -1670,61 +1616,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         var vm = this;
         vm.availableColors = ['Red', 'Green', 'Blue', 'Yellow', 'Magenta', 'Maroon', 'Umbra', 'Turquoise'];
 
-
-
         $scope.header = {
             "name": "Create City"
         };
-        NavigationService.getAllCountries(function(data) {
-            $scope.allCountries = data.data;
-            _.each($scope.allCountries, function(n) {
-                    $scope.allCountriesName = n.name;
-                    console.log('$scope.allCountriesName', $scope.allCountriesName);
-                })
-                // console.log('$scope.allCountries', $scope.allCountries);
-
-        });
-        NavigationService.getAllZones(function(data) {
-            $scope.allZones = data.data;
-            console.log('$scope.allZones', $scope.allZones);
-        });
-        NavigationService.getAllStates(function(data) {
-            $scope.allStates = data.data;
-            console.log('$scope.allStates', $scope.allStates);
-
-        });
-        NavigationService.getAllDistricts(function(data) {
-            $scope.allDistricts = data.data;
-            console.log('$scope.allDistricts', $scope.allDistricts);
-
-        });
         $scope.formData = {};
         $scope.saveCity = function(formData) {
-
             NavigationService.citySave($scope.formData, function(data) {
-                console.log(data);
-                if (data.value == true) {
-                    $state.go('city-list');
-                }
-                // console.log('$scope.allCountriessave', $scope.data);
-                $scope.mapCenter = {
-                    lat: parseFloat(data.data.lat),
-                    long: parseFloat(data.data.long)
-                };
+              if (data.value === true) {
+                  $state.go('city-list');
+                  toastr.success("City " + formData.name + " created successfully.", "City Created");
+              } else {
+                  toastr.error("City creation failed.", "City creation error");
+              }
             });
-        }
-
-        NavigationService.getAllDistricts(function(data) {
-            $scope.allDistricts = data.data;
-            console.log('$scope.allDistricts', $scope.allDistricts);
-
-        });
-        $scope.change = function(changeVal) {
-            $scope.formData.lat = changeVal.latLng.lat();
-            $scope.formData.long = changeVal.latLng.lng();
-
         };
-
     })
     .controller('EditCityCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         //Used to name the .html file
