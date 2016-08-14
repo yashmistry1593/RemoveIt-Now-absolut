@@ -9,7 +9,7 @@
     </ul>
 </div>
 
-<form name="formData">
+<form name="formData" ng-submit="submit(formData);">
     <div class="heading-sec">
         <div class="row">
             <div class="col-md-12 column">
@@ -31,21 +31,25 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Company Name*</label>
-                                        <multiple-select></multiple-select>
+                                        <multiple-select  name="country" required ng-model="formData.country" ng-name="name.country" api="searchCountry"></multiple-select>
+                                        <div class="error-msg" ng-show="branchForm.companyName.$error.required && branchForm.companyName.$touched">Please Enter Company Name</div>
                                     </div>
                                     <div class="form-group">
                                         <label>Branch Name*</label>
-                                        <input type="text" name="" class="form-control" required>
+                                        <input type="text" name="branchName" ng-model="formData.branchName" class="form-control" required>
+                                        <div class="error-msg" ng-show="branchForm.branchName.$error.required && branchForm.branchName.$touched">Please Enter Branch Name</div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Office*</label>
-                                        <multiple-select></multiple-select>
+                                        <multiple-select  name="country" required ng-model="formData.country" ng-name="name.country" api="searchCountry"></multiple-select>
+                                        <div class="error-msg" ng-show="branchForm.office.$error.required && branchForm.office.$touched">Please Enter Office</div>
                                     </div>
                                     <div class="form-group">
                                         <label>Branch Code*</label>
-                                        <input type="text" class="form-control" required>
+                                        <input type="text" name="branchCode" class="form-control" ng-model="formData.branchCode" required>
+                                        <div class="error-msg" ng-show="branchForm.branchCode.$error.required && branchForm.branchCode.$touched">Please Enter Branch Code</div>
                                     </div>
 
                                 </div>
@@ -54,60 +58,62 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Short Name*</label>
-                                        <input type="text" class="form-control" required>
+                                        <input type="text" name="shortName" class="form-control" ng-model="formData.shortName" required>
+                                        <div class="error-msg" ng-show="branchForm.shortName.$error.required && branchForm.shortName.$touched">Please Enter Short Name</div>
                                     </div>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox">
-                                            Is a Billable Branch
+                                            <input type="checkbox" name="isBillable" ng-model="formData.isBillable">
+                                            Is a Billable Branch*
                                         </label>
                                     </div>
                                     <div class="form-group">
                                         <label>Series Format</label>
-                                        <select class="form-control">
+                                        <select class="form-control" name="seriesFormat" ng-model="formData.seriesFormat">
                                             <option disabled selected></option>
                                             <option value="monthly">Monthly</option>
                                             <option value="yearly">Yearly</option>
                                         </select>
+
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <label>TAT</label>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox">
+                                            <input type="checkbox" name="stat" ng-model="formData.stat">
                                             STAT
                                         </label>
                                     </div>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox">
+                                            <input type="checkbox" name="itat" ng-model="formData.itat">
                                             ITAT
                                         </label>
                                     </div>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox">
+                                            <input type="checkbox" name="ltat" ng-model="formData.ltat">
                                             LTAT
                                         </label>
                                     </div>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox">
+                                            <input type="checkbox" name="fsr" ng-model="formData.fsr">
                                             FSR
                                         </label>
                                     </div>
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox">
+                                            <input type="checkbox" name="r2nr" ng-model="formData.r2nr">
                                             R2NR
                                         </label>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center mt20">
-                                <button class="btn btn-default" type="submit">Save</button>
-                                <button class="btn btn-default" type="submit">Cancel</button>
+                                <button class="btn btn-default" type="submit" ng-disabled="formData.$invalid">Save</button>
+                                <button class="btn btn-default">Cancel</button>
                             </div>
                         </div>
                     </div>
