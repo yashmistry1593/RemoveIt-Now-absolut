@@ -353,7 +353,7 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         citySave: function(formData, callback) {
-            $http.post(adminurl + 'city/saveData',formData).success(callback);
+            $http.post(adminurl + 'city/save',formData).success(callback);
         },
         getOneCity: function(id, callback) {
             // console.log('form data: ', formData);
