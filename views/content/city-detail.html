@@ -31,37 +31,37 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group ui-select">
-                                    <label for="">Country Name*</label>
+                                    <label>Country</label>
                                     <multiple-select name="country" required ng-model="formData.country" ng-name="name.country" api="searchCountry"></multiple-select>
-                                    <div class="error-msg" ng-show="cityform.country.$error.required && cityform.country.$touched">Please Enter Country Name.</div>
+                                    <div class="error-msg" ng-show="cityform.country.$error.required && cityform.country.$touched">Please Enter Country</div>
                                 </div>
                                 <div class="form-group ui-select">
-                                    <label for="">Zone Name*</label>
+                                    <label>Zone</label>
                                     <multiple-select name="zone" required ng-model="formData.zone" filter='{"country":"{{formData.country}}"}' ng-name="name.zone" api="searchZone"></multiple-select>
-                                    <div class="error-msg" ng-show="cityform.zone.$error.required && cityform.zone.$touched">Please Enter Zone Name.</div>
+                                    <div class="error-msg" ng-show="cityform.zone.$error.required && cityform.zone.$touched">Please Enter Zone</div>
                                 </div>
                                 <div class="form-group ui-select">
-                                    <label for="">State Name*</label>
+                                    <label>State</label>
                                     <multiple-select name="state" required ng-model="formData.state" filter='{"zone":"{{formData.zone}}"}' ng-name="name.state" api="searchState"></multiple-select>
-                                    <div class="error-msg" ng-show="cityform.state.$error.required && cityform.state.$touched">Please Enter State Name.</div>
+                                    <div class="error-msg" ng-show="cityform.state.$error.required && cityform.state.$touched">Please Enter State</div>
                                 </div>
                                 <div class="form-group ui-select">
-                                    <label for="">District Name*</label>
+                                    <label>District</label>
                                     <multiple-select name="district" required ng-model="formData.district" filter='{"state":"{{formData.state}}"}' ng-name="name.district" api="searchDistrict"></multiple-select>
-                                    <div class="error-msg" ng-show="cityform.district.$error.required && cityform.district.$touched">Please Enter District Name.</div>
+                                    <div class="error-msg" ng-show="cityform.district.$error.required && cityform.district.$touched">Please Enter District</div>
                                 </div>
                                 <div class="form-group ui-select">
-                                    <label for="">City Name*</label>
+                                    <label>City</label>
                                     <input type="text" name="name" ng-model="formData.name" class="form-control" required>
-                                    <div class="error-msg" ng-show="cityform.name.$error.required && cityform.name.$touched">Please Enter City Name.</div>
+                                    <div class="error-msg" ng-show="cityform.name.$error.required && cityform.name.$touched">Please Enter City</div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Std Code*</label>
+                                    <label>Std Code*</label>
                                     <input type="text" name="stdCode" ng-model="formData.stdCode" class="form-control" required>
-                                    <div class="error-msg" ng-show="cityform.stdCode.$error.required && cityform.stdCode.$touched">Please Enter Std Code.</div>
+                                    <div class="error-msg" ng-show="cityform.stdCode.$error.required && cityform.stdCode.$touched">Please Enter Std Code</div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="">Timezone</label>
+                                    <label>Timezone</label>
                                     <select name="DropDownTimezone" class="form-control" ng-model="formData.timezone" id="DropDownTimezone">
                                         <option timeZoneId="1" gmtAdjustment="GMT-12:00" useDaylightTime="0" value="-12">(GMT-12:00) International Date Line West</option>
                                         <option timeZoneId="2" gmtAdjustment="GMT-11:00" useDaylightTime="0" value="-11">(GMT-11:00) Midway Island, Samoa</option>
@@ -146,7 +146,7 @@
                                         <option timeZoneId="82" gmtAdjustment="GMT+13:00" useDaylightTime="0" value="13">(GMT+13:00) Nuku'alofa</option>
                                     </select>
 
-                                    <div class="error-msg" ng-show="cityform.timezone.$error.required && cityform.timezone.$touched">Please Enter TimeZone.</div>
+                                    <div class="error-msg" ng-show="cityform.timezone.$error.required && cityform.timezone.$touched">Please Enter TimeZone</div>
                                 </div>
                             </div>
                         </div>
