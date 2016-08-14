@@ -605,6 +605,9 @@ form.search-form {
 .tableData {
   text-align: center;
 }
+.side-header {
+    overflow-y: auto;
+}
 /* Start writing sass here */
 @import "fancybox-override";
 @import "other/mobile";
