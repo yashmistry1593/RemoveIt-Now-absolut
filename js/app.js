@@ -970,7 +970,9 @@ firstapp.directive('slimscroll', function($document) {
 firstapp.directive('addressForm', function($document) {
     return {
         templateUrl: 'views/directive/address-form.html',
-        scope: {},
+        scope: {
+          formData:"=ngModel"
+        },
         restrict: 'EA',
         replace: false,
         controller: function($scope, NgMap, NavigationService) {
