@@ -32,19 +32,19 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="form-group">
-                                  <label>Name</label>
+                                  <label>Name*</label>
                                   <input type="text" name="name" ng-model="formData.name" class="form-control" required>
-                                  <div class="error-msg" ng-show="countryform.name.$error.required && countryform.name.$touched">Please Enter Name.</div>
+                                  <div class="error-msg" ng-show="countryform.name.$error.required && countryform.name.$touched">Please Enter Name</div>
                               </div>
                                 <div class="form-group">
                                     <label>Country Code*</label>
                                     <input type="text" name="countryCode" ng-model="formData.countryCode" class="form-control" required>
-                                    <div class="error-msg" ng-show="countryform.countryCode.$error.required && countryform.countryCode.$touched">Please Enter Country Code.</div>
+                                    <div class="error-msg" ng-show="countryform.countryCode.$error.required && countryform.countryCode.$touched">Please Enter Country Code</div>
                                 </div>
                                 <div class="form-group">
-                                    <label>ISDCodes</label>
+                                    <label>ISD Code*</label>
                                     <input type="tel" name="ISDCodes" ng-model="formData.ISDCodes" class="form-control" required>
-                                    <div class="error-msg" ng-show="countryform.ISDCodes.$error.required && countryform.ISDCodes.$touched">Please Enter ISDCodes.</div>
+                                    <div class="error-msg" ng-show="countryform.ISDCodes.$error.required && countryform.ISDCodes.$touched">Please Enter ISD Code</div>
                                 </div>
                             </div>
 
