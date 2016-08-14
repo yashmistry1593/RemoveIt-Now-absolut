@@ -525,7 +525,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
     })
-    .controller('EditZoneCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+    .controller('EditZoneCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("zone-detail");
         $scope.menutitle = NavigationService.makeactive("Zone");
@@ -542,7 +542,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
         $scope.saveZone = function(formValid) {
-            NavigationService.zoneEditSave($scope.formData, function(data) {
+            NavigationService.zoneSave($scope.formData, function(data) {
                 if (data.value === true) {
                     $state.go('zone-list');
                     toastr.success("Zone " + $scope.formData.name + " edited successfully.", "Zone Edited");
