@@ -1290,7 +1290,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
                 if (ini == i) {
                     console.log(data.data);
-                    $scope.allStates = data.data.results;
+                    $scope.allCompanies = data.data.results;
                     $scope.totalItems = data.data.total;
                     $scope.maxRow = data.data.options.count;
 
