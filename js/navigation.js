@@ -341,9 +341,6 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
 
-
-
-
         getAllCities: function(callback) {
             // console.log('form data: ', formData);
             $http({
