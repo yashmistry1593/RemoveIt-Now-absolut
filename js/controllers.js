@@ -618,7 +618,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     })
 
-    .controller('CreateStateCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
+.controller('CreateStateCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("state-detail");
         $scope.menutitle = NavigationService.makeactive("state-detail");
@@ -632,12 +632,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.saveState = function(formData) {
 
             NavigationService.stateSave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('state-list');
-                  toastr.success("State " + formData.name + " created successfully.", "State Created");
-              } else {
-                  toastr.error("State creation failed.", "State creation error");
-              }
+                if (data.value === true) {
+                    $state.go('state-list');
+                    toastr.success("State " + formData.name + " created successfully.", "State Created");
+                } else {
+                    toastr.error("State creation failed.", "State creation error");
+                }
             });
         };
 
@@ -661,12 +661,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.saveState = function(formValid) {
             NavigationService.stateSave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('state-list');
-                  toastr.success("State " + $scope.formData.name + " edited successfully.", "State Edited");
-              } else {
-                  toastr.error("State edition failed.", "State editing error");
-              }
+                if (data.value === true) {
+                    $state.go('state-list');
+                    toastr.success("State " + $scope.formData.name + " edited successfully.", "State Edited");
+                } else {
+                    toastr.error("State edition failed.", "State editing error");
+                }
             });
         };
     })
@@ -972,12 +972,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.saveProduct = function(formData) {
 
             NavigationService.productSave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('product-list');
-                  toastr.success("Product " + formData.name + " created successfully.", "Product Created");
-              } else {
-                  toastr.error("Product creation failed.", "Product creation error");
-              }
+                if (data.value === true) {
+                    $state.go('product-list');
+                    toastr.success("Product " + formData.name + " created successfully.", "Product Created");
+                } else {
+                    toastr.error("Product creation failed.", "Product creation error");
+                }
             });
         };
 
@@ -1004,12 +1004,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.saveProduct = function(formValid) {
             NavigationService.productSave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('product-list');
-                  toastr.success("Product " + $scope.formData.name + " edited successfully.", "Product Edited");
-              } else {
-                  toastr.error("Product edition failed.", "Product editing error");
-              }
+                if (data.value === true) {
+                    $state.go('product-list');
+                    toastr.success("Product " + $scope.formData.name + " edited successfully.", "Product Edited");
+                } else {
+                    toastr.error("Product edition failed.", "Product editing error");
+                }
             });
         };
     })
@@ -1348,14 +1348,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.formData = {};
         $scope.saveCompany = function(formData) {
-//chintan
-            NavigationService.companySave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('company-list');
-                  toastr.success("company " + formData.name + " created successfully.", "company Created");
-              } else {
-                  toastr.error("company creation failed.", "company creation error");
-              }
+            console.log(formData);
+            NavigationService.companySave(formData, function(data) {
+                if (data.value === true) {
+                    $state.go('company-list');
+                    toastr.success("company " + formData.name + " created successfully.", "company Created");
+                } else {
+                    toastr.error("company creation failed.", "company creation error");
+                }
             });
         };
     })
@@ -1406,12 +1406,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.formData = {};
         $scope.saveDistrict = function(formData) {
             NavigationService.districtSave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('district-list');
-                  toastr.success("District " + formData.name + " created successfully.", "District Created");
-              } else {
-                  toastr.error("District creation failed.", "District creation error");
-              }
+                if (data.value === true) {
+                    $state.go('district-list');
+                    toastr.success("District " + formData.name + " created successfully.", "District Created");
+                } else {
+                    toastr.error("District creation failed.", "District creation error");
+                }
             });
         };
     })
@@ -1435,12 +1435,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.saveDistrict = function(formValid) {
             NavigationService.districtSave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('district-list');
-                  toastr.success("District " + $scope.formData.name + " edited successfully.", "District Edited");
-              } else {
-                  toastr.error("District edition failed.", "District editing error");
-              }
+                if (data.value === true) {
+                    $state.go('district-list');
+                    toastr.success("District " + $scope.formData.name + " edited successfully.", "District Edited");
+                } else {
+                    toastr.error("District edition failed.", "District editing error");
+                }
             });
         };
     })
@@ -1639,12 +1639,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.formData = {};
         $scope.saveCity = function(formData) {
             NavigationService.citySave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('city-list');
-                  toastr.success("City " + formData.name + " created successfully.", "City Created");
-              } else {
-                  toastr.error("City creation failed.", "City creation error");
-              }
+                if (data.value === true) {
+                    $state.go('city-list');
+                    toastr.success("City " + formData.name + " created successfully.", "City Created");
+                } else {
+                    toastr.error("City creation failed.", "City creation error");
+                }
             });
         };
     })
@@ -1659,22 +1659,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Edit City"
         };
         NavigationService.getOneCity($stateParams.id, function(data) {
-          $scope.formData = data.data;
-          $scope.formData.country = data.data.district.state.zone.country._id;
-          $scope.formData.zone = data.data.district.state.zone._id;
-          $scope.formData.state = data.data.district.state._id;
-          $scope.formData.district = data.data.district._id;
+            $scope.formData = data.data;
+            $scope.formData.country = data.data.district.state.zone.country._id;
+            $scope.formData.zone = data.data.district.state.zone._id;
+            $scope.formData.state = data.data.district.state._id;
+            $scope.formData.district = data.data.district._id;
         });
 
         $scope.saveCity = function(formValid) {
 
             NavigationService.citySave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('city-list');
-                  toastr.success("City " + $scope.formData.name + " edited successfully.", "City Edited");
-              } else {
-                  toastr.error("City edition failed.", "City editing error");
-              }
+                if (data.value === true) {
+                    $state.go('city-list');
+                    toastr.success("City " + $scope.formData.name + " edited successfully.", "City Edited");
+                } else {
+                    toastr.error("City edition failed.", "City editing error");
+                }
             });
         };
     })
@@ -2496,12 +2496,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.formData = {};
         $scope.saveCategory = function(formData) {
             NavigationService.categorySave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('category-list');
-                  toastr.success("Category " + formData.name + " created successfully.", "Category Created");
-              } else {
-                  toastr.error("Category creation failed.", "Category creation error");
-              }
+                if (data.value === true) {
+                    $state.go('category-list');
+                    toastr.success("Category " + formData.name + " created successfully.", "Category Created");
+                } else {
+                    toastr.error("Category creation failed.", "Category creation error");
+                }
             });
         };
     })
@@ -2530,12 +2530,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.saveCategory = function(formValid) {
             NavigationService.categorySave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('category-list');
-                  toastr.success("Category " + $scope.formData.name + " edited successfully.", "Category Edited");
-              } else {
-                  toastr.error("Category edition failed.", "Category editing error");
-              }
+                if (data.value === true) {
+                    $state.go('category-list');
+                    toastr.success("Category " + $scope.formData.name + " edited successfully.", "Category Edited");
+                } else {
+                    toastr.error("Category edition failed.", "Category editing error");
+                }
             });
         };
     })
