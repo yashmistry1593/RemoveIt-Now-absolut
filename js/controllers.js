@@ -3787,30 +3787,34 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             filter: filter,
             page: 1
         };
-        console.log($scope.api);
         NavigationService[$scope.api](dataSend, ++i, function(data) {
-            $scope.list = data.data.results;
+            if(data.value)
+            {
+              $scope.list = data.data.results;
 
-            if ($scope.search.modelData) {
-                $scope.showCreate = true;
-                _.each($scope.list, function(n) {
-                    if (_.lowerCase(n.name) == _.lowerCase($scope.search.modelData)) {
-                        $scope.showCreate = false;
-                        console.log("this should not show");
-                        return 0;
-                    }
-                });
-            } else {
-                $scope.showCreate = false;
+              if ($scope.search.modelData) {
+                  $scope.showCreate = true;
+                  _.each($scope.list, function(n) {
+                      if (_.lowerCase(n.name) == _.lowerCase($scope.search.modelData)) {
+                          $scope.showCreate = false;
+                          return 0;
+                      }
+                  });
+              } else {
+                  $scope.showCreate = false;
+              }
+              if (insertFirst) {
+                  if ($scope.list[0] && $scope.list[0]._id) {
+                      $scope.sendData($scope.list[0]._id, $scope.list[0].name);
+                  } else {
+                      $scope.sendData("", "");
+                  }
+              }
             }
-            if (insertFirst) {
-                if ($scope.list[0] && $scope.list[0]._id) {
-                    $scope.sendData($scope.list[0]._id, $scope.list[0].name);
-                }
-                else {
-                  $scope.sendData("","");
-                }
+            else {
+              $scope.sendData("", "");
             }
+
 
         });
     };
@@ -3840,6 +3844,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
     $scope.closeList = function() {
         $scope.listview = false;
+    };
+    $scope.closeListSlow = function() {
+      console.log("Slow Called");
+        $timeout(function() {
+          $scope.closeList();
+        },500);
     };
     $scope.searchNew = function(dontFlush) {
         if (!dontFlush) {
