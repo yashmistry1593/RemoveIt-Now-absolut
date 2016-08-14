@@ -260,7 +260,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http.post(adminurl + 'state/getAll', {}).success(callback);
         },
         stateSave: function(formData, callback) {
-            $http.post(adminurl + 'state/saveData', formData).success(callback);
+            $http.post(adminurl + 'state/save', formData).success(callback);
         },
         getOneState: function(id, callback) {
             $http.post(adminurl + 'state/getOne', {

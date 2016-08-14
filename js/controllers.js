@@ -618,7 +618,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('CreateStateCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('CreateStateCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("state-detail");
         $scope.menutitle = NavigationService.makeactive("state-detail");
@@ -632,19 +632,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.saveState = function(formData) {
 
             NavigationService.stateSave($scope.formData, function(data) {
-                console.log(data);
-                if (data.value == true) {
-                    $state.go('state-list');
-                }
-                // console.log('$scope.allCountriessave', $scope.data);
-
+              if (data.value === true) {
+                  $state.go('state-list');
+                  toastr.success("State " + formData.name + " created successfully.", "State Created");
+              } else {
+                  toastr.error("State creation failed.", "State creation error");
+              }
             });
-        }
-
-        NavigationService.getAllZones(function(data) {
-            $scope.allZones = data.data;
-            console.log('$scope.allZones', $scope.allZones);
-        });
+        };
 
     })
     .controller('EditStateCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
@@ -675,12 +670,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
             //  }
         };
-
-        NavigationService.getAllZones(function(data) {
-            $scope.allZones = data.data;
-            console.log('$scope.allZones', $scope.allZones);
-        });
-
     })
     .controller('DistrictCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, toastr, $state) {
         //Used to name the .html file
