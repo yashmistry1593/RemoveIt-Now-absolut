@@ -3823,7 +3823,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 _id: $scope.model
             }, true);
         }
-        console.log("watch", newVal, oldVal);
     });
 
 
