@@ -31,7 +31,11 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('branch-list', {
         url: "/branch-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
-        controller: 'BranchListCtrl'
+        controller: 'BranchListCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
     })
 
     .state('branch-create', {
