@@ -1328,7 +1328,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('CreateCompanyCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('CreateCompanyCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("company-detail");
         $scope.menutitle = NavigationService.makeactive("Create Company");
@@ -1348,14 +1348,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.formData = {};
         $scope.saveCompany = function(formData) {
-
+//chintan
             NavigationService.companySave($scope.formData, function(data) {
-                console.log(data);
-                if (data.value === true) {
-                    $state.go('company-list');
-                }
-                // console.log('$scope.allCountriessave', $scope.data);
-
+              if (data.value === true) {
+                  $state.go('company-list');
+                  toastr.success("company " + formData.name + " created successfully.", "company Created");
+              } else {
+                  toastr.error("company creation failed.", "company creation error");
+              }
             });
         };
     })

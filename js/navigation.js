@@ -1178,6 +1178,9 @@ var navigationservice = angular.module('navigationservice', [])
                 data: formData
             }).success(callback);
         },
+        companySave: function(formData, callback) {
+            $http.post(adminurl + 'company/save',formData).success(callback);
+        },
         getOneCustomerCompany: function(id, callback) {
             // console.log('form data: ', formData);
             $http({
