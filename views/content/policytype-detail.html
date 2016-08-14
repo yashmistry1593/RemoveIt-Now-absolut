@@ -33,7 +33,7 @@
                                 <div class="form-group">
                                     <label for="">Policy Type*</label>
                                     <input type="text" name="policyType" placeholder="Policy Type" ng-model="formData.policyType" class="form-control" required>
-                                    <div class="error-msg" ng-show="policyTypeForm.policyType.$error.required && policyTypeForm.policyType.$touched">Please Enter Policy Type.</div>
+                                    <div class="error-msg" ng-show="policyTypeForm.policyType.$invalid.required && policyTypeForm.policyType.$touched">Please Enter Policy Type.</div>
 
                                 </div>
                                 <div class="form-group">
@@ -56,7 +56,7 @@
                                 <!-- <div class="form-group">
                                     <label for="">Status*</label>
                                     <input type="text" name="Status" placeholder="Status" ng-model="formData.status" class="form-control" required>
-                                    <div class="error-msg" ng-show="policyTypeForm.status.$error.required && policyTypeForm.status.$touched">Please Enter Status.</div>
+                                    <div class="error-msg" ng-show="policyTypeForm.status.$invalid.required && policyTypeForm.status.$touched">Please Enter Status.</div>
 
                                 </div> -->
 

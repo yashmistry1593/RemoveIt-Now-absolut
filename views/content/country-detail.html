@@ -34,17 +34,17 @@
                                 <div class="form-group">
                                     <label>Country*</label>
                                     <input type="text" name="name" ng-model="formData.name" class="form-control" required>
-                                    <div class="error-msg" ng-show="countryform.name.$error.required && countryform.name.$touched">Please Enter Country</div>
+                                    <div class="error-msg" ng-show="countryform.name.$invalid.required && countryform.name.$touched">Please Enter Country</div>
                                 </div>
                                 <div class="form-group">
                                     <label>Country Code*</label>
                                     <input type="text" name="countryCode" ng-model="formData.countryCode" class="form-control" maxlength="2" required>
-                                    <div class="error-msg" ng-show="countryform.countryCode.$error.required && countryform.countryCode.$touched">Please Enter Country Code</div>
+                                    <div class="error-msg" ng-show="countryform.countryCode.$invalid.required && countryform.countryCode.$touched">Please Enter Country Code</div>
                                 </div>
                                 <div class="form-group">
                                     <label>ISD Code*</label>
                                     <input type="tel" name="ISDCodes" ng-model="formData.ISDCodes" class="form-control" required>
-                                    <div class="error-msg" ng-show="countryform.ISDCodes.$error.required && countryform.ISDCodes.$touched">Please Enter ISD Code</div>
+                                    <div class="error-msg" ng-show="countryform.ISDCodes.$invalid.required && countryform.ISDCodes.$touched">Please Enter ISD Code</div>
                                 </div>
                             </div>
 

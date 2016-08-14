@@ -33,7 +33,7 @@
                                 <div class="form-group">
                                     <label for="">Office Type*</label>
                                     <input type="text" name="name" placeholder="Office Type" ng-model="formData.name" class="form-control" required>
-                                    <div class="error-msg" ng-show="cityform.name.$error.required && cityform.name.$touched">Please Enter Office Type</div>
+                                    <div class="error-msg" ng-show="cityform.name.$invalid.required && cityform.name.$touched">Please Enter Office Type</div>
                                 </div>
                             </div>
                         </div>

@@ -35,7 +35,7 @@
                                     <div class="form-group">
                                         <label>Bank Name*</label>
                                         <input type="text" name="name" class="form-control" ng-model="formData.name" required>
-                                        <div class="error-msg" ng-show="bankForm.name.$error && bankForm.name.$touched">Please Enter Bank Name</div>
+                                        <div class="error-msg" ng-show="bankForm.name.$invalid && bankForm.name.$touched">Please Enter Bank Name</div>
                                     </div>
                                 </div>
                             </div>

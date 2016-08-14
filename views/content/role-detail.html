@@ -33,7 +33,7 @@
                                 <div class="form-group">
                                     <label for="">Role Name*</label>
                                     <input type="text" name="name" placeholder="Role Name" ng-model="formData.name" class="form-control" required>
-                                    <div class="error-msg" ng-show="roleForm.name.$error.required && roleForm.name.$touched">Please Enter City Name.</div>
+                                    <div class="error-msg" ng-show="roleForm.name.$invalid.required && roleForm.name.$touched">Please Enter City Name.</div>
                                 </div>
                                 <div class="form-group">
                                     <label for="disabledSelect">Menu*</label>
@@ -45,12 +45,12 @@
                                 <div class="form-group">
                                     <label for="">Description</label>
                                     <input type="text" name="stdCode" placeholder="Descriptione" ng-model="formData.description" class="form-control" required>
-                                    <div class="error-msg" ng-show="roleForm.description.$error.required && roleForm.description.$touched">Please Enter Description.</div>
+                                    <div class="error-msg" ng-show="roleForm.description.$invalid.required && roleForm.description.$touched">Please Enter Description.</div>
                                 </div>
                                 <div class="form-group">
                                     <label for="">Privileges</label>
                                     <input type="text" name="privileges" placeholder="Privileges" ng-model="formData.privileges" class="form-control" required>
-                                    <div class="error-msg" ng-show="roleForm.privileges.$error.required && roleForm.privileges.$touched">Please Enter Privileges.</div>
+                                    <div class="error-msg" ng-show="roleForm.privileges.$invalid.required && roleForm.privileges.$touched">Please Enter Privileges.</div>
                                 </div>
 
                                 <div class="form-group">
