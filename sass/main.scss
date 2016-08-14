@@ -596,10 +596,13 @@ form.search-form {
     right: 0;
     padding: 7px 19px;
     position: absolute;
-    background: #ff6b6b;
+    background: $red;
     color: white;
     border: none;
     z-index: 11;
+}
+.tableData {
+  text-align: center;
 }
 /* Start writing sass here */
 @import "fancybox-override";
