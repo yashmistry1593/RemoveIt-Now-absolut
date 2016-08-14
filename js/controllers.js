@@ -954,7 +954,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
     })
-    .controller('CreateProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('CreateProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("product-detail");
         $scope.menutitle = NavigationService.makeactive("createproduct");
@@ -968,32 +968,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "value": false
         }];
         $scope.formData = {};
-        NavigationService.getAllIndustries(function(data) {
-            $scope.allIndustries = data.data;
-
-        });
-        NavigationService.getAllCategories(function(data) {
-            $scope.allCategories = data.data;
-
-        });
 
         $scope.saveProduct = function(formData) {
 
             NavigationService.productSave($scope.formData, function(data) {
-                // console.log(formData.surveyor.valid_upto);
-                // console.log('$scope.formData',$scope.formData);
-                // console.log(data);
-                // $scope.formData.surveyor.valid_upto = new Date($scope.formData.surveyor.valid_upto);
-                if (data.value === true) {
-                    $state.go('product-list');
-                }
-                // console.log('$scope.allCountriessave', $scope.data);
-
+              if (data.value === true) {
+                  $state.go('product-list');
+                  toastr.success("Product " + formData.name + " created successfully.", "Product Created");
+              } else {
+                  toastr.error("Product creation failed.", "Product creation error");
+              }
             });
-        }
+        };
 
     })
-    .controller('EditProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+    .controller('EditProductCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("product-detail");
         $scope.menutitle = NavigationService.makeactive("Edit-Product");
@@ -1006,31 +995,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Inactive",
             "value": false
         }];
-        NavigationService.getAllIndustries(function(data) {
-            $scope.allIndustries = data.data;
-
-        });
-        NavigationService.getAllCategories(function(data) {
-            $scope.allCategories = data.data;
-
-        });
-
-
         NavigationService.getOneProduct($stateParams.id, function(data) {
             $scope.formData = data.data;
+            $scope.formData.industry = data.data.category.industry._id;
+            $scope.formData.category = data.data.category._id;
 
         });
 
         $scope.saveProduct = function(formValid) {
-
-            //  if (formValid.$valid) {
-            //  $scope.formComplete = true;
-            NavigationService.productEditSave($scope.formData, function(data) {
-                if (data.value == true) {
-                    $state.go('product-list');
-                }
+            NavigationService.productSave($scope.formData, function(data) {
+              if (data.value === true) {
+                  $state.go('product-list');
+                  toastr.success("Product " + $scope.formData.name + " edited successfully.", "Product Edited");
+              } else {
+                  toastr.error("Product edition failed.", "Product editing error");
+              }
             });
-            //  }
         };
     })
     .controller('SalvageCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -2458,7 +2438,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
     })
-    .controller('CreateCategoryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('CreateCategoryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("category-detail");
         $scope.menutitle = NavigationService.makeactive("category-detail");
@@ -2476,24 +2456,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.formData = {};
         $scope.saveCategory = function(formData) {
-
             NavigationService.categorySave($scope.formData, function(data) {
-                console.log(data);
-                if (data.value == true) {
-                    $state.go('category-list');
-                }
-                // console.log('$scope.allCountriessave', $scope.data);
-
+              if (data.value === true) {
+                  $state.go('category-list');
+                  toastr.success("Category " + formData.name + " created successfully.", "Category Created");
+              } else {
+                  toastr.error("Category creation failed.", "Category creation error");
+              }
             });
-        }
-
-        NavigationService.getAllIndustries(function(data) {
-            $scope.allIndustries = data.data;
-
-        });
-
+        };
     })
-    .controller('EditCategoryCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+    .controller('EditCategoryCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("category-detail");
         $scope.menutitle = NavigationService.makeactive("category-detail");
@@ -2517,22 +2490,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
         $scope.saveCategory = function(formValid) {
-
-            //  if (formValid.$valid) {
-            //  $scope.formComplete = true;
-            NavigationService.CategoryEditSave($scope.formData, function(data) {
-                if (data.value == true) {
-                    $state.go('category-list');
-                }
+            NavigationService.categorySave($scope.formData, function(data) {
+              if (data.value === true) {
+                  $state.go('category-list');
+                  toastr.success("Category " + $scope.formData.name + " edited successfully.", "Category Edited");
+              } else {
+                  toastr.error("Category edition failed.", "Category editing error");
+              }
             });
-            //  }
         };
-
-        NavigationService.getAllIndustries(function(data) {
-            $scope.allIndustries = data.data;
-
-        });
-
     })
 
 .controller('FuncCtrl', function($scope, TemplateService, NavigationService, $timeout) {

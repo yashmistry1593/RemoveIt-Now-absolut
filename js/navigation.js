@@ -815,7 +815,7 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         deleteCategory: function(id, callback) {
-            $http(adminurl + 'category/delete', {
+            $http.post(adminurl + 'category/delete', {
                 "_id": id,
             }).success(callback);
         },
@@ -1400,13 +1400,7 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         productSave: function(formData, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'product/saveData',
-                method: 'POST',
-                withCredentials: true,
-                data: formData
-            }).success(callback);
+            $http.post(adminurl + 'product/save',formData).success(callback);
         },
         getOneProduct: function(id, callback) {
             // console.log('form data: ', formData);
@@ -1429,7 +1423,7 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         deleteProduct: function(id, callback) {
-            $http(adminurl + 'product/delete', {
+            $http.post(adminurl + 'product/delete', {
                 "_id": id,
             }).success(callback);
         },
