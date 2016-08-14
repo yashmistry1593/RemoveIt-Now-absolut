@@ -1372,6 +1372,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.formData = data.data;
             // $scope.formData.country = data.data.
             console.log($scope.formData);
+            $scope.formData.country = data.data.city.district.state.zone.country._id;
+            $scope.formData.zone = data.data.city.district.state.zone._id;
+            $scope.formData.state = data.data.city.district.state._id;
+            $scope.formData.district = data.data.city.district._id;
+            $scope.formData.city = data.data.city._id;
         });
         $scope.saveCompany = function(formValid) {
             NavigationService.companySave($scope.formData, function(data) {
@@ -3286,10 +3291,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
     NavigationService.getOneBranch($stateParams.id, function(data) {
         $scope.formData = data.data;
-        // $scope.formData.country = data.data.district.state.zone.country._id;
-        // $scope.formData.zone = data.data.district.state.zone._id;
-        // $scope.formData.state = data.data.district.state._id;
-        // $scope.formData.district = data.data.district._id;
+        $scope.formData.country = data.data.city.district.state.zone.country._id;
+        $scope.formData.zone = data.data.city.district.state.zone._id;
+        $scope.formData.state = data.data.city.district.state._id;
+        $scope.formData.district = data.data.city.district._id;
+        $scope.formData.city = data.data.city._id;
     });
 
     $scope.submit = function(formValid) {
