@@ -3788,36 +3788,40 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             page: 1
         };
         NavigationService[$scope.api](dataSend, ++i, function(data) {
-            if(data.value)
-            {
-              $scope.list = data.data.results;
+            if (data.value) {
+                $scope.list = data.data.results;
 
-              if ($scope.search.modelData) {
-                  $scope.showCreate = true;
-                  _.each($scope.list, function(n) {
-                      if (_.lowerCase(n.name) == _.lowerCase($scope.search.modelData)) {
-                          $scope.showCreate = false;
-                          return 0;
-                      }
-                  });
-              } else {
-                  $scope.showCreate = false;
-              }
-              if (insertFirst) {
-                  if ($scope.list[0] && $scope.list[0]._id) {
-                      $scope.sendData($scope.list[0]._id, $scope.list[0].name);
-                  } else {
-                      $scope.sendData("", "");
-                  }
-              }
-            }
-            else {
-              $scope.sendData("", "");
+                if ($scope.search.modelData) {
+                    $scope.showCreate = true;
+                    _.each($scope.list, function(n) {
+                        if (_.lowerCase(n.name) == _.lowerCase($scope.search.modelData)) {
+                            $scope.showCreate = false;
+                            return 0;
+                        }
+                    });
+                } else {
+                    $scope.showCreate = false;
+                }
+                if (insertFirst) {
+                    if ($scope.list[0] && $scope.list[0]._id) {
+                        $scope.sendData($scope.list[0]._id, $scope.list[0].name);
+                    } else {
+                        $scope.sendData("", "");
+                    }
+                }
+            } else {
+                $scope.sendData("", "");
             }
 
 
         });
     };
+
+    $scope.$watch('model', function() {
+      $scope.getValues({
+          _id: $scope.model
+      }, true);
+    });
 
 
     $scope.search = {
@@ -3846,10 +3850,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.listview = false;
     };
     $scope.closeListSlow = function() {
-      console.log("Slow Called");
+        console.log("Slow Called");
         $timeout(function() {
-          $scope.closeList();
-        },500);
+            $scope.closeList();
+        }, 500);
     };
     $scope.searchNew = function(dontFlush) {
         if (!dontFlush) {
