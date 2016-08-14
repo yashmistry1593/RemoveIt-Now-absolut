@@ -33,22 +33,16 @@
                                 <div class="form-group">
                                     <label for="">Office Type*</label>
                                     <input type="text" name="name" placeholder="Office Type" ng-model="formData.name" class="form-control" required>
-                                    <div class="error-msg" ng-show="cityform.name.$error.required && cityform.name.$touched">Please Enter Office Type.</div>
-
+                                    <div class="error-msg" ng-show="cityform.name.$error.required && cityform.name.$touched">Please Enter Office Type</div>
                                 </div>
-
                             </div>
-
                         </div>
                         <div class="text-center mt20">
                             <button class="btn btn-default" type="submit" ng-click="savetypeOfOffice(formData)" ng-disabled="cityform.$invalid">Save</button>
                             <button class="btn btn-default" ui-sref="typeOfOffice-list">Cancel</button>
                         </div>
+                    </div>
                 </div>
-            </div>
-
-
-
             </form>
         </div>
     </div>

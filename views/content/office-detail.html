@@ -54,19 +54,19 @@
                         </div>
                         <div class="sec">
                             <div class="form-group">
-                                <label>Phone</label>
-                                <input type="tel" class="form-control">
-                                <div class="error-msg" ng-show="officeform.phone.$error.required && officeform.phone.$touched">Please Enter Company Name.</div>
+                                <label>Phone*</label>
+                                <input type="tel" name="phone" class="form-control" ng-model="formData.phone">
+                                <div class="error-msg" ng-show="officeform.phone.$error.required && officeform.phone.$touched">Please Enter Phone Number</div>
                             </div>
                             <div class="form-group">
-                                <label>Fax</label>
-                                <input type="tel" class="form-control">
-                                <div class="error-msg" ng-show="officeform.fax.$error.required && officeform.fax.$touched">Please Enter Company Name.</div>
+                                <label>Fax*</label>
+                                <input type="tel" name="fax" class="form-control" ng-model="formData.phone">
+                                <div class="error-msg" ng-show="officeform.fax.$error.required && officeform.fax.$touched">Please Enter Fax</div>
                             </div>
                             <div class="form-group">
-                                <label>Email</label>
-                                <input type="email" class="form-control">
-                                <div class="error-msg" ng-show="officeform.email.$error.required && officeform.email.$touched">Please Enter Company Name.</div>
+                                <label>Email*</label>
+                                <input type="email" name="email" class="form-control" ng-model="formData.phone">
+                                <div class="error-msg" ng-show="officeform.email.$error.required && officeform.email.$touched">Please Enter Email Id</div>
                             </div>
                         </div>
                     </div>
