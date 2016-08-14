@@ -38,7 +38,7 @@
                               </div>
                                 <div class="form-group">
                                     <label>Country Code*</label>
-                                    <input type="text" name="countryCode" ng-model="formData.countryCode" class="form-control" required>
+                                    <input type="text" name="countryCode" ng-model="formData.countryCode" class="form-control" required maxlength="2">
                                     <div class="error-msg" ng-show="countryform.countryCode.$error.required && countryform.countryCode.$touched">Please Enter Country Code</div>
                                 </div>
                                 <div class="form-group">
