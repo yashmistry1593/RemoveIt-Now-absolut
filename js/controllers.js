@@ -67,9 +67,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 NavigationService.deleteBranch(id, function(data) {
                     if (data.value) {
                         $scope.showAllCountries();
-                        toastr.success("Country deleted successfully.", "Country deleted");
+                        toastr.success("Branch deleted successfully.", "Branch deleted");
                     } else {
-                        toastr.error("There was an error while deleting country", "Country deleting error");
+                        toastr.error("There was an error while deleting Branch", "Branch deleting error");
                     }
 
 
@@ -3296,11 +3296,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
     NavigationService.getOneBranch($stateParams.id, function(data) {
         $scope.formData = data.data;
-        $scope.formData.country = data.data.city.district.state.zone.country._id;
-        $scope.formData.zone = data.data.city.district.state.zone._id;
-        $scope.formData.state = data.data.city.district.state._id;
-        $scope.formData.district = data.data.city.district._id;
-        $scope.formData.city = data.data.city._id;
+        $scope.formData.company = data.data.office.company;
+
     });
 
     $scope.submit = function(formValid) {
