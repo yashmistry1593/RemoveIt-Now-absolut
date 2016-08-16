@@ -3740,6 +3740,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         console.log("watch", newVal, oldVal);
     });
 
+    $scope.$watch('filter', function(newVal, oldVal) {
+        $scope.searchNew(true);
+    });
+
 
     $scope.search = {
         modelData: ""
@@ -3761,7 +3765,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.typeselect = "";
     $scope.showList = function() {
         $scope.listview = true;
-        $scope.searchNew(true);
+        // $scope.searchNew(true);
     };
     $scope.closeList = function() {
         $scope.listview = false;
