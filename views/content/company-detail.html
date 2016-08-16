@@ -88,7 +88,7 @@
                             <div class="form-group">
                                 <div class="user-img mt25">
                                     <label>Upload Logo</label>
-                                    <upload-image ng-model="companyForm.logo" no-view></upload-image>
+                                    <upload-image ng-model="companyForm.logo" ></upload-image>
                                 </div>
                             </div>
                         </div>
@@ -112,7 +112,7 @@
                                 <div class="form-group">
                                     <label>Email*</label>
                                     <input type="email" name="email" class="form-control" ng-model="formData.email" required>
-                                    <div class="error-msg" ng-show="companyForm.email.$invalid.required && companyForm.email.$touched">Please Enter Email Id</div>
+                                    <div class="error-msg" ng-show="companyForm.email.$invalid && companyForm.email.$touched">Please Enter Email Id</div>
                                 </div>
                             </div>
                         </div>
