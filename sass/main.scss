@@ -608,11 +608,14 @@ form.search-form {
 .side-header {
     overflow-y: auto;
 }
-.form-control {
+.form-control, .table td {
   text-transform: capitalize;
 }
 .text-upper {
   text-transform: uppercase;
+}
+input[type="email"].form-control {
+    text-transform: lowercase;
 }
 /* Start writing sass here */
 @import "fancybox-override";

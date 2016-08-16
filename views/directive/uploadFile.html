@@ -2,11 +2,11 @@
   <!-- <label for="exampleInputEmail1" style="margin:5px;">Image Upload</label> -->
 
   <div class="img-box" ng-if="image && !isMultiple" ng-hide="noShow">
-    <img ng-src="{{image.url}}" imageonload="uploadNow(image)" type="{{image.file.type}}"/>
+    <img ng-src="{{image.url}}" imageonload="uploadNow(image)" type="{{image.file.type}}" class="img-responsive"/>
   </div>
   <div class="clearfix" ng-if="image && isMultiple" ng-hide="noShow">
     <div class="img-box" style="float:left;"  ng-repeat="sImage in image">
-      <img alt="" ng-src="{{sImage.url}}" imageonload="uploadNow(sImage)" type="{{sImage.file.type}}"/>
+      <img alt="" ng-src="{{sImage.url}}" imageonload="uploadNow(sImage)" type="{{sImage.file.type}}" class="img-responsive"/>
     </div>
   </div>
 
