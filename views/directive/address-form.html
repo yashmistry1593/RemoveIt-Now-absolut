@@ -29,7 +29,7 @@
 </div>
 <div class="form-group">
     <label>Postal Code</label>
-    <input type="text" class="form-control"  ng-model="formData.pincode" ng-keyup="getLatLng(formData.pincode);">
+    <input type="text" class="form-control"  ng-model="formData.pincode" ng-keyup="getLatLng(formData.address+','+formData.pincode);">
 </div>
 <div class="form-group">
     <label for="">Latitude</label>

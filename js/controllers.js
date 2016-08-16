@@ -281,12 +281,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.saveOffice = function(formData) {
 
             NavigationService.officeSave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('office-list');
-                  toastr.success("Office " + formData.name + " created successfully.", "Office Created");
-              } else {
-                  toastr.error("Office creation failed.", "Office creation error");
-              }
+                if (data.value === true) {
+                    $state.go('office-list');
+                    toastr.success("Office " + formData.name + " created successfully.", "Office Created");
+                } else {
+                    toastr.error("Office creation failed.", "Office creation error");
+                }
             });
         };
 
@@ -312,12 +312,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.saveOffice = function(formValid) {
             NavigationService.officeSave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('office-list');
-                  toastr.success("Office " + $scope.formData.name + " edited successfully.", "Office Edited");
-              } else {
-                  toastr.error("Office edition failed.", "Office editing error");
-              }
+                if (data.value === true) {
+                    $state.go('office-list');
+                    toastr.success("Office " + $scope.formData.name + " edited successfully.", "Office Edited");
+                } else {
+                    toastr.error("Office edition failed.", "Office editing error");
+                }
             });
         };
 
@@ -1385,12 +1385,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
         $scope.saveCompany = function(formValid) {
             NavigationService.companySave($scope.formData, function(data) {
-              if (data.value === true) {
-                  $state.go('company-list');
-                  toastr.success("Company " + $scope.formData.name + " edited successfully.", "Company Edited");
-              } else {
-                  toastr.error("Company edition failed.", "Company editing error");
-              }
+                if (data.value === true) {
+                    $state.go('company-list');
+                    toastr.success("Company " + $scope.formData.name + " edited successfully.", "Company Edited");
+                } else {
+                    toastr.error("Company edition failed.", "Company editing error");
+                }
             });
         };
 
@@ -3264,53 +3264,53 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
 
 .controller('BranchCreateCtrl', function($scope, TemplateService, NavigationService, $timeout, toastr, $state) {
-    //Used to name the .html file
-    $scope.template = TemplateService.changecontent("branch-create");
-    $scope.menutitle = NavigationService.makeactive("Create Branch");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
-    $scope.formData = {};
-    $scope.header = {
-        "name": "Create Branch Master"
-    };
-    $scope.submit = function(formData) {
-        NavigationService.branchSave($scope.formData, function(data) {
-            if (data.value === true) {
-                $state.go('branch-list');
-                toastr.success("Branch " + $scope.formData.name + " created successfully.", "Branch Created");
-            } else {
-                toastr.error("Branch creation failed.", "Branch creation error");
-            }
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("branch-create");
+        $scope.menutitle = NavigationService.makeactive("Create Branch");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.formData = {};
+        $scope.header = {
+            "name": "Create Branch Master"
+        };
+        $scope.submit = function(formData) {
+            NavigationService.branchSave($scope.formData, function(data) {
+                if (data.value === true) {
+                    $state.go('branch-list');
+                    toastr.success("Branch " + $scope.formData.name + " created successfully.", "Branch Created");
+                } else {
+                    toastr.error("Branch creation failed.", "Branch creation error");
+                }
+            });
+        };
+    })
+    .controller('BranchEditCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("branch-create");
+        $scope.menutitle = NavigationService.makeactive("Edit Branch");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+
+        $scope.header = {
+            "name": "Edit Branch"
+        };
+        NavigationService.getOneBranch($stateParams.id, function(data) {
+            $scope.formData = data.data;
+            $scope.formData.company = data.data.office.company;
+
         });
-    };
-})
-.controller('BranchEditCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
-    //Used to name the .html file
-    $scope.template = TemplateService.changecontent("branch-create");
-    $scope.menutitle = NavigationService.makeactive("Edit Branch");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
 
-    $scope.header = {
-        "name": "Edit Branch"
-    };
-    NavigationService.getOneBranch($stateParams.id, function(data) {
-        $scope.formData = data.data;
-        $scope.formData.company = data.data.office.company;
-
-    });
-
-    $scope.submit = function(formValid) {
-        NavigationService.branchSave($scope.formData, function(data) {
-            if (data.value === true) {
-                $state.go('branch-list');
-                toastr.success("Branch " + $scope.formData.name + " edited successfully.", "Branch Edited");
-            } else {
-                toastr.error("Branch edition failed.", "Branch editing error");
-            }
-        });
-    };
-})
+        $scope.submit = function(formValid) {
+            NavigationService.branchSave($scope.formData, function(data) {
+                if (data.value === true) {
+                    $state.go('branch-list');
+                    toastr.success("Branch " + $scope.formData.name + " edited successfully.", "Branch Edited");
+                } else {
+                    toastr.error("Branch edition failed.", "Branch editing error");
+                }
+            });
+        };
+    })
 
 .controller('TimelineCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
     //Used to name the .html file
@@ -3691,7 +3691,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
     })
 
-.controller('MultipleSelectCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter,toastr) {
+.controller('MultipleSelectCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter, toastr) {
     var i = 0;
     $scope.getValues = function(filter, insertFirst) {
         var dataSend = {
@@ -3718,12 +3718,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     if ($scope.list[0] && $scope.list[0]._id) {
                         $scope.sendData($scope.list[0]._id, $scope.list[0].name);
                     } else {
-                      console.log("Making this happen");
+                        console.log("Making this happen");
                         $scope.sendData("", "");
                     }
                 }
             } else {
-              console.log("Making this happen2");
+                console.log("Making this happen2");
                 $scope.sendData("", "");
             }
 
@@ -3741,7 +3741,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     });
 
     $scope.$watch('filter', function(newVal, oldVal) {
-        $scope.searchNew(true);
+        console.log("watch FILTER", newVal, oldVal);
+
+        var filter = {};
+        if ($scope.filter) {
+            filter = JSON.parse($scope.filter);
+        }
+        var dataSend = {
+            keyword: $scope.search.modelData,
+            filter: filter,
+            page: 1
+        };
+
+        NavigationService[$scope.api](dataSend, ++i, function(data) {
+            if (data.value) {
+                $scope.list = data.data.results;
+                $scope.showCreate = false;
+
+            }
+        });
     });
 
 
@@ -3765,7 +3783,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.typeselect = "";
     $scope.showList = function() {
         $scope.listview = true;
-        // $scope.searchNew(true);
+        $scope.searchNew(true);
     };
     $scope.closeList = function() {
         $scope.listview = false;
@@ -3795,14 +3813,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             data = _.assign(data, JSON.parse($scope.filter));
         }
         console.log(data);
-        NavigationService[$scope.create](data,function(data) {
-          if(data.value) {
-            toastr.success($scope.name + " Created Successfully","Creation Success");
-            $scope.model  = data.data._id;
-            $scope.ngName = data.data.name;
-          } else {
-            toastr.error("Error while creating "+$scope.name,"Error");
-          }
+        NavigationService[$scope.create](data, function(data) {
+            if (data.value) {
+                toastr.success($scope.name + " Created Successfully", "Creation Success");
+                $scope.model = data.data._id;
+                $scope.ngName = data.data.name;
+            } else {
+                toastr.error("Error while creating " + $scope.name, "Error");
+            }
         });
         $scope.listview = false;
     };
