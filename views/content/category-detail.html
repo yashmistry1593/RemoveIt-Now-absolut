@@ -34,12 +34,12 @@
                                     <div class="form-group">
                                         <label>Industry*</label>
                                         <multiple-select  name="industry" required ng-model="formData.industry" ng-name = "name.industry" api="searchIndustry" ng-create="industrySave"></multiple-select>
-                                        <div class="error-msg" ng-show="industryForm.industry.$invalid.">Please Enter Industry</div>
+                                        <div class="error-msg" ng-show="industryForm.industry.$invalid">Please Enter Industry</div>
                                     </div>
                                     <div class="form-group">
                                         <label>Category Name*</label>
                                         <input type="text" name="name" ng-model="formData.name" class="form-control" required>
-                                        <div class="error-msg" ng-show="industryForm.name.$invalid. && industryForm.name.$touched">Please Enter Category Name</div>
+                                        <div class="error-msg" ng-show="industryForm.name.$invalid && industryForm.name.$touched">Please Enter Category Name</div>
                                     </div>
                                 </div>
                             </div>

@@ -608,6 +608,12 @@ form.search-form {
 .side-header {
     overflow-y: auto;
 }
+.form-control {
+  text-transform: capitalize;
+}
+.text-upper {
+  text-transform: uppercase;
+}
 /* Start writing sass here */
 @import "fancybox-override";
 @import "other/mobile";

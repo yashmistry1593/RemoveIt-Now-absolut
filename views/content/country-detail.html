@@ -34,17 +34,17 @@
                                 <div class="form-group">
                                     <label>Country*</label>
                                     <input type="text" name="name" ng-model="formData.name" class="form-control" required>
-                                    <div class="error-msg" ng-show="countryform.name.$invalid. && countryform.name.$touched">Please Enter Country</div>
+                                    <div class="error-msg" ng-show="countryform.name.$invalid && countryform.name.$touched">Please Enter Country</div>
                                 </div>
                                 <div class="form-group">
                                     <label>Country Code*</label>
-                                    <input type="text" name="countryCode" ng-model="formData.countryCode" class="form-control" maxlength="2" required>
-                                    <div class="error-msg" ng-show="countryform.countryCode.$invalid. && countryform.countryCode.$touched">Please Enter Country Code</div>
+                                    <input type="text" name="countryCode" ng-model="formData.countryCode" class="form-control text-upper" maxlength="2" required>
+                                    <div class="error-msg" ng-show="countryform.countryCode.$invalid && countryform.countryCode.$touched">Please Enter Country Code</div>
                                 </div>
                                 <div class="form-group">
                                     <label>ISD Code*</label>
                                     <input type="tel" name="ISDCodes" ng-model="formData.ISDCodes" class="form-control" required>
-                                    <div class="error-msg" ng-show="countryform.ISDCodes.$invalid. && countryform.ISDCodes.$touched">Please Enter ISD Code</div>
+                                    <div class="error-msg" ng-show="countryform.ISDCodes.$invalid && countryform.ISDCodes.$touched">Please Enter ISD Code</div>
                                 </div>
                             </div>
 

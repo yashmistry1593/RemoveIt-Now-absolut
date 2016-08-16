@@ -42,6 +42,10 @@
                                 <h3>NEFT Details</h3>
                             </div>
                             <div class="form-group">
+                                <label>Bank Name</label>
+                                <multiple-select name="bankName" required ng-model="formData.bankName" filter='{"bankName":"{{formData.bankName}}"}' ng-name="name.bankName" api="searchBankName" ng-create="bankNameSave"></multiple-select>
+                            </div>
+                            <div class="form-group">
                                 <label>Account Name</label>
                                 <input type="text" class="form-control" ng-model="formData.accountName">
                             </div>
@@ -52,10 +56,6 @@
                             <div class="form-group">
                                 <label>NEFT Code</label>
                                 <input type="text" class="form-control" ng-model="formData.neftCode">
-                            </div>
-                            <div class="form-group">
-                                <label>Bank Name</label>
-                                <input type="text" class="form-control" ng-model="formData.bankName">
                             </div>
                             <div class="form-group">
                                 <label>Branch Name</label>
@@ -102,12 +102,12 @@
                                 <div class="form-group">
                                     <label>Phone*</label>
                                     <input type="tel" name="phone" class="form-control" ng-model="formData.phone" required>
-                                    <div class="error-msg" ng-show="companyForm.phone.$invalid. && companyForm.phone.$touched">Please Enter Phone Number</div>
+                                    <div class="error-msg" ng-show="companyForm.phone.$invalid && companyForm.phone.$touched">Please Enter Phone Number</div>
                                 </div>
                                 <div class="form-group">
                                     <label>Fax*</label>
                                     <input type="tel" name="fax" class="form-control" ng-model="formData.fax" required>
-                                    <div class="error-msg" ng-show="companyForm.fax.$invalid. && companyForm.fax.$touched">Please Enter Fax</div>
+                                    <div class="error-msg" ng-show="companyForm.fax.$invalid && companyForm.fax.$touched">Please Enter Fax</div>
                                 </div>
                                 <div class="form-group">
                                     <label>Email*</label>
