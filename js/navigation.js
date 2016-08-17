@@ -118,6 +118,37 @@ var navigationservice = angular.module('navigationservice', [])
             icon: "building"
         }]
     }, {
+        name: "Employee",
+        classis: "active",
+        anchor: "company",
+        icon: "user",
+        subnav: [{
+            name: "Employee",
+            classis: "active",
+            anchor: "employee-list",
+            icon: "user"
+        }, {
+            name: "User",
+            classis: "active",
+            anchor: "user-list",
+            icon: "users"
+        }, {
+            name: "Role",
+            classis: "active",
+            anchor: "role-list",
+            icon: "user-plus"
+        }, {
+            name: "Function",
+            classis: "active",
+            anchor: "func-list",
+            icon: "cogs"
+        }, {
+            name: "Grade",
+            classis: "active",
+            anchor: "grade-list",
+            icon: "font"
+        }]
+    }, {
         name: "Timeline",
         classis: "active",
         anchor: "timeline",
@@ -260,7 +291,7 @@ var navigationservice = angular.module('navigationservice', [])
             });
         },
         zoneSave: function(formData, callback) {
-          console.log(formData);
+            console.log(formData);
             $http.post(adminurl + 'zone/save', formData).success(callback);
         },
         getOneZone: function(id, callback) {
@@ -307,12 +338,12 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         districtSave: function(formData, callback) {
-            $http.post(adminurl + 'district/save',formData).success(callback);
+            $http.post(adminurl + 'district/save', formData).success(callback);
         },
         getOneDistrict: function(id, callback) {
-            $http.post(adminurl + 'district/getOne',{
-                    "_id": id
-                }).success(callback);
+            $http.post(adminurl + 'district/getOne', {
+                "_id": id
+            }).success(callback);
         },
         districtEditSave: function(id, callback) {
             // console.log('form data: ', formData);
@@ -324,9 +355,9 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         deleteDistrict: function(id, callback) {
-            $http.post(adminurl + 'district/delete',{
-                    "_id": id,
-                }).success(callback);
+            $http.post(adminurl + 'district/delete', {
+                "_id": id,
+            }).success(callback);
         },
         getAllCurrencies: function(callback) {
             // console.log('form data: ', formData);
@@ -374,7 +405,7 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         citySave: function(formData, callback) {
-            $http.post(adminurl + 'city/save',formData).success(callback);
+            $http.post(adminurl + 'city/save', formData).success(callback);
         },
         getOneCity: function(id, callback) {
             // console.log('form data: ', formData);
@@ -449,7 +480,7 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         officeSave: function(formData, callback) {
-            $http.post(adminurl + 'office/save',formData).success(callback);
+            $http.post(adminurl + 'office/save', formData).success(callback);
         },
         getOnetypeOfOffice: function(id, callback) {
             // console.log('form data: ', formData);
@@ -1193,7 +1224,7 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         companySave: function(formData, callback) {
-            $http.post(adminurl + 'company/save',formData).success(callback);
+            $http.post(adminurl + 'company/save', formData).success(callback);
         },
         getOneCustomerCompany: function(id, callback) {
             // console.log('form data: ', formData);
@@ -1246,9 +1277,9 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         getOneCompany: function(id, callback) {
-            $http.post(adminurl + 'company/getOne',{
-                    "_id": id
-                }).success(callback);
+            $http.post(adminurl + 'company/getOne', {
+                "_id": id
+            }).success(callback);
         },
         companyEditSave: function(id, callback) {
             // console.log('form data: ', formData);
@@ -1260,9 +1291,9 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         deleteCompany: function(id, callback) {
-            $http.post(adminurl + 'company/delete',{
-                    "_id": id,
-                }).success(callback);
+            $http.post(adminurl + 'company/delete', {
+                "_id": id,
+            }).success(callback);
         },
 
         getAllCustomers: function(callback) {
@@ -1410,7 +1441,7 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         productSave: function(formData, callback) {
-            $http.post(adminurl + 'product/save',formData).success(callback);
+            $http.post(adminurl + 'product/save', formData).success(callback);
         },
         getOneProduct: function(id, callback) {
             // console.log('form data: ', formData);
@@ -1450,13 +1481,13 @@ var navigationservice = angular.module('navigationservice', [])
                 "_id": id,
             }).success(callback);
         },
-        getLatLng: function(address,i,callback) {
+        getLatLng: function(address, i, callback) {
             $http({
                 url: "https://maps.googleapis.com/maps/api/geocode/json?address=" + address + "&key=AIzaSyC62zlixVsjaq4zDaL4cefNCubjCgxkte4",
                 method: 'GET',
                 withCredentials: false,
             }).success(function(data) {
-                callback(data,i);
+                callback(data, i);
             });
         }
 
