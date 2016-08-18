@@ -751,7 +751,6 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         }
     })
 
-
     .state('createcustomercompany', {
         url: "/customercompany-create",
         templateUrl: "views/template.html",
@@ -762,6 +761,24 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         url: "/customercompany-edit/:id",
         templateUrl: "views/template.html",
         controller: 'EditCustomerCompanyCtrl'
+    })
+
+    .state('grade-list', {
+        url: "/grade-list",
+        templateUrl: "views/template.html",
+        controller: 'GradeCtrl'
+    })
+
+    .state('creategrade', {
+        url: "/grade-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateGradeCtrl'
+    })
+
+    .state('editgrade', {
+        url: "/grade-edit",
+        templateUrl: "views/template.html",
+        controller: 'EditGradeCtrl'
     })
 
     .state('timeline', {

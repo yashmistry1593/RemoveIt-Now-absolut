@@ -3830,4 +3830,26 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.model = val;
         $scope.listview = false;
     }
-});
+})
+.controller('EditGradeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+  //Used to name the .html file
+  $scope.template = TemplateService.changecontent("grade-detail");
+  $scope.menutitle = NavigationService.makeactive("Grade");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+.controller('CreateGradeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+  //Used to name the .html file
+  $scope.template = TemplateService.changecontent("grade-detail");
+  $scope.menutitle = NavigationService.makeactive("Grade");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+.controller('GradeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+  //Used to name the .html file
+  $scope.template = TemplateService.changecontent("grade-list");
+  $scope.menutitle = NavigationService.makeactive("Grade List");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+;
