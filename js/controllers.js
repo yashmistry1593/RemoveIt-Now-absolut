@@ -1970,7 +1970,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 .controller('PolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("policytype-list");
-        $scope.menutitle = NavigationService.makeactive("Policy Type List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
@@ -1996,7 +1995,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('CreatePolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("policytype-detail");
-        $scope.menutitle = NavigationService.makeactive("Policy Type");
+        $scope.menutitle = NavigationService.makeactive("Policy Name");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.userStatus = [{
@@ -2007,7 +2006,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "value": false
         }];
         $scope.header = {
-            "name": "Create Policy Type"
+            "name": "Create Policy Name"
         };
         $scope.formData = {};
         $scope.savePolicyType = function(formData) {
@@ -2030,7 +2029,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('EditPolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("policytype-detail");
-        $scope.menutitle = NavigationService.makeactive("Policy Type");
+        $scope.menutitle = NavigationService.makeactive("Policy Name");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.userStatus = [{
@@ -2041,7 +2040,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "value": false
         }];
         $scope.header = {
-            "name": "Edit Policy Type"
+            "name": "Edit Policy Name"
         };
 
         NavigationService.getOnePolicyType($stateParams.id, function(data) {

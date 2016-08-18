@@ -30,41 +30,60 @@
 
                     <div class="widget-title">
                         <div class="pull-right">
-                          <form class="search-form mr-form">
-                              <input type="text" placeholder="Search Here..."/>
-                              <button type="submit">
-                                  <i class="fa fa-search"></i>
-                              </button>
-                          </form>
+                            <form class="search-form mr-form">
+                                <input type="text" ng-change="showAllCountries(true)" placeholder="Search Here..." ng-model="search.keyword"/>
+                                <button type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </form>
                             <a class="btn btn-primary" ui-sref="createdepartment">Add New</a>
                         </div>
-                        <h3>List of Departments</h3>
+                        <h3>List of Banks
+                            <span class="tableTotal">(Total :
+                                {{totalItems}})
+                            </span>
+                        </h3>
                     </div>
-                    <div class="table-responsive" ng-show="totalItems>0">
+                    <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Department Name</th>
-                                    <!-- <th>Unique Type</th> -->
-                                    <th>Short Name</th>
+                                    <th>
+                                        #
+                                    </th>
+                                    <th>Name</th>
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr ng-repeat="dept in allDepartments">
-                                    <td>{{dept.name}}</td>
-                                    <!-- <td>{{dept.unique_type}}</td> -->
-                                    <td>{{dept.short_name}}</td>
-                                    <td>{{dept.status}}</td>
+                            <tbody ng-show="totalItems>0">
+                                <tr ng-repeat="data in allBank">
                                     <td>
-                                      <a class="btn btn-primary" ui-sref="editdepartment({id:dept._id})"><i class="fa fa-pencil"></i></a>
-                                      <a class="btn btn-danger" ng-click="deleteDepartment(dept._id)"><i class="fa fa-trash"></i></a>
+                                        {{($index + 1)+((currentPage-1)*maxRow)}}
+                                    </td>
+                                    <td>{{data.name}}</td>
+                                    <td>
+                                        <toggle-switch ng-model="data.status" class="switch-mini switch-success" ng-change="changeStatus(data)"></toggle-switch>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-primary" ui-sref="editdepartment({id:data._id})">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a class="btn btn-danger" ng-click="deleteDepartment(data._id)">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             </tbody>
                         </table>
                     </div>
+                    <div class="tableData" ng-show="totalItems == 0">
+                        <h5>No data found</h5>
+                    </div>
+                    <div class="tableData" ng-show="totalItems == undefined">
+                        <h5>Loading Data</h5>
+                    </div>
+                    <ul ng-if="totalItems" ng-change="changePage(currentPage);" uib-pagination total-items="totalItems" items-per-page="maxRow" ng-model="currentPage" max-size="template.pageMax" class="pagination-sm" boundary-links="true" force-ellipses="true"></ul>
                 </div>
             </div>
         </div>

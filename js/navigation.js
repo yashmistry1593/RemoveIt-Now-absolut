@@ -134,6 +134,42 @@ var navigationservice = angular.module('navigationservice', [])
             icon: "font"
         }]
     }, {
+        name: "Insurance",
+        classis: "active",
+        anchor: "company",
+        icon: "file-text-o",
+        subnav: [{
+            name: "Department",
+            classis: "active",
+            anchor: "department-list",
+            icon: "user"
+        }, {
+            name: "Policy Name",
+            classis: "active",
+            anchor: "policytype-list",
+            icon: "link"
+        }, {
+            name: "Policy Document",
+            classis: "active",
+            anchor: "policydoc-list",
+            icon: "file-pdf-o"
+        }, {
+            name: "Cause Loss",
+            classis: "active",
+            anchor: "causeloss-list",
+            icon: "money"
+        },{
+            name: "Salvage",
+            classis: "active",
+            anchor: "salvage-list",
+            icon: "retweet"
+        }, {
+            name: "Nature of Survey Code",
+            classis: "active",
+            anchor: "surve-code-list",
+            icon: "retweet"
+        }]
+    }, {
         name: "Timeline",
         classis: "active",
         anchor: "timeline",

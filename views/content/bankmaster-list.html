@@ -30,23 +30,27 @@
 
                     <div class="widget-title">
                         <div class="pull-right">
-                          <form class="search-form mr-form">
-                            <input type="text" ng-change="showAllCountries(true)" placeholder="Search Here..." ng-model="search.keyword"/>
-                              <button type="submit">
-                                  <i class="fa fa-search"></i>
-                              </button>
-                          </form>
+                            <form class="search-form mr-form">
+                                <input type="text" ng-change="showAllCountries(true)" placeholder="Search Here..." ng-model="search.keyword"/>
+                                <button type="submit">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </form>
                             <a class="btn btn-primary" ui-sref="createbankmaster">Add New</a>
                         </div>
-                        <h3>List of Banks <span class="tableTotal">(Total : {{totalItems}}) </span></h3>
+                        <h3>List of Banks
+                            <span class="tableTotal">(Total :
+                                {{totalItems}})
+                            </span>
+                        </h3>
                     </div>
                     <div class="table-responsive" ng-show="totalItems>0">
                         <table class="table">
                             <thead>
                                 <tr>
-                                  <th>
-                                    #
-                                  </th>
+                                    <th>
+                                        #
+                                    </th>
                                     <th>Name</th>
                                     <th>Status</th>
                                     <th>Actions</th>
@@ -54,16 +58,20 @@
                             </thead>
                             <tbody>
                                 <tr ng-repeat="data in allBank">
-                                  <td>
-                                    {{($index + 1)+((currentPage-1)*maxRow)}}
-                                  </td>
+                                    <td>
+                                        {{($index + 1)+((currentPage-1)*maxRow)}}
+                                    </td>
                                     <td>{{data.name}}</td>
                                     <td>
-                                      <toggle-switch ng-model="data.status" class="switch-mini switch-success" ng-change = "changeStatus(data)"></toggle-switch>
-</td>
+                                        <toggle-switch ng-model="data.status" class="switch-mini switch-success" ng-change="changeStatus(data)"></toggle-switch>
+                                    </td>
                                     <td>
-                                      <a class="btn btn-primary" ui-sref="editbankmaster({id:data._id})"><i class="fa fa-pencil"></i></a>
-                                      <a class="btn btn-danger" ng-click="deleteBank(data._id)"><i class="fa fa-trash"></i></a>
+                                        <a class="btn btn-primary" ui-sref="editbankmaster({id:data._id})">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a class="btn btn-danger" ng-click="deleteBank(data._id)">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
                                     </td>
                                 </tr>
                             </tbody>

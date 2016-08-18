@@ -1,7 +1,7 @@
 <div class="breadcrumbs">
     <ul>
         <li>
-            <a title="Home">Company Setup</a>
+            <a title="Home">Insurance</a>
         </li>
         <li>
             <a ui-sref="branch-list" title="Branch List">{{header.name}}</a>
@@ -9,71 +9,80 @@
     </ul>
 </div>
 
-<div class="heading-sec">
-    <div class="row">
-        <div class="col-md-4 column">
-            <div class="heading-profile">
-                <h2>{{header.name}}</h2>
+<form name="formName" ng-submit="saveCauseLoss(formData)">
+    <div class="heading-sec">
+        <div class="row">
+            <div class="col-md-12 column">
+                <div class="heading-profile">
+                    <toggle-switch ng-model="formData.status" class="switch-small switch-success pull-right"></toggle-switch>
+                    <h2>{{header.name}}</h2>
+                </div>
             </div>
         </div>
     </div>
-</div>
-<!-- Top Bar Chart -->
-<div class="panel-content">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="widget">
-                <div class="form-elements-sec">
-                    <div class="widget-title">
-                        <h3>Cause Loss</h3>
-                    </div>
-                    <form name="CauseLossForm" role="form" class="sec ng-pristine ng-valid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="">Cause Loss*</label>
-                                    <input type="text" name="name" placeholder="Cause Loss" ng-model="formData.name" class="form-control" required>
-                                    <div class="error-msg" ng-show="CauseLossForm.name.$invalid && CauseLossForm.name.$touched">Please Enter Cause Loss.</div>
-
+    <!-- Top Bar Chart -->
+    <div class="panel-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="widget">
+                    <div class="form-elements-sec">
+                        <div class="widget-title">
+                            <h3>Cause of Loss</h3>
+                        </div>
+                        <div class="sec">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label>Cause of Loss*</label>
+                                        <input type="text" name="name" ng-model="formData.name" class="form-control" required>
+                                        <div class="error-msg" ng-show="formName.name.$invalid && formName.name.$touched">Please Enter Cause Loss.</div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Department*</label>
+                                        <multiple-select name="department" required ng-model="formData.department" filter='{"department":"{{formData.department}}"}' ng-name="name.zone" api="searchDepartment" ng-create="departmentSave"></multiple-select>
+                                        <div class="error-msg" ng-show="formName.department.$invalid">Please Enter Department</div>
+                                    </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="disabledSelect">Department*</label>
-                                    <select class="form-control" ng-model="formData.department" value="{{dist.name}}">
-                                        <option ng-selected="true" value="">Select Department</option>
-                                        <option ng-repeat="dept in allDepartments">{{dept.name}}</option>
-                                    </select>
-                                </div>
-
-
-                                <div class="form-group">
-                                    <label for="disabledSelect">Status</label>
-                                    <select class="form-control" ng-model="formData.status" ng-options="str.value as str.name for str in userStatus">
-                                        <!-- <option value="">Select Status </option>
-                                        <option value=true>Active</option>
-                                        <option value=false>Inactive</option> -->
-                                    </select>
-                                </div>
-
-                                <!-- <div class="form-group">
-                                    <label for="">Status*</label>
-                                    <input type="text" name="Status" placeholder="Status" ng-model="formData.status" class="form-control" required>
-                                    <div class="error-msg" ng-show="CauseLossForm.status.$invalid && CauseLossForm.status.$touched">Please Enter Status.</div>
-
-                                </div> -->
-
                             </div>
+                        </div>
+                        <div class="widget-title">
+                            <h3>Nature of Loss</h3>
+                        </div>
+                        <div class="table-responsive">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>Name</th>
+                                  <th width="130px">Actions
+                                    <a class="btn btn-primary normal" ng-click="addNatureOfLoss()">Add New</a>
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <td><input type="text" class="form-control"></td>
+                                  <td>
+                                      <a class="btn btn-primary" ng-click="editNatureOfLoss()">
+                                          <i class="fa fa-pencil"></i>
+                                      </a>
+                                      <a class="btn btn-danger" ng-click="deleteNatureOfLoss()">
+                                          <i class="fa fa-trash"></i>
+                                      </a>
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                        </div>
 
-                        </div>
                         <div class="text-center mt20">
-                            <button class="btn btn-default" type="submit" ng-click="saveCauseLoss(formData)" ng-disabled="CauseLossForm.$invalid">Save</button>
-                            <button class="btn btn-default" ui-sref="causeloss-list">Cancel</button>
+                            <button class="btn btn-default" type="submit" ng-disabled="formName.$invalid">Save</button>
+                            <a class="btn btn-default" ui-sref="causeloss-list">Cancel</a>
                         </div>
+                    </div>
                 </div>
             </div>
 
-
-
-            </form>
         </div>
     </div>
 </div>
+</form>

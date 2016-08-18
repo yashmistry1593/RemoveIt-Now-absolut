@@ -8,85 +8,46 @@
         </li>
     </ul>
 </div>
-
-<div class="heading-sec">
-    <div class="row">
-        <div class="col-md-4 column">
-            <div class="heading-profile">
-                <h2>{{header.name}}</h2>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Top Bar Chart -->
-<div class="panel-content">
-    <div class="row">
-        <div class="col-md-12">
-            <div class="widget">
-                <div class="form-elements-sec">
-                    <div class="widget-title">
-                        <h3>Department</h3>
-                    </div>
-                    <form name="departmentForm" role="form" class="sec ng-pristine ng-valid">
-                        <div class="row">
-                            <div class="col-md-12">
-                                <div class="form-group">
-                                    <label for="">Department Name*</label>
-                                    <input type="text" name="name" placeholder="Department Name" ng-model="formData.name" class="form-control" required>
-                                    <div class="error-msg" ng-show="departmentForm.name.$invalid && departmentForm.name.$touched">Please Enter Department Name.</div>
-                                </div>
-                                <!-- <div class="form-group">
-                                    <label for="disabledSelect">Unique Type*</label>
-                                    <select class="form-control" ng-model="formData.unique_type" value="{{utype.name}}">
-                                        <option ng-selected="true" value="">Select Unique Type</option>
-                                        <option ng-repeat="utype in allUniqueTypes">{{utype.name}}</option>
-                                    </select>
-                                </div> -->
-                                <div class="form-group">
-                                    <label for="">Short Name</label>
-                                    <input type="text" name="short_name" placeholder="Short Name" ng-model="formData.short_name" class="form-control" required>
-                                    <div class="error-msg" ng-show="departmentForm.short_name.$invalid && departmentForm.short_name.$touched">Please Enter Short Name.</div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="disabledSelect">Status</label>
-                                    <select class="form-control" ng-model="formData.status" ng-options="str.value as str.name for str in userStatus">
-                                        <!-- <option value="">Select Status </option>
-                                        <option value=true>Active</option>
-                                        <option value=false>Inactive</option> -->
-                                    </select>
-                                </div>
-                                <!-- <div class="form-group">
-                                    <label for="">Status</label>
-                                    <input type="text" name="lat" placeholder="Status" ng-model="formData.status" class="form-control" required>
-                                    <div class="error-msg" ng-show="departmentForm.status.$invalid && departmentForm.status.$touched">Please Enter Status.</div> -->
-                                <!-- <label for="">Longitude</label>
-                                    <input type="text" name="long" placeholder="Longitude" ng-model="formData.long" class="form-control" required>
-                                    <div class="error-msg" ng-show="departmentForm.long.$invalid && departmentForm.long.$touched">Please Enter Longitude.</div>
-
-
-                                    <label for="">TimeZone</label>
-                                    <input type="text" name="timezone" placeholder="TimeZone" ng-model="formData.timezone" class="form-control" required>
-                                    <div class="error-msg" ng-show="departmentForm.timezone.$invalid && departmentForm.timezone.$touched">Please Enter TimeZone.</div> -->
-
-                                <!-- <label for="">State Name*</label>
-                                    <input type="text" name="state" placeholder="State Name" ng-model="formData.state" class="form-control" required>
-                                    <div class="error-msg" ng-show="departmentForm.state.$invalid && departmentForm.state.$touched">Please Enter State Name.</div> -->
-                                <!-- </div> -->
-
-                            </div>
-
-                        </div>
-                        <div class="text-center mt20">
-                            <button class="btn btn-default" type="submit" ng-click="saveDepartment(formData)" ng-disabled="departmentForm.$invalid">Save</button>
-                            <button class="btn btn-default" ui-sref="department-list">Cancel</button>
-                        </div>
+<form name="departmentForm" ng-submit="saveDepartment(formData)">
+    <div class="heading-sec">
+        <div class="row">
+            <div class="col-md-12 column">
+                <div class="heading-profile">
+                  <toggle-switch ng-model="formData.status" class="switch-small switch-success pull-right"></toggle-switch>
+                    <h2>{{header.name}}</h2>
                 </div>
             </div>
-
-
-
-            </form>
         </div>
     </div>
-</div>
+    <!-- Top Bar Chart -->
+    <div class="panel-content">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="widget">
+                    <div class="form-elements-sec">
+                        <div class="widget-title">
+                            <h3>Department</h3>
+                        </div>
+                        <div class="sec">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="">Department Name*</label>
+                                        <input type="text" name="name" ng-model="formData.name" class="form-control" required>
+                                        <div class="error-msg" ng-show="departmentForm.name.$invalid && departmentForm.name.$touched">Please Enter Department Name</div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="text-center mt20">
+                                <button class="btn btn-default" type="submit" ng-disabled="departmentForm.$invalid">Save</button>
+                                <button class="btn btn-default" ui-sref="department-list">Cancel</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </sec>
+            </div>
+        </div>
+    </div>
+</form>
