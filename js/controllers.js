@@ -1970,6 +1970,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 .controller('PolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("policytype-list");
+        $scope.menutitle = NavigationService.makeactive("Policy Name List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
