@@ -1969,7 +1969,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('PolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("policytype-list");
+        $scope.template = TemplateService.changecontent("policyname-list");
         $scope.menutitle = NavigationService.makeactive("Policy Name List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -1995,7 +1995,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('CreatePolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("policytype-detail");
+        $scope.template = TemplateService.changecontent("policyname-detail");
         $scope.menutitle = NavigationService.makeactive("Policy Name");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -2012,10 +2012,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.formData = {};
         $scope.savePolicyType = function(formData) {
 
-            NavigationService.policytypeSave($scope.formData, function(data) {
+            NavigationService.policynameSave($scope.formData, function(data) {
                 console.log(data);
                 if (data.value == true) {
-                    $state.go('policytype-list');
+                    $state.go('policyname-list');
                 }
                 // console.log('$scope.allCountriessave', $scope.data);
 
@@ -2029,7 +2029,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('EditPolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("policytype-detail");
+        $scope.template = TemplateService.changecontent("policyname-detail");
         $scope.menutitle = NavigationService.makeactive("Policy Name");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -2056,7 +2056,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //  $scope.formComplete = true;
             NavigationService.PolicyTypeEditSave($scope.formData, function(data) {
                 if (data.value == true) {
-                    $state.go('policytype-list');
+                    $state.go('policyname-list');
                 }
             });
             //  }

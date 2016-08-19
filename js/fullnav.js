@@ -211,7 +211,7 @@ var navigationservice = angular.module('navigationservice', [])
         }, {
             name: "Policy Type",
             classis: "active",
-            anchor: "policytype-list",
+            anchor: "policyname-list",
             icon: "link"
         }, {
             name: "Policy Document",
@@ -861,15 +861,15 @@ var navigationservice = angular.module('navigationservice', [])
         getAllPolicyTypes: function(callback) {
             // console.log('form data: ', formData);
             $http({
-                url: adminurl + 'policytype/getAll',
+                url: adminurl + 'policyname/getAll',
                 method: 'POST',
                 withCredentials: true
             }).success(callback);
         },
-        policytypeSave: function(formData, callback) {
+        policynameSave: function(formData, callback) {
             // console.log('form data: ', formData);
             $http({
-                url: adminurl + 'policytype/saveData',
+                url: adminurl + 'policyname/saveData',
                 method: 'POST',
                 withCredentials: true,
                 data: formData
@@ -878,7 +878,7 @@ var navigationservice = angular.module('navigationservice', [])
         getOnePolicyType: function(id, callback) {
             // console.log('form data: ', formData);
             $http({
-                url: adminurl + 'policytype/getOne',
+                url: adminurl + 'policyname/getOne',
                 method: 'POST',
                 withCredentials: true,
                 data: {
@@ -889,7 +889,7 @@ var navigationservice = angular.module('navigationservice', [])
         PolicyTypeEditSave: function(id, callback) {
             // console.log('form data: ', formData);
             $http({
-                url: adminurl + 'policytype/saveData',
+                url: adminurl + 'policyname/saveData',
                 method: 'POST',
                 withCredentials: true,
                 data: id
@@ -898,7 +898,7 @@ var navigationservice = angular.module('navigationservice', [])
         deletePolicyType: function(id, callback) {
             // console.log('form data: ', formData);
             $http({
-                url: adminurl + 'policytype/delete',
+                url: adminurl + 'policyname/delete',
                 method: 'POST',
                 withCredentials: true,
                 data: {

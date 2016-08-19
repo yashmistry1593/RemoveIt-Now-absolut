@@ -276,8 +276,8 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'EditUniqueTypeCtrl'
     })
 
-    .state('policytype-list', {
-        url: "/policytype-list/{page:.*}/{keyword:.*}",
+    .state('policyname-list', {
+        url: "/policyname-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",
         controller: 'PolicyTypeCtrl',
         params: {
@@ -286,14 +286,14 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         }
     })
 
-    .state('createpolicytype', {
-        url: "/policytype-create",
+    .state('createpolicyname', {
+        url: "/policyname-create",
         templateUrl: "views/template.html",
         controller: 'CreatePolicyTypeCtrl'
     })
 
-    .state('editpolicytype', {
-        url: "/policytype-edit/:id",
+    .state('editpolicyname', {
+        url: "/policyname-edit/:id",
         templateUrl: "views/template.html",
         controller: 'EditPolicyTypeCtrl'
     })
