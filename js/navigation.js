@@ -123,6 +123,11 @@ var navigationservice = angular.module('navigationservice', [])
         anchor: "company",
         icon: "user",
         subnav: [{
+            name: "Employee",
+            classis: "active",
+            anchor: "employee-list",
+            icon: "user"
+        }, {
             name: "Function",
             classis: "active",
             anchor: "func-list",
@@ -158,7 +163,7 @@ var navigationservice = angular.module('navigationservice', [])
             classis: "active",
             anchor: "causeloss-list",
             icon: "money"
-        },{
+        }, {
             name: "Salvage",
             classis: "active",
             anchor: "salvage-list",
@@ -166,7 +171,7 @@ var navigationservice = angular.module('navigationservice', [])
         }, {
             name: "Nature of Survey Code",
             classis: "active",
-            anchor: "surve-code-list",
+            anchor: "survey-code-list",
             icon: "retweet"
         }]
     }, {

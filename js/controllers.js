@@ -3868,4 +3868,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
   TemplateService.title = $scope.menutitle;
   $scope.navigation = NavigationService.getnav();
 })
+.controller('EditSurveyCodeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+  //Used to name the .html file
+  $scope.template = TemplateService.changecontent("surveycode-detail");
+  $scope.menutitle = NavigationService.makeactive("Survey Code");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+.controller('CreateSurveyCodeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+  //Used to name the .html file
+  $scope.template = TemplateService.changecontent("surveycode-detail");
+  $scope.menutitle = NavigationService.makeactive("Survey Code");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
+.controller('SurveyCodeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+  //Used to name the .html file
+  $scope.template = TemplateService.changecontent("surveycode-list");
+  $scope.menutitle = NavigationService.makeactive("Survey Code List");
+  TemplateService.title = $scope.menutitle;
+  $scope.navigation = NavigationService.getnav();
+})
 ;

@@ -781,6 +781,24 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'EditGradeCtrl'
     })
 
+    .state('survey-code-list', {
+        url: "/survey-code-list",
+        templateUrl: "views/template.html",
+        controller: 'SurveyCodeCtrl'
+    })
+
+    .state('createsurveycode', {
+        url: "/surveycode-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateSurveyCodeCtrl'
+    })
+
+    .state('editsurveycode', {
+        url: "/surveycode-edit",
+        templateUrl: "views/template.html",
+        controller: 'EditSurveyCodeCtrl'
+    })
+
     .state('timeline', {
         url: "/timeline",
         templateUrl: "views/template.html",

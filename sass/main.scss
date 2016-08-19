@@ -614,7 +614,7 @@ form.search-form {
 .text-upper {
   text-transform: uppercase;
 }
-input[type="email"].form-control {
+input[type="email"].form-control, .text-lower {
     text-transform: lowercase;
 }
 .normal {

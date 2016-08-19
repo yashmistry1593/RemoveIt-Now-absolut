@@ -10,7 +10,7 @@
 </div>
 <div class="heading-sec">
     <div class="row">
-        <div class="col-md-4 column">
+        <div class="col-md-12 column">
             <div class="heading-profile">
                 <h2>Salvage List</h2>
             </div>
@@ -25,7 +25,13 @@
                 <div class="table-area">
                     <div class="widget-title">
                         <div class="pull-right">
-                            <a class="btn btn-primary" ui-sref="createsalvage">Add New</a>
+                          <form class="search-form mr-form">
+                            <input type="text" ng-change="showAllCountries(true)" placeholder="Search Here..." ng-model="search.keyword"/>
+                              <button type="submit">
+                                  <i class="fa fa-search"></i>
+                              </button>
+                          </form>
+                          <a class="btn btn-primary" ui-sref="createsalvage">Add New</a>
                         </div>
                         <h3>List of Salvage
                           <span class="tableTotal">(Total :

@@ -1,22 +1,18 @@
-<!-- <div id="progressBar">
-	<div class="loader"></div>
-</div> -->
 <div class="breadcrumbs">
     <ul>
         <li>
-            <a title="Home">Locations</a>
+            <a title="Home">Insurance</a>
         </li>
         <li>
-            <a ui-sref="country-list" >Country List</a>
+            <a ui-sref="survey-code-list" title="Salvage List">Survey Code List</a>
         </li>
     </ul>
 </div>
-
 <div class="heading-sec">
     <div class="row">
         <div class="col-md-4 column">
             <div class="heading-profile">
-                <h2>Country List</h2>
+                <h2>Survey Code List</h2>
             </div>
         </div>
     </div>
@@ -27,47 +23,52 @@
         <div class="col-md-12">
             <div class="widget">
                 <div class="table-area">
-
                     <div class="widget-title">
                         <div class="pull-right">
-                            <form class="search-form mr-form">
-                                <input type="text" ng-change="showAllCountries(true)" placeholder="Search Here..." ng-model="search.keyword"/>
-
-                            </form>
-                            <a class="btn btn-primary" ui-sref="createcountry">Add New</a>
+                          <form class="search-form mr-form">
+                            <input type="text" ng-change="showAllCountries(true)" placeholder="Search Here..." ng-model="search.keyword"/>
+                              <button type="submit">
+                                  <i class="fa fa-search"></i>
+                              </button>
+                          </form>
+                            <a class="btn btn-primary" ui-sref="createsurveycode">Add New</a>
                         </div>
-                        <h3>List of Countries <span class="tableTotal">(Total : {{totalItems}}) </span></h3>
+                        <h3>List of Survey Code
+                          <span class="tableTotal">(Total :
+                              {{totalItems}})
+                          </span>
+                        </h3>
                     </div>
-                    <div class="table-responsive" ng-show="totalItems>0">
+                    <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
-                                  <th>
-                                    #
-                                  </th>
-                                    <th>Country Name</th>
-                                    <th>Country Code</th>
-                                    <th>ISD Code</th>
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Code</th>
+                                    <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody >
-                                <tr ng-repeat="country in countries">
-                                  <td>{{($index + 1)+((currentPage-1)*maxRow)}}</td>
-                                    <td>{{country.name}}</td>
-                                    <td>{{country.countryCode}}</td>
-                                    <td>{{country.ISDCodes}}</td>
+                            <tbody ng-show="totalItems>0">
+
+                                <tr ng-repeat="data in allSurveyCode">
+                                    <td>$index</td>
+                                    <td>{{data.name}}</td>
+                                    <td>{{data.code}}</td>
                                     <td>
-                                        <a class="btn btn-primary" ui-sref="editcountry({id:country._id})">
+                                        <toggle-switch ng-model="data.status" class="switch-mini switch-success"></toggle-switch>
+                                    </td>
+                                    <td>
+                                        <a class="btn btn-blue" ui-sref="editSurveyCode">
                                             <i class="fa fa-pencil"></i>
                                         </a>
-                                        <a class="btn btn-danger" ng-click="deleteCountry(country._id)">
+                                        <a class="btn btn-red" ng-click="deleteSurveyCode(sur._id)">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
                                 </tr>
                             </tbody>
-
                         </table>
                     </div>
                     <div class="tableData" ng-show="totalItems == 0">
@@ -76,9 +77,7 @@
                     <div class="tableData" ng-show="totalItems == undefined">
                         <h5>Loading Data</h5>
                     </div>
-
                     <ul ng-if="totalItems" ng-change="changePage(currentPage);" uib-pagination total-items="totalItems" items-per-page="maxRow" ng-model="currentPage" max-size="template.pageMax" class="pagination-sm" boundary-links="true" force-ellipses="true"></ul>
-
                 </div>
             </div>
         </div>
