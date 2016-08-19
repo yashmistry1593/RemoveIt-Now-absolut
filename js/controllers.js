@@ -2221,6 +2221,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         });
 
+        $scope.dateOptions = {
+          showWeeks: true
+        };
+
+        $scope.popup1 = {opened: false};
+        $scope.popup2 = {opened: false};
+
+        $scope.dateFrom = function() {
+         $scope.popup1.opened = true;
+       };
+        $scope.dateTo = function() {
+         $scope.popup2.opened = true;
+       };
+
+        $scope.format = 'dd-MMMM-yyyy';
+
     })
     .controller('EditPolicyDocCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         //Used to name the .html file
@@ -2657,7 +2673,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "value": false
         }];
         $scope.header = {
-            "name": "Create Cause Loss"
+            "name": "Create Cause of Loss"
         };
         $scope.formData = {};
         $scope.saveCauseLoss = function(formData) {
@@ -2691,7 +2707,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "value": false
         }];
         $scope.header = {
-            "name": "Edit Cause Loss"
+            "name": "Edit Cause of Loss"
         };
 
         NavigationService.getOneCauseLoss($stateParams.id, function(data) {

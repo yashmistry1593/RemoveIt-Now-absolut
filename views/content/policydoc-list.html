@@ -44,9 +44,8 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Policy Doc Name</th>
-                                    <!-- <th>Department</th> -->
-                                    <th>Policy Type</th>
+                                    <th>Policy Document Name</th>
+                                    <th>Policy Name</th>
                                     <th>Status</th>
                                     <th>Actions</th>
                                 </tr>
@@ -54,7 +53,6 @@
                             <tbody>
                                 <tr ng-repeat="policydoc in allPolicyDocs">
                                     <td>{{policydoc.name}}</td>
-                                    <!-- <td>{{policydoc.department}}</td> -->
                                     <td>{{policydoc.PolicyType}}</td>
                                     <td>{{policydoc.status}}</td>
                                     <td>

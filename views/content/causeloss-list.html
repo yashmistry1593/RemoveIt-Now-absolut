@@ -7,7 +7,7 @@
             <a title="Home">Insurance</a>
         </li>
         <li>
-            <a ui-sref="branch-list" title="Branch List">Cause Loss List</a>
+            <a ui-sref="branch-list" title="Branch List">Cause of Loss List</a>
         </li>
     </ul>
 </div>
@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-md-4 column">
             <div class="heading-profile">
-                <h2>Cause Loss List</h2>
+                <h2>Cause of Loss List</h2>
             </div>
         </div>
     </div>
@@ -38,7 +38,7 @@
                             </form>
                             <a class="btn btn-primary" ui-sref="createcauseloss">Add New</a>
                         </div>
-                        <h3>List of Cause Loss
+                        <h3>List of Cause of Loss
                             <span class="tableTotal">(Total :
                                 {{totalItems}})
                             </span>
@@ -62,7 +62,7 @@
                                         <toggle-switch ng-model="data.status" class="switch-mini switch-success"></toggle-switch>
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary" ui-sref="editcauseloss({id:loss._id})">
+                                        <a class="btn btn-primary" ui-sref="editCauseLoss({id:loss._id})">
                                             <i class="fa fa-pencil"></i>
                                         </a>
                                         <a class="btn btn-danger" ng-click="deleteCauseLoss(loss._id)">

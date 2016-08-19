@@ -621,6 +621,16 @@ input[type="email"].form-control {
     font-weight: 300;
     font-size: 12px;
 }
+.table-input {
+  .form-control {
+    height: 22px;
+    padding: 0 5px;
+  }
+  .form-control[readonly] {
+    background-color: transparent;
+    border: none;
+  }
+}
 /* Start writing sass here */
 @import "fancybox-override";
 @import "other/mobile";

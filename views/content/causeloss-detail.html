@@ -26,16 +26,13 @@
             <div class="col-md-12">
                 <div class="widget">
                     <div class="form-elements-sec">
-                        <div class="widget-title">
-                            <h3>Cause of Loss</h3>
-                        </div>
                         <div class="sec">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Cause of Loss*</label>
                                         <input type="text" name="name" ng-model="formData.name" class="form-control" required>
-                                        <div class="error-msg" ng-show="formName.name.$invalid && formName.name.$touched">Please Enter Cause Loss.</div>
+                                        <div class="error-msg" ng-show="formName.name.$invalid && formName.name.$touched">Please Enter Cause of Loss</div>
                                     </div>
                                     <div class="form-group">
                                         <label>Department*</label>
@@ -45,25 +42,29 @@
                                 </div>
                             </div>
                         </div>
+                        <div class="clearfix"></div>
                         <div class="widget-title">
+                          <a class="btn btn-primary normal pull-right" ng-click="addNatureOfLoss()">Add New</a>
                             <h3>Nature of Loss</h3>
                         </div>
                         <div class="table-responsive">
-                            <table class="table">
+                            <table class="table table-input">
                               <thead>
                                 <tr>
                                   <th>Name</th>
                                   <th width="150px">Actions
-                                    <a class="btn btn-primary normal" ng-click="addNatureOfLoss()">Add New</a>
                                   </th>
                                 </tr>
                               </thead>
                               <tbody>
                                 <tr>
-                                  <td><input type="text" class="form-control"></td>
+                                  <td><input type="text" class="form-control" ng-readonly></td>
                                   <td>
                                       <a class="btn btn-primary" ng-click="editNatureOfLoss()">
                                           <i class="fa fa-pencil"></i>
+                                      </a>
+                                      <a class="btn btn-success" ui-sref="saveNatureOfLoss({id:loss._id})">
+                                          <i class="fa fa-floppy-o"></i>
                                       </a>
                                       <a class="btn btn-danger" ng-click="deleteNatureOfLoss()">
                                           <i class="fa fa-trash"></i>

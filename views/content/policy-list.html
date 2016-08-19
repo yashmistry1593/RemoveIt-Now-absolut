@@ -44,17 +44,15 @@
                         <table class="table">
                             <thead>
                                 <tr>
+                                    <th>Policy</th>
                                     <th>Policy Name</th>
-                                    <th>Policy Type</th>
                                     <th>Actions</th>
-                                    <!-- <th>Status</th> -->
                                 </tr>
                             </thead>
                             <tbody>
                                 <tr ng-repeat="policy in allPolicies">
                                     <td>{{policy.name}}</td>
                                     <td>{{policy.type}}</td>
-                                    <!-- <td>{{policy.status}}</td> -->
                                     <td>
                                       <a class="btn btn-primary" ui-sref="editpolicy({id:policy._id})"><i class="fa fa-pencil"></i></a>
                                       <a class="btn btn-danger" ng-click="deletePolicy(policy._id)"><i class="fa fa-trash"></i></a>
