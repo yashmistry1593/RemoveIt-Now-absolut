@@ -866,6 +866,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Inactive",
             "value": false
         }];
+        $scope.salutations = ["Mr.", "Mrs.", "Ms.", "Dr."];
+        $scope.houseColors = ["Red", "Green", "Blue", "Yellow"];
+
+        $scope.dateOptions = {
+            showWeeks: true
+        };
+
+        $scope.popup = {
+            to: false,
+            from: false,
+            birthDate: false,
+            marriageDate: false,
+            joiningDate: false,
+            leavingDate: false
+        };
+
+        $scope.format = 'dd-MMMM-yyyy';
+
         NavigationService.getAllCompanies(function(data) {
             $scope.allCompanies = data.data;
             console.log('$scope.allCompanies', $scope.allCompanies);
@@ -922,6 +940,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Inactive",
             "value": false
         }];
+
+        $scope.salutations = ["Mr.", "Mrs.", "Ms.", "Dr."];
+        $scope.houseColors = ["Red", "Green", "Blue", "Yellow"];
+
+        $scope.dateOptions = {
+            showWeeks: true
+        };
+
+        $scope.popup = {
+            to: false,
+            from: false,
+            birthDate: false,
+            marriageDate: false,
+            joiningDate: false,
+            leavingDate: false
+        };
+
         NavigationService.getAllCompanies(function(data) {
             $scope.allCompanies = data.data;
             console.log('$scope.allCompanies', $scope.allCompanies);
@@ -3821,6 +3856,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         });
                     } else {
                         $scope.showCreate = false;
+<<<<<<< HEAD
                     }
                     if (insertFirst) {
                         if ($scope.list[0] && $scope.list[0]._id) {
@@ -3830,6 +3866,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             $scope.sendData("", "");
                         }
                     }
+=======
+                    }
+                    if (insertFirst) {
+                        if ($scope.list[0] && $scope.list[0]._id) {
+                            $scope.sendData($scope.list[0]._id, $scope.list[0].name);
+                        } else {
+                            console.log("Making this happen");
+                            $scope.sendData("", "");
+                        }
+                    }
+>>>>>>> origin/master
                 } else {
                     console.log("Making this happen2");
                     $scope.sendData("", "");
@@ -3847,10 +3894,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
             console.log("watch", newVal, oldVal);
         });
+<<<<<<< HEAD
 
         $scope.$watch('filter', function(newVal, oldVal) {
             console.log("watch FILTER", newVal, oldVal);
 
+=======
+
+        $scope.$watch('filter', function(newVal, oldVal) {
+            console.log("watch FILTER", newVal, oldVal);
+
+>>>>>>> origin/master
             var filter = {};
             if ($scope.filter) {
                 filter = JSON.parse($scope.filter);
