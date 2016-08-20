@@ -779,6 +779,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "value": false
         }];
         $scope.salutations = ["Mr.", "Mrs.", "Ms.", "Dr."];
+        $scope.houseColors = ["Red", "Green", "Blue", "Yellow"];
+
+        $scope.dateOptions = {
+            showWeeks: true
+        };
+
+        $scope.popup = {
+            to: false,
+            from: false,
+            birthDate: false,
+            marriageDate: false,
+            joiningDate: false,
+            leavingDate: false
+        };
+
+        $scope.format = 'dd-MMMM-yyyy';
+
         NavigationService.getAllCompanies(function(data) {
             $scope.allCompanies = data.data;
             console.log('$scope.allCompanies', $scope.allCompanies);
@@ -835,6 +852,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Inactive",
             "value": false
         }];
+
+        $scope.salutations = ["Mr.", "Mrs.", "Ms.", "Dr."];
+        $scope.houseColors = ["Red", "Green", "Blue", "Yellow"];
+
+        $scope.dateOptions = {
+            showWeeks: true
+        };
+
+        $scope.popup = {
+            to: false,
+            from: false,
+            birthDate: false,
+            marriageDate: false,
+            joiningDate: false,
+            leavingDate: false
+        };
+
         NavigationService.getAllCompanies(function(data) {
             $scope.allCompanies = data.data;
             console.log('$scope.allCompanies', $scope.allCompanies);
@@ -2223,18 +2257,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
         $scope.dateOptions = {
-          showWeeks: true
+            showWeeks: true
         };
 
-        $scope.popup1 = {opened: false};
-        $scope.popup2 = {opened: false};
+        $scope.popup1 = {
+            opened: false
+        };
+        $scope.popup2 = {
+            opened: false
+        };
 
         $scope.dateFrom = function() {
-         $scope.popup1.opened = true;
-       };
+            $scope.popup1.opened = true;
+        };
         $scope.dateTo = function() {
-         $scope.popup2.opened = true;
-       };
+            $scope.popup2.opened = true;
+        };
 
         $scope.format = 'dd-MMMM-yyyy';
 
@@ -3709,185 +3747,184 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
 
 .controller('MultipleSelectCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter, toastr) {
-    var i = 0;
-    $scope.getValues = function(filter, insertFirst) {
-        var dataSend = {
-            keyword: $scope.search.modelData,
-            filter: filter,
-            page: 1
-        };
-        NavigationService[$scope.api](dataSend, ++i, function(data) {
-            if (data.value) {
-                $scope.list = data.data.results;
+        var i = 0;
+        $scope.getValues = function(filter, insertFirst) {
+            var dataSend = {
+                keyword: $scope.search.modelData,
+                filter: filter,
+                page: 1
+            };
+            NavigationService[$scope.api](dataSend, ++i, function(data) {
+                if (data.value) {
+                    $scope.list = data.data.results;
 
-                if ($scope.search.modelData) {
-                    $scope.showCreate = true;
-                    _.each($scope.list, function(n) {
-                        if (_.lowerCase(n.name) == _.lowerCase($scope.search.modelData)) {
-                            $scope.showCreate = false;
-                            return 0;
-                        }
-                    });
-                } else {
-                    $scope.showCreate = false;
-                }
-                if (insertFirst) {
-                    if ($scope.list[0] && $scope.list[0]._id) {
-                        $scope.sendData($scope.list[0]._id, $scope.list[0].name);
+                    if ($scope.search.modelData) {
+                        $scope.showCreate = true;
+                        _.each($scope.list, function(n) {
+                            if (_.lowerCase(n.name) == _.lowerCase($scope.search.modelData)) {
+                                $scope.showCreate = false;
+                                return 0;
+                            }
+                        });
                     } else {
-                        console.log("Making this happen");
-                        $scope.sendData("", "");
+                        $scope.showCreate = false;
                     }
+                    if (insertFirst) {
+                        if ($scope.list[0] && $scope.list[0]._id) {
+                            $scope.sendData($scope.list[0]._id, $scope.list[0].name);
+                        } else {
+                            console.log("Making this happen");
+                            $scope.sendData("", "");
+                        }
+                    }
+                } else {
+                    console.log("Making this happen2");
+                    $scope.sendData("", "");
                 }
-            } else {
-                console.log("Making this happen2");
-                $scope.sendData("", "");
+
+
+            });
+        };
+
+        $scope.$watch('model', function(newVal, oldVal) {
+            if (newVal && oldVal === undefined) {
+                $scope.getValues({
+                    _id: $scope.model
+                }, true);
             }
-
-
+            console.log("watch", newVal, oldVal);
         });
-    };
 
-    $scope.$watch('model', function(newVal, oldVal) {
-        if (newVal && oldVal === undefined) {
+        $scope.$watch('filter', function(newVal, oldVal) {
+            console.log("watch FILTER", newVal, oldVal);
+
+            var filter = {};
+            if ($scope.filter) {
+                filter = JSON.parse($scope.filter);
+            }
+            var dataSend = {
+                keyword: $scope.search.modelData,
+                filter: filter,
+                page: 1
+            };
+
+            NavigationService[$scope.api](dataSend, ++i, function(data) {
+                if (data.value) {
+                    $scope.list = data.data.results;
+                    $scope.showCreate = false;
+
+                }
+            });
+        });
+
+
+        $scope.search = {
+            modelData: ""
+        };
+        if ($scope.model) {
             $scope.getValues({
                 _id: $scope.model
             }, true);
+        } else {
+            $scope.getValues();
         }
-        console.log("watch", newVal, oldVal);
-    });
 
-    $scope.$watch('filter', function(newVal, oldVal) {
-        console.log("watch FILTER", newVal, oldVal);
 
-        var filter = {};
-        if ($scope.filter) {
-            filter = JSON.parse($scope.filter);
-        }
-        var dataSend = {
-            keyword: $scope.search.modelData,
-            filter: filter,
-            page: 1
+
+
+
+        $scope.listview = false;
+        $scope.showCreate = false;
+        $scope.typeselect = "";
+        $scope.showList = function() {
+            $scope.listview = true;
+            $scope.searchNew(true);
         };
-
-        NavigationService[$scope.api](dataSend, ++i, function(data) {
-            if (data.value) {
-                $scope.list = data.data.results;
-                $scope.showCreate = false;
-
-            }
-        });
-    });
-
-
-    $scope.search = {
-        modelData: ""
-    };
-    if ($scope.model) {
-        $scope.getValues({
-            _id: $scope.model
-        }, true);
-    } else {
-        $scope.getValues();
-    }
-
-
-
-
-
-    $scope.listview = false;
-    $scope.showCreate = false;
-    $scope.typeselect = "";
-    $scope.showList = function() {
-        $scope.listview = true;
-        $scope.searchNew(true);
-    };
-    $scope.closeList = function() {
-        $scope.listview = false;
-    };
-    $scope.closeListSlow = function() {
-        console.log("Slow Called");
-        $timeout(function() {
-            $scope.closeList();
-        }, 500);
-    };
-    $scope.searchNew = function(dontFlush) {
-        if (!dontFlush) {
-            $scope.model = "";
-        }
-        var filter = {};
-        if ($scope.filter) {
-            filter = JSON.parse($scope.filter);
-        }
-        $scope.getValues(filter);
-    };
-    $scope.createNew = function(create) {
-        var newCreate = $filter("capitalize")(create);
-        var data = {
-            name: newCreate
+        $scope.closeList = function() {
+            $scope.listview = false;
         };
-        if ($scope.filter) {
-            data = _.assign(data, JSON.parse($scope.filter));
-        }
-        console.log(data);
-        NavigationService[$scope.create](data, function(data) {
-            if (data.value) {
-                toastr.success($scope.name + " Created Successfully", "Creation Success");
-                $scope.model = data.data._id;
-                $scope.ngName = data.data.name;
-            } else {
-                toastr.error("Error while creating " + $scope.name, "Error");
+        $scope.closeListSlow = function() {
+            console.log("Slow Called");
+            $timeout(function() {
+                $scope.closeList();
+            }, 500);
+        };
+        $scope.searchNew = function(dontFlush) {
+            if (!dontFlush) {
+                $scope.model = "";
             }
-        });
-        $scope.listview = false;
-    };
-    $scope.sendData = function(val, name) {
-        $scope.search.modelData = name;
-        $scope.ngName = name;
-        $scope.model = val;
-        $scope.listview = false;
-    }
-})
-.controller('EditGradeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
-  //Used to name the .html file
-  $scope.template = TemplateService.changecontent("grade-detail");
-  $scope.menutitle = NavigationService.makeactive("Grade");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
-})
-.controller('CreateGradeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
-  //Used to name the .html file
-  $scope.template = TemplateService.changecontent("grade-detail");
-  $scope.menutitle = NavigationService.makeactive("Grade");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
-})
-.controller('GradeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
-  //Used to name the .html file
-  $scope.template = TemplateService.changecontent("grade-list");
-  $scope.menutitle = NavigationService.makeactive("Grade List");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
-})
-.controller('EditSurveyCodeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
-  //Used to name the .html file
-  $scope.template = TemplateService.changecontent("surveycode-detail");
-  $scope.menutitle = NavigationService.makeactive("Survey Code");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
-})
-.controller('CreateSurveyCodeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
-  //Used to name the .html file
-  $scope.template = TemplateService.changecontent("surveycode-detail");
-  $scope.menutitle = NavigationService.makeactive("Survey Code");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
-})
-.controller('SurveyCodeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
-  //Used to name the .html file
-  $scope.template = TemplateService.changecontent("surveycode-list");
-  $scope.menutitle = NavigationService.makeactive("Survey Code List");
-  TemplateService.title = $scope.menutitle;
-  $scope.navigation = NavigationService.getnav();
-})
-;
+            var filter = {};
+            if ($scope.filter) {
+                filter = JSON.parse($scope.filter);
+            }
+            $scope.getValues(filter);
+        };
+        $scope.createNew = function(create) {
+            var newCreate = $filter("capitalize")(create);
+            var data = {
+                name: newCreate
+            };
+            if ($scope.filter) {
+                data = _.assign(data, JSON.parse($scope.filter));
+            }
+            console.log(data);
+            NavigationService[$scope.create](data, function(data) {
+                if (data.value) {
+                    toastr.success($scope.name + " Created Successfully", "Creation Success");
+                    $scope.model = data.data._id;
+                    $scope.ngName = data.data.name;
+                } else {
+                    toastr.error("Error while creating " + $scope.name, "Error");
+                }
+            });
+            $scope.listview = false;
+        };
+        $scope.sendData = function(val, name) {
+            $scope.search.modelData = name;
+            $scope.ngName = name;
+            $scope.model = val;
+            $scope.listview = false;
+        }
+    })
+    .controller('EditGradeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("grade-detail");
+        $scope.menutitle = NavigationService.makeactive("Grade");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+    })
+    .controller('CreateGradeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("grade-detail");
+        $scope.menutitle = NavigationService.makeactive("Grade");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+    })
+    .controller('GradeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("grade-list");
+        $scope.menutitle = NavigationService.makeactive("Grade List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+    })
+    .controller('EditSurveyCodeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("surveycode-detail");
+        $scope.menutitle = NavigationService.makeactive("Survey Code");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+    })
+    .controller('CreateSurveyCodeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("surveycode-detail");
+        $scope.menutitle = NavigationService.makeactive("Survey Code");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+    })
+    .controller('SurveyCodeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("surveycode-list");
+        $scope.menutitle = NavigationService.makeactive("Survey Code List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+    });
