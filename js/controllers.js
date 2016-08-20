@@ -778,6 +778,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Inactive",
             "value": false
         }];
+        $scope.salutations = ["Mr.", "Mrs.", "Ms.", "Dr."];
         NavigationService.getAllCompanies(function(data) {
             $scope.allCompanies = data.data;
             console.log('$scope.allCompanies', $scope.allCompanies);
