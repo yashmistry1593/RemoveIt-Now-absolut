@@ -392,7 +392,8 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'FuncCtrl',
         params: {
             page: "1",
-            keyword: ""
+            keyword: "",
+            model: "function"
         }
     })
 
@@ -766,7 +767,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('grade-list', {
         url: "/grade-list",
         templateUrl: "views/template.html",
-        controller: 'GradeCtrl'
+        controller: 'ModelViewCtrl',
+        params: {
+            page: "1",
+            keyword: "",
+            model: "grade"
+        }
     })
 
     .state('creategrade', {
@@ -1010,8 +1016,8 @@ firstapp.directive('addressForm', function($document) {
     return {
         templateUrl: 'views/directive/address-form.html',
         scope: {
-          formData:"=ngModel",
-          demoForm:"=ngValid"
+            formData: "=ngModel",
+            demoForm: "=ngValid"
         },
         restrict: 'EA',
         replace: false,

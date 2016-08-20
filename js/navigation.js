@@ -7,8 +7,8 @@
 // else {
 //   adminURL = "http://localhost/demo/index.php";
 // }
-// var adminurl = "http://localhost:1337/";
-var adminurl = "http://104.155.238.145/";
+var adminurl = "http://localhost:1337/";
+// var adminurl = "http://104.155.238.145/";
 var imgurl = adminurl + "upload/";
 
 
@@ -200,6 +200,11 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }
             return menuname;
+        },
+        searchModel: function(model, formData, i, callback) {
+            $http.post(adminurl + model + '/search', formData).success(function(data) {
+                callback(data, i);
+            });
         },
         searchCountry: function(formData, i, callback) {
             $http.post(adminurl + 'country/search', formData).success(function(data) {
@@ -625,10 +630,6 @@ var navigationservice = angular.module('navigationservice', [])
                 }
             }).success(callback);
         },
-
-
-
-
         getAllCustomerSegments: function(callback) {
             // console.log('form data: ', formData);
             $http({
