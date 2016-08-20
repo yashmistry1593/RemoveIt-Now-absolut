@@ -243,9 +243,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.countrySave($scope.formData, function(data) {
                 if (data.value === true) {
                     $state.go($stateParams.model + '-list');
-                    toastr.success($scope.modelCap+" " + formData.name + " created successfully.", $scope.modelCap+" Created");
+                    toastr.success($scope.modelCap + " " + formData.name + " created successfully.", $scope.modelCap + " Created");
                 } else {
-                    toastr.error($scope.modelCap+" creation failed.", $scope.modelCap+" creation error");
+                    toastr.error($scope.modelCap + " creation failed.", $scope.modelCap + " creation error");
                 }
             });
         };
@@ -3856,7 +3856,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                         });
                     } else {
                         $scope.showCreate = false;
-<<<<<<< HEAD
+
                     }
                     if (insertFirst) {
                         if ($scope.list[0] && $scope.list[0]._id) {
@@ -3866,17 +3866,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             $scope.sendData("", "");
                         }
                     }
-=======
-                    }
-                    if (insertFirst) {
-                        if ($scope.list[0] && $scope.list[0]._id) {
-                            $scope.sendData($scope.list[0]._id, $scope.list[0].name);
-                        } else {
-                            console.log("Making this happen");
-                            $scope.sendData("", "");
-                        }
-                    }
->>>>>>> origin/master
                 } else {
                     console.log("Making this happen2");
                     $scope.sendData("", "");
@@ -3894,17 +3883,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
             console.log("watch", newVal, oldVal);
         });
-<<<<<<< HEAD
+
 
         $scope.$watch('filter', function(newVal, oldVal) {
             console.log("watch FILTER", newVal, oldVal);
 
-=======
 
-        $scope.$watch('filter', function(newVal, oldVal) {
-            console.log("watch FILTER", newVal, oldVal);
 
->>>>>>> origin/master
             var filter = {};
             if ($scope.filter) {
                 filter = JSON.parse($scope.filter);
