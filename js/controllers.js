@@ -1,4 +1,3 @@
-// angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ngAnimate', 'ngSanitize', 'angular-flexslider', 'ui.tinymce'])
 var globalfunction = {};
 angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ui.select', 'ngAnimate', 'toastr', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'imageupload', 'ngMap', 'toggle-switch'])
 
@@ -3741,7 +3740,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     }
 })
 
-.controller('CreateCustomerCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+.controller('CreateCustomerCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $uibModal) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("customer-detail");
         $scope.menutitle = NavigationService.makeactive("Create Customer");
@@ -3758,6 +3757,31 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Inactive",
             "value": false
         }];
+        $scope.salutations = ["Mr.", "Mrs.", "Ms.", "Dr."];
+
+        $scope.popup = {
+            birthDate: false
+        };
+        $scope.showing = false;
+        $scope.passType = 'password';
+        $scope.showPass = function() {
+          $scope.showing = !$scope.showing;
+          if($scope.showing === false) {
+            $scope.passType = 'password';
+          }
+          else
+          {
+            $scope.passType = 'text';
+          }
+        };
+
+        $scope.addOfficer = function() {
+            var modalInstance = $uibModal.open({
+                scope: $scope,
+                templateUrl: 'views/modal/modal-officer.html',
+                size: 'lg'
+            });
+        };
         $scope.saveCustomer = function() {
             console.log($scope.formData);
             // NavigationService.customerSave($scope.formData, function(data) {
@@ -3795,7 +3819,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
     })
-    .controller('EditCustomerCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+    .controller('EditCustomerCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $uibModal) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("customer-detail");
         $scope.menutitle = NavigationService.makeactive("Edit Customer");
@@ -3811,6 +3835,29 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Inactive",
             "value": false
         }];
+        $scope.salutations = ["Mr.", "Mrs.", "Ms.", "Dr."];
+        $scope.popup = {
+            birthDate: false
+        };
+        $scope.showing = false;
+        $scope.passType = 'password';
+        $scope.showPass = function() {
+          $scope.showing = !$scope.showing;
+          if($scope.showing === false) {
+            $scope.passType = 'password';
+          }
+          else
+          {
+            $scope.passType = 'text';
+          }
+        };
+        $scope.addOfficer = function() {
+            var modalInstance = $uibModal.open({
+                scope: $scope,
+                templateUrl: 'views/modal/modal-officer.html',
+                size: 'lg'
+            });
+        };
         NavigationService.getOneCustomer($stateParams.id, function(data) {
             console.log(data.data.status);
             // if(data.data.status==true){
