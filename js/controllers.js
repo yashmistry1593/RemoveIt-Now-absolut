@@ -4051,4 +4051,26 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Survey Code List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
-    });
+    })
+    .controller('TransferOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("transferOffice-detail");
+        $scope.menutitle = NavigationService.makeactive("Transfer Office");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+    })
+    .controller('CreateTransferOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("transferOffice-detail");
+        $scope.menutitle = NavigationService.makeactive("Transfer Office");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+    })
+    .controller('TransferOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("transferOffice-list");
+        $scope.menutitle = NavigationService.makeactive("Transfer Office List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+    })
+    ;
