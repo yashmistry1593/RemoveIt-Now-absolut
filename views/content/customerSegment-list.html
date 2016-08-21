@@ -1,13 +1,10 @@
-<!-- <div id="progressBar">
-	<div class="loader"></div>
-<!-- </divctions -->
 <div class="breadcrumbs">
     <ul>
         <li>
-            <a title="Home">Company Setup</a>
+            <a title="Home">Customers</a>
         </li>
         <li>
-            <a ui-sref="customerSegment-list" >Customer Segment List</a>
+            <a ui-sref="customerSegment-list">Customer Segment List</a>
         </li>
     </ul>
 </div>
@@ -38,19 +35,21 @@
                           </form>
                             <a class="btn btn-primary" ui-sref="createcustomersegment">Add New</a>
                         </div>
-                        <h3>List of Customer Segment</h3>
+                        <h3>List of Customer Segment
+                          <span class="tableTotal">(Total : {{totalItems}}) </span>
+                        </h3>
                     </div>
-                    <div class="table-responsive" ng-show="totalItems>0">
+                    <div class="table-responsive">
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>Customer Segment Name</th>
+                                    <th>Customer Segment</th>
                                     <th>Actions</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr ng-repeat="customersegment in allCustomerSegments">
-                                    <td>{{customersegment.name}}</td>
+                            <tbody ng-show="totalItems>0">
+                                <tr ng-repeat="data in allCustomerSegments">
+                                    <td>{{data.name}}</td>
                                     <td>
                                       <a class="btn btn-primary" ui-sref="editcustomersegment({id:customersegment._id})"><i class="fa fa-pencil"></i></a>
                                       <a class="btn btn-danger" ng-click="deleteCustomerSegment(customersegment._id)"><i class="fa fa-trash"></i></a>
@@ -59,6 +58,14 @@
                             </tbody>
                         </table>
                     </div>
+                    <div class="tableData" ng-show="totalItems == 0">
+                        <h5>No data found</h5>
+                    </div>
+                    <div class="tableData" ng-show="totalItems == undefined">
+                        <h5>Loading Data</h5>
+                    </div>
+
+                    <ul ng-if="totalItems" ng-change="changePage(currentPage);" uib-pagination total-items="totalItems" items-per-page="maxRow" ng-model="currentPage" max-size="template.pageMax" class="pagination-sm" boundary-links="true" force-ellipses="true"></ul>
                 </div>
             </div>
         </div>

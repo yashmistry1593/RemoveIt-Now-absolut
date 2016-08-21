@@ -129,25 +129,25 @@ var navigationservice = angular.module('navigationservice', [])
         anchor: "company",
         icon: "users",
         subnav: [{
-            name: "Customer Segment",
+            name: "Segment",
             classis: "active",
             anchor: "customerSegment-list",
             icon: "user"
         }, {
-            name: "Customer Company",
+            name: "Company",
             classis: "active",
             anchor: "customerCompany-list",
             icon: "building"
-        }, {
-            name: "Office",
-            classis: "active",
-            anchor: "office-list",
-            icon: "building-o"
         }, {
             name: "Customer",
             classis: "active",
             anchor: "customer-list",
             icon: "user"
+        }, {
+            name: "Transfer Office",
+            classis: "active",
+            anchor: "transferOffice-list",
+            icon: "building-o"
         }]
     }, {
         name: "Employee",
@@ -297,7 +297,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http.post(adminurl + 'country/save', formData).success(callback);
         },
         modelSave: function(modal, formData, callback) {
-            $http.post(adminurl + modal +'/save', formData).success(callback);
+            $http.post(adminurl + modal + '/save', formData).success(callback);
         },
         branchSave: function(formData, callback) {
             $http.post(adminurl + 'branch/save', formData).success(callback);
@@ -311,8 +311,8 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         getOneModel: function(model, id, callback) {
-          console.log(id);
-            $http.post(adminurl + model +'/getOne', {
+            console.log(id);
+            $http.post(adminurl + model + '/getOne', {
                 _id: id
             }).success(callback);
         },
@@ -1227,9 +1227,9 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         deleteModel: function(model, id, callback) {
-            $http.post(adminurl + model +'/delete',{
-                    "_id": id,
-                }).success(callback);
+            $http.post(adminurl + model + '/delete', {
+                "_id": id,
+            }).success(callback);
         },
         getAllUsers: function(callback) {
             // console.log('form data: ', formData);
