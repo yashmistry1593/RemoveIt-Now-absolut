@@ -114,6 +114,32 @@ var navigationservice = angular.module('navigationservice', [])
             icon: "inr"
         }]
     }, {
+        name: "Customers",
+        classis: "active",
+        anchor: "company",
+        icon: "users",
+        subnav: [{
+            name: "Customer Segment",
+            classis: "active",
+            anchor: "customerSegment-list",
+            icon: "user"
+        }, {
+            name: "Customer Company",
+            classis: "active",
+            anchor: "customerCompany-list",
+            icon: "building"
+        }, {
+            name: "Office",
+            classis: "active",
+            anchor: "office-list",
+            icon: "building-o"
+        }, {
+            name: "Customer",
+            classis: "active",
+            anchor: "customer-list",
+            icon: "user"
+        }]
+    }, {
         name: "Employee",
         classis: "active",
         anchor: "company",
