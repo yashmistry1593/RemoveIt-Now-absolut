@@ -864,22 +864,22 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     controller: 'EditSurveyCodeCtrl'
   })
 
-  .state('transferOffice-list', {
-    url: "/transferOffice-list",
+  .state('transferOfficer-list', {
+    url: "/transferOfficer-list",
     templateUrl: "views/template.html",
-    controller: 'TransferOfficeCtrl'
+    controller: 'TransferOfficerCtrl'
   })
 
-  .state('createtransferoffice', {
-    url: "/transferOffice-create",
+  .state('createtransferofficer', {
+    url: "/transferOfficer-create",
     templateUrl: "views/template.html",
-    controller: 'CreateTransferOfficeCtrl'
+    controller: 'CreateTransferOfficerCtrl'
   })
 
-  .state('edittransferoffice', {
-    url: "/transferOffice-edit",
+  .state('edittransferofficer', {
+    url: "/transferOfficer-edit",
     templateUrl: "views/template.html",
-    controller: 'EditTransferOfficeCtrl'
+    controller: 'EditTransferOfficerCtrl'
   })
 
   .state('timeline', {
