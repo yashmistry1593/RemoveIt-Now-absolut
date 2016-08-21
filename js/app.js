@@ -263,10 +263,10 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   .state('createexpense', {
     url: "/expense-create",
     templateUrl: "views/template.html",
-    controller: 'CreateExpenseTypeCtrl'
+    controller: 'CreateExpenseCtrl'
   })
 
-  .state('editexpenseType', {
+  .state('editexpense', {
     url: "/expense-edit/:id",
     templateUrl: "views/template.html",
     controller: 'EditExpenseCtrl'
