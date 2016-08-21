@@ -821,11 +821,30 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'EditSurveyCodeCtrl'
     })
 
+    .state('transferOffice-list', {
+        url: "/transferOffice-list",
+        templateUrl: "views/template.html",
+        controller: 'TransferOfficeCtrl'
+    })
+
+    .state('createtransferoffice', {
+        url: "/transferOffice-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateTransferOfficeCtrl'
+    })
+
+    .state('edittransferoffice', {
+        url: "/transferOffice-edit",
+        templateUrl: "views/template.html",
+        controller: 'EditTransferOfficeCtrl'
+    })
+
     .state('timeline', {
         url: "/timeline",
         templateUrl: "views/template.html",
         controller: 'TimelineCtrl'
-    });
+    })
+    ;
     $urlRouterProvider.otherwise("/login");
     $locationProvider.html5Mode(isproduction);
 });
