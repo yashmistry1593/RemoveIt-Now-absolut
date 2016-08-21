@@ -453,7 +453,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   .state('editfunc', {
     url: "/func-edit/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'EditFuncCtrl',
+    controller: 'EditModelCtrl',
     params: {
       id: "",
       model: "func"
