@@ -7,7 +7,7 @@
             <a title="Home">Customers</a>
         </li>
         <li>
-            <a ui-sref="transferOffice-list">Transfer Office</a>
+            <a ui-sref="transferOfficer-list">Transfer Officer</a>
         </li>
     </ul>
 </div>
@@ -16,7 +16,7 @@
     <div class="row">
         <div class="col-md-4 column">
             <div class="heading-profile">
-                <h2>Transfer Office</h2>
+                <h2>Transfer Officer</h2>
             </div>
         </div>
     </div>
@@ -36,10 +36,10 @@
                                     <i class="fa fa-search"></i>
                                 </button>
                             </form>
-                            <a class="btn btn-primary" ui-sref="createtransferoffice">Add New</a>
+                            <a class="btn btn-primary" ui-sref="createtransferOfficer">Add New</a>
                         </div>
 
-                        <h3>List of Transferred Office
+                        <h3>List of Transferred Officer
                             <span class="tableTotal">(Total :
                                 {{totalItems}})
                             </span>
@@ -55,14 +55,14 @@
                                 </tr>
                             </thead>
                             <tbody ng-show="totalItems>0">
-                                <tr ng-repeat="data in allTransferOffice">
+                                <tr ng-repeat="data in allTransferOfficer">
                                     <td>{{data.cutomerCompany}}</td>
                                     <td>{{data.customer}}</td>
                                     <td>
-                                        <a class="btn btn-blue" ui-sref="editcustomercompany({id:cust._id})">
+                                        <a class="btn btn-blue" ui-sref="editTransferOfficer({id:cust._id})">
                                             <i class="fa fa-pencil"></i>
                                         </a>
-                                        <a class="btn btn-red" ng-click="deleteCustomerCompany(cust._id)">
+                                        <a class="btn btn-red" ng-click="deleteTransferOfficer(cust._id)">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
