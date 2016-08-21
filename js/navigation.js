@@ -146,7 +146,7 @@ var navigationservice = angular.module('navigationservice', [])
         }, {
             name: "Transfer Office",
             classis: "active",
-            anchor: "transferOffice-list",
+            anchor: "transferOfficer-list",
             icon: "building-o"
         }]
     }, {
