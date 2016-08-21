@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 // var adminURL = "";
 // if(isproduction)
 // {
@@ -13,9 +14,11 @@ var adminurl = "http://192.168.1.102:1337/";
 var imgurl = adminurl + "upload/";
 
 
+=======
+var adminurl = "http://localhost:1337/";
+>>>>>>> origin/master
 
-// var adminurl = "http://104.199.175.10/";
-// var imgurl = adminurl + "upload/";
+var imgurl = adminurl + "upload/";
 
 var imgpath = imgurl + "readFile";
 var uploadurl = imgurl;
@@ -117,6 +120,42 @@ var navigationservice = angular.module('navigationservice', [])
             classis: "active",
             anchor: "bankmaster-list",
             icon: "building"
+        }, {
+            name: "Activity Type",
+            classis: "active",
+            anchor: "activityType-list",
+            icon: "building"
+        }, {
+            name: "Expense",
+            classis: "active",
+            anchor: "expense-list",
+            icon: "inr"
+        }]
+    }, {
+        name: "Customers",
+        classis: "active",
+        anchor: "company",
+        icon: "users",
+        subnav: [{
+            name: "Customer Segment",
+            classis: "active",
+            anchor: "customerSegment-list",
+            icon: "user"
+        }, {
+            name: "Customer Company",
+            classis: "active",
+            anchor: "customerCompany-list",
+            icon: "building"
+        }, {
+            name: "Office",
+            classis: "active",
+            anchor: "office-list",
+            icon: "building-o"
+        }, {
+            name: "Customer",
+            classis: "active",
+            anchor: "customer-list",
+            icon: "user"
         }]
     }, {
         name: "Employee",
