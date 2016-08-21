@@ -1,20 +1,6 @@
-// var adminURL = "";
-// if(isproduction)
-// {
-
-//   adminURL =  "http://www.wohlig.co.in/demo/index.php";
-// }
-// else {
-//   adminURL = "http://localhost/demo/index.php";
-// }
 var adminurl = "http://localhost:1337/";
-// var adminurl = "http://104.155.238.145/";
+
 var imgurl = adminurl + "upload/";
-
-
-
-// var adminurl = "http://104.199.175.10/";
-// var imgurl = adminurl + "upload/";
 
 var imgpath = imgurl + "readFile";
 var uploadurl = imgurl;
@@ -116,6 +102,16 @@ var navigationservice = angular.module('navigationservice', [])
             classis: "active",
             anchor: "bankmaster-list",
             icon: "building"
+        }, {
+            name: "Activity Type",
+            classis: "active",
+            anchor: "activityType-list",
+            icon: "building"
+        }, {
+            name: "Expense",
+            classis: "active",
+            anchor: "expense-list",
+            icon: "inr"
         }]
     }, {
         name: "Employee",
