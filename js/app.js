@@ -389,21 +389,21 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('func-list', {
         url: "/func-list/{page:.*}/{keyword:.*}/{model:.*}",
         templateUrl: "views/template.html",
-        controller: 'FuncCtrl',
+        controller: 'ModelViewCtrl',
         params: {
             page: "1",
             keyword: "",
-            model: "function"
+            model: "func"
         }
     })
 
     .state('createfunc', {
         url: "/func-create/{id:.*}/{model:.*}",
         templateUrl: "views/template.html",
-        controller: 'CreateFuncCtrl',
+        controller: 'CreateModelCtrl',
         params: {
             id: "",
-            model: "function"
+            model: "func"
         }
     })
 
@@ -412,8 +412,8 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         templateUrl: "views/template.html",
         controller: 'EditFuncCtrl',
         params: {
-            id: "1",
-            model: "function"
+            id: "",
+            model: "func"
         }
     })
 
