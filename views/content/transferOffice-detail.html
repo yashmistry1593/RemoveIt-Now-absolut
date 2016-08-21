@@ -1,20 +1,20 @@
 <div class="breadcrumbs">
     <ul>
         <li>
-            <a title="Home">Company Setup</a>
+            <a title="Home">Customers</a>
         </li>
         <li>
-            <a ui-sref="customerCompany-list">{{header.name}}</a>
+            <a ui-sref="transferOffice-list">Transfer Office</a>
         </li>
     </ul>
 </div>
 
-<form name="formName" ng-submit="saveCustomerCompany(formData)">
+<form name="formName" ng-submit="saveTransferOffice(formData)">
     <div class="heading-sec">
         <div class="row">
             <div class="col-md-4 column">
                 <div class="heading-profile">
-                    <h2>{{header.name}}</h2>
+                    <h2>Transfer Office</h2>
                 </div>
             </div>
         </div>
@@ -26,36 +26,32 @@
                 <div class="widget">
                     <div class="form-elements-sec">
                         <div class="widget-title">
-                            <h3>Customer Company</h3>
+                            <h3>Transer Office</h3>
                         </div>
                         <div class="sec">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="">Customer Company*</label>
-                                        <multiple-select name="customerType" required ng-model="formData.customerType" ng-name="name.customerType" api="searchCustomerType" ng-create="customerTypeSave"></multiple-select>
-                                        <div class="error-msg" ng-show="formName.customerType.$invalid">Please Select Customer Company</div>
+                                        <label>Customer Company*</label>
+                                        <multiple-select name="customerCompany" required ng-model="formData.customerCompany" ng-name="name.customerCompany" api="searchCustomerCompany" ng-create="customerCompanySave"></multiple-select>
+                                        <div class="error-msg" ng-show="formName.customerCompany.$invalid">Please Select Customer Company</div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="">Name*</label>
-                                        <input type="text" name="name" ng-model="formData.name" class="form-control" required>
-                                        <div class="error-msg" ng-show="formName.name.$invalid && formName.name.$touched">Please Enter Name</div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="">Short Name*</label>
-                                        <input type="text" name="shortName" ng-model="formData.shortName" class="form-control" required>
-                                        <div class="error-msg" ng-show="formName.shortName.$invalid && formName.shortName.$touched">Please Enter Short Name</div>
+                                        <label>Customer*</label>
+                                        <multiple-select name="customer" required ng-model="formData.customer" ng-name="name.customer" api="searchCustomer" ng-create="customerSave"></multiple-select>
+                                        <div class="error-msg" ng-show="formName.customer.$invalid">Please Select Customer</div>
                                     </div>
                                 </div>
                             </div>
-                            <div class="text-center mt20">
-                                <button class="btn btn-default" type="submit" ng-disabled="formName.$invalid">Save</button>
-                                <a class="btn btn-default" ui-sref="customerCompany-list">Cancel</a>
-                            </div>
+                        </div>
+                        <div class="text-center mt20">
+                            <button class="btn btn-default" type="submit" ng-disabled="formName.$invalid">Save</button>
+                            <a class="btn btn-default" ui-sref="transferOffice-list">Cancel</a>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
 </form>
