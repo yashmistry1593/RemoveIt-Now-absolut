@@ -393,7 +393,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         params: {
             page: "1",
             keyword: "",
-            model: "function"
+            model: "func"
         }
     })
 
@@ -403,7 +403,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'CreateFuncCtrl',
         params: {
             id: "",
-            model: "function"
+            model: "func"
         }
     })
 
@@ -413,7 +413,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'EditFuncCtrl',
         params: {
             id: "1",
-            model: "function"
+            model: "func"
         }
     })
 
