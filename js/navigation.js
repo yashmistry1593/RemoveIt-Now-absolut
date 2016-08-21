@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // var adminURL = "";
 // if(isproduction)
 // {
@@ -10,13 +9,6 @@
 // }
 // var adminurl = "http://localhost:1337/";
 var adminurl = "http://192.168.1.102:1337/";
-// var adminurl = "http://104.155.238.145/";
-var imgurl = adminurl + "upload/";
-
-
-=======
-var adminurl = "http://localhost:1337/";
->>>>>>> origin/master
 
 var imgurl = adminurl + "upload/";
 
