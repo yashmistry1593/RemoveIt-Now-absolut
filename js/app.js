@@ -387,7 +387,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('func-list', {
-        url: "/func-list/{page:.*}/{keyword:.*}",
+        url: "/func-list/{page:.*}/{keyword:.*}/{model:.*}",
         templateUrl: "views/template.html",
         controller: 'FuncCtrl',
         params: {
@@ -398,15 +398,23 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('createfunc', {
-        url: "/func-create",
+        url: "/func-create/{id:.*}/{model:.*}",
         templateUrl: "views/template.html",
-        controller: 'CreateFuncCtrl'
+        controller: 'CreateFuncCtrl',
+        params: {
+            id: "",
+            model: "function"
+        }
     })
 
     .state('editfunc', {
-        url: "/func-edit/:id",
+        url: "/func-edit/{id:.*}/{model:.*}",
         templateUrl: "views/template.html",
-        controller: 'EditFuncCtrl'
+        controller: 'EditFuncCtrl',
+        params: {
+            id: "1",
+            model: "function"
+        }
     })
 
     .state('causeloss-list', {
@@ -765,7 +773,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('grade-list', {
-        url: "/grade-list",
+        url: "/grade-list/:id/:keyword/:model",
         templateUrl: "views/template.html",
         controller: 'ModelViewCtrl',
         params: {
@@ -776,15 +784,23 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('creategrade', {
-        url: "/grade-create",
+        url: "/grade-create/:id/:model",
         templateUrl: "views/template.html",
-        controller: 'CreateGradeCtrl'
+        controller: 'CreateModelCtrl',
+        params: {
+          id:"",
+          model:"grade"
+        }
     })
 
     .state('editgrade', {
-        url: "/grade-edit",
+        url: "/grade-edit/:id/:model",
         templateUrl: "views/template.html",
-        controller: 'EditGradeCtrl'
+        controller: 'EditModelCtrl',
+        params: {
+          id:"",
+          model:"grade"
+        }
     })
 
     .state('survey-code-list', {

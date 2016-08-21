@@ -7,7 +7,8 @@
 // else {
 //   adminURL = "http://localhost/demo/index.php";
 // }
-var adminurl = "http://localhost:1337/";
+// var adminurl = "http://localhost:1337/";
+var adminurl = "http://192.168.1.102:1337/";
 // var adminurl = "http://104.155.238.145/";
 var imgurl = adminurl + "upload/";
 
@@ -264,6 +265,9 @@ var navigationservice = angular.module('navigationservice', [])
         countrySave: function(formData, callback) {
             $http.post(adminurl + 'country/save', formData).success(callback);
         },
+        modelSave: function(modal, formData, callback) {
+            $http.post(adminurl + modal +'/save', formData).success(callback);
+        },
         branchSave: function(formData, callback) {
             $http.post(adminurl + 'branch/save', formData).success(callback);
         },
@@ -272,6 +276,12 @@ var navigationservice = angular.module('navigationservice', [])
         },
         getOneCountry: function(id, callback) {
             $http.post(adminurl + 'country/getOne', {
+                _id: id
+            }).success(callback);
+        },
+        getOneModel: function(model, id, callback) {
+          console.log(id);
+            $http.post(adminurl + model +'/getOne', {
                 _id: id
             }).success(callback);
         },
@@ -1184,6 +1194,11 @@ var navigationservice = angular.module('navigationservice', [])
                     "_id": id.id,
                 }
             }).success(callback);
+        },
+        deleteModel: function(model, id, callback) {
+            $http.post(adminurl + model +'/delete',{
+                    "_id": id,
+                }).success(callback);
         },
         getAllUsers: function(callback) {
             // console.log('form data: ', formData);

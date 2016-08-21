@@ -142,6 +142,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     .controller('ModelViewCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
         //Used to name the .html file
         $scope.modelCap = _.capitalize($stateParams.model);
+        $scope.modelLow = _.lowerCase($stateParams.model);
+
         $scope.template = TemplateService.changecontent($stateParams.model + "-list");
         $scope.menutitle = NavigationService.makeactive($scope.modelCap + " List");
         TemplateService.title = $scope.menutitle;
@@ -164,7 +166,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 keyword: $scope.search.keyword
             }, ++i, function(data, ini) {
                 if (ini == i) {
-                    $scope.countries = data.data.results;
+                    $scope.modelList = data.data.results;
                     $scope.totalItems = data.data.total;
                     $scope.maxRow = data.data.options.count;
                 }
@@ -182,11 +184,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
         $scope.showAll();
-        $scope.delete = function(id) {
+        $scope.deleteModel = function(id) {
             globalfunction.confDel(function(value) {
                 console.log(value);
                 if (value) {
-                    NavigationService.delete(id, function(data) {
+                    NavigationService.deleteModel($scope.modelLow, id, function(data) {
                         if (data.value) {
                             $scope.showAll();
                             toastr.success($scope.modelCap + " deleted successfully.", $scope.modelCap + " deleted");
@@ -200,6 +202,61 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
     })
+
+    .controller('CreateModelCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr, $stateParams) {
+        //Used to name the .html file
+        $scope.modelCap = _.capitalize($stateParams.model);
+        $scope.modelLow = _.lowerCase($stateParams.model);
+        $scope.template = TemplateService.changecontent( $scope.modelLow + "-detail");
+        $scope.menutitle = NavigationService.makeactive($scope.modelCap);
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.header = {
+            "name": "Create " + $scope.modelCap
+        };
+        $scope.formData = {};
+        $scope.saveModel = function(formData) {
+            NavigationService.modelSave($scope.modelLow, $scope.formData, function(data) {
+                if (data.value === true) {
+                    $state.go($stateParams.model + '-list');
+                    toastr.success($scope.modelCap + " " + formData.name + " created successfully.", $scope.modelCap + " Created");
+                } else {
+                    toastr.error($scope.modelCap + " creation failed.", $scope.modelCap + " creation error");
+                }
+            });
+        };
+
+    })
+
+    .controller('EditModelCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
+      $scope.modelCap = _.capitalize($stateParams.model);
+      $scope.modelLow = _.lowerCase($stateParams.model);
+        $scope.template = TemplateService.changecontent( $scope.modelLow +"-detail");
+        $scope.menutitle = NavigationService.makeactive($scope.modelCap);
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        console.log($state);
+        $scope.header = {
+            "name": "Edit " + $scope.modelCap
+        };
+
+        NavigationService.getOneModel($stateParams.model, $stateParams.id, function(data) {
+            $scope.formData = data.data;
+        });
+
+        $scope.saveModel = function(formValid) {
+            NavigationService.modelSave($stateParams.model, $scope.formData, function(data) {
+                if (data.value === true) {
+                    $state.go($scope.modelLow + '-list');
+                    toastr.success($scope.modelCap + $scope.formData.name + " edited successfully.", $scope.modelCap+" Edited");
+                } else {
+                    toastr.error($scope.modelCap+" edition failed.", $scope.modelCap+" editing error");
+                }
+            });
+        };
+
+    })
+
 
 .controller('CreateCountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
         //Used to name the .html file
@@ -221,31 +278,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     toastr.success("Country " + formData.name + " created successfully.", "Country Created");
                 } else {
                     toastr.error("Country creation failed.", "Country creation error");
-                }
-            });
-        };
-
-    })
-    .controller('CreateModelCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
-        //Used to name the .html file
-        $scope.modelCap = _.capitalize($stateParams.model);
-        $scope.template = TemplateService.changecontent("country-detail");
-        $scope.menutitle = NavigationService.makeactive("Country");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-
-        $scope.header = {
-            "name": "Create " + $scope.modelCap
-        };
-        $scope.formData = {};
-        $scope.saveCountry = function(formData) {
-            console.log($scope.formData);
-            NavigationService.countrySave($scope.formData, function(data) {
-                if (data.value === true) {
-                    $state.go($stateParams.model + '-list');
-                    toastr.success($scope.modelCap + " " + formData.name + " created successfully.", $scope.modelCap + " Created");
-                } else {
-                    toastr.error($scope.modelCap + " creation failed.", $scope.modelCap + " creation error");
                 }
             });
         };

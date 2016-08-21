@@ -38,13 +38,13 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Yearly Hours*</label>
-                                        <input type="text" name="yearlyHours" class="form-control" ng-model="formData.name" required>
+                                        <input type="text" name="yearlyHours" class="form-control" ng-model="formData.yearlyHours" required>
                                         <div class="error-msg" ng-show="formName.yearlyHours.$invalid && formName.yearlyHours.$touched">Please Enter Yearly Hours</div>
                                     </div>
                                 </div>
                             </div>
                             <div class="text-center mt20">
-                                <button class="btn btn-default" type="submit" ng-click="saveGrade(formData)" ng-disabled="formName.$invalid">Save</button>
+                                <button class="btn btn-default" type="submit" ng-click="saveModel(formData)" ng-disabled="formName.$invalid">Save</button>
                                 <button class="btn btn-default" ui-sref="bankmaster-list">Cancel</button>
                             </div>
                         </div>
