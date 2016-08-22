@@ -120,12 +120,12 @@ var navigationservice = angular.module('navigationservice', [])
         subnav: [{
             name: "Segment",
             classis: "active",
-            anchor: "customerSegment-list",
+            anchor: "customersegment-list",
             icon: "user"
         }, {
             name: "Company",
             classis: "active",
-            anchor: "customerCompany-list",
+            anchor: "customercompany-list",
             icon: "building"
         }, {
             name: "Customer",
@@ -254,6 +254,21 @@ var navigationservice = angular.module('navigationservice', [])
         },
         searchCompany: function(formData, i, callback) {
             $http.post(adminurl + 'company/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
+        searchDepartment: function(formData, i, callback) {
+            $http.post(adminurl + 'department/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
+        searchGrade: function(formData, i, callback) {
+            $http.post(adminurl + 'grade/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
+        searchFunc: function(formData, i, callback) {
+            $http.post(adminurl + 'func/search', formData).success(function(data) {
                 callback(data, i);
             });
         },
@@ -935,13 +950,10 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         funcSave: function(formData, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'func/saveData',
-                method: 'POST',
-                withCredentials: true,
-                data: formData
-            }).success(callback);
+            $http.post(adminurl + 'func/save',formData).success(callback);
+        },
+        gradeSave: function(formData, callback) {
+            $http.post(adminurl + 'grade/save',formData).success(callback);
         },
         getOneFunc: function(id, callback) {
             // console.log('form data: ', formData);

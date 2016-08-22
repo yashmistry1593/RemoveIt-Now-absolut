@@ -9,7 +9,7 @@
     </ul>
 </div>
 
-<form role="form" name="formName" ng-submit="saveEmployee(formData)">
+<form role="form" name="formName" ng-submit="saveModel(formData)">
     <div class="heading-sec">
         <div class="row">
             <div class="col-md-12 column">
@@ -34,27 +34,27 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Company Name*</label>
-                                        <multiple-select name="company" required ng-model="formData.company" filter='{"company":"{{formData.company}}"}' ng-name="name.company" api="searchCompany" ng-create="companySave"></multiple-select>
+                                        <multiple-select name="company" required ng-model="formData.company" ng-name="name.company" api="searchCompany" ng-create="companySave"></multiple-select>
                                         <div class="error-msg" ng-show="formName.company.$invalid">Please Select Company Name</div>
                                     </div>
                                     <div class="form-group">
                                         <label>First Name*</label>
-                                        <input type="text" name="name" class="form-control" ng-model="formData.name" required>
+                                        <input type="text" name="name" class="form-control" ng-model="formData.firstName" required>
                                         <div class="error-msg" ng-show="formName.name.$invalid && formName.name.$touched">Please Enter First Name</div>
                                     </div>
                                     <div class="form-group">
                                         <label>Department*</label>
-                                        <multiple-select name="department" required ng-model="formData.department" filter='{"department":"{{formData.department}}"}' ng-name="name.department" api="searchDepartment" ng-create="departmentSave"></multiple-select>
+                                        <multiple-select name="department" required ng-model="formData.department" ng-name="name.department" api="searchDepartment" ng-create="departmentSave"></multiple-select>
                                         <div class="error-msg" ng-show="formName.department.$invalid">Please Select Department</div>
                                     </div>
                                     <div class="form-group">
                                         <label>Posted At*</label>
-                                        <multiple-select name="postedAt" required ng-model="formData.postedAt" filter='{"postedAt":"{{formData.postedAt}}"}' ng-name="name.postedAt" api="searchPostedAt" ng-create="postedAtSave"></multiple-select>
+                                        <multiple-select name="postedAt" required ng-model="formData.postedAt" filter='{"company":"{{formData.company}}"}' ng-name="name.postedAt" api="searchOffice"></multiple-select>
                                         <div class="error-msg" ng-show="formName.postedAt.$invalid">Please Select Current Posting</div>
                                     </div>
                                     <div class="form-group">
                                         <label>Grade*</label>
-                                        <multiple-select name="grade" required ng-model="formData.grade" filter='{"grade":"{{formData.grade}}"}' ng-name="name.grade" api="searchGrade" ng-create="gradeSave"></multiple-select>
+                                        <multiple-select name="grade" required ng-model="formData.grade" ng-name="name.grade" api="searchGrade" ng-create="gradeSave"></multiple-select>
                                         <div class="error-msg" ng-show="formName.grade.$invalid">Please Select Grade</div>
                                     </div>
                                     <div class="form-group">
@@ -80,19 +80,19 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Function*</label>
-                                        <multiple-select name="function" required ng-model="formData.function" filter='{"function":"{{formData.function}}"}' ng-name="name.function" api="searchFunction" ng-create="functionSave"></multiple-select>
-                                        <div class="error-msg" ng-show="formName.company.$invalid">Please Select Function</div>
+                                        <multiple-select name="func" required ng-model="formData.func" ng-name="name.func" api="searchFunc" ng-create="funcSave"></multiple-select>
+                                        <div class="error-msg" ng-show="formName.func.$invalid">Please Select Function</div>
                                     </div>
                                     <div class="form-group">
                                         <label>Branch*</label>
-                                        <multiple-select name="branch" required ng-model="formData.branch" filter='{"branch":"{{formData.branch}}"}' ng-name="name.branch" api="searchBranch" ng-create="branchSave"></multiple-select>
+                                        <multiple-select name="branch" required ng-model="formData.branch" filter='{"office":"{{formData.postedAt}}"}' ng-name="name.branch" api="searchBranch" ng-create="branchSave"></multiple-select>
                                         <div class="error-msg" ng-show="formName.branch.$invalid">Please Select Branch</div>
                                     </div>
-                                    <div class="form-group">
+                                    <!-- <div class="form-group">
                                         <label>Access*</label>
                                         <multiple-select name="access" required ng-model="formData.access" filter='{"access":"{{formData.access}}"}' ng-name="name.access" api="searchAccess" ng-create="accessSave"></multiple-select>
                                         <div class="error-msg" ng-show="formName.city.$invalid">Please Select Access</div>
-                                    </div>
+                                    </div> -->
                                     <div class="form-group">
                                         <label>Employee Code*</label>
                                         <input type="text" name="employeeCode" class="form-control" ng-model="formData.employeeCode" required>
@@ -117,14 +117,14 @@
                             <div class="col-md-12">
                                 <div class="form-group">
                                     <label>CTC Amount</label>
-                                    <input type="text" name="amount" class="form-control" ng-model="formData.ctc.amount" required>
+                                    <input type="text" name="amount" class="form-control" ng-model="formData.CTCAmount">
                                 </div>
                             </div>
                             <div class="col-md-6">
                                 <div class="form-group">
                                     <label>From</label>
                                     <div class="input-group">
-                                        <input type="text" name="from" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.ctc.from" is-open="popup.from" datepicker-options="dateOptions" readonly/>
+                                        <input type="text" name="from" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.CTCFrom" is-open="popup.from" datepicker-options="dateOptions" readonly/>
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn-default" ng-click="popup.from = true">
                                                 <i class="fa fa-calendar"></i>
@@ -137,7 +137,7 @@
                                 <div class="form-group">
                                     <label>To</label>
                                     <div class="input-group">
-                                        <input type="text" name="to" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.ctc.to" is-open="popup.to" datepicker-options="dateOptions" readonly/>
+                                        <input type="text" name="to" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.CTCTo" is-open="popup.to" datepicker-options="dateOptions" readonly/>
                                         <span class="input-group-btn">
                                             <button type="button" class="btn btn-default" ng-click="popup.to = true">
                                                 <i class="fa fa-calendar"></i>
@@ -193,7 +193,7 @@
                         <div class="widget-title">
                             <h3>Address</h3>
                         </div>
-                        <address-form></address-form>
+                        <address-form ng-valid="companyForm" ng-model="formData"></address-form>
                     </div>
                 </div>
                 <div class="widget">
@@ -205,28 +205,28 @@
                                 </div>
                                 <div class="checkbox">
                                     <label>
-                                        <input type="checkbox" ng-model="formData.surveyor.isSurveyor">
+                                        <input type="checkbox" ng-model="formData.isSurveyor">
                                         Is Surveyor
                                     </label>
                                 </div>
                                 <div class="form-group">
                                     <label>Valid Upto*</label>
-                                    <input type="text" name="validUpto" class="form-control" ng-model="formData.surveyor.validUpto" required>
+                                    <input type="text" name="validUpto" class="form-control" ng-model="formData.validUpto" required>
                                     <div class="error-msg" ng-show="formName.validUpto.$invalid && formName.validUpto.$touched">Please Enter Valid Upto</div>
                                 </div>
                                 <div class="form-group">
                                     <label>License Number*</label>
-                                    <input type="text" name="licenseNumber" class="form-control" ng-model="formData.surveyor.licence" required>
+                                    <input type="text" name="licenseNumber" class="form-control" ng-model="formData.licence" required>
                                     <div class="error-msg" ng-show="formName.licenseNumber.$invalid && formName.licenseNumber.$touched">Please Select License Number</div>
                                 </div>
                                 <div class="form-group">
                                     <label>Upload IIISLA Document Receipt</label>
-                                    <upload-image ng-model="formData.surveyor.iiislaDocument" no-view></upload-image>
+                                    <upload-image ng-model="formData.iiislaDocument" no-view></upload-image>
                                 </div>
                                 <div class="form-group">
                                     <label>Upload Document*</label>
-                                    <upload-image ng-model="formData.surveyor.document" no-view></upload-image>
-                                    <div class="error-msg" ng-show="formName.document.$invalid && formName.document.$touched">Please Select Document</div>
+                                    <upload-image ng-model="formData.EmployeeDocument" no-view></upload-image>
+                                    <div class="error-msg" ng-show="formName.EmployeeDocument.$invalid && formName.EmployeeDocument.$touched">Please Select Document</div>
                                 </div>
                             </div>
                         </div>
@@ -241,31 +241,31 @@
                         </div>
                         <div class="form-group">
                             <label>Office Number</label>
-                            <input type="text" class="form-control" ng-model="formData.contact.officeNumber">
+                            <input type="text" class="form-control" ng-model="formData.officeNumber">
                         </div>
                         <div class="form-group">
                             <label>Office Mobile Number</label>
-                            <input type="text" class="form-control" ng-model="formData.contact.officeMobile">
+                            <input type="text" class="form-control" ng-model="formData.officeMobile">
                         </div>
                         <div class="form-group">
                             <label>Office Email Id</label>
-                            <input type="email" class="form-control" ng-model="formData.contact.officeEmail">
+                            <input type="email" class="form-control" ng-model="formData.officeEmail">
                         </div>
                         <div class="form-group">
                             <label>Home Number</label>
-                            <input type="text" class="form-control" ng-model="formData.contact.homeNumber">
+                            <input type="text" class="form-control" ng-model="formData.homeNumber">
                         </div>
                         <div class="form-group">
                             <label>Mobile Number</label>
-                            <input type="text" class="form-control" ng-model="formData.contact.mobile">
+                            <input type="text" class="form-control" ng-model="formData.mobile">
                         </div>
                         <div class="form-group">
                             <label>Email Id</label>
-                            <input type="email" class="form-control" ng-model="formData.contact.email">
+                            <input type="email" class="form-control" ng-model="formData.email">
                         </div>
                         <div class="form-group">
                             <label>Extension Number</label>
-                            <input type="text" class="form-control" ng-model="formData.contact.extension">
+                            <input type="text" class="form-control" ng-model="formData.extension">
                         </div>
                     </div>
                 </div>

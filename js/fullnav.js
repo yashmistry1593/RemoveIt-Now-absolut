@@ -97,7 +97,7 @@ var navigationservice = angular.module('navigationservice', [])
         subnav: [{
             name: "Customer Segment",
             classis: "active",
-            anchor: "customerSegment-list",
+            anchor: "customersegment-list",
             icon: "user"
         }, {
             name: "Customer Company",

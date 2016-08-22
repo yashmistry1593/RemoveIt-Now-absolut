@@ -602,25 +602,34 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   })
 
   .state('employee-list', {
-    url: "/employee-list/{page:.*}/{keyword:.*}",
+    url: "/employee-list//{page:.*}/{keyword:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'EmployeeCtrl',
+    controller: 'ModelViewCtrl',
     params: {
       page: "1",
-      keyword: ""
+      keyword: "",
+      model: "employee"
     }
   })
 
   .state('createemployee', {
-    url: "/employee-create",
+    url: "/employee-create/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'CreateEmployeeCtrl'
+    controller: 'CreateModelCtrl',
+    params: {
+      id: "",
+      model: "employee"
+    }
   })
 
   .state('editemployee', {
     url: "/employee-edit/:id",
     templateUrl: "views/template.html",
-    controller: 'EditEmployeeCtrl'
+    controller: 'EditModelCtrl',
+    params: {
+      id:"",
+      model:"employee"
+    }
   })
 
   .state('product-list', {
@@ -779,49 +788,67 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     controller: 'CreateContactTypeOfficeCtrl'
   })
 
-  .state('customerSegment-list', {
-    url: "/customerSegment-list/{page:.*}/{keyword:.*}",
+  .state('customersegment-list', {
+    url: "/customersegment-list/{page:.*}/{keyword:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'CustomerSegmentCtrl',
+    controller: 'ModelViewCtrl',
     params: {
       page: "1",
-      keyword: ""
+      keyword: "",
+      model: "customersegment"
     }
   })
 
 
   .state('createcustomersegment', {
-    url: "/customersegment-create",
+    url: "/customersegment-create/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'CreateCustomerSegmentCtrl'
+    controller: 'CreateModelCtrl',
+    params: {
+      id: "",
+      model: "customersegment"
+    }
   })
 
   .state('editcustomersegment', {
-    url: "/customersegment-edit/:id",
+    url: "/customersegment-edit/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'EditCustomerSegmentCtrl'
+    controller: 'EditModelCtrl',
+    params: {
+      id: "",
+      model: "customersegment"
+    }
   })
 
-  .state('customerCompany-list', {
-    url: "/customerCompany-list/{page:.*}/{keyword:.*}",
+  .state('customercompany-list', {
+    url: "/customercompany-list/{page:.*}/{keyword:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'CustomerCompanyCtrl',
+    controller: 'ModelViewCtrl',
     params: {
       page: "1",
-      keyword: ""
+      keyword: "",
+      model: "customercompany"
     }
   })
 
   .state('createcustomercompany', {
-    url: "/customercompany-create",
+    url: "/customercompany-create/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'CreateCustomerCompanyCtrl'
+    controller: 'CreateModelCtrl',
+    params: {
+      id:"",
+      model: "customercompany"
+    }
   })
 
   .state('editcustomercompany', {
-    url: "/customercompany-edit/:id",
+    url: "/customercompany-edit/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'EditCustomerCompanyCtrl'
+    controller: 'EditModelCtrl',
+    params: {
+      id: "",
+      model: "customercompany"
+    }
   })
 
   .state('grade-list', {

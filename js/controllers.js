@@ -219,6 +219,35 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.header = {
             "name": "Create " + $scope.modelCap
         };
+
+        // FOR EMPLOYEE
+        $scope.userStatus = [{
+            "name": "Active",
+            "value": true
+        }, {
+            "name": "Inactive",
+            "value": false
+        }];
+        $scope.salutations = ["Mr.", "Mrs.", "Ms.", "Dr."];
+        $scope.houseColors = ["Red", "Green", "Blue", "Yellow"];
+
+        $scope.dateOptions = {
+            showWeeks: true
+        };
+
+        $scope.popup = {
+            to: false,
+            from: false,
+            birthDate: false,
+            marriageDate: false,
+            joiningDate: false,
+            leavingDate: false
+        };
+
+        $scope.format = 'dd-MMMM-yyyy';
+
+        // FOR EMPLOYEE
+
         $scope.formData = {};
         $scope.saveModel = function(formData) {
             NavigationService.modelSave($scope.modelLow, $scope.formData, function(data) {
