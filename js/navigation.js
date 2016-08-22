@@ -1,14 +1,5 @@
-// var adminURL = "";
-// if(isproduction)
-// {
-
-//   adminURL =  "http://www.wohlig.co.in/demo/index.php";
-// }
-// else {
-//   adminURL = "http://localhost/demo/index.php";
-// }
-// var adminurl = "http://localhost:1337/";
-var adminurl = "http://192.168.1.102:1337/";
+// var adminurl = "http://192.168.1.102:1337/";
+var adminurl = "http://104.155.238.145/";
 
 var imgurl = adminurl + "upload/";
 
