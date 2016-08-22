@@ -200,6 +200,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
             });
         };
+
+        $scope.changeStatus = function(ind) {
+            NavigationService.modelSave($scope.modelLow, ind, function(data) {
+                if (data.value === true) {}
+            });
+        };
     })
 
     .controller('CreateModelCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr, $stateParams) {
