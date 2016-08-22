@@ -273,26 +273,35 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   })
 
   .state('department-list', {
-    url: "/department-list/{page:.*}/{keyword:.*}",
+    url: "/department-list/{page:.*}/{keyword:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'DepartmentCtrl',
+    controller: 'ModelViewCtrl',
     params: {
       page: "1",
-      keyword: ""
+      keyword: "",
+      model:"department"
     }
   })
 
 
   .state('createdepartment', {
-    url: "/department-create",
+    url: "/department-create/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'CreateDepartmentCtrl'
+    controller: 'CreateModelCtrl',
+    params: {
+      id: "",
+      model: "department"
+    }
   })
 
   .state('editdepartment', {
-    url: "/department-edit/:id",
+    url: "/department-edit/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'EditDepartmentCtrl'
+    controller: 'EditModelCtrl',
+    params: {
+      id: "",
+      model: "department"
+    }
   })
 
 

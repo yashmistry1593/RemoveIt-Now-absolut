@@ -1,11 +1,9 @@
 // var adminurl = "http://192.168.1.102:1337/";
 var adminurl = "http://104.155.238.145/";
-
 var imgurl = adminurl + "upload/";
 
 var imgpath = imgurl + "readFile";
 var uploadurl = imgurl;
-
 
 var navigationservice = angular.module('navigationservice', [])
 
