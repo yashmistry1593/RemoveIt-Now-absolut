@@ -655,25 +655,34 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   })
 
   .state('salvage-list', {
-    url: "/salvage-list/{page:.*}/{keyword:.*}",
+    url: "/salvage-list/{page:.*}/{keyword:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'SalvageCtrl',
+    controller: 'ModelViewCtrl',
     params: {
       page: "1",
-      keyword: ""
+      keyword: "",
+      model: "salvage"
     }
   })
 
   .state('createsalvage', {
-    url: "/salvage-detail",
+    url: "/salvage-detail/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'CreateSalvageCtrl'
+    controller: 'CreateModelCtrl',
+    params: {
+      id:"",
+      model:"salvage"
+    }
   })
 
   .state('editSalvage', {
-    url: "/salvage-edit/:id",
+    url: "/salvage-edit/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'EditSalvageCtrl'
+    controller: 'EditModelCtrl',
+    params: {
+      id:"",
+      model:"salvage"
+    }
   })
 
   .state('bankmaster-list', {
@@ -882,22 +891,35 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     }
   })
 
-  .state('survey-code-list', {
-    url: "/survey-code-list",
+  .state('surveycode-list', {
+    url: "/surveycode-list/{page:.*}/{keyword:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'SurveyCodeCtrl'
+    controller: 'ModelViewCtrl',
+    params: {
+      page:"1",
+      keyword: "",
+      model: "surveycode"
+    }
   })
 
   .state('createsurveycode', {
-    url: "/surveycode-create",
+    url: "/surveycode-create/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'CreateSurveyCodeCtrl'
+    controller: 'CreateModelCtrl',
+    params: {
+      id:"",
+      model: "surveycode"
+    }
   })
 
   .state('editsurveycode', {
-    url: "/surveycode-edit",
+    url: "/surveycode-edit/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'EditSurveyCodeCtrl'
+    controller: 'EditModelCtrl',
+    params: {
+      id: "",
+      model: "surveycode"
+    }
   })
 
   .state('transferOfficer-list', {

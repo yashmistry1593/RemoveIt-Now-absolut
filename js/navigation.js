@@ -1,5 +1,5 @@
-// var adminurl = "http://192.168.1.102:1337/";
-var adminurl = "http://104.155.238.145/";
+var adminurl = "http://localhost:1337/";
+// var adminurl = "http://104.155.238.145/";
 var imgurl = adminurl + "upload/";
 
 var imgpath = imgurl + "readFile";
@@ -232,6 +232,11 @@ var navigationservice = angular.module('navigationservice', [])
                 callback(data, i);
             });
         },
+        searchCustomerSegment: function(formData, i, callback) {
+            $http.post(adminurl + 'Customersegment/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
         searchOffice: function(formData, i, callback) {
             $http.post(adminurl + 'office/search', formData).success(function(data) {
                 callback(data, i);
@@ -305,6 +310,9 @@ var navigationservice = angular.module('navigationservice', [])
         },
         branchSave: function(formData, callback) {
             $http.post(adminurl + 'branch/save', formData).success(callback);
+        },
+        customerSegmentSave: function(formData, callback) {
+            $http.post(adminurl + 'Customersegment/save', formData).success(callback);
         },
         getAllCountries: function(callback) {
             $http.post(adminurl + 'country/getAll', {}).success(callback);
