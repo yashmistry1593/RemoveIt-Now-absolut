@@ -9,7 +9,7 @@
     </ul>
 </div>
 
-<form name="formName" ng-submit="saveCustomer(formData)">
+<form name="formName" ng-submit="saveModel(formData)">
     <div class="heading-sec">
         <div class="row">
             <div class="col-md-12 column">
@@ -28,18 +28,18 @@
                     <div class="widget">
                         <div class="form-elements-sec">
                             <div class="widget-title">
-                                <h3>Customer</h3>
+                                <h3>Customer</h3>{{formData}}
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
                                   <div class="form-group">
                                       <label>Customer Segment*</label>
-                                      <multiple-select name="customerSegment" required ng-model="formData.customerSegment" filter='{"customerSegment":"{{formData.customerSegment}}"}' ng-name="name.customerSegment" api="searchCustomerSegment" ng-create="customerSegmentSave"></multiple-select>
+                                      <multiple-select name="customerSegment" required ng-model="formData.customerSegment" ng-name="name.customerSegment" api="searchCustomerSegment" ng-create="customerSegmentSave"></multiple-select>
                                       <div class="error-msg" ng-show="formName.customerSegment.$invalid">Please Select Customer Segment</div>
                                   </div>
                                     <div class="form-group">
                                         <label>Type of Office*</label>
-                                        <multiple-select name="typeOfOffice" required ng-model="formData.typeOfOffice" filter='{"typeOfOffice":"{{formData.typeOfOffice}}"}' ng-name="name.typeOfOffice" api="searchTypeOfOffice" ng-create="typeOfOfficeSave"></multiple-select>
+                                        <multiple-select name="typeOfOffice" required ng-model="formData.typeOfOffice" ng-name="name.typeOfOffice" api="searchTypeOfOffice" ng-create="typeofofficeSave"></multiple-select>
                                         <div class="error-msg" ng-show="formName.typeOfOffice.$invalid">Please Select Type of Office</div>
                                     </div>
                                     <div class="form-group">
@@ -51,10 +51,10 @@
                                         <label>Policy Issuing Office*</label>
                                         <br>
                                         <label class="radio-inline">
-                                            <input type="radio" name="issuingOffice" value="yes" ng-model="formData.issueOffice">Yes
+                                            <input type="radio" name="issuingOffice" value=true ng-model="formData.issueOffice">Yes
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="issuingOffice" value="no" ng-model="formData.issueOffice">No
+                                            <input type="radio" name="issuingOffice" value=false ng-model="formData.issueOffice">No
                                         </label>
                                         <div class="error-msg" ng-show="formName.issueOffice.$invalid && formName.issueOffice.$touched">Please Select Policy Issuing Office</div>
                                     </div>
@@ -62,9 +62,13 @@
                                 <div class="col-md-6">
                                   <div class="form-group">
                                       <label>Customer Company*</label>
-                                      <multiple-select name="customerCompany" required ng-model="formData.customerCompany" filter='{"customerCompany":"{{formData.customerCompany}}"}' ng-name="name.customerCompany" api="searchCustomerCompany" ng-create="customerCompanySave"></multiple-select>
+                                      <multiple-select name="customerCompany" required ng-model="formData.customerCompany" filter='{"customerSegment":"{{formData.customerSegment}}"}' ng-name="name.customerCompany" api="searchCustomerCompany" ng-create="customerCompanySave"></multiple-select>
                                       <div class="error-msg" ng-show="formName.customerCompany.$invalid">Please Select Customer Company</div>
                                   </div>
+                                    <div class="form-group">
+                                        <label>Customer Name*</label>
+                                        <input type="text" name="customerName" class="form-control" ng-model="formData.customerName" required>
+                                    </div>
                                     <div class="form-group">
                                         <label>Office Code</label>
                                         <input type="text" name="officeCode" class="form-control" ng-model="formData.officeCode">
@@ -113,7 +117,7 @@
                                     <div class="widget-title">
                                         <h3>Address</h3>
                                     </div>
-                                    <address-form></address-form>
+                                    <address-form ng-valid="formName" ng-model="formData"></address-form>
                                 </div>
                             </div>
                         </div>
@@ -160,7 +164,7 @@
                             <h3>Contact</h3>
                         </div>
                         <div class="table-responsive">
-                          <table class="table">
+                          <!-- <table class="table">
                             <thead>
                               <tr>
                                 <th>Name</th>
@@ -176,7 +180,7 @@
                                 </td>
                               </tr>
                             </tbody>
-                          </table>
+                          </table> -->
                         </div>
                       </div>
                     </div>

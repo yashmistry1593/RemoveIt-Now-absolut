@@ -270,6 +270,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         console.log($state);
+        console.log("000000000000000000");
+        $scope.formData = {};
         $scope.header = {
             "name": "Edit " + $scope.modelCap
         };

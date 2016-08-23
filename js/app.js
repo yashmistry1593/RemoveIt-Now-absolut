@@ -729,24 +729,34 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   })
 
   .state('customer-list', {
-    url: "/customer-list/{page:.*}/{keyword:.*}",
+    url: "/customer-list/{page:.*}/{keyword:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'CustomerCtrl',
+    controller: 'ModelViewCtrl',
     params: {
       page: "1",
-      keyword: ""
+      keyword: "",
+      model: "customer"
     }
   })
 
   .state('createcustomer', {
-      url: "/customer-detail",
+      url: "/customer-detail/{id:.*}/{model:.*}",
       templateUrl: "views/template.html",
-      controller: 'CreateCustomerCtrl'
+      controller: 'CreateModelCtrl',
+      params: {
+        id: "",
+        model: "customer"
+      }
     })
+
     .state('editcustomer', {
-      url: "/customer-detail/:id",
+      url: "/customer-edit/{id:.*}/{model:.*}",
       templateUrl: "views/template.html",
-      controller: 'EditCustomerCtrl'
+      controller: 'EditModelCtrl',
+      params: {
+        id: "",
+        model: "customer"
+      }
     })
 
   .state('contactmanagement-list', {
@@ -922,16 +932,25 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     }
   })
 
-  .state('transferOfficer-list', {
-    url: "/transferOfficer-list",
+  .state('transferoffice-list', {
+    url: "/transferoffice-list/{page:.*}/{keyword:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'TransferOfficerCtrl'
+    controller: 'ModelViewCtrl',
+    params: {
+      page: "1",
+      keyword: "",
+      model: "transferoffice"
+    }
   })
 
-  .state('createtransferofficer', {
-    url: "/transferOfficer-create",
+  .state('createtransferoffice', {
+    url: "/transferoffice-create/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'CreateTransferOfficerCtrl'
+    controller: 'CreateModelCtrl',
+    params: {
+      id: "",
+      model: "transferoffice"
+    }
   })
 
   .state('edittransferofficer', {

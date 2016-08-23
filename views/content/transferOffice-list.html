@@ -7,7 +7,7 @@
             <a title="Home">Customers</a>
         </li>
         <li>
-            <a ui-sref="transferOfficer-list">Transfer Officer</a>
+            <a ui-sref="transferoffice-list">Transfer Officer</a>
         </li>
     </ul>
 </div>
@@ -36,7 +36,7 @@
                                     <i class="fa fa-search"></i>
                                 </button>
                             </form>
-                            <a class="btn btn-primary" ui-sref="createtransferOfficer">Add New</a>
+                            <a class="btn btn-primary" ui-sref="createtransferoffice">Add New</a>
                         </div>
 
                         <h3>List of Transferred Officer
@@ -62,7 +62,7 @@
                                         <a class="btn btn-blue" ui-sref="editTransferOfficer({id:cust._id})">
                                             <i class="fa fa-pencil"></i>
                                         </a>
-                                        <a class="btn btn-red" ng-click="deleteTransferOfficer(cust._id)">
+                                        <a class="btn btn-red" ng-click="deleteModel(cust._id)">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>

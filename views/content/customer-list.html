@@ -31,7 +31,7 @@
                     <div class="widget-title">
                         <div class="pull-right">
                             <form class="search-form mr-form">
-                                <input type="text" placeholder="Search Here..."/>
+                              <input type="text" ng-change="showAll(true)" placeholder="Search Here..." ng-model="search.keyword"/>
                                 <button type="submit">
                                     <i class="fa fa-search"></i>
                                 </button>
@@ -40,7 +40,7 @@
                         </div>
                         <h3>List of Customers <span class="tableTotal">(Total : {{totalItems}}) </span></h3>
                     </div>
-                    <div class="table-responsive">
+                    <div class="table-responsive" ng-show="totalItems>0">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -53,19 +53,19 @@
                                 </tr>
                             </thead>
                             <tbody ng-show="totalItems>0">
-                                <tr ng-repeat="data in allCustomers">
+                                <tr ng-repeat="data in modelList">
                                     <td>{{data.segment}}</td>
                                     <td>{{data.shortName}}</td>
                                     <td>{{data.city}}</td>
                                     <td>{{data.phone1}}</td>
                                     <td>
-                                        <toggle-switch ng-model="data.status" class="switch-mini switch-success"></toggle-switch>
+                                      <toggle-switch ng-model="data.status" class="switch-mini switch-success" ng-change="changeStatus(data)"></toggle-switch>
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary" ui-sref="editcustomer({id:cust._id})">
+                                        <a class="btn btn-primary" ui-sref="editcustomer({id:data._id})">
                                             <i class="fa fa-pencil"></i>
                                         </a>
-                                        <a class="btn btn-danger" ng-click="deleteCustomer(cust._id)">
+                                        <a class="btn btn-danger" ng-click="deleteModel(data._id)">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
