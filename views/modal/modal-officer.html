@@ -1,4 +1,4 @@
-<form name="modalForm" ng-submit="createOfficer(modalData)">
+<form name="modalForm" ng-submit="createOfficer(modalData);$dismiss()">
     <div class="modal-header blue-bg">
         <div class="pull-right">
             <a class="btn btn-clear" ng-click="$dismiss()">
@@ -8,7 +8,7 @@
         <h5 class="modal-title">Create New Officer</h5>
     </div>
     <div class="modal-body">
-        <div class="row">
+        <div class="row">{{modalData}}
             <div class="col-md-6">
                 <div class="form-group">
                     <label>Salutation*</label>
@@ -17,7 +17,7 @@
                 </div>
                 <div class="form-group">
                     <label>Last Name*</label>
-                    <input type="text" name="lastName" ng-model="modalData.lastName" class="form-control" required>
+                    <input type="text" name="lastName" ng-bind="modalData.lastName" class="form-control" required>
                     <div class="error-msg" ng-show="modalForm.lastName.$invalid && modalForm.lastName.$touched">Please Enter Last Name</div>
                 </div>
                 <div class="form-group">
@@ -75,7 +75,7 @@
         </div>
 
         <div class="text-center">
-          <button class="btn btn-primary" type="submit" ng-disabled="modalForm.$invalid">Save</button>
+          <button class="btn btn-primary" type="submit" ng-disabled="modalForm.$invalid">{{buttonValue}}</button>
         </div>
     </div>
 </form>

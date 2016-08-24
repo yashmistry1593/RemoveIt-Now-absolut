@@ -3859,42 +3859,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 size: 'lg'
             });
         };
-        $scope.saveCustomer = function() {
+        $scope.saveModel = function(formData) {
+            NavigationService.modelSave($scope.modelLow, $scope.formData, function(data) {
+                if (data.value === true) {
+                    $state.go($stateParams.model + '-list');
+                    toastr.success($scope.modelCap + " " + formData.name + " created successfully.", $scope.modelCap + " Created");
+                } else {
+                    toastr.error($scope.modelCap + " creation failed.", $scope.modelCap + " creation error");
+                }
+            });
+        };
+        $scope.createOfficer = function(modelData) {
+            $scope.formData.officers.push(modelData);
             console.log($scope.formData);
-            // NavigationService.customerSave($scope.formData, function(data) {
-            //     console.log(data);
-            //     if (data.value == true) {
-            //         $state.go('customer-list');
-            //     }
-            // });
-        }
-        NavigationService.getAllCustomerCompanies(function(data) {
-            $scope.allCustomerCompanies = data.data;
-            console.log('$scope.allCustomerCompanies', $scope.allCustomerCompanies);
-
-        });
-        NavigationService.getAllCustomerSegments(function(data) {
-            $scope.allCustomerSegments = data.data;
-        });
-        NavigationService.getAllTypeOfOffices(function(data) {
-            $scope.allTypeOfOffices = data.data;
-            console.log('$scope.allTypeOfOffices', $scope.allTypeOfOffices);
-        });
-
-        NavigationService.getAllCountries(function(data) {
-            $scope.allCountries = data.data;
-            console.log('$scope.allCountries', $scope.allCountries);
-        });
-        NavigationService.getAllStates(function(data) {
-            $scope.allStates = data.data;
-            console.log('$scope.allStates', $scope.allStates);
-        });
-        NavigationService.getAllCities(function(data) {
-            $scope.allCities = data.data;
-            console.log('$scope.allCities', $scope.allCities);
-        });
-
-
+        };
     })
     .controller('EditCustomerCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $uibModal) {
         //Used to name the .html file
@@ -3902,6 +3880,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.menutitle = NavigationService.makeactive("Edit Customer");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.formData = {};
+        $scope.buttonValue = "Save";
+        $scope.formData.officers = [];
+        $scope.format = 'dd-MMMM-yyyy';
+        // $scope.
         $scope.header = {
             "name": "Edit Customer"
         };
@@ -3940,59 +3923,45 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 size: 'lg'
             });
         };
-        NavigationService.getOneCustomer($stateParams.id, function(data) {
-            console.log(data.data.status);
-            // if(data.data.status==true){
-            //   data.data.status='Active';
-            // }else{
-            //   data.data.status='Inactive';
-            // }
+        NavigationService.getOneModel($stateParams.model, $stateParams.id, function(data) {
             $scope.formData = data.data;
-
-            console.log('$scope.formData', $scope.formData);
-
+            if (data.data.city) {
+                $scope.formData.country = data.data.city.district.state.zone.country._id;
+                $scope.formData.zone = data.data.city.district.state.zone._id;
+                $scope.formData.state = data.data.city.district.state._id;
+                $scope.formData.district = data.data.city.district._id;
+                $scope.formData.city = data.data.city._id;
+            }
         });
-        $scope.saveCustomer = function(formData) {
 
-            NavigationService.customerSave($scope.formData, function(data) {
-                console.log($scope.formData.status);
-                // if($scope.formData.status && $scope.formData.status=='Active'){
-                //   console.log('ifffffffffff');
-                //   data.data.status=false;
-                // }else{
-                //     console.log('elseeeeeeeeeeeeee');
-                //   data.data.status=true;
-                // }
-                console.log(data.data.status);
-                if (data.value == true) {
-                    $state.go('customer-list');
+        $scope.saveModel = function(formValid) {
+            NavigationService.modelSave($stateParams.model, $scope.formData, function(data) {
+                if (data.value === true) {
+                    $state.go($scope.modelLow + '-list');
+                    toastr.success($scope.modelCap + $scope.formData.name + " edited successfully.", $scope.modelCap + " Edited");
+                } else {
+                    toastr.error($scope.modelCap + " edition failed.", $scope.modelCap + " editing error");
                 }
             });
-        }
-        NavigationService.getAllCustomerCompanies(function(data) {
-            $scope.allCustomerCompanies = data.data;
-            console.log('$scope.allCustomerCompanies', $scope.allCustomerCompanies);
+        };
 
-        });
-        NavigationService.getAllCustomerSegments(function(data) {
-            $scope.allCustomerSegments = data.data;
-        });
-        NavigationService.getAllTypeOfOffices(function(data) {
-            $scope.allTypeOfOffices = data.data;
-            console.log('$scope.allTypeOfOffices', $scope.allTypeOfOffices);
-        });
-        NavigationService.getAllCountries(function(data) {
-            $scope.allCountries = data.data;
-            console.log('$scope.allCountries', $scope.allCountries);
-        });
-        NavigationService.getAllStates(function(data) {
-            $scope.allStates = data.data;
-            console.log('$scope.allStates', $scope.allStates);
-        });
-        NavigationService.getAllCities(function(data) {
-            $scope.allCities = data.data;
-            console.log('$scope.allCities', $scope.allCities);
-        });
+        $scope.createOfficer = function(modelData) {
+            $scope.formData.officers.push(modelData);
+            console.log($scope.formData);
+        };
+        $scope.openCreateOfficer = function(){
+          $scope.buttonValue = "Save";
+          $scope.modalData = {};
+          $scope.addOfficer();
+        };
+        $scope.openEditOfficer = function(data){
+          $scope.buttonValue = "Edit";
+          $scope.modalData = data;
+          $scope.addOfficer();
+        }
+        $scope.deleteOfficer = function(index){
+          $scope.formData.officers.splice(1,index);
+        }
     })
 
 .controller('MultipleSelectCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter, toastr) {

@@ -155,7 +155,7 @@
                       <div class="form-elements-sec">
                         <div class="widget-title">
                           <div class="pull-right">
-                            <a class="btn btn-primary" ng-click="addOfficer()">Add New</a>
+                            <a class="btn btn-primary" ng-click="openCreateOfficer()">Add New</a>
                           </div>
                             <h3>List of Officers</h3>
                         </div>
@@ -171,8 +171,8 @@
                               <tr ng-repeat="data in formData.officers">
                                 <td>{{data.firstName}}</td>
                                 <td>
-                                  <a class="btn btn-primary" ui-sref="editOfficer(officer._id)"><i class="fa fa-pencil"></i></a>
-                                  <a class="btn btn-danger" ng-click="deleteOfficerofficer._id)"><i class="fa fa-trash"></i></a>
+                                  <a class="btn btn-primary" ng-click="openEditOfficer(data)"><i class="fa fa-pencil"></i></a>
+                                  <a class="btn btn-danger" ng-click="deleteOfficer($index)"><i class="fa fa-trash"></i></a>
                                   <a class="btn btn-warning" ng-click="transferOfficer()"><i class="fa fa-refresh"></i></a>
                                 </td>
                               </tr>
