@@ -46,10 +46,10 @@
                                         <label>Policy Issuing Office*</label>
                                         <br>
                                         <label class="radio-inline">
-                                            <input type="radio" name="issuingOffice" value=true ng-model="formData.issueOffice">Yes
+                                            <input type="radio" name="issuingOffice" value="yes" ng-model="formData.issueOffice">Yes
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="issuingOffice" value=false ng-model="formData.issueOffice">No
+                                            <input type="radio" name="issuingOffice" value="no" ng-model="formData.issueOffice">No
                                         </label>
                                         <div class="error-msg" ng-show="formName.issueOffice.$invalid && formName.issueOffice.$touched">Please Select Policy Issuing Office</div>
                                     </div>
