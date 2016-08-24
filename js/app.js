@@ -228,6 +228,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
       templateUrl: "views/template.html",
       controller: 'EditTypeOfOfficeCtrl'
     })
+
     .state('activityType-list', {
       url: "/activityType-list/{page:.*}/{keyword:.*}",
       templateUrl: "views/template.html",
@@ -283,7 +284,6 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     }
   })
 
-
   .state('createdepartment', {
     url: "/department-create/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
@@ -305,7 +305,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   })
 
 
-  .state('uniquetype-list', {
+  .state('uniqueType-list', {
     url: "/uniquetype-list/{page:.*}/{keyword:.*}",
     templateUrl: "views/template.html",
     controller: 'UniqueTypetCtrl',
@@ -328,7 +328,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     controller: 'EditUniqueTypeCtrl'
   })
 
-  .state('policyname-list', {
+  .state('policyName-list', {
     url: "/policyname-list/{page:.*}/{keyword:.*}",
     templateUrl: "views/template.html",
     controller: 'PolicyTypeCtrl',
@@ -372,7 +372,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     controller: 'EditPolicyCtrl'
   })
 
-  .state('policydoc-list', {
+  .state('policyDoc-list', {
     url: "/policydoc-list/{page:.*}/{keyword:.*}",
     templateUrl: "views/template.html",
     controller: 'PolicyDocCtrl',
@@ -469,7 +469,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     }
   })
 
-  .state('causeloss-list', {
+  .state('causeLoss-list', {
     url: "/causeloss-list/{page:.*}/{keyword:.*}",
     templateUrl: "views/template.html",
     controller: 'CauseLossCtrl',
@@ -491,7 +491,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     controller: 'EditCauseLossCtrl'
   })
 
-  .state('natureloss-list', {
+  .state('natureLoss-list', {
     url: "/natureloss-list/{page:.*}/{keyword:.*}",
     templateUrl: "views/template.html",
     controller: 'NatureLossCtrl',
@@ -685,7 +685,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     }
   })
 
-  .state('bankmaster-list', {
+  .state('bankMaster-list', {
     url: "/bankmaster-list/{page:.*}/{keyword:.*}",
     templateUrl: "views/template.html",
     controller: 'BankMasterCtrl',
@@ -759,7 +759,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
       }
     })
 
-  .state('contactmanagement-list', {
+  .state('contactManagement-list', {
     url: "/contactmanagement-list/{page:.*}/{keyword:.*}",
     templateUrl: "views/template.html",
     controller: 'ContactManagementCtrl',
@@ -791,7 +791,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     controller: 'CreateContactTypeCtrl'
   })
 
-  .state('contacttypeoffice-list', {
+  .state('contactTypeOffice-list', {
     url: "/contacttypeoffice-list/{page:.*}/{keyword:.*}",
     templateUrl: "views/template.html",
     controller: 'ContactTypeOfficeCtrl',
@@ -807,17 +807,16 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     controller: 'CreateContactTypeOfficeCtrl'
   })
 
-  .state('customersegment-list', {
+  .state('customerSegment-list', {
     url: "/customersegment-list/{page:.*}/{keyword:.*}/{model:.*}",
     templateUrl: "views/template.html",
     controller: 'ModelViewCtrl',
     params: {
       page: "1",
       keyword: "",
-      model: "customersegment"
+      model: "customer segment"
     }
   })
-
 
   .state('createcustomersegment', {
     url: "/customersegment-create/{id:.*}/{model:.*}",
@@ -825,7 +824,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     controller: 'CreateModelCtrl',
     params: {
       id: "",
-      model: "customersegment"
+      model: "customer segment"
     }
   })
 
@@ -835,18 +834,18 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     controller: 'EditModelCtrl',
     params: {
       id: "",
-      model: "customersegment"
+      model: "customer segment"
     }
   })
 
-  .state('customercompany-list', {
+  .state('customerCompany-list', {
     url: "/customercompany-list/{page:.*}/{keyword:.*}/{model:.*}",
     templateUrl: "views/template.html",
     controller: 'ModelViewCtrl',
     params: {
       page: "1",
       keyword: "",
-      model: "customercompany"
+      model: "customer company"
     }
   })
 
@@ -856,7 +855,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     controller: 'CreateModelCtrl',
     params: {
       id:"",
-      model: "customercompany"
+      model: "customer company"
     }
   })
 
@@ -866,7 +865,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     controller: 'EditModelCtrl',
     params: {
       id: "",
-      model: "customercompany"
+      model: "customer company"
     }
   })
 
@@ -901,14 +900,14 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     }
   })
 
-  .state('surveycode-list', {
+  .state('surveyCode-list', {
     url: "/surveycode-list/{page:.*}/{keyword:.*}/{model:.*}",
     templateUrl: "views/template.html",
     controller: 'ModelViewCtrl',
     params: {
       page:"1",
       keyword: "",
-      model: "surveycode"
+      model: "survey code"
     }
   })
 
@@ -918,7 +917,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     controller: 'CreateModelCtrl',
     params: {
       id:"",
-      model: "surveycode"
+      model: "survey code"
     }
   })
 
@@ -928,18 +927,18 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     controller: 'EditModelCtrl',
     params: {
       id: "",
-      model: "surveycode"
+      model: "survey code"
     }
   })
 
-  .state('transferoffice-list', {
+  .state('transferOffice-list', {
     url: "/transferoffice-list/{page:.*}/{keyword:.*}/{model:.*}",
     templateUrl: "views/template.html",
     controller: 'ModelViewCtrl',
     params: {
       page: "1",
       keyword: "",
-      model: "transferoffice"
+      model: "transfer office"
     }
   })
 
@@ -949,7 +948,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     controller: 'CreateModelCtrl',
     params: {
       id: "",
-      model: "transferoffice"
+      model: "transfer office"
     }
   })
 
