@@ -270,7 +270,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.saveModel = function(formData) {
         NavigationService.modelSave($scope.ModelApi, $scope.formData, function(data) {
             if (data.value === true) {
-                $state.go($stateParams.model + '-list');
+                $state.go($scope.modelCamel + '-list');
                 toastr.success($scope.modelCap + " " + formData.name + " created successfully.", $scope.modelCap + " Created");
             } else {
                 toastr.error($scope.modelCap + " creation failed.", $scope.modelCap + " creation error");
@@ -314,7 +314,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.saveModel = function(formValid) {
         NavigationService.modelSave($scope.ModelApi, $scope.formData, function(data) {
             if (data.value === true) {
-                $state.go($scope.modelLow + '-list');
+                $state.go($scope.modelCamel + '-list');
                 toastr.success($scope.modelCap + $scope.formData.name + " edited successfully.", $scope.modelCap + " Edited");
             } else {
                 toastr.error($scope.modelCap + " edition failed.", $scope.modelCap + " editing error");
@@ -1364,9 +1364,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         $scope.changePage = function(page) {
-            var goTo = "bankmaster-list";
+            var goTo = "bankMaster-list";
             if ($scope.search.keyword) {
-                goTo = "bankmaster-list";
+                goTo = "bankMaster-list";
             }
             $state.go(goTo, {
                 page: page,
@@ -1418,7 +1418,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             NavigationService.bankSave($scope.formData, function(data) {
                 if (data.value === true) {
-                    $state.go('bankmaster-list');
+                    $state.go('bankMaster-list');
                     toastr.success("Bank " + $scope.formData.name + " created successfully.", "Bank Created");
                 } else {
                     toastr.error("Bank creation failed.", "Bank creation error");
@@ -1451,7 +1451,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.saveBank = function(formValid) {
             NavigationService.bankSave($scope.formData, function(data) {
                 if (data.value === true) {
-                    $state.go('bankmaster-list');
+                    $state.go('bankMaster-list');
                     toastr.success("Bank " + $scope.formData.name + " created successfully.", "Bank Created");
                 } else {
                     toastr.error("Bank creation failed.", "Bank creation error");
@@ -3831,16 +3831,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     }
 })
 
-.controller('CreateCustomerCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $uibModal) {
+.controller('CreateCustomerCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $uibModal, $stateParams, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("customer-detail");
         $scope.menutitle = NavigationService.makeactive("Create Customer");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.formData = {};
+        $scope.formIndex = 0;
+        $scope.buttonValue = "Save";
+        $scope.formData.officers = [];
+        $scope.format = 'dd-MMMM-yyyy';
         $scope.header = {
             "name": "Create Customer"
         };
-        $scope.formData = {};
         $scope.userStatus = [{
             "name": "Active",
             "value": true
@@ -3880,27 +3884,45 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
         $scope.saveModel = function(formData) {
-            NavigationService.modelSave($scope.modelLow, $scope.formData, function(data) {
+            NavigationService.modelSave("Customer", $scope.formData, function(data) {
                 if (data.value === true) {
-                    $state.go($stateParams.model + '-list');
-                    toastr.success($scope.modelCap + " " + formData.name + " created successfully.", $scope.modelCap + " Created");
+                    $state.go('customer' + '-list');
+                    toastr.success("Customer" + " " + formData.name + " created successfully.", "Customer" + " Created");
                 } else {
-                    toastr.error($scope.modelCap + " creation failed.", $scope.modelCap + " creation error");
+                    toastr.error("Customer" + " creation failed.", "Customer" + " creation error");
                 }
             });
         };
         $scope.createOfficer = function(modelData) {
+          if ($scope.buttonValue === "Save") {
             $scope.formData.officers.push(modelData);
-            console.log($scope.formData);
+          }else {
+            $scope.formData.officers[$scope.formIndex] = modelData;
+          }
         };
+        $scope.openCreateOfficer = function(){
+          $scope.buttonValue = "Save";
+          $scope.modalData = {};
+          $scope.addOfficer();
+        };
+        $scope.openEditOfficer = function(index){
+          $scope.formIndex = index;
+          $scope.buttonValue = "Edit";
+          $scope.modalData = $scope.formData.officers[index];
+          $scope.addOfficer();
+        }
+        $scope.deleteOfficer = function(index){
+          $scope.formData.officers.splice(index,1);
+        }
     })
-    .controller('EditCustomerCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $uibModal) {
+    .controller('EditCustomerCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $uibModal, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("customer-detail");
         $scope.menutitle = NavigationService.makeactive("Edit Customer");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.formData = {};
+        $scope.formIndex = 0;
         $scope.buttonValue = "Save";
         $scope.formData.officers = [];
         $scope.format = 'dd-MMMM-yyyy';
@@ -3943,7 +3965,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 size: 'lg'
             });
         };
-        NavigationService.getOneModel($stateParams.model, $stateParams.id, function(data) {
+        NavigationService.getOneModel("Customer", $stateParams.id, function(data) {
             $scope.formData = data.data;
             if (data.data.city) {
                 $scope.formData.country = data.data.city.district.state.zone.country._id;
@@ -3955,32 +3977,36 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
         $scope.saveModel = function(formValid) {
-            NavigationService.modelSave($stateParams.model, $scope.formData, function(data) {
+            NavigationService.modelSave("Customer", $scope.formData, function(data) {
                 if (data.value === true) {
-                    $state.go($scope.modelLow + '-list');
-                    toastr.success($scope.modelCap + $scope.formData.name + " edited successfully.", $scope.modelCap + " Edited");
+                    $state.go("customer" + '-list');
+                    toastr.success("Customer" + $scope.formData.name + " edited successfully.", "Customer" + " Edited");
                 } else {
-                    toastr.error($scope.modelCap + " edition failed.", $scope.modelCap + " editing error");
+                    toastr.error("Customer" + " edition failed.", "Customer" + " editing error");
                 }
             });
         };
 
         $scope.createOfficer = function(modelData) {
+          if ($scope.buttonValue === "Save") {
             $scope.formData.officers.push(modelData);
-            console.log($scope.formData);
+          }else {
+            $scope.formData.officers[$scope.formIndex] = modelData;
+          }
         };
         $scope.openCreateOfficer = function(){
           $scope.buttonValue = "Save";
           $scope.modalData = {};
           $scope.addOfficer();
         };
-        $scope.openEditOfficer = function(data){
+        $scope.openEditOfficer = function(index){
+          $scope.formIndex = index;
           $scope.buttonValue = "Edit";
-          $scope.modalData = data;
+          $scope.modalData = $scope.formData.officers[index];
           $scope.addOfficer();
         }
         $scope.deleteOfficer = function(index){
-          $scope.formData.officers.splice(1,index);
+          $scope.formData.officers.splice(index,1);
         }
     })
 

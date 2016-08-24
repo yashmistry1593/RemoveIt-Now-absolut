@@ -47,7 +47,7 @@
                         <table class="table">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <!-- <th>#</th> -->
                                     <th>Name</th>
                                     <th>Mobile</th>
                                     <th>Email</th>
@@ -55,16 +55,16 @@
                                 </tr>
                             </thead>
                             <tbody ng-show="totalItems>0">
-                                <tr ng-repeat="emp in allEmployees">
-                                    <td>$index</td>
-                                    <td>{{data.name}}</td>
+                                <tr ng-repeat="data in modelList">
+                                    <!-- <td>$index</td> -->
+                                    <td>{{data.firstName}}</td>
                                     <td>{{data.contact.mobile}}</td>
                                     <td class="text-lower">{{data.contact.email}}</td>
                                     <td>
-                                        <a class="btn btn-blue" ui-sref="editemployee({id:emp._id})">
+                                        <a class="btn btn-blue" ui-sref="editemployee({id:data._id})">
                                             <i class="fa fa-pencil"></i>
                                         </a>
-                                        <a class="btn btn-red" ng-click="deleteEmployee(emp._id)">
+                                        <a class="btn btn-red" ng-click="deleteEmployee(data._id)">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>

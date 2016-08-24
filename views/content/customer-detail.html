@@ -171,7 +171,7 @@
                               <tr ng-repeat="data in formData.officers">
                                 <td>{{data.firstName}}</td>
                                 <td>
-                                  <a class="btn btn-primary" ng-click="openEditOfficer(data)"><i class="fa fa-pencil"></i></a>
+                                  <a class="btn btn-primary" ng-click="openEditOfficer($index)"><i class="fa fa-pencil"></i></a>
                                   <a class="btn btn-danger" ng-click="deleteOfficer($index)"><i class="fa fa-trash"></i></a>
                                   <a class="btn btn-warning" ng-click="transferOfficer()"><i class="fa fa-refresh"></i></a>
                                 </td>
