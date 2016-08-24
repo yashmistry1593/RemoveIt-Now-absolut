@@ -238,6 +238,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.popup = {
         to: false,
         from: false,
+        toReciept: false,
+        fromReciept: false,
+        toCertificate: false,
+        fromCertificate: false,
         birthDate: false,
         marriageDate: false,
         joiningDate: false,
@@ -967,6 +971,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.popup = {
             to: false,
             from: false,
+            toReciept: false,
+            fromReciept: false,
+            toCertificate: false,
+            fromCertificate: false,
             birthDate: false,
             marriageDate: false,
             joiningDate: false,
