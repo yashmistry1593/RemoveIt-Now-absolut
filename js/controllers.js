@@ -262,22 +262,29 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 })
 
-.controller('EditModelCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
+.controller('EditModelCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr, $uibModal) {
     $scope.modelCap = _.capitalize($stateParams.model);
     $scope.modelLow = _.lowerCase($stateParams.model);
     $scope.template = TemplateService.changecontent($scope.modelLow + "-detail");
     $scope.menutitle = NavigationService.makeactive($scope.modelCap);
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
-    console.log($state);
-    console.log("000000000000000000");
     $scope.formData = {};
     $scope.header = {
         "name": "Edit " + $scope.modelCap
     };
+    $scope.salutations = ["Mr.", "Mrs.", "Ms.", "Dr."];
+
 
     NavigationService.getOneModel($stateParams.model, $stateParams.id, function(data) {
         $scope.formData = data.data;
+        if (data.data.city) {
+          $scope.formData.country = data.data.city.district.state.zone.country._id;
+          $scope.formData.zone = data.data.city.district.state.zone._id;
+          $scope.formData.state = data.data.city.district.state._id;
+          $scope.formData.district = data.data.city.district._id;
+          $scope.formData.city = data.data.city._id;
+        }
     });
 
     $scope.saveModel = function(formValid) {
@@ -290,6 +297,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             }
         });
     };
+
+
+    //  FOR LIST OF ARRAY STARTS
+    $scope.formData.officers = [];
+    $scope.addOfficer = function() {
+        var modalInstance = $uibModal.open({
+            scope: $scope,
+            templateUrl: 'views/modal/modal-officer.html',
+            size: 'lg'
+        });
+    };
+    $scope.createOfficer = function(modelData){
+      $scope.formData.officers.push(modelData);
+      console.log($scope.formData);
+    };
+    //  FOR LIST OF ARRAY ENDS
 
 })
 
