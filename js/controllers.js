@@ -2201,6 +2201,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Create Policy Name"
         };
         $scope.formData = {};
+        $scope.insurers = ['Tushar', 'Chintan', 'Mahesh'];
         $scope.savePolicyType = function(formData) {
 
             NavigationService.policynameSave($scope.formData, function(data) {
@@ -2234,7 +2235,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.header = {
             "name": "Edit Policy Name"
         };
-
+        $scope.insurers = ['Tushar', 'Chintan', 'Mahesh'];
         NavigationService.getOnePolicyType($stateParams.id, function(data) {
             $scope.formData = data.data;
             console.log('$scope.formData', $scope.formData);
@@ -2870,6 +2871,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.header = {
             "name": "Create Cause of Loss"
         };
+        $scope.natureOfLosses = ['Fire','Theft','Burglary'];
         $scope.formData = {};
         $scope.saveCauseLoss = function(formData) {
 
@@ -2904,6 +2906,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.header = {
             "name": "Edit Cause of Loss"
         };
+        $scope.natureOfLosses = ['Fire','Theft','Burglary'];
 
         NavigationService.getOneCauseLoss($stateParams.id, function(data) {
             $scope.formData = data.data;

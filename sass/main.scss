@@ -631,6 +631,12 @@ input[type="email"].form-control, .text-lower {
     border: none;
   }
 }
+.dropdown-menu {
+  border-radius: 0px;
+}
+.ui-select-bootstrap .ui-select-choices-row.active>span {
+  background-color: $brand-primary;
+}
 /* Start writing sass here */
 @import "fancybox-override";
 @import "other/mobile";
