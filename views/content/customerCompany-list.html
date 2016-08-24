@@ -58,7 +58,7 @@
                             <tbody ng-show="totalItems>0">
                                 <tr ng-repeat="data in modelList">
                                     <td>{{data.name}}</td>
-                                    <td>{{data.segment}}</td>
+                                    <td>{{data.customerSegment.name}}</td>
                                     <td>{{data.shortName}}</td>
                                     <td>
                                         <a class="btn btn-blue" ui-sref="editcustomercompany({id:data._id})">
