@@ -208,117 +208,117 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
     })
 
-    .controller('CreateModelCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr, $stateParams) {
-        //Used to name the .html file
-        $scope.modelCap = _.capitalize($stateParams.model);
-        $scope.modelLow = _.lowerCase($stateParams.model);
-        $scope.template = TemplateService.changecontent( $scope.modelLow + "-detail");
-        $scope.menutitle = NavigationService.makeactive($scope.modelCap);
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        $scope.header = {
-            "name": "Create " + $scope.modelCap
-        };
+.controller('CreateModelCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr, $stateParams) {
+    //Used to name the .html file
+    $scope.modelCap = _.capitalize($stateParams.model);
+    $scope.modelLow = _.lowerCase($stateParams.model);
+    $scope.template = TemplateService.changecontent($scope.modelLow + "-detail");
+    $scope.menutitle = NavigationService.makeactive($scope.modelCap);
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    $scope.header = {
+        "name": "Create " + $scope.modelCap
+    };
 
-        // FOR EMPLOYEE
-        $scope.userStatus = [{
-            "name": "Active",
-            "value": true
-        }, {
-            "name": "Inactive",
-            "value": false
-        }];
-        $scope.salutations = ["Mr.", "Mrs.", "Ms.", "Dr."];
-        $scope.houseColors = ["Red", "Green", "Blue", "Yellow"];
+    // FOR EMPLOYEE
+    $scope.userStatus = [{
+        "name": "Active",
+        "value": true
+    }, {
+        "name": "Inactive",
+        "value": false
+    }];
+    $scope.salutations = ["Mr.", "Mrs.", "Ms.", "Dr."];
+    $scope.houseColors = ["Red", "Green", "Blue", "Yellow"];
 
-        $scope.dateOptions = {
-            showWeeks: true
-        };
+    $scope.dateOptions = {
+        showWeeks: true
+    };
 
-        $scope.popup = {
-            to: false,
-            from: false,
-            birthDate: false,
-            marriageDate: false,
-            joiningDate: false,
-            leavingDate: false
-        };
+    $scope.popup = {
+        to: false,
+        from: false,
+        birthDate: false,
+        marriageDate: false,
+        joiningDate: false,
+        leavingDate: false
+    };
 
-        $scope.format = 'dd-MMMM-yyyy';
+    $scope.format = 'dd-MMMM-yyyy';
 
-        // FOR EMPLOYEE
+    // FOR EMPLOYEE
 
-        $scope.formData = {};
-        $scope.saveModel = function(formData) {
-            NavigationService.modelSave($scope.modelLow, $scope.formData, function(data) {
-                if (data.value === true) {
-                    $state.go($stateParams.model + '-list');
-                    toastr.success($scope.modelCap + " " + formData.name + " created successfully.", $scope.modelCap + " Created");
-                } else {
-                    toastr.error($scope.modelCap + " creation failed.", $scope.modelCap + " creation error");
-                }
-            });
-        };
-
-    })
-
-    .controller('EditModelCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
-      $scope.modelCap = _.capitalize($stateParams.model);
-      $scope.modelLow = _.lowerCase($stateParams.model);
-        $scope.template = TemplateService.changecontent( $scope.modelLow +"-detail");
-        $scope.menutitle = NavigationService.makeactive($scope.modelCap);
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
-        console.log($state);
-        console.log("000000000000000000");
-        $scope.formData = {};
-        $scope.header = {
-            "name": "Edit " + $scope.modelCap
-        };
-
-        NavigationService.getOneModel($stateParams.model, $stateParams.id, function(data) {
-            $scope.formData = data.data;
+    $scope.formData = {};
+    $scope.saveModel = function(formData) {
+        NavigationService.modelSave($scope.modelLow, $scope.formData, function(data) {
+            if (data.value === true) {
+                $state.go($stateParams.model + '-list');
+                toastr.success($scope.modelCap + " " + formData.name + " created successfully.", $scope.modelCap + " Created");
+            } else {
+                toastr.error($scope.modelCap + " creation failed.", $scope.modelCap + " creation error");
+            }
         });
+    };
 
-        $scope.saveModel = function(formValid) {
-            NavigationService.modelSave($stateParams.model, $scope.formData, function(data) {
-                if (data.value === true) {
-                    $state.go($scope.modelLow + '-list');
-                    toastr.success($scope.modelCap + $scope.formData.name + " edited successfully.", $scope.modelCap+" Edited");
-                } else {
-                    toastr.error($scope.modelCap+" edition failed.", $scope.modelCap+" editing error");
-                }
-            });
-        };
+})
 
-    })
+.controller('EditModelCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
+    $scope.modelCap = _.capitalize($stateParams.model);
+    $scope.modelLow = _.lowerCase($stateParams.model);
+    $scope.template = TemplateService.changecontent($scope.modelLow + "-detail");
+    $scope.menutitle = NavigationService.makeactive($scope.modelCap);
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+    console.log($state);
+    console.log("000000000000000000");
+    $scope.formData = {};
+    $scope.header = {
+        "name": "Edit " + $scope.modelCap
+    };
+
+    NavigationService.getOneModel($stateParams.model, $stateParams.id, function(data) {
+        $scope.formData = data.data;
+    });
+
+    $scope.saveModel = function(formValid) {
+        NavigationService.modelSave($stateParams.model, $scope.formData, function(data) {
+            if (data.value === true) {
+                $state.go($scope.modelLow + '-list');
+                toastr.success($scope.modelCap + $scope.formData.name + " edited successfully.", $scope.modelCap + " Edited");
+            } else {
+                toastr.error($scope.modelCap + " edition failed.", $scope.modelCap + " editing error");
+            }
+        });
+    };
+
+})
 
 
 .controller('CreateCountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
-        //Used to name the .html file
+    //Used to name the .html file
 
-        $scope.template = TemplateService.changecontent("country-detail");
-        $scope.menutitle = NavigationService.makeactive("Country");
-        TemplateService.title = $scope.menutitle;
-        $scope.navigation = NavigationService.getnav();
+    $scope.template = TemplateService.changecontent("country-detail");
+    $scope.menutitle = NavigationService.makeactive("Country");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
 
-        $scope.header = {
-            "name": "Create Country"
-        };
-        $scope.formData = {};
-        $scope.saveCountry = function(formData) {
-            console.log($scope.formData);
-            NavigationService.countrySave($scope.formData, function(data) {
-                if (data.value === true) {
-                    $state.go('country-list');
-                    toastr.success("Country " + formData.name + " created successfully.", "Country Created");
-                } else {
-                    toastr.error("Country creation failed.", "Country creation error");
-                }
-            });
-        };
+    $scope.header = {
+        "name": "Create Country"
+    };
+    $scope.formData = {};
+    $scope.saveCountry = function(formData) {
+        console.log($scope.formData);
+        NavigationService.countrySave($scope.formData, function(data) {
+            if (data.value === true) {
+                $state.go('country-list');
+                toastr.success("Country " + formData.name + " created successfully.", "Country Created");
+            } else {
+                toastr.error("Country creation failed.", "Country creation error");
+            }
+        });
+    };
 
-    })
+})
 
 .controller('EditCountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
     //Used to name the .html file
@@ -3802,20 +3802,26 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.showing = false;
         $scope.passType = 'password';
         $scope.showPass = function() {
-          $scope.showing = !$scope.showing;
-          if($scope.showing === false) {
-            $scope.passType = 'password';
-          }
-          else
-          {
-            $scope.passType = 'text';
-          }
+            $scope.showing = !$scope.showing;
+            if ($scope.showing === false) {
+                $scope.passType = 'password';
+            } else {
+                $scope.passType = 'text';
+            }
         };
 
         $scope.addOfficer = function() {
             var modalInstance = $uibModal.open({
                 scope: $scope,
                 templateUrl: 'views/modal/modal-officer.html',
+                size: 'lg'
+            });
+        };
+
+        $scope.transferOfficer = function() {
+            var modalInstance = $uibModal.open({
+                scope: $scope,
+                templateUrl: 'views/modal/modal-transfer-officer.html',
                 size: 'lg'
             });
         };
@@ -3879,19 +3885,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.showing = false;
         $scope.passType = 'password';
         $scope.showPass = function() {
-          $scope.showing = !$scope.showing;
-          if($scope.showing === false) {
-            $scope.passType = 'password';
-          }
-          else
-          {
-            $scope.passType = 'text';
-          }
+            $scope.showing = !$scope.showing;
+            if ($scope.showing === false) {
+                $scope.passType = 'password';
+            } else {
+                $scope.passType = 'text';
+            }
         };
         $scope.addOfficer = function() {
             var modalInstance = $uibModal.open({
                 scope: $scope,
                 templateUrl: 'views/modal/modal-officer.html',
+                size: 'lg'
+            });
+        };
+        $scope.transferOfficer = function() {
+            var modalInstance = $uibModal.open({
+                scope: $scope,
+                templateUrl: 'views/modal/modal-transfer-officer.html',
                 size: 'lg'
             });
         };
@@ -4158,229 +4169,228 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.navigation = NavigationService.getnav();
     })
     .controller('ActivityTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
-      //Used to name the .html file
-      $scope.template = TemplateService.changecontent("activityType-list");
-      $scope.menutitle = NavigationService.makeactive("Activity Type List");
-      TemplateService.title = $scope.menutitle;
-      $scope.navigation = NavigationService.getnav();
-      $scope.currentPage = $stateParams.page;
-      var i = 0;
-      $scope.search = {
-        keyword: ""
-      };
-      if ($stateParams.keyword) {
-        $scope.search.keyword = $stateParams.keyword;
-      }
-      $scope.showAllCountries = function(keywordChange) {
-        $scope.totalItems = undefined;
-        if (keywordChange) {
-          $scope.currentPage = 1;
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("activityType-list");
+        $scope.menutitle = NavigationService.makeactive("Activity Type List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.currentPage = $stateParams.page;
+        var i = 0;
+        $scope.search = {
+            keyword: ""
+        };
+        if ($stateParams.keyword) {
+            $scope.search.keyword = $stateParams.keyword;
         }
-        NavigationService.searchTypeOfOffice({
-          page: $scope.currentPage,
-          keyword: $scope.search.keyword
-        }, ++i, function(data, ini) {
-          if (ini == i) {
-            $scope.allTypeOfOffices = data.data.results;
-            $scope.totalItems = data.data.total;
-            $scope.maxRow = data.data.options.count;
-          }
-        });
-      };
-
-      $scope.changePage = function(page) {
-        var goTo = "typeOfOffice-list";
-        if ($scope.search.keyword) {
-          goTo = "typeOfOffice-list";
-        }
-        $state.go(goTo, {
-          page: page,
-          keyword: $scope.search.keyword
-        });
-      };
-      $scope.showAllCountries();
-      $scope.deleteTypeOfOffice = function(id) {
-        globalfunction.confDel(function(value) {
-          console.log(value);
-          if (value) {
-            NavigationService.deleteTypeOfOffice(id, function(data) {
-              if (data.value) {
-                $scope.showAllCountries();
-                toastr.success("Office deleted successfully.", "Office deleted");
-              } else {
-                toastr.error("There was an error while deleting Office", "Office deleting error");
-              }
+        $scope.showAllCountries = function(keywordChange) {
+            $scope.totalItems = undefined;
+            if (keywordChange) {
+                $scope.currentPage = 1;
+            }
+            NavigationService.searchTypeOfOffice({
+                page: $scope.currentPage,
+                keyword: $scope.search.keyword
+            }, ++i, function(data, ini) {
+                if (ini == i) {
+                    $scope.allTypeOfOffices = data.data.results;
+                    $scope.totalItems = data.data.total;
+                    $scope.maxRow = data.data.options.count;
+                }
             });
-          }
-        });
-      };
+        };
+
+        $scope.changePage = function(page) {
+            var goTo = "typeOfOffice-list";
+            if ($scope.search.keyword) {
+                goTo = "typeOfOffice-list";
+            }
+            $state.go(goTo, {
+                page: page,
+                keyword: $scope.search.keyword
+            });
+        };
+        $scope.showAllCountries();
+        $scope.deleteTypeOfOffice = function(id) {
+            globalfunction.confDel(function(value) {
+                console.log(value);
+                if (value) {
+                    NavigationService.deleteTypeOfOffice(id, function(data) {
+                        if (data.value) {
+                            $scope.showAllCountries();
+                            toastr.success("Office deleted successfully.", "Office deleted");
+                        } else {
+                            toastr.error("There was an error while deleting Office", "Office deleting error");
+                        }
+                    });
+                }
+            });
+        };
     })
     .controller('CreateActivityTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
-      //Used to name the .html file
-      $scope.template = TemplateService.changecontent("activityType-detail");
-      $scope.menutitle = NavigationService.makeactive("Activity Type");
-      TemplateService.title = $scope.menutitle;
-      $scope.navigation = NavigationService.getnav();
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("activityType-detail");
+        $scope.menutitle = NavigationService.makeactive("Activity Type");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
 
-      $scope.header = {
-        "name": "Create Activity Type"
-      };
-      $scope.formData = {};
-      $scope.savetypeOfOffice = function(formData) {
+        $scope.header = {
+            "name": "Create Activity Type"
+        };
+        $scope.formData = {};
+        $scope.savetypeOfOffice = function(formData) {
 
-        NavigationService.typeofofficeSave($scope.formData, function(data) {
-          if (data.value === true) {
-            $state.go('typeOfOffice-list');
-            toastr.success("Type Of Office " + $scope.formData.name + " created successfully.", "Type Of Office Created");
-          } else {
-            toastr.error("Type Of Office creation failed.", "Type Of Office creation error");
-          }
-        });
-      };
+            NavigationService.typeofofficeSave($scope.formData, function(data) {
+                if (data.value === true) {
+                    $state.go('typeOfOffice-list');
+                    toastr.success("Type Of Office " + $scope.formData.name + " created successfully.", "Type Of Office Created");
+                } else {
+                    toastr.error("Type Of Office creation failed.", "Type Of Office creation error");
+                }
+            });
+        };
 
     })
     .controller('EditActivityTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
-      //Used to name the .html file
-      $scope.template = TemplateService.changecontent("activityType-detail");
-      $scope.menutitle = NavigationService.makeactive("Activity Type");
-      TemplateService.title = $scope.menutitle;
-      $scope.navigation = NavigationService.getnav();
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("activityType-detail");
+        $scope.menutitle = NavigationService.makeactive("Activity Type");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
 
-      $scope.header = {
-        "name": "Edit Activity Type"
-      };
+        $scope.header = {
+            "name": "Edit Activity Type"
+        };
 
-      NavigationService.getOnetypeOfOffice($stateParams.id, function(data) {
-        $scope.formData = data.data;
-      });
-
-      $scope.savetypeOfOffice = function(formValid) {
-
-        //  if (formValid.$valid) {
-        //  $scope.formComplete = true;
-        NavigationService.typeofofficeSave($scope.formData, function(data) {
-          if (data.value === true) {
-            $state.go('typeOfOffice-list');
-            toastr.success("Type Of Office " + $scope.formData.name + " created successfully.", "Type Of Office Created");
-          } else {
-            toastr.error("Type Of Office creation failed.", "Type Of Office creation error");
-          }
+        NavigationService.getOnetypeOfOffice($stateParams.id, function(data) {
+            $scope.formData = data.data;
         });
-        //  }
-      };
+
+        $scope.savetypeOfOffice = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.typeofofficeSave($scope.formData, function(data) {
+                if (data.value === true) {
+                    $state.go('typeOfOffice-list');
+                    toastr.success("Type Of Office " + $scope.formData.name + " created successfully.", "Type Of Office Created");
+                } else {
+                    toastr.error("Type Of Office creation failed.", "Type Of Office creation error");
+                }
+            });
+            //  }
+        };
 
     })
     .controller('ExpenseCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
-      //Used to name the .html file
-      $scope.template = TemplateService.changecontent("expense-list");
-      $scope.menutitle = NavigationService.makeactive("Expense List");
-      TemplateService.title = $scope.menutitle;
-      $scope.navigation = NavigationService.getnav();
-      $scope.currentPage = $stateParams.page;
-      var i = 0;
-      $scope.search = {
-        keyword: ""
-      };
-      if ($stateParams.keyword) {
-        $scope.search.keyword = $stateParams.keyword;
-      }
-      $scope.showAllCountries = function(keywordChange) {
-        $scope.totalItems = undefined;
-        if (keywordChange) {
-          $scope.currentPage = 1;
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("expense-list");
+        $scope.menutitle = NavigationService.makeactive("Expense List");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
+        $scope.currentPage = $stateParams.page;
+        var i = 0;
+        $scope.search = {
+            keyword: ""
+        };
+        if ($stateParams.keyword) {
+            $scope.search.keyword = $stateParams.keyword;
         }
-        NavigationService.searchTypeOfOffice({
-          page: $scope.currentPage,
-          keyword: $scope.search.keyword
-        }, ++i, function(data, ini) {
-          if (ini == i) {
-            $scope.allTypeOfOffices = data.data.results;
-            $scope.totalItems = data.data.total;
-            $scope.maxRow = data.data.options.count;
-          }
-        });
-      };
-
-      $scope.changePage = function(page) {
-        var goTo = "typeOfOffice-list";
-        if ($scope.search.keyword) {
-          goTo = "typeOfOffice-list";
-        }
-        $state.go(goTo, {
-          page: page,
-          keyword: $scope.search.keyword
-        });
-      };
-      $scope.showAllCountries();
-      $scope.deleteTypeOfOffice = function(id) {
-        globalfunction.confDel(function(value) {
-          console.log(value);
-          if (value) {
-            NavigationService.deleteTypeOfOffice(id, function(data) {
-              if (data.value) {
-                $scope.showAllCountries();
-                toastr.success("Office deleted successfully.", "Office deleted");
-              } else {
-                toastr.error("There was an error while deleting Office", "Office deleting error");
-              }
+        $scope.showAllCountries = function(keywordChange) {
+            $scope.totalItems = undefined;
+            if (keywordChange) {
+                $scope.currentPage = 1;
+            }
+            NavigationService.searchTypeOfOffice({
+                page: $scope.currentPage,
+                keyword: $scope.search.keyword
+            }, ++i, function(data, ini) {
+                if (ini == i) {
+                    $scope.allTypeOfOffices = data.data.results;
+                    $scope.totalItems = data.data.total;
+                    $scope.maxRow = data.data.options.count;
+                }
             });
-          }
-        });
-      };
+        };
+
+        $scope.changePage = function(page) {
+            var goTo = "typeOfOffice-list";
+            if ($scope.search.keyword) {
+                goTo = "typeOfOffice-list";
+            }
+            $state.go(goTo, {
+                page: page,
+                keyword: $scope.search.keyword
+            });
+        };
+        $scope.showAllCountries();
+        $scope.deleteTypeOfOffice = function(id) {
+            globalfunction.confDel(function(value) {
+                console.log(value);
+                if (value) {
+                    NavigationService.deleteTypeOfOffice(id, function(data) {
+                        if (data.value) {
+                            $scope.showAllCountries();
+                            toastr.success("Office deleted successfully.", "Office deleted");
+                        } else {
+                            toastr.error("There was an error while deleting Office", "Office deleting error");
+                        }
+                    });
+                }
+            });
+        };
     })
     .controller('CreateExpenseCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
-      //Used to name the .html file
-      $scope.template = TemplateService.changecontent("expense-detail");
-      $scope.menutitle = NavigationService.makeactive("Expense");
-      TemplateService.title = $scope.menutitle;
-      $scope.navigation = NavigationService.getnav();
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("expense-detail");
+        $scope.menutitle = NavigationService.makeactive("Expense");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
 
-      $scope.header = {
-        "name": "Create Expense"
-      };
-      $scope.formData = {};
-      $scope.savetypeOfOffice = function(formData) {
+        $scope.header = {
+            "name": "Create Expense"
+        };
+        $scope.formData = {};
+        $scope.savetypeOfOffice = function(formData) {
 
-        NavigationService.typeofofficeSave($scope.formData, function(data) {
-          if (data.value === true) {
-            $state.go('typeOfOffice-list');
-            toastr.success("Type Of Office " + $scope.formData.name + " created successfully.", "Type Of Office Created");
-          } else {
-            toastr.error("Type Of Office creation failed.", "Type Of Office creation error");
-          }
-        });
-      };
+            NavigationService.typeofofficeSave($scope.formData, function(data) {
+                if (data.value === true) {
+                    $state.go('typeOfOffice-list');
+                    toastr.success("Type Of Office " + $scope.formData.name + " created successfully.", "Type Of Office Created");
+                } else {
+                    toastr.error("Type Of Office creation failed.", "Type Of Office creation error");
+                }
+            });
+        };
 
     })
     .controller('EditExpenseCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
-      //Used to name the .html file
-      $scope.template = TemplateService.changecontent("expense-detail");
-      $scope.menutitle = NavigationService.makeactive("Expense");
-      TemplateService.title = $scope.menutitle;
-      $scope.navigation = NavigationService.getnav();
+        //Used to name the .html file
+        $scope.template = TemplateService.changecontent("expense-detail");
+        $scope.menutitle = NavigationService.makeactive("Expense");
+        TemplateService.title = $scope.menutitle;
+        $scope.navigation = NavigationService.getnav();
 
-      $scope.header = {
-        "name": "Edit Expense"
-      };
+        $scope.header = {
+            "name": "Edit Expense"
+        };
 
-      NavigationService.getOnetypeOfOffice($stateParams.id, function(data) {
-        $scope.formData = data.data;
-      });
-
-      $scope.savetypeOfOffice = function(formValid) {
-
-        //  if (formValid.$valid) {
-        //  $scope.formComplete = true;
-        NavigationService.typeofofficeSave($scope.formData, function(data) {
-          if (data.value === true) {
-            $state.go('typeOfOffice-list');
-            toastr.success("Type Of Office " + $scope.formData.name + " created successfully.", "Type Of Office Created");
-          } else {
-            toastr.error("Type Of Office creation failed.", "Type Of Office creation error");
-          }
+        NavigationService.getOnetypeOfOffice($stateParams.id, function(data) {
+            $scope.formData = data.data;
         });
-        //  }
-      };
 
-    })
-    ;
+        $scope.savetypeOfOffice = function(formValid) {
+
+            //  if (formValid.$valid) {
+            //  $scope.formComplete = true;
+            NavigationService.typeofofficeSave($scope.formData, function(data) {
+                if (data.value === true) {
+                    $state.go('typeOfOffice-list');
+                    toastr.success("Type Of Office " + $scope.formData.name + " created successfully.", "Type Of Office Created");
+                } else {
+                    toastr.error("Type Of Office creation failed.", "Type Of Office creation error");
+                }
+            });
+            //  }
+        };
+
+    });

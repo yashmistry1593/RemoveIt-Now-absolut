@@ -28,7 +28,7 @@
                     <div class="widget">
                         <div class="form-elements-sec">
                             <div class="widget-title">
-                                <h3>Customer</h3>{{formData}}
+                                <h3>Customer</h3>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
@@ -43,11 +43,6 @@
                                         <div class="error-msg" ng-show="formName.typeOfOffice.$invalid">Please Select Type of Office</div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Credit Limit*</label>
-                                        <input type="text" name="creditLimit" class="form-control" ng-model="formData.creditLimit" required>
-                                        <div class="error-msg" ng-show="formName.creditLimit.$invalid && formName.creditLimit.$touched">Please Enter Credit Limit</div>
-                                    </div>
-                                    <div class="form-group">
                                         <label>Policy Issuing Office*</label>
                                         <br>
                                         <label class="radio-inline">
@@ -58,21 +53,7 @@
                                         </label>
                                         <div class="error-msg" ng-show="formName.issueOffice.$invalid && formName.issueOffice.$touched">Please Select Policy Issuing Office</div>
                                     </div>
-                                </div>
-                                <div class="col-md-6">
-                                  <div class="form-group">
-                                      <label>Customer Company*</label>
-                                      <multiple-select name="customerCompany" required ng-model="formData.customerCompany" filter='{"customerSegment":"{{formData.customerSegment}}"}' ng-name="name.customerCompany" api="searchCustomerCompany" ng-create="customerCompanySave"></multiple-select>
-                                      <div class="error-msg" ng-show="formName.customerCompany.$invalid">Please Select Customer Company</div>
-                                  </div>
-                                    <div class="form-group">
-                                        <label>Customer Name*</label>
-                                        <input type="text" name="customerName" class="form-control" ng-model="formData.customerName" required>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Office Code</label>
-                                        <input type="text" name="officeCode" class="form-control" ng-model="formData.officeCode">
-                                    </div>
+
                                     <div class="form-group">
                                         <label>Category*</label>
                                         <br>
@@ -83,6 +64,21 @@
                                             <input type="radio" name="category" value="Prospective" ng-model="formData.category">Prospective
                                         </label>
                                         <div class="error-msg" ng-show="formName.category.$invalid && formName.category.$touched">Please Select Category</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                  <div class="form-group">
+                                      <label>Customer Company*</label>
+                                      <multiple-select name="customerCompany" required ng-model="formData.customerCompany" filter='{"customerSegment":"{{formData.customerSegment}}"}' ng-name="name.customerCompany" api="searchCustomerCompany" ng-create="customerCompanySave"></multiple-select>
+                                      <div class="error-msg" ng-show="formName.customerCompany.$invalid">Please Select Customer Company</div>
+                                  </div>
+                                    <div class="form-group">
+                                        <label>Customer Code*</label>
+                                        <input type="text" name="customerCode" class="form-control" ng-model="formData.customerCode" readonly>
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Office Code</label>
+                                        <input type="text" name="officeCode" class="form-control" ng-model="formData.officeCode">
                                     </div>
 
                                 </div>
@@ -161,10 +157,10 @@
                           <div class="pull-right">
                             <a class="btn btn-primary" ng-click="addOfficer()">Add New</a>
                           </div>
-                            <h3>Officer</h3>
+                            <h3>List of Officers</h3>
                         </div>
                         <div class="table-responsive">
-                          <!-- <table class="table">
+                          <table class="table">
                             <thead>
                               <tr>
                                 <th>Name</th>
@@ -177,10 +173,11 @@
                                 <td>
                                   <a class="btn btn-primary" ui-sref="editOfficer(officer._id)"><i class="fa fa-pencil"></i></a>
                                   <a class="btn btn-danger" ng-click="deleteOfficerofficer._id)"><i class="fa fa-trash"></i></a>
+                                  <a class="btn btn-warning" ng-click="transferOfficer()"><i class="fa fa-refresh"></i></a>
                                 </td>
                               </tr>
                             </tbody>
-                          </table> -->
+                          </table>
                         </div>
                       </div>
                     </div>

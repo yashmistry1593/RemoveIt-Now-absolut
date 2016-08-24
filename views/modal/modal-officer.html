@@ -1,7 +1,6 @@
-<form name="modalForm" ng-submit="submitData(modalData)">
+<form name="modalForm" ng-submit="createOffice(modalData)">
     <div class="modal-header blue-bg">
         <div class="pull-right">
-            <button class="btn btn-darker btn-round btn-nopad" type="submit" ng-disabled="modalForm.$invalid">Save</button>
             <a class="btn btn-clear" ng-click="$dismiss()">
                 <i class="ln-cross"></i>
             </a>
@@ -73,6 +72,10 @@
                     <div class="error-msg" ng-show="modalForm.password.$invalid && modalForm.password.$touched">Please Enter Password</div>
                 </div>
             </div>
+        </div>
+
+        <div class="text-center">
+          <button class="btn btn-primary" type="submit" ng-disabled="modalForm.$invalid">Save</button>
         </div>
     </div>
 </form>
