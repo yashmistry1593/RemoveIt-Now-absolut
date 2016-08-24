@@ -132,11 +132,6 @@ var navigationservice = angular.module('navigationservice', [])
             classis: "active",
             anchor: "customer-list",
             icon: "user"
-        }, {
-            name: "Transfer Office",
-            classis: "active",
-            anchor: "transferoffice-list",
-            icon: "building-o"
         }]
     }, {
         name: "Employee",
@@ -192,7 +187,7 @@ var navigationservice = angular.module('navigationservice', [])
         }, {
             name: "Nature of Survey Code",
             classis: "active",
-            anchor: "survey-code-list",
+            anchor: "surveycode-list",
             icon: "retweet"
         }]
     }, {
