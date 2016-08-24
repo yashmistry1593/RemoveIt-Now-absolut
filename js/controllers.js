@@ -1311,7 +1311,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('BankMasterCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("bankmaster-list");
+        $scope.template = TemplateService.changecontent("bankMaster-list");
         $scope.menutitle = NavigationService.makeactive("Bank List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -1379,7 +1379,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('CreateBankmasterCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("bankmaster-detail");
+        $scope.template = TemplateService.changecontent("bankMaster-detail");
         $scope.menutitle = NavigationService.makeactive("Create Bank");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -1408,7 +1408,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('EditBankmasterCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("bankmaster-detail");
+        $scope.template = TemplateService.changecontent("bankMaster-detail");
         $scope.menutitle = NavigationService.makeactive("Edit Bank");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -1441,42 +1441,42 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('CreateContactManagementCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("contactmanagement-detail");
+        $scope.template = TemplateService.changecontent("contactManagement-detail");
         $scope.menutitle = NavigationService.makeactive("Contact Management");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
     })
     .controller('ContactManagementCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("contactmanagement-list");
+        $scope.template = TemplateService.changecontent("contactManagement-list");
         $scope.menutitle = NavigationService.makeactive("Contact Management List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
     })
     .controller('CreateContactTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("contacttype-detail");
+        $scope.template = TemplateService.changecontent("contactType-detail");
         $scope.menutitle = NavigationService.makeactive("Contact Type");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
     })
     .controller('ContactTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("contacttype-list");
+        $scope.template = TemplateService.changecontent("contactType-list");
         $scope.menutitle = NavigationService.makeactive("Contact Type List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
     })
     .controller('CreateContactTypeOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("contacttypeoffice-detail");
+        $scope.template = TemplateService.changecontent("contactTypeOffice-detail");
         $scope.menutitle = NavigationService.makeactive("Contact Type of Office Type");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
     })
     .controller('ContactTypeOfficeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("contacttypeoffice-list");
+        $scope.template = TemplateService.changecontent("contactTypeOffice-list");
         $scope.menutitle = NavigationService.makeactive("Contact Type of Office List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -2003,7 +2003,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('UniqueTypetCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("uniquetype-list");
+        $scope.template = TemplateService.changecontent("uniqueType-list");
         $scope.menutitle = NavigationService.makeactive("Unique Type List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -2029,7 +2029,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('CreateUniqueTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("uniquetype-detail");
+        $scope.template = TemplateService.changecontent("uniqueType-detail");
         $scope.menutitle = NavigationService.makeactive("Unique Type");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -2059,7 +2059,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('EditUniqueTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("uniquetype-detail");
+        $scope.template = TemplateService.changecontent("uniqueType-detail");
         $scope.menutitle = NavigationService.makeactive("Unique Type");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -2191,7 +2191,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('PolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("policyname-list");
+        $scope.template = TemplateService.changecontent("policyName-list");
         $scope.menutitle = NavigationService.makeactive("Policy Name List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -2217,7 +2217,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('CreatePolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("policyname-detail");
+        $scope.template = TemplateService.changecontent("policyName-detail");
         $scope.menutitle = NavigationService.makeactive("Policy Name");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -2252,7 +2252,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('EditPolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("policyname-detail");
+        $scope.template = TemplateService.changecontent("policyName-detail");
         $scope.menutitle = NavigationService.makeactive("Policy Name");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -2383,7 +2383,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('PolicyDocCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("policydoc-list");
+        $scope.template = TemplateService.changecontent("policyDoc-list");
         $scope.menutitle = NavigationService.makeactive("Policy Document List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -2409,7 +2409,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('CreatePolicyDocCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("policydoc-detail");
+        $scope.template = TemplateService.changecontent("policyDoc-detail");
         $scope.menutitle = NavigationService.makeactive("Policy Document");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -2467,7 +2467,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('EditPolicyDocCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("policydoc-detail");
+        $scope.template = TemplateService.changecontent("policyDoc-detail");
         $scope.menutitle = NavigationService.makeactive("Policy Document");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -2862,7 +2862,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('CauseLossCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("causeloss-list");
+        $scope.template = TemplateService.changecontent("causeLoss-list");
         $scope.menutitle = NavigationService.makeactive("Cause of Loss List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -2888,7 +2888,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('CreateCauseLossCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("causeloss-detail");
+        $scope.template = TemplateService.changecontent("causeLoss-detail");
         $scope.menutitle = NavigationService.makeactive("Cause of Loss");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -2923,7 +2923,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('EditCauseLossCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("causeloss-detail");
+        $scope.template = TemplateService.changecontent("causeLoss-detail");
         $scope.menutitle = NavigationService.makeactive("Cause of Loss");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -2962,7 +2962,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('NatureLossCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("natureloss-list");
+        $scope.template = TemplateService.changecontent("natureLoss-list");
         $scope.menutitle = NavigationService.makeactive("Nature of Loss List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -2988,7 +2988,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('CreateNatureLossCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("natureloss-detail");
+        $scope.template = TemplateService.changecontent("natureLoss-detail");
         $scope.menutitle = NavigationService.makeactive("Nature of Loss");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -3026,7 +3026,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('EditNatureLossCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("natureloss-detail");
+        $scope.template = TemplateService.changecontent("natureLoss-detail");
         $scope.menutitle = NavigationService.makeactive("Nature of Loss");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -3068,7 +3068,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('BusinessBranchCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("businessbranch-list");
+        $scope.template = TemplateService.changecontent("businessBranch-list");
         $scope.menutitle = NavigationService.makeactive("Business Branch List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -3094,7 +3094,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('CreateBusinessBranchCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("businessbranch-detail");
+        $scope.template = TemplateService.changecontent("businessBranch-detail");
         $scope.menutitle = NavigationService.makeactive("Business Branch");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -3118,7 +3118,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('EditBusinessBranchCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("businessbranch-detail");
+        $scope.template = TemplateService.changecontent("businessBranch-detail");
         $scope.menutitle = NavigationService.makeactive("Business Branch");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -4162,21 +4162,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('EditSurveyCodeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("surveycode-detail");
+        $scope.template = TemplateService.changecontent("surveyCode-detail");
         $scope.menutitle = NavigationService.makeactive("Survey Code");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
     })
     .controller('CreateSurveyCodeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("surveycode-detail");
+        $scope.template = TemplateService.changecontent("surveyCode-detail");
         $scope.menutitle = NavigationService.makeactive("Survey Code");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
     })
     .controller('SurveyCodeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("surveycode-list");
+        $scope.template = TemplateService.changecontent("surveyCode-list");
         $scope.menutitle = NavigationService.makeactive("Survey Code List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
