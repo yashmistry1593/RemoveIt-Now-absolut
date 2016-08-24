@@ -742,7 +742,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   .state('createcustomer', {
       url: "/customer-detail/{id:.*}/{model:.*}",
       templateUrl: "views/template.html",
-      controller: 'CreateModelCtrl',
+      controller: 'CreateCustomerCtrl',
       params: {
         id: "",
         model: "customer"
