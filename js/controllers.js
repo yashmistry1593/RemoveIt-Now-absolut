@@ -2123,7 +2123,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('CreateCustomerSegmentCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("customersegment-detail");
+        $scope.template = TemplateService.changecontent("customerSegment-detail");
         $scope.menutitle = NavigationService.makeactive("Customer Segment");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -2153,7 +2153,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('EditCustomerSegmentCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("customersegment-detail");
+        $scope.template = TemplateService.changecontent("customerSegment-detail");
         $scope.menutitle = NavigationService.makeactive("Customer Segment");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
