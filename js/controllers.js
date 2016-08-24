@@ -140,10 +140,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('ModelViewCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
         //Used to name the .html file
+        $scope.modelCamel = _.camelCase($stateParams.model);
+        var a = _.startCase($scope.modelCamel).split(" ");
+        $scope.ModelApi = "";
+        _.each(a, function(n){
+          $scope.ModelApi = $scope.ModelApi + n;
+        });
+
+
         $scope.modelCap = _.capitalize($stateParams.model);
         $scope.modelLow = _.lowerCase($stateParams.model);
 
-        $scope.template = TemplateService.changecontent($stateParams.model + "-list");
+        $scope.template = TemplateService.changecontent($scope.modelCamel + "-list");
         $scope.menutitle = NavigationService.makeactive($scope.modelCap + " List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -160,7 +168,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             if (keywordChange) {
                 $scope.currentPage = 1;
             }
-            NavigationService.searchModel($stateParams.model, {
+            NavigationService.searchModel($scope.ModelApi, {
                 page: $scope.currentPage,
                 keyword: $scope.search.keyword
             }, ++i, function(data, ini) {
@@ -173,9 +181,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         $scope.changePage = function(page) {
-            var goTo = $stateParams.model + "-list";
+            var goTo = $scope.modelCamel + "-list";
             if ($scope.search.keyword) {
-                goTo = $stateParams.model + "-list";
+                goTo = $scope.modelCamel + "-list";
             }
             $state.go(goTo, {
                 page: page,
@@ -185,9 +193,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.showAll();
         $scope.deleteModel = function(id) {
             globalfunction.confDel(function(value) {
-                console.log(value);
                 if (value) {
-                    NavigationService.deleteModel($scope.modelLow, id, function(data) {
+                    NavigationService.deleteModel($scope.ModelApi, id, function(data) {
                         if (data.value) {
                             $scope.showAll();
                             toastr.success($scope.modelCap + " deleted successfully.", $scope.modelCap + " deleted");
@@ -210,9 +217,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('CreateModelCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr, $stateParams) {
     //Used to name the .html file
+    $scope.modelCamel = _.camelCase($stateParams.model);
+    var a = _.startCase($scope.modelCamel).split(" ");
+    $scope.ModelApi = "";
+    _.each(a, function(n){
+      $scope.ModelApi = $scope.ModelApi + n;
+    });
+
     $scope.modelCap = _.capitalize($stateParams.model);
     $scope.modelLow = _.lowerCase($stateParams.model);
-    $scope.template = TemplateService.changecontent($scope.modelLow + "-detail");
+    $scope.template = TemplateService.changecontent($scope.modelCamel + "-detail");
     $scope.menutitle = NavigationService.makeactive($scope.modelCap);
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
@@ -254,7 +268,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.formData = {};
     $scope.saveModel = function(formData) {
-        NavigationService.modelSave($scope.modelLow, $scope.formData, function(data) {
+        NavigationService.modelSave($scope.ModelApi, $scope.formData, function(data) {
             if (data.value === true) {
                 $state.go($stateParams.model + '-list');
                 toastr.success($scope.modelCap + " " + formData.name + " created successfully.", $scope.modelCap + " Created");
@@ -267,9 +281,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 })
 
 .controller('EditModelCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr, $uibModal) {
+  $scope.modelCamel = _.camelCase($stateParams.model);
+  var a = _.startCase($scope.modelCamel).split(" ");
+  $scope.ModelApi = "";
+  _.each(a, function(n){
+    $scope.ModelApi = $scope.ModelApi + n;
+  });
     $scope.modelCap = _.capitalize($stateParams.model);
     $scope.modelLow = _.lowerCase($stateParams.model);
-    $scope.template = TemplateService.changecontent($scope.modelLow + "-detail");
+    $scope.template = TemplateService.changecontent($scope.modelCamel + "-detail");
     $scope.menutitle = NavigationService.makeactive($scope.modelCap);
     TemplateService.title = $scope.menutitle;
     $scope.navigation = NavigationService.getnav();
@@ -280,7 +300,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.salutations = ["Mr.", "Mrs.", "Ms.", "Dr."];
 
 
-    NavigationService.getOneModel($stateParams.model, $stateParams.id, function(data) {
+    NavigationService.getOneModel($scope.ModelApi, $stateParams.id, function(data) {
         $scope.formData = data.data;
         if (data.data.city) {
           $scope.formData.country = data.data.city.district.state.zone.country._id;
@@ -292,7 +312,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     });
 
     $scope.saveModel = function(formValid) {
-        NavigationService.modelSave($stateParams.model, $scope.formData, function(data) {
+        NavigationService.modelSave($scope.ModelApi, $scope.formData, function(data) {
             if (data.value === true) {
                 $state.go($scope.modelLow + '-list');
                 toastr.success($scope.modelCap + $scope.formData.name + " edited successfully.", $scope.modelCap + " Edited");

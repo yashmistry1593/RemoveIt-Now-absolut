@@ -228,12 +228,12 @@ var navigationservice = angular.module('navigationservice', [])
             });
         },
         searchCustomerSegment: function(formData, i, callback) {
-            $http.post(adminurl + 'Customersegment/search', formData).success(function(data) {
+            $http.post(adminurl + 'CustomerSegment/search', formData).success(function(data) {
                 callback(data, i);
             });
         },
         searchCustomerCompany: function(formData, i, callback) {
-            $http.post(adminurl + 'Customercompany/search', formData).success(function(data) {
+            $http.post(adminurl + 'CustomerCompany/search', formData).success(function(data) {
                 callback(data, i);
             });
         },
@@ -312,7 +312,7 @@ var navigationservice = angular.module('navigationservice', [])
             $http.post(adminurl + 'branch/save', formData).success(callback);
         },
         customerSegmentSave: function(formData, callback) {
-            $http.post(adminurl + 'Customersegment/save', formData).success(callback);
+            $http.post(adminurl + 'CustomerSegment/save', formData).success(callback);
         },
         getAllCountries: function(callback) {
             $http.post(adminurl + 'country/getAll', {}).success(callback);
