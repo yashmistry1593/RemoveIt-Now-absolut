@@ -99,7 +99,7 @@ var navigationservice = angular.module('navigationservice', [])
         }, {
             name: "Banks",
             classis: "active",
-            anchor: "bankmaster-list",
+            anchor: "bankMaster-list",
             icon: "building"
         }, {
             name: "Activity Type",
@@ -120,12 +120,12 @@ var navigationservice = angular.module('navigationservice', [])
         subnav: [{
             name: "Segment",
             classis: "active",
-            anchor: "customersegment-list",
+            anchor: "customerSegment-list",
             icon: "user"
         }, {
             name: "Company",
             classis: "active",
-            anchor: "customercompany-list",
+            anchor: "customerCompany-list",
             icon: "building"
         }, {
             name: "Customer",
@@ -167,17 +167,17 @@ var navigationservice = angular.module('navigationservice', [])
         }, {
             name: "Policy Name",
             classis: "active",
-            anchor: "policyname-list",
+            anchor: "policyName-list",
             icon: "link"
         }, {
             name: "Policy Document",
             classis: "active",
-            anchor: "policydoc-list",
+            anchor: "policyDoc-list",
             icon: "file-pdf-o"
         }, {
             name: "Cause of Loss",
             classis: "active",
-            anchor: "causeloss-list",
+            anchor: "causeLoss-list",
             icon: "money"
         }, {
             name: "Salvage",
@@ -187,7 +187,7 @@ var navigationservice = angular.module('navigationservice', [])
         }, {
             name: "Nature of Survey Code",
             classis: "active",
-            anchor: "surveycode-list",
+            anchor: "surveyCode-list",
             icon: "retweet"
         }]
     }, {
