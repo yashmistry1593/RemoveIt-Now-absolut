@@ -4,7 +4,7 @@
             <a title="Home">Insurance</a>
         </li>
         <li>
-            <a ui-sref="policyType-list">{{header.name}}</a>
+            <a ui-sref="policyType-list">{{header.Type}}</a>
         </li>
     </ul>
 </div>
@@ -26,13 +26,13 @@
                 <div class="widget">
                     <div class="form-elements-sec">
                         <div class="widget-title">
-                            <h3>Policy Name</h3>
+                            <h3>Policy Type</h3>
                         </div>
                         <div class="sec">
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Policy Name*</label>
+                                        <label>Policy Type*</label>
                                         <input type="text" name="name" ng-model="formData.policyType" class="form-control" required>
                                         <div class="error-msg" ng-show="policyTypeForm.name.$invalid && policyTypeForm.name.$touched">Please Enter Policy Name</div>
                                     </div>

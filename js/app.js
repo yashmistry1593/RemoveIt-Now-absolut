@@ -60,8 +60,6 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     }
   })
 
-
-
   .state('createcountry', {
     url: "/country-create",
     templateUrl: "views/template.html",

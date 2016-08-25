@@ -4,7 +4,7 @@
             <a title="Home">Insurance</a>
         </li>
         <li>
-            <a ui-sref="policyType-list" >Policy Name List</a>
+            <a ui-sref="policyType-list" >Policy type List</a>
         </li>
     </ul>
 </div>
@@ -13,7 +13,7 @@
     <div class="row">
         <div class="col-md-4 column">
             <div class="heading-profile">
-                <h2>Policy Name List</h2>
+                <h2>Policy type List</h2>
             </div>
         </div>
     </div>
@@ -32,9 +32,9 @@
                                     <i class="fa fa-search"></i>
                                 </button>
                             </form>
-                            <a class="btn btn-primary" ui-sref="createpolicyname">Add New</a>
+                            <a class="btn btn-primary" ui-sref="createpolicytype">Add New</a>
                         </div>
-                        <h3>List of Policy Names
+                        <h3>List of Policy Types
                             <span class="tableTotal">(Total :
                                 {{totalItems}})
                             </span>
@@ -44,7 +44,7 @@
                         <table class="table" ng-show="totalItems>0">
                             <thead>
                                 <tr>
-                                    <th>Policy Name</th>
+                                    <th>Policy Type</th>
                                     <th>Department</th>
                                     <th>Status</th>
                                     <th>Actions</th>
@@ -58,7 +58,7 @@
                                         <toggle-switch ng-model="data.status" class="switch-mini switch-success"></toggle-switch>
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary" ui-sref="editpolicyname({id:data._id})">
+                                        <a class="btn btn-primary" ui-sref="editpolicytype({id:data._id})">
                                             <i class="fa fa-pencil"></i>
                                         </a>
                                         <a class="btn btn-danger" ng-click="deletePolicyType(data._id)">
