@@ -1174,6 +1174,15 @@ firstapp.directive('menuOptions', function($document) {
   };
 });
 
+firstapp.filter('serverimage', function() {
+    return function(input) {
+        if (input) {
+            return imgpath + input;
+        } else {
+            return "img/logo.png";
+        }
+    };
+});
 
 firstapp.directive('oI', function($document) {
   return {

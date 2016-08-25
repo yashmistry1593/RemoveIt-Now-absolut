@@ -331,11 +331,11 @@
         <div class="widget">
             <div class="form-elements-sec">
                 <div class="widget-title">
-                  <a class="btn btn-success pull-right" ng-click="addDocument()">Upload Document</a>
+                  <a class="btn btn-success pull-right" ng-click="addModal('modal-document','','personalDocument')">Upload Document</a>
                     <h3>Personal Documents</h3>
                 </div>
                 <div class="clearfix"></div>
-                <div class="table-responsive">
+                <div class="table-responsive" ng-if="formData.personalDocument.length>0">
                     <table class="table">
                         <thead>
                             <tr>
@@ -344,16 +344,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Pancard.pdf</td>
+                            <tr ng-repeat="data in formData.personalDocument track by $index">
+                                <td>{{data.name}}</td>
                                 <td>
-                                  <a class="btn btn-blue" ui-sref="editemployee({id:data._id})">
+                                  <a class="btn btn-blue" ng-click="addModal('modal-document',$index,'personalDocument',data)">
                                       <i class="fa fa-pencil"></i>
                                   </a>
                                   <a class="btn btn-primary" ng-click="deleteDocument()">
                                       <i class="fa fa-download"></i>
                                   </a>
-                                    <a class="btn btn-danger" ng-click="deleteDocument()">
+                                    <a class="btn btn-danger" ng-click="deleteElements($index, 'personalDocument')">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>
@@ -369,7 +369,7 @@
                 <div class="widget-title">
                     <h3>Surveyor</h3>
                     <toggle-switch on-label="Yes" off-label="No" ng-model="formData.isSurveyor" class="switch-mini switch-success"></toggle-switch>
-                    <a class="btn btn-success pull-right" ng-if="formData.isSurveyor" ng-click="addFile()">Upload Now</a>
+                    <a class="btn btn-success pull-right" ng-if="formData.isSurveyor" ng-click="addModal('modal-file','','licenseDocument')">Upload Now</a>
                 </div>
                 <div class="clearfix"></div>
                 <div ng-if="formData.isSurveyor">
@@ -383,7 +383,7 @@
                         </div>
                     </div>
 
-                    <div class="table-responsive">
+                    <div class="table-responsive" ng-if="formData.licenseDocument.length>0">
                         <table class="table">
                             <thead>
                                 <tr>
@@ -393,17 +393,17 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr>
-                                    <td>20-Aug-2016</td>
-                                    <td>16-Aug-2017</td>
+                                <tr ng-repeat="data in formData.licenseDocument track by $index">
+                                    <td>{{data.from | date:'dd MMM yyyy'}}</td>
+                                    <td>{{data.to | date:'dd MMM yyyy'}}</td>
                                     <td>
-                                      <a class="btn btn-blue" ui-sref="editemployee({id:data._id})">
+                                      <a class="btn btn-blue" ng-click="addModal('modal-file',$index,'licenseDocument',data)">
                                           <i class="fa fa-pencil"></i>
                                       </a>
                                       <a class="btn btn-primary" ng-click="deleteDocument()">
                                           <i class="fa fa-download"></i>
                                       </a>
-                                        <a class="btn btn-danger" ng-click="deleteDocument()">
+                                        <a class="btn btn-danger" ng-click="deleteElements($index, 'licenseDocument')">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
@@ -419,7 +419,7 @@
         <div class="widget" ng-if="formData.isSurveyor">
             <div class="form-elements-sec">
                 <div class="widget-title">
-                  <a class="btn btn-success pull-right" ng-click="addFile()">Upload Now</a>
+                  <a class="btn btn-success pull-right" ng-click="addModal('modal-file','','IIISLACertificate')">Upload Now</a>
                   <h3>IIISLA Certificate</h3>
                 </div>
 
@@ -433,17 +433,17 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>20-Aug-2016</td>
-                                <td>16-Aug-2017</td>
+                          <tr ng-repeat="data in formData.IIISLACertificate track by $index">
+                              <td>{{data.from | date:'dd MMM yyyy'}}</td>
+                              <td>{{data.to | date:'dd MMM yyyy'}}</td>
                                 <td>
-                                  <a class="btn btn-blue" ui-sref="editemployee({id:data._id})">
+                                  <a class="btn btn-blue" ng-click="addModal('modal-file',$index,'IIISLACertificate',data)">
                                       <i class="fa fa-pencil"></i>
                                   </a>
                                   <a class="btn btn-primary" ng-click="deleteDocument()">
                                       <i class="fa fa-download"></i>
                                   </a>
-                                    <a class="btn btn-danger" ng-click="deleteDocument()">
+                                    <a class="btn btn-danger" ng-click="deleteElements($index, 'IIISLACertificate')">
                                         <i class="fa fa-trash"></i>
                                     </a>
                                 </td>
@@ -457,7 +457,7 @@
         <div class="widget" ng-if="formData.isSurveyor">
             <div class="form-elements-sec">
                 <div class="widget-title">
-                  <a class="btn btn-success pull-right" ng-click="addFile()">Upload Now</a>
+                  <a class="btn btn-success pull-right" ng-click="addModal('modal-file')">Upload Now</a>
                   <h3>IIISLA Reciept</h3>
                 </div>
                 <div class="table-responsive">

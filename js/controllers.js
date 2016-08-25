@@ -974,6 +974,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.formData = {};
+        $scope.formData.personalDocument = [];
+        $scope.formData.licenseDocument = [];
+        $scope.formData.IIISLACertificate = [];
+        $scope.formData.IIISLAReciept = [];
         $scope.header = {
             "name": "Create Employee"
         };
@@ -1007,26 +1011,84 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         $scope.format = 'dd-MMMM-yyyy';
+        $scope.modalData = {};
+        $scope.holdObject = '';
+        $scope.modalIndex = 0;
 
-        $scope.addDocument = function() {
-            var modalInstance = $uibModal.open({
-                scope: $scope,
-                templateUrl: 'views/modal/modal-document.html',
-                size: 'lg'
-            });
-        };
-
-        $scope.addFile = function(){
+        $scope.addModal = function(filename, index, holdobj, data){
+          if (index !== "") {
+            $scope.modalData = data;
+            $scope.modalIndex = index;
+          }else {
+            $scope.modalData = {};
+            $scope.modalIndex = "";
+          }
+          $scope.holdObject = holdobj;
           var modalInstance = $uibModal.open({
               scope: $scope,
-              templateUrl: 'views/modal/modal-file.html',
+              templateUrl: 'views/modal/'+filename+'.html',
               size: 'lg'
           });
         };
 
-        $scope.addElements = function(elemObject, data){
+        $scope.addElements = function(data){
+          console.log(data);
+          console.log($scope.holdObject);
+          switch ($scope.holdObject) {
+            case 'personalDocument':
+                if ($scope.modalIndex !== "") {
+                  $scope.formData.personalDocument[$scope.modal] = data;
+                }else{
+                  $scope.formData.personalDocument.push(data);
+                }
+              break;
+            case 'licenseDocument':
+                if ($scope.modalIndex !== "") {
+                  $scope.formData.licenseDocument[$scope.modal] = data;
+                }else{
+                  $scope.formData.licenseDocument.push(data);
+                }
+              break;
+            case 'IIISLACertificate':
+                if ($scope.modalIndex !== "") {
+                  $scope.formData.IIISLACertificate[$scope.modal] = data;
+                }else{
+                  $scope.formData.IIISLACertificate.push(data);
+                }
+              break;
+            case 'IIISLAReciept':
+                if ($scope.modalIndex !== "") {
+                  $scope.formData.IIISLAReciept[$scope.modal] = data;
+                }else{
+                  $scope.formData.IIISLAReciept.push(data);
+                }
+              break;
+            default:
+
+          }
+        };
+        $scope.editElements = function(elemObject, data){
 
         };
+        $scope.deleteElements = function(index, name){
+          switch (name) {
+            case 'personalDocument':
+                  $scope.formData.personalDocument.splice(index,1);
+              break;
+            case 'licenseDocument':
+                  $scope.formData.licenseDocument.splice(index,1);
+              break;
+            case 'IIISLACertificate':
+                  $scope.formData.IIISLACertificate.splice(index,1);
+              break;
+            case 'IIISLAReciept':
+                  $scope.formData.IIISLAReciept.splice(index,1);
+              break;
+            default:
+
+          }
+        };
+
 
         $scope.saveModel = function(formData) {
             NavigationService.modelSave("Employee", $scope.formData, function(data) {
@@ -2180,8 +2242,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('PolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("policyType-list");
-        $scope.menutitle = NavigationService.makeactive("Policy Type List");
+        $scope.template = TemplateService.changecontent("policyName-list");
+        $scope.menutitle = NavigationService.makeactive("Policy Name List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
 
@@ -2206,8 +2268,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('CreatePolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("policyType-detail");
-        $scope.menutitle = NavigationService.makeactive("Policy Type");
+        $scope.template = TemplateService.changecontent("policyName-detail");
+        $scope.menutitle = NavigationService.makeactive("Policy Name");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.userStatus = [{
@@ -2218,18 +2280,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "value": false
         }];
         $scope.header = {
-            "name": "Create Policy Type"
+            "name": "Create Policy Name"
         };
         $scope.formData = {};
         $scope.insurers = ['Tushar', 'Chintan', 'Mahesh'];
 
         $scope.saveModel = function(formData) {
-            NavigationService.modelSave("PolicyType", $scope.formData, function(data) {
+            NavigationService.modelSave("PolicyName", $scope.formData, function(data) {
                 if (data.value === true) {
-                    $state.go('policyType-list');
-                    toastr.success("PolicyType" + " " + formData.name + " created successfully.", "PolicyType" + " Created");
+                    $state.go('policytype-list');
+                    toastr.success("PolicyName" + " " + formData.name + " created successfully.", "PolicyName" + " Created");
                 } else {
-                    toastr.error("PolicyType" + " creation failed.", "PolicyType" + " creation error");
+                    toastr.error("PolicyName" + " creation failed.", "PolicyName" + " creation error");
                 }
             });
         };
@@ -2237,8 +2299,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('EditPolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("policyType-detail");
-        $scope.menutitle = NavigationService.makeactive("Policy Type");
+        $scope.template = TemplateService.changecontent("policyName-detail");
+        $scope.menutitle = NavigationService.makeactive("Policy Name");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.userStatus = [{
@@ -2249,7 +2311,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "value": false
         }];
         $scope.header = {
-            "name": "Edit Policy Type"
+            "name": "Edit Policy Name"
         };
         $scope.insurers = ['Tushar', 'Chintan', 'Mahesh'];
 

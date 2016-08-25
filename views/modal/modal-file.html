@@ -1,4 +1,4 @@
-<form name="modalForm" ng-submit="uploadDocument(modalData);$dismiss()">
+<form name="modalForm" ng-submit="addElements(modalData);$dismiss()">
     <div class="modal-header blue-bg">
         <div class="pull-right">
             <a class="btn btn-clear" ng-click="$dismiss()">
@@ -12,14 +12,14 @@
           <div class="col-md-4">
               <div class="form-group">
                   <label>Upload License Document</label>
-                  <upload-image ng-model="modalData.licenseDoc" no-view></upload-image>
+                  <upload-image ng-model="modalData.image" no-view></upload-image>
               </div>
           </div>
           <div class="col-md-4">
               <div class="form-group">
                   <label>From</label>
                   <div class="input-group">
-                      <input type="text" name="from" class="form-control" uib-datepicker-popup="{{format}}" ng-model="modalData.fromLicense" is-open="popup.fromLicense" datepicker-options="dateOptions" readonly/>
+                      <input type="text" name="from" class="form-control" uib-datepicker-popup="{{format}}" ng-model="modalData.from" is-open="popup.fromLicense" datepicker-options="dateOptions" readonly/>
                       <span class="input-group-btn">
                           <button type="button" class="btn btn-default" ng-click="popup.fromLicense = true">
                               <i class="fa fa-calendar"></i>
@@ -32,7 +32,7 @@
               <div class="form-group">
                   <label>To</label>
                   <div class="input-group">
-                      <input type="text" name="to" class="form-control" uib-datepicker-popup="{{format}}" ng-model="modalData.toLicense" is-open="popup.toLicense" datepicker-options="dateOptions" readonly/>
+                      <input type="text" name="to" class="form-control" uib-datepicker-popup="{{format}}" ng-model="modalData.to" is-open="popup.toLicense" datepicker-options="dateOptions" readonly/>
                       <span class="input-group-btn">
                           <button type="button" class="btn btn-default" ng-click="popup.toLicense = true">
                               <i class="fa fa-calendar"></i>
