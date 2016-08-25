@@ -322,7 +322,7 @@
         <div class="widget">
             <div class="form-elements-sec">
                 <div class="widget-title">
-                  <a class="btn btn-primary" ng-click="addDocument()">Upload Document</a>
+                  <a class="btn btn-success pull-right" ng-click="addDocument()">Upload Document</a>
                     <h3>Personal Documents</h3>
                 </div>
                 <div class="clearfix"></div>
@@ -338,6 +338,9 @@
                             <tr>
                                 <td>Pancard.pdf</td>
                                 <td>
+                                  <a class="btn btn-primary" ng-click="deleteDocument()">
+                                      <i class="fa fa-download"></i>
+                                  </a>
                                     <a class="btn btn-danger" ng-click="deleteDocument()">
                                         <i class="fa fa-trash"></i>
                                     </a>

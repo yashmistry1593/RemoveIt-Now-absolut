@@ -143,8 +143,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.modelCamel = _.camelCase($stateParams.model);
         var a = _.startCase($scope.modelCamel).split(" ");
         $scope.ModelApi = "";
-        _.each(a, function(n){
-          $scope.ModelApi = $scope.ModelApi + n;
+        _.each(a, function(n) {
+            $scope.ModelApi = $scope.ModelApi + n;
         });
 
 
@@ -220,8 +220,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.modelCamel = _.camelCase($stateParams.model);
     var a = _.startCase($scope.modelCamel).split(" ");
     $scope.ModelApi = "";
-    _.each(a, function(n){
-      $scope.ModelApi = $scope.ModelApi + n;
+    _.each(a, function(n) {
+        $scope.ModelApi = $scope.ModelApi + n;
     });
 
     $scope.modelCap = _.capitalize($stateParams.model);
@@ -284,12 +284,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 })
 
 .controller('EditModelCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr, $uibModal) {
-  $scope.modelCamel = _.camelCase($stateParams.model);
-  var a = _.startCase($scope.modelCamel).split(" ");
-  $scope.ModelApi = "";
-  _.each(a, function(n){
-    $scope.ModelApi = $scope.ModelApi + n;
-  });
+    $scope.modelCamel = _.camelCase($stateParams.model);
+    var a = _.startCase($scope.modelCamel).split(" ");
+    $scope.ModelApi = "";
+    _.each(a, function(n) {
+        $scope.ModelApi = $scope.ModelApi + n;
+    });
     $scope.modelCap = _.capitalize($stateParams.model);
     $scope.modelLow = _.lowerCase($stateParams.model);
     $scope.template = TemplateService.changecontent($scope.modelCamel + "-detail");
@@ -306,11 +306,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     NavigationService.getOneModel($scope.ModelApi, $stateParams.id, function(data) {
         $scope.formData = data.data;
         if (data.data.city) {
-          $scope.formData.country = data.data.city.district.state.zone.country._id;
-          $scope.formData.zone = data.data.city.district.state.zone._id;
-          $scope.formData.state = data.data.city.district.state._id;
-          $scope.formData.district = data.data.city.district._id;
-          $scope.formData.city = data.data.city._id;
+            $scope.formData.country = data.data.city.district.state.zone.country._id;
+            $scope.formData.zone = data.data.city.district.state.zone._id;
+            $scope.formData.state = data.data.city.district.state._id;
+            $scope.formData.district = data.data.city.district._id;
+            $scope.formData.city = data.data.city._id;
         }
     });
 
@@ -335,9 +335,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             size: 'lg'
         });
     };
-    $scope.createOfficer = function(modelData){
-      $scope.formData.officers.push(modelData);
-      console.log($scope.formData);
+    $scope.createOfficer = function(modelData) {
+        $scope.formData.officers.push(modelData);
+        console.log($scope.formData);
     };
     //  FOR LIST OF ARRAY ENDS
 
@@ -967,7 +967,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('CreateEmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('CreateEmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $uibModal) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("employee-detail");
         $scope.menutitle = NavigationService.makeactive("Employee");
@@ -1008,6 +1008,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.format = 'dd-MMMM-yyyy';
 
+        $scope.addDocument = function() {
+            var modalInstance = $uibModal.open({
+                scope: $scope,
+                templateUrl: 'views/modal/modal-document.html',
+                size: 'lg'
+            });
+        };
+
+        $scope.addElements = function(elemObject, data){
+          
+        };
+
         $scope.saveModel = function(formData) {
             NavigationService.modelSave("Employee", $scope.formData, function(data) {
                 if (data.value === true) {
@@ -1019,7 +1031,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
     })
-    .controller('EditEmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter) {
+    .controller('EditEmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter, $uibModal) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("employee-detail");
         $scope.menutitle = NavigationService.makeactive("Employee");
@@ -1051,14 +1063,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             joiningDate: false,
             leavingDate: false
         };
+
+        $scope.addDocument = function() {
+            var modalInstance = $uibModal.open({
+                scope: $scope,
+                templateUrl: 'views/modal/modal-document.html',
+                size: 'lg'
+            });
+        };
+
         NavigationService.getOneModel("Employee", $stateParams.id, function(data) {
             $scope.formData = data.data;
             if (data.data.city) {
-              $scope.formData.country = data.data.city.district.state.zone.country._id;
-              $scope.formData.zone = data.data.city.district.state.zone._id;
-              $scope.formData.state = data.data.city.district.state._id;
-              $scope.formData.district = data.data.city.district._id;
-              $scope.formData.city = data.data.city._id;
+                $scope.formData.country = data.data.city.district.state.zone.country._id;
+                $scope.formData.zone = data.data.city.district.state.zone._id;
+                $scope.formData.state = data.data.city.district.state._id;
+                $scope.formData.district = data.data.city.district._id;
+                $scope.formData.city = data.data.city._id;
             }
         });
 
@@ -2851,7 +2872,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.header = {
             "name": "Create Cause of Loss"
         };
-        $scope.natureOfLosses = ['Fire','Theft','Burglary'];
+        $scope.natureOfLosses = ['Fire', 'Theft', 'Burglary'];
         $scope.formData = {};
         $scope.saveCauseLoss = function(formData) {
 
@@ -2886,7 +2907,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.header = {
             "name": "Edit Cause of Loss"
         };
-        $scope.natureOfLosses = ['Fire','Theft','Burglary'];
+        $scope.natureOfLosses = ['Fire', 'Theft', 'Burglary'];
 
         NavigationService.getOneCauseLoss($stateParams.id, function(data) {
             $scope.formData = data.data;
@@ -3823,25 +3844,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
         $scope.createOfficer = function(modelData) {
-          if ($scope.buttonValue === "Save") {
-            $scope.formData.officers.push(modelData);
-          }else {
-            $scope.formData.officers[$scope.formIndex] = modelData;
-          }
+            if ($scope.buttonValue === "Save") {
+                $scope.formData.officers.push(modelData);
+            } else {
+                $scope.formData.officers[$scope.formIndex] = modelData;
+            }
         };
-        $scope.openCreateOfficer = function(){
-          $scope.buttonValue = "Save";
-          $scope.modalData = {};
-          $scope.addOfficer();
+        $scope.openCreateOfficer = function() {
+            $scope.buttonValue = "Save";
+            $scope.modalData = {};
+            $scope.addOfficer();
         };
-        $scope.openEditOfficer = function(index){
-          $scope.formIndex = index;
-          $scope.buttonValue = "Edit";
-          $scope.modalData = $scope.formData.officers[index];
-          $scope.addOfficer();
+        $scope.openEditOfficer = function(index) {
+            $scope.formIndex = index;
+            $scope.buttonValue = "Edit";
+            $scope.modalData = $scope.formData.officers[index];
+            $scope.addOfficer();
         }
-        $scope.deleteOfficer = function(index){
-          $scope.formData.officers.splice(index,1);
+        $scope.deleteOfficer = function(index) {
+            $scope.formData.officers.splice(index, 1);
         }
     })
     .controller('EditCustomerCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $uibModal, toastr) {
@@ -3917,25 +3938,25 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         $scope.createOfficer = function(modelData) {
-          if ($scope.buttonValue === "Save") {
-            $scope.formData.officers.push(modelData);
-          }else {
-            $scope.formData.officers[$scope.formIndex] = modelData;
-          }
+            if ($scope.buttonValue === "Save") {
+                $scope.formData.officers.push(modelData);
+            } else {
+                $scope.formData.officers[$scope.formIndex] = modelData;
+            }
         };
-        $scope.openCreateOfficer = function(){
-          $scope.buttonValue = "Save";
-          $scope.modalData = {};
-          $scope.addOfficer();
+        $scope.openCreateOfficer = function() {
+            $scope.buttonValue = "Save";
+            $scope.modalData = {};
+            $scope.addOfficer();
         };
-        $scope.openEditOfficer = function(index){
-          $scope.formIndex = index;
-          $scope.buttonValue = "Edit";
-          $scope.modalData = $scope.formData.officers[index];
-          $scope.addOfficer();
+        $scope.openEditOfficer = function(index) {
+            $scope.formIndex = index;
+            $scope.buttonValue = "Edit";
+            $scope.modalData = $scope.formData.officers[index];
+            $scope.addOfficer();
         }
-        $scope.deleteOfficer = function(index){
-          $scope.formData.officers.splice(index,1);
+        $scope.deleteOfficer = function(index) {
+            $scope.formData.officers.splice(index, 1);
         }
     })
 
