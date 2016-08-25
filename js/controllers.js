@@ -209,7 +209,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         $scope.changeStatus = function(ind) {
-            NavigationService.modelSave($scope.modelLow, ind, function(data) {
+            NavigationService.modelSave($scope.ModelApi, ind, function(data) {
                 if (data.value === true) {}
             });
         };
