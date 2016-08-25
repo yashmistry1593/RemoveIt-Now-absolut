@@ -2180,7 +2180,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 .controller('PolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("policyName-list");
+        $scope.template = TemplateService.changecontent("policyType-list");
         $scope.menutitle = NavigationService.makeactive("Policy Type List");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -2206,7 +2206,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('CreatePolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("policyName-detail");
+        $scope.template = TemplateService.changecontent("policyType-detail");
         $scope.menutitle = NavigationService.makeactive("Policy Type");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
@@ -2224,12 +2224,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.insurers = ['Tushar', 'Chintan', 'Mahesh'];
 
         $scope.saveModel = function(formData) {
-            NavigationService.modelSave("PolicyName", $scope.formData, function(data) {
+            NavigationService.modelSave("PolicyType", $scope.formData, function(data) {
                 if (data.value === true) {
-                    $state.go('policytype-list');
-                    toastr.success("PolicyName" + " " + formData.name + " created successfully.", "PolicyName" + " Created");
+                    $state.go('policyType-list');
+                    toastr.success("PolicyType" + " " + formData.name + " created successfully.", "PolicyType" + " Created");
                 } else {
-                    toastr.error("PolicyName" + " creation failed.", "PolicyName" + " creation error");
+                    toastr.error("PolicyType" + " creation failed.", "PolicyType" + " creation error");
                 }
             });
         };
@@ -2237,7 +2237,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('EditPolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("policyName-detail");
+        $scope.template = TemplateService.changecontent("policyType-detail");
         $scope.menutitle = NavigationService.makeactive("Policy Type");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
