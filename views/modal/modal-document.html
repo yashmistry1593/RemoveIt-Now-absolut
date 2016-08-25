@@ -5,7 +5,7 @@
                 <i class="ln-cross"></i>
             </a>
         </div>
-        <h5 class="modal-title">Upload New Document  {{modalIndex}}</h5>
+        <h5 class="modal-title">Upload New Document</h5>
     </div>
     <div class="modal-body">
         <div class="row">
@@ -17,7 +17,7 @@
                 </div>
                 <div class="form-group">
                     <label>Upload Document*</label>{{modalData.image}}
-                    <upload-image ng-model="modalData.image"></upload-image>
+                    <upload-image ng-model="modalData.image" no-view></upload-image>
                     <div class="error-msg" ng-show="modalData.image.$invalid && modalData.image.$touched">Please Upload Document</div>
                 </div>
             </div>

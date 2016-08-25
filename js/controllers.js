@@ -978,6 +978,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.formData.licenseDocument = [];
         $scope.formData.IIISLACertificate = [];
         $scope.formData.IIISLAReciept = [];
+        $scope.formData.CTCDetails = [];
         $scope.header = {
             "name": "Create Employee"
         };
@@ -1024,6 +1025,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.modalIndex = "";
           }
           $scope.holdObject = holdobj;
+          console.log($scope.holdObject);
           var modalInstance = $uibModal.open({
               scope: $scope,
               templateUrl: 'views/modal/'+filename+'.html',
@@ -1063,6 +1065,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                   $scope.formData.IIISLAReciept.push(data);
                 }
               break;
+            case 'CTCDetails':
+                if ($scope.modalIndex !== "") {
+                  $scope.formData.CTCDetails[$scope.modal] = data;
+                }else{
+                  $scope.formData.CTCDetails.push(data);
+                }
+              break;
             default:
 
           }
@@ -1083,6 +1092,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
               break;
             case 'IIISLAReciept':
                   $scope.formData.IIISLAReciept.splice(index,1);
+              break;
+            case 'CTCDetails':
+                  $scope.formData.CTCDetails.splice(index,1);
               break;
             default:
 

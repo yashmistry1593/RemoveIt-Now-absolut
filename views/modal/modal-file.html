@@ -5,10 +5,10 @@
                 <i class="ln-cross"></i>
             </a>
         </div>
-        <h5 class="modal-title">Upload New Document</h5>
+        <h5 class="modal-title">Upload New Document  {{holdObject}}</h5>
     </div>
     <div class="modal-body">
-      <div class="row">
+      <div class="row" ng-hide="holdObject == 'CTCDetails'">
           <div class="col-md-4">
               <div class="form-group">
                   <label>Upload License Document</label>
@@ -33,6 +33,42 @@
                   <label>To</label>
                   <div class="input-group">
                       <input type="text" name="to" class="form-control" uib-datepicker-popup="{{format}}" ng-model="modalData.to" is-open="popup.toLicense" datepicker-options="dateOptions" readonly/>
+                      <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="popup.toLicense = true">
+                              <i class="fa fa-calendar"></i>
+                          </button>
+                      </span>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="row" ng-show="holdObject == 'CTCDetails'">
+        <div class="col-md-4">
+            <div class="form-group">
+                <label>CTC Amount</label>
+                <div class="input-group">
+                  <input type="text" name="amount" class="form-control" ng-model="modalData.CTCAmount">
+                </div>
+            </div>
+        </div>
+          <div class="col-md-4">
+              <div class="form-group">
+                  <label>From</label>
+                  <div class="input-group">
+                      <input type="text" name="from" class="form-control" uib-datepicker-popup="{{format}}" ng-model="modalData.CTCFrom" is-open="popup.fromLicense" datepicker-options="dateOptions" readonly/>
+                      <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="popup.fromLicense = true">
+                              <i class="fa fa-calendar"></i>
+                          </button>
+                      </span>
+                  </div>
+              </div>
+          </div>
+          <div class="col-md-4">
+              <div class="form-group">
+                  <label>To</label>
+                  <div class="input-group">
+                      <input type="text" name="to" class="form-control" uib-datepicker-popup="{{format}}" ng-model="modalData.CTCTo" is-open="popup.toLicense" datepicker-options="dateOptions" readonly/>
                       <span class="input-group-btn">
                           <button type="button" class="btn btn-default" ng-click="popup.toLicense = true">
                               <i class="fa fa-calendar"></i>
