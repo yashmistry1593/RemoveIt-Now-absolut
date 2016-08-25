@@ -2237,10 +2237,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.showAllPolicyTypes();
 
             });
-        }
+        };
 
     })
-    .controller('CreatePolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('CreatePolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("policyName-detail");
         $scope.menutitle = NavigationService.makeactive("Policy Name");
@@ -2258,24 +2258,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.formData = {};
         $scope.insurers = ['Tushar', 'Chintan', 'Mahesh'];
-        $scope.savePolicyType = function(formData) {
 
-            NavigationService.policynameSave($scope.formData, function(data) {
-                console.log(data);
-                if (data.value == true) {
+        $scope.saveModel = function(formData) {
+            NavigationService.modelSave("PolicyName", $scope.formData, function(data) {
+                if (data.value === true) {
                     $state.go('policyname-list');
+                    toastr.success("PolicyName" + " " + formData.name + " created successfully.", "PolicyName" + " Created");
+                } else {
+                    toastr.error("PolicyName" + " creation failed.", "PolicyName" + " creation error");
                 }
-                // console.log('$scope.allCountriessave', $scope.data);
-
             });
-        }
-        NavigationService.getAllDepartments(function(data) {
-            $scope.allDepartments = data.data;
-
-        });
+        };
 
     })
-    .controller('EditPolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+    .controller('EditPolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("policyName-detail");
         $scope.menutitle = NavigationService.makeactive("Policy Name");
@@ -2292,28 +2288,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Edit Policy Name"
         };
         $scope.insurers = ['Tushar', 'Chintan', 'Mahesh'];
-        NavigationService.getOnePolicyType($stateParams.id, function(data) {
-            $scope.formData = data.data;
-            console.log('$scope.formData', $scope.formData);
 
+        NavigationService.getOneModel($scope.ModelApi, $stateParams.id, function(data) {
+            $scope.formData = data.data;
         });
 
-        $scope.savePolicyType = function(formValid) {
-
-            //  if (formValid.$valid) {
-            //  $scope.formComplete = true;
-            NavigationService.PolicyTypeEditSave($scope.formData, function(data) {
-                if (data.value == true) {
+        $scope.saveModel = function(formValid) {
+            NavigationService.modelSave($scope.ModelApi, $scope.formData, function(data) {
+                if (data.value === true) {
                     $state.go('policyname-list');
+                    toastr.success($scope.modelCap + $scope.formData.name + " edited successfully.", $scope.modelCap + " Edited");
+                } else {
+                    toastr.error($scope.modelCap + " edition failed.", $scope.modelCap + " editing error");
                 }
             });
-            //  }
         };
-
-        NavigationService.getAllDepartments(function(data) {
-            $scope.allDepartments = data.data;
-
-        });
 
     })
     .controller('PolicyCtrl', function($scope, TemplateService, NavigationService, $timeout) {

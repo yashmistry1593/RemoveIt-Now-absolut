@@ -284,7 +284,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   .state('editexpense', {
     url: "/expense-edit/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'EditExpenseCtrl',
+    controller: 'EditModelCtrl',
     params: {
       id: "",
       model: "expense"
@@ -347,25 +347,34 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   })
 
   .state('policyName-list', {
-    url: "/policyname-list/{page:.*}/{keyword:.*}",
+    url: "/policyname-list/{page:.*}/{keyword:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'PolicyTypeCtrl',
+    controller: 'ModelViewCtrl',
     params: {
       page: "1",
-      keyword: ""
+      keyword: "",
+      model: "policy name"
     }
   })
 
   .state('createpolicyname', {
-    url: "/policyname-create",
+    url: "/policyname-create/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'CreatePolicyTypeCtrl'
+    controller: 'CreatePolicyTypeCtrl',
+    params: {
+      id:"",
+      model:"polity name"
+    }
   })
 
   .state('editpolicyname', {
-    url: "/policyname-edit/:id",
+    url: "/policyname-edit/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'EditPolicyTypeCtrl'
+    controller: 'EditPolicyTypeCtrl',
+    params: {
+      id: "",
+      model: "policy name"
+    }
   })
 
   .state('policy-list', {
@@ -391,25 +400,34 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   })
 
   .state('policyDoc-list', {
-    url: "/policydoc-list/{page:.*}/{keyword:.*}",
+    url: "/policydoc-list/{page:.*}/{keyword:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'PolicyDocCtrl',
+    controller: 'ModelViewCtrl',
     params: {
       page: "1",
-      keyword: ""
+      keyword: "",
+      model: "policy doc"
     }
   })
 
   .state('createpolicydoc', {
-    url: "/policydoc-create",
+    url: "/policydoc-create/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'CreatePolicyDocCtrl'
+    controller: 'CreatePolicyDocCtrl',
+    params: {
+      id: "",
+      model: "policy doc"
+    }
   })
 
   .state('editpolicydoc', {
-    url: "/policydoc-edit/:id",
+    url: "/policydoc-edit/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'EditPolicyDocCtrl'
+    controller: 'EditPolicyDocCtrl',
+    params: {
+      id: "",
+      model: "policy doc"
+    }
   })
 
   .state('industry-list', {
@@ -488,25 +506,32 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   })
 
   .state('causeLoss-list', {
-    url: "/causeloss-list/{page:.*}/{keyword:.*}",
+    url: "/causeloss-list/{page:.*}/{keyword:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'CauseLossCtrl',
+    controller: 'ModelViewCtrl',
     params: {
       page: "1",
-      keyword: ""
+      keyword: "",
+      model: "cause loss"
     }
   })
 
   .state('createcauseloss', {
-    url: "/causeloss-create",
+    url: "/causeloss-create/{id:.*}",
     templateUrl: "views/template.html",
-    controller: 'CreateCauseLossCtrl'
+    controller: 'CreateCauseLossCtrl',
+    params: {
+      id:""
+    }
   })
 
   .state('editcauseloss', {
-    url: "/causeloss-edit/:id",
+    url: "/causeloss-edit/{id:.*}",
     templateUrl: "views/template.html",
-    controller: 'EditCauseLossCtrl'
+    controller: 'EditCauseLossCtrl',
+    params: {
+      id:""
+    }
   })
 
   .state('natureLoss-list', {

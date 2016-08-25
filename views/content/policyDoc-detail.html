@@ -9,7 +9,7 @@
     </ul>
 </div>
 
-<form name="formName" role="form" ng-submit="savePolicyDoc(formData)">
+<form name="formName" role="form" ng-submit="saveModel(formData)">
     <div class="heading-sec">
         <div class="row">
             <div class="col-md-12 column">
@@ -37,7 +37,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Department*</label>
-                                <multiple-select name="department" required ng-model="formData.department" filter='{"department":"{{formData.department}}"}' ng-name="name.zone" api="searchDepartment" ng-create="departmentSave"></multiple-select>
+                                <multiple-select name="department" required ng-model="formData.department" ng-name="name.zone" api="searchDepartment" ng-create="departmentSave"></multiple-select>
                                 <div class="error-msg" ng-show="formName.department.$invalid">Please Select Department</div>
                             </div>
 

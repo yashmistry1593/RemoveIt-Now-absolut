@@ -27,7 +27,7 @@
                     <div class="widget-title">
                         <div class="pull-right">
                             <form class="search-form mr-form">
-                                <input type="text" placeholder="Search Here..."/>
+                              <input type="text" ng-change="showAll(true)" placeholder="Search Here..." ng-model="search.keyword"/>
                                 <button type="submit">
                                     <i class="fa fa-search"></i>
                                 </button>
@@ -41,7 +41,7 @@
                         </h3>
                     </div>
                     <div class="table-responsive">
-                        <table class="table">
+                        <table class="table" ng-show="totalItems>0">
                             <thead>
                                 <tr>
                                     <th>Policy Name</th>
@@ -51,17 +51,17 @@
                                 </tr>
                             </thead>
                             <tbody ng-show="totalItems>0">
-                                <tr ng-repeat="policy in allPolicyTypes">
+                                <tr ng-repeat="data in modelList">
                                     <td>{{data.policyName}}</td>
                                     <td>{{data.department}}</td>
                                     <td>
                                         <toggle-switch ng-model="data.status" class="switch-mini switch-success"></toggle-switch>
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary" ui-sref="editpolicyname({id:policy._id})">
+                                        <a class="btn btn-primary" ui-sref="editpolicyname({id:data._id})">
                                             <i class="fa fa-pencil"></i>
                                         </a>
-                                        <a class="btn btn-danger" ng-click="deletePolicyType(policy._id)">
+                                        <a class="btn btn-danger" ng-click="deletePolicyType(data._id)">
                                             <i class="fa fa-trash"></i>
                                         </a>
                                     </td>
