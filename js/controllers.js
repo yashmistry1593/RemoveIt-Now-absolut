@@ -1016,8 +1016,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
 
+        $scope.addFile = function(){
+          var modalInstance = $uibModal.open({
+              scope: $scope,
+              templateUrl: 'views/modal/modal-file.html',
+              size: 'lg'
+          });
+        };
+
         $scope.addElements = function(elemObject, data){
-          
+
         };
 
         $scope.saveModel = function(formData) {
