@@ -54,10 +54,10 @@
                             </thead>
                             <tbody ng-show="totalItems>0">
                                 <tr ng-repeat="data in modelList">
-                                    <td>{{data.customerSegment.name}}</td>
-                                    <td>{{data.shortName}}</td>
-                                    <td>{{data.city.name}}</td>
-                                    <td>{{data.phone1}}</td>
+                                    <td>{{data.customerSegment.name || "-"}}</td>
+                                    <td>{{data.code || "-"}}</td>
+                                    <td>{{data.city.name || "-"}}</td>
+                                    <td>{{data.phone1 || "-"}}</td>
                                     <td>
                                       <toggle-switch ng-model="data.status" class="switch-mini switch-success" ng-change="changeStatus(data)"></toggle-switch>
                                     </td>
