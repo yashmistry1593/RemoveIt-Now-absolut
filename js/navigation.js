@@ -165,9 +165,9 @@ var navigationservice = angular.module('navigationservice', [])
             anchor: "department-list",
             icon: "user"
         }, {
-            name: "Policy Name",
+            name: "Policy Type",
             classis: "active",
-            anchor: "policyName-list",
+            anchor: "policyType-list",
             icon: "link"
         }, {
             name: "Policy Document",

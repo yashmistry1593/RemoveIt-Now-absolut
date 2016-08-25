@@ -2226,7 +2226,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.saveModel = function(formData) {
             NavigationService.modelSave("PolicyName", $scope.formData, function(data) {
                 if (data.value === true) {
-                    $state.go('policyname-list');
+                    $state.go('policytype-list');
                     toastr.success("PolicyName" + " " + formData.name + " created successfully.", "PolicyName" + " Created");
                 } else {
                     toastr.error("PolicyName" + " creation failed.", "PolicyName" + " creation error");
@@ -2260,7 +2260,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.saveModel = function(formValid) {
             NavigationService.modelSave($scope.ModelApi, $scope.formData, function(data) {
                 if (data.value === true) {
-                    $state.go('policyname-list');
+                    $state.go('policytype-list');
                     toastr.success($scope.modelCap + $scope.formData.name + " edited successfully.", $scope.modelCap + " Edited");
                 } else {
                     toastr.error($scope.modelCap + " edition failed.", $scope.modelCap + " editing error");

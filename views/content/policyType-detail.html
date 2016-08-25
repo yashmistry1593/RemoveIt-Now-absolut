@@ -4,11 +4,11 @@
             <a title="Home">Insurance</a>
         </li>
         <li>
-            <a ui-sref="policyName-list">{{header.name}}</a>
+            <a ui-sref="policyType-list">{{header.name}}</a>
         </li>
     </ul>
 </div>
-<form name="policyNameForm" ng-submit="savePolicyType(formData)">
+<form name="policyTypeForm" ng-submit="savePolicyType(formData)">
     <div class="heading-sec">
         <div class="row">
             <div class="col-md-12 column">
@@ -33,13 +33,13 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Policy Name*</label>
-                                        <input type="text" name="name" ng-model="formData.policyName" class="form-control" required>
-                                        <div class="error-msg" ng-show="policyNameForm.name.$invalid && policyNameForm.name.$touched">Please Enter Policy Name</div>
+                                        <input type="text" name="name" ng-model="formData.policyType" class="form-control" required>
+                                        <div class="error-msg" ng-show="policyTypeForm.name.$invalid && policyTypeForm.name.$touched">Please Enter Policy Name</div>
                                     </div>
                                     <div class="form-group">
                                         <label>Department*</label>
                                         <multiple-select name="department" required ng-model="formData.department" ng-name="name.zone" api="searchDepartment" ng-create="departmentSave"></multiple-select>
-                                        <div class="error-msg" ng-show="policyNameForm.department.$invalid">Please Enter Department</div>
+                                        <div class="error-msg" ng-show="policyTypeForm.department.$invalid">Please Enter Department</div>
                                     </div>
                                     <div class="form-group">
                                         <label>Insurer</label>
@@ -82,8 +82,8 @@
                                 </table>
                             </div> -->
                             <div class="text-center mt20">
-                                <button class="btn btn-default" type="submit" ng-disabled="policyNameForm.$invalid">Save</button>
-                                <button class="btn btn-default" ui-sref="policyName-list">Cancel</button>
+                                <button class="btn btn-default" type="submit" ng-disabled="policyTypeForm.$invalid">Save</button>
+                                <button class="btn btn-default" ui-sref="policyType-list">Cancel</button>
                             </div>
                         </div>
                     </div>

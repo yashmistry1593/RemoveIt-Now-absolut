@@ -346,34 +346,34 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     controller: 'EditUniqueTypeCtrl'
   })
 
-  .state('policyName-list', {
-    url: "/policyname-list/{page:.*}/{keyword:.*}/{model:.*}",
+  .state('policyType-list', {
+    url: "/policytype-list/{page:.*}/{keyword:.*}/{model:.*}",
     templateUrl: "views/template.html",
     controller: 'ModelViewCtrl',
     params: {
       page: "1",
       keyword: "",
-      model: "policy name"
+      model: "policy type"
     }
   })
 
-  .state('createpolicyname', {
-    url: "/policyname-create/{id:.*}/{model:.*}",
+  .state('createpolicytype', {
+    url: "/policytype-create/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
     controller: 'CreatePolicyTypeCtrl',
     params: {
       id:"",
-      model:"polity name"
+      model:"policy type"
     }
   })
 
-  .state('editpolicyname', {
-    url: "/policyname-edit/{id:.*}/{model:.*}",
+  .state('editpolicytype', {
+    url: "/policytype-edit/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
     controller: 'EditPolicyTypeCtrl',
     params: {
       id: "",
-      model: "policy name"
+      model: "policy type"
     }
   })
 

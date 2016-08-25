@@ -4,7 +4,7 @@
             <a title="Home">Insurance</a>
         </li>
         <li>
-            <a ui-sref="policyName-list" >Policy Name List</a>
+            <a ui-sref="policyType-list" >Policy Name List</a>
         </li>
     </ul>
 </div>
@@ -52,7 +52,7 @@
                             </thead>
                             <tbody ng-show="totalItems>0">
                                 <tr ng-repeat="data in modelList">
-                                    <td>{{data.policyName}}</td>
+                                    <td>{{data.policyType}}</td>
                                     <td>{{data.department}}</td>
                                     <td>
                                         <toggle-switch ng-model="data.status" class="switch-mini switch-success"></toggle-switch>
