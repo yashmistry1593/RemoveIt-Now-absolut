@@ -256,11 +256,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         fromReciept: false,
         toCertificate: false,
         fromCertificate: false,
+        toLicense: false,
+        fromLicense: false,
         birthDate: false,
         marriageDate: false,
         joiningDate: false,
         leavingDate: false
     };
+
 
     $scope.format = 'dd-MMMM-yyyy';
 
@@ -995,6 +998,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             fromReciept: false,
             toCertificate: false,
             fromCertificate: false,
+            toLicense: false,
+            fromLicense: false,
             birthDate: false,
             marriageDate: false,
             joiningDate: false,

@@ -43,14 +43,9 @@
                                         <div class="error-msg" ng-show="formName.name.$invalid && formName.name.$touched">Please Enter First Name</div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Department*</label>
-                                        <multiple-select name="department" required ng-model="formData.department" ng-name="name.department" api="searchDepartment" ng-create="departmentSave"></multiple-select>
-                                        <div class="error-msg" ng-show="formName.department.$invalid">Please Select Department</div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Posted At*</label>
-                                        <multiple-select name="postedAt" required ng-model="formData.postedAt" filter='{"company":"{{formData.company}}"}' ng-name="name.postedAt" api="searchOffice"></multiple-select>
-                                        <div class="error-msg" ng-show="formName.postedAt.$invalid">Please Select Current Posting</div>
+                                        <label>Branch*</label>
+                                        <multiple-select name="branch" required ng-model="formData.branch" filter='{"office":"{{formData.postedAt}}"}' ng-name="name.branch" api="searchBranch" ng-create="branchSave"></multiple-select>
+                                        <div class="error-msg" ng-show="formName.branch.$invalid">Please Select Branch</div>
                                     </div>
                                     <div class="form-group">
                                         <label>Grade*</label>
@@ -62,12 +57,12 @@
                                         <select type="text" name="houseColor" class="form-control" ng-model="formData.houseColor" required ng-options="houseColor for houseColor in houseColors"></select>
                                         <div class="error-msg" ng-show="formName.houseColor.$invalid && formName.houseColor.$touched">Please Select House Color</div>
                                     </div>
-                                    <!-- <div class="form-group">
-                                        <label>Access*</label>
-                                        <multiple-select name="access" required ng-model="formData.access" filter='{"access":"{{formData.access}}"}' ng-name="name.access" api="searchAccess" ng-create="accessSave"></multiple-select>
-                                        <div class="error-msg" ng-show="formName.city.$invalid">Please Select Access</div>
-                                    </div> -->
+                                    <div class="form-group">
+                                        <label>Upload Photo</label>
+                                        <upload-image ng-model="formData.photo"></upload-image>
+                                    </div>
                                 </div>
+
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Salutation*</label>
@@ -85,20 +80,20 @@
                                         <div class="error-msg" ng-show="formName.func.$invalid">Please Select Function</div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Branch*</label>
-                                        <multiple-select name="branch" required ng-model="formData.branch" filter='{"office":"{{formData.postedAt}}"}' ng-name="name.branch" api="searchBranch" ng-create="branchSave"></multiple-select>
-                                        <div class="error-msg" ng-show="formName.branch.$invalid">Please Select Branch</div>
+                                        <label>Posted at*</label>
+                                        <multiple-select name="postedAt" required ng-model="formData.postedAt" filter='{"company":"{{formData.company}}"}' ng-name="name.postedAt" api="searchOffice"></multiple-select>
+                                        <div class="error-msg" ng-show="formName.postedAt.$invalid">Please Select Current Posting</div>
                                     </div>
-
                                     <div class="form-group">
                                         <label>Employee Code*</label>
                                         <input type="text" name="employeeCode" class="form-control" ng-model="formData.employeeCode" required>
                                         <div class="error-msg" ng-show="formName.employeeCode.$invalid && formName.employeeCode.$touched">Please Enter Employee Code</div>
                                     </div>
-                                    <div class="form-group">
-                                        <label>Upload Photo</label>
-                                        <upload-image ng-model="formData.photo"></upload-image>
-                                    </div>
+                                    <!-- <div class="form-group">
+                                        <label>Access*</label>
+                                        <multiple-select name="access" required ng-model="formData.access" filter='{"access":"{{formData.access}}"}' ng-name="name.access" api="searchAccess" ng-create="accessSave"></multiple-select>
+                                        <div class="error-msg" ng-show="formName.city.$invalid">Please Select Access</div>
+                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -186,16 +181,12 @@
                             <label>Account Number</label>
                             <input type="text" class="form-control" ng-model="formData.accountNumber">
                         </div>
-                        <div class="form-group">
-                            <label>Branch Name</label>
-                            <input type="text" class="form-control" ng-model="formData.branchName">
-                        </div>
                     </div>
                     <div class="col-md-6">
-                        <div class="form-group">
-                            <label>Account Name</label>
-                            <input type="text" class="form-control" ng-model="formData.accountName">
-                        </div>
+                      <div class="form-group">
+                          <label>Branch Name</label>
+                          <input type="text" class="form-control" ng-model="formData.branchName">
+                      </div>
                         <div class="form-group">
                             <label>NEFT Code</label>
                             <input type="text" class="form-control" ng-model="formData.neftCode">
@@ -213,33 +204,6 @@
                             <h3>Address</h3>
                         </div>
                         <address-form ng-valid="companyForm" ng-model="formData"></address-form>
-                    </div>
-                </div>
-                <div class="widget">
-                    <div class="form-elements-sec">
-                        <div class="form-group">
-                            <div class="form-group">
-                                <div class="widget-title">
-                                    <h3>Surveyor</h3>
-                                </div>
-                                <div class="checkbox">
-                                    <label>
-                                        <input type="checkbox" ng-model="formData.isSurveyor">
-                                        Is Surveyor
-                                    </label>
-                                </div>
-                                <div class="form-group">
-                                    <label>Valid Upto*</label>
-                                    <input type="text" name="validUpto" class="form-control" ng-model="formData.validUpto" required>
-                                    <div class="error-msg" ng-show="formName.validUpto.$invalid && formName.validUpto.$touched">Please Enter Valid Upto</div>
-                                </div>
-                                <div class="form-group">
-                                    <label>License Number*</label>
-                                    <input type="text" name="licenseNumber" class="form-control" ng-model="formData.licence" required>
-                                    <div class="error-msg" ng-show="formName.licenseNumber.$invalid && formName.licenseNumber.$touched">Please Select License Number</div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>
@@ -350,84 +314,168 @@
         </div>
         <div class="widget">
             <div class="form-elements-sec">
-                <div class="widget-title">
-                    <h3>Documents</h3>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Upload IIISLA Receipt</label>
-                            <upload-image ng-model="formData.iiislaReciept" no-view></upload-image>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>From</label>
-                            <div class="input-group">
-                                <input type="text" name="from" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.CTCFrom" is-open="popup.fromReciept" datepicker-options="dateOptions" readonly/>
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default" ng-click="popup.fromReciept = true">
-                                        <i class="fa fa-calendar"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>To</label>
-                            <div class="input-group">
-                                <input type="text" name="to" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.CTCTo" is-open="popup.toReciept" datepicker-options="dateOptions" readonly/>
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default" ng-click="popup.toReciept = true">
-                                        <i class="fa fa-calendar"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>Upload IIISLA Certificate</label>
-                            <upload-image ng-model="formData.iiislaCertificate" no-view></upload-image>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>From</label>
-                            <div class="input-group">
-                                <input type="text" name="from" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.CTCFrom" is-open="popup.fromCertificate" datepicker-options="dateOptions" readonly/>
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default" ng-click="popup.fromCertificate = true">
-                                        <i class="fa fa-calendar"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-4">
-                        <div class="form-group">
-                            <label>To</label>
-                            <div class="input-group">
-                                <input type="text" name="to" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.CTCTo" is-open="popup.toCertificate" datepicker-options="dateOptions" readonly/>
-                                <span class="input-group-btn">
-                                    <button type="button" class="btn btn-default" ng-click="popup.toCertificate = true">
-                                        <i class="fa fa-calendar"></i>
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                 <div class="form-group">
-                    <label>Upload Documents</label>
-                    <upload-image ng-model="formData.EmployeeDocument" no-view></upload-image>
+                    <div class="form-group">
+                        <div class="widget-title">
+                          <toggle-switch on-label="Yes" off-label="No" ng-model="formData.isSurveyor" class="switch-mini switch-success"></toggle-switch>
+                            <h3>Surveyor</h3>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div ng-if="formData.isSurveyor">
+                          <div class="form-group">
+                              <label>License Number*</label>
+                              <input type="text" name="licenseNumber" class="form-control" ng-model="formData.licence" required>
+                              <div class="error-msg" ng-show="formName.licenseNumber.$invalid && formName.licenseNumber.$touched">Please Select License Number</div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-4">
+                                  <div class="form-group">
+                                      <label>Upload License Document</label>
+                                      <upload-image ng-model="formData.licenseDoc" no-view></upload-image>
+                                  </div>
+                              </div>
+                              <div class="col-md-4">
+                                  <div class="form-group">
+                                      <label>From</label>
+                                      <div class="input-group">
+                                          <input type="text" name="from" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.fromLicense" is-open="popup.fromLicense" datepicker-options="dateOptions" readonly/>
+                                          <span class="input-group-btn">
+                                              <button type="button" class="btn btn-default" ng-click="popup.fromLicense = true">
+                                                  <i class="fa fa-calendar"></i>
+                                              </button>
+                                          </span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-4">
+                                  <div class="form-group">
+                                      <label>To</label>
+                                      <div class="input-group">
+                                          <input type="text" name="to" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.toLicense" is-open="popup.toLicense" datepicker-options="dateOptions" readonly/>
+                                          <span class="input-group-btn">
+                                              <button type="button" class="btn btn-default" ng-click="popup.toLicense = true">
+                                                  <i class="fa fa-calendar"></i>
+                                              </button>
+                                          </span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-4">
+                                  <div class="form-group">
+                                      <label>Upload IIISLA Receipt</label>
+                                      <upload-image ng-model="formData.iiislaReciept" no-view></upload-image>
+                                  </div>
+                              </div>
+                              <div class="col-md-4">
+                                  <div class="form-group">
+                                      <label>From</label>
+                                      <div class="input-group">
+                                          <input type="text" name="from" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.fromReciept" is-open="popup.fromReciept" datepicker-options="dateOptions" readonly/>
+                                          <span class="input-group-btn">
+                                              <button type="button" class="btn btn-default" ng-click="popup.fromReciept = true">
+                                                  <i class="fa fa-calendar"></i>
+                                              </button>
+                                          </span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-4">
+                                  <div class="form-group">
+                                      <label>To</label>
+                                      <div class="input-group">
+                                          <input type="text" name="to" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.toReciept" is-open="popup.toReciept" datepicker-options="dateOptions" readonly/>
+                                          <span class="input-group-btn">
+                                              <button type="button" class="btn btn-default" ng-click="popup.toReciept = true">
+                                                  <i class="fa fa-calendar"></i>
+                                              </button>
+                                          </span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="row">
+                              <div class="col-md-4">
+                                  <div class="form-group">
+                                      <label>Upload IIISLA Certificate</label>
+                                      <upload-image ng-model="formData.iiislaCertificate" no-view></upload-image>
+                                  </div>
+                              </div>
+                              <div class="col-md-4">
+                                  <div class="form-group">
+                                      <label>From</label>
+                                      <div class="input-group">
+                                          <input type="text" name="from" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.CTCFrom" is-open="popup.fromCertificate" datepicker-options="dateOptions" readonly/>
+                                          <span class="input-group-btn">
+                                              <button type="button" class="btn btn-default" ng-click="popup.fromCertificate = true">
+                                                  <i class="fa fa-calendar"></i>
+                                              </button>
+                                          </span>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="col-md-4">
+                                  <div class="form-group">
+                                      <label>To</label>
+                                      <div class="input-group">
+                                          <input type="text" name="to" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.CTCTo" is-open="popup.toCertificate" datepicker-options="dateOptions" readonly/>
+                                          <span class="input-group-btn">
+                                              <button type="button" class="btn btn-default" ng-click="popup.toCertificate = true">
+                                                  <i class="fa fa-calendar"></i>
+                                              </button>
+                                          </span>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                        </div>
+                    </div>
                 </div>
-
             </div>
         </div>
+        <div class="widget">
+            <div class="form-elements-sec">
+                <div class="widget-title">
+                    <h3>Personal Documents</h3>
+                </div>
+                <div class="row">
+                  <div class="col-md-4">
+                  <div class="form-group">
+                      <label>Upload Documents</label>
+                      <upload-image ng-model="formData.EmployeeDocument" no-view></upload-image>
+                  </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="form-group">
+                          <label>From</label>
+                          <div class="input-group">
+                              <input type="text" name="from" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.CTCFrom" is-open="popup.fromCertificate" datepicker-options="dateOptions" readonly/>
+                              <span class="input-group-btn">
+                                  <button type="button" class="btn btn-default" ng-click="popup.fromCertificate = true">
+                                      <i class="fa fa-calendar"></i>
+                                  </button>
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="form-group">
+                          <label>To</label>
+                          <div class="input-group">
+                              <input type="text" name="to" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.CTCTo" is-open="popup.toCertificate" datepicker-options="dateOptions" readonly/>
+                              <span class="input-group-btn">
+                                  <button type="button" class="btn btn-default" ng-click="popup.toCertificate = true">
+                                      <i class="fa fa-calendar"></i>
+                                  </button>
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+
         <div class="clearfix"></div>
         <div class="text-center mt20">
             <button class="btn btn-default" type="submit" ng-disabled="formName.$invalid">Save</button>
