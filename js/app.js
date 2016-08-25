@@ -230,47 +230,65 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('activityType-list', {
-      url: "/activityType-list/{page:.*}/{keyword:.*}",
+      url: "/activityType-list/{page:.*}/{keyword:.*}/{model:.*}",
       templateUrl: "views/template.html",
-      controller: 'ActivityTypeCtrl',
+      controller: 'ModelViewCtrl',
       params: {
         page: "1",
-        keyword: ""
+        keyword: "",
+        model: "activity type"
       }
     })
 
   .state('createactivityType', {
-    url: "/activityType-create",
+    url: "/activityType-create/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'CreateActivityTypeCtrl'
+    controller: 'CreateModelCtrl',
+    params: {
+      id:"",
+      model: "activity type"
+    }
   })
 
   .state('editactivityType', {
-    url: "/activityType-edit/:id",
+    url: "/activityType-edit/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'EditActivityTypeCtrl'
+    controller: 'EditModelCtrl',
+    params: {
+      id:"",
+      model: "activity type"
+    }
   })
 
   .state('expense-list', {
-    url: "/expense-list/{page:.*}/{keyword:.*}",
+    url: "/expense-list/{page:.*}/{keyword:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'ExpenseCtrl',
+    controller: 'ModelViewCtrl',
     params: {
       page: "1",
-      keyword: ""
+      keyword: "",
+      model: "expense"
     }
   })
 
   .state('createexpense', {
-    url: "/expense-create",
+    url: "/expense-create/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'CreateExpenseCtrl'
+    controller: 'CreateModelCtrl',
+    params: {
+      id: "",
+      model: "expense"
+    }
   })
 
   .state('editexpense', {
-    url: "/expense-edit/:id",
+    url: "/expense-edit/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'EditExpenseCtrl'
+    controller: 'EditExpenseCtrl',
+    params: {
+      id: "",
+      model: "expense"
+    }
   })
 
   .state('department-list', {
