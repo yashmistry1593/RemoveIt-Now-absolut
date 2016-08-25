@@ -658,7 +658,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   .state('createemployee', {
     url: "/employee-create/{id:.*}/{model:.*}",
     templateUrl: "views/template.html",
-    controller: 'CreateModelCtrl',
+    controller: 'CreateEmployeeCtrl',
     params: {
       id: "",
       model: "employee"
@@ -668,7 +668,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
   .state('editemployee', {
     url: "/employee-edit/:id",
     templateUrl: "views/template.html",
-    controller: 'EditModelCtrl',
+    controller: 'EditEmployeeCtrl',
     params: {
       id:"",
       model:"employee"

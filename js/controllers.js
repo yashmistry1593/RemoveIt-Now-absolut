@@ -1008,45 +1008,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.format = 'dd-MMMM-yyyy';
 
-        NavigationService.getAllCompanies(function(data) {
-            $scope.allCompanies = data.data;
-            console.log('$scope.allCompanies', $scope.allCompanies);
-
-        });
-        NavigationService.getAllDepartments(function(data) {
-            $scope.allDepartments = data.data;
-
-        });
-        NavigationService.getAllCountries(function(data) {
-            $scope.allCountries = data.data;
-            console.log('$scope.allCountries', $scope.allCountries);
-
-        });
-        NavigationService.getAllStates(function(data) {
-            $scope.allStates = data.data;
-            console.log('$scope.allStates', $scope.allStates);
-
-        });
-        NavigationService.getAllCities(function(data) {
-            $scope.allCities = data.data;
-            console.log('$scope.allCities', $scope.allCities);
-
-        });
-        $scope.saveEmployee = function(formData) {
-
-            NavigationService.employeeSave($scope.formData, function(data) {
-                // console.log(formData.surveyor.valid_upto);
-                // console.log('$scope.formData',$scope.formData);
-                // console.log(data);
-                // $scope.formData.surveyor.valid_upto = new Date($scope.formData.surveyor.valid_upto);
+        $scope.saveModel = function(formData) {
+            NavigationService.modelSave("Employee", $scope.formData, function(data) {
                 if (data.value === true) {
                     $state.go('employee-list');
+                    toastr.success("Employee" + " " + formData.name + " created successfully.", "Employee" + " Created");
+                } else {
+                    toastr.error("Employee" + " creation failed.", "Employee" + " creation error");
                 }
-                // console.log('$scope.allCountriessave', $scope.data);
-
             });
-        }
-
+        };
     })
     .controller('EditEmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter) {
         //Used to name the .html file
@@ -1080,62 +1051,26 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             joiningDate: false,
             leavingDate: false
         };
-
-        NavigationService.getAllCompanies(function(data) {
-            $scope.allCompanies = data.data;
-            console.log('$scope.allCompanies', $scope.allCompanies);
-
-        });
-        NavigationService.getAllDepartments(function(data) {
-            $scope.allDepartments = data.data;
-
-        });
-        NavigationService.getAllCountries(function(data) {
-            $scope.allCountries = data.data;
-            console.log('$scope.allCountries', $scope.allCountries);
-
-        });
-        NavigationService.getAllStates(function(data) {
-            $scope.allStates = data.data;
-            console.log('$scope.allStates', $scope.allStates);
-
-        });
-        NavigationService.getAllCities(function(data) {
-            $scope.allCities = data.data;
-            console.log('$scope.allCities', $scope.allCities);
-
-        });
-        NavigationService.getOneEmployee($stateParams.id, function(data) {
+        NavigationService.getOneModel("Employee", $stateParams.id, function(data) {
             $scope.formData = data.data;
-            console.log(data.data);
-            console.log($filter('date')($scope.formData.surveyor.valid_upto));
-            if ($scope.formData && $scope.formData.surveyor && $scope.formData.surveyor.valid_upto) {
-                $scope.formData.surveyor.valid_upto = new Date($scope.formData.surveyor.valid_upto);
-            }
-            if ($scope.formData && $scope.formData.dob) {
-                $scope.formData.dob = new Date($scope.formData.dob);
-            }
-            if ($scope.formData && $scope.formData.marriageDate) {
-                $scope.formData.marriageDate = new Date($scope.formData.marriageDate);
-            }
-            if ($scope.formData && $scope.formData.joiningDate) {
-                $scope.formData.joiningDate = new Date($scope.formData.joiningDate);
-            }
-            if ($scope.formData && $scope.formData.leavingDate) {
-                $scope.formData.leavingDate = new Date($scope.formData.leavingDate);
+            if (data.data.city) {
+              $scope.formData.country = data.data.city.district.state.zone.country._id;
+              $scope.formData.zone = data.data.city.district.state.zone._id;
+              $scope.formData.state = data.data.city.district.state._id;
+              $scope.formData.district = data.data.city.district._id;
+              $scope.formData.city = data.data.city._id;
             }
         });
 
-        $scope.saveEmployee = function(formValid) {
-
-            //  if (formValid.$valid) {
-            //  $scope.formComplete = true;
-            NavigationService.employeeEditSave($scope.formData, function(data) {
-                if (data.value == true) {
+        $scope.saveModel = function(formValid) {
+            NavigationService.modelSave("Employee", $scope.formData, function(data) {
+                if (data.value === true) {
                     $state.go('employee-list');
+                    toastr.success("Employee" + $scope.formData.name + " edited successfully.", "Employee" + " Edited");
+                } else {
+                    toastr.error("Employee" + " edition failed.", "Employee" + " editing error");
                 }
             });
-            //  }
         };
     })
 

@@ -57,9 +57,9 @@
                             <tbody ng-show="totalItems>0">
                                 <tr ng-repeat="data in modelList">
                                     <!-- <td>$index</td> -->
-                                    <td>{{data.firstName}}</td>
-                                    <td>{{data.contact.mobile}}</td>
-                                    <td class="text-lower">{{data.contact.email}}</td>
+                                    <td>{{data.firstName || "-"}}</td>
+                                    <td>{{data.contact.mobile || "-"}}</td>
+                                    <td class="text-lower">{{data.contact.email || "-"}}</td>
                                     <td>
                                         <a class="btn btn-blue" ui-sref="editemployee({id:data._id})">
                                             <i class="fa fa-pencil"></i>
