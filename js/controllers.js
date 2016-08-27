@@ -967,7 +967,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('CreateEmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $uibModal) {
+    .controller('CreateEmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $uibModal, $stateParams, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("employee-detail");
         $scope.menutitle = NavigationService.makeactive("Employee");
@@ -1103,6 +1103,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 
         $scope.saveModel = function(formData) {
+          console.log(formData);
             NavigationService.modelSave("Employee", $scope.formData, function(data) {
                 if (data.value === true) {
                     $state.go('employee-list');
@@ -1113,14 +1114,22 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
     })
-    .controller('EditEmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter, $uibModal) {
+    .controller('EditEmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter, $uibModal, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("employee-detail");
         $scope.menutitle = NavigationService.makeactive("Employee");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
+        $scope.formData = {};
+        $scope.formData.personalDocument = [];
+        $scope.formData.licenseDocument = [];
+        $scope.formData.IIISLACertificate = [];
+        $scope.formData.IIISLAReciept = [];
+        $scope.formData.CTCDetails = [];
+        $scope.uploadMsg = "";
+        $scope.modalData = {};
         $scope.header = {
-            "name": "Edit Employee"
+            "name": "Create Employee"
         };
         $scope.userStatus = [{
             "name": "Active",
@@ -1129,7 +1138,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Inactive",
             "value": false
         }];
-
         $scope.salutations = ["Mr.", "Mrs.", "Ms.", "Dr."];
         $scope.houseColors = ["Red", "Green", "Blue", "Yellow"];
 
@@ -1140,19 +1148,116 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.popup = {
             to: false,
             from: false,
+            toReciept: false,
+            fromReciept: false,
+            toCertificate: false,
+            fromCertificate: false,
+            toLicense: false,
+            fromLicense: false,
             birthDate: false,
             marriageDate: false,
             joiningDate: false,
             leavingDate: false
         };
 
-        $scope.addDocument = function() {
-            var modalInstance = $uibModal.open({
-                scope: $scope,
-                templateUrl: 'views/modal/modal-document.html',
-                size: 'lg'
-            });
+        $scope.format = 'dd-MMMM-yyyy';
+        $scope.modalData = {};
+        $scope.holdObject = '';
+        $scope.modalIndex = 0;
+
+        $scope.addModal = function(filename, index, holdobj, data, current){
+
+          if (index !== "") {
+            $scope.modalData = data;
+            $scope.modalIndex = index;
+          }else {
+            $scope.modalData = {};
+            if (current.length>0) {
+              console.log("greater than 0");
+              if (holdobj === 'CTCDetails') {
+                $scope.modalData.CTCFrom = new Date(current[current.length-1].CTCTo);
+              }else {
+                $scope.modalData.from = new Date(current[current.length-1].to);
+              }
+            }
+            $scope.modalIndex = "";
+          }
+          $scope.holdObject = holdobj;
+          var modalInstance = $uibModal.open({
+              scope: $scope,
+              templateUrl: 'views/modal/'+filename+'.html',
+              size: 'lg'
+          });
         };
+
+        $scope.addElements = function(data){
+          console.log(data);
+          console.log($scope.holdObject);
+          switch ($scope.holdObject) {
+            case 'personalDocument':
+                if ($scope.modalIndex !== "") {
+                  $scope.formData.personalDocument[$scope.modal] = data;
+                }else{
+                  $scope.formData.personalDocument.push(data);
+                }
+              break;
+            case 'licenseDocument':
+                if ($scope.modalIndex !== "") {
+                  $scope.formData.licenseDocument[$scope.modal] = data;
+                }else{
+                  $scope.formData.licenseDocument.push(data);
+                }
+              break;
+            case 'IIISLACertificate':
+                if ($scope.modalIndex !== "") {
+                  $scope.formData.IIISLACertificate[$scope.modal] = data;
+                }else{
+                  $scope.formData.IIISLACertificate.push(data);
+                }
+              break;
+            case 'IIISLAReciept':
+                if ($scope.modalIndex !== "") {
+                  $scope.formData.IIISLAReciept[$scope.modal] = data;
+                }else{
+                  $scope.formData.IIISLAReciept.push(data);
+                }
+              break;
+            case 'CTCDetails':
+                if ($scope.modalIndex !== "") {
+                  $scope.formData.CTCDetails[$scope.modal] = data;
+                }else{
+                  $scope.formData.CTCDetails.push(data);
+                }
+              break;
+            default:
+
+          }
+        };
+        $scope.editElements = function(elemObject, data){
+
+        };
+        $scope.deleteElements = function(index, name){
+          switch (name) {
+            case 'personalDocument':
+                  $scope.formData.personalDocument.splice(index,1);
+              break;
+            case 'licenseDocument':
+                  $scope.formData.licenseDocument.splice(index,1);
+              break;
+            case 'IIISLACertificate':
+                  $scope.formData.IIISLACertificate.splice(index,1);
+              break;
+            case 'IIISLAReciept':
+                  $scope.formData.IIISLAReciept.splice(index,1);
+              break;
+            case 'CTCDetails':
+                  $scope.formData.CTCDetails.splice(index,1);
+              break;
+            default:
+
+          }
+        };
+
 
         NavigationService.getOneModel("Employee", $stateParams.id, function(data) {
             $scope.formData = data.data;
@@ -1162,6 +1267,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.formData.state = data.data.city.district.state._id;
                 $scope.formData.district = data.data.city.district._id;
                 $scope.formData.city = data.data.city._id;
+            }
+            if (data.data.birthDate) {
+              $scope.formData.birthDate = new Date(data.data.birthDate);
+            }
+            if (data.data.joiningDate) {
+              $scope.formData.joiningDate = new Date(data.data.joiningDate);
+            }
+            if (data.data.marriageDate) {
+              $scope.formData.marriageDate = new Date(data.data.marriageDate);
+            }
+            if (data.data.leavingDate) {
+              $scope.formData.leavingDate = new Date(data.data.leavingDate);
             }
         });
 
@@ -2280,8 +2397,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('CreatePolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("policyName-detail");
-        $scope.menutitle = NavigationService.makeactive("Policy Name");
+        $scope.template = TemplateService.changecontent("policyType-detail");
+        $scope.menutitle = NavigationService.makeactive("Policy Type");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.userStatus = [{
@@ -2292,7 +2409,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "value": false
         }];
         $scope.header = {
-            "name": "Create Policy Name"
+            "name": "Create Policy Type"
         };
         $scope.formData = {};
         $scope.insurers = ['Tushar', 'Chintan', 'Mahesh'];
@@ -2311,8 +2428,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     })
     .controller('EditPolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
         //Used to name the .html file
-        $scope.template = TemplateService.changecontent("policyName-detail");
-        $scope.menutitle = NavigationService.makeactive("Policy Name");
+        $scope.template = TemplateService.changecontent("policyType-detail");
+        $scope.menutitle = NavigationService.makeactive("Policy Type");
         TemplateService.title = $scope.menutitle;
         $scope.navigation = NavigationService.getnav();
         $scope.userStatus = [{
@@ -2323,7 +2440,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "value": false
         }];
         $scope.header = {
-            "name": "Edit Policy Name"
+            "name": "Edit Policy Type"
         };
         $scope.insurers = ['Tushar', 'Chintan', 'Mahesh'];
 
@@ -4035,6 +4152,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.formIndex = index;
             $scope.buttonValue = "Edit";
             $scope.modalData = $scope.formData.officers[index];
+            $scope.modalData.birthDate = new Date($scope.formData.officers[index].birthDate);
             $scope.addOfficer();
         }
         $scope.deleteOfficer = function(index) {

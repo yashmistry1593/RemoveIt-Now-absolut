@@ -13,18 +13,18 @@
                 <div class="form-group">
                     <label>File Name*</label>
                     <input type="text" name="name" ng-model="modalData.name" class="form-control" required>
-                    <div class="error-msg" ng-show="modalData.name.$invalid && modalData.name.$touched">Please Enter File Name</div>
+                    <div class="error-msg" ng-show="modalForm.name.$invalid && modalForm.name.$touched">Please Enter File Name</div>
                 </div>
                 <div class="form-group">
-                    <label>Upload Document*</label>{{modalData.image}}
-                    <upload-image ng-model="modalData.image" no-view></upload-image>
-                    <div class="error-msg" ng-show="modalData.image.$invalid && modalData.image.$touched">Please Upload Document</div>
+                    <label>Upload Document*</label>
+                    <upload-image ng-model="modalData.image" no-view required></upload-image>
+                    <div class="error-msg" ng-show="modalForm.image.$invalid && modalForm.image.$touched">Please Upload Document</div>
                 </div>
             </div>
         </div>
 
         <div class="text-center">
-          <button class="btn btn-primary" type="submit" ng-disabled="modalData.$invalid">Upload File</button>
+          <button class="btn btn-primary" type="submit" ng-disabled="modalForm.$invalid">Upload File</button>
         </div>
     </div>
 </form>

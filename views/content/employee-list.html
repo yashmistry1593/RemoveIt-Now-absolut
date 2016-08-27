@@ -30,7 +30,7 @@
                     <div class="widget-title">
                         <div class="pull-right">
                             <form class="search-form mr-form">
-                                <input type="text" placeholder="Search Here..."/>
+                              <input type="text" ng-change="showAll(true)" placeholder="Search Here..." ng-model="search.keyword"/>
                                 <button type="submit">
                                     <i class="fa fa-search"></i>
                                 </button>
@@ -58,8 +58,8 @@
                                 <tr ng-repeat="data in modelList">
                                     <!-- <td>$index</td> -->
                                     <td>{{data.firstName || "-"}}</td>
-                                    <td>{{data.contact.mobile || "-"}}</td>
-                                    <td class="text-lower">{{data.contact.email || "-"}}</td>
+                                    <td>{{data.mobile || "-"}}</td>
+                                    <td>{{data.email || "-"}}</td>
                                     <td>
                                         <a class="btn btn-blue" ui-sref="editemployee({id:data._id})">
                                             <i class="fa fa-pencil"></i>

@@ -108,7 +108,7 @@
                     <div class="form-elements-sec">
                         <div class="widget-title">
                             <h3>CTC Details</h3>
-                            <a class="btn btn-success pull-right" ng-click="addModal('modal-file','','CTCDetails')">Create</a>
+                            <a class="btn btn-success pull-right" ng-click="addModal('modal-file','','CTCDetails','',formData.CTCDetails)">Create</a>
                         </div>
                         <div class="table-responsive" ng-if="formData.CTCDetails.length>0">
                             <table class="table">
@@ -297,7 +297,7 @@
         <div class="widget">
             <div class="form-elements-sec">
                 <div class="widget-title">
-                  <a class="btn btn-success pull-right" ng-click="addModal('modal-document','','personalDocument')">Upload Document</a>
+                  <a class="btn btn-success pull-right" ng-click="addModal('modal-document','','personalDocument','',formData.personalDocument)">Upload Document</a>
                     <h3>Personal Documents</h3>
                 </div>
                 <div class="clearfix"></div>
@@ -335,7 +335,7 @@
                 <div class="widget-title">
                     <h3>Surveyor</h3>
                     <toggle-switch on-label="Yes" off-label="No" ng-model="formData.isSurveyor" class="switch-mini switch-success"></toggle-switch>
-                    <a class="btn btn-success pull-right" ng-if="formData.isSurveyor" ng-click="addModal('modal-file','','licenseDocument')">Upload Now</a>
+                    <a class="btn btn-success pull-right" ng-if="formData.isSurveyor" ng-click="addModal('modal-file','','licenseDocument','',formData.licenseDocument)">Upload Now</a>
                 </div>
                 <div class="clearfix"></div>
                 <div ng-if="formData.isSurveyor">
@@ -385,7 +385,7 @@
         <div class="widget" ng-if="formData.isSurveyor">
             <div class="form-elements-sec">
                 <div class="widget-title">
-                  <a class="btn btn-success pull-right" ng-click="addModal('modal-file','','IIISLACertificate')">Upload Now</a>
+                  <a class="btn btn-success pull-right" ng-click="addModal('modal-file','','IIISLACertificate','',formData.IIISLACertificate)">Upload Now</a>
                   <h3>IIISLA Certificate</h3>
                 </div>
 
@@ -423,7 +423,7 @@
         <div class="widget" ng-if="formData.isSurveyor">
             <div class="form-elements-sec">
                 <div class="widget-title">
-                  <a class="btn btn-success pull-right"  ng-click="addModal('modal-file','','IIISLAReciept')">Upload Now</a>
+                  <a class="btn btn-success pull-right"  ng-click="addModal('modal-file','','IIISLAReciept','',formData.IIISLAReciept)">Upload Now</a>
                   <h3>IIISLA Reciept</h3>
                 </div>
                 <div class="table-responsive" ng-if="formData.IIISLAReciept.length>0">
