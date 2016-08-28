@@ -4230,15 +4230,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             };
             NavigationService[$scope.api](dataSend, ++i, function(data) {
                 if (data.value) {
+                  if (data.data.results) {
                     $scope.list = data.data.results;
+                  }else {
+                    $scope.list = data.data;
+                  }
+
 
                     if ($scope.search.modelData) {
                         $scope.showCreate = true;
                         _.each($scope.list, function(n) {
+                          if (n.name) {
                             if (_.lowerCase(n.name) == _.lowerCase($scope.search.modelData)) {
                                 $scope.showCreate = false;
                                 return 0;
                             }
+                          }else{
+                              if (_.lowerCase(n.officeCode) == _.lowerCase($scope.search.modelData)) {
+                                $scope.showCreate = false;
+                                return 0;
+                            }
+                          }
+
                         });
                     } else {
                         $scope.showCreate = false;
@@ -4246,7 +4259,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     }
                     if (insertFirst) {
                         if ($scope.list[0] && $scope.list[0]._id) {
+                          if ($scope.list[0].name) {
                             $scope.sendData($scope.list[0]._id, $scope.list[0].name);
+                          }else{
+                            $scope.sendData($scope.list[0]._id, $scope.list[0].officeCode);
+                          }
                         } else {
                             console.log("Making this happen");
                             $scope.sendData("", "");

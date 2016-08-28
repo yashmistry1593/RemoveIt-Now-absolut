@@ -231,6 +231,26 @@ var navigationservice = angular.module('navigationservice', [])
                 callback(data, i);
             });
         },
+        searchCustomer: function(formData, i, callback) {
+            $http.post(adminurl + 'Customer/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
+        searchInsured: function(formData, i, callback) {
+            $http.post(adminurl + 'CustomerCompany/getInsured', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
+        searchInsurer: function(formData, i, callback) {
+            $http.post(adminurl + 'CustomerCompany/getInsurer', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
+        searchPolicyType: function(formData, i, callback) {
+            $http.post(adminurl + 'PolicyType/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
         searchCountry: function(formData, i, callback) {
             $http.post(adminurl + 'country/search', formData).success(function(data) {
                 callback(data, i);
