@@ -2593,10 +2593,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.showAllPolicyDocs();
 
             });
-        }
+        };
 
     })
-    .controller('CreatePolicyDocCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('CreatePolicyDocCtrl', function($scope, $uibModal,TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("policyDoc-detail");
         $scope.menutitle = NavigationService.makeactive("Policy Document");
@@ -2617,13 +2617,23 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             NavigationService.policydocSave($scope.formData, function(data) {
                 console.log(data);
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('policydoc-list');
                 }
                 // console.log('$scope.allCountriessave', $scope.data);
 
             });
-        }
+        };
+
+
+        $scope.addDocument = function() {
+            var modalInstance = $uibModal.open({
+                scope: $scope,
+                templateUrl: 'views/modal/modal-policydoc.html',
+                size: 'lg'
+            });
+        };
+
         NavigationService.getAllDepartments(function(data) {
             $scope.allDepartments = data.data;
 
@@ -3099,16 +3109,18 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             };
             return item;
         };
-        $scope.refreshNature = function(){
-        NavigationService.getNature(function(data) {
-            $scope.natureOfLosses = data.data.results;
-        });
-      };
-      $scope.refreshNature();
+        $scope.refreshNature = function() {
+            NavigationService.getNature(function(data) {
+                $scope.natureOfLosses = data.data.results;
+            });
+        };
+        $scope.refreshNature();
         $scope.clicked = function(select) {
             console.log("fsdfasd");
-            console.log(select[select.length-1].name);
-            NavigationService.saveNature({'name':select[select.length-1].name}, function(data){
+            console.log(select[select.length - 1].name);
+            NavigationService.saveNature({
+                'name': select[select.length - 1].name
+            }, function(data) {
 
             });
         };
@@ -3148,14 +3160,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             };
             return item;
         };
-        $scope.refreshNature = function(){
-        NavigationService.getNature(function(data) {
-            $scope.natureOfLosses = data.data.results;
-        });
-      };
-      $scope.refreshNature();
+        $scope.refreshNature = function() {
+            NavigationService.getNature(function(data) {
+                $scope.natureOfLosses = data.data.results;
+            });
+        };
+        $scope.refreshNature();
         $scope.clicked = function(select) {
-            NavigationService.saveNature({'name':select[select.length-1].name}, function(data){
+            NavigationService.saveNature({
+                'name': select[select.length - 1].name
+            }, function(data) {
 
             });
         };

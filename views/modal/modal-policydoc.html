@@ -1,0 +1,99 @@
+<form name="modalForm" ng-submit="createOfficer(modalData);$dismiss()">
+    <div class="modal-header blue-bg">
+        <div class="pull-right">
+            <a class="btn btn-clear" ng-click="$dismiss()">
+                <i class="ln-cross"></i>
+            </a>
+        </div>
+        <h5 class="modal-title">Create New Officer</h5>
+    </div>
+    <div class="modal-body">
+
+      <div class="sec">
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label>Policy Name*</label>
+                      <input type="text" name="name" ng-model="formData.name" class="form-control" required>
+                      <div class="error-msg" ng-show="formName.name.$invalid && formName.name.$touched">Please Enter Policy Name</div>
+                  </div>
+                  <div class="form-group">
+                      <label>Department*</label>
+                      <multiple-select name="department" required ng-model="formData.department" ng-name="name.zone" api="searchDepartment" ng-create="departmentSave"></multiple-select>
+                      <div class="error-msg" ng-show="formName.department.$invalid">Please Select Department</div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label>Policy No.*</label>
+                      <input type="text" name="policyNo" ng-model="formData.policyNo" class="form-control" required>
+                      <div class="error-msg" ng-show="formName.policyNo.$invalid && formName.policyNo.$touched">Please Enter Policy Number</div>
+                  </div>
+                  <div class="form-group">
+                      <label>Policy Type*</label>
+                      <input type="text" name="policyType" ng-model="formData.policyType" class="form-control" required>
+                      <div class="error-msg" ng-show="formName.policyType.$invalid && formName.policyType.$touched">Please Select Policy Type</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="sec">
+          <div class="row">
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label>Insurer Company*</label>
+                      <multiple-select name="company" required ng-model="formData.company" filter='{"department":"{{formData.department}}"}' ng-name="name.zone" api="searchDepartment" ng-create="departmentSave"></multiple-select>
+                      <div class="error-msg" ng-show="formName.company.$invalid">Please Select Company</div>
+                  </div>
+              </div>
+              <div class="col-md-6">
+                  <div class="form-group">
+                      <label>Insurer Office*</label>
+                      <multiple-select name="insurerOffice" required ng-model="formData.insurerOffice" filter='{"department":"{{formData.department}}"}' ng-name="name.zone" api="searchDepartment" ng-create="departmentSave"></multiple-select>
+                      <div class="error-msg" ng-show="formName.insurerOffice.$invalid">Please Select Insurer Office</div>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="sec">
+          <div class="form-group">
+              <div class="widget-title">
+                  <h3>Policy Period</h3>
+              </div>
+              <div class="row">
+                  <div class="col-md-6">
+                      <label>From</label>
+                      <div class="input-group">
+                          <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.policyPeriod.from" is-open="popup1.opened" datepicker-options="dateOptions" readonly/>
+                          <span class="input-group-btn">
+                              <button type="button" class="btn btn-default" ng-click="dateFrom()">
+                                  <i class="fa fa-calendar"></i>
+                              </button>
+                          </span>
+                      </div>
+                  </div>
+                  <div class="col-md-6">
+                      <label>To</label>
+                      <div class="input-group">
+                          <input type="text" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.policyPeriod.to" is-open="popup2.opened" datepicker-options="dateOptions" readonly/>
+                          <span class="input-group-btn">
+                              <button type="button" class="btn btn-default" ng-click="dateTo()">
+                                  <i class="fa fa-calendar"></i>
+                              </button>
+                          </span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="form-group">
+              <label>Upload Document</label>
+              <upload-image ng-model="formData.document"></upload-image>
+          </div>
+      </div>
+
+
+        <div class="text-center">
+            <button class="btn btn-primary" type="submit" ng-disabled="modalForm.$invalid">{{buttonValue}}SAVE</button>
+        </div>
+    </div>
+</form>
