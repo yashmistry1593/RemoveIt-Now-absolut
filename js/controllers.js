@@ -1016,94 +1016,94 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.holdObject = '';
         $scope.modalIndex = 0;
 
-        $scope.addModal = function(filename, index, holdobj, data){
-          if (index !== "") {
-            $scope.modalData = data;
-            $scope.modalIndex = index;
-          }else {
-            $scope.modalData = {};
-            $scope.modalIndex = "";
-          }
-          $scope.holdObject = holdobj;
-          console.log($scope.holdObject);
-          var modalInstance = $uibModal.open({
-              scope: $scope,
-              templateUrl: 'views/modal/'+filename+'.html',
-              size: 'lg'
-          });
+        $scope.addModal = function(filename, index, holdobj, data) {
+            if (index !== "") {
+                $scope.modalData = data;
+                $scope.modalIndex = index;
+            } else {
+                $scope.modalData = {};
+                $scope.modalIndex = "";
+            }
+            $scope.holdObject = holdobj;
+            console.log($scope.holdObject);
+            var modalInstance = $uibModal.open({
+                scope: $scope,
+                templateUrl: 'views/modal/' + filename + '.html',
+                size: 'lg'
+            });
         };
 
-        $scope.addElements = function(data){
-          console.log(data);
-          console.log($scope.holdObject);
-          switch ($scope.holdObject) {
-            case 'personalDocument':
-                if ($scope.modalIndex !== "") {
-                  $scope.formData.personalDocument[$scope.modal] = data;
-                }else{
-                  $scope.formData.personalDocument.push(data);
-                }
-              break;
-            case 'licenseDocument':
-                if ($scope.modalIndex !== "") {
-                  $scope.formData.licenseDocument[$scope.modal] = data;
-                }else{
-                  $scope.formData.licenseDocument.push(data);
-                }
-              break;
-            case 'IIISLACertificate':
-                if ($scope.modalIndex !== "") {
-                  $scope.formData.IIISLACertificate[$scope.modal] = data;
-                }else{
-                  $scope.formData.IIISLACertificate.push(data);
-                }
-              break;
-            case 'IIISLAReciept':
-                if ($scope.modalIndex !== "") {
-                  $scope.formData.IIISLAReciept[$scope.modal] = data;
-                }else{
-                  $scope.formData.IIISLAReciept.push(data);
-                }
-              break;
-            case 'CTCDetails':
-                if ($scope.modalIndex !== "") {
-                  $scope.formData.CTCDetails[$scope.modal] = data;
-                }else{
-                  $scope.formData.CTCDetails.push(data);
-                }
-              break;
-            default:
+        $scope.addElements = function(data) {
+            console.log(data);
+            console.log($scope.holdObject);
+            switch ($scope.holdObject) {
+                case 'personalDocument':
+                    if ($scope.modalIndex !== "") {
+                        $scope.formData.personalDocument[$scope.modal] = data;
+                    } else {
+                        $scope.formData.personalDocument.push(data);
+                    }
+                    break;
+                case 'licenseDocument':
+                    if ($scope.modalIndex !== "") {
+                        $scope.formData.licenseDocument[$scope.modal] = data;
+                    } else {
+                        $scope.formData.licenseDocument.push(data);
+                    }
+                    break;
+                case 'IIISLACertificate':
+                    if ($scope.modalIndex !== "") {
+                        $scope.formData.IIISLACertificate[$scope.modal] = data;
+                    } else {
+                        $scope.formData.IIISLACertificate.push(data);
+                    }
+                    break;
+                case 'IIISLAReciept':
+                    if ($scope.modalIndex !== "") {
+                        $scope.formData.IIISLAReciept[$scope.modal] = data;
+                    } else {
+                        $scope.formData.IIISLAReciept.push(data);
+                    }
+                    break;
+                case 'CTCDetails':
+                    if ($scope.modalIndex !== "") {
+                        $scope.formData.CTCDetails[$scope.modal] = data;
+                    } else {
+                        $scope.formData.CTCDetails.push(data);
+                    }
+                    break;
+                default:
 
-          }
+            }
         };
-        $scope.editElements = function(elemObject, data){
+        $scope.editElements = function(elemObject, data) {
 
         };
-        $scope.deleteElements = function(index, name){
-          switch (name) {
-            case 'personalDocument':
-                  $scope.formData.personalDocument.splice(index,1);
-              break;
-            case 'licenseDocument':
-                  $scope.formData.licenseDocument.splice(index,1);
-              break;
-            case 'IIISLACertificate':
-                  $scope.formData.IIISLACertificate.splice(index,1);
-              break;
-            case 'IIISLAReciept':
-                  $scope.formData.IIISLAReciept.splice(index,1);
-              break;
-            case 'CTCDetails':
-                  $scope.formData.CTCDetails.splice(index,1);
-              break;
-            default:
+        $scope.deleteElements = function(index, name) {
+            switch (name) {
+                case 'personalDocument':
+                    $scope.formData.personalDocument.splice(index, 1);
+                    break;
+                case 'licenseDocument':
+                    $scope.formData.licenseDocument.splice(index, 1);
+                    break;
+                case 'IIISLACertificate':
+                    $scope.formData.IIISLACertificate.splice(index, 1);
+                    break;
+                case 'IIISLAReciept':
+                    $scope.formData.IIISLAReciept.splice(index, 1);
+                    break;
+                case 'CTCDetails':
+                    $scope.formData.CTCDetails.splice(index, 1);
+                    break;
+                default:
 
-          }
+            }
         };
 
 
         $scope.saveModel = function(formData) {
-          console.log(formData);
+            console.log(formData);
             NavigationService.modelSave("Employee", $scope.formData, function(data) {
                 if (data.value === true) {
                     $state.go('employee-list');
@@ -1165,97 +1165,97 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.holdObject = '';
         $scope.modalIndex = 0;
 
-        $scope.addModal = function(filename, index, holdobj, data, current){
+        $scope.addModal = function(filename, index, holdobj, data, current) {
 
-          if (index !== "") {
-            $scope.modalData = data;
-            $scope.modalIndex = index;
-          }else {
-            $scope.modalData = {};
-            if (current.length>0) {
-              console.log("greater than 0");
-              if (holdobj === 'CTCDetails') {
-                $scope.modalData.CTCFrom = new Date(current[current.length-1].CTCTo);
-              }else {
-                $scope.modalData.from = new Date(current[current.length-1].to);
-              }
+            if (index !== "") {
+                $scope.modalData = data;
+                $scope.modalIndex = index;
+            } else {
+                $scope.modalData = {};
+                if (current.length > 0) {
+                    console.log("greater than 0");
+                    if (holdobj === 'CTCDetails') {
+                        $scope.modalData.CTCFrom = new Date(current[current.length - 1].CTCTo);
+                    } else {
+                        $scope.modalData.from = new Date(current[current.length - 1].to);
+                    }
+                }
+                $scope.modalIndex = "";
             }
-            $scope.modalIndex = "";
-          }
-          $scope.holdObject = holdobj;
-          var modalInstance = $uibModal.open({
-              scope: $scope,
-              templateUrl: 'views/modal/'+filename+'.html',
-              size: 'lg'
-          });
+            $scope.holdObject = holdobj;
+            var modalInstance = $uibModal.open({
+                scope: $scope,
+                templateUrl: 'views/modal/' + filename + '.html',
+                size: 'lg'
+            });
         };
 
-        $scope.addElements = function(data){
-          console.log(data);
-          console.log($scope.holdObject);
-          switch ($scope.holdObject) {
-            case 'personalDocument':
-                if ($scope.modalIndex !== "") {
-                  $scope.formData.personalDocument[$scope.modal] = data;
-                }else{
-                  $scope.formData.personalDocument.push(data);
-                }
-              break;
-            case 'licenseDocument':
-                if ($scope.modalIndex !== "") {
-                  $scope.formData.licenseDocument[$scope.modal] = data;
-                }else{
-                  $scope.formData.licenseDocument.push(data);
-                }
-              break;
-            case 'IIISLACertificate':
-                if ($scope.modalIndex !== "") {
-                  $scope.formData.IIISLACertificate[$scope.modal] = data;
-                }else{
-                  $scope.formData.IIISLACertificate.push(data);
-                }
-              break;
-            case 'IIISLAReciept':
-                if ($scope.modalIndex !== "") {
-                  $scope.formData.IIISLAReciept[$scope.modal] = data;
-                }else{
-                  $scope.formData.IIISLAReciept.push(data);
-                }
-              break;
-            case 'CTCDetails':
-                if ($scope.modalIndex !== "") {
-                  $scope.formData.CTCDetails[$scope.modal] = data;
-                }else{
-                  $scope.formData.CTCDetails.push(data);
-                }
-              break;
-            default:
+        $scope.addElements = function(data) {
+            console.log(data);
+            console.log($scope.holdObject);
+            switch ($scope.holdObject) {
+                case 'personalDocument':
+                    if ($scope.modalIndex !== "") {
+                        $scope.formData.personalDocument[$scope.modal] = data;
+                    } else {
+                        $scope.formData.personalDocument.push(data);
+                    }
+                    break;
+                case 'licenseDocument':
+                    if ($scope.modalIndex !== "") {
+                        $scope.formData.licenseDocument[$scope.modal] = data;
+                    } else {
+                        $scope.formData.licenseDocument.push(data);
+                    }
+                    break;
+                case 'IIISLACertificate':
+                    if ($scope.modalIndex !== "") {
+                        $scope.formData.IIISLACertificate[$scope.modal] = data;
+                    } else {
+                        $scope.formData.IIISLACertificate.push(data);
+                    }
+                    break;
+                case 'IIISLAReciept':
+                    if ($scope.modalIndex !== "") {
+                        $scope.formData.IIISLAReciept[$scope.modal] = data;
+                    } else {
+                        $scope.formData.IIISLAReciept.push(data);
+                    }
+                    break;
+                case 'CTCDetails':
+                    if ($scope.modalIndex !== "") {
+                        $scope.formData.CTCDetails[$scope.modal] = data;
+                    } else {
+                        $scope.formData.CTCDetails.push(data);
+                    }
+                    break;
+                default:
 
-          }
+            }
         };
-        $scope.editElements = function(elemObject, data){
+        $scope.editElements = function(elemObject, data) {
 
         };
-        $scope.deleteElements = function(index, name){
-          switch (name) {
-            case 'personalDocument':
-                  $scope.formData.personalDocument.splice(index,1);
-              break;
-            case 'licenseDocument':
-                  $scope.formData.licenseDocument.splice(index,1);
-              break;
-            case 'IIISLACertificate':
-                  $scope.formData.IIISLACertificate.splice(index,1);
-              break;
-            case 'IIISLAReciept':
-                  $scope.formData.IIISLAReciept.splice(index,1);
-              break;
-            case 'CTCDetails':
-                  $scope.formData.CTCDetails.splice(index,1);
-              break;
-            default:
+        $scope.deleteElements = function(index, name) {
+            switch (name) {
+                case 'personalDocument':
+                    $scope.formData.personalDocument.splice(index, 1);
+                    break;
+                case 'licenseDocument':
+                    $scope.formData.licenseDocument.splice(index, 1);
+                    break;
+                case 'IIISLACertificate':
+                    $scope.formData.IIISLACertificate.splice(index, 1);
+                    break;
+                case 'IIISLAReciept':
+                    $scope.formData.IIISLAReciept.splice(index, 1);
+                    break;
+                case 'CTCDetails':
+                    $scope.formData.CTCDetails.splice(index, 1);
+                    break;
+                default:
 
-          }
+            }
         };
 
 
@@ -1269,16 +1269,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.formData.city = data.data.city._id;
             }
             if (data.data.birthDate) {
-              $scope.formData.birthDate = new Date(data.data.birthDate);
+                $scope.formData.birthDate = new Date(data.data.birthDate);
             }
             if (data.data.joiningDate) {
-              $scope.formData.joiningDate = new Date(data.data.joiningDate);
+                $scope.formData.joiningDate = new Date(data.data.joiningDate);
             }
             if (data.data.marriageDate) {
-              $scope.formData.marriageDate = new Date(data.data.marriageDate);
+                $scope.formData.marriageDate = new Date(data.data.marriageDate);
             }
             if (data.data.leavingDate) {
-              $scope.formData.leavingDate = new Date(data.data.leavingDate);
+                $scope.formData.leavingDate = new Date(data.data.leavingDate);
             }
         });
 
@@ -2414,16 +2414,34 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.formData = {};
         $scope.insurers = ['Tushar', 'Chintan', 'Mahesh'];
 
+        NavigationService.getInsurer(function(data) {
+            $scope.insurers = data.data;
+        });
+
+        $scope.democlick = function(new_value) {
+            var new_object = {};
+            new_object.name = new_value;
+            console.log(new_object);
+            return new_object;
+        };
+
+
         $scope.saveModel = function(formData) {
-            NavigationService.modelSave("PolicyName", $scope.formData, function(data) {
+            console.log("hihihihih");
+            _.each(formData.insurer, function(n) {
+                n = n._id;
+            });
+            console.log($scope.formData);
+            NavigationService.modelSave("PolicyType", $scope.formData, function(data) {
                 if (data.value === true) {
-                    $state.go('policytype-list');
-                    toastr.success("PolicyName" + " " + formData.name + " created successfully.", "PolicyName" + " Created");
+                    $state.go('policyType-list');
+                    toastr.success("PolicyType" + " " + formData.name + " created successfully.", "PolicyType" + " Created");
                 } else {
-                    toastr.error("PolicyName" + " creation failed.", "PolicyName" + " creation error");
+                    toastr.error("PolicyType" + " creation failed.", "PolicyType" + " creation error");
                 }
             });
         };
+
 
     })
     .controller('EditPolicyTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
@@ -2443,18 +2461,20 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Edit Policy Type"
         };
         $scope.insurers = ['Tushar', 'Chintan', 'Mahesh'];
-
-        NavigationService.getOneModel($scope.ModelApi, $stateParams.id, function(data) {
+        NavigationService.getOneModel("PolicyType", $stateParams.id, function(data) {
             $scope.formData = data.data;
         });
 
-        $scope.saveModel = function(formValid) {
-            NavigationService.modelSave($scope.ModelApi, $scope.formData, function(data) {
+        $scope.saveModel = function(formData) {
+            _.each(formData.insurer, function(n) {
+                n = n._id;
+            });
+            NavigationService.modelSave("PolicyType", $scope.formData, function(data) {
                 if (data.value === true) {
-                    $state.go('policytype-list');
-                    toastr.success($scope.modelCap + $scope.formData.name + " edited successfully.", $scope.modelCap + " Edited");
+                    $state.go('policyType-list');
+                    toastr.success("PolicyType" + $scope.formData.name + " edited successfully.", "PolicyType" + " Edited");
                 } else {
-                    toastr.error($scope.modelCap + " edition failed.", $scope.modelCap + " editing error");
+                    toastr.error("PolicyType" + " edition failed.", "PolicyType" + " editing error");
                 }
             });
         };
@@ -3052,10 +3072,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.showAllCauseLoss();
 
             });
-        }
+        };
 
     })
-    .controller('CreateCauseLossCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
+    .controller('CreateCauseLossCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("causeLoss-detail");
         $scope.menutitle = NavigationService.makeactive("Cause of Loss");
@@ -3073,24 +3093,38 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.natureOfLosses = ['Fire', 'Theft', 'Burglary'];
         $scope.formData = {};
-        $scope.saveCauseLoss = function(formData) {
-
-            NavigationService.causelossSave($scope.formData, function(data) {
-                console.log(data);
-                if (data.value == true) {
-                    $state.go('causeloss-list');
-                }
-                // console.log('$scope.allCountriessave', $scope.data);
+        $scope.tagTransform = function(newTag) {
+            var item = {
+                name: newTag
+            };
+            return item;
+        };
+        $scope.refreshNature = function(){
+        NavigationService.getNature(function(data) {
+            $scope.natureOfLosses = data.data.results;
+        });
+      };
+      $scope.refreshNature();
+        $scope.clicked = function(select) {
+            console.log("fsdfasd");
+            console.log(select[select.length-1].name);
+            NavigationService.saveNature({'name':select[select.length-1].name}, function(data){
 
             });
-        }
-        NavigationService.getAllDepartments(function(data) {
-            $scope.allDepartments = data.data;
-
-        });
+        };
+        $scope.saveModel = function(formData) {
+            NavigationService.modelSave("CauseLoss", $scope.formData, function(data) {
+                if (data.value === true) {
+                    $state.go('customer' + '-list');
+                    toastr.success("Customer" + " " + formData.name + " created successfully.", "Customer" + " Created");
+                } else {
+                    toastr.error("Customer" + " creation failed.", "Customer" + " creation error");
+                }
+            });
+        };
 
     })
-    .controller('EditCauseLossCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+    .controller('EditCauseLossCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("causeLoss-detail");
         $scope.menutitle = NavigationService.makeactive("Cause of Loss");
@@ -3108,26 +3142,38 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.natureOfLosses = ['Fire', 'Theft', 'Burglary'];
 
-        NavigationService.getOneCauseLoss($stateParams.id, function(data) {
-            $scope.formData = data.data;
-            console.log('$scope.formData', $scope.formData);
-
+        $scope.tagTransform = function(newTag) {
+            var item = {
+                name: newTag
+            };
+            return item;
+        };
+        $scope.refreshNature = function(){
+        NavigationService.getNature(function(data) {
+            $scope.natureOfLosses = data.data.results;
         });
+      };
+      $scope.refreshNature();
+        $scope.clicked = function(select) {
+            NavigationService.saveNature({'name':select[select.length-1].name}, function(data){
 
-        $scope.saveCauseLoss = function(formValid) {
+            });
+        };
 
-            //  if (formValid.$valid) {
-            //  $scope.formComplete = true;
-            NavigationService.CauseLossEditSave($scope.formData, function(data) {
-                if (data.value == true) {
-                    $state.go('causeloss-list');
+        NavigationService.getOneModel("CauseLoss", $stateParams.id, function(data) {
+            $scope.formData = data.data;
+        });
+        $scope.saveModel = function(formValid) {
+            NavigationService.modelSave("CauseLoss", $scope.formData, function(data) {
+                if (data.value === true) {
+                    $state.go('causeLoss-list');
+                    toastr.success("Cause Of Loss" + $scope.formData.name + " edited successfully.", "Cause Of Loss" + " Edited");
+                } else {
+                    toastr.error("Cause Of Loss" + " edition failed.", "Cause Of Loss" + " editing error");
                 }
             });
         };
-        NavigationService.getAllDepartments(function(data) {
-            $scope.allDepartments = data.data;
 
-        });
     })
     .controller('NatureLossCtrl', function($scope, TemplateService, NavigationService, $timeout) {
         //Used to name the .html file

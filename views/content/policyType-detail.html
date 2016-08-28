@@ -8,7 +8,7 @@
         </li>
     </ul>
 </div>
-<form name="policyTypeForm" ng-submit="savePolicyType(formData)">
+<form name="policyTypeForm" ng-submit="saveModel(formData)">
     <div class="heading-sec">
         <div class="row">
             <div class="col-md-12 column">
@@ -33,7 +33,7 @@
                                 <div class="col-md-12">
                                     <div class="form-group">
                                         <label>Policy Type*</label>
-                                        <input type="text" name="name" ng-model="formData.policyType" class="form-control" required>
+                                        <input type="text" name="name" ng-model="formData.name" class="form-control" required>
                                         <div class="error-msg" ng-show="policyTypeForm.name.$invalid && policyTypeForm.name.$touched">Please Enter Policy Name</div>
                                     </div>
                                     <div class="form-group">
@@ -43,9 +43,9 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Insurer</label>
-                                        <ui-select multiple tagging tagging-label="(press enter to add new)" ng-model="formData.insurer" theme="bootstrap">
-                                            <ui-select-match>{{$item}}</ui-select-match>
-                                            <ui-select-choices repeat="insurer in insurers | filter:$select.search" refresh="getInsurer()">{{insurer}}</ui-select-choices>
+                                        <ui-select multiple tagging="democlick" ng-keypress="selec2_keypress($event)" tagging-label="(press enter to add new)" ng-model="formData.insurer" theme="bootstrap">
+                                            <ui-select-match>{{$item.name}}</ui-select-match>
+                                            <ui-select-choices repeat="insurer in insurers | filter:$select.search" ui-disable-choice="insurers.length==0">{{insurer.name}}</ui-select-choices>
                                         </ui-select>
                                     </div>
                                 </div>

@@ -217,6 +217,15 @@ var navigationservice = angular.module('navigationservice', [])
             }
             return menuname;
         },
+        getInsurer: function(callback) {
+            $http.post(adminurl + 'customerCompany/getInsurer', {}).success(callback);
+        },
+        getNature: function(callback) {
+            $http.post(adminurl + 'Nature/search', {}).success(callback);
+        },
+        saveNature: function(data, callback){
+          $http.post(adminurl + 'Nature/save', data).success(callback);
+        },
         searchModel: function(model, formData, i, callback) {
             $http.post(adminurl + model + '/search', formData).success(function(data) {
                 callback(data, i);
