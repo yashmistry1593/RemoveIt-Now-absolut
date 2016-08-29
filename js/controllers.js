@@ -1283,6 +1283,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
         $scope.saveModel = function(formValid) {
+          console.log($scope.formData);
             NavigationService.modelSave("Employee", $scope.formData, function(data) {
                 if (data.value === true) {
                     $state.go('employee-list');
