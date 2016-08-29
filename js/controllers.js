@@ -2412,10 +2412,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Create Policy Type"
         };
         $scope.formData = {};
-        $scope.insurers = ['Tushar', 'Chintan', 'Mahesh'];
+        $scope.insurers = [];
 
         NavigationService.getInsurer(function(data) {
-            $scope.insurers = data.data;
+            $scope.insurers = data.data.results;
         });
 
         $scope.democlick = function(new_value) {
@@ -2460,7 +2460,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.header = {
             "name": "Edit Policy Type"
         };
-        $scope.insurers = ['Tushar', 'Chintan', 'Mahesh'];
+        $scope.insurers = [];
         NavigationService.getOneModel("PolicyType", $stateParams.id, function(data) {
             $scope.formData = data.data;
         });
@@ -2615,7 +2615,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.formData = {};
         $scope.formData.status = true;
         $scope.formData.listOfDocuments = [];
-        $scope.modelData = {};        //chintan
+        $scope.modelData = {};
         $scope.saveModel = function(formData) {
           console.log(formData);
             NavigationService.modelSave("PolicyDoc", $scope.formData, function(data) {
