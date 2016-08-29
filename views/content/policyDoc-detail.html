@@ -61,22 +61,21 @@
                     <table class="table">
                         <thead>
                             <tr>
-                                <th>Name</th>
+                                <th>Policy Name</th>
+                                <th>Policy No.</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="data in formData.listOfDocuments">
                                 <td>{{data.policyName}}</td>
+                                <td>{{data.policyNo}}</td>
                                 <td>
                                     <a class="btn btn-primary" ng-click="openEditOfficer($index)">
                                         <i class="fa fa-pencil"></i>
                                     </a>
                                     <a class="btn btn-danger" ng-click="deleteOfficer($index)">
                                         <i class="fa fa-trash"></i>
-                                    </a>
-                                    <a class="btn btn-warning" ng-click="transferOfficer()">
-                                        <i class="fa fa-refresh"></i>
                                     </a>
                                 </td>
                             </tr>

@@ -2521,13 +2521,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             NavigationService.policySave($scope.formData, function(data) {
                 console.log(data);
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('policy-list');
                 }
                 // console.log('$scope.allCountriessave', $scope.data);
 
             });
-        }
+        };
         NavigationService.getAllPolicyTypes(function(data) {
             $scope.allPolicyTypes = data.data;
 
@@ -2556,7 +2556,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //  if (formValid.$valid) {
             //  $scope.formComplete = true;
             NavigationService.PolicyEditSave($scope.formData, function(data) {
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('policy-list');
                 }
             });
@@ -2613,6 +2613,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Create Policy Doc"
         };
         $scope.formData = {};
+        $scope.formData.status = true;
         $scope.formData.listOfDocuments = [];
         $scope.modelData = {};        //chintan
         $scope.saveModel = function(formData) {
@@ -2620,9 +2621,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.modelSave("PolicyDoc", $scope.formData, function(data) {
                 if (data.value === true) {
                     $state.go('policyDoc-list');
-                    toastr.success("Customer" + " " + formData.name + " created successfully.", "Customer" + " Created");
+                    toastr.success("Policy Document" + " " + formData.name + " created successfully.", "Policy Document" + " Created");
                 } else {
-                    toastr.error("Customer" + " creation failed.", "Customer" + " creation error");
+                    toastr.error("Policy Document" + " creation failed.", "Policy Document" + " creation error");
                 }
             });
         };

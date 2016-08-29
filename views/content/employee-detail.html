@@ -43,9 +43,9 @@
                                         <div class="error-msg" ng-show="formName.name.$invalid && formName.name.$touched">Please Enter First Name</div>
                                     </div>
                                     <div class="form-group">
-                                        <label>Branch*</label>
-                                        <multiple-select name="branch" required ng-model="formData.branch" filter='{"office":"{{formData.postedAt}}"}' ng-name="name.branch" api="searchBranch" ng-create="branchSave"></multiple-select>
-                                        <div class="error-msg" ng-show="formName.branch.$invalid">Please Select Branch</div>
+                                        <label>Posted at*</label>
+                                        <multiple-select name="postedAt" required ng-model="formData.postedAt" filter='{"company":"{{formData.company}}"}' ng-name="name.postedAt" api="searchOffice"></multiple-select>
+                                        <div class="error-msg" ng-show="formName.postedAt.$invalid">Please Select Current Posting</div>
                                     </div>
                                     <div class="form-group">
                                         <label>Grade*</label>
@@ -79,10 +79,11 @@
                                         <multiple-select name="func" required ng-model="formData.func" ng-name="name.func" api="searchFunc" ng-create="funcSave"></multiple-select>
                                         <div class="error-msg" ng-show="formName.func.$invalid">Please Select Function</div>
                                     </div>
+
                                     <div class="form-group">
-                                        <label>Posted at*</label>
-                                        <multiple-select name="postedAt" required ng-model="formData.postedAt" filter='{"company":"{{formData.company}}"}' ng-name="name.postedAt" api="searchOffice"></multiple-select>
-                                        <div class="error-msg" ng-show="formName.postedAt.$invalid">Please Select Current Posting</div>
+                                        <label>Branch*</label>
+                                        <multiple-select name="branch" required ng-model="formData.branch" filter='{"office":"{{formData.postedAt}}"}' ng-name="name.branch" api="searchBranch" ng-create="branchSave"></multiple-select>
+                                        <div class="error-msg" ng-show="formName.branch.$invalid">Please Select Branch</div>
                                     </div>
                                     <div class="form-group">
                                         <label>Employee Code*</label>
