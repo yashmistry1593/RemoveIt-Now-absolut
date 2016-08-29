@@ -2596,7 +2596,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('CreatePolicyDocCtrl', function($scope, $uibModal,TemplateService, NavigationService, $timeout, $state) {
+    .controller('CreatePolicyDocCtrl', function($scope, $uibModal,TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("policyDoc-detail");
         $scope.menutitle = NavigationService.makeactive("Policy Document");
@@ -2613,18 +2613,19 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Create Policy Doc"
         };
         $scope.formData = {};
-        $scope.savePolicyDoc = function(formData) {
-
-            NavigationService.policydocSave($scope.formData, function(data) {
-                console.log(data);
+        $scope.formData.listOfDocuments = [];
+        $scope.modelData = {};        //chintan
+        $scope.saveModel = function(formData) {
+          console.log(formData);
+            NavigationService.modelSave("PolicyDoc", $scope.formData, function(data) {
                 if (data.value === true) {
-                    $state.go('policydoc-list');
+                    $state.go('policyDoc-list');
+                    toastr.success("Customer" + " " + formData.name + " created successfully.", "Customer" + " Created");
+                } else {
+                    toastr.error("Customer" + " creation failed.", "Customer" + " creation error");
                 }
-                // console.log('$scope.allCountriessave', $scope.data);
-
             });
         };
-
 
         $scope.addDocument = function() {
             var modalInstance = $uibModal.open({
@@ -2634,14 +2635,27 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
 
-        NavigationService.getAllDepartments(function(data) {
-            $scope.allDepartments = data.data;
-
-        });
-        NavigationService.getAllPolicyTypes(function(data) {
-            $scope.allPolicyTypes = data.data;
-
-        });
+        $scope.createOfficer = function(modelData) {
+            if ($scope.buttonValue === "Save") {
+                $scope.formData.listOfDocuments.push(modelData);
+            } else {
+                $scope.formData.listOfDocuments[$scope.formIndex] = modelData;
+            }
+        };
+        $scope.openCreateOfficer = function() {
+            $scope.buttonValue = "Save";
+            $scope.modelData = {};
+            $scope.addDocument();
+        };
+        $scope.openEditOfficer = function(index) {
+            $scope.formIndex = index;
+            $scope.buttonValue = "Edit";
+            $scope.modelData = $scope.formData.listOfDocuments[index];
+            $scope.addDocument();
+        };
+        $scope.deleteOfficer = function(index) {
+            $scope.formData.listOfDocuments.splice(index, 1);
+        };
 
         $scope.dateOptions = {
             showWeeks: true
@@ -2664,7 +2678,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.format = 'dd-MMMM-yyyy';
 
     })
-    .controller('EditPolicyDocCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
+    .controller('EditPolicyDocCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal, $stateParams, $state, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("policyDoc-detail");
         $scope.menutitle = NavigationService.makeactive("Policy Document");
@@ -2678,36 +2692,78 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "value": false
         }];
         $scope.header = {
-            "name": "Edit Policy Doc"
+            "name": "Create Policy Doc"
         };
-
-        NavigationService.getOnePolicyDoc($stateParams.id, function(data) {
+        $scope.formData = {};
+        $scope.formData.listOfDocuments = [];
+        $scope.modelData = {};
+        NavigationService.getOneModel("PolicyDoc", $stateParams.id, function(data) {
             $scope.formData = data.data;
-            console.log('$scope.formData', $scope.formData);
 
         });
-
-        $scope.savePolicyDoc = function(formValid) {
-
-            //  if (formValid.$valid) {
-            //  $scope.formComplete = true;
-            NavigationService.PolicyDocEditSave($scope.formData, function(data) {
-                if (data.value == true) {
-                    $state.go('policydoc-list');
+        $scope.saveModel = function(formData) {
+          console.log(formData);
+            NavigationService.modelSave("PolicyDoc", $scope.formData, function(data) {
+                if (data.value === true) {
+                    $state.go('policyDoc-list');
+                    toastr.success("Policy Document" + " " + formData.name + " created successfully.", "Policy Document" + " Created");
+                } else {
+                    toastr.error("Policy Document" + " creation failed.", "Policy Document" + " creation error");
                 }
             });
-            //  }
         };
 
-        NavigationService.getAllDepartments(function(data) {
-            $scope.allDepartments = data.data;
+        $scope.addDocument = function() {
+            var modalInstance = $uibModal.open({
+                scope: $scope,
+                templateUrl: 'views/modal/modal-policydoc.html',
+                size: 'lg'
+            });
+        };
 
-        });
-        NavigationService.getAllPolicyTypes(function(data) {
-            $scope.allPolicyTypes = data.data;
+        $scope.createOfficer = function(modelData) {
+            if ($scope.buttonValue === "Save") {
+                $scope.formData.listOfDocuments.push(modelData);
+            } else {
+                $scope.formData.listOfDocuments[$scope.formIndex] = modelData;
+            }
+        };
+        $scope.openCreateOfficer = function() {
+            $scope.buttonValue = "Save";
+            $scope.modelData = {};
+            $scope.addDocument();
+        };
+        $scope.openEditOfficer = function(index) {
+            $scope.formIndex = index;
+            $scope.buttonValue = "Edit";
+            $scope.modelData = $scope.formData.listOfDocuments[index];
+            $scope.modelData.from = new Date($scope.formData.listOfDocuments[index].from);
+            $scope.modelData.to = new Date($scope.formData.listOfDocuments[index].to);
+            $scope.addDocument();
+        };
+        $scope.deleteOfficer = function(index) {
+            $scope.formData.listOfDocuments.splice(index, 1);
+        };
 
-        });
+        $scope.dateOptions = {
+            showWeeks: true
+        };
 
+        $scope.popup1 = {
+            opened: false
+        };
+        $scope.popup2 = {
+            opened: false
+        };
+
+        $scope.dateFrom = function() {
+            $scope.popup1.opened = true;
+        };
+        $scope.dateTo = function() {
+            $scope.popup2.opened = true;
+        };
+
+        $scope.format = 'dd-MMMM-yyyy';
     })
 
 .controller('IndustryCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
@@ -4102,6 +4158,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
             });
         };
+        //jagruti
         $scope.createOfficer = function(modelData) {
             if ($scope.buttonValue === "Save") {
                 $scope.formData.officers.push(modelData);
@@ -4230,27 +4287,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             };
             NavigationService[$scope.api](dataSend, ++i, function(data) {
                 if (data.value) {
-                  if (data.data.results) {
-                    $scope.list = data.data.results;
-                  }else {
-                    $scope.list = data.data;
-                  }
+                  $scope.list = data.data.results;
+
 
 
                     if ($scope.search.modelData) {
                         $scope.showCreate = true;
                         _.each($scope.list, function(n) {
-                          if (n.name) {
+                          // if (n.name) {
                             if (_.lowerCase(n.name) == _.lowerCase($scope.search.modelData)) {
                                 $scope.showCreate = false;
                                 return 0;
                             }
-                          }else{
-                              if (_.lowerCase(n.officeCode) == _.lowerCase($scope.search.modelData)) {
-                                $scope.showCreate = false;
-                                return 0;
-                            }
-                          }
+                          // }else{
+                          //     if (_.lowerCase(n.officeCode) == _.lowerCase($scope.search.modelData)) {
+                          //       $scope.showCreate = false;
+                          //       return 0;
+                          //   }
+                          // }
 
                         });
                     } else {
@@ -4259,11 +4313,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     }
                     if (insertFirst) {
                         if ($scope.list[0] && $scope.list[0]._id) {
-                          if ($scope.list[0].name) {
+                          // if ($scope.list[0].name) {
                             $scope.sendData($scope.list[0]._id, $scope.list[0].name);
-                          }else{
-                            $scope.sendData($scope.list[0]._id, $scope.list[0].officeCode);
-                          }
+                          // }else{
+                          //   $scope.sendData($scope.list[0]._id, $scope.list[0].officeCode);
+                          // }
                         } else {
                             console.log("Making this happen");
                             $scope.sendData("", "");

@@ -223,8 +223,8 @@ var navigationservice = angular.module('navigationservice', [])
         getNature: function(callback) {
             $http.post(adminurl + 'Nature/search', {}).success(callback);
         },
-        saveNature: function(data, callback){
-          $http.post(adminurl + 'Nature/save', data).success(callback);
+        saveNature: function(data, callback) {
+            $http.post(adminurl + 'Nature/save', data).success(callback);
         },
         searchModel: function(model, formData, i, callback) {
             $http.post(adminurl + model + '/search', formData).success(function(data) {
@@ -233,6 +233,10 @@ var navigationservice = angular.module('navigationservice', [])
         },
         searchCustomer: function(formData, i, callback) {
             $http.post(adminurl + 'Customer/search', formData).success(function(data) {
+              console.log(data);
+                _.each(data.data.results, function(n) {
+                    n.name = n.officeCode;
+                });
                 callback(data, i);
             });
         },
@@ -987,10 +991,10 @@ var navigationservice = angular.module('navigationservice', [])
             }).success(callback);
         },
         funcSave: function(formData, callback) {
-            $http.post(adminurl + 'func/save',formData).success(callback);
+            $http.post(adminurl + 'func/save', formData).success(callback);
         },
         gradeSave: function(formData, callback) {
-            $http.post(adminurl + 'grade/save',formData).success(callback);
+            $http.post(adminurl + 'grade/save', formData).success(callback);
         },
         getOneFunc: function(id, callback) {
             // console.log('form data: ', formData);

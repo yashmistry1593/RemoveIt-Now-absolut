@@ -40,7 +40,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label>Insured Office*</label>
-                                <multiple-select name="insuredOffice" required ng-model="formData.insuredOffice" filter='{"customerCompany":"{{formData.company2}}"}' ng-name="name.zone" api="searchCustomer"></multiple-select>
+                                <multiple-select name="insuredOffice" required ng-model="formData.insuredOffice" filter='{"customerCompany":"{{formData.insuredCompany}}"}' ng-name="name.zone" api="searchCustomer"></multiple-select>
                                 <div class="error-msg" ng-show="formName.insuredOffice.$invalid">Please Select Insured Office</div>
                             </div>
                         </div>
@@ -53,11 +53,11 @@
             <div class="form-elements-sec">
                 <div class="widget-title">
                     <div class="pull-right">
-                        <a class="btn btn-primary" ng-click="addDocument()">Add New</a>
+                        <a class="btn btn-primary" ng-click="openCreateOfficer()">Add New</a>
                     </div>
                     <h3>List of Documents</h3>
                 </div>
-                <div class="table-responsive" ng-if="formData.officers != ''">
+                <div class="table-responsive" ng-if="formData.listOfDocuments != ''">
                     <table class="table">
                         <thead>
                             <tr>
@@ -66,8 +66,8 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="data in formData.officers">
-                                <td>{{data.firstName}}</td>
+                            <tr ng-repeat="data in formData.listOfDocuments">
+                                <td>{{data.policyName}}</td>
                                 <td>
                                     <a class="btn btn-primary" ng-click="openEditOfficer($index)">
                                         <i class="fa fa-pencil"></i>
@@ -88,7 +88,7 @@
 
         <div class="clearfix"></div>
         <div class="text-center mt20">
-            <button class="btn btn-default" type="submit" ng-click="savePolicyDoc(formData)" ng-disabled="formName.$invalid">Save</button>
+            <button class="btn btn-default" type="submit" ng-click="saveModel(formData)" ng-disabled="formName.$invalid">Save</button>
             <button class="btn btn-default" ui-sref="policyDoc-list">Cancel</button>
         </div>
     </div>

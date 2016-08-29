@@ -56,10 +56,10 @@
                             </thead>
                             <tbody ng-show="totalItems>0">
                                 <tr ng-repeat="data in modelList">
-                                    <td>{{data.name}}</td>
+                                    <td>{{data.insuredCompany.name}}</td>
                                     <td>{{data.PolicyType}}</td>
                                     <td>
-                                        <toggle-switch ng-model="data.status" class="switch-mini switch-success"></toggle-switch>
+                                      <toggle-switch ng-model="data.status" class="switch-mini switch-success" ng-change="changeStatus(data)"></toggle-switch>
                                     </td>
                                     <td>
                                         <a class="btn btn-primary" ui-sref="editpolicydoc({id:data._id})">
