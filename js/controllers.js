@@ -2504,7 +2504,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.showAllPolicies();
 
             });
-        }
+        };
 
     })
     .controller('CreatePolicyCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
