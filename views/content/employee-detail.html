@@ -317,7 +317,7 @@
                                   <a class="btn btn-blue" ng-click="addModal('modal-document',$index,'personalDocument',data)">
                                       <i class="fa fa-pencil"></i>
                                   </a>
-                                  <a class="btn btn-primary" ng-click="deleteDocument()">
+                                  <a class="btn btn-primary" ng-href="{{data.image|serverimage}}" download="{{data.name}}.jpg">
                                       <i class="fa fa-download"></i>
                                   </a>
                                     <a class="btn btn-danger" ng-click="deleteElements($index, 'personalDocument')">
@@ -367,7 +367,7 @@
                                       <a class="btn btn-blue" ng-click="addModal('modal-file',$index,'licenseDocument',data)">
                                           <i class="fa fa-pencil"></i>
                                       </a>
-                                      <a class="btn btn-primary" ng-click="downloadPdf()">
+                                      <a class="btn btn-primary" download="license" href="{{uploadurl + data.image}}">
                                           <i class="fa fa-download"></i>
                                       </a>
                                         <a class="btn btn-danger" ng-click="deleteElements($index, 'licenseDocument')">
@@ -407,7 +407,7 @@
                                   <a class="btn btn-blue" ng-click="addModal('modal-file',$index,'IIISLACertificate',data)">
                                       <i class="fa fa-pencil"></i>
                                   </a>
-                                  <a class="btn btn-primary" ng-click="deleteDocument()">
+                                  <a class="btn btn-primary" download="IIISLA_Certificate" href="{{uploadurl + data.image}}">
                                       <i class="fa fa-download"></i>
                                   </a>
                                     <a class="btn btn-danger" ng-click="deleteElements($index, 'IIISLACertificate')">
@@ -444,7 +444,7 @@
                                   <a class="btn btn-blue" ng-click="addModal('modal-file',$index,'IIISLAReciept',data)">
                                       <i class="fa fa-pencil"></i>
                                   </a>
-                                  <a class="btn btn-primary" ng-click="deleteDocument()">
+                                  <a class="btn btn-primary" download="IIISLA_Reciept.pdf" href="{{uploadurl + data.image}}">
                                       <i class="fa fa-download"></i>
                                   </a>
                                     <a class="btn btn-danger" ng-click="deleteElements($index, 'IIISLAReciept')">
