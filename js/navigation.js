@@ -180,6 +180,11 @@ var navigationservice = angular.module('navigationservice', [])
             anchor: "causeLoss-list",
             icon: "money"
         }, {
+            name: "Nature of Loss",
+            classis: "active",
+            anchor: "natureLoss-list",
+            icon: "money"
+        }, {
             name: "Salvage",
             classis: "active",
             anchor: "salvage-list",
