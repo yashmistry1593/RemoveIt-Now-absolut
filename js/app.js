@@ -999,11 +999,44 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'EditTransferOfficerCtrl'
     })
 
+    .state('createassignment', {
+        url: "/assignment-create",
+        templateUrl: "views/template.html",
+        controller: 'ModelViewCtrl',
+        params: {
+            page: "1",
+            keyword: "",
+            model: "assignment"
+        }
+    })
+    .state('editassignment', {
+        url: "/assignment-edit",
+        templateUrl: "views/template.html",
+        controller: 'ModelViewCtrl',
+        params: {
+            page: "1",
+            keyword: "",
+            model: "assignment"
+        }
+    })
+    .state('assignment-list', {
+        url: "/assignment-list",
+        templateUrl: "views/template.html",
+        controller: 'ModelViewCtrl',
+        params: {
+            page: "1",
+            keyword: "",
+            model: "assignment"
+        }
+    })
+
     .state('timeline', {
         url: "/timeline",
         templateUrl: "views/template.html",
         controller: 'TimelineCtrl'
-    });
+    })
+
+    ;
     $urlRouterProvider.otherwise("/login");
     $locationProvider.html5Mode(isproduction);
 
