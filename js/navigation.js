@@ -1,8 +1,8 @@
-var adminurl = "http://localhost:1337/api/";
-// var adminurl = "http://104.155.238.145/api/";
+// var adminurl = "http://localhost:1337/api/";
+var adminurl = "http://104.155.238.145/api/";
 var imgurl = adminurl + "upload/";
 
-var imgpath = imgurl + "readFile?file=";
+var imgpath = imgurl + "readFile";
 var uploadurl = imgurl;
 
 var navigationservice = angular.module('navigationservice', [])

@@ -833,6 +833,11 @@ div.text-center.mt20 {
         }
     }
 }
+img.uploadingImage {
+    max-width: 300px;
+    max-height: 300px;
+    margin: 10px 0px;
+}
 /* Start writing sass here */
 @import "fancybox-override";
 @import "other/mobile";

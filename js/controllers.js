@@ -4371,15 +4371,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     _id: $scope.model
                 }, true);
             }
-            console.log("watch", newVal, oldVal);
         });
 
 
         $scope.$watch('filter', function(newVal, oldVal) {
-            console.log("watch FILTER", newVal, oldVal);
-
-
-
             var filter = {};
             if ($scope.filter) {
                 filter = JSON.parse($scope.filter);

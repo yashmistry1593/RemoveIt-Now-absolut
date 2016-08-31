@@ -1051,6 +1051,7 @@ firstapp.directive('uploadImage', function($http, $filter) {
             callback: "=ngCallback"
         },
         link: function($scope, element, attrs) {
+
             $scope.showImage = function() {
                 console.log($scope.image);
             };
@@ -1067,9 +1068,8 @@ firstapp.directive('uploadImage', function($http, $filter) {
             }
 
             $scope.$watch("image", function(newVal, oldVal) {
-              console.log(newVal);
-                if ($scope.noShow === true && newVal && newVal.file) {
-                  $scope.uploadNow(newVal);
+                if (newVal && newVal.file) {
+                    $scope.uploadNow(newVal);
                 }
             });
 
@@ -1078,7 +1078,7 @@ firstapp.directive('uploadImage', function($http, $filter) {
                     $scope.image = [];
                     _.each($scope.model, function(n) {
                         $scope.image.push({
-                            url: $filter("uploadpath")(n)
+                            url: n
                         });
                     });
                 }
@@ -1091,6 +1091,8 @@ firstapp.directive('uploadImage', function($http, $filter) {
                 $scope.model = [];
             };
             $scope.uploadNow = function(image) {
+                $scope.uploadStatus = "uploading";
+
                 var Template = this;
                 image.hide = true;
                 var formData = new FormData();
@@ -1104,6 +1106,7 @@ firstapp.directive('uploadImage', function($http, $filter) {
                     if ($scope.callback) {
                         $scope.callback(data);
                     } else {
+                        $scope.uploadStatus = "uploaded";
                         if ($scope.isMultiple) {
                             if ($scope.inObject) {
                                 $scope.model.push({
