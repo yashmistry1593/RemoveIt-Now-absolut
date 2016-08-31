@@ -1382,7 +1382,6 @@ firstapp.directive('multipleSelect', function($document, $timeout) {
             $timeout(function() {
 
                 $element.find(".typeText").keyup(function(event) {
-                    console.log(event.keyCode);
                     var scrollTop = $element.find("ul.allOptions").scrollTop();
                     var optionLength = $element.find("ul.allOptions li").length;
                     if (event.keyCode == 40) {
@@ -1402,15 +1401,14 @@ firstapp.directive('multipleSelect', function($document, $timeout) {
                     var scrollVisibility = (scrollTop + maxBoxLength) - maxItemLength;
                     var currentItemPosition = scope.activeKey * maxItemLength;
                     if (currentItemPosition < scrollTop) {
-                      newScroll = (maxItemLength * scope.activeKey);
+                        newScroll = (maxItemLength * scope.activeKey);
 
                     } else if (currentItemPosition > scrollVisibility) {
-                      newScroll = (maxItemLength * scope.activeKey);
+                        newScroll = (maxItemLength * scope.activeKey);
 
                     }
-                    if(newScroll!=-1)
-                    {
-                      $element.find("ul.allOptions").scrollTop(newScroll);
+                    if (newScroll != -1) {
+                        $element.find("ul.allOptions").scrollTop(newScroll);
                     }
 
                     scope.$apply();
