@@ -1350,8 +1350,8 @@ firstapp.directive('addressForm', function($document) {
         // }
     };
 });
-
-firstapp.directive('multipleSelect', function($document) {
+var aa = {};
+firstapp.directive('multipleSelect', function($document, $timeout) {
     return {
         templateUrl: 'views/directive/multiple-select.html',
         scope: {
@@ -1369,25 +1369,69 @@ firstapp.directive('multipleSelect', function($document) {
         controller: 'MultipleSelectCtrl',
         link: function(scope, element, attr, NavigationService) {
             var $element = $(element);
+            scope.activeKey = 0;
             scope.isRequired = true;
             if (scope.required === undefined) {
                 scope.isRequired = false;
             }
             scope.typeselect = attr.typeselect;
             // $scope.searchNew()
+            aa = $element;
+            var maxItemLength = 40;
+            var maxBoxLength = 200;
+            $timeout(function() {
+
+                $element.find(".typeText").keyup(function(event) {
+                    console.log(event.keyCode);
+                    var scrollTop = $element.find("ul.allOptions").scrollTop();
+                    var optionLength = $element.find("ul.allOptions li").length;
+                    if (event.keyCode == 40) {
+                        scope.activeKey++;
+                    } else if (event.keyCode == 38) {
+                        scope.activeKey--;
+                    } else if (event.keyCode == 13) {
+                        $element.find("ul.allOptions li").eq(scope.activeKey).trigger("click");
+                    }
+                    if (scope.activeKey < 0) {
+                        scope.activeKey = optionLength - 1;
+                    }
+                    if (scope.activeKey >= optionLength) {
+                        scope.activeKey = 0;
+                    }
+                    var newScroll = -1;
+                    var scrollVisibility = (scrollTop + maxBoxLength) - maxItemLength;
+                    var currentItemPosition = scope.activeKey * maxItemLength;
+                    if (currentItemPosition < scrollTop) {
+                      newScroll = (maxItemLength * scope.activeKey);
+
+                    } else if (currentItemPosition > scrollVisibility) {
+                      newScroll = (maxItemLength * scope.activeKey);
+
+                    }
+                    if(newScroll!=-1)
+                    {
+                      $element.find("ul.allOptions").scrollTop(newScroll);
+                    }
+
+                    scope.$apply();
+                });
+
+            }, 100);
+
         }
     };
 });
-firstapp.filter('ageFilter', function() {
-     function calculateAge(birthday) { // birthday is a date
-         var ageDifMs = Date.now() - birthday.getTime();
-         var ageDate = new Date(ageDifMs); // miliseconds from epoch
-         return Math.abs(ageDate.getUTCFullYear() - 1970);
-     }
 
-     return function(birthdate) {
-           return calculateAge(birthdate);
-     };
+firstapp.filter('ageFilter', function() {
+    function calculateAge(birthday) { // birthday is a date
+        var ageDifMs = Date.now() - birthday.getTime();
+        var ageDate = new Date(ageDifMs); // miliseconds from epoch
+        return Math.abs(ageDate.getUTCFullYear() - 1970);
+    }
+
+    return function(birthdate) {
+        return calculateAge(birthdate);
+    };
 });
 firstapp.filter('capitalize', function() {
     return function(input, all) {

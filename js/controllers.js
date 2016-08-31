@@ -4431,7 +4431,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.listview = false;
         };
         $scope.closeListSlow = function() {
-            console.log("Slow Called");
             $timeout(function() {
                 $scope.closeList();
             }, 500);
