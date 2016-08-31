@@ -643,6 +643,28 @@ input[type="email"].form-control, .text-lower {
 .modal-content {
     min-height: 450px;
 }
+div.text-center.mt20 {
+  .btn {
+    &.btn-default {
+      color: #fff;
+      background-color: $brand-success;
+      border-color: $brand-success;
+      &:hover {
+        background-color: darken($brand-success, 10%);
+        border-color: darken($brand-success, 10%);
+      }
+      +.btn-default {
+        color: #fff;
+        background-color: $brand-danger;
+        border-color: $brand-danger;
+        &:hover {
+          background-color: darken($brand-danger, 10%);
+          border-color: darken($brand-danger, 10%);
+        }
+      }
+    }
+  }
+}
 /* Start writing sass here */
 @import "fancybox-override";
 @import "other/mobile";
