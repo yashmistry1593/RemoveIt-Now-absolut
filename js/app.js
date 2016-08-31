@@ -890,7 +890,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         }
     })
 
-    .state('createcustomercompany', {
+    .state('createcustomerCompany', {
         url: "/customercompany-create/{id:.*}/{model:.*}",
         templateUrl: "views/template.html",
         controller: 'CreateModelCtrl',
@@ -900,7 +900,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         }
     })
 
-    .state('editcustomercompany', {
+    .state('editcustomerCompany', {
         url: "/customercompany-edit/{id:.*}/{model:.*}",
         templateUrl: "views/template.html",
         controller: 'EditModelCtrl',
