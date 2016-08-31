@@ -355,7 +355,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         }
     })
 
-    .state('createpolicytype', {
+    .state('createpolicyType', {
         url: "/policytype-create/{id:.*}/{model:.*}",
         templateUrl: "views/template.html",
         controller: 'CreatePolicyTypeCtrl',
@@ -365,7 +365,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         }
     })
 
-    .state('editpolicytype', {
+    .state('editpolicyType', {
         url: "/policytype-edit/{id:.*}/{model:.*}",
         templateUrl: "views/template.html",
         controller: 'EditPolicyTypeCtrl',
@@ -408,7 +408,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         }
     })
 
-    .state('createpolicydoc', {
+    .state('createpolicyDoc', {
         url: "/policydoc-create/{id:.*}/{model:.*}",
         templateUrl: "views/template.html",
         controller: 'CreatePolicyDocCtrl',
@@ -418,7 +418,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         }
     })
 
-    .state('editpolicydoc', {
+    .state('editpolicyDoc', {
         url: "/policydoc-edit/{id:.*}/{model:.*}",
         templateUrl: "views/template.html",
         controller: 'EditPolicyDocCtrl',
@@ -514,7 +514,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         }
     })
 
-    .state('createcauseloss', {
+    .state('createcauseLoss', {
         url: "/causeloss-create/{id:.*}",
         templateUrl: "views/template.html",
         controller: 'CreateCauseLossCtrl',
@@ -523,7 +523,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         }
     })
 
-    .state('editcauseloss', {
+    .state('editcauseLoss', {
         url: "/causeloss-edit/{id:.*}",
         templateUrl: "views/template.html",
         controller: 'EditCauseLossCtrl',
@@ -952,7 +952,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         }
     })
 
-    .state('createsurveycode', {
+    .state('createsurveyCode', {
         url: "/surveycode-create/{id:.*}/{model:.*}",
         templateUrl: "views/template.html",
         controller: 'CreateModelCtrl',
@@ -962,7 +962,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         }
     })
 
-    .state('editsurveycode', {
+    .state('editsurveyCode', {
         url: "/surveycode-edit/{id:.*}/{model:.*}",
         templateUrl: "views/template.html",
         controller: 'EditModelCtrl',
