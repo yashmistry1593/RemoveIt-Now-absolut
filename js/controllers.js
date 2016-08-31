@@ -975,7 +975,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('CreateEmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $uibModal, $stateParams, toastr) {
+    .controller('CreateEmployeeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $uibModal, $stateParams, toastr, $filter) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("employee-detail");
         $scope.menutitle = NavigationService.makeactive("Employee");
@@ -1023,6 +1023,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.modalData = {};
         $scope.holdObject = '';
         $scope.modalIndex = 0;
+
+        $scope.changeDOB = function(date){
+          console.log($filter('ageFilter')(date));
+        };
 
         $scope.addModal = function(filename, index, holdobj, data, current) {
             if (index !== "") {
@@ -1183,6 +1187,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.modalData1 = {};
         $scope.holdObject = '';
         $scope.modalIndex = 0;
+
+        $scope.changeDOB = function(date){
+          console.log($filter('ageFilter')(date));
+        };
 
         $scope.addModal = function(filename, index, holdobj, data, current) {
 
