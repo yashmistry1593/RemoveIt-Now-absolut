@@ -243,7 +243,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         "value": false
     }];
     $scope.salutations = ["Mr.", "Mrs.", "Ms.", "Dr."];
-    $scope.houseColors = ["Red", "Green", "Blue", "Yellow"];
+    $scope.houseColors = ["Red", "Green", "Blue", "Yellow", "White"];
 
     $scope.dateOptions = {
         showWeeks: true
@@ -990,7 +990,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "value": false
         }];
         $scope.salutations = ["Mr.", "Mrs.", "Ms.", "Dr."];
-        $scope.houseColors = ["Red", "Green", "Blue", "Yellow"];
+        $scope.houseColors = ["Red", "Green", "Blue", "Yellow", "White"];
 
         $scope.dateOptions = {
             showWeeks: true
@@ -1141,7 +1141,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "value": false
         }];
         $scope.salutations = ["Mr.", "Mrs.", "Ms.", "Dr."];
-        $scope.houseColors = ["Red", "Green", "Blue", "Yellow"];
+        $scope.houseColors = ["Red", "Green", "Blue", "Yellow", "White"];
 
         $scope.dateOptions = {
             showWeeks: true
