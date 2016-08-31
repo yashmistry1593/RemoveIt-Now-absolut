@@ -1,5 +1,5 @@
 var globalfunction = {};
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ui.select', 'ngAnimate', 'toastr', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'imageupload', 'ngMap', 'toggle-switch'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ui.select', 'ngAnimate', 'toastr', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'imageupload', 'ngMap', 'toggle-switch', 'cfp.hotkeys'])
 
 .controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
@@ -138,13 +138,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
     })
-    .controller('ModelViewCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
+    .controller('ModelViewCtrl', function($scope, hotkeys, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
         //Used to name the .html file
         $scope.modelCamel = _.camelCase($stateParams.model);
         var a = _.startCase($scope.modelCamel).split(" ");
         $scope.ModelApi = "";
         _.each(a, function(n) {
             $scope.ModelApi = $scope.ModelApi + n;
+        });
+
+        hotkeys.bindTo($scope).add({
+            combo: 'enter',
+            description: 'This one goes to 11',
+            callback: function() {
+                $state.go("create" + $scope.modelCamel);
+            }
         });
 
 
@@ -1025,7 +1033,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             } else {
                 $scope.modalData = {};
                 if (current.length > 0) {
-                        $scope.modalData.from = new Date(current[current.length - 1].to);
+                    $scope.modalData.from = new Date(current[current.length - 1].to);
                 }
                 $scope.modalIndex = "";
             }
@@ -1174,15 +1182,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.modalIndex = 0;
 
         $scope.addModal = function(filename, index, holdobj, data, current) {
+
             if (index !== "") {
                 $scope.modalData = data;
-                  $scope.modalData.from = new Date(data.from);
-                  $scope.modalData.to = new Date(data.to);
+                $scope.modalData.from = new Date(data.from);
+                $scope.modalData.to = new Date(data.to);
+
                 $scope.modalIndex = index;
             } else {
                 $scope.modalData = {};
                 if (current.length > 0) {
-                        $scope.modalData.from = new Date(current[current.length - 1].to);
+                    $scope.modalData.from = new Date(current[current.length - 1].to);
                 }
                 $scope.modalIndex = "";
             }
@@ -1287,7 +1297,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
         $scope.saveModel = function(formValid) {
-          console.log($scope.formData);
+            console.log($scope.formData);
             NavigationService.modelSave("Employee", $scope.formData, function(data) {
                 if (data.value === true) {
                     $state.go('employee-list');
@@ -2601,7 +2611,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
     })
-    .controller('CreatePolicyDocCtrl', function($scope, $uibModal,TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
+    .controller('CreatePolicyDocCtrl', function($scope, $uibModal, TemplateService, NavigationService, $timeout, $state, $stateParams, toastr) {
         //Used to name the .html file
         $scope.template = TemplateService.changecontent("policyDoc-detail");
         $scope.menutitle = NavigationService.makeactive("Policy Document");
@@ -2622,7 +2632,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.formData.listOfDocuments = [];
         $scope.modelData = {};
         $scope.saveModel = function(formData) {
-          console.log(formData);
+            console.log(formData);
             NavigationService.modelSave("PolicyDoc", $scope.formData, function(data) {
                 if (data.value === true) {
                     $state.go('policyDoc-list');
@@ -2708,7 +2718,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         });
         $scope.saveModel = function(formData) {
-          console.log(formData);
+            console.log(formData);
             NavigationService.modelSave("PolicyDoc", $scope.formData, function(data) {
                 if (data.value === true) {
                     $state.go('policyDoc-list');
@@ -4293,24 +4303,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             };
             NavigationService[$scope.api](dataSend, ++i, function(data) {
                 if (data.value) {
-                  $scope.list = data.data.results;
+                    $scope.list = data.data.results;
 
 
 
                     if ($scope.search.modelData) {
                         $scope.showCreate = true;
                         _.each($scope.list, function(n) {
-                          // if (n.name) {
+                            // if (n.name) {
                             if (_.lowerCase(n.name) == _.lowerCase($scope.search.modelData)) {
                                 $scope.showCreate = false;
                                 return 0;
                             }
-                          // }else{
-                          //     if (_.lowerCase(n.officeCode) == _.lowerCase($scope.search.modelData)) {
-                          //       $scope.showCreate = false;
-                          //       return 0;
-                          //   }
-                          // }
+                            // }else{
+                            //     if (_.lowerCase(n.officeCode) == _.lowerCase($scope.search.modelData)) {
+                            //       $scope.showCreate = false;
+                            //       return 0;
+                            //   }
+                            // }
 
                         });
                     } else {
@@ -4319,11 +4329,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     }
                     if (insertFirst) {
                         if ($scope.list[0] && $scope.list[0]._id) {
-                          // if ($scope.list[0].name) {
+                            // if ($scope.list[0].name) {
                             $scope.sendData($scope.list[0]._id, $scope.list[0].name);
-                          // }else{
-                          //   $scope.sendData($scope.list[0]._id, $scope.list[0].officeCode);
-                          // }
+                            // }else{
+                            //   $scope.sendData($scope.list[0]._id, $scope.list[0].officeCode);
+                            // }
                         } else {
                             console.log("Making this happen");
                             $scope.sendData("", "");

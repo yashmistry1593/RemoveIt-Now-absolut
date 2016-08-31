@@ -26,6 +26,7 @@ var jsArray = [
     "./bower_components/angular-bootstrap-toggle-switch/angular-toggle-switch.min.js",
     "./bower_components/angular-toastr/dist/angular-toastr.js",
     "./bower_components/angular-toastr/dist/angular-toastr.tpls.js",
+    "./bower_components/angular-hotkeys/build/hotkeys.js",
 
     './js/app.js',
     './js/language.js',

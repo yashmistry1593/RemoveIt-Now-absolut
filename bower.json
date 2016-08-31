@@ -38,7 +38,8 @@
     "angularjs-imageupload-directive": "https://github.com/Mischi/angularjs-imageupload-directive.git",
     "ngmap": "^1.17.3",
     "angular-bootstrap-toggle-switch": "^0.5.6",
-    "angular-toastr": "^2.0.0"
+    "angular-toastr": "^2.0.0",
+    "angular-hotkeys": "chieffancypants/angular-hotkeys#^1.7.0"
   },
   "devDependencies": {
     "angular-translate": "^2.11.0"
