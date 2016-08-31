@@ -1024,7 +1024,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.holdObject = '';
         $scope.modalIndex = 0;
 
-        $scope.addModal = function(filename, index, holdobj, data) {
+        $scope.addModal = function(filename, index, holdobj, data, current) {
             if (index !== "") {
                 $scope.modalData = data;
                 $scope.modalIndex = index;
@@ -1033,7 +1033,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             } else {
                 $scope.modalData = {};
                 if (current.length > 0) {
-                    $scope.modalData.from = new Date(current[current.length - 1].to);
+                        $scope.modalData.from = new Date(current[current.length - 1].to);
+                        $scope.modalData.grade = current[current.length - 1].grade;
                 }
                 $scope.modalIndex = "";
             }
@@ -1192,7 +1193,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             } else {
                 $scope.modalData = {};
                 if (current.length > 0) {
-                    $scope.modalData.from = new Date(current[current.length - 1].to);
+                        $scope.modalData.from = new Date(current[current.length - 1].to);
+                        $scope.modalData.grade = current[current.length - 1].grade;
                 }
                 $scope.modalIndex = "";
             }
