@@ -1033,8 +1033,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             } else {
                 $scope.modalData = {};
                 if (current.length > 0) {
-                        $scope.modalData.from = new Date(current[current.length - 1].to);
-                        $scope.modalData.grade = current[current.length - 1].grade;
+                    $scope.modalData.from = new Date(current[current.length - 1].to);
+                    $scope.modalData.grade = current[current.length - 1].grade;
                 }
                 $scope.modalIndex = "";
             }
@@ -1082,8 +1082,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 case 'CTCDetails':
                     if ($scope.modalIndex !== "") {
                         $scope.formData.CTCDetails[$scope.modal] = data;
+                        $scope.formData.grade = $scope.formData.CTCDetails[$scope.formData.CTCDetails.length - 1].grade;
                     } else {
                         $scope.formData.CTCDetails.push(data);
+                        $scope.formData.grade = $scope.formData.CTCDetails[$scope.formData.CTCDetails.length - 1].grade;
                     }
                     break;
                 default:
@@ -1192,9 +1194,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.modalIndex = index;
             } else {
                 $scope.modalData = {};
+                console.log(moment());
                 if (current.length > 0) {
-                        $scope.modalData.from = new Date(current[current.length - 1].to);
-                        $scope.modalData.grade = current[current.length - 1].grade;
+                    $scope.modalData.from = new Date(current[current.length - 1].to);
+                    $scope.modalData.from = $scope.modalData.from.setDate($scope.modalData.from.getDate() + 1);
+                    $scope.modalData.grade = current[current.length - 1].grade;
                 }
                 $scope.modalIndex = "";
             }
@@ -1241,8 +1245,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 case 'CTCDetails':
                     if ($scope.modalIndex !== "") {
                         $scope.formData.CTCDetails[$scope.modal] = data;
+                        $scope.formData.grade = $scope.formData.CTCDetails[$scope.formData.CTCDetails.length - 1].grade;
                     } else {
                         $scope.formData.CTCDetails.push(data);
+                        $scope.formData.grade = $scope.formData.CTCDetails[$scope.formData.CTCDetails.length - 1].grade;
+
                     }
                     break;
                 default:
