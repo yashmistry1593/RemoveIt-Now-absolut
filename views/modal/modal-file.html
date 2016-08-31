@@ -63,22 +63,27 @@
     </div>
     <div class="modal-body">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-6">
             <div class="form-group">
                 <label>CTC Amount</label>
                 <div class="input-group">
-                  <input type="text" name="amount" class="form-control" ng-model="modalData.CTCAmount" required>
-                  <div class="error-msg" ng-show="modalForm.CTCAmount.$invalid && modalForm.CTCAmount.$touched">Please Enter CTC Amount</div>
+                  <input type="text" name="amount" class="form-control" ng-model="modalData.amount" required>
+                  <div class="error-msg" ng-show="modalForm.amount.$invalid && modalForm.amount.$touched">Please Enter CTC Amount</div>
 
                 </div>
             </div>
+            <div class="form-group">
+                <label>Upload Document</label>
+                <upload-image ng-model="modalData.image" no-view required></upload-image>
+                <div class="error-msg" ng-show="modalForm.image.$invalid && modalForm.image.$touched">Please Upload Document</div>
+            </div>
         </div>
-          <div class="col-md-4">
+          <div class="col-md-6">
               <div class="form-group">
                   <label>From</label>
                   <div class="input-group">
-                      <input type="text" name="from" class="form-control" uib-datepicker-popup="{{format}}" ng-model="modalData.CTCFrom" is-open="popup.fromLicense" datepicker-options="dateOptions" required readonly/>
-                      <div class="error-msg" ng-show="modalForm.CTCFrom.$invalid && modalForm.CTCFrom.$touched">Please Enter CTC From Date</div>
+                      <input type="text" name="from" class="form-control" uib-datepicker-popup="{{format}}" ng-model="modalData.from" is-open="popup.fromLicense" datepicker-options="dateOptions" required readonly/>
+                      <div class="error-msg" ng-show="modalForm.from.$invalid && modalForm.from.$touched">Please Enter CTC From Date</div>
                       <span class="input-group-btn">
                           <button type="button" class="btn btn-default" ng-click="popup.fromLicense = true">
                               <i class="fa fa-calendar"></i>
@@ -86,8 +91,20 @@
                       </span>
                   </div>
               </div>
+              <div class="form-group">
+                  <label>To</label>
+                  <div class="input-group">
+                      <input type="text" name="to" class="form-control" uib-datepicker-popup="{{format}}" ng-model="modalData.to" is-open="popup.toLicense" datepicker-options="dateOptions" required readonly/>
+                      <div class="error-msg" ng-show="modalForm.to.$invalid && modalForm.to.$touched">Please Enter CTC To Date</div>
+                      <span class="input-group-btn">
+                          <button type="button" class="btn btn-default" ng-click="popup.toLicense = true">
+                              <i class="fa fa-calendar"></i>
+                          </button>
+                      </span>
+                  </div>
+              </div>
           </div>
-          <div class="col-md-4">
+          <!-- <div class="col-md-4">
               <div class="form-group">
                   <label>To</label>
                   <div class="input-group">
@@ -100,7 +117,7 @@
                       </span>
                   </div>
               </div>
-          </div>
+          </div> -->
       </div>
 
         <div class="text-center">

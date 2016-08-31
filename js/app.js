@@ -1255,6 +1255,16 @@ firstapp.filter('serverimage', function() {
     };
 });
 
+firstapp.filter('downloadImage', function() {
+    return function(input) {
+        if (input) {
+            return adminurl + "download/" + input;
+        } else {
+            return "img/logo.png";
+        }
+    };
+});
+
 firstapp.directive('oI', function($document) {
     return {
         restrict: 'C',

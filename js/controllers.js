@@ -1020,8 +1020,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             if (index !== "") {
                 $scope.modalData = data;
                 $scope.modalIndex = index;
+                $scope.modalData.from = new Date(data.from);
+                $scope.modalData.to = new Date(data.to);
             } else {
                 $scope.modalData = {};
+                if (current.length > 0) {
+                        $scope.modalData.from = new Date(current[current.length - 1].to);
+                }
                 $scope.modalIndex = "";
             }
             $scope.holdObject = holdobj;
@@ -1169,30 +1174,15 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.modalIndex = 0;
 
         $scope.addModal = function(filename, index, holdobj, data, current) {
-          console.log("in add modal");
             if (index !== "") {
-              console.log(holdobj);
-              console.log(data);
                 $scope.modalData = data;
-                if (holdobj === "CTCDetails") {
-                  $scope.modalData.CTCFrom = new Date(data.CTCFrom);
-                  $scope.modalData.CTCTo = new Date(data.CTCTo);
-                }else {
                   $scope.modalData.from = new Date(data.from);
                   $scope.modalData.to = new Date(data.to);
-                }
-                $scope.modalData1 = data;
                 $scope.modalIndex = index;
             } else {
                 $scope.modalData = {};
-                $scope.modalData1 = {};
                 if (current.length > 0) {
-                    console.log("greater than 0");
-                    if (holdobj === 'CTCDetails') {
-                        $scope.modalData.CTCFrom = new Date(current[current.length - 1].CTCTo);
-                    } else {
                         $scope.modalData.from = new Date(current[current.length - 1].to);
-                    }
                 }
                 $scope.modalIndex = "";
             }
