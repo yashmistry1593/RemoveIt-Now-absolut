@@ -650,9 +650,12 @@ $trans-black: rgba( black, .15 );
     > li {
         padding: 10px;
         cursor: pointer;
-        &:hover, &.arrow-down {
+        &:hover {
             background-color: $brand-primary;
             color: white;
+        }
+        &.arrow-down {
+            background-color: lighten($brand-primary, 20%);
         }
     }
 }
