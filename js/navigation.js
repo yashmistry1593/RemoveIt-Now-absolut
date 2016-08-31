@@ -1,5 +1,5 @@
-// var adminurl = "http://localhost:1337/api/";
-var adminurl = "http://104.155.238.145/api/";
+var adminurl = "http://localhost:1337/api/";
+// var adminurl = "http://104.155.238.145/api/";
 var imgurl = adminurl + "upload/";
 
 var imgpath = imgurl + "readFile";
@@ -235,6 +235,9 @@ var navigationservice = angular.module('navigationservice', [])
             $http.post(adminurl + model + '/search', formData).success(function(data) {
                 callback(data, i);
             });
+        },
+        getDepartment: function(callback) {
+            $http.post(adminurl + 'Department/search', {}).success(callback);
         },
         searchCustomer: function(formData, i, callback) {
             $http.post(adminurl + 'Customer/search', formData).success(function(data) {

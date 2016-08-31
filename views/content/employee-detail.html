@@ -384,6 +384,16 @@
                                 <div class="error-msg" ng-show="formName.licenseNumber.$invalid && formName.licenseNumber.$touched">Please Select License Number</div>
                             </div>
                         </div>
+                        <div class="col-md-4">
+                            <div class="form-group">
+                                <label>Department*</label>
+                                <ui-select multiple ng-model="formData.department" theme="bootstrap">
+                                    <ui-select-match>{{$item.name}}</ui-select-match>
+                                    <ui-select-choices repeat="department in departments | filter:$select.search" ui-disable-choice="departments.length==0">{{department.name}}</ui-select-choices>
+                                </ui-select>
+                                <div class="error-msg" ng-show="formName.licenseNumber.$invalid && formName.licenseNumber.$touched">Please Select License Number</div>
+                            </div>
+                        </div>
                     </div>
 
                     <div class="table-responsive" ng-if="formData.licenseDocument.length>0">
@@ -431,14 +441,14 @@
                         <thead>
                             <tr>
                                 <th>From</th>
-                                <th>To</th>
+                                <th>Department</th>
                                 <th width="100">Action</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr ng-repeat="data in formData.IIISLACertificate track by $index">
                                 <td>{{data.from | date:'dd MMM yyyy'}}</td>
-                                <td>{{data.to | date:'dd MMM yyyy'}}</td>
+                                <td>{{data.department.name || "-"}}</td>
                                 <td>
                                     <a class="btn btn-blue" ng-click="addModal('modal-file',$index,'IIISLACertificate',data)">
                                         <i class="fa fa-pencil"></i>

@@ -1024,8 +1024,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.holdObject = '';
         $scope.modalIndex = 0;
 
-        $scope.changeDOB = function(date){
-          console.log($filter('ageFilter')(date));
+        $scope.changeDOB = function(date) {
+            console.log($filter('ageFilter')(date));
         };
 
         $scope.addModal = function(filename, index, holdobj, data, current) {
@@ -1188,9 +1188,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.holdObject = '';
         $scope.modalIndex = 0;
 
-        $scope.changeDOB = function(date){
-          console.log($filter('ageFilter')(date));
+        $scope.changeDOB = function(date) {
+            console.log($filter('ageFilter')(date));
         };
+
+
 
         $scope.addModal = function(filename, index, holdobj, data, current) {
 
@@ -1299,6 +1301,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.formData.district = data.data.city.district._id;
                 $scope.formData.city = data.data.city._id;
             }
+            NavigationService.getDepartment(function(data1) {
+                $scope.departments = data1.data.results;
+
+                // $scope.departments = _.flatten(_.map(data1.data.results, function(item) {
+                //     return _.filter(data.data.department, item);
+                // }));
+                // console.log($scope.departments);
+            });
             if (data.data.birthDate) {
                 $scope.formData.birthDate = new Date(data.data.birthDate);
             }
