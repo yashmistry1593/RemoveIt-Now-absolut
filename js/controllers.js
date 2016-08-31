@@ -4314,10 +4314,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.modalData = $scope.formData.officers[index];
             $scope.modalData.birthDate = new Date($scope.formData.officers[index].birthDate);
             $scope.addOfficer();
-        }
+        };
         $scope.deleteOfficer = function(index) {
             $scope.formData.officers.splice(index, 1);
-        }
+        };
     })
 
 .controller('MultipleSelectCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $filter, toastr) {
