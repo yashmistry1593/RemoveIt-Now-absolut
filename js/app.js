@@ -859,7 +859,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         }
     })
 
-    .state('createcustomersegment', {
+    .state('createcustomerSegment', {
         url: "/customersegment-create/{id:.*}/{model:.*}",
         templateUrl: "views/template.html",
         controller: 'CreateModelCtrl',
@@ -869,7 +869,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         }
     })
 
-    .state('editcustomersegment', {
+    .state('editcustomerSegment', {
         url: "/customersegment-edit/{id:.*}/{model:.*}",
         templateUrl: "views/template.html",
         controller: 'EditModelCtrl',
