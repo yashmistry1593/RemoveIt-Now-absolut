@@ -1027,7 +1027,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.changeDOB = function(date) {
             console.log($filter('ageFilter')(date));
         };
-
+        $scope.minDate = new Date();
         $scope.addModal = function(filename, index, holdobj, data, current) {
             if (index !== "") {
                 $scope.modalData = data;

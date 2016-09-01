@@ -34,10 +34,10 @@
               <div class="form-group" ng-if="holdObject != 'IIISLACertificate'">
                   <label>To</label>
                   <div class="input-group">
-                      <input type="text" name="to" class="form-control" uib-datepicker-popup="{{format}}" ng-model="modalData.to" is-open="popup.toLicense" datepicker-options="dateOptions" required readonly/>
+                      <input type="text" name="to" min-date="minDate" class="form-control" uib-datepicker-popup="{{format}}" ng-model="modalData.to" is-open="popup.toLicense" datepicker-options="dateOptions" required readonly/>
                       <div class="error-msg" ng-show="modalForm1.to.$invalid && modalForm1.to.$touched">Please Enter End Date</div>
                       <span class="input-group-btn">
-                          <button type="button" class="btn btn-default" ng-click="popup.toLicense = true">
+                          <button type="button" class="btn btn-default" ng-click="popup.toLicense = true; minDate = modalData.from;">
                               <i class="fa fa-calendar"></i>
                           </button>
                       </span>
