@@ -183,6 +183,30 @@
                           <h3>Marine Cargo</h3>
                       </div>
                         <div class="sec">
+                          <div class="row">
+                            <div class="col-md-6">
+                              <div class="form-group">
+                                <label>Invoice Number</label>
+                                <input type="text" name="invoiceNumber" ng-model="formData.invoiceNumber" class="form-control" required>
+                                <div class="error-msg" ng-show="formName.invoiceNumber.$invalid && formName.invoiceNumber.$touched">Please Enter Invoice Number</div>
+                              </div>
+                            </div>
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <label>Date</label>
+                                      <div class="input-group">
+                                          <input type="text" name="invoiceNumberDate" ng-model="formData.invoiceNumberDate" class="form-control" uib-datepicker-popup="{{format}}" is-open="popup.invoiceNumberDate" ng-change="chageDOB(formData.birthDate)" datepicker-options="dateOptions" readonly/>
+                                          <span class="input-group-btn">
+                                              <button type="button" class="btn btn-default" ng-click="popup.invoiceNumberDate = true">
+                                                  <i class="fa fa-calendar"></i>
+                                              </button>
+                                          </span>
+                                      </div>
+                                      <div class="error-msg" ng-show="formName.invoiceNumberDate.$invalid && formName.invoiceNumberDate.$touched">Please Enter Date</div>
+                                  </div>
+                              </div>
+
+                          </div>
                           <div class="table-responsive">
                               <table class="table table-input">
                                 <thead>
@@ -219,6 +243,29 @@
                           <h3>Marine Cargo</h3>
                       </div>
                         <div class="sec">
+                          <div class="row">
+                          <div class="col-md-6">
+                            <div class="form-group">
+                              <label>LR Number*</label>
+                              <input type="text" name="lrNumber" ng-model="formData.lrNumber" class="form-control">
+                              <div class="error-msg" ng-show="formName.lrNumber.$invalid && formName.lrNumber.$touched">Please Enter LR Number</div>
+                            </div>
+                          </div>
+                              <div class="col-md-6">
+                                  <div class="form-group">
+                                      <label>Date*</label>
+                                      <div class="input-group">
+                                          <input type="text" name="lrNumberDate" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.lrNumberDate" is-open="popup.lrNumberDate" ng-change="chageDOB(formData.birthDate)" datepicker-options="dateOptions" readonly/>
+                                          <span class="input-group-btn">
+                                              <button type="button" class="btn btn-default" ng-click="popup.lrNumberDate = true">
+                                                  <i class="fa fa-calendar"></i>
+                                              </button>
+                                          </span>
+                                      </div>
+                                      <div class="error-msg" ng-show="formName.lrNumberDate.$invalid && formName.lrNumberDate.$touched">Please Enter Date</div>
+                                  </div>
+                              </div>
+                          </div>
                           <div class="table-responsive">
                               <table class="table table-input">
                                 <thead>
@@ -255,6 +302,15 @@
                           <h3>Marine Cargo</h3>
                       </div>
                         <div class="sec">
+                          <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>Vehicle Number</label>
+                                  <input type="text" name="vehicleNumber" ng-model="formData.vehicleNumber" class="form-control" alpha-numeric>
+                                  <div class="error-msg" ng-show="formName.vehicleNumber.$invalid && formName.vehicleNumber.$touched">Please Enter Vehicle Number</div>
+                                </div>
+                              </div>
+                          </div>
                           <div class="table-responsive">
                               <table class="table table-input">
                                 <thead>
@@ -290,6 +346,22 @@
                           <h3>Others</h3>
                       </div>
                         <div class="sec">
+                          <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>Location ID</label>
+                                  <input type="text" name="locationID" ng-model="formData.locationID" class="form-control">
+                                  <div class="error-msg" ng-show="formName.locationID.$invalid && formName.locationID.$touched">Please Enter Location ID</div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>Product ID</label>
+                                  <input type="text" name="productID" ng-model="formData.productID" class="form-control">
+                                  <div class="error-msg" ng-show="formName.productID.$invalid && formName.productID.$touched">Please Enter Product ID</div>
+                                </div>
+                              </div>
+                          </div>
                           <div class="table-responsive">
                               <table class="table table-input">
                                 <thead>

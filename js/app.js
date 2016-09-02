@@ -1482,20 +1482,16 @@ firstapp.config(function($translateProvider) {
 firstapp.directive('alphaNumeric', function() {
   return {
     require: 'ngModel',
-    restrict: 'A',
-    link: function(scope, elem, attr, ngModel) {
-
-      var validator = function(value) {
-        if (/^[a-zA-Z0-9]*$/.test(value)) {
-          ngModel.$setValidity('alphanumeric', true);
-          return value;
-        } else {
-          ngModel.$setValidity('alphanumeric', false);
-          return undefined;
+    link: function(scope, element, attr, ngModelCtrl) {
+      function fromUser(text) {
+        var transformedInput = text.replace(/[^0-9a-zA-Z]/g, '');
+        if (transformedInput !== text) {
+          ngModelCtrl.$setViewValue(transformedInput);
+          ngModelCtrl.$render();
         }
-      };
-      ngModel.$parsers.unshift(validator);
-      ngModel.$formatters.unshift(validator);
+        return transformedInput; // or return Number(transformedInput)
+      }
+      ngModelCtrl.$parsers.push(fromUser);
     }
   };
 });
