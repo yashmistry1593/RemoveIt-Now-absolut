@@ -49,6 +49,12 @@
                   <div class="error-msg" ng-show="modalForm.to.$invalid && modalForm.to.$touched">Please Select Department</div>
               </div>
           </div>
+          <div class="col-md-4">
+              <div class="form-group" ng-if="holdObject == 'IIISLACertificate'">
+                  <label>Eligible for</label>
+                  <input type="text" class="form-control" name="eligibleFor" ng-model="modalData.eligibleFor" readonly>
+              </div>
+          </div>
       </div>
         <div class="text-center">
           <button class="btn btn-primary" type="submit" ng-disabled="modalForm1.$invalid">Save</button>
