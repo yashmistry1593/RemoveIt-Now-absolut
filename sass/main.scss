@@ -840,6 +840,9 @@ img.uploadingImage {
     max-height: 300px;
     margin: 10px 0px;
 }
+.side-menus nav > ul {
+  padding-bottom: 66px;
+}
 /* Start writing sass here */
 @import "fancybox-override";
 @import "other/mobile";

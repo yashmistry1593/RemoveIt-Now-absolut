@@ -1478,3 +1478,24 @@ firstapp.config(function($translateProvider) {
     $translateProvider.translations('hi', LanguageHindi);
     $translateProvider.preferredLanguage('en');
 });
+
+firstapp.directive('alphaNumeric', function() {
+  return {
+    require: 'ngModel',
+    restrict: 'A',
+    link: function(scope, elem, attr, ngModel) {
+
+      var validator = function(value) {
+        if (/^[a-zA-Z0-9]*$/.test(value)) {
+          ngModel.$setValidity('alphanumeric', true);
+          return value;
+        } else {
+          ngModel.$setValidity('alphanumeric', false);
+          return undefined;
+        }
+      };
+      ngModel.$parsers.unshift(validator);
+      ngModel.$formatters.unshift(validator);
+    }
+  };
+});
