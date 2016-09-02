@@ -121,25 +121,6 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Contact details of Site*</label>
-                                        <input type="text" name="siteContact" ng-model="formData.siteContact" class="form-control" required>
-                                        <div class="error-msg" ng-show="formName.siteContact.$invalid && formName.siteContact.$touched">Please Enter Contact details of Site</div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Products*</label>
-                                        <ui-select multiple tagging="tagTransform" tagging-label="(press enter to add new)" on-select="clicked($select.selected)" name="products" ng-model="formData.products" theme="bootstrap" required>
-                                            <ui-select-match>{{$item.name}}</ui-select-match>
-                                            <ui-select-choices repeat="natureOfLoss in products | filter:$select.search" refresh-delay="0" refresh="refreshNature()">{{natureOfLoss.name}}</ui-select-choices>
-                                        </ui-select>
-                                        <div class="error-msg" ng-show="formName.products.$invalid && formName.products.$touched">Please Enter Products</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="form-group">
                                         <label>Cause of Loss*</label>
                                         <multiple-select name="causeOfLoss" required ng-model="formData.causeOfLoss" filter='{"company":"{{formData.company}}"}' ng-name="name.office" api="searchOffice"></multiple-select>
                                         <div class="error-msg" ng-show="formName.siteContact.$invalid">Please Select Cause of Loss</div>
@@ -172,6 +153,25 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Contact details of Site*</label>
+                                        <input type="text" name="siteContact" ng-model="formData.siteContact" class="form-control" required>
+                                        <div class="error-msg" ng-show="formName.siteContact.$invalid && formName.siteContact.$touched">Please Enter Contact details of Site</div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label>Share With</label>
+                                        <ui-select multiple tagging="tagTransform" on-select="clicked($select.selected)" name="shareWith" ng-model="formData.shareWith" theme="bootstrap" required>
+                                            <ui-select-match>{{$item.name}}</ui-select-match>
+                                            <ui-select-choices repeat="natureOfLoss in products | filter:$select.search" refresh-delay="0" refresh="refreshNature()">{{natureOfLoss.name}}</ui-select-choices>
+                                        </ui-select>
+                                        <div class="error-msg" ng-show="formName.shareWith.$invalid && formName.shareWith.$touched">Please Enter name to Share With</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -179,8 +179,58 @@
                 <div class="widget">
                     <div class="form-elements-sec">
                       <div class="widget-title">
-                        <button class="btn btn-primary pull-right">Add New</button>
-                          <h3>Marine Cargo</h3>
+                        <a class="btn btn-primary pull-right">Add New</a>
+                          <h3>Products</h3>
+                      </div>
+                        <div class="sec">
+                          <div class="row">
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>Products</label>
+                                  <input type="text" name="products" ng-model="formData.products" class="form-control">
+                                  <div class="error-msg" ng-show="formName.products.$invalid && formName.products.$touched">Please Enter Product Name</div>
+                                </div>
+                              </div>
+                              <div class="col-md-6">
+                                <div class="form-group">
+                                  <label>Item</label>
+                                  <input type="text" name="item" ng-model="formData.item" class="form-control">
+                                  <div class="error-msg" ng-show="formName.item.$invalid && formName.item.$touched">Please Enter Item Name</div>
+                                </div>
+                              </div>
+                          </div>
+                          <div class="table-responsive">
+                              <table class="table table-input">
+                                <thead>
+                                  <tr>
+                                    <th>Vehicle #</th>
+                                    <th width="150px">Actions</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>Vehicle #</td>
+                                    <td>
+                                        <a class="btn btn-primary" ng-click="editMarineCargo()">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+                                        <a class="btn btn-danger" ng-click="deleteMarineCargo()">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                          </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="widget">
+                    <div class="form-elements-sec">
+                      <div class="widget-title">
+                        <a class="btn btn-primary pull-right">Add New</a>
+                          <h3>Invoices</h3>
                       </div>
                         <div class="sec">
                           <div class="row">
@@ -239,8 +289,8 @@
                 <div class="widget">
                     <div class="form-elements-sec">
                       <div class="widget-title">
-                        <button class="btn btn-primary pull-right">Add New</button>
-                          <h3>Marine Cargo</h3>
+                        <a class="btn btn-primary pull-right">Add New</a>
+                          <h3>LRs</h3>
                       </div>
                         <div class="sec">
                           <div class="row">
@@ -298,8 +348,8 @@
                 <div class="widget">
                     <div class="form-elements-sec">
                       <div class="widget-title">
-                        <button class="btn btn-primary pull-right">Add New</button>
-                          <h3>Marine Cargo</h3>
+                        <a class="btn btn-primary pull-right">Add New</a>
+                          <h3>Vehicle Number</h3>
                       </div>
                         <div class="sec">
                           <div class="row">
@@ -342,7 +392,7 @@
                 <div class="widget">
                     <div class="form-elements-sec">
                       <div class="widget-title">
-                        <button class="btn btn-primary pull-right">Add New</button>
+                        <a class="btn btn-primary pull-right">Add New</a>
                           <h3>Others</h3>
                       </div>
                         <div class="sec">
