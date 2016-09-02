@@ -196,6 +196,17 @@ var navigationservice = angular.module('navigationservice', [])
             icon: "retweet"
         }]
     }, {
+        name: "Assignments",
+        classis: "active",
+        anchor: "assignment-list",
+        icon: "pencil",
+        subnav: [{
+            name: "Assignment",
+            classis: "active",
+            anchor: "assignment-list",
+            icon: "pencil"
+        }]
+    },{
         name: "Timeline",
         classis: "active",
         anchor: "timeline",
