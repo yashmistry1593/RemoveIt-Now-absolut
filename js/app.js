@@ -533,25 +533,33 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('natureLoss-list', {
-        url: "/natureloss-list/{page:.*}/{keyword:.*}",
+        url: "/natureloss-list/{page:.*}/{keyword:.*}/{model:.*}",
         templateUrl: "views/template.html",
-        controller: 'NatureLossCtrl',
+        controller: 'ModelViewCtrl',
         params: {
             page: "1",
-            keyword: ""
+            keyword: "",
+            model:"nature loss"
         }
     })
 
-    .state('createnatureloss', {
+    .state('createnatureLoss', {
         url: "/natureloss-create",
         templateUrl: "views/template.html",
-        controller: 'CreateNatureLossCtrl'
+        controller: 'CreateModelCtrl',
+        params: {
+          model:"nature loss"
+        }
     })
 
-    .state('editnatureloss', {
-        url: "/natureloss-edit/:id",
+    .state('editnatureLoss', {
+        url: "/natureloss-edit/{id:.*}/{model:.*}",
         templateUrl: "views/template.html",
-        controller: 'EditNatureLossCtrl'
+        controller: 'EditModelCtrl',
+        params: {
+          id:"",
+          model:"nature loss"
+        }
     })
 
     .state('businessbranch-list', {
@@ -1002,7 +1010,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('createassignment', {
         url: "/assignment-create",
         templateUrl: "views/template.html",
-        controller: 'CreateModelCtrl',
+        controller: 'CreateAssignmentCtrl',
         params: {
             page: "1",
             keyword: "",
@@ -1012,7 +1020,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     .state('editassignment', {
         url: "/assignment-edit",
         templateUrl: "views/template.html",
-        controller: 'EditModelCtrl',
+        controller: 'EditAssignmentCtrl',
         params: {
             page: "1",
             keyword: "",

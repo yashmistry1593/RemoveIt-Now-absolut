@@ -377,6 +377,79 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
 })
+.controller('CreateAssignmentCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, toastr, $stateParams, $uibModal) {
+    //Used to name the .html file
+
+    $scope.template = TemplateService.changecontent("assignment-detail");
+    $scope.menutitle = NavigationService.makeactive("Assignment");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.header = {
+        "name": "Create Assignment"
+    };
+    $scope.formData = {};
+    $scope.formData.invoice = [];
+    $scope.formData.products = [];
+    $scope.formData.LRs = [];
+    $scope.formData.vehicleNumber = [];
+    $scope.formData.others = [];
+    $scope.modalData = {};
+    $scope.modalIndex = "";
+    $scope.wholeObj = [];
+    $scope.addModels = function(dataArray, data){
+      dataArray.push(data);
+    };
+
+    NavigationService.searchNatureLoss(function(data){
+      $scope.natureLoss = data.data.results;
+    });
+
+    $scope.addModal = function(filename, index, holdobj, data, current, wholeObj) {
+        if (index !== "") {
+            $scope.modalData = data;
+            $scope.modalIndex = index;
+        } else {
+            $scope.modalData = {};
+            $scope.modalIndex = "";
+        }
+        $scope.wholeObj = wholeObj;
+        $scope.current = current;
+        $scope.holdObject = holdobj;
+        var modalInstance = $uibModal.open({
+            scope: $scope,
+            templateUrl: 'views/modal/' + filename + '.html',
+            size: 'lg'
+        });
+    };
+
+    $scope.addElements = function(moddata){
+      console.log($scope.wholeObj);
+      if ($scope.modalIndex !== "") {
+          $scope.wholeObj[$scope.modalIndex] = moddata;
+      } else {
+          $scope.wholeObj.push(moddata);
+      }
+    };
+
+    $scope.deleteElements = function(index, data) {
+        data.splice(index, 1);
+    };
+
+
+    $scope.saveCountry = function(formData) {
+        console.log($scope.formData);
+        NavigationService.countrySave($scope.formData, function(data) {
+            if (data.value === true) {
+                $state.go('country-list');
+                toastr.success("Country " + formData.name + " created successfully.", "Country Created");
+            } else {
+                toastr.error("Country creation failed.", "Country creation error");
+            }
+        });
+    };
+
+})
 
 .controller('EditCountryCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
     //Used to name the .html file
@@ -1050,7 +1123,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 size: 'lg'
             });
         };
-
+//jagruti
         $scope.addElements = function(data) {
             console.log(data);
             console.log($scope.holdObject);
@@ -4201,7 +4274,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 }
             });
         };
-        //jagruti
         $scope.createOfficer = function(modelData) {
             if ($scope.buttonValue === "Save") {
                 $scope.formData.officers.push(modelData);

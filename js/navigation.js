@@ -250,6 +250,9 @@ var navigationservice = angular.module('navigationservice', [])
         getDepartment: function(callback) {
             $http.post(adminurl + 'Department/search', {}).success(callback);
         },
+        searchNatureLoss: function(callback) {
+            $http.post(adminurl + 'NatureLoss/search', {}).success(callback);
+        },
         searchCustomer: function(formData, i, callback) {
             $http.post(adminurl + 'Customer/search', formData).success(function(data) {
               console.log(data);
@@ -304,6 +307,11 @@ var navigationservice = angular.module('navigationservice', [])
                 callback(data, i);
             });
         },
+        searchAppointedBy: function(formData, i, callback) {
+            $http.post(adminurl + 'Employee/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
         searchTypeOfOffice: function(formData, i, callback) {
             $http.post(adminurl + 'typeOfOffice/search', formData).success(function(data) {
                 callback(data, i);
@@ -311,6 +319,21 @@ var navigationservice = angular.module('navigationservice', [])
         },
         searchCompany: function(formData, i, callback) {
             $http.post(adminurl + 'company/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
+        searchCauseLoss: function(formData, i, callback) {
+            $http.post(adminurl + 'CauseLoss/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
+        searchTypeOfClaim: function(formData, i, callback) {
+            $http.post(adminurl + 'Claims/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
+        searchNatureOfSurvey: function(formData, i, callback) {
+            $http.post(adminurl + 'SurveyCode/search', formData).success(function(data) {
                 callback(data, i);
             });
         },
@@ -356,6 +379,9 @@ var navigationservice = angular.module('navigationservice', [])
         },
         countrySave: function(formData, callback) {
             $http.post(adminurl + 'country/save', formData).success(callback);
+        },
+        claimSave: function(formData, callback) {
+            $http.post(adminurl + 'Claims/save', formData).success(callback);
         },
         modelSave: function(modal, formData, callback) {
             $http.post(adminurl + modal + '/save', formData).success(callback);
