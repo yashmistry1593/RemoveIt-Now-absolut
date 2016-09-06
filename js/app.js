@@ -1008,22 +1008,20 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('createassignment', {
-        url: "/assignment-create",
+        url: "/assignment-create/{id:.*}/{model:.*}",
         templateUrl: "views/template.html",
         controller: 'CreateAssignmentCtrl',
         params: {
-            page: "1",
-            keyword: "",
+            id: "",
             model: "assignment"
         }
     })
     .state('editassignment', {
-        url: "/assignment-edit",
+        url: "/assignment-edit/{id:.*}/{model:.*}",
         templateUrl: "views/template.html",
         controller: 'EditAssignmentCtrl',
         params: {
-            page: "1",
-            keyword: "",
+            id: "",
             model: "assignment"
         }
     })

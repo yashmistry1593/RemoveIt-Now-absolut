@@ -1,5 +1,5 @@
-var adminurl = "http://localhost:1337/api/";
-// var adminurl = "http://104.155.238.145/api/";
+// var adminurl = "http://localhost:1337/api/";
+var adminurl = "http://104.155.238.145/api/";
 var imgurl = adminurl + "upload/";
 
 var imgpath = imgurl + "readFile";
@@ -236,11 +236,32 @@ var navigationservice = angular.module('navigationservice', [])
         getInsurer: function(callback) {
             $http.post(adminurl + 'customerCompany/getInsurer', {}).success(callback);
         },
+        searchEmployee: function(formData, i, callback) {
+          console.log(formData);
+            $http.post(adminurl + 'Employee/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
+        searchInsuredOffice: function(formData, i, callback) {
+          formData.segment = "Insured";
+            $http.post(adminurl + 'Customer/getSegmented', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
+        searchBroker: function(formData, i, callback) {
+          formData.segment = "Broker";
+            $http.post(adminurl + 'Customer/getSegmented', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
         getNature: function(callback) {
             $http.post(adminurl + 'Nature/search', {}).success(callback);
         },
         saveNature: function(data, callback) {
             $http.post(adminurl + 'Nature/save', data).success(callback);
+        },
+        assignmentSave: function(data, callback) {
+            $http.post(adminurl + 'Assignment/save', data).success(callback);
         },
         searchModel: function(model, formData, i, callback) {
             $http.post(adminurl + model + '/search', formData).success(function(data) {
@@ -250,6 +271,9 @@ var navigationservice = angular.module('navigationservice', [])
         getDepartment: function(callback) {
             $http.post(adminurl + 'Department/search', {}).success(callback);
         },
+        // searchInsuredOffice: function(callback) {
+        //     $http.post(adminurl + 'CustomerCompany/getSegmented', {}).success(callback);
+        // },
         searchNatureLoss: function(callback) {
             $http.post(adminurl + 'NatureLoss/search', {}).success(callback);
         },

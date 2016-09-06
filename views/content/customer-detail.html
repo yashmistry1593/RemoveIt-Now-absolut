@@ -40,7 +40,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <label>Customer Company*</label>{{name.customerCompany}}
+                                        <label>Customer Company*</label>
                                         <multiple-select name="customerCompany" required ng-model="formData.customerCompany" filter='{"customerSegment":"{{formData.customerSegment}}"}' ng-name="name.customerCompany" api="searchCustomerCompany"></multiple-select>
                                         <div class="error-msg" ng-show="formName.customerCompany.$invalid">Please Select Customer Company</div>
                                     </div>
@@ -55,7 +55,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Customer Short Name*</label>
-                                        <input type="text" name="customerCode" class="form-control" ng-model="formData.customerCode" ng-value="formData.customerCode=name.customerCompany+'-'+name.typeOfOffice+'-'+formData.officeCode+'-'+formData.city1" readonly>
+                                        <input type="text" name="name" class="form-control" ng-model="formData.name" ng-value="formData.name=name.customerCompany+'-'+name.typeOfOffice+'-'+formData.officeCode+'-'+formData.city1" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
