@@ -1292,6 +1292,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.saveModel = function(formData) {
             console.log(formData);
+            $scope.formData.name = $scope.formData.firstName+ " " +$scope.formData.lastName;
+
             NavigationService.modelSave("Employee", $scope.formData, function(data) {
                 if (data.value === true) {
                     $state.go('employee-list');
