@@ -48,7 +48,6 @@
                             <thead>
                                 <tr>
                                   <th>Nature Loss</th>
-                                  <th>Nature Code</th>
                                   <th>Status</th>
                                   <th>Actions</th>
                                 </tr>
@@ -56,14 +55,13 @@
                             <tbody ng-show="totalItems>0">
                                 <tr ng-repeat="data in modelList">
                                     <td>{{data.name}}</td>
-                                    <td>{{data.code}}</td>
                                     <td>
                                       <toggle-switch ng-model="data.status" class="switch-mini switch-success" ng-change="changeStatus(data)"></toggle-switch>
                                     </td>
                                     <td>
-                                        <a class="btn btn-primary" ui-sref="editnatureLoss({id:data._id})">
+                                        <!-- <a class="btn btn-primary" ui-sref="editnatureLoss({id:data._id})">
                                             <i class="fa fa-pencil"></i>
-                                        </a>
+                                        </a> -->
                                         <a class="btn btn-danger" ng-click="deleteModel(data._id)">
                                             <i class="fa fa-trash"></i>
                                         </a>

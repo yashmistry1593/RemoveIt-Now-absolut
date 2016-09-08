@@ -48,14 +48,14 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Type of Office*</label>
-                                        <multiple-select name="typeOfOffice" required ng-model="formData.typeOfOffice" ng-name="name.typeOfOffice" api="searchTypeOfOffice" ng-create="typeofofficeSave"></multiple-select>
+                                        <multiple-select name="typeOfOffice" required ng-model="formData.typeOfOffice" ng-name="formData.TOFShortName" api="searchTypeOfOffice" ng-create="typeofofficeSave"></multiple-select>
                                         <div class="error-msg" ng-show="formName.typeOfOffice.$invalid">Please Select Type of Office</div>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Customer Short Name*</label>
-                                        <input type="text" name="name" class="form-control" ng-model="formData.name" ng-value="formData.name=name.customerCompany+'-'+name.typeOfOffice+'-'+formData.officeCode+'-'+formData.city1" readonly>
+                                        <input type="text" name="name" class="form-control" ng-model="formData.name" ng-value="formData.name" readonly>
                                     </div>
                                 </div>
                                 <div class="col-md-6">

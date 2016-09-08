@@ -1,4 +1,4 @@
-var adminurl = "http://localhost:1337/api/";
+var adminurl = "http://localhost:1338/api/";
 // var adminurl = "http://104.155.238.145/api/";
 var imgurl = adminurl + "upload/";
 
@@ -218,6 +218,16 @@ var navigationservice = angular.module('navigationservice', [])
             icon: "music"
         }]
     }];
+    var membershipLevel = [{
+      name:"Student",
+      id:"Student"
+    },{
+      name:"Licentiate",
+      id:"Licentiate"
+    },{
+      name:"Associate",
+      id:"Associate"
+    }];
 
     return {
         getnav: function() {
@@ -242,6 +252,11 @@ var navigationservice = angular.module('navigationservice', [])
                 callback(data, i);
             });
         },
+        getMembership: function(formData, i, callback) {
+          $http.post(adminurl + 'Membership/search', formData).success(function(data) {
+              callback(data, i);
+          });
+        },
         searchInsuredOffice: function(formData, i, callback) {
           formData.segment = "Insured";
             $http.post(adminurl + 'Customer/getSegmented', formData).success(function(data) {
@@ -254,11 +269,16 @@ var navigationservice = angular.module('navigationservice', [])
                 callback(data, i);
             });
         },
-        getNature: function(callback) {
-            $http.post(adminurl + 'Nature/search', {}).success(callback);
+        getNature: function(formData, i, callback) {
+            $http.post(adminurl + 'NatureLoss/search', formData).success(function(data) {
+                callback(data, i);
+            });
         },
         saveNature: function(data, callback) {
-            $http.post(adminurl + 'Nature/save', data).success(callback);
+            $http.post(adminurl + 'NatureLoss/save', data).success(callback);
+        },
+        saveOfficer: function(data, callback) {
+            $http.post(adminurl + 'Officer/save', data).success(callback);
         },
         assignmentSave: function(data, callback) {
             $http.post(adminurl + 'Assignment/save', data).success(callback);
@@ -318,6 +338,11 @@ var navigationservice = angular.module('navigationservice', [])
         },
         searchOffice: function(formData, i, callback) {
             $http.post(adminurl + 'office/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
+        searchOfficer: function(formData, i, callback) {
+            $http.post(adminurl + 'Customer/getOfficer', formData).success(function(data) {
                 callback(data, i);
             });
         },
@@ -421,6 +446,11 @@ var navigationservice = angular.module('navigationservice', [])
         },
         getOneCountry: function(id, callback) {
             $http.post(adminurl + 'country/getOne', {
+                _id: id
+            }).success(callback);
+        },
+        getOneTypeOfOffice: function(id, callback) {
+            $http.post(adminurl + 'TypeOfOffice/getOne', {
                 _id: id
             }).success(callback);
         },
@@ -668,17 +698,7 @@ var navigationservice = angular.module('navigationservice', [])
         officeSave: function(formData, callback) {
             $http.post(adminurl + 'office/save', formData).success(callback);
         },
-        getOnetypeOfOffice: function(id, callback) {
-            // console.log('form data: ', formData);
-            $http({
-                url: adminurl + 'TypeOfOffice/getOne',
-                method: 'POST',
-                withCredentials: true,
-                data: {
-                    "_id": id
-                }
-            }).success(callback);
-        },
+        
         typeOfOfficeEditSave: function(id, callback) {
             // console.log('form data: ', formData);
             $http({

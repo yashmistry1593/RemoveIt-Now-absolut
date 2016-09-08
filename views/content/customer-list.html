@@ -55,9 +55,9 @@
                             <tbody ng-show="totalItems>0">
                                 <tr ng-repeat="data in modelList">
                                     <td>{{data.customerSegment.name || "-"}}</td>
-                                    <td>{{data.customerCode || "-"}}</td>
+                                    <td>{{data.name || "-"}}</td>
                                     <td>{{data.city.name || "-"}}</td>
-                                    <td>{{data.phone1 || "-"}}</td>
+                                    <td><span>{{data.phone1}}</span><span ng-if="data.phone1 && data.phone2"> , </span><span>{{data.phone2}}</span></td>
                                     <td>
                                       <toggle-switch ng-model="data.status" class="switch-mini switch-success" ng-change="changeStatus(data)"></toggle-switch>
                                     </td>
