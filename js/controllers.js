@@ -774,13 +774,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.formData = {};
         $scope.savetypeOfOffice = function(formData) {
+          $scope.errormsg = "";
 
             NavigationService.typeofofficeSave($scope.formData, function(data) {
                 if (data.value === true) {
                     $state.go('typeOfOffice-list');
                     toastr.success("Type Of Office " + $scope.formData.name + " created successfully.", "Type Of Office Created");
                 } else {
-                    toastr.error("Type Of Office creation failed.", "Type Of Office creation error");
+                  if (data.error.errors) {
+                    var i = 0;
+                    _.each(data.error.errors, function(data){
+                      $scope.errormsg += data.message + "\n\n";
+                    });
+
+                  }
+                    toastr.error($scope.errormsg,"Type Of Office creation failed.");
                 }
             });
         };
@@ -797,20 +805,28 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Edit Type Of Office"
         };
 
-        NavigationService.getOnetypeOfOffice($stateParams.id, function(data) {
+        NavigationService.getOneTypeOfOffice($stateParams.id, function(data) {
             $scope.formData = data.data;
         });
 
         $scope.savetypeOfOffice = function(formValid) {
+          $scope.errormsg = "";
 
             //  if (formValid.$valid) {
             //  $scope.formComplete = true;
             NavigationService.typeofofficeSave($scope.formData, function(data) {
                 if (data.value === true) {
                     $state.go('typeOfOffice-list');
-                    toastr.success("Type Of Office " + $scope.formData.name + " created successfully.", "Type Of Office Created");
+                    toastr.success("Type Of Office " + $scope.formData.name + " Updated successfully.", "Type Of Office Updated");
                 } else {
-                    toastr.error("Type Of Office creation failed.", "Type Of Office creation error");
+                  if (data.error.errors) {
+                    var i = 0;
+                    _.each(data.error.errors, function(data){
+                      $scope.errormsg += data.message;
+                    });
+
+                  }
+                    toastr.error($scope.errormsg,"Type Of Office creation failed.");
                 }
             });
             //  }
@@ -4877,7 +4893,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Edit Activity Type"
         };
 
-        NavigationService.getOnetypeOfOffice($stateParams.id, function(data) {
+        NavigationService.getOneTypeOfOffice($stateParams.id, function(data) {
             $scope.formData = data.data;
         });
 

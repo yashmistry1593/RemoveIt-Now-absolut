@@ -698,7 +698,7 @@ var navigationservice = angular.module('navigationservice', [])
         officeSave: function(formData, callback) {
             $http.post(adminurl + 'office/save', formData).success(callback);
         },
-        
+
         typeOfOfficeEditSave: function(id, callback) {
             // console.log('form data: ', formData);
             $http({
