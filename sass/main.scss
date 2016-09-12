@@ -284,12 +284,15 @@ $trans-black: rgba( black, .15 );
         -webkit-border-radius: 100%;
         -moz-border-radius: 100%;
         -ms-border-radius: 100%;
-        -o-border-radius: 100%;
         border-radius: 100%;
     }
 
     .dp {
         height: 101px;
+        -webkit-border-radius: 100%;
+        -moz-border-radius: 100%;
+        -ms-border-radius: 100%;
+        border-radius: 100%;
     }
 }
 
