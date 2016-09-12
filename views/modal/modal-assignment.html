@@ -86,15 +86,18 @@
         <div class="col-md-6">
             <div class="form-group">
                 <label>Office*</label>
-                <multiple-select name="office" required ng-model="modalData.office" ng-name="modalData.office" api="searchOffice"></multiple-select>
+                <multiple-select name="office" required ng-model="modalData.office" filter='{"company":"{{formData.company}}"}' ng-name="modalData.name" api="searchOffice"></multiple-select>
                 <div class="error-msg" ng-show="modalForm1.office.$invalid">Please Select Office</div>
             </div>
         </div>
         <div class="col-md-6">
             <div class="form-group">
                 <label>Persons Assigned*</label>
-                <multiple-select name="product" required ng-model="modalData.product" ng-name="modalData.name" api="searchProduct"></multiple-select>
-                <div class="error-msg" ng-show="modalForm1.product.$invalid">Please Select Persons Of Office </div>
+                <ui-select multiple tagging="tagTransform" on-select="clicked($select.selected)" name="Persons" ng-model="modalData.persons" theme="bootstrap" required>
+                    <ui-select-match>{{$item.name}}</ui-select-match>
+                    <ui-select-choices repeat="natureOfLoss in shareWith | filter:$select.search" refresh-delay="0" refresh="refreshShareWith($select.search,modalData.office)">{{natureOfLoss.name}}</ui-select-choices>
+                </ui-select>
+                <div class="error-msg" ng-show="formName.Persons.$invalid && formName.Persons.$touched">Please Enter name to Share With</div>
             </div>
         </div>
       </div>

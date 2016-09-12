@@ -82,9 +82,9 @@
                                       </tr>
                                     </thead>
                                     <tbody>
-                                      <tr ng-repeat="data in formData.products">
+                                      <tr ng-repeat="data in formData.shareWith">
                                         <td>{{data.office}}</td>
-                                        <td>{{data.person}}</td>
+                                        <td><span ng-repeat="person in data.persons">{{person.name}}<span></span ng-if="$index!=data.persons.length-1">,</span></td>
                                         <td>
                                           <a class="btn btn-primary" ng-click="addModal('modal-assignment',$index,'shareWith',data, '',formData.shareWith)">
                                                 <i class="fa fa-pencil"></i>

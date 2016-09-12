@@ -408,9 +408,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.natureLoss = data.data.results;
         });
 
-        $scope.refreshShareWith = function(data) {
+        $scope.refreshShareWith = function(data, office) {
             var formdata = {};
             formdata.search = data;
+            formdata.filter = {"postedAt":office};
             NavigationService.searchEmployee(formdata, 1, function(data) {
                 $scope.shareWith = data.data.results;
             });
