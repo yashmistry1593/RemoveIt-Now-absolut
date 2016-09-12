@@ -734,6 +734,37 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         }
     })
 
+    .state('claims-list', {
+        url: "/claims-list/{page:.*}/{keyword:.*}/{model:.*}",
+        templateUrl: "views/template.html",
+        controller: 'ModelViewCtrl',
+        params: {
+            page: "1",
+            keyword: "",
+            model: "claims"
+        }
+    })
+
+    .state('createclaims', {
+        url: "/claims-detail/{id:.*}/{model:.*}",
+        templateUrl: "views/template.html",
+        controller: 'CreateModelCtrl',
+        params: {
+            id: "",
+            model: "claims"
+        }
+    })
+
+    .state('editclaims', {
+        url: "/claims-edit/{id:.*}/{model:.*}",
+        templateUrl: "views/template.html",
+        controller: 'EditModelCtrl',
+        params: {
+            id: "",
+            model: "claims"
+        }
+    })
+
     .state('bankMaster-list', {
         url: "/bankmaster-list/{page:.*}/{keyword:.*}",
         templateUrl: "views/template.html",

@@ -278,6 +278,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     // FOR EMPLOYEE
 
     $scope.formData = {};
+    $scope.formData.status = true;
     $scope.saveModel = function(formData) {
         NavigationService.modelSave($scope.ModelApi, $scope.formData, function(data) {
             if (data.value === true) {
@@ -395,6 +396,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.formData.LRs = [];
         $scope.formData.vehicleNumber = [];
         $scope.formData.others = [];
+        $scope.formData.shareWith = [];
         $scope.modalData = {};
         $scope.modalIndex = "";
         $scope.wholeObj = [];
@@ -774,21 +776,21 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
         $scope.formData = {};
         $scope.savetypeOfOffice = function(formData) {
-          $scope.errormsg = "";
+            $scope.errormsg = "";
 
             NavigationService.typeofofficeSave($scope.formData, function(data) {
                 if (data.value === true) {
                     $state.go('typeOfOffice-list');
                     toastr.success("Type Of Office " + $scope.formData.name + " created successfully.", "Type Of Office Created");
                 } else {
-                  if (data.error.errors) {
-                    var i = 0;
-                    _.each(data.error.errors, function(data){
-                      $scope.errormsg += data.message + "\n\n";
-                    });
+                    if (data.error.errors) {
+                        var i = 0;
+                        _.each(data.error.errors, function(data) {
+                            $scope.errormsg += data.message + "\n\n";
+                        });
 
-                  }
-                    toastr.error($scope.errormsg,"Type Of Office creation failed.");
+                    }
+                    toastr.error($scope.errormsg, "Type Of Office creation failed.");
                 }
             });
         };
@@ -810,7 +812,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         });
 
         $scope.savetypeOfOffice = function(formValid) {
-          $scope.errormsg = "";
+            $scope.errormsg = "";
 
             //  if (formValid.$valid) {
             //  $scope.formComplete = true;
@@ -819,14 +821,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     $state.go('typeOfOffice-list');
                     toastr.success("Type Of Office " + $scope.formData.name + " Updated successfully.", "Type Of Office Updated");
                 } else {
-                  if (data.error.errors) {
-                    var i = 0;
-                    _.each(data.error.errors, function(data){
-                      $scope.errormsg += data.message;
-                    });
+                    if (data.error.errors) {
+                        var i = 0;
+                        _.each(data.error.errors, function(data) {
+                            $scope.errormsg += data.message;
+                        });
 
-                  }
-                    toastr.error($scope.errormsg,"Type Of Office creation failed.");
+                    }
+                    toastr.error($scope.errormsg, "Type Of Office creation failed.");
                 }
             });
             //  }
@@ -4383,24 +4385,44 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.passType = 'text';
             }
         };
-        $scope.$watch('formData.typeOfOffice',function(){
-          console.log($scope.formData.typeOfOffice);
-            $scope.formData.name = $scope.formData.companyShortName+'-'+$scope.formData.TOFShortName+'-'+$scope.formData.officeCode+'-'+$scope.formData.city1;
+        $scope.$watch('formData.typeOfOffice', function() {
+            console.log($scope.formData.typeOfOffice);
+            if ($scope.formData.typeOfOffice) {
+                NavigationService.getOneModel('TypeOfOffice', $scope.formData.typeOfOffice, function(data) {
+                    $scope.formData.TOFShortName = data.data.shortCode;
+                    if ($scope.formData.officeCode === "") {
+                        $scope.formData.name = $scope.formData.companyShortName + ' ' + $scope.formData.TOFShortName + ' ' + $scope.formData.city1;
+                    } else {
+                        $scope.formData.name = $scope.formData.companyShortName + ' ' + $scope.formData.TOFShortName + ' ' + $scope.formData.officeCode + ' ' + $scope.formData.city1;
+                    }
+                });
+            }
         });
-        $scope.$watch('formData.customerCompany',function(){
-          if ($scope.formData.customerCompany) {
-            NavigationService.getOneModel('CustomerCompany', $scope.formData.customerCompany, function(data){
-              $scope.formData.companyShortName = data.data.shortName;
-              $scope.formData.name = $scope.formData.companyShortName+'-'+$scope.formData.TOFShortName+'-'+$scope.formData.officeCode+'-'+$scope.formData.city1;
-            });
-          }
-
+        $scope.$watch('formData.customerCompany', function() {
+            if ($scope.formData.customerCompany) {
+                NavigationService.getOneModel('CustomerCompany', $scope.formData.customerCompany, function(data) {
+                    $scope.formData.companyShortName = data.data.shortName;
+                    if ($scope.formData.officeCode === "") {
+                        $scope.formData.name = $scope.formData.companyShortName + ' ' + $scope.formData.TOFShortName + ' ' + $scope.formData.city1;
+                    } else {
+                        $scope.formData.name = $scope.formData.companyShortName + ' ' + $scope.formData.TOFShortName + ' ' + $scope.formData.officeCode + ' ' + $scope.formData.city1;
+                    }
+                });
+            }
         });
-        $scope.$watch('formData.officeCode',function(){
-            $scope.formData.name = $scope.formData.companyShortName+'-'+$scope.formData.TOFShortName+'-'+$scope.formData.officeCode+'-'+$scope.formData.city1;
+        $scope.$watch('formData.officeCode', function() {
+            if ($scope.formData.officeCode === "") {
+                $scope.formData.name = $scope.formData.companyShortName + ' ' + $scope.formData.TOFShortName + ' ' + $scope.formData.city1;
+            } else {
+                $scope.formData.name = $scope.formData.companyShortName + ' ' + $scope.formData.TOFShortName + ' ' + $scope.formData.officeCode + ' ' + $scope.formData.city1;
+            }
         });
-        $scope.$watch('formData.city1',function(){
-            $scope.formData.name = $scope.formData.companyShortName+'-'+$scope.formData.TOFShortName+'-'+$scope.formData.officeCode+'-'+$scope.formData.city1;
+        $scope.$watch('formData.city1', function() {
+            if ($scope.formData.officeCode === "") {
+                $scope.formData.name = $scope.formData.companyShortName + ' ' + $scope.formData.TOFShortName + ' ' + $scope.formData.city1;
+            } else {
+                $scope.formData.name = $scope.formData.companyShortName + ' ' + $scope.formData.TOFShortName + ' ' + $scope.formData.officeCode + ' ' + $scope.formData.city1;
+            }
         });
         $scope.addOfficer = function() {
             var modalInstance = $uibModal.open({
@@ -4428,15 +4450,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
         $scope.createOfficer = function(modelData) {
-            NavigationService.saveOfficer(modelData, function(data) {
-                if (data.value) {
-                    if ($scope.buttonValue === "Save") {
-                        $scope.formData.officers.push(modelData);
-                    } else {
-                        $scope.formData.officers[$scope.formIndex] = modelData;
-                    }
-                }
-            });
+          modelData.name = modelData.firstName + " " + modelData.lastName;
+          NavigationService.saveOfficer(modelData, function(data) {
+              if (data.value) {
+                  if ($scope.buttonValue === "Save") {
+                      $scope.formData.officers.push(data.data);
+                  } else {
+                      $scope.formData.officers[$scope.formIndex] = modelData;
+                  }
+              }
+          });
         };
         $scope.openCreateOfficer = function() {
             $scope.buttonValue = "Save";
@@ -4450,9 +4473,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.addOfficer();
         };
         $scope.deleteOfficer = function(index) {
-          NavigationService.deleteModel("Officer",$scope.formData.officers[index]._id,function(data){
-            $scope.formData.officers.splice(index, 1);
-          });
+            NavigationService.deleteModel("Officer", $scope.formData.officers[index]._id, function(data) {
+                $scope.formData.officers.splice(index, 1);
+            });
         };
     })
     .controller('EditCustomerCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $stateParams, $uibModal, toastr) {
@@ -4509,24 +4532,44 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 size: 'lg'
             });
         };
-        $scope.$watch('formData.typeOfOffice',function(){
-          console.log($scope.formData.typeOfOffice);
-            $scope.formData.name = $scope.formData.companyShortName+'-'+$scope.formData.TOFShortName+'-'+$scope.formData.officeCode+'-'+$scope.formData.city1;
+        $scope.$watch('formData.typeOfOffice', function() {
+            console.log($scope.formData.typeOfOffice);
+            if ($scope.formData.typeOfOffice) {
+                NavigationService.getOneModel('TypeOfOffice', $scope.formData.typeOfOffice, function(data) {
+                    $scope.formData.TOFShortName = data.data.shortCode;
+                    if ($scope.formData.officeCode === "") {
+                        $scope.formData.name = $scope.formData.companyShortName + ' ' + $scope.formData.TOFShortName + ' ' + $scope.formData.city1;
+                    } else {
+                        $scope.formData.name = $scope.formData.companyShortName + ' ' + $scope.formData.TOFShortName + ' ' + $scope.formData.officeCode + ' ' + $scope.formData.city1;
+                    }
+                });
+            }
         });
-        $scope.$watch('formData.customerCompany',function(){
-          if ($scope.formData.customerCompany) {
-            NavigationService.getOneModel('CustomerCompany', $scope.formData.customerCompany, function(data){
-              $scope.formData.companyShortName = data.data.shortName;
-              $scope.formData.name = $scope.formData.companyShortName+'-'+$scope.formData.TOFShortName+'-'+$scope.formData.officeCode+'-'+$scope.formData.city1;
-            });
-          }
-
+        $scope.$watch('formData.customerCompany', function() {
+            if ($scope.formData.customerCompany) {
+                NavigationService.getOneModel('CustomerCompany', $scope.formData.customerCompany, function(data) {
+                    $scope.formData.companyShortName = data.data.shortName;
+                    if ($scope.formData.officeCode === "") {
+                        $scope.formData.name = $scope.formData.companyShortName + ' ' + $scope.formData.TOFShortName + ' ' + $scope.formData.city1;
+                    } else {
+                        $scope.formData.name = $scope.formData.companyShortName + ' ' + $scope.formData.TOFShortName + ' ' + $scope.formData.officeCode + ' ' + $scope.formData.city1;
+                    }
+                });
+            }
         });
-        $scope.$watch('formData.officeCode',function(){
-            $scope.formData.name = $scope.formData.companyShortName+'-'+$scope.formData.TOFShortName+'-'+$scope.formData.officeCode+'-'+$scope.formData.city1;
+        $scope.$watch('formData.officeCode', function() {
+            if ($scope.formData.officeCode === "") {
+                $scope.formData.name = $scope.formData.companyShortName + ' ' + $scope.formData.TOFShortName + ' ' + $scope.formData.city1;
+            } else {
+                $scope.formData.name = $scope.formData.companyShortName + ' ' + $scope.formData.TOFShortName + ' ' + $scope.formData.officeCode + ' ' + $scope.formData.city1;
+            }
         });
-        $scope.$watch('formData.city1',function(){
-            $scope.formData.name = $scope.formData.companyShortName+'-'+$scope.formData.TOFShortName+'-'+$scope.formData.officeCode+'-'+$scope.formData.city1;
+        $scope.$watch('formData.city1', function() {
+            if ($scope.formData.officeCode === "") {
+                $scope.formData.name = $scope.formData.companyShortName + ' ' + $scope.formData.TOFShortName + ' ' + $scope.formData.city1;
+            } else {
+                $scope.formData.name = $scope.formData.companyShortName + ' ' + $scope.formData.TOFShortName + ' ' + $scope.formData.officeCode + ' ' + $scope.formData.city1;
+            }
         });
 
         NavigationService.getOneModel("Customer", $stateParams.id, function(data) {
@@ -4539,7 +4582,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.formData.district = data.data.city.district._id;
                 $scope.formData.city = data.data.city._id;
             }
-            $scope.formData.name = $scope.formData.companyShortName+'-'+$scope.formData.TOFShortName+'-'+$scope.formData.officeCode+'-'+$scope.formData.city1;
+            $scope.formData.name = $scope.formData.companyShortName + '-' + $scope.formData.TOFShortName + '-' + $scope.formData.officeCode + '-' + $scope.formData.city1;
 
         });
 
@@ -4579,9 +4622,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.addOfficer();
         };
         $scope.deleteOfficer = function(index) {
-          NavigationService.deleteModel("Officer",$scope.formData.officers[index]._id,function(data){
-            $scope.formData.officers.splice(index, 1);
-          });
+            NavigationService.deleteModel("Officer", $scope.formData.officers[index]._id, function(data) {
+                $scope.formData.officers.splice(index, 1);
+            });
         };
     })
 

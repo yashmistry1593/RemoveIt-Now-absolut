@@ -1,4 +1,4 @@
-var adminurl = "http://localhost:1338/api/";
+var adminurl = "http://localhost:1337/api/";
 // var adminurl = "http://104.155.238.145/api/";
 var imgurl = adminurl + "upload/";
 
@@ -201,6 +201,11 @@ var navigationservice = angular.module('navigationservice', [])
         anchor: "assignment-list",
         icon: "pencil",
         subnav: [{
+            name: "Type Of Claims",
+            classis: "active",
+            anchor: "claims-list",
+            icon: "pencil"
+        },{
             name: "Assignment",
             classis: "active",
             anchor: "assignment-list",
