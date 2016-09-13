@@ -4,7 +4,7 @@
             <div class="col-md-12 column">
                 <div class="heading-profile">
                     <toggle-switch ng-model="formData.status" class="switch-small switch-success pull-right"></toggle-switch>
-                    <h2>Create Assignment</h2>
+                    <h2>Create Assignment{{formData.insuredOfficer}}</h2>
                 </div>
             </div>
         </div>
@@ -218,6 +218,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Insured's Officer</label>
+                                        {{formData.insuredOfficer}}
                                         <multiple-select name="insuredOfficer" required ng-model="formData.insuredOfficer" filter='{"_id":"{{formData.insuredOffice}}"}' ng-name="name.office" api="searchOfficer"></multiple-select>
                                         <div class="error-msg" ng-show="formName.insuredOfficer.$invalid">Please Select Insured Officer</div>
                                     </div>
@@ -575,8 +576,8 @@
                                     </thead>
                                     <tbody>
                                         <tr ng-repeat="data in formData.products track by $index">
-                                            <td>{{data.industry.name}}</td>
-                                            <td>{{data.category.name}}</td>
+                                            <td>{{data.product.category.industry.name}}</td>
+                                            <td>{{data.product.category.name}}</td>
                                             <td>{{data.product.name}}</td>
                                             <td>{{data.item}}</td>
                                             <td>

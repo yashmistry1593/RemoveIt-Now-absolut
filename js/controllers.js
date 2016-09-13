@@ -542,7 +542,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.formData.state = data.data.city.district.state._id;
             $scope.formData.district = data.data.city.district._id;
             $scope.formData.city = data.data.city._id;
-            // $scope.formData.insuredOfficer = data.data.insuredOfficer._id;
+            $scope.formData.insuredOfficer = data.data.insuredOfficer._id;
+            console.log($scope.formData.insuredOfficer );
             console.log($scope.formData);
         });
 
@@ -4749,9 +4750,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService[$scope.api](dataSend, ++i, function(data) {
                 if (data.value) {
                     $scope.list = data.data.results;
-
-
-
                     if ($scope.search.modelData) {
                         $scope.showCreate = true;
                         _.each($scope.list, function(n) {
@@ -4768,7 +4766,8 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                             // }
 
                         });
-                    } else {
+                    }
+                    else {
                         $scope.showCreate = false;
 
                     }
