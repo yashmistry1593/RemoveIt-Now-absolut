@@ -444,11 +444,48 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
 
         $scope.addElements = function(moddata) {
-            console.log($scope.wholeObj);
             if ($scope.modalIndex !== "") {
                 $scope.wholeObj[$scope.modalIndex] = moddata;
             } else {
-                $scope.wholeObj.push(moddata);
+              $scope.newjson = moddata;
+              var a = moddata;
+              switch ($scope.holdObject) {
+                case "invoice":{
+                var newmod = a.invoiceNumber.split(',');
+                _.each(newmod, function(n){
+                  $scope.newjson.invoiceNumber = n;
+                  $scope.wholeObj.push($scope.newjson);
+                });
+              }
+                  break;
+                case "products":
+                {var newmod1 = a.item.split(',');
+                _.each(newmod1, function(n){
+                  $scope.newjson.item = n;
+                  $scope.wholeObj.push($scope.newjson);
+                });}
+                  break;
+                case "LRs":
+                var newmod2 = a.lrNumber.split(',');
+                _.each(newmod2, function(n){
+                  $scope.newjson.lrNumber = n;
+                  $scope.wholeObj.push($scope.newjson);
+                });
+                  break;
+                case "Vehicle":
+                var newmod3 = a.vehicleNumber.split(',');
+                _.each(newmod3, function(n){
+                  $scope.newjson.vehicleNumber = n;
+                  $scope.wholeObj.push($scope.newjson);
+                });
+                  break;
+
+                default:{
+                    $scope.wholeObj.push($scope.newjson);
+                }
+
+              }
+
             }
         };
 
@@ -482,11 +519,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Edit Assignment"
         };
         $scope.formData = {};
+        $scope.formData.status = true;
         $scope.formData.invoice = [];
         $scope.formData.products = [];
         $scope.formData.LRs = [];
         $scope.formData.vehicleNumber = [];
         $scope.formData.others = [];
+        $scope.formData.shareWith = [];
         $scope.modalData = {};
         $scope.modalIndex = "";
         $scope.wholeObj = [];
@@ -497,50 +536,101 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         NavigationService.getOneModel("Assignment", $stateParams.id, function(data) {
             $scope.formData = data.data;
             $scope.formData.dateOfIntimation = new Date(data.data.dateOfIntimation);
+            $scope.formData.dateOfAppointment = new Date(data.data.dateOfAppointment);
+            $scope.formData.country = data.data.city.district.state.zone.country._id;
+            $scope.formData.zone = data.data.city.district.state.zone._id;
+            $scope.formData.state = data.data.city.district.state._id;
+            $scope.formData.district = data.data.city.district._id;
+            $scope.formData.city = data.data.city._id;
+            // $scope.formData.insuredOfficer = data.data.insuredOfficer._id;
+            console.log($scope.formData);
         });
 
-        NavigationService.searchNatureLoss(function(data) {
-            $scope.natureLoss = data.data.results;
-        });
 
-        $scope.refreshShareWith = function(data) {
-            var formdata = {};
-            formdata.search = data;
-            NavigationService.searchEmployee(formdata, 1, function(data) {
-                $scope.shareWith = data.data.results;
-            });
-        };
+                $scope.refreshShareWith = function(data, office) {
+                    var formdata = {};
+                    formdata.search = data;
+                    formdata.filter = {"postedAt":office};
+                    NavigationService.searchEmployee(formdata, 1, function(data) {
+                        $scope.shareWith = data.data.results;
+                    });
+                };
+                $scope.refreshNature = function(data, causeloss) {
+                    var formdata = {};
+                    formdata.search = data;
+                    formdata.filter = {"_id":causeloss};
+                    NavigationService.getNatureLoss(formdata, 1, function(data) {
+                        $scope.natureLoss = data.data.results;
+                    });
+                };
 
-        $scope.addModal = function(filename, index, holdobj, data, current, wholeObj) {
-            if (index !== "") {
-                $scope.modalData = data;
-                $scope.modalIndex = index;
-            } else {
-                $scope.modalData = {};
-                $scope.modalIndex = "";
-            }
-            $scope.wholeObj = wholeObj;
-            $scope.current = current;
-            $scope.holdObject = holdobj;
-            var modalInstance = $uibModal.open({
-                scope: $scope,
-                templateUrl: 'views/modal/' + filename + '.html',
-                size: 'lg'
-            });
-        };
+                $scope.addModal = function(filename, index, holdobj, data, current, wholeObj) {
+                    if (index !== "") {
+                        $scope.modalData = data;
+                        $scope.modalIndex = index;
+                    } else {
+                        $scope.modalData = {};
+                        $scope.modalIndex = "";
+                    }
+                    $scope.wholeObj = wholeObj;
+                    $scope.current = current;
+                    $scope.holdObject = holdobj;
+                    var modalInstance = $uibModal.open({
+                        scope: $scope,
+                        templateUrl: 'views/modal/' + filename + '.html',
+                        size: 'lg'
+                    });
+                };
 
-        $scope.addElements = function(moddata) {
-            console.log($scope.wholeObj);
-            if ($scope.modalIndex !== "") {
-                $scope.wholeObj[$scope.modalIndex] = moddata;
-            } else {
-                $scope.wholeObj.push(moddata);
-            }
-        };
+                $scope.addElements = function(moddata) {
+                    if ($scope.modalIndex !== "") {
+                        $scope.wholeObj[$scope.modalIndex] = moddata;
+                    } else {
+                      $scope.newjson = moddata;
+                      var a = moddata;
+                      switch ($scope.holdObject) {
+                        case "invoice":{
+                        var newmod = a.invoiceNumber.split(',');
+                        _.each(newmod, function(n){
+                          $scope.newjson.invoiceNumber = n;
+                          $scope.wholeObj.push($scope.newjson);
+                        });
+                      }
+                          break;
+                        case "products":
+                        {var newmod1 = a.item.split(',');
+                        _.each(newmod1, function(n){
+                          $scope.newjson.item = n;
+                          $scope.wholeObj.push($scope.newjson);
+                        });}
+                          break;
+                        case "LRs":
+                        var newmod2 = a.lrNumber.split(',');
+                        _.each(newmod2, function(n){
+                          $scope.newjson.lrNumber = n;
+                          $scope.wholeObj.push($scope.newjson);
+                        });
+                          break;
+                        case "Vehicle":
+                        var newmod3 = a.vehicleNumber.split(',');
+                        _.each(newmod3, function(n){
+                          $scope.newjson.vehicleNumber = n;
+                          $scope.wholeObj.push($scope.newjson);
+                        });
+                          break;
 
-        $scope.deleteElements = function(index, data) {
-            data.splice(index, 1);
-        };
+                        default:{
+                            $scope.wholeObj.push($scope.newjson);
+                        }
+
+                      }
+
+                    }
+                };
+
+                $scope.deleteElements = function(index, data) {
+                    data.splice(index, 1);
+                };
 
 
         $scope.submit = function(formData) {
@@ -1245,7 +1335,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 size: 'lg'
             });
         };
-        //jagruti
         $scope.addElements = function(data) {
             console.log(data);
             console.log($scope.holdObject);
