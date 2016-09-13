@@ -404,9 +404,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             dataArray.push(data);
         };
 
-        NavigationService.searchNatureLoss(function(data) {
-            $scope.natureLoss = data.data.results;
-        });
+        // NavigationService.searchNatureLoss(function(data) {
+        //     $scope.natureLoss = data.data.results;
+        // });
 
         $scope.refreshShareWith = function(data, office) {
             var formdata = {};
@@ -414,6 +414,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             formdata.filter = {"postedAt":office};
             NavigationService.searchEmployee(formdata, 1, function(data) {
                 $scope.shareWith = data.data.results;
+            });
+        };
+        $scope.refreshNature = function(data, causeloss) {
+            var formdata = {};
+            formdata.search = data;
+            formdata.filter = {"_id":causeloss};
+            NavigationService.getNatureLoss(formdata, 1, function(data) {
+                $scope.natureLoss = data.data.results;
             });
         };
 
@@ -2658,9 +2666,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.formData = {};
         $scope.insurers = [];
 
-        NavigationService.getInsurer(function(data) {
-            $scope.insurers = data.data.results;
-        });
+        $scope.refreshInsurer = function(data) {
+            var formdata = {};
+            formdata.search = data;
+            NavigationService.searchInsurerOffice(formdata, 1, function(data) {
+                $scope.insurers = data.data.results;
+            });
+        };
 
         $scope.democlick = function(new_value) {
             var new_object = {};
@@ -2705,6 +2717,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             "name": "Edit Policy Type"
         };
         $scope.insurers = [];
+        $scope.refreshInsurer = function(data) {
+            var formdata = {};
+            formdata.search = data;
+            NavigationService.searchInsurerOffice(formdata, 1, function(data) {
+                $scope.insurers = data.data.results;
+            });
+        };
+
         NavigationService.getOneModel("PolicyType", $stateParams.id, function(data) {
             $scope.formData = data.data;
         });
@@ -3425,7 +3445,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.saveNature({
                 'name': select[select.length - 1].name
             }, function(data) {
-
+              $scope.formData.natureOfLoss[$scope.formData.natureOfLoss.length - 1] = data.data;
             });
         };
         $scope.saveModel = function(formData) {
@@ -3476,7 +3496,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             NavigationService.saveNature({
                 'name': select[select.length - 1].name
             }, function(data) {
-
+              $scope.formData.natureOfLoss[$scope.formData.natureOfLoss.length - 1] = data.data;
             });
         };
 

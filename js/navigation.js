@@ -1,4 +1,4 @@
-var adminurl = "http://localhost:1337/api/"; 
+var adminurl = "http://localhost:1337/api/";
 // var adminurl = "http://104.155.238.145/api/";
 var imgurl = adminurl + "upload/";
 
@@ -252,8 +252,12 @@ var navigationservice = angular.module('navigationservice', [])
             $http.post(adminurl + 'customerCompany/getInsurer', {}).success(callback);
         },
         searchEmployee: function(formData, i, callback) {
-          console.log(formData);
             $http.post(adminurl + 'Employee/search', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
+        searchNatureLoss: function(formData, i, callback) {
+            $http.post(adminurl + 'NatureLoss/search', formData).success(function(data) {
                 callback(data, i);
             });
         },
@@ -264,6 +268,12 @@ var navigationservice = angular.module('navigationservice', [])
         },
         searchInsuredOffice: function(formData, i, callback) {
           formData.segment = "Insured";
+            $http.post(adminurl + 'Customer/getSegmented', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
+        searchInsurerOffice: function(formData, i, callback) {
+          formData.segment = "Insurer";
             $http.post(adminurl + 'Customer/getSegmented', formData).success(function(data) {
                 callback(data, i);
             });
@@ -296,18 +306,16 @@ var navigationservice = angular.module('navigationservice', [])
         getDepartment: function(callback) {
             $http.post(adminurl + 'Department/search', {}).success(callback);
         },
-        // searchInsuredOffice: function(callback) {
-        //     $http.post(adminurl + 'CustomerCompany/getSegmented', {}).success(callback);
-        // },
-        searchNatureLoss: function(callback) {
-            $http.post(adminurl + 'NatureLoss/search', {}).success(callback);
-        },
         searchCustomer: function(formData, i, callback) {
             $http.post(adminurl + 'Customer/search', formData).success(function(data) {
-              console.log(data);
-                _.each(data.data.results, function(n) {
-                    n.name = n.officeCode;
-                });
+                // _.each(data.data.results, function(n) {
+                //     n.name = n.officeCode;
+                // });
+                callback(data, i);
+            });
+        },
+        searchSegment: function(formData, i, callback) {
+            $http.post(adminurl + 'Segment/search', formData).success(function(data) {
                 callback(data, i);
             });
         },
@@ -318,6 +326,12 @@ var navigationservice = angular.module('navigationservice', [])
         },
         searchInsurer: function(formData, i, callback) {
             $http.post(adminurl + 'CustomerCompany/getInsurer', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
+        searchInsurerCustomerCompany: function(formData, i, callback) {
+            formData.segment = "Insurer";
+            $http.post(adminurl + 'CustomerCompany/getSegmented', formData).success(function(data) {
                 callback(data, i);
             });
         },
@@ -348,6 +362,19 @@ var navigationservice = angular.module('navigationservice', [])
         },
         searchOfficer: function(formData, i, callback) {
             $http.post(adminurl + 'Customer/getOfficer', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
+        getNatureLoss: function(formData, i, callback) {
+            $http.post(adminurl + 'CauseLoss/getNatureLoss', formData).success(function(data) {
+                callback(data, i);
+            });
+        },
+        getPolicyDoc: function(formData, i, callback) {
+
+            // formData.filter = 'PolicyType:{_id:'+formData.filter._id+'}';
+            console.log(formData.filter);
+            $http.post(adminurl + 'PolicyDoc/getPolicyDoc', formData).success(function(data) {
                 callback(data, i);
             });
         },

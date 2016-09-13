@@ -77,10 +77,10 @@
                                         <label>Category*</label>
                                         <br>
                                         <label class="radio-inline">
-                                            <input type="radio" name="category" value="Active" ng-model="formData.category">Active
+                                            <input type="radio" name="category" value="Active" required ng-model="formData.category">Active
                                         </label>
                                         <label class="radio-inline">
-                                            <input type="radio" name="category" value="Prospective" ng-model="formData.category">Prospective
+                                            <input type="radio" name="category" value="Prospective" required ng-model="formData.category">Prospective
                                         </label>
                                         <div class="error-msg" ng-show="formName.category.$invalid && formName.category.$touched">Please Select Category</div>
                                     </div>
