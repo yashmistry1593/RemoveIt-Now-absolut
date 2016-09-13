@@ -1,5 +1,5 @@
-var adminurl = "http://localhost:1338/api/";
-// var adminurl = "http://104.155.238.145/api/";
+// var adminurl = "http://localhost:1337/api/";
+var adminurl = "http://104.155.238.145/api/";
 var imgurl = adminurl + "upload/";
 
 var imgpath = imgurl + "readFile";
@@ -371,6 +371,7 @@ var navigationservice = angular.module('navigationservice', [])
             });
         },
         getPolicyDoc: function(formData, i, callback) {
+          console.log(formData);
             $http.post(adminurl + 'PolicyDoc/getPolicyDoc', formData).success(function(data) {
                 callback(data, i);
             });

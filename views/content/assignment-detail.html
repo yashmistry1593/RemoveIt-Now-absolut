@@ -4,7 +4,7 @@
             <div class="col-md-12 column">
                 <div class="heading-profile">
                     <toggle-switch ng-model="formData.status" class="switch-small switch-success pull-right"></toggle-switch>
-                    <h2>Create Assignment{{formData.insuredOfficer}}</h2>
+                    <h2>Create Assignment{{formData.policyDoc}}</h2>
                 </div>
             </div>
         </div>
@@ -218,7 +218,6 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Insured's Officer</label>
-                                        {{formData.insuredOfficer}}
                                         <multiple-select name="insuredOfficer" required ng-model="formData.insuredOfficer" filter='{"_id":"{{formData.insuredOffice}}"}' ng-name="name.office" api="searchOfficer"></multiple-select>
                                         <div class="error-msg" ng-show="formName.insuredOfficer.$invalid">Please Select Insured Officer</div>
                                     </div>
@@ -270,7 +269,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Policy Document</label>
-                                        <multiple-select name="policyDoc" required ng-model="formData.policyDoc" filter='{"_id":"{{formData.policyType}}"}' ng-name="name.policyDoc" api="getPolicyDoc"></multiple-select>
+                                        <multiple-select name="policyDoc" required ng-model="formData.policyDoc" filter='{"policyType":"{{formData.policyType}}"}' ng-name="name.policyDoc" api="getPolicyDoc"></multiple-select>
                                         <div class="error-msg" ng-show="formName.policyDoc.$invalid">Please Select Policy Document</div>
                                     </div>
                                 </div>
@@ -563,7 +562,7 @@
                             <h3>Products</h3>
                         </div>
                         <div class="sec">
-                            <div class="table-responsive">{{formData.products}}
+                            <div class="table-responsive">
                                 <table class="table table-input" ng-if="formData.products.length!=0">
                                     <thead>
                                         <tr>
@@ -616,7 +615,7 @@
                                     </thead>
                                     <tbody>
                                         <tr ng-repeat="data in formData.invoice track by $index">
-                                            <td>{{data.invoiceNumber}} #</td>
+                                            <td>{{data.invoiceNumber}}</td>
                                             <td>{{data.invoiceNumberDate| date:'dd MMM yyyy'}}</td>
                                             <td>
                                                 <a class="btn btn-primary" ng-click="addModal('modal-assignment',$index,'invoice',data, '',formData.invoice)">

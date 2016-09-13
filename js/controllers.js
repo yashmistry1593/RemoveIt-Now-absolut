@@ -543,7 +543,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.formData.district = data.data.city.district._id;
             $scope.formData.city = data.data.city._id;
             $scope.formData.insuredOfficer = data.data.insuredOfficer._id;
-            console.log($scope.formData.insuredOfficer );
+            console.log($scope.formData.policyDoc);
             console.log($scope.formData);
         });
 
