@@ -25,7 +25,6 @@ $brand-success: $green;
 @import "template/main";
 @import "template/responsive";
 @import "custom-switch";
-
 button,
 div,
 input {
@@ -58,18 +57,17 @@ nav li:hover .dropdown-menu {
 a {
     cursor: pointer;
     @include transition(all ease 300ms);
-
     &:focus {
         outline: none !important;
     }
 }
-//bootstrap forms
 
+//bootstrap forms
 .btn,
 .form-control,
-.input-group-lg > .form-control,
-.input-group-lg > .input-group-addon,
-.input-group-lg > .input-group-btn > .btn,
+.input-group-lg>.form-control,
+.input-group-lg>.input-group-addon,
+.input-group-lg>.input-group-btn>.btn,
 .input-lg {
     border-radius: 0;
     @include box-shadow(none);
@@ -98,7 +96,7 @@ a {
     padding: 10px 0 10px 25px;
 }
 
-.account-form > form .feild > .login-w {
+.account-form>form .feild>.login-w {
     background: #125daa none repeat scroll 0 0;
     border: medium none;
     -webkit-border-radius: 25px;
@@ -119,14 +117,12 @@ a {
 }
 
 .who-post-detail {
-    > h3 {
+    >h3 {
         font-size: 16px;
     }
-
-    > span {
+    >span {
         color: #202020;
         font-size: 12px;
-
         a {
             color: $blue;
             font-weight: bold;
@@ -136,15 +132,13 @@ a {
 
 .who-post-this {
     position: relative;
-
     .house {
         position: absolute;
         width: auto;
         bottom: -11px;
         left: 36px;
     }
-
-    > span {
+    >span {
         border: 0 solid #ffffff;
     }
 }
@@ -156,7 +150,7 @@ a {
     color: #777777;
 }
 
-.admin-details > i {
+.admin-details>i {
     color: #777777;
     text-transform: capitalize;
 }
@@ -180,8 +174,8 @@ a {
 .btn-orange {
     @include button-variant(white, $orange, $orange);
 }
-$trans-black: rgba( black, .15 );
 
+$trans-black: rgba( black, .15);
 .btn-darker {
     @include button-variant(white, $trans-black, transparent);
 }
@@ -207,7 +201,6 @@ $trans-black: rgba( black, .15 );
     .btn-clear {
         color: #505050;
     }
-
     .btn {
         padding: 0 10px;
     }
@@ -221,13 +214,11 @@ $trans-black: rgba( black, .15 );
     border: none;
     padding: 0;
     overflow: hidden;
-
     li {
         +li {
             border-top: 1px solid $border-color;
         }
-
-        > a {
+        >a {
             padding: 10px;
         }
     }
@@ -244,7 +235,6 @@ $trans-black: rgba( black, .15 );
     border-radius: 5px;
     padding: 10px;
     height: 87px;
-
     .btn {
         font-size: 12px;
         min-width: 110px;
@@ -264,7 +254,6 @@ $trans-black: rgba( black, .15 );
         margin: 10px 0 5px;
         font-size: 14px;
     }
-
     p {
         margin: 0;
         line-height: 100%;
@@ -278,15 +267,13 @@ $trans-black: rgba( black, .15 );
     left: 50%;
     top: -7px;
     @include transform(translateX(-50%));
-
-    > span {
+    >span {
         display: inline-block;
         -webkit-border-radius: 100%;
         -moz-border-radius: 100%;
         -ms-border-radius: 100%;
         border-radius: 100%;
     }
-
     .dp {
         height: 101px;
         -webkit-border-radius: 100%;
@@ -311,7 +298,6 @@ $trans-black: rgba( black, .15 );
 .first-half {
     width: 50%;
     padding-left: 65px;
-
     +.first-half {
         padding-left: 0 !important;
         padding-right: 65px !important;
@@ -329,11 +315,9 @@ $trans-black: rgba( black, .15 );
 
 .folder {
     text-align: center;
-
     img {
         max-width: 100%;
     }
-
     h6 {
         margin: 10px 0 0;
     }
@@ -371,11 +355,9 @@ $trans-black: rgba( black, .15 );
     text-align: center;
     padding: 6px;
     position: relative;
-
     i {
         font-size: 32px;
     }
-
     p {
         margin: 5px 0 0;
         line-height: 100%;
@@ -396,14 +378,13 @@ $trans-black: rgba( black, .15 );
     top: 5px;
     cursor: pointer;
     text-align: center;
-
     i {
         font-size: 14px;
         line-height: 23px;
     }
 }
 
-.activity-timeline > li {
+.activity-timeline>li {
     margin-bottom: 30px;
 }
 
@@ -418,24 +399,21 @@ $trans-black: rgba( black, .15 );
 
 .red-bg {
     background-color: $red;
-
-    > * {
+    >* {
         color: white;
     }
 }
 
 .blue-bg {
     background-color: $blue;
-
-    > * {
+    >* {
         color: white;
     }
 }
 
 .green-bg {
     background-color: $green;
-
-    > * {
+    >* {
         color: white;
     }
 }
@@ -457,7 +435,6 @@ $trans-black: rgba( black, .15 );
 .billing-sec .field {
     margin-bottom: 15px;
     border-radius: 5px;
-
     input {
         height: 37px;
         border-radius: 4px;
@@ -469,7 +446,6 @@ $trans-black: rgba( black, .15 );
 .billing-sec .field input,
 .billing-sec .field textarea {
     border: 1px solid $border-color !important;
-
     &:focus {
         outline: none !important;
     }
@@ -487,22 +463,19 @@ $trans-black: rgba( black, .15 );
 
 .nav-tabs {
     border: 0;
-
-    > li.active {
-         > a:focus,
-         > a:hover,
-        > a {
+    >li.active {
+        >a:focus,
+        >a:hover,
+        >a {
             color: $red;
             border: 0;
             border-bottom: 5px solid $red;
         }
     }
-
-    > li > a {
+    >li>a {
         border: 0;
         border-bottom: 5px solid transparent;
         border-radius: 0;
-
         &:focus,
         &:hover {
             background: transparent;
@@ -529,11 +502,9 @@ $trans-black: rgba( black, .15 );
     margin: 0;
     position: relative;
     z-index: 9;
-
     +i {
         display: none;
     }
-
     &:checked+i {
         display: block;
     }
@@ -546,7 +517,6 @@ $trans-black: rgba( black, .15 );
     width: 24px;
     height: 24px;
     vertical-align: middle;
-
     .aired {
         top: 5px;
     }
@@ -563,13 +533,12 @@ $trans-black: rgba( black, .15 );
     overflow-x: auto;
     padding: 0 15px;
     margin: 0 -15px;
-
     .mter {
         margin-top: 10px;
     }
 }
 
-.ui-select-bootstrap .ui-select-choices-row.active > a {
+.ui-select-bootstrap .ui-select-choices-row.active>a {
     background-color: $blue;
 }
 
@@ -578,7 +547,6 @@ $trans-black: rgba( black, .15 );
     padding: 5px;
     border-color: #e5e5e5;
     border-radius: 5px;
-
     input {
         border: none !important;
     }
@@ -649,8 +617,7 @@ $trans-black: rgba( black, .15 );
     max-height: 200px;
     overflow-x: hidden;
     overflow-y: auto;
-
-    > li {
+    >li {
         padding: 10px;
         cursor: pointer;
         &:hover {
@@ -676,13 +643,12 @@ form.mr-form {
 form.search-form {
     border-radius: 0;
     height: 34px;
-
-    > input {
+    >input {
         padding: 7px 26px 8px 10px;
     }
 }
 
-.heading-profile > h2 {
+.heading-profile>h2 {
     width: auto;
 }
 
@@ -696,7 +662,6 @@ form.search-form {
 
 .btn-upload {
     position: relative;
-
     input[type="file"] {
         opacity: 0;
         position: absolute;
@@ -709,7 +674,6 @@ form.search-form {
 
 .form-group {
     position: relative;
-
     .error-msg {
         position: absolute;
         right: 0;
@@ -769,7 +733,6 @@ input[type="email"].form-control {
         height: 22px;
         padding: 0 5px;
     }
-
     .form-control[readonly] {
         background-color: transparent;
         border: none;
@@ -780,7 +743,7 @@ input[type="email"].form-control {
     border-radius: 0;
 }
 
-.ui-select-bootstrap .ui-select-choices-row.active > span {
+.ui-select-bootstrap .ui-select-choices-row.active>span {
     background-color: $brand-primary;
 }
 
@@ -796,12 +759,10 @@ input[type="email"].form-control {
     color: #fff;
     background-color: $brand-success;
     border-color: $brand-success;
-
     &:hover {
         background-color: darken($brand-success, 10%);
         border-color: darken($brand-success, 10%);
     }
-
     &[disabled] {
         background-color: #c2c7cc;
         border-color: #c2c7cc;
@@ -814,22 +775,18 @@ input[type="email"].form-control {
             color: #fff;
             background-color: $brand-success;
             border-color: $brand-success;
-
             &:hover {
                 background-color: darken($brand-success, 10%);
                 border-color: darken($brand-success, 10%);
             }
-
             &[disabled] {
                 background-color: #c2c7cc;
                 border-color: #c2c7cc;
             }
-
             +.btn-default {
                 color: #fff;
                 background-color: $brand-danger;
                 border-color: $brand-danger;
-
                 &:hover {
                     background-color: darken($brand-danger, 10%);
                     border-color: darken($brand-danger, 10%);
@@ -838,14 +795,84 @@ input[type="email"].form-control {
         }
     }
 }
+
 img.uploadingImage {
     max-width: 300px;
     max-height: 300px;
     margin: 10px 0px;
 }
-.side-menus nav > ul {
-  padding-bottom: 66px;
+
+.side-menus nav>ul {
+    padding-bottom: 66px;
 }
+
+.hover-btn {
+    td {
+        vertical-align: middle !important;
+    }
+    tr {
+        .btn-show {
+            opacity: 0;
+            @include transition(all 300ms ease);
+        }
+        &:hover {
+            .btn-show {
+                opacity: 1;
+            }
+            td {
+                background-color: #f8f8f8;
+            }
+        }
+    }
+    .btn {
+        padding: 6px;
+    }
+}
+
+.img-thumbu {
+    height: 40px;
+    width: 40px;
+    overflow: hidden;
+    position: relative;
+    border-radius: 40px;
+    display: inline;
+    img {
+        border-radius: 100%;
+    }
+}
+
+.full-image {
+    width: 100%;
+}
+
+.searchbox {
+    width: 200px;
+    display: inline-block;
+    margin-right: 10px;
+    .form-control {
+        background: transparent;
+        border-color: white;
+        border-radius: 10px;
+        color: white;
+        &::-webkit-input-placeholder {
+            color: white;
+        }
+    }
+}
+
+.with-button {
+    .modal-title {
+        line-height: 34px;
+    }
+}
+
+.modal-body {
+    max-height: 450px;
+    overflow-y: auto;
+}
+
+
 /* Start writing sass here */
+
 @import "fancybox-override";
 @import "other/mobile";
