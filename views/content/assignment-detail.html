@@ -218,7 +218,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Insured's Officer</label>
-                                        <multiple-select name="insuredOfficer" required ng-model="formData.insuredOfficer" filter='{"customer":"{{formData.insuredOffice}}"}' ng-name="name.office" api="searchGetOfficer"></multiple-select>
+                                        <multiple-select name="insuredOfficer" required ng-model="formData.insuredOfficer" filter='{"customer":"{{formData.insuredOffice}}"}' ng-name="name.office" api="searchOfficer"></multiple-select>
                                         <div class="error-msg" ng-show="formName.insuredOfficer.$invalid">Please Select Insured Officer</div>
                                     </div>
                                 </div>
@@ -284,7 +284,7 @@
                               <div class="col-md-6">
                                   <div class="form-group">
                                       <label>Appointment Mail*</label>
-                                      <upload-image ng-model="formData.appointment"></upload-image>
+                                      <upload-image ng-model="formData.appointment" no-view></upload-image>
                                   </div>
                               </div>
                               <div class="col-md-6">
