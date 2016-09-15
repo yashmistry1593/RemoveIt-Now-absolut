@@ -411,7 +411,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.refreshShareWith = function(data, office) {
             var formdata = {};
             formdata.search = data;
-            formdata.filter = { "postedAt": office };
+            formdata.filter = {
+                "postedAt": office
+            };
             NavigationService.searchEmployee(formdata, 1, function(data) {
                 $scope.shareWith = data.data.results;
             });
@@ -419,7 +421,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.refreshNature = function(data, causeloss) {
             var formdata = {};
             formdata.search = data;
-            formdata.filter = { "_id": causeloss };
+            formdata.filter = {
+                "_id": causeloss
+            };
             NavigationService.getNatureLoss(formdata, 1, function(data) {
                 $scope.natureLoss = data.data.results;
             });
@@ -555,7 +559,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.refreshShareWith = function(data, office) {
             var formdata = {};
             formdata.search = data;
-            formdata.filter = { "postedAt": office };
+            formdata.filter = {
+                "postedAt": office
+            };
             NavigationService.searchEmployee(formdata, 1, function(data) {
                 $scope.shareWith = data.data.results;
             });
@@ -563,7 +569,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.refreshNature = function(data, causeloss) {
             var formdata = {};
             formdata.search = data;
-            formdata.filter = { "_id": causeloss };
+            formdata.filter = {
+                "_id": causeloss
+            };
             NavigationService.getNatureLoss(formdata, 1, function(data) {
                 $scope.natureLoss = data.data.results;
             });
@@ -1830,7 +1838,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
         $scope.saveSalvage = function(formValid) {
             NavigationService.salvageEditSave($scope.formData, function(data) {
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('salvage-list');
                 }
             });
@@ -2475,13 +2483,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             NavigationService.departmentSave($scope.formData, function(data) {
                 console.log(data);
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('department-list');
                 }
                 // console.log('$scope.allCountriessave', $scope.data);
 
             });
-        }
+        };
 
         NavigationService.getAllUniqueTypes(function(data) {
             $scope.allUniqueTypes = data.data;
@@ -2518,7 +2526,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //  if (formValid.$valid) {
             //  $scope.formComplete = true;
             NavigationService.departmentEditSave($scope.formData, function(data) {
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('department-list');
                 }
             });
@@ -2554,7 +2562,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.showAllUniqueTypes();
 
             });
-        }
+        };
 
     })
     .controller('CreateUniqueTypeCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -2572,13 +2580,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             NavigationService.uniquetypeSave($scope.formData, function(data) {
                 console.log(data);
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('uniquetype-list');
                 }
                 // console.log('$scope.allCountriessave', $scope.data);
 
             });
-        }
+        };
 
         // NavigationService.getAllallUniqueTypes(function(data) {
         //     $scope.allUniqueTypes = data.data;
@@ -2609,7 +2617,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //  if (formValid.$valid) {
             //  $scope.formComplete = true;
             NavigationService.UniqueTypeEditSave($scope.formData, function(data) {
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('uniquetype-list');
                 }
             });
@@ -2648,7 +2656,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.showAllCustomerSegments();
 
             });
-        }
+        };
 
     })
     .controller('CreateCustomerSegmentCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -2666,7 +2674,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             NavigationService.customersegmentSave($scope.formData, function(data) {
                 console.log(data);
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('customerSegment-list');
                 }
                 // console.log('$scope.allCountriessave', $scope.data);
