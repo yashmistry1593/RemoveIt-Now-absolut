@@ -4724,7 +4724,10 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             });
         };
 
+        $scope.custId = $stateParams.id;
+
         $scope.createOfficer = function(modelData) {
+            modelData.customer = $stateParams.id;
             modelData.name = modelData.firstName + " " + modelData.lastName;
             NavigationService.saveOfficer(modelData, function(data) {
                 if (data.value) {
