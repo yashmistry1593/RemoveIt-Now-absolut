@@ -41,9 +41,9 @@
                                     </div>
                                     <div class="form-group">
                                         <label>Nature of Loss</label>
-                                        <ui-select multiple tagging="tagTransform" tagging-label="(press enter to add new)" on-select="clicked($select.selected)" ng-model="formData.natureOfLoss" theme="bootstrap">
+                                        <ui-select multiple tagging="tagTransform" tagging-label="(press enter to add new)" ng-model="formData.natureOfLoss" theme="bootstrap">
                                             <ui-select-match>{{$item.name}}</ui-select-match>
-                                            <ui-select-choices repeat="natureOfLoss in natureOfLosses | filter:$select.search" refresh-delay="0" refresh="refreshNature()">{{natureOfLoss.name}}</ui-select-choices>
+                                            <ui-select-choices repeat="natureOfLoss in natureOfLosses | filter:$select.search" refresh-delay="0" refresh="refreshNature($select.search)">{{natureOfLoss.name}}</ui-select-choices>
                                         </ui-select>
 
                                     </div>

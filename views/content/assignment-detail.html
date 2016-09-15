@@ -4,7 +4,7 @@
             <div class="col-md-12 column">
                 <div class="heading-profile">
                     <toggle-switch ng-model="formData.status" class="switch-small switch-success pull-right"></toggle-switch>
-                    <h2>Create Assignment{{formData.policyDoc}}</h2>
+                    <h2>Create Assignment</h2>
                 </div>
             </div>
         </div>
@@ -218,7 +218,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label>Insured's Officer</label>
-                                        <multiple-select name="insuredOfficer" required ng-model="formData.insuredOfficer" filter='{"_id":"{{formData.insuredOffice}}"}' ng-name="name.office" api="searchOfficer"></multiple-select>
+                                        <multiple-select name="insuredOfficer" required ng-model="formData.insuredOfficer" filter='{"customer":"{{formData.insuredOffice}}"}' ng-name="name.office" api="searchGetOfficer"></multiple-select>
                                         <div class="error-msg" ng-show="formName.insuredOfficer.$invalid">Please Select Insured Officer</div>
                                     </div>
                                 </div>
@@ -338,7 +338,7 @@
                               <div class="col-md-6">
                                   <div class="form-group">
                                       <label>Insured's Officer</label>
-                                      <multiple-select name="insuredOfficer" required ng-model="formData.insuredOfficer" filter='{"_id":"{{formData.insuredOffice}}"}' ng-name="name.office" api="searchOfficer"></multiple-select>
+                                      <multiple-select name="insuredOfficer" required ng-model="formData.insuredOfficer" filter='{"_id":"{{formData.insuredOffice}}"}' ng-name="name.office" api="searchGetOfficer"></multiple-select>
                                       <div class="error-msg" ng-show="formName.insuredOfficer.$invalid">Please Select Insured Officer</div>
                                   </div>
                               </div>
@@ -423,7 +423,7 @@
                               <div class="col-md-6">
                                   <div class="form-group">
                                       <label>Insured's Officer</label>
-                                      <multiple-select name="insuredOfficer" required ng-model="formData.insuredOfficer" filter='{"_id":"{{formData.insuredOffice}}"}' ng-name="name.office" api="searchOfficer"></multiple-select>
+                                      <multiple-select name="insuredOfficer" required ng-model="formData.insuredOfficer" filter='{"_id":"{{formData.insuredOffice}}"}' ng-name="name.office" api="searchGetOfficer"></multiple-select>
                                       <div class="error-msg" ng-show="formName.insuredOfficer.$invalid">Please Select Insured Officer</div>
                                   </div>
                               </div>
@@ -511,7 +511,7 @@
                               <div class="col-md-6">
                                   <div class="form-group">
                                       <label>Insured's Officer</label>
-                                      <multiple-select name="insuredOfficer" required ng-model="formData.insuredOfficer" filter='{"_id":"{{formData.insuredOffice}}"}' ng-name="name.office" api="searchOfficer"></multiple-select>
+                                      <multiple-select name="insuredOfficer" required ng-model="formData.insuredOfficer" filter='{"_id":"{{formData.insuredOffice}}"}' ng-name="name.office" api="searchGetOfficer"></multiple-select>
                                       <div class="error-msg" ng-show="formName.insuredOfficer.$invalid">Please Select Insured Officer</div>
                                   </div>
                               </div>
@@ -595,7 +595,7 @@
                     </div>
                 </div>
 
-                <div class="widget" ng-if="name.department=='Marin Cargo'">
+                <div class="widget" ng-if="name.department=='Marine Cargo'">
                     <div class="form-elements-sec">
                         <div class="widget-title">
                             <a class="btn btn-primary pull-right" ng-click="addModal('modal-assignment','','invoice','','',formData.invoice)">Add New</a>
@@ -633,7 +633,7 @@
                     </div>
                 </div>
 
-                <div class="widget" ng-if="name.department=='Marin Cargo'">
+                <div class="widget" ng-if="name.department=='Marine Cargo'">
                     <div class="form-elements-sec">
                         <div class="widget-title">
                             <a class="btn btn-primary pull-right" ng-click="addModal('modal-assignment','','LRs','','',formData.LRs)">Add New</a>
@@ -669,7 +669,7 @@
                     </div>
                 </div>
 
-                <div class="widget" ng-if="name.department=='Marin Cargo' || name.department=='Motor'">
+                <div class="widget" ng-if="name.department=='Marine Cargo' || name.department=='Motor'">
                     <div class="form-elements-sec">
                         <div class="widget-title">
                             <a class="btn btn-primary pull-right" ng-click="addModal('modal-assignment','','Vehicle','','',formData.vehicleNumber)">Add New</a>
@@ -703,7 +703,7 @@
                     </div>
                 </div>
 
-                <div class="widget" ng-if="name.department!='Marin Cargo' && name.department!='Motor'">
+                <div class="widget" ng-if="name.department!='Marine Cargo' && name.department!='Motor'">
                     <div class="form-elements-sec">
                         <div class="widget-title">
                             <a class="btn btn-primary pull-right" ng-click="addModal('modal-assignment','','Others','','',formData.others)">Add New</a>
