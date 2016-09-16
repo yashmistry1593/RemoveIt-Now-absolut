@@ -1,5 +1,5 @@
 var globalfunction = {};
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ui.select', 'ngAnimate', 'toastr', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'imageupload', 'ngMap', 'toggle-switch', 'cfp.hotkeys'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ui.select', 'ngAnimate', 'toastr', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'imageupload', 'ngMap', 'toggle-switch', 'cfp.hotkeys', 'ngDraggable'])
 
 .controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
@@ -5195,4 +5195,61 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //  }
         };
 
-    });
+    })
+
+.controller('EditTemplateCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("template-detail");
+    $scope.menutitle = NavigationService.makeactive("Edit Template");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.header = {
+        "name": "Edit Template"
+    };
+})
+
+.controller('CreateTemplateCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("template-detail");
+    $scope.menutitle = NavigationService.makeactive("Create Template");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.header = {
+        "name": "Create Template"
+    };
+
+    $scope.forms = [{
+        head: '',
+        items: [{}, {}]
+    }];
+
+    $scope.addHead = function() {
+        $scope.forms.push({
+            head: $scope.forms.length + 1,
+            items: [{}]
+        });
+    };
+
+    $scope.addItem = function(val) {
+        $scope.forms.head[val].items.push({});
+    };
+
+    $scope.remove = function(val) {
+        $scope.rs.splice(val, 1);
+    };
+
+})
+
+.controller('TemplateCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("template-list");
+    $scope.menutitle = NavigationService.makeactive("Templates");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.header = {
+        "name": "Template List"
+    };
+});

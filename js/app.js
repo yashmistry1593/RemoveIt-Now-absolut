@@ -539,7 +539,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         params: {
             page: "1",
             keyword: "",
-            model:"nature loss"
+            model: "nature loss"
         }
     })
 
@@ -548,7 +548,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         templateUrl: "views/template.html",
         controller: 'CreateModelCtrl',
         params: {
-          model:"nature loss"
+            model: "nature loss"
         }
     })
 
@@ -557,8 +557,8 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         templateUrl: "views/template.html",
         controller: 'EditModelCtrl',
         params: {
-          id:"",
-          model:"nature loss"
+            id: "",
+            model: "nature loss"
         }
     })
 
@@ -1039,38 +1039,60 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('createassignment', {
-        url: "/assignment-create/{id:.*}/{model:.*}",
-        templateUrl: "views/template.html",
-        controller: 'CreateAssignmentCtrl',
-        params: {
-            id: "",
-            model: "assignment"
-        }
-    })
-    .state('editassignment', {
-        url: "/assignment-edit/{id:.*}/{model:.*}",
-        templateUrl: "views/template.html",
-        controller: 'EditAssignmentCtrl',
-        params: {
-            id: "",
-            model: "assignment"
-        }
-    })
-    .state('assignment-list', {
-        url: "/assignment-list",
-        templateUrl: "views/template.html",
-        controller: 'ModelViewCtrl',
-        params: {
-            page: "1",
-            keyword: "",
-            model: "assignment"
-        }
-    })
+            url: "/assignment-create/{id:.*}/{model:.*}",
+            templateUrl: "views/template.html",
+            controller: 'CreateAssignmentCtrl',
+            params: {
+                id: "",
+                model: "assignment"
+            }
+        })
+        .state('editassignment', {
+            url: "/assignment-edit/{id:.*}/{model:.*}",
+            templateUrl: "views/template.html",
+            controller: 'EditAssignmentCtrl',
+            params: {
+                id: "",
+                model: "assignment"
+            }
+        })
+        .state('assignment-list', {
+            url: "/assignment-list",
+            templateUrl: "views/template.html",
+            controller: 'ModelViewCtrl',
+            params: {
+                page: "1",
+                keyword: "",
+                model: "assignment"
+            }
+        })
 
     .state('timeline', {
         url: "/timeline",
         templateUrl: "views/template.html",
         controller: 'TimelineCtrl'
+    })
+
+    .state('template-list', {
+        url: "/template-list",
+        templateUrl: "views/template.html",
+        controller: 'TemplateCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
+    })
+
+    .state('createtemplate', {
+        url: "/template-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateTemplateCtrl'
+    })
+
+    .state('edittemplate', {
+        url: "/template-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditTemplateCtrl'
     })
 
     ;
@@ -1517,18 +1539,18 @@ firstapp.config(function($translateProvider) {
 });
 
 firstapp.directive('alphaNumeric', function() {
-  return {
-    require: 'ngModel',
-    link: function(scope, element, attr, ngModelCtrl) {
-      function fromUser(text) {
-        var transformedInput = text.replace(/[^0-9a-zA-Z]/g, '');
-        if (transformedInput !== text) {
-          ngModelCtrl.$setViewValue(transformedInput);
-          ngModelCtrl.$render();
+    return {
+        require: 'ngModel',
+        link: function(scope, element, attr, ngModelCtrl) {
+            function fromUser(text) {
+                var transformedInput = text.replace(/[^0-9a-zA-Z]/g, '');
+                if (transformedInput !== text) {
+                    ngModelCtrl.$setViewValue(transformedInput);
+                    ngModelCtrl.$render();
+                }
+                return transformedInput; // or return Number(transformedInput)
+            }
+            ngModelCtrl.$parsers.push(fromUser);
         }
-        return transformedInput; // or return Number(transformedInput)
-      }
-      ngModelCtrl.$parsers.push(fromUser);
-    }
-  };
+    };
 });
