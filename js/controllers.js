@@ -5203,9 +5203,9 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //  }
         };
 
-    });
+    })
 
-.controller('EditTemplateCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
+    .controller('EditTemplateCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("template-detail");
     $scope.menutitle = NavigationService.makeactive("Edit Template");
