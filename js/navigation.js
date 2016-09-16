@@ -205,13 +205,13 @@ var navigationservice = angular.module('navigationservice', [])
             classis: "active",
             anchor: "claims-list",
             icon: "pencil"
-        },{
+        }, {
             name: "Assignment",
             classis: "active",
             anchor: "assignment-list",
             icon: "pencil"
         }]
-    },{
+    }, {
         name: "Timeline",
         classis: "active",
         anchor: "timeline",
@@ -222,16 +222,27 @@ var navigationservice = angular.module('navigationservice', [])
             anchor: "timeline",
             icon: "music"
         }]
+    }, {
+        name: "Templates",
+        classis: "active",
+        anchor: "timeline",
+        icon: "file-text",
+        subnav: [{
+            name: "Default Templates",
+            classis: "active",
+            anchor: "template-list",
+            icon: "file-text"
+        }]
     }];
     var membershipLevel = [{
-      name:"Student",
-      id:"Student"
-    },{
-      name:"Licentiate",
-      id:"Licentiate"
-    },{
-      name:"Associate",
-      id:"Associate"
+        name: "Student",
+        id: "Student"
+    }, {
+        name: "Licentiate",
+        id: "Licentiate"
+    }, {
+        name: "Associate",
+        id: "Associate"
     }];
 
     return {
@@ -262,24 +273,24 @@ var navigationservice = angular.module('navigationservice', [])
             });
         },
         getMembership: function(formData, i, callback) {
-          $http.post(adminurl + 'Membership/search', formData).success(function(data) {
-              callback(data, i);
-          });
+            $http.post(adminurl + 'Membership/search', formData).success(function(data) {
+                callback(data, i);
+            });
         },
         searchInsuredOffice: function(formData, i, callback) {
-          formData.segment = "Insured";
+            formData.segment = "Insured";
             $http.post(adminurl + 'Customer/getSegmented', formData).success(function(data) {
                 callback(data, i);
             });
         },
         searchInsurerOffice: function(formData, i, callback) {
-          formData.segment = "Insurer";
+            formData.segment = "Insurer";
             $http.post(adminurl + 'Customer/getSegmented', formData).success(function(data) {
                 callback(data, i);
             });
         },
         searchBroker: function(formData, i, callback) {
-          formData.segment = "Broker";
+            formData.segment = "Broker";
             $http.post(adminurl + 'Customer/getSegmented', formData).success(function(data) {
                 callback(data, i);
             });
@@ -376,7 +387,7 @@ var navigationservice = angular.module('navigationservice', [])
             });
         },
         getPolicyDoc: function(formData, i, callback) {
-          console.log(formData);
+            console.log(formData);
             $http.post(adminurl + 'PolicyDoc/getPolicyDoc', formData).success(function(data) {
                 callback(data, i);
             });

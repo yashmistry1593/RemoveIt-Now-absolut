@@ -28,6 +28,7 @@ var jsArray = [
     "./bower_components/angular-toastr/dist/angular-toastr.tpls.js",
     "./bower_components/angular-hotkeys/build/hotkeys.js",
     "./bower_components/moment/min/moment.min.js",
+    "./bower_components//ngDraggable/ngDraggable.js",
 
     './js/app.js',
     './js/language.js',
@@ -158,7 +159,7 @@ gulp.task('minify:css', function() {
     var concat = require('gulp-concat');
     return gulp.src('./w/main.css')
 
-        .pipe(minifyCss({
+    .pipe(minifyCss({
             keepSpecialComments: 0,
             rebase: false
         }))
@@ -343,4 +344,4 @@ gulp.task('copy', ["copy:img", "copy:fonts"]);
 gulp.task('clearimage', ["clean:pImages", "clean:pFont"]);
 // gulp.task('production', gulpSequence(["copy:img", "copy:fonts", "sass:production", "minify:indexproduction", "minify:views"], 'clean:tmp', "concat:js", 'clean:tmp', "templatecache", "uglify:js", "minify:css", 'clean:tmp', "inlinesource", 'clean:tmp', "gzipfile", 'clean:tmp', 'clean:tmp', "zip"));
 gulp.task('productionc', gulpSequence(["copy:img", "copy:fonts", "sass:production", "minify:indexproduction", "minify:views"], 'clean:tmp', "concat:js", 'clean:tmp', "templatecache", "uglify:js", "minify:css", 'clean:tmp', "inlinesource", 'clean:tmp', 'clean:production', "gzipfile", 'clean:tmp', 'clean:tmp', "zip", 'deploy'));
-gulp.task('production', gulpSequence(["copy:img", "copy:fonts", "sass:production", "minify:indexproduction", "minify:views"], 'clean:tmp', "concat:js", 'clean:tmp', "templatecache", "uglify:js", "minify:css", 'clean:tmp', "inlinesource", 'clean:tmp', "copy:indexhtml", 'clean:tmp', 'clean:tmp', "zip",'renamePHP'));
+gulp.task('production', gulpSequence(["copy:img", "copy:fonts", "sass:production", "minify:indexproduction", "minify:views"], 'clean:tmp', "concat:js", 'clean:tmp', "templatecache", "uglify:js", "minify:css", 'clean:tmp', "inlinesource", 'clean:tmp', "copy:indexhtml", 'clean:tmp', 'clean:tmp', "zip", 'renamePHP'));
