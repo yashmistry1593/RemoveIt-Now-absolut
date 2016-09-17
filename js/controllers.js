@@ -5239,14 +5239,32 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             items: [{}]
         });
     };
-
-    $scope.addItem = function(val) {
-        $scope.forms.head[val].items.push({});
+    $scope.removeHead = function(index) {
+        $scope.forms.splice(index, 1);
     };
 
-    $scope.remove = function(val) {
-        $scope.rs.splice(val, 1);
+    $scope.addItem = function(obj) {
+        var index = $scope.forms.indexOf(obj);
+        $scope.forms[index].items.push({});
     };
+
+    $scope.removeItem = function(obj, indexItem) {
+        var indexHead = $scope.forms.indexOf(obj);
+        $scope.forms[indexHead].items.splice(indexItem, 1);
+    };
+
+    $scope.draggableObjects = [
+        { name: 'one' },
+        { name: 'two' },
+        { name: 'three' }
+    ];
+
+    $scope.onDropComplete = function(index, obj, evt) {
+        var otherObj = $scope.draggableObjects[index];
+        var otherIndex = $scope.draggableObjects.indexOf(obj);
+        $scope.draggableObjects[index] = obj;
+        $scope.draggableObjects[otherIndex] = otherObj;
+    }
 
 })
 

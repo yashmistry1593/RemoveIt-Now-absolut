@@ -42,11 +42,16 @@
         <div class="widget">
             <div class="form-elements-sec">
                 <div class="sec">
-                    <span data-drag="true" jqyoui-draggable>So you think you can drag</span>
+                    <ul class="draglist">
+                        <li ng-repeat="obj in draggableObjects" ng-drop="true" ng-drop-success="onDropComplete($index, $data,$event)">
+                            <div ng-drag="true" ng-drag-data="obj" ng-class="obj.name">
+                                {{obj.name}}
+                            </div>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
-
 
         <div class="widget">
             <div class="form-elements-sec">
@@ -56,16 +61,16 @@
                         <div class="form-repeater" ng-repeat="form in forms">
                             <div class="form-builder-head">
                                 <div class="mark-float">
-                                    <i class="fa fa-plus-circle success" ng-click="addHead()"></i>
-                                    <i class="fa fa-minus-circle danger"></i>
+                                    <i class="fa fa-plus-circle success" ng-click="addHead();"></i>
+                                    <i class="fa fa-minus-circle danger" ng-click="removeHead($index);"></i>
                                 </div>
                                 <input type="text" placeholder="Enter Heading" class="form-control">
                             </div>
                             <div class="form-builder-hr">
                                 <div class="form-builder-item row-item" ng-repeat="item in form.items">
                                     <div class="mark-float">
-                                        <i class="fa fa-plus-circle success"></i>
-                                        <i class="fa fa-minus-circle danger"></i>
+                                        <i class="fa fa-plus-circle success" ng-click="addItem(form);"></i>
+                                        <i class="fa fa-minus-circle danger" ng-click="removeItem(form, $index);"></i>
                                     </div>
                                     <div class="col-item"><input type="text" placeholder="Enter item name" class="form-control"></div>
                                     <div class="col-item">
@@ -93,10 +98,10 @@
                 </div>
             </div>
         </div>
-        <div class="clearfix "></div>
-        <div class="text-center mt20 odd-even-button ">
-            <button class="btn btn-default " type="submit " ng-disabled="formName.$invalid ">Save</button>
-            <a class="btn btn-default " ui-sref="template-list ">Cancel</a>
+        <div class="clearfix"></div>
+        <div class="text-center mt20 odd-even-button">
+            <button class="btn btn-default" type="submit" ng-disabled="formName.$invalid">Save</button>
+            <a class="btn btn-default" ui-sref="template-list">Cancel</a>
         </div>
     </div>
 </form>
