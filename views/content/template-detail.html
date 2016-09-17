@@ -52,7 +52,7 @@
                                     <div class="col-item"><input type="text" placeholder="Enter item name" class="form-control"></div>
                                     <div class="col-item">
                                         <select class="form-control" ng-model="formData.itemType">
-                                    <option value="">Select type of item</option>
+                                    <option value="" selected disabled>Select type of item</option>
                                     <option value="Custom Input">Custom Input</option>
                                     <option value="System Fields">System Fields</option>  
                                     <option value="Dropdown">Dropdown</option>  
@@ -60,7 +60,7 @@
                                     </div>
                                     <div class="col-item" ng-if="formData.itemType=='Custom Input'">
                                         <select class="form-control" ng-model="formdata.inputType">
-                                    <option value="">Select type of input</option>
+                                    <option value="" selected disabled>Select type of input</option>
                                     <option value="Text">Text</option>
                                     <option value="Date">Date</option>
                                     <option value="Textarea">Textarea</option>
