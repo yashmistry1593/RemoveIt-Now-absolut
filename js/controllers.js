@@ -2680,7 +2680,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 // console.log('$scope.allCountriessave', $scope.data);
 
             });
-        }
+        };
 
         // NavigationService.getAllallUniqueTypes(function(data) {
         //     $scope.allUniqueTypes = data.data;
@@ -2711,7 +2711,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //  if (formValid.$valid) {
             //  $scope.formComplete = true;
             NavigationService.CustomerSegmentEditSave($scope.formData, function(data) {
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('customerSegment-list');
                 }
             });
@@ -3238,7 +3238,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                     toastr.error("Industry creation failed.", "Industry creation error");
                 }
             });
-        }
+        };
 
     })
     .controller('EditIndustryCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
@@ -3430,7 +3430,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.showAllFunc();
 
             });
-        }
+        };
 
     })
     .controller('CreateFuncCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -3448,13 +3448,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             NavigationService.funcSave($scope.formData, function(data) {
                 console.log(data);
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('func-list');
                 }
                 // console.log('$scope.allCountriessave', $scope.data);
 
             });
-        }
+        };
 
     })
     .controller('EditFuncCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
@@ -3479,7 +3479,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //  if (formValid.$valid) {
             //  $scope.formComplete = true;
             NavigationService.FuncEditSave($scope.formData, function(data) {
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('func-list');
                 }
             });
@@ -3644,7 +3644,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.showAllNatureLoss();
 
             });
-        }
+        };
 
     })
     .controller('CreateNatureLossCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
@@ -3668,13 +3668,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             NavigationService.naturelossSave($scope.formData, function(data) {
                 console.log(data);
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('natureloss-list');
                 }
                 // console.log('$scope.allCountriessave', $scope.data);
 
             });
-        }
+        };
         NavigationService.getAllDepartments(function(data) {
             $scope.allDepartments = data.data;
 
@@ -3713,7 +3713,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //  if (formValid.$valid) {
             //  $scope.formComplete = true;
             NavigationService.NatureLossEditSave($scope.formData, function(data) {
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('natureloss-list');
                 }
             });
@@ -3799,7 +3799,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //  if (formValid.$valid) {
             //  $scope.formComplete = true;
             NavigationService.BusinessBranchEditSave($scope.formData, function(data) {
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('businessbranch-list');
                 }
             });
@@ -3838,7 +3838,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.showAllMenus();
 
             });
-        }
+        };
 
 
     })
@@ -3863,13 +3863,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             NavigationService.menuSave($scope.formData, function(data) {
                 console.log(data);
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('menu-list');
                 }
                 // console.log('$scope.allCountriessave', $scope.data);
 
             });
-        }
+        };
 
         // NavigationService.getAllCountries(function(data) {
         //     $scope.allCountries = data.data;
@@ -3906,7 +3906,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //  if (formValid.$valid) {
             //  $scope.formComplete = true;
             NavigationService.menuEditSave($scope.formData, function(data) {
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('menu-list');
                 }
             });
@@ -3953,7 +3953,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.showAllRoles();
 
             });
-        }
+        };
 
 
     })
@@ -3973,13 +3973,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             NavigationService.roleSave($scope.formData, function(data) {
                 console.log(data);
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('role-list');
                 }
                 // console.log('$scope.allCountriessave', $scope.data);
 
             });
-        }
+        };
 
         NavigationService.getAllMenus(function(data) {
             $scope.allMenus = data.data;
@@ -4009,7 +4009,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //  if (formValid.$valid) {
             //  $scope.formComplete = true;
             NavigationService.roleEditSave($scope.formData, function(data) {
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('role-list');
                 }
             });
@@ -4056,7 +4056,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.showAllUsers();
 
             });
-        }
+        };
 
 
     })
@@ -4084,13 +4084,13 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
             NavigationService.userSave($scope.formData, function(data) {
                 console.log(data);
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('user-list');
                 }
                 // console.log('$scope.allCountriessave', $scope.data);
 
             });
-        }
+        };
 
         NavigationService.getAllMenus(function(data) {
             $scope.allMenus = data.data;
@@ -4147,7 +4147,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //  if (formValid.$valid) {
             //  $scope.formComplete = true;
             NavigationService.userEditSave($scope.formData, function(data) {
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('user-list');
                 }
             });
@@ -4400,7 +4400,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
                 $scope.showAllCustomerCompanies();
 
             });
-        }
+        };
     })
     .controller('CreateCustomerCompanyCtrl', function($scope, TemplateService, NavigationService, $timeout, $state) {
         //Used to name the .html file
@@ -4416,12 +4416,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.saveCustomerCompany = function(formData) {
 
             NavigationService.customerCompanySave($scope.formData, function(data) {
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('customerCompany-list');
                 }
 
             });
-        }
+        };
 
     })
     .controller('EditCustomerCompanyCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state) {
@@ -4444,7 +4444,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             //  if (formValid.$valid) {
             //  $scope.formComplete = true;
             NavigationService.customerCompanyEditSave($scope.formData, function(data) {
-                if (data.value == true) {
+                if (data.value === true) {
                     $state.go('customerCompany-list');
                 }
             });
@@ -4477,7 +4477,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $scope.showAllCustomers();
 
         });
-    }
+    };
 })
 
 .controller('CreateCustomerCtrl', function($scope, TemplateService, NavigationService, $timeout, $state, $uibModal, $stateParams, toastr, $filter) {
