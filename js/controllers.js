@@ -5257,8 +5257,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         var headIndex = $scope.forms.indexOf(headObj);
         var otherObj = $scope.forms[headIndex].items[index];
         var otherIndex = $scope.forms[headIndex].items.indexOf(obj);
-        console.log(otherObj);
-        console.log(otherIndex);
         $scope.forms[headIndex].items[index] = obj;
         $scope.forms[headIndex].items[otherIndex] = otherObj;
     }

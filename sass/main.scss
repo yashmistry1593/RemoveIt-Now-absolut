@@ -913,14 +913,16 @@ img.uploadingImage {
     .form-builder-item {
         position: relative;
         @include transition(all 300ms ease);
+        padding-left: 20px;
+        .mark-float {
+            &.right-float {
+                width: 20px;
+            }
+        }
         &:hover {
             padding-right: 40px;
-            padding-left: 20px;
             .mark-float {
                 width: 40px;
-                &.right-float {
-                    width: 20px;
-                }
             }
         }
         +.form-builder-item {
