@@ -1,5 +1,5 @@
 var globalfunction = {};
-angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ui.select', 'ngAnimate', 'toastr', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'imageupload', 'ngMap', 'toggle-switch', 'cfp.hotkeys', 'ngDraggable'])
+angular.module('phonecatControllers', ['templateservicemod', 'navigationservice', 'ui.bootstrap', 'ui.select', 'ngAnimate', 'toastr', 'ngSanitize', 'angular-flexslider', 'ui.tinymce', 'imageupload', 'ngMap', 'toggle-switch', 'cfp.hotkeys', 'ui.sortable'])
 
 .controller('DashboardCtrl', function($scope, TemplateService, NavigationService, $timeout) {
     //Used to name the .html file
@@ -5253,13 +5253,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.forms[indexHead].items.splice(indexItem, 1);
     };
 
-    $scope.onDropComplete = function(index, obj, evt, headObj) {
-        var headIndex = $scope.forms.indexOf(headObj);
-        var otherObj = $scope.forms[headIndex].items[index];
-        var otherIndex = $scope.forms[headIndex].items.indexOf(obj);
-        $scope.forms[headIndex].items[index] = obj;
-        $scope.forms[headIndex].items[otherIndex] = otherObj;
-    }
+    $scope.sortableOptions = {
+        handle: ' .handleBar',
+        // axis: 'y',
+        // 'ui-floating': true
+    };
 
 })
 

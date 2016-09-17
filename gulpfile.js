@@ -28,7 +28,7 @@ var jsArray = [
     "./bower_components/angular-toastr/dist/angular-toastr.tpls.js",
     "./bower_components/angular-hotkeys/build/hotkeys.js",
     "./bower_components/moment/min/moment.min.js",
-    "./bower_components/ngDraggable/ngDraggable.js",
+    "./bower_components/angular-ui-sortable/sortable.js",
 
     './js/app.js',
     './js/language.js',
