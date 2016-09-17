@@ -5205,7 +5205,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     })
 
-    .controller('EditTemplateCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
+.controller('EditTemplateCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
     //Used to name the .html file
     $scope.template = TemplateService.changecontent("template-detail");
     $scope.menutitle = NavigationService.makeactive("Edit Template");
@@ -5253,17 +5253,12 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         $scope.forms[indexHead].items.splice(indexItem, 1);
     };
 
-    $scope.draggableObjects = [
-        { name: 'one' },
-        { name: 'two' },
-        { name: 'three' }
-    ];
-
-    $scope.onDropComplete = function(index, obj, evt) {
-        var otherObj = $scope.draggableObjects[index];
-        var otherIndex = $scope.draggableObjects.indexOf(obj);
-        $scope.draggableObjects[index] = obj;
-        $scope.draggableObjects[otherIndex] = otherObj;
+    $scope.onDropComplete = function(index, obj, evt, headObj) {
+        var headIndex = $scope.forms.indexOf(headObj);
+        var otherObj = $scope.forms[headIndex].items[index];
+        var otherIndex = $scope.forms[headIndex].items.indexOf(obj);
+        $scope.forms[headIndex].items[index] = obj;
+        $scope.forms[headIndex].items[otherIndex] = otherObj;
     }
 
 })

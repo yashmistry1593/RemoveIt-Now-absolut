@@ -27,32 +27,6 @@
             </div>
         </div>
 
-        <!--<div class="widget">
-            <button class="btn btn-success" ng-click="addHead()">Add Head</button>
-            <div ng-repeat="form in forms">
-                <input ng-model="form.name" type="text" class="form-control" placeholder="head{{$index}}">
-                <div ng-repeat="item in form.items">
-                    <input ng-model="r.name" type="text" class="form-control" placeholder="item{{$index}}">
-                </div>
-                <button class="btn btn-danger" ng-click="remove($index)">Delete {{$index+1}}</button>
-            </div>
-            {{rs}}
-        </div>-->
-
-        <div class="widget">
-            <div class="form-elements-sec">
-                <div class="sec">
-                    <ul class="draglist">
-                        <li ng-repeat="obj in draggableObjects" ng-drop="true" ng-drop-success="onDropComplete($index, $data,$event)">
-                            <div ng-drag="true" ng-drag-data="obj" ng-class="obj.name">
-                                {{obj.name}}
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-
         <div class="widget">
             <div class="form-elements-sec">
                 <div class="sec">
@@ -67,7 +41,10 @@
                                 <input type="text" placeholder="Enter Heading" class="form-control">
                             </div>
                             <div class="form-builder-hr">
-                                <div class="form-builder-item row-item" ng-repeat="item in form.items">
+                                <div class="form-builder-item row-item" ng-repeat="item in form.items" ng-drag="true" ng-drag-data="item" ng-drop="true" ng-drop-success="onDropComplete($index, $data, $event, form)">
+                                    <div class="right-float mark-float">
+                                        <i class="fa fa-bars" ng-drag-handle></i>
+                                    </div>
                                     <div class="mark-float">
                                         <i class="fa fa-plus-circle success" ng-click="addItem(form);"></i>
                                         <i class="fa fa-minus-circle danger" ng-click="removeItem(form, $index);"></i>
