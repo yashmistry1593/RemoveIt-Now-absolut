@@ -888,9 +888,8 @@ img.uploadingImage {
         font-weight: bold;
         position: relative;
         &:hover {
-            padding-right: 60px;
             .mark-float {
-                width: 60px;
+                width: 40px;
             }
         }
         +.form-builder-hr {
@@ -903,6 +902,7 @@ img.uploadingImage {
     .form-builder-hr {
         border-bottom: 1px solid $body-color-font;
         margin-bottom: -1px;
+        // position: relative;
     }
     .form-repeater {
         +.form-repeater {
@@ -912,7 +912,6 @@ img.uploadingImage {
     }
     .form-builder-item {
         position: relative;
-        // @include transition(all 300ms ease);
         padding-left: 20px;
         .mark-float {
             &.right-float {
@@ -920,7 +919,6 @@ img.uploadingImage {
             }
         }
         &:hover {
-            padding-right: 40px;
             .mark-float {
                 width: 40px;
             }
@@ -966,11 +964,10 @@ img.uploadingImage {
     color: $brand-danger;
 }
 
-.dragging {
+.ui-sortable-helper {
     box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.35);
-    z-index: 999;
-    position: relative;
     background-color: white;
+    z-index: 9999;
 }
 
 
