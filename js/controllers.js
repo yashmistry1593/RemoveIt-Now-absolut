@@ -5255,9 +5255,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.sortableOptions = {
         handle: ' .handleBar',
-        // axis: 'y',
-        // 'ui-floating': true
+        axis: 'y',
+        'ui-floating': true,
+        start: function(e, ui) {
+            $('#sortable-ul-selector-id').sortable("refreshPositions");
+            $('#sortable-ul-selector-id').sortable("refresh");
+        }
     };
+
 
 })
 
