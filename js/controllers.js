@@ -5388,4 +5388,48 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.header = {
         "name": "LOR Template List"
     };
-});
+})
+
+.controller('TemplateViewCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("template-view");
+    $scope.menutitle = NavigationService.makeactive("Form Name");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.header = {
+        "name": "Form Name"
+    };
+
+    $scope.forms = [{
+        head: 'Snapshot',
+        items: [{
+            name: 'Insurer',
+            type: 'text'
+        }, {
+            name: 'Date',
+            type: 'date'
+        }, {
+            name: 'Address',
+            type: 'textarea'
+        }, {
+            name: 'City',
+            type: 'system'
+        }, {
+            name: 'Country',
+            type: 'dropdown',
+            dropdownValues: ['Mumbai', 'Bihar', 'Orissa']
+        }]
+    }];
+
+})
+
+;
+//  value: 'Custom Input',
+//         name: 'Custom Input'
+//     }, {
+//         value: 'System Fields',
+//         name: 'System Fields'
+//     }, {
+//         value: 'Dropdown',
+//         name: 'Dropdown'

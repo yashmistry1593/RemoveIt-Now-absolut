@@ -1117,6 +1117,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'EditTemplateLORCtrl'
     })
 
+    .state('template-view', {
+        url: "/template-view",
+        templateUrl: "views/template.html",
+        controller: 'TemplateViewCtrl'
+    })
+
     ;
     $urlRouterProvider.otherwise("/login");
     $locationProvider.html5Mode(isproduction);
