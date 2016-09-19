@@ -5295,8 +5295,16 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     };
 
     $scope.saveModel = function(data) {
-        console.log(data);
-        console.log($scope.forms);
+        $scope.saveModel = function(formData) {
+            NavigationService.modelSave("Template", $scope.formData, function(data) {
+                if (data.value === true) {
+                    $state.go('template-list');
+                    toastr.success("Template " + formData.name + " created successfully.", "Template Created");
+                } else {
+                    toastr.error("Template creation failed.", "Template creation error");
+                }
+            });
+        };
     };
 
 

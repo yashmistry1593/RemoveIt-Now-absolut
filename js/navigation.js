@@ -311,6 +311,9 @@ var navigationservice = angular.module('navigationservice', [])
         saveOfficer: function(data, callback) {
             $http.post(adminurl + 'Officer/save', data).success(callback);
         },
+        saveTemplate: function(data, callback) {
+            $http.post(adminurl + 'Template/save', data).success(callback);
+        },
         assignmentSave: function(data, callback) {
             $http.post(adminurl + 'Assignment/save', data).success(callback);
         },
