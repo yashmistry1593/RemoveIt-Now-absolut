@@ -1095,6 +1095,28 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'EditTemplateCtrl'
     })
 
+    .state('template-lor-list', {
+        url: "/template-lor-list",
+        templateUrl: "views/template.html",
+        controller: 'TemplateLORCtrl',
+        params: {
+            page: "1",
+            keyword: ""
+        }
+    })
+
+    .state('createtemplatelor', {
+        url: "/template-lor-create",
+        templateUrl: "views/template.html",
+        controller: 'CreateTemplateLORCtrl'
+    })
+
+    .state('edittemplatelor', {
+        url: "/template-lor-edit/:id",
+        templateUrl: "views/template.html",
+        controller: 'EditTemplateLORCtrl'
+    })
+
     ;
     $urlRouterProvider.otherwise("/login");
     $locationProvider.html5Mode(isproduction);

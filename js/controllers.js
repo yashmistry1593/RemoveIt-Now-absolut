@@ -5276,4 +5276,77 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.header = {
         "name": "Template List"
     };
+})
+
+.controller('EditTemplateLORCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("template-lor-detail");
+    $scope.menutitle = NavigationService.makeactive("Edit LOR Template");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.header = {
+        "name": "Edit LOR Template"
+    };
+})
+
+.controller('CreateTemplateLORCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("template-lor-detail");
+    $scope.menutitle = NavigationService.makeactive("Create LOR Template");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.header = {
+        "name": "Create LOR Template"
+    };
+
+    $scope.forms = [{
+        head: '',
+        items: [{}, {}]
+    }];
+
+    $scope.addHead = function() {
+        $scope.forms.push({
+            head: $scope.forms.length + 1,
+            items: [{}]
+        });
+    };
+    $scope.removeHead = function(index) {
+        $scope.forms.splice(index, 1);
+    };
+
+    $scope.addItem = function(obj) {
+        var index = $scope.forms.indexOf(obj);
+        $scope.forms[index].items.push({});
+    };
+
+    $scope.removeItem = function(obj, indexItem) {
+        var indexHead = $scope.forms.indexOf(obj);
+        $scope.forms[indexHead].items.splice(indexItem, 1);
+    };
+
+    $scope.sortableOptions = {
+        handle: ' .handleBar',
+        axis: 'y',
+        'ui-floating': true,
+        start: function(e, ui) {
+            $('#sortable-ul-selector-id').sortable("refreshPositions");
+            $('#sortable-ul-selector-id').sortable("refresh");
+        }
+    };
+
+
+})
+
+.controller('TemplateLORCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("template-lor-list");
+    $scope.menutitle = NavigationService.makeactive("LOR Templates");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.header = {
+        "name": "LOR Template List"
+    };
 });

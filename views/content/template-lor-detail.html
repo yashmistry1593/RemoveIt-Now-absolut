@@ -4,7 +4,7 @@
             <div class="col-md-12 column">
                 <div class="heading-profile">
                     <toggle-switch ng-model="formData.status" class="switch-small switch-success pull-right"></toggle-switch>
-                    <h2>Create Templates</h2>
+                    <h2>Create LOR Template</h2>
                 </div>
             </div>
         </div>
@@ -17,7 +17,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-group">
-                                <label>Name*</label>
+                                <label>LOR Name*</label>
                                 <input type="text" name="name" class="form-control" ng-model="formData.name" required>
                                 <div class="error-msg" ng-show="formName.name.$invalid && formName.name.$touched">Please Enter Name</div>
                             </div>
@@ -78,7 +78,7 @@
         <div class="clearfix"></div>
         <div class="text-center mt20 odd-even-button">
             <button class="btn btn-default" type="submit" ng-disabled="formName.$invalid">Save</button>
-            <a class="btn btn-default" ui-sref="template-list">Cancel</a>
+            <a class="btn btn-default" ui-sref="template-lor-list">Cancel</a>
         </div>
     </div>
 </form>

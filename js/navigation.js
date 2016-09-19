@@ -232,6 +232,11 @@ var navigationservice = angular.module('navigationservice', [])
             classis: "active",
             anchor: "template-list",
             icon: "file-text"
+        }, {
+            name: "LOR Templates",
+            classis: "active",
+            anchor: "template-lor-list",
+            icon: "file-text"
         }]
     }];
     var membershipLevel = [{
