@@ -49,25 +49,16 @@
                                         <i class="fa fa-plus-circle success" ng-click="addItem(form);"></i>
                                         <i class="fa fa-minus-circle danger" ng-click="removeItem(form, $index);"></i>
                                     </div>
-                                    <div class="col-item"><input type="text" placeholder="Enter item name" class="form-control"></div>
                                     <div class="col-item">
+                                        <input type="text" placeholder="Enter item name" class="form-control">
+                                    </div>
+                                    <div class="col-item col-item-25">
                                         <select class="form-control" ng-model="formData.itemType">
-                                    <option value="" selected disabled>Select type of item</option>
-                                    <option value="Custom Input">Custom Input</option>
-                                    <option value="System Fields">System Fields</option>  
-                                    <option value="Dropdown">Dropdown</option>  
-                                </select>
+                                            <option value="" selected disabled>Copy/Orignal</option>
+                                            <option value="Copy">Copy</option>
+                                            <option value="Orignal">Orignal</option>  
+                                        </select>
                                     </div>
-                                    <div class="col-item" ng-if="formData.itemType=='Custom Input'">
-                                        <select class="form-control" ng-model="formdata.inputType">
-                                    <option value="" selected disabled>Select type of input</option>
-                                    <option value="Text">Text</option>
-                                    <option value="Date">Date</option>
-                                    <option value="Textarea">Textarea</option>
-                                </select>
-                                    </div>
-                                    <div class="col-item" ng-if="formData.itemType=='System Fields'"><input type="text" placeholder="Enter Value" class="form-control"></div>
-                                    <div class="col-item" ng-if="formData.itemType=='Dropdown'"><input type="text" class="form-control" placeholder="Enter values (eg. Theft, Fire)"></div>
                                 </div>
                             </div>
                         </div>
