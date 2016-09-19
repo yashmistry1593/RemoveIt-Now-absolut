@@ -5228,6 +5228,34 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         "name": "Create Template"
     };
 
+    $scope.itemTypes = [{
+        value: '',
+        name: 'Select type of item'
+    }, {
+        value: 'Custom Input',
+        name: 'Custom Input'
+    }, {
+        value: 'System Fields',
+        name: 'System Fields'
+    }, {
+        value: 'Dropdown',
+        name: 'Dropdown'
+    }];
+
+    $scope.inputTypes = [{
+        value: '',
+        name: 'Select type of input'
+    }, {
+        value: 'Text',
+        name: 'Text'
+    }, {
+        value: 'Date',
+        name: 'Date'
+    }, {
+        value: 'Textarea',
+        name: 'Textarea'
+    }];
+
     $scope.forms = [{
         head: '',
         items: [{}, {}]
@@ -5300,6 +5328,17 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.header = {
         "name": "Create LOR Template"
     };
+
+    $scope.itemTypes = [{
+        value: '',
+        name: 'Copy/Orignal'
+    }, {
+        value: 'Copy',
+        name: 'Copy'
+    }, {
+        value: 'Orignal',
+        name: 'Orignal'
+    }];
 
     $scope.forms = [{
         head: '',

@@ -941,6 +941,10 @@ img.uploadingImage {
             @include flex(0 0 25%);
             width: 25%;
         }
+        &.col-item-35 {
+            @include flex(0 0 35%);
+            width: 35%;
+        }
     }
 }
 

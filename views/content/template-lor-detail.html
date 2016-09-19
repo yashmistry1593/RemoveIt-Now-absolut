@@ -54,9 +54,7 @@
                                     </div>
                                     <div class="col-item col-item-25">
                                         <select class="form-control" ng-model="formData.itemType">
-                                            <option value="" selected disabled>Copy/Orignal</option>
-                                            <option value="Copy">Copy</option>
-                                            <option value="Orignal">Orignal</option>  
+                                            <option value="{{item.value}}" ng-repeat="item in itemTypes">{{item.name}}</option>
                                         </select>
                                     </div>
                                 </div>
