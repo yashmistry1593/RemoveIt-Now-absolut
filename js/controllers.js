@@ -5256,29 +5256,32 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         name: 'Textarea'
     }];
 
-    $scope.forms = [{
+    $scope.formData = {};
+    $scope.formData.status = true;
+
+    $scope.formData.forms = [{
         head: '',
         items: [{}, {}]
     }];
 
     $scope.addHead = function() {
-        $scope.forms.push({
-            head: $scope.forms.length + 1,
+        $scope.formData.forms.push({
+            head: $scope.formData.forms.length + 1,
             items: [{}]
         });
     };
     $scope.removeHead = function(index) {
-        $scope.forms.splice(index, 1);
+        $scope.formData.forms.splice(index, 1);
     };
 
     $scope.addItem = function(obj) {
-        var index = $scope.forms.indexOf(obj);
-        $scope.forms[index].items.push({});
+        var index = $scope.formData.forms.indexOf(obj);
+        $scope.formData.forms[index].items.push({});
     };
 
     $scope.removeItem = function(obj, indexItem) {
-        var indexHead = $scope.forms.indexOf(obj);
-        $scope.forms[indexHead].items.splice(indexItem, 1);
+        var indexHead = $scope.formData.forms.indexOf(obj);
+        $scope.formData.forms[indexHead].items.splice(indexItem, 1);
     };
 
     $scope.sortableOptions = {
@@ -5289,6 +5292,11 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
             $('#sortable-ul-selector-id').sortable("refreshPositions");
             $('#sortable-ul-selector-id').sortable("refresh");
         }
+    };
+
+    $scope.saveModel = function(data) {
+        console.log(data);
+        console.log($scope.forms);
     };
 
 

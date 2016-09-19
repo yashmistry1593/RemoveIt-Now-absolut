@@ -17,7 +17,7 @@
                     <div class="widget-title">
                         <div class="pull-right">
                             <form class="search-form mr-form">
-                                <input type="text" ng-change="showAllTemplates(true)" placeholder="Search Here..." ng-model="search.keyword" />
+                                <input type="text" ng-change="showAll(true)" placeholder="Search Here..." ng-model="search.keyword" />
                                 <button type="submit">
                                   <i class="fa fa-search"></i>
                               </button>
@@ -35,11 +35,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="template in alltemplates">
+                                <tr ng-repeat="template in modelList">
                                     <td>{{template.name}}</td>
                                     <td>
                                         <a class="btn btn-primary" ui-sref="editTemplate({id:template._id})"><i class="fa fa-pencil"></i></a>
-                                        <a class="btn btn-danger" ng-click="deleteTemplate(template._id)"><i class="fa fa-trash"></i></a>
+                                        <a class="btn btn-danger" ng-click="deleteModel(template._id)"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                             </tbody>

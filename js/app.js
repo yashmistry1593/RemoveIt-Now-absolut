@@ -1074,12 +1074,13 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
     })
 
     .state('template-list', {
-        url: "/template-list",
+        url: "/template-list/{page:.*}/{keyword:.*}/{model:.*}",
         templateUrl: "views/template.html",
-        controller: 'TemplateCtrl',
+        controller: 'ModelViewCtrl',
         params: {
             page: "1",
-            keyword: ""
+            keyword: "",
+            model: "template"
         }
     })
 
