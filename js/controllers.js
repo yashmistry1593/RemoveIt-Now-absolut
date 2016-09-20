@@ -5347,19 +5347,24 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
     $scope.itemTypes = [{
         value: '',
-        name: 'Copy/Orignal'
+        name: 'Select Status'
     }, {
         value: 'Copy',
         name: 'Copy'
     }, {
-        value: 'Orignal',
-        name: 'Orignal'
+        value: 'Original',
+        name: 'Original'
+    }, {
+        value: 'Submitted',
+        name: 'Submitted'
     }];
 
     $scope.forms = [{
         head: '',
         items: [{}, {}]
     }];
+
+    $scope.required = true;
 
     $scope.addHead = function() {
         $scope.forms.push({
@@ -5441,11 +5446,3 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 })
 
 ;
-//  value: 'Custom Input',
-//         name: 'Custom Input'
-//     }, {
-//         value: 'System Fields',
-//         name: 'System Fields'
-//     }, {
-//         value: 'Dropdown',
-//         name: 'Dropdown'

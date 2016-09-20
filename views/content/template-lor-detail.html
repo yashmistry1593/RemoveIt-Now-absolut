@@ -57,6 +57,14 @@
                                             <option value="{{item.value}}" ng-repeat="item in itemTypes">{{item.name}}</option>
                                         </select>
                                     </div>
+                                    <div class="col-item col-item-25" ng-if="formData.itemType == 'Submitted'">
+                                        <input type="date" class="form-control">
+                                    </div>
+                                    <div class="col-item col-item-25" ng-if="formData.itemType != 'Submitted'">
+                                        <p>Required
+                                            <toggle-switch on-label="Yes" off-label="No" ng-model="required" class="switch-mini switch-success ml-25"></toggle-switch>
+                                        </p>
+                                    </div>
                                 </div>
                             </div>
                         </div>
