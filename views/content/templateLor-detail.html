@@ -32,13 +32,13 @@
                 <div class="sec">
                     <div class="clearfix"></div>
                     <div class="form-builder">
-                        <div class="form-repeater" ng-repeat="form in forms">
+                        <div class="form-repeater" ng-repeat="form in formData.forms">
                             <div class="form-builder-head">
                                 <div class="mark-float">
                                     <i class="fa fa-plus-circle success" ng-click="addHead();"></i>
                                     <i class="fa fa-minus-circle danger" ng-click="removeHead($index);"></i>
                                 </div>
-                                <input type="text" placeholder="Enter Heading" class="form-control">
+                                <input type="text" ng-model="form.name" placeholder="Enter Heading" class="form-control">
                             </div>
                             <div class="form-builder-hr" id="sortable-ul-selector-id" ui-sortable="sortableOptions" ng-model="form.items">
                                 <div class="form-builder-item row-item" ng-repeat="item in form.items">
@@ -50,19 +50,19 @@
                                         <i class="fa fa-minus-circle danger" ng-click="removeItem(form, $index);"></i>
                                     </div>
                                     <div class="col-item">
-                                        <input type="text" placeholder="Enter item name" class="form-control">
+                                        <input type="text" ng-model="item.name" placeholder="Enter item name" class="form-control">
                                     </div>
                                     <div class="col-item col-item-25">
-                                        <select class="form-control" ng-model="formData.itemType">
+                                        <select class="form-control" ng-model="item.type">
                                             <option value="{{item.value}}" ng-repeat="item in itemTypes">{{item.name}}</option>
                                         </select>
                                     </div>
-                                    <div class="col-item col-item-25" ng-if="formData.itemType == 'Submitted'">
-                                        <input type="date" class="form-control">
+                                    <div class="col-item col-item-25" ng-if="item.type == 'Submitted'">
+                                        <input type="text" ng-model="item.value|date" class="form-control">
                                     </div>
-                                    <div class="col-item col-item-25" ng-if="formData.itemType != 'Submitted'">
+                                    <div class="col-item col-item-25" ng-if="item.type != 'Submitted'">
                                         <p>Required
-                                            <toggle-switch on-label="Yes" off-label="No" ng-model="required" class="switch-mini switch-success ml-25"></toggle-switch>
+                                            <toggle-switch on-label="Yes" off-label="No" ng-model="item.value" class="switch-mini switch-success ml-25"></toggle-switch>
                                         </p>
                                     </div>
                                 </div>

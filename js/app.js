@@ -1096,24 +1096,25 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'EditTemplateCtrl'
     })
 
-    .state('template-lor-list', {
-        url: "/template-lor-list",
+    .state('templateLor-list', {
+        url: "/templateLor-list/{page:.*}/{keyword:.*}/{model:.*}",
         templateUrl: "views/template.html",
-        controller: 'TemplateLORCtrl',
+        controller: 'ModelViewCtrl',
         params: {
             page: "1",
-            keyword: ""
+            keyword: "",
+            model: "template lor"
         }
     })
 
-    .state('createtemplatelor', {
-        url: "/template-lor-create",
+    .state('createtemplateLor', {
+        url: "/templateLor-create",
         templateUrl: "views/template.html",
         controller: 'CreateTemplateLORCtrl'
     })
 
-    .state('edittemplatelor', {
-        url: "/template-lor-edit/:id",
+    .state('edittemplateLor', {
+        url: "/templateLor-edit/:id",
         templateUrl: "views/template.html",
         controller: 'EditTemplateLORCtrl'
     })
@@ -1376,6 +1377,12 @@ firstapp.filter('serverimage', function() {
         } else {
             return "img/logo.png";
         }
+    };
+});
+
+firstapp.filter('convDate', function() {
+    return function(input) {
+        return new Date(input);
     };
 });
 

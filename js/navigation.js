@@ -235,7 +235,7 @@ var navigationservice = angular.module('navigationservice', [])
         }, {
             name: "LOR Templates",
             classis: "active",
-            anchor: "template-lor-list",
+            anchor: "templateLor-list",
             icon: "file-text"
         }]
     }];
