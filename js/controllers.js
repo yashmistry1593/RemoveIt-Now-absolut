@@ -5215,6 +5215,84 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
     $scope.header = {
         "name": "Edit Template"
     };
+    $scope.formData = {};
+    // $scope.formData.status = true;
+
+    NavigationService.getOneModel("Template", $stateParams.id, function(data) {
+        $scope.formData = data.data;
+    });
+
+    $scope.itemTypes = [{
+        value: '',
+        name: 'Select type of item'
+    }, {
+        value: 'Custom Input',
+        name: 'Custom Input'
+    }, {
+        value: 'System Fields',
+        name: 'System Fields'
+    }, {
+        value: 'Dropdown',
+        name: 'Dropdown'
+    }];
+
+    $scope.inputTypes = [{
+        value: '',
+        name: 'Select type of input'
+    }, {
+        value: 'Text',
+        name: 'Text'
+    }, {
+        value: 'Date',
+        name: 'Date'
+    }, {
+        value: 'Textarea',
+        name: 'Textarea'
+    }];
+
+
+    $scope.addHead = function() {
+        $scope.formData.forms.push({
+            head: $scope.formData.forms.length + 1,
+            items: [{}]
+        });
+    };
+    $scope.removeHead = function(index) {
+        $scope.formData.forms.splice(index, 1);
+    };
+
+    $scope.addItem = function(obj) {
+        var index = $scope.formData.forms.indexOf(obj);
+        $scope.formData.forms[index].items.push({});
+    };
+
+    $scope.removeItem = function(obj, indexItem) {
+        var indexHead = $scope.formData.forms.indexOf(obj);
+        $scope.formData.forms[indexHead].items.splice(indexItem, 1);
+    };
+
+    $scope.sortableOptions = {
+        handle: ' .handleBar',
+        axis: 'y',
+        'ui-floating': true,
+        start: function(e, ui) {
+            $('#sortable-ul-selector-id').sortable("refreshPositions");
+            $('#sortable-ul-selector-id').sortable("refresh");
+        }
+    };
+
+    $scope.saveModel = function(data) {
+        $scope.saveModel = function(formData) {
+            NavigationService.modelSave("Template", $scope.formData, function(data) {
+                if (data.value === true) {
+                    $state.go('template-list');
+                    toastr.success("Template " + formData.name + " edited successfully.", "Template Edited");
+                } else {
+                    toastr.error("Template Edition failed.", "Template edition error");
+                }
+            });
+        };
+    };
 })
 
 .controller('CreateTemplateCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
