@@ -14,6 +14,7 @@ $orange: #f29c2c;
 $red: #ea5249;
 $green: #35c565;
 $yellow: #f4dc11;
+$google: #4285F4;
 $border-color: #e5e5e5;
 $brand-primary: $blue;
 $brand-info: $yellow;
@@ -174,6 +175,10 @@ a {
 
 .btn-orange {
     @include button-variant(white, $orange, $orange);
+}
+
+.btn-google {
+    @include button-variant(white, $google, $google);
 }
 
 $trans-black: rgba( black, .15);
@@ -1000,6 +1005,29 @@ img.uploadingImage {
 
 .lorDate {
     width: calc(100% - 40px);
+}
+
+.btn.btn-icon {
+    position: relative;
+    padding-left: 42px;
+    i {
+        position: absolute;
+        left: -1px;
+        width: 32px;
+        bottom: -1px;
+        top: -1px;
+        background-color: rgba(0, 0, 0, 0.20);
+        @include display(flex);
+        @include align-items(center);
+        &:before {
+            margin: 0 auto;
+        }
+    }
+}
+
+.widget-title>h3 {
+    float: none;
+    padding-right: 0px;
 }
 
 
