@@ -9,6 +9,17 @@ var navigationservice = angular.module('navigationservice', [])
 
 .factory('NavigationService', function($http) {
     var navigation = [{
+        name: "Email",
+        classis: "active",
+        anchor: "timeline",
+        icon: "envelope",
+        subnav: [{
+            name: "Inbox",
+            classis: "active",
+            anchor: "email-inbox",
+            icon: "inbox"
+        }]
+    }, {
         name: "Company Setup",
         classis: "active",
         anchor: "company",
@@ -237,17 +248,6 @@ var navigationservice = angular.module('navigationservice', [])
             classis: "active",
             anchor: "templateLor-list",
             icon: "file-text"
-        }]
-    }, {
-        name: "Email",
-        classis: "active",
-        anchor: "timeline",
-        icon: "envelope",
-        subnav: [{
-            name: "Email Inbox",
-            classis: "active",
-            anchor: "email-inbox",
-            icon: "inbox"
         }]
     }];
     var membershipLevel = [{
