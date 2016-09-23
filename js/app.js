@@ -24,7 +24,7 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
 
     .state('login', {
         url: "/login",
-        templateUrl: "views/template.html",
+        templateUrl: "views/login.html",
         controller: 'LoginCtrl'
     })
 
@@ -1135,6 +1135,12 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         url: "/email-single",
         templateUrl: "views/template.html",
         controller: 'EmailSingleCtrl'
+    })
+
+    .state('forbidden', {
+        url: "/forbidden",
+        templateUrl: "views/template.html",
+        controller: 'ForbiddenCtrl'
     })
 
     ;
