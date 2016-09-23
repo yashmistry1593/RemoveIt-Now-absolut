@@ -66,8 +66,8 @@
                                     <option value="Textarea">Textarea</option>
                                 </select>
                                     </div>
-                                    <div class="col-item" ng-if="item.type=='System Fields'"><input type="text" placeholder="Enter Value" class="form-control"></div>
-                                    <div class="col-item" ng-if="item.type=='Dropdown'"><input type="text" class="form-control" placeholder="Enter values (eg. Theft, Fire)"></div>
+                                    <div class="col-item" ng-if="item.type=='System Fields'"><input ng-model="item.value" type="text" placeholder="Enter Value" class="form-control"></div>
+                                    <div class="col-item" ng-if="item.type=='Dropdown'"><input ng-model="item.value" type="text" class="form-control" placeholder="Enter values (eg. Theft, Fire)"></div>
                                 </div>
                             </div>
                         </div>
