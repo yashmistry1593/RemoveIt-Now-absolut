@@ -4218,124 +4218,6 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         };
     })
 
-.controller('TimelineCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
-    //Used to name the .html file
-    $scope.template = TemplateService.changecontent("timeline");
-    $scope.menutitle = NavigationService.makeactive("Timeline");
-    TemplateService.title = $scope.menutitle;
-    $scope.navigation = NavigationService.getnav();
-
-    $scope.email = {
-        message: "Change"
-    };
-    $scope.emailtos = [{
-        name: 'Tushar',
-        email: 'tushar@wohlig.com'
-    }, {
-        name: 'Chintan',
-        email: 'chintan@wohlig.com'
-    }, {
-        name: 'Harsh',
-        email: 'harsh@wohlig.com'
-    }, {
-        name: 'Raj',
-        email: 'raj@wohlig.com'
-    }];
-
-    $scope.tinymceModel = 'Initial content';
-    $scope.tinymceOptions = {
-        plugins: 'link image code',
-        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
-    };
-
-    $scope.assignSurveyor = function() {
-        var modalInstance = $uibModal.open({
-            scope: $scope,
-            templateUrl: 'views/modal/modal-assign-surveyor.html',
-            size: 'md'
-        });
-    };
-
-    $scope.newEmail = function() {
-        var modalInstance = $uibModal.open({
-            scope: $scope,
-            templateUrl: 'views/modal/modal-email.html',
-            size: 'lg'
-        });
-    };
-
-    $scope.newMessage = function() {
-        var modalInstance = $uibModal.open({
-            scope: $scope,
-            templateUrl: 'views/modal/modal-message.html',
-            size: 'lg'
-        });
-    };
-
-    $scope.viewJIR = function() {
-        var modalInstance = $uibModal.open({
-            scope: $scope,
-            templateUrl: 'views/modal/modal-files.html',
-            size: 'md'
-        });
-    };
-
-    $scope.files = [{
-        type: "JIR",
-        count: 2,
-        files: [{
-            name: "doc1.docx",
-            selection: true
-        }, {
-            name: "doc2.docx",
-            selection: true
-        }]
-    }, {
-        type: "ILA",
-        count: 0,
-        files: []
-    }, {
-        type: "ILR",
-        count: 0,
-        files: []
-    }, {
-        type: "LOR",
-        count: 0,
-        files: []
-    }, {
-        type: "Assesments",
-        count: 0,
-        files: []
-    }, {
-        type: "FSR",
-        count: 0,
-        files: []
-    }, {
-        type: "Invoice",
-        count: 0,
-        files: []
-    }, {
-        type: "Documents",
-        count: 0,
-        files: []
-    }, {
-        type: "Images",
-        count: 0,
-        files: []
-    }, {
-        type: "Total Attachments",
-        count: 2,
-        files: [{
-            name: "doc1.docx",
-            selection: true
-        }, {
-            name: "doc2.docx",
-            selection: true
-        }]
-    }];
-
-})
-
 .controller('headerctrl', function($scope, TemplateService, $uibModal) {
     $scope.template = TemplateService;
     $scope.$on('$stateChangeSuccess', function(event, toState, toParams, fromState, fromParams) {
@@ -5649,4 +5531,255 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
 
 })
 
-;
+.controller('TimelineCtrl', function($scope, TemplateService, NavigationService, $timeout, $uibModal) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("timeline");
+    $scope.menutitle = NavigationService.makeactive("Timeline");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.email = {
+        message: "Change"
+    };
+    $scope.emailtos = [{
+        name: 'Tushar',
+        email: 'tushar@wohlig.com'
+    }, {
+        name: 'Chintan',
+        email: 'chintan@wohlig.com'
+    }, {
+        name: 'Harsh',
+        email: 'harsh@wohlig.com'
+    }, {
+        name: 'Raj',
+        email: 'raj@wohlig.com'
+    }];
+
+    $scope.tinymceModel = 'Initial content';
+    $scope.tinymceOptions = {
+        plugins: 'link image code',
+        toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
+    };
+
+    $scope.assignSurveyor = function() {
+        var modalInstance = $uibModal.open({
+            scope: $scope,
+            templateUrl: 'views/modal/modal-assign-surveyor.html',
+            size: 'md'
+        });
+    };
+
+    $scope.newEmail = function() {
+        var modalInstance = $uibModal.open({
+            scope: $scope,
+            templateUrl: 'views/modal/modal-email.html',
+            size: 'lg'
+        });
+    };
+
+    $scope.newMessage = function() {
+        var modalInstance = $uibModal.open({
+            scope: $scope,
+            templateUrl: 'views/modal/modal-message.html',
+            size: 'lg'
+        });
+    };
+
+    $scope.viewJIR = function() {
+        var modalInstance = $uibModal.open({
+            scope: $scope,
+            templateUrl: 'views/modal/modal-files.html',
+            size: 'md'
+        });
+    };
+
+    $scope.files = [{
+        type: "JIR",
+        count: 2,
+        files: [{
+            name: "doc1.docx",
+            selection: true
+        }, {
+            name: "doc2.docx",
+            selection: true
+        }]
+    }, {
+        type: "ILA",
+        count: 0,
+        files: []
+    }, {
+        type: "ILR",
+        count: 0,
+        files: []
+    }, {
+        type: "LOR",
+        count: 0,
+        files: []
+    }, {
+        type: "Assesments",
+        count: 0,
+        files: []
+    }, {
+        type: "FSR",
+        count: 0,
+        files: []
+    }, {
+        type: "Invoice",
+        count: 0,
+        files: []
+    }, {
+        type: "Documents",
+        count: 0,
+        files: []
+    }, {
+        type: "Images",
+        count: 0,
+        files: []
+    }, {
+        type: "Total Attachments",
+        count: 2,
+        files: [{
+            name: "doc1.docx",
+            selection: true
+        }, {
+            name: "doc2.docx",
+            selection: true
+        }]
+    }];
+
+})
+
+.controller('EmailInboxCtrl', function($scope, $uibModal, $window, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("email-inbox");
+    $scope.menutitle = NavigationService.makeactive("Email Inbox");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.header = {
+        "name": "Email Inbox"
+    };
+
+    $scope.mails = [{
+        sender: 'Chintan Shah',
+        subject: 'Absolute Links',
+        email: 'http://wohlig.co.in/absolute/',
+        read: false
+    }, {
+        sender: 'Chintan Shah',
+        subject: 'Absolute Changes',
+        email: 'LOR Template: http://wohlig.co.in/absolute/#/template-lor-create',
+        read: false
+    }, {
+        sender: 'Chintan Shah',
+        subject: 'Absolute Live',
+        email: 'Live Link: http://bms.absolutesurveyors.com/',
+        read: true
+    }, {
+        sender: 'Chintan Shah',
+        subject: 'Absolute IP',
+        email: '182.31.23.4 Please use this IP',
+        read: false
+    }];
+
+
+    function getHeight() {
+        $scope.emailheight = $window.innerHeight - 130;
+    }
+    getHeight();
+
+    angular.element($window).bind('resize', function() {
+        getHeight();
+        $scope.$apply();
+    });
+
+    $scope.newEmail = function() {
+        var modalInstance = $uibModal.open({
+            scope: $scope,
+            templateUrl: 'views/modal/modal-email.html',
+            size: 'lg'
+        });
+    };
+    $scope.files = [{
+        type: "JIR",
+        count: 2,
+        files: [{
+            name: "doc1.docx",
+            selection: true
+        }, {
+            name: "doc2.docx",
+            selection: true
+        }]
+    }, {
+        type: "ILA",
+        count: 0,
+        files: []
+    }, {
+        type: "ILR",
+        count: 0,
+        files: []
+    }, {
+        type: "LOR",
+        count: 0,
+        files: []
+    }, {
+        type: "Assesments",
+        count: 0,
+        files: []
+    }, {
+        type: "FSR",
+        count: 0,
+        files: []
+    }, {
+        type: "Invoice",
+        count: 0,
+        files: []
+    }, {
+        type: "Documents",
+        count: 0,
+        files: []
+    }, {
+        type: "Images",
+        count: 0,
+        files: []
+    }, {
+        type: "Total Attachments",
+        count: 2,
+        files: [{
+            name: "doc1.docx",
+            selection: true
+        }, {
+            name: "doc2.docx",
+            selection: true
+        }]
+    }];
+
+
+})
+
+.controller('EmailComposeCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("email-compose");
+    $scope.menutitle = NavigationService.makeactive("Compose Email");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.header = {
+        "name": "Compose Email"
+    };
+
+})
+
+
+.controller('EmailSingleCtrl', function($scope, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
+    //Used to name the .html file
+    $scope.template = TemplateService.changecontent("email-single");
+    $scope.menutitle = NavigationService.makeactive("Single Mail");
+    TemplateService.title = $scope.menutitle;
+    $scope.navigation = NavigationService.getnav();
+
+    $scope.header = {
+        "name": "Single Mail"
+    };
+
+});

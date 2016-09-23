@@ -1125,6 +1125,24 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'TemplateViewCtrl'
     })
 
+    .state('email-inbox', {
+        url: "/email-inbox",
+        templateUrl: "views/template.html",
+        controller: 'EmailInboxCtrl'
+    })
+
+    .state('email-compose', {
+        url: "/email-compose",
+        templateUrl: "views/template.html",
+        controller: 'EmailComposeCtrl'
+    })
+
+    .state('email-single', {
+        url: "/email-single",
+        templateUrl: "views/template.html",
+        controller: 'EmailSingleCtrl'
+    })
+
     ;
     $urlRouterProvider.otherwise("/login");
     $locationProvider.html5Mode(isproduction);

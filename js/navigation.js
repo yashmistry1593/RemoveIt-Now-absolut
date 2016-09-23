@@ -238,6 +238,17 @@ var navigationservice = angular.module('navigationservice', [])
             anchor: "templateLor-list",
             icon: "file-text"
         }]
+    }, {
+        name: "Email",
+        classis: "active",
+        anchor: "timeline",
+        icon: "envelope",
+        subnav: [{
+            name: "Email Inbox",
+            classis: "active",
+            anchor: "email-inbox",
+            icon: "inbox"
+        }]
     }];
     var membershipLevel = [{
         name: "Student",
