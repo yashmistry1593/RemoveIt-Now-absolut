@@ -56,7 +56,8 @@ nav li:hover .dropdown-menu {
 }
 
 .btn,
-a {
+a,
+[ui-sref] {
     cursor: pointer;
     @include transition(all ease 300ms);
     &:focus {
@@ -1105,6 +1106,14 @@ img.uploadingImage {
 
 .mce-btn button {
     padding: 4px 8px !important;
+}
+
+.email-sec {
+    font-size: 13px;
+}
+
+.bordered {
+    border-bottom: 1px solid $border-color;
 }
 
 

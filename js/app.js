@@ -1131,12 +1131,6 @@ firstapp.config(function($stateProvider, $urlRouterProvider, $httpProvider, $loc
         controller: 'EmailInboxCtrl'
     })
 
-    .state('email-compose', {
-        url: "/email-compose",
-        templateUrl: "views/template.html",
-        controller: 'EmailComposeCtrl'
-    })
-
     .state('email-single', {
         url: "/email-single",
         templateUrl: "views/template.html",

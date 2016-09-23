@@ -34,7 +34,7 @@
                                 <ul class="message-list" ng-style="{height:emailheight-62}">
                                     <li ng-class="{'unread': !read}" ng-repeat="mail in mails">
                                         <input class="select-message" type="checkbox" />
-                                        <h3 class="sender-name" ng-bind="mail.sender"></h3>
+                                        <h3 class="sender-name pointer" ng-bind="mail.sender" ui-sref="email-single"></h3>
                                         <a ng-if="mail.attachment"><i class="fa fa-paperclip"></i></a>
                                         <p><span class="subject" ng-bind="mail.subject"></span> - <span ng-bind="mail.email"></span></p>
                                     </li>
