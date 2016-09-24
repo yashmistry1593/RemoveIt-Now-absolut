@@ -5560,7 +5560,7 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         plugins: 'link image code',
         toolbar: 'undo redo | bold italic | alignleft aligncenter alignright | code'
     };
-
+    $scope.repeat = _.times(20, Number);
     $scope.assignSurveyor = function() {
         var modalInstance = $uibModal.open({
             scope: $scope,
