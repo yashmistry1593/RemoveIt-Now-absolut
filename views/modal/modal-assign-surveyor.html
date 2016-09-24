@@ -17,11 +17,31 @@
                     </div>
                 </td>
                 <td>Manya Surve</td>
-                <td width="150" class="text-right">
-                    <input type="date" class="form-control">
+                <td width="150">
+                    <div class="input-group">
+                        <input type="text" name="assignFrom" placeholder="From" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.assignFrom"
+                            is-open="popup.assignFrom" ng-change="change(formData.assignFrom)" datepicker-options="dateOptions"
+                            readonly/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="popup.assignFrom = true">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </span>
+                    </div>
                 </td>
-                <td width="150" class="text-right">
-                    <button class="btn btn-success btn-show">Assign Now</button>
+                <td width="150">
+                    <div class="input-group">
+                        <input type="text" name="assignTo" placeholder="To" class="form-control" uib-datepicker-popup="{{format}}" ng-model="formData.assignTo"
+                            is-open="popup.assignTo" ng-change="change(formData.assignTo)" datepicker-options="dateOptions" readonly/>
+                        <span class="input-group-btn">
+                            <button type="button" class="btn btn-default" ng-click="popup.assignTo = true">
+                                <i class="fa fa-calendar"></i>
+                            </button>
+                        </span>
+                    </div>
+                </td>
+                <td width="70" class="text-right">
+                    <button class="btn btn-success btn-block btn-show">Assign</button>
                 </td>
             </tr>
 
