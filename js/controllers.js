@@ -5647,6 +5647,14 @@ angular.module('phonecatControllers', ['templateservicemod', 'navigationservice'
         }]
     }];
 
+    var startTime = moment("00:00", "HH:mm");
+    var time = startTime;
+    $scope.time = _.times(48, function () {
+        var t = moment(time);
+        time = time.add(30, "minute");
+        return t.format("hh:mm A");
+    });
+
 })
 
 .controller('EmailInboxCtrl', function ($scope, $uibModal, $window, TemplateService, NavigationService, $timeout, $stateParams, $state, toastr) {
